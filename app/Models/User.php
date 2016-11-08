@@ -30,6 +30,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Game[] $games
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\News[] $news
+ * @property-read \App\Models\UserSetting $settings
  */
 class User extends Authenticatable
 {
@@ -59,5 +60,9 @@ class User extends Authenticatable
 
     public function news(){
         return $this->belongsToMany('App\Models\News');
+    }
+
+    public function settings(){
+        return $this->hasOne('App\Models\UserSetting');
     }
 }

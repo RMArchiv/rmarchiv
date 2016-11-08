@@ -3,7 +3,11 @@
 @section('content')
     <div id='content' class='frontpage'>
         <div id='leftbar' class='column'>
-            {% include 'index/_partial/login.twig' %}
+            @if(Auth::check() == true)
+                @include('index._partials.logout')
+            @else
+                @include('index._partials.login')
+            @endif
             {% include 'index/_partial/cdc.twig' %}
             {% include 'index/_partial/latestadded.twig' %}
             {% include 'index/_partial/latestreleased.twig' %}

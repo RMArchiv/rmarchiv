@@ -14,7 +14,11 @@
 Route::get('/', 'IndexController@index');
 
 Auth::routes();
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
 
 Route::resource('news', 'NewsController');
+Route::resource('games', 'GameController');
+Route::resource('resources', 'ResourcesController');
+
