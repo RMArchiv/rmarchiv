@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGamesTable extends Migration
+class CreateShoutboxTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,15 @@ class CreateGamesTable extends Migration
      */
     public function up()
     {
-        Schema::create('games', function (Blueprint $table){
+        Schema::create('shoutbox', function (Blueprint $table){
             $table->increments('id');
-            $table->string('title');
-            $table->string('subtitle');
-            $table->string('desc_md');
-            $table->string('desc_html');
-            $table->string('website_url');
+            $table->string('shout_md');
+            $table->string('shout_html');
             $table->integer('user_id');
-            $table->integer('views');
-            $table->date('release_date');
-            $table->integer('maker_id');
             $table->softDeletes();
             $table->timestamps();
 
             $table->index('user_id');
-            $table->index('maker_id');
         });
     }
 
@@ -39,6 +32,6 @@ class CreateGamesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('games');
+        Schema::drop('shoutbox');
     }
 }

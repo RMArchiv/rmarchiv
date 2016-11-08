@@ -13,7 +13,7 @@ class CreateMakersTable extends Migration
      */
     public function up()
     {
-        Shema::create('makers', function (Blueprint $table){
+        Schema::create('makers', function (Blueprint $table){
             $table->increments('id');
             $table->string('title');
             $table->string('short');
@@ -33,6 +33,6 @@ class CreateMakersTable extends Migration
      */
     public function down()
     {
-        Shema::drop('makers');
+        Schema::drop('makers');
     }
 }

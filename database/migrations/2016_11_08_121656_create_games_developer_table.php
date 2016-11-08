@@ -13,7 +13,7 @@ class CreateGamesDeveloperTable extends Migration
      */
     public function up()
     {
-        Shema::create('games_developer', function (Blueprint $table){
+        Schema::create('games_developer', function (Blueprint $table){
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('game_id');
@@ -34,6 +34,6 @@ class CreateGamesDeveloperTable extends Migration
      */
     public function down()
     {
-        Shema::drop('games_developer');
+        Schema::drop('games_developer');
     }
 }

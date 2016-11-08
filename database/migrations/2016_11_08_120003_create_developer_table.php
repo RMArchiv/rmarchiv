@@ -13,7 +13,7 @@ class CreateDeveloperTable extends Migration
      */
     public function up()
     {
-        Shema::create('developer', function (Blueprint $table){
+        Schema::create('developer', function (Blueprint $table){
             $table->increments('id');
             $table->string('name');
             $table->string('short');

@@ -13,7 +13,7 @@ class CreateAwardCatsTable extends Migration
      */
     public function up()
     {
-        Shema::create('award_cats', function (Blueprint $table){
+        Schema::create('award_cats', function (Blueprint $table){
             $table->increments('id');
             $table->string('title');
             $table->integer('award_page_id');
@@ -35,6 +35,6 @@ class CreateAwardCatsTable extends Migration
      */
     public function down()
     {
-        Shema::drop('award_cats');
+        Schema::drop('award_cats');
     }
 }

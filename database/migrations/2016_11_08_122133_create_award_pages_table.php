@@ -13,7 +13,7 @@ class CreateAwardPagesTable extends Migration
      */
     public function up()
     {
-        Shema::create('award_pages', function (Blueprint $table){
+        Schema::create('award_pages', function (Blueprint $table){
             $table->increments('id');
             $table->string('title');
             $table->string('short');
@@ -33,6 +33,6 @@ class CreateAwardPagesTable extends Migration
      */
     public function down()
     {
-        Shema::drop('award_pages');
+        Schema::drop('award_pages');
     }
 }

@@ -13,7 +13,7 @@ class CreateGamesAwardsTable extends Migration
      */
     public function up()
     {
-        Shema::create('games_awards', function (Blueprint $table){
+        Schema::create('games_awards', function (Blueprint $table){
             $table->increments('id');
             $table->integer('game_id');
             $table->integer('developer_id');
@@ -38,6 +38,6 @@ class CreateGamesAwardsTable extends Migration
      */
     public function down()
     {
-        Shema::drop('games_awards');
+        Schema::drop('games_awards');
     }
 }
