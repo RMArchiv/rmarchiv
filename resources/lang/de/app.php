@@ -1,6 +1,53 @@
 <?php
 
 return [
+    'home' => [
+        'title' => 'Home',
+    ],
+
+    'news' => [
+        'title' => 'News',
+    ],
+
+    'games' => [
+        'title' => 'Spiele',
+    ],
+
+    'resources' => [
+        'title' => 'Ressourcen',
+    ],
+
+    'developer' => [
+        'title' => 'Entwickler',
+    ],
+
+    'awards' => [
+        'title' => 'Auszeichnungen',
+    ],
+
+    'user' => [
+        'title' => 'User',
+        'settings' => [
+            'title' =>'einstellungen',
+        ],
+    ],
+
+    'search' => [
+        'title' => 'Suche',
+    ],
+
+    'board' => [
+        'title' => 'Forum',
+    ],
+
+    'faq' => [
+        'title' => 'FAQ',
+    ],
+
+    'submit' => [
+        'title' => 'Einsenden',
+    ],
+
     'auth' => [
         'login' => 'login',
         'register' => 'registrieren',
@@ -11,6 +58,9 @@ return [
         'login_failed' => 'login fehlgeschlagen',
         'register_failed' => 'registrierung fehlgeschlagen',
         'username' => 'benutzername:',
-        'password_confirm' => 'passwort wiederholen:'
+        'password_confirm' => 'passwort wiederholen:',
+        'loggedin_as' => 'du bist eingeloggt als',
+        'logout' => 'logout',
+        'register_title' => 'registrierung / anmeldedaten',
     ],
 ];

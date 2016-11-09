@@ -6,11 +6,11 @@
             {{ csrf_field() }}
 
             <div class="rmarchivtbl" id="rmarchivbox_submitavatar">
-                <h2>registrierung / anmeldedaten</h2>
+                <h2>{{ trans('app.auth.register_title') }}</h2>
 
                 @if ($errors->has('name'))
                     <div class="rmarchivtbl errorbox">
-                        <h2>Login fehlgeschlagen</h2>
+                        <h2>{{ trans('app.auth.register_failed') }}</h2>
                         <div class="content">
                             <strong>{{ $errors->first('name') }}</strong>
                         </div>
@@ -18,7 +18,7 @@
                 @endif
                 @if ($errors->has('email'))
                     <div class="rmarchivtbl errorbox">
-                        <h2>Login fehlgeschlagen</h2>
+                        <h2>{{ trans('app.auth.register_failed') }}</h2>
                         <div class="content">
                             <strong>{{ $errors->first('email') }}</strong>
                         </div>
@@ -26,7 +26,7 @@
                 @endif
                 @if ($errors->has('password'))
                     <div class="rmarchivtbl errorbox">
-                        <h2>Login fehlgeschlagen</h2>
+                        <h2>{{ trans('app.auth.register_failed') }}</h2>
                         <div class="content">
                             <strong>{{ $errors->first('password') }}</strong>
                         </div>
@@ -36,22 +36,22 @@
                 <div class="content">
                     <div class="formifier">
                         <div class="row" id="row_name">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">{{ trans('app.auth.username') }}</label>
                             <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
                             <span> [<span class="req">req</span>]</span>
                         </div>
                         <div class="row" id="row_name">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">{{ trans('app.auth.email') }}</label>
                             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
                             <span> [<span class="req">req</span>]</span>
                         </div>
                         <div class="row" id="row_pass">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <label for="password" class="col-md-4 control-label">{{ trans('app.auth.password') }}</label>
                             <input id="password" type="password" class="form-control" name="password" required>
                             <span> [<span class="req">req</span>]</span>
                         </div>
                         <div class="row" id="row_pass2">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                            <label for="password-confirm" class="col-md-4 control-label">{{ trans('app.auth.password_confirm') }}</label>
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             <span> [<span class="req">req</span>]</span>
                         </div>
