@@ -11,5 +11,12 @@
         <li><a href="{{ url('board') }}">{{ trans('app.board.title') }}</a></li>
         <li><a href="{{ url('faq') }}">{{ trans('app.faq.title') }}</a></li>
         <li><a href="{{ url('submit') }}">{{ trans('app.submit.title') }}</a></li>
+        @if($part == 'toppart')
+            @if(Auth::check())
+                <li><a class="adminlink" href="{{ url('logout') }}">{{ trans('app.auth.logout') }}</a></li>
+            @else
+                <li><a class="adminlink" href="{{ url('login') }}">{{ trans('app.auth.login') }}</a></li>
+            @endif
+        @endif
     </ul>
 </nav>

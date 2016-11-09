@@ -2,50 +2,50 @@
 
 return [
     'home' => [
-        'title' => 'Home',
+        'title' => 'home',
     ],
 
     'news' => [
-        'title' => 'News',
+        'title' => 'news',
     ],
 
     'games' => [
-        'title' => 'Spiele',
+        'title' => 'spiele',
     ],
 
     'resources' => [
-        'title' => 'Ressourcen',
+        'title' => 'ressourcen',
     ],
 
     'developer' => [
-        'title' => 'Entwickler',
+        'title' => 'entwickler',
     ],
 
     'awards' => [
-        'title' => 'Auszeichnungen',
+        'title' => 'auszeichnungen',
     ],
 
     'user' => [
-        'title' => 'User',
+        'title' => 'user',
         'settings' => [
             'title' =>'einstellungen',
         ],
     ],
 
     'search' => [
-        'title' => 'Suche',
+        'title' => 'suche',
     ],
 
     'board' => [
-        'title' => 'Forum',
+        'title' => 'forum',
     ],
 
     'faq' => [
-        'title' => 'FAQ',
+        'title' => 'faq',
     ],
 
     'submit' => [
-        'title' => 'Einsenden',
+        'title' => 'einsenden',
     ],
 
     'auth' => [
@@ -67,11 +67,11 @@ return [
     'errors' => [
         'submit' => [
             'no_login' => [
-                'title' => 'Du bist nicht angemeldet.',
+                'title' => 'du bist nicht angemeldet.',
                 'message' => '
 <ul>
-    <li>Um Inhalte auf :websitetitle hinzufügen zu können, musst du dich <a href=":loginurl">Anmelden</a>.</li>
-    <li>Wenn du noch keinen Accounts besitzt, <a href=":registerurl">Registriere</a> dir einen neuen.</li>
+    <li>um inhalte auf :websitetitle hinzufügen zu können, musst du dich <a href=":loginurl">anmelden</a>.</li>
+    <li>wenn du noch keinen accounts besitzt, <a href=":registerurl">registriere</a> dir einen neuen.</li>
 </ul>',
             ],
         ],
