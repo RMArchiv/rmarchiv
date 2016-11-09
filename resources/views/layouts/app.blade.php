@@ -9,7 +9,7 @@
     <link rel="canonical" href="http://www.rmarchiv.de/"/>
 
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/app.css') }}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ elixir('css/app.css') }}" media="screen" />
 
 
     <script type="text/javascript">
@@ -35,15 +35,7 @@
 @include('_partials.navigation', ['part' => 'bottompart'])
 @include('_partials.footer')
 
-<script type="text/javascript">
-    <!--
-    document.observe("dom:loaded", function() {
-        if (rmarchiv.isMobile) {
-            CollapsibleHeaders($$(".rmarchivtbl"));
-        }
-    });
-    //-->
-</script>
+<script src="{{ elixir('js/app.js') }}"></script>
 </body>
 
 <!--[if lt IE 9]><script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script><![endif]-->

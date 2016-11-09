@@ -498,6 +498,16 @@ nav {
     .content {
       background: $color_tosca_approx;
       text-align: center;
+      ul {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        list-style: none;
+        li {
+          margin: 1px;
+          padding: 2px;
+        }
+      }
     }
     a {
       color: $color_geraldine_approx;

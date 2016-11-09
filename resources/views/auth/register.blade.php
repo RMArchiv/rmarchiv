@@ -5,7 +5,7 @@
         <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
             {{ csrf_field() }}
 
-            <div class="rmarchivtbl" id="rmarchivbox_submitavatar">
+            <div class="rmarchivtbl" id="rmarchivbox_register">
                 <h2>{{ trans('app.auth.register_title') }}</h2>
 
                 @if ($errors->has('name'))

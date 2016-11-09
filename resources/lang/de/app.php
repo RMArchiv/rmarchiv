@@ -63,4 +63,17 @@ return [
         'logout' => 'logout',
         'register_title' => 'registrierung / anmeldedaten',
     ],
+
+    'errors' => [
+        'submit' => [
+            'no_login' => [
+                'title' => 'Du bist nicht angemeldet.',
+                'message' => '
+<ul>
+    <li>Um Inhalte auf :websitetitle hinzufügen zu können, musst du dich <a href=":loginurl">Anmelden</a>.</li>
+    <li>Wenn du noch keinen Accounts besitzt, <a href=":registerurl">Registriere</a> dir einen neuen.</li>
+</ul>',
+            ],
+        ],
+    ],
 ];

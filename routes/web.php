@@ -22,3 +22,9 @@ Route::resource('news', 'NewsController');
 Route::resource('games', 'GameController');
 Route::resource('resources', 'ResourcesController');
 
+//Submit Routen
+Route::get('submit', 'SubmitController@index');
+
+//Autocomplete Routen
+Route::get('ac_developer', 'AutocompleteController@developer');
+
