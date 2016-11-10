@@ -31,6 +31,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Game[] $games
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\News[] $news
  * @property-read \App\Models\UserSetting $settings
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Logo[] $logo
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\LogoVote[] $logovote
  */
 class User extends Authenticatable
 {
@@ -68,5 +70,9 @@ class User extends Authenticatable
 
     public function logo(){
         return $this->hasMany('App\Models\Logo', 'user_id', 'id');
+    }
+
+    public function logovote(){
+        return $this->belongsToMany('App\Models\LogoVote');
     }
 }

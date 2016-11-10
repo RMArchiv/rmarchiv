@@ -24,6 +24,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Logo whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Logo whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\User $user
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\LogoVote[] $logovote
  */
 class Logo extends Model
 {
@@ -42,6 +44,10 @@ class Logo extends Model
 
     public function user(){
         return $this->belongsTo('App\Models\User');
+    }
+
+    public function logovote(){
+        return $this->belongsToMany('App\Models\LogoVote');
     }
         
 }

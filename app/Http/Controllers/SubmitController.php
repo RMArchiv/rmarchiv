@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
+use Illuminate\Http\UploadedFile;
 
 class SubmitController extends Controller
 {
@@ -33,17 +34,20 @@ class SubmitController extends Controller
         $file = $request->file('file');
         $ext = $file->getClientOriginalExtension();
         $extorig = $file->getExtension();
-        $imageName = \Storage::putFile('logos', $request->file('file'));
+
+        $imageName = \Storage::putFile('logos', new UploadedFile($file->path(), $file->getClientOriginalName()));
+        //dd($file);
 
         $l = new Logo;
-        $l->extension = \Storage::mimeType($ext);
+        $l->extension = \Storage::mimeType($imageName);
         $l->filename = str_replace($extorig, '', $imageName);
         $l->title = $request->get('logoname');
         $l->user_id = \Auth::id();
 
+
         $l->save();
 
-        return redirect()->route('submit/logo/success');
+        return redirect()->route('submit.logo.success');
     }
 
 }

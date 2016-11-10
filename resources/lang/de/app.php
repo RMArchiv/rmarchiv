@@ -30,6 +30,11 @@ return [
         'settings' => [
             'title' =>'einstellungen',
         ],
+        'user_level' => [
+            'admin' => 'obyxstrator',
+            'moderator' => 'moderobyx',
+            'user' => 'ungläubiger',
+        ],
     ],
 
     'search' => [

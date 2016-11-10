@@ -22,6 +22,10 @@ Route::resource('news', 'NewsController');
 Route::resource('games', 'GameController');
 Route::resource('resources', 'ResourcesController');
 
+//User Routings
+Route::get('users', 'UserController@index');
+Route::get('users/{id}', 'UserController@get');
+
 //Logo Voting
 Route::get('logo/vote', 'LogoController@vote_get');
 Route::post('logo/vote/{id}', 'LogoController@vote_add');
@@ -41,5 +45,5 @@ Route::post('submit/logo', 'SubmitController@logo_add');
 Route::get('ac_developer', 'AutocompleteController@developer');
 
 //Routen für Messageboxen
-Route::get('submit/logo/success', 'MsgBoxController@submit_logo');
+Route::get('submit/logo/success', 'MsgBoxController@submit_logo')->name('submit.logo.success');
 
