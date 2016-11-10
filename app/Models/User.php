@@ -65,4 +65,8 @@ class User extends Authenticatable
     public function settings(){
         return $this->hasOne('App\Models\UserSetting', 'user_id', 'id');
     }
+
+    public function logo(){
+        return $this->hasMany('App\Models\Logo', 'user_id', 'id');
+    }
 }

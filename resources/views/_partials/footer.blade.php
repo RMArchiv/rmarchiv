@@ -1,7 +1,7 @@
 <footer>
     <ul>
         <li>
-            <a href="/">{{ trans('app.title') }}</a> 0.0.0-pre-alpha1 &copy; 2016-{{ "now"|date('Y') }} <a href="{{ url('/user', 1) }}">ryg</a>
+            <a href="/">{{ config('app.name') }}</a> 0.0.0-pre-alpha1 &copy; 2016-{{ date('Y', time()) }} <a href="{{ url('/user', 1) }}">ryg</a>
         </li>
         <li>
             feedback und bugs an <a href="mailto:webmaster@rmarchiv.de">webmaster@rmarchiv.de</a>

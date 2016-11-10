@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\User $user
  */
 class UserSetting extends Model
 {
