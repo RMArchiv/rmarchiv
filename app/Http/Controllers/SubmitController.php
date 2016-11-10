@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Logo;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Http\Response;
 
 class SubmitController extends Controller
 {
@@ -19,8 +24,26 @@ class SubmitController extends Controller
 
     }
 
-    public function logo_add(){
+    public function logo_add(Request $request){
+        $this->validate($request, [
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'logoname' => 'required',
+        ]);
 
+        $file = $request->file('file');
+        $ext = $file->getClientOriginalExtension();
+        $extorig = $file->getExtension();
+        $imageName = \Storage::putFile('logos', $request->file('file'));
+
+        $l = new Logo;
+        $l->extension = \Storage::mimeType($ext);
+        $l->filename = str_replace($extorig, '', $imageName);
+        $l->title = $request->get('logoname');
+        $l->user_id = \Auth::id();
+
+        $l->save();
+
+        return redirect()->route('submit/logo/success');
     }
 
 }

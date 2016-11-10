@@ -46,6 +46,20 @@ return [
 
     'submit' => [
         'title' => 'einsenden',
+        'logo' => [
+            'title' => 'upload eines neuen website logos',
+            'name' => 'name des logos:',
+            'file' => 'wähle logo datei:',
+            'submit' => 'logo hochladen',
+            'error' => [
+                'title' => 'logo upload fehlgeschlagen',
+            ],
+            'success' => [
+                'title' => 'logo upload erfolgreich abgeschlossen',
+                'msg' => 'dein logo wurde erfolgreich hochgeladen. <br> nun kannst du auf folgender seite dafür abstimmen.',
+                'redirect' => 'weiter zum logo voting...'
+            ],
+        ],
     ],
 
     'auth' => [
@@ -74,6 +88,7 @@ return [
     <li>wenn du noch keinen accounts besitzt, <a href=":registerurl">registriere</a> dir einen neuen.</li>
 </ul>',
             ],
+
         ],
     ],
 ];

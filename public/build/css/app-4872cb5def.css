@@ -717,8 +717,10 @@ nav {
   .rmarchivtbl.successbox .content {
     background: #468844;
     text-align: center; }
-    .rmarchivtbl.successbox .content a {
-      color: #88ff88; }
+  .rmarchivtbl.successbox a {
+    color: #88ff88; }
+  .rmarchivtbl.successbox .foot {
+    background: #228830; }
 
 .boxtable {
   background: #000000;

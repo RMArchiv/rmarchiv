@@ -523,9 +523,12 @@ nav {
     .content {
       background: $color_hippie_green_approx;
       text-align: center;
-      a {
-        color: $color_mint_green_approx;
-      }
+    }
+    a {
+      color: $color_mint_green_approx;
+    }
+    .foot {
+      background: $color_forest_green_approx;
     }
   }
 }
