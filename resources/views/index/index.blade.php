@@ -17,7 +17,7 @@
         <div id='middlebar' class='column'>
             {% include 'index/_partial/shoutbox.twig' %}
             {% include 'index/_partial/board_latest.twig' %}
-            {% include 'index/_partial/latestnews.twig' %}
+            @include('index._partials.news')
         </div>
         <div id='rightbar' class='column'>
             {% include 'index/_partial/searchbox.twig' %}

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @if(Auth::check() == true)
+    @if(Auth::check())
         <div id="content">
             <div class="rmarchivtbl" id="rmarchivbox_submit">
                 <h2>Was willst du einsenden?</h2>
@@ -9,11 +9,11 @@
                     <li><a href='{{ url('submit/game') }}'>einsenden eines spiels</a></li>
                     <li><a href='{{ url('submit/developer') }}'>einsenden eines entwicklers</a></li>
                     <li><a href='{{ url('submit/resources') }}'>einsenden von ressourcen</a></li>
-                    <li><a href='{{ url('/news/create') }}'>einsenden von news</a></li>
+                    <li><a href='{{ url('news/create') }}'>einsenden von news</a></li>
                     <li><a href='{{ url('submit/logo') }}'>upload eines logos</a></li>
-                    <li><a href='#'>bewerte logos</a></li>
+                    <li><a href='{{ url('logo/vote') }}'>bewerte logos</a></li>
                 </ul>
-                @if($user->settings->is_admin)
+                @if(Auth::user()->settings->is_admin)
                 <h2>Admin Only</h2>
                 <ul class="boxlist">
                     <li><a href="#">changelog hinzufügen</a></li>

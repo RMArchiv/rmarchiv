@@ -27,6 +27,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\News whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property-read \App\Models\User $user
+ * @property integer $approved
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\News whereApproved($value)
  */
 class News extends Model
 {

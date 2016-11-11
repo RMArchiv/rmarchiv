@@ -16,7 +16,15 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        $news = \DB::table('news')
+            ->leftJoin('users', 'news.user_id', '=', 'users.id')
+            ->select(['news.id', 'news.title', 'news.user_id', 'users.name', 'news.created_at', 'news.approved', 'news.news_html'])
+            ->orderBy('news.created_at', 'desc')
+            ->get();
+
+        return view('news.index', [
+            'news' => $news,
+        ]);
     }
 
     /**
@@ -82,8 +90,18 @@ class NewsController extends Controller
                 ->first();
         }
 
+        $comments = \DB::table('comments')
+            ->leftJoin('users', 'comments.user_id', '=', 'users.id')
+            ->select(['comments.id', 'comments.user_id', 'comments.comment_html', 'comments.created_at', 'users.name',
+            'comments.vote_up', 'comments.vote_down'])
+            ->where('content_type', '=', 'news')
+            ->where('content_id', '=', $id)
+            ->orderBy('created_at', 'asc');
 
-        return view('news.show', ['news' => $news]);
+        return view('news.show', [
+            'news' => $news,
+            'comments' => $comments,
+        ]);
     }
 
     /**
@@ -119,6 +137,8 @@ class NewsController extends Controller
     {
         $news = News::whereId($id)->first();
         $news->delete();
+
+        //$comments =
 
         return redirect()->action('NewsController@index');
     }

@@ -742,6 +742,8 @@ nav {
     background: #17395c; }
   .boxtable tr:nth-child(even) td {
     background: #2d4f74; }
+  .boxtable tr .notapproved {
+    background: #775599; }
   .boxtable.pagedtable td.nav {
     background: #224488;
     font-weight: bold;

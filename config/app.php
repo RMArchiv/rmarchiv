@@ -2,6 +2,20 @@
 
 return [
 
+    //Eigene Konfigurationsoptionen
+    'obyx' => [
+        'shoutbox' => 1,
+        'register' => 20,
+        'comment' => 2,
+        'comment_game_vote' => 5,
+        'board_thread' => 10,
+        'board_post' => 2,
+        'game_add' => 15,
+        'developer_add' => 5,
+    ],
+
+    'version' => '0.0.1-preAlpha2',
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

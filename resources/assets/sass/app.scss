@@ -560,6 +560,9 @@ nav {
     &:nth-child(even) td {
       background: $color_san_juan_approx;
     }
+    .notapproved{
+      background: $color_affair_approx;
+    }
   }
   &.pagedtable td.nav {
     background: $color_bay_of_many_approx;
