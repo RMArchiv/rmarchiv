@@ -18,7 +18,9 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 //Route::get('/home', 'HomeController@index');
 
+//News Routen
 Route::resource('news', 'NewsController');
+Route::get('news/{id}/approve/{approve}', 'NewsController@approve');
 Route::resource('games', 'GameController');
 Route::resource('resources', 'ResourcesController');
 

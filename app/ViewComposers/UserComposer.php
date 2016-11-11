@@ -19,10 +19,9 @@ class UserComposer {
      */
     public function compose(View $view)
     {
-        //$user = Auth::check();
-
-        $userid = \Auth::id();
-        $user = User::where('id', $userid)->get()->first();
+        $user = \DB::table('users')
+            ->leftJoin('user_settings', 'users.id', '=', 'user_settings.user_id')
+            ->where('users.id', '=', \Auth::id());
 
         $view->with('user', $user);
     }

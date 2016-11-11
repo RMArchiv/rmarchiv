@@ -7,6 +7,13 @@ return [
 
     'news' => [
         'title' => 'news',
+        'add' => [
+            'title' => 'news hinzufügen',
+
+            'error' => [
+                'title' => 'news konnte nicht hinzugefügt werden.',
+            ],
+        ],
     ],
 
     'games' => [

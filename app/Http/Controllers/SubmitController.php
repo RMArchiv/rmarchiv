@@ -21,10 +21,6 @@ class SubmitController extends Controller
         return view('submit.logo.index');
     }
 
-    public function logo_get(){
-
-    }
-
     public function logo_add(Request $request){
         $this->validate($request, [
             'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
