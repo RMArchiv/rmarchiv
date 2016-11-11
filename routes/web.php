@@ -27,7 +27,7 @@ Route::get('users', 'UserController@index');
 Route::get('users/{id}', 'UserController@get');
 
 //Logo Voting
-Route::get('logo/vote', 'LogoController@vote_get');
+Route::get('logo/vote', 'LogoController@vote_get')->name('logo.vote');
 Route::post('logo/vote/{id}', 'LogoController@vote_add');
 
 //Submit Routen

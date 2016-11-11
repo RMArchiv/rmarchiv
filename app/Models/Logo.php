@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\LogoVote[] $logovote
+ * @property-read integer $voteresult
  */
 class Logo extends Model
 {
@@ -48,6 +49,14 @@ class Logo extends Model
 
     public function logovote(){
         return $this->belongsToMany('App\Models\LogoVote');
+    }
+
+    public function voteresult(){
+        $up = LogoVote::whereLogoId($this->id)->selectRaw('SUM(up) as sumup, SUM(down) as sumdown');
+
+        $res = $up->get(array('sumup', 'sumdown'));
+
+        return $res;
     }
         
 }
