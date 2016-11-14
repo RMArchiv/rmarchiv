@@ -7,9 +7,35 @@ return [
 
     'news' => [
         'title' => 'news',
+        'show' => [
+            'submit_by' => 'Eingesendet von',
+            'at' => 'at',
+            'delete' => 'löschen',
+            'approve' => 'erlauben',
+            'disapprove' => 'sperren',
+        ],
+        'popularity_helper' => [
+            'title' => 'popularitäts helfer',
+            'msg' => 'erhöhe den bekanntheitsgrad dieser news und verteile folgenden link:'
+        ],
+        'comments' => [
+            'title' => 'kommentare',
+            'title_add' => 'kommentar hinzufügen',
+            'no_comments_title' => 'es sind noch keine kommentare vorhanden.',
+            'no_comments_msg' => 'wip',
+            'vote_title' => 'hier kannst du diese news bewerten:',
+            'vote_sub' => 'diese news',
+            'vote_down' => 'ist scheiße',
+            'vote_neut' => 'ist ok',
+            'vote_up' => 'ist super',
+            'success' => [
+                'title' => 'kommentar erfolgreich hinzugefügt',
+                'msg' => 'dein kommentar wurde erfolgreich hinzugefügt.',
+                'redirect' => 'zurück zur news...',
+            ],
+        ],
         'add' => [
             'title' => 'news hinzufügen',
-
             'error' => [
                 'title' => 'news konnte nicht hinzugefügt werden.',
             ],

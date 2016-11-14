@@ -22,11 +22,14 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::resource('news', 'NewsController');
 Route::get('news/{id}/approve/{approve}', 'NewsController@approve');
 Route::resource('games', 'GameController');
-Route::resource('resources', 'ResourcesController');
+Route::resource('resources', 'ResourceController');
 
 //User Routings
 Route::get('users', 'UserController@index');
 Route::get('users/{id}', 'UserController@get');
+
+//Comment routings
+Route::post('comment', 'CommentController@add');
 
 //Logo Voting
 Route::get('logo/vote', 'LogoController@vote_get')->name('logo.vote');
@@ -48,4 +51,5 @@ Route::get('ac_developer', 'AutocompleteController@developer');
 
 //Routen für Messageboxen
 Route::get('submit/logo/success', 'MsgBoxController@submit_logo')->name('submit.logo.success');
+Route::get('comment/success/{id}', 'MsgBoxController@comment_add')->name('news.comment.add.success');
 

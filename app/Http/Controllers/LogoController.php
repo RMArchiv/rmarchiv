@@ -27,16 +27,6 @@ class LogoController extends Controller
                 ->first();
         }
 
-        /*
-           {#327 ▼
-              +"id": 3
-              +"filename": "storage/logos/700f1f1c41a48cf67116b2c6669517b8.png"
-              +"title": "SuperArchiv"
-              +"name": "ryg"
-              +"user_id": 1
-            }
-         */
-
         return view('logo.index', ['logo' => $logos]);
     }
 

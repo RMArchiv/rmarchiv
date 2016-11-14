@@ -1,6 +1,6 @@
 @foreach($news as $new)
 <div class='rmarchivtbl rmarchivbox_newsbox'>
-    <h3>{{ $new->title }}</h3>
+    <h3><a href="{{ url('/news', $new->id) }}">{{ $new->title }}</a></h3>
     <div class='content'>
         {!! $new->news_html !!}
     </div>

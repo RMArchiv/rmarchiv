@@ -385,7 +385,7 @@ input, select, option {
   font-weight: normal; }
 
 input[type="submit"][value="Submit"], input[type="submit"][value="submit"] {
-  background: url(assets/submit.gif) top left no-repeat;
+  background: url(/assets/submit.gif) top left no-repeat;
   width: 45px;
   height: 18px;
   overflow: hidden;
@@ -396,7 +396,7 @@ input[type="submit"][value="Submit"], input[type="submit"][value="submit"] {
   color: transparent; }
 
 input[type="submit"][value="preview"], input[type="submit"][value="Preview"], #submitPreview {
-  background: url(assets/preview.png) top left no-repeat;
+  background: url(/assets/preview.png) top left no-repeat;
   margin-right: 3px;
   width: 45px;
   height: 18px;
@@ -422,7 +422,7 @@ input[type="submit"][value="preview"], input[type="submit"][value="Preview"], #s
   vertical-align: middle;
   overflow: hidden;
   line-height: 100px;
-  background-image: url(assets/types.png); }
+  background-image: url(/assets/types.png); }
 
 .type, .typei {
   width: 16px;
@@ -432,7 +432,7 @@ input[type="submit"][value="preview"], input[type="submit"][value="Preview"], #s
   vertical-align: middle;
   overflow: hidden;
   line-height: 100px;
-  background-image: url(assets/types.png); }
+  background-image: url(/assets/types.png); }
 
 .bbs_code, .bbs_quote {
   margin-left: 2em;
@@ -520,7 +520,7 @@ input {
   padding: 2px; }
   input.autocompleteSearch {
     width: 200px !important;
-    background: white url(assets/autocomplete.png) center right no-repeat; }
+    background: white url(/assets/autocomplete.png) center right no-repeat; }
 
 textarea {
   font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
@@ -784,7 +784,7 @@ td.date {
 #rmarchivbox_latestoneliner h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: #4e6f90 url(assets/talk.gif) top left no-repeat;
+  background: #4e6f90 url(/assets/talk.gif) top left no-repeat;
   background-position: 2px 2px; }
 
 #rmarchivbox_latestoneliner .loggedin {
@@ -803,19 +803,19 @@ td.date {
 #rmarchivbox_latestoneliner li {
   overflow: hidden; }
   #rmarchivbox_latestoneliner li a.youtube {
-    background: url(assets/icon_youtube.png) top left no-repeat;
+    background: url(/assets/icon_youtube.png) top left no-repeat;
     padding-left: 18px; }
   #rmarchivbox_latestoneliner li a.rmarchiv {
-    background: url(assets/icon_rmarchiv.png) top left no-repeat;
+    background: url(/assets/icon_rmarchiv.png) top left no-repeat;
     padding-left: 18px; }
   #rmarchivbox_latestoneliner li a.demozoo {
-    background: url(assets/icon_demozoo.png) top left no-repeat;
+    background: url(/assets/icon_demozoo.png) top left no-repeat;
     padding-left: 18px; }
 
 #rmarchivbox_search h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: #4e6f90 url(assets/search.gif) top left no-repeat;
+  background: #4e6f90 url(/assets/search.gif) top left no-repeat;
   background-position: 2px 2px; }
 
 #rmarchivbox_search .content {
@@ -838,7 +838,7 @@ td.date {
     padding: 0;
     padding-left: 22px;
     padding-bottom: 2px;
-    background: #4e6f90 url(assets/stats.gif) top left no-repeat;
+    background: #4e6f90 url(/assets/stats.gif) top left no-repeat;
     background-position: 2px 2px;
     text-align: left; }
   #rmarchivbox_stats th:nth-child(2) {
@@ -853,7 +853,7 @@ td.date {
   #rmarchivbox_upcomingparties h2 {
     padding-left: 22px;
     padding-bottom: 2px;
-    background: #2d4f74 url(assets/dpnet.gif) top left no-repeat;
+    background: #2d4f74 url(/assets/dpnet.gif) top left no-repeat;
     background-position: 2px 2px; }
   #rmarchivbox_upcomingparties li {
     display: table-row; }
@@ -869,7 +869,7 @@ td.date {
   margin: 1px;
   padding-left: 22px;
   padding-bottom: 2px;
-  background: #4e6f90 url(assets/bitfellas.gif) top left no-repeat;
+  background: #4e6f90 url(/assets/bitfellas.gif) top left no-repeat;
   background-position: 3px 3px;
   color: #ffffe0;
   font-size: 100%; }
@@ -907,7 +907,7 @@ td.date {
   float: left; }
 
 .user.online {
-  background: url(assets/online.png) no-repeat scroll left 4px transparent;
+  background: url(/assets/online.png) no-repeat scroll left 4px transparent;
   padding-left: 10px; }
 
 .user.banned {
@@ -958,13 +958,13 @@ td.date {
       background: #224488;
       font-weight: bold; }
     #rmarchivbox_onelinerview li a.youtube {
-      background: url(assets/icon_youtube.png) top left no-repeat;
+      background: url(/assets/icon_youtube.png) top left no-repeat;
       padding-left: 18px; }
     #rmarchivbox_onelinerview li a.rmarchiv {
-      background: url(assets/icon_rmarchiv.png) top left no-repeat;
+      background: url(/assets/icon_rmarchiv.png) top left no-repeat;
       padding-left: 18px; }
     #rmarchivbox_onelinerview li a.demozoo {
-      background: url(assets/icon_demozoo.png) top left no-repeat;
+      background: url(/assets/icon_demozoo.png) top left no-repeat;
       padding-left: 18px; }
 
 #rmarchivbox_prodcomments {
@@ -1149,7 +1149,7 @@ td.date {
   text-align: left; }
 
 .innerbar_solo {
-  background: url(assets/bar.png) repeat-x;
+  background: url(/assets/bar.png) repeat-x;
   padding: 0;
   margin: 0;
   height: 16px;
@@ -1158,7 +1158,7 @@ td.date {
     display: none; }
 
 .innerbar {
-  background: url(assets/bar.png) repeat-x;
+  background: url(/assets/bar.png) repeat-x;
   padding: 0;
   margin: 0;
   height: 16px; }
@@ -1189,13 +1189,13 @@ td.date {
   float: left;
   margin: 4px;
   padding-left: 16px;
-  background: #224488 url(assets/flecheg.png) top left no-repeat; }
+  background: #224488 url(/assets/flecheg.png) top left no-repeat; }
 
 .nextpage {
   float: right;
   margin: 4px;
   padding-right: 16px;
-  background: #224488 url(assets/fleched.png) top right no-repeat; }
+  background: #224488 url(/assets/fleched.png) top right no-repeat; }
 
 #rmarchivbox_affilbutton .content {
   text-align: center; }
@@ -1264,7 +1264,7 @@ td.date {
     margin-top: 2px;
     color: #9999aa; }
   #rmarchivbox_usermain #logolist li {
-    background: #3a6ea5 url(assets/trumpet.png);
+    background: #3a6ea5 url(/assets/trumpet.png);
     text-align: center; }
     #rmarchivbox_usermain #logolist li .logo {
       display: table;
@@ -1291,13 +1291,13 @@ td.date {
   line-height: 100px;
   margin-right: 3px; }
   .vote.up {
-    background: url(assets/rate_up.gif) top left no-repeat; }
+    background: url(/assets/rate_up.gif) top left no-repeat; }
   .vote.down {
-    background: url(assets/rate_down.gif) top left no-repeat; }
+    background: url(/assets/rate_down.gif) top left no-repeat; }
   .vote.neut {
-    background: url(assets/rate_neut.gif) top left no-repeat; }
+    background: url(/assets/rate_neut.gif) top left no-repeat; }
   .vote.cdc {
-    background: url(assets/coupdecoeur.gif) top left no-repeat; }
+    background: url(/assets/coupdecoeur.gif) top left no-repeat; }
 
 #rmarchivbox_groupmain big {
   font-size: 18px;
@@ -1361,7 +1361,7 @@ td.date {
     width: 500px;
     height: 200px; }
   #rmarchivbox_bbspost #submitPreview {
-    background: url(assets/previewdxm.gif) top left no-repeat; }
+    background: url(/assets/previewdxm.gif) top left no-repeat; }
 
 #rmarchivbox_bbsopen {
   width: 450px;
@@ -1428,11 +1428,11 @@ td.date {
     #rmarchivbox_prodpost #prodvote input {
       vertical-align: middle; }
     #rmarchivbox_prodpost #prodvote label[for="ratingrulez"] {
-      background: url(assets/rate_up.gif) top left no-repeat; }
+      background: url(/assets/rate_up.gif) top left no-repeat; }
     #rmarchivbox_prodpost #prodvote label[for="ratingpig"] {
-      background: url(assets/rate_neut.gif) top left no-repeat; }
+      background: url(/assets/rate_neut.gif) top left no-repeat; }
     #rmarchivbox_prodpost #prodvote label[for="ratingsucks"] {
-      background: url(assets/rate_down.gif) top left no-repeat; }
+      background: url(/assets/rate_down.gif) top left no-repeat; }
 
 #rmarchivbox_grouplist ul {
   list-style: none; }
@@ -1631,7 +1631,7 @@ input[type="url"] {
   width: 610px; }
   #rmarchivbox_submitavatar .content {
     padding: 10px;
-    background: #446688 url(assets/avatar-example.png) top 30px right 30px no-repeat; }
+    background: #446688 url(/assets/avatar-example.png) top 30px right 30px no-repeat; }
 
 #successOverlay {
   background: #228830; }
@@ -1783,7 +1783,7 @@ input[type="url"] {
 #watchlistFrm {
   display: inline; }
   #watchlistFrm input[type='submit'] {
-    background: url(assets/watchlist-on.png) top left no-repeat;
+    background: url(/assets/watchlist-on.png) top left no-repeat;
     width: 16px;
     height: 16px;
     overflow: hidden;
@@ -1793,23 +1793,23 @@ input[type="url"] {
     cursor: pointer;
     color: transparent; }
     #watchlistFrm input[type='submit'].add {
-      background: url(assets/watchlist-off.png); }
+      background: url(/assets/watchlist-off.png); }
     #watchlistFrm input[type='submit'].remove {
-      background: url(assets/watchlist-on.png); }
+      background: url(/assets/watchlist-on.png); }
 
 #rmarchivbox_adminreq .platformiconlist {
   float: none; }
 
 #rmarchivbox_adminreq a.youtube {
-  background: url(assets/icon_youtube.png) top left no-repeat;
+  background: url(/assets/icon_youtube.png) top left no-repeat;
   padding-left: 18px; }
 
 #rmarchivbox_adminreq a.rmarchiv {
-  background: url(assets/icon_rmarchiv.png) top left no-repeat;
+  background: url(/assets/icon_rmarchiv.png) top left no-repeat;
   padding-left: 18px; }
 
 #rmarchivbox_adminreq a.demozoo {
-  background: url(assets/icon_demozoo.png) top left no-repeat;
+  background: url(/assets/icon_demozoo.png) top left no-repeat;
   padding-left: 18px; }
 
 #rmarchivbox_fixmewarning {
@@ -1817,7 +1817,7 @@ input[type="url"] {
   #rmarchivbox_fixmewarning h2 {
     padding-left: 22px;
     padding-bottom: 2px;
-    background: #883022 url(assets/icon_youtube.png) top left no-repeat;
+    background: #883022 url(/assets/icon_youtube.png) top left no-repeat;
     background-position: 2px 2px; }
 
 #rmarchivbox_admineditfaq #question {
@@ -1894,25 +1894,25 @@ optgroup option {
 #rmarchivbox_feedpoundsoff h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: #4e6f90 url(assets/poundsoff.gif) top left no-repeat;
+  background: #4e6f90 url(/assets/poundsoff.gif) top left no-repeat;
   background-position: 2px 2px; }
 
 #rmarchivbox_feedrmarchivtwitter h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: #4e6f90 url(assets/twitter.png) top left no-repeat;
+  background: #4e6f90 url(/assets/twitter.png) top left no-repeat;
   background-position: 2px 2px; }
 
 #rmarchivbox_feedwanted h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: #4e6f90 url(assets/wanted.png) top left no-repeat;
+  background: #4e6f90 url(/assets/wanted.png) top left no-repeat;
   background-position: 2px 2px; }
 
 #rmarchivbox_cdc h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: #4e6f90 url(assets/cdc.png) top left no-repeat;
+  background: #4e6f90 url(/assets/cdc.png) top left no-repeat;
   background-position: 2px 2px; }
 
 #rmarchivbox_prodnfo.asciiviewer {
@@ -1927,15 +1927,15 @@ tr.sortable th {
   tr.sortable th #sort_platform {
     float: right; }
   tr.sortable th a {
-    background: url(assets/sort_up.png) no-repeat;
+    background: url(/assets/sort_up.png) no-repeat;
     background-position: 0 2px;
     padding-left: 16px; }
     tr.sortable th a.selected {
-      background-image: url(assets/sort_up_active.png); }
+      background-image: url(/assets/sort_up_active.png); }
     tr.sortable th a.reverse {
-      background-image: url(assets/sort_down.png); }
+      background-image: url(/assets/sort_down.png); }
       tr.sortable th a.reverse.selected {
-        background-image: url(assets/sort_down_active.png); }
+        background-image: url(/assets/sort_down_active.png); }
   tr.sortable th #sort_thumbup {
     background: none;
     padding-left: 0; }
@@ -1991,7 +1991,7 @@ tr.sortable th {
   font-weight: bold; }
 
 .logovote .content {
-  background: #2d4f74 url(assets/trumpet.png); }
+  background: #2d4f74 url(/assets/trumpet.png); }
 
 #rmarchivbox_toplist .selector {
   padding: 4px;

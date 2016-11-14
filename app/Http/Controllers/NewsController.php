@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\News;
 use App\Models\UserSetting;
 use Illuminate\Http\Request;
@@ -90,13 +91,16 @@ class NewsController extends Controller
                 ->first();
         }
 
+        $content_type = 'news';
+
         $comments = \DB::table('comments')
             ->leftJoin('users', 'comments.user_id', '=', 'users.id')
             ->select(['comments.id', 'comments.user_id', 'comments.comment_html', 'comments.created_at', 'users.name',
             'comments.vote_up', 'comments.vote_down'])
-            ->where('content_type', '=', 'news')
+            ->where('content_type', '=', $content_type)
             ->where('content_id', '=', $id)
-            ->orderBy('created_at', 'asc');
+            ->orderBy('created_at', 'asc')->get();
+
 
         return view('news.show', [
             'news' => $news,
@@ -137,8 +141,6 @@ class NewsController extends Controller
     {
         $news = News::whereId($id)->first();
         $news->delete();
-
-        //$comments =
 
         return redirect()->action('NewsController@index');
     }

@@ -16,4 +16,15 @@ class MsgBoxController extends Controller
 
         return view('msgbox', $msg);
     }
+
+    public function comment_add($id){
+        $msg = [
+            'title' => trans('app.news.comments.success.title'),
+            'msg' => trans('app.news.comments.success.msg'),
+            'redirect' => trans('app.news.comments.success.redirect'),
+            'redirect_to' => url('news', $id),
+        ];
+
+        return view('msgbox', $msg);
+    }
 }

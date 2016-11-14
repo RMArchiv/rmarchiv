@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Comment
@@ -33,6 +34,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Comment extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'comments';
 
     public $timestamps = true;
@@ -46,6 +49,9 @@ class Comment extends Model
         'vote_up',
         'vote_down'
     ];
+
+
+    protected $dates = ['deleted_at'];
 
     protected $guarded = [];
 

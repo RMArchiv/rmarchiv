@@ -47,40 +47,40 @@ $font_3: Helvetica;
 $font_4: sans-serif;
 
 //urls
-$url_submit: url(assets/submit.gif);
-$url_preview: url(assets/preview.png);
+$url_submit: url(/assets/submit.gif);
+$url_preview: url(/assets/preview.png);
 $url_white_box: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAQMAAACTPww9AAAAA1BMVEX8/vwlkMVqAAAACklEQVR4XmOAAgAACAABnWENdQAAAABJRU5ErkJggg==);
-$url_talk: url(assets/talk.gif);
-$url_search: url(assets/search.gif);
-$url_5: url(assets/poundsoff.gif);
-$url_6: url(assets/twitter.png);
-$url_7: url(assets/wanted.png);
-$url_8: url(assets/stats.gif);
-$url_9: url(assets/cdc.png);
-$url_10: url(assets/dpnet.gif);
-$url_11: url(assets/bitfellas.gif);
-$url_12: url(assets/types.png);
-$url_13: url(assets/online.png);
-$url_14: url(assets/bar.png);
-$url_15: url(assets/flecheg.png);
-$url_16: url(assets/fleched.png);
-$url_17: url(assets/trumpet.png);
-$url_18: url(assets/rate_up.gif);
-$url_19: url(assets/rate_down.gif);
-$url_20: url(assets/rate_neut.gif);
-$url_21: url(assets/coupdecoeur.gif);
-$url_22: url(assets/previewdxm.gif);
-$url_23: url(assets/sort_up.png);
-$url_24: url(assets/sort_up_active.png);
-$url_25: url(assets/sort_down.png);
-$url_26: url(assets/sort_down_active.png);
-$url_27: url(assets/autocomplete.png);
-$url_28: url(assets/avatar-example.png);
-$url_29: url(assets/watchlist-on.png);
-$url_30: url(assets/watchlist-off.png);
-$url_31: url(assets/icon_youtube.png);
-$url_32: url(assets/icon_rmarchiv.png);
-$url_33: url(assets/icon_demozoo.png);
+$url_talk: url(/assets/talk.gif);
+$url_search: url(/assets/search.gif);
+$url_5: url(/assets/poundsoff.gif);
+$url_6: url(/assets/twitter.png);
+$url_7: url(/assets/wanted.png);
+$url_8: url(/assets/stats.gif);
+$url_9: url(/assets/cdc.png);
+$url_10: url(/assets/dpnet.gif);
+$url_11: url(/assets/bitfellas.gif);
+$url_12: url(/assets/types.png);
+$url_13: url(/assets/online.png);
+$url_14: url(/assets/bar.png);
+$url_15: url(/assets/flecheg.png);
+$url_16: url(/assets/fleched.png);
+$url_17: url(/assets/trumpet.png);
+$rate_up: url(/assets/rate_up.gif);
+$rate_down: url(/assets/rate_down.gif);
+$rate_neut: url(/assets/rate_neut.gif);
+$url_21: url(/assets/coupdecoeur.gif);
+$url_22: url(/assets/previewdxm.gif);
+$url_23: url(/assets/sort_up.png);
+$url_24: url(/assets/sort_up_active.png);
+$url_25: url(/assets/sort_down.png);
+$url_26: url(/assets/sort_down_active.png);
+$url_27: url(/assets/autocomplete.png);
+$url_28: url(/assets/avatar-example.png);
+$url_29: url(/assets/watchlist-on.png);
+$url_30: url(/assets/watchlist-off.png);
+$url_31: url(/assets/icon_youtube.png);
+$url_32: url(/assets/icon_rmarchiv.png);
+$url_33: url(/assets/icon_demozoo.png);
 
 //@extend-elements
 //original selectors
@@ -1237,13 +1237,13 @@ td {
   line-height: 100px;
   margin-right: 3px;
   &.up {
-    background: $url_18 top left no-repeat;
+    background: $rate_up top left no-repeat;
   }
   &.down {
-    background: $url_19 top left no-repeat;
+    background: $rate_down top left no-repeat;
   }
   &.neut {
-    background: $url_20 top left no-repeat;
+    background: $rate_neut top left no-repeat;
   }
   &.cdc {
     background: $url_21 top left no-repeat;
@@ -1408,13 +1408,13 @@ td {
       vertical-align: middle;
     }
     label[for="ratingrulez"] {
-      background: $url_18 top left no-repeat;
+      background: $rate_up top left no-repeat;
     }
     label[for="ratingpig"] {
-      background: $url_20 top left no-repeat;
+      background: $rate_neut top left no-repeat;
     }
     label[for="ratingsucks"] {
-      background: $url_19 top left no-repeat;
+      background: $rate_down top left no-repeat;
     }
   }
 }
