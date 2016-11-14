@@ -10,6 +10,7 @@
                     <th>user</th>
                     <th>datum</th>
                     <th>titel</th>
+                    <th>kommentare</th>
                 </tr>
                 </thead>
                 @foreach($news as $new)
@@ -22,6 +23,7 @@
                             </td>
                             <td>{{ $new->created_at }}</td>
                             <td><a href="{{ url('/news', $new->id) }}">{{ $new->title }}</a></td>
+                            <td>{{ $new->counter or 0 }}</td>
                         </tr>
                     @else
                         @if(Auth::user()->settings->is_admin or Auth::user()->settings->is_moderator)
@@ -33,6 +35,7 @@
                                 </td>
                                 <td>{{ $new->created_at }}</td>
                                 <td><a href="{{ url('/news', $new->id) }}">{{ $new->title }}</a></td>
+                                <td>{{ $new->counter or 0 }}</td>
                             </tr>
                         @endif
                     @endif
