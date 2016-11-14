@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property integer $place
+ * @property string $description
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesAward whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesAward whereGameId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesAward whereDeveloperId($value)
@@ -25,6 +27,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesAward whereDeletedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesAward whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesAward whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesAward wherePlace($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesAward whereDescription($value)
  * @mixin \Eloquent
  */
 class GamesAward extends Model
@@ -38,7 +42,9 @@ class GamesAward extends Model
         'developer_id',
         'award_cat_id',
         'award_page_id',
-        'user_id'
+        'user_id',
+        'place',
+        'description'
     ];
 
     protected $guarded = [];
