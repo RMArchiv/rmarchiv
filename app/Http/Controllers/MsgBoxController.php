@@ -27,4 +27,15 @@ class MsgBoxController extends Controller
 
         return view('msgbox', $msg);
     }
+
+    public function game_add($id){
+        $msg = [
+            'title' => trans('app.games.add.success.title'),
+            'msg' => trans('app.games.add.success.msg'),
+            'redirect' => trans('app.games.add.success.redirect'),
+            'redirect_to' => url('games', $id),
+        ];
+
+        return view('msgbox', $msg);
+    }
 }

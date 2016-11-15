@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $views
  * @property string $release_date
  * @property integer $maker_id
+ * @property integer $lang_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -30,6 +31,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereViews($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereReleaseDate($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereMakerId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereLangId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereDeletedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereUpdatedAt($value)
@@ -52,7 +54,8 @@ class Game extends Model
         'user_id',
         'views',
         'release_date',
-        'maker_id'
+        'maker_id',
+        'lang_id'
     ];
 
     protected $guarded = [];

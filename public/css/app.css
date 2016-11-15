@@ -2057,4 +2057,7 @@ tr.sortable th {
   color: #f66;
   font-weight: bold; }
 
+select#language option[value="de"] {
+  background-image: url(/assets/lng/16/de.png); }
+
 /*# sourceMappingURL=app.css.map */

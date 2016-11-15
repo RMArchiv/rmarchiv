@@ -16,6 +16,7 @@ class LanguageTableSeeder extends Seeder
         $l[] = ['name' => 'English', 'short' => 'en'];
         $l[] = ['name' => 'français', 'short' => 'fr'];
         $l[] = ['name' => '日本語 (にほんご)', 'short' => 'ja'];
+        $l[] = ['name' => 'Multiple Languages', 'short' => 'multi'];
 
         foreach ($l as $langs){
             DB::table('languages')->insert([

@@ -44,6 +44,14 @@ return [
 
     'games' => [
         'title' => 'spiele',
+
+        'add' => [
+            'success' => [
+                'title' => 'spiel hinzugefügt',
+                'msg' => 'das spiel wurde erfolgreich hinzugefügt. du kannst dir das profil auf der folgenden seite anschauen und erweitern.',
+                'redirect' => 'weiter zum spiel...'
+            ],
+        ],
     ],
 
     'resources' => [

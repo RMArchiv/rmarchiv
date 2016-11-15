@@ -1,20 +1,22 @@
 @extends('layouts.app')
 @section('content')
     <div id="content">
-        {!! Form::open(['action' => ['CommentController@add']]) !!}
+        {!! Form::open(['action' => ['GameController@store']]) !!}
+        @if (count($errors) > 0)
+            <div class="rmarchivtbl errorbox">
+                <h2>spiel hinzufügen</h2>
+                <div class="content">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li><strong>{{ $error }}</strong></li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
+
             <div class="rmarchivtbl" id="rmarchivbox_submitprod">
                 <h2>Eintragen eines Spiels</h2>
-
-                @if (count($errors) > 0))
-                <div class="rmarchivtbl errorbox">
-                    <h2>{{ trans('app.news.add.error.title') }}</h2>
-                    <div class="content">
-                        @foreach ($errors->all() as $error)
-                            <strong>{{ $error }}</strong>
-                        @endforeach
-                    </div>
-                </div>
-                @endif
 
                 <div class="content">
                     <div class="formifier">
@@ -31,7 +33,7 @@
                         <div class='row' id='row_maker'>
                             <label for='maker'>erstellt mit:</label>
                             <select name='maker' id='maker'>
-                                <option>bitte maker version auswählen</option>
+                                <option value="0">bitte maker version auswählen</option>
                                 @foreach($makers as $maker)
                                 <option value="{{ $maker->id }}">{{ $maker->title }}</option>
                                 @endforeach
@@ -39,9 +41,9 @@
                             <span> [<span class="req">req</span>]</span>
                         </div>
                         <div class='row' id='row_language'>
-                            <label for='language'>erstellt mit:</label>
+                            <label for='language'>sprache:</label>
                             <select name='language' id='language'>
-                                <option>bitte sprache des spiels auswählen</option>
+                                <option value="0">bitte sprache des spiels auswählen</option>
                                 @foreach($langs as $lang)
                                     <option value="{{ $lang->short }}">{{ $lang->name }}</option>
                                 @endforeach
@@ -64,9 +66,9 @@
                 <h2>Links</h2>
                 <div class="content">
                     <div class="formifier">
-                        <div class="row" id="row_yttrailer">
-                            <label for="yttrailer">url youtube trailer:</label>
-                            <input name="yttrailer" id="yttrailer" placeholder="https://www.youtube.com/watch?v=Wh_1966vaIA" value=""/>
+                        <div class="row" id="row_websiteurl">
+                            <label for="websiteurl">url youtube trailer:</label>
+                            <input name="websiteurl" id="websiteurl" placeholder="https://www.anno1602.de" value=""/>
                         </div>
                     </div>
                 </div>

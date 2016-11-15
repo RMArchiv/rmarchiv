@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\DatabaseHelper;
+use App\Models\Game;
+use App\Models\GamesDeveloper;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Descriptor\MarkdownDescriptor;
 
 class GameController extends Controller
 {
@@ -44,11 +48,36 @@ class GameController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'subtitle' => 'required',
-            'maker' => 'required|alpha_num',
+            'maker' => 'required|not_in:0',
+            'language' => 'required|not_in:0',
             'developer' => 'required',
         ]);
 
+        $devid = DatabaseHelper::developerId_from_developerName($request->get('developer'));
+        if($devid == 0){
+            $devid = DatabaseHelper::developer_add_and_get_developerId($request->get('developer'));
+        }
+
+        $langid = DatabaseHelper::langId_from_short($request->get('language'));
+
+        $g = new Game;
+
+        $g->title = $request->get('title');
+        $g->subtitle = $request->get('subtitle', '');
+        $g->desc_md = $request->get('desc');
+        $g->desc_html = \Markdown::convertToHtml($request->get('desc'));
+        $g->website_url = $request->get('websiteurl', '');
+        $g->maker_id = $request->get('maker');
+        $g->lang_id = $langid;
+        $g->user_id = \Auth::id();
+        $g->save;
+
+        $devrel = new GamesDeveloper;
+        $devrel->user_id = \Auth::id();
+        $devrel->developer_id = $devid;
+        $devrel->game_id = $g->id;
+
+        return redirect()->action('MsgBoxController@game_add', [$g->id]);
 
     }
 
