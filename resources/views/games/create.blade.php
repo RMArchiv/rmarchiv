@@ -79,7 +79,7 @@
                         <div class="row" id="row_developer">
                             <label for="developer">entwickler name:</label>
                             <input autocomplete="off" class="auto" name="developer" id="developer" placeholder="Einfach Entwicklernamen eintippen" value=""/>
-                            <span> [<span class="req">req</span>]</span>
+                            <span> [<span class="req">req</span>] <br>hier wird erstmal nur der hauptenwickler eingetragen. <br>weitere entwickler können später hinzugefügt werden.</span>
                         </div>
                     </div>
                 </div>

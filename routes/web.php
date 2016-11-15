@@ -51,4 +51,5 @@ Route::get('ac_developer/{term}', 'AutocompleteController@developer');
 //Routen für Messageboxen
 Route::get('submit/logo/success', 'MsgBoxController@submit_logo')->name('submit.logo.success');
 Route::get('comment/success/{id}', 'MsgBoxController@comment_add')->name('news.comment.add.success');
+Route::get('games/success/{id}', 'MsgBoxController@game_add')->name('game.add.success');
 

@@ -1,0 +1,211 @@
+@extends('layouts.app')
+@section('content')
+    <div id="content">
+        @if(count($game) > 0)
+            <div id="prodpagecontainer">
+                <table id='rmarchivbox_prodmain'>
+                    <tr id='prodheader'>
+                        <th colspan='3'>
+                            <span id='title'><big>{{ $game->title }}</big> :: {{ $game->subtitle }}</span>
+                            @if($game->userid == Auth::id() or Auth::user()->settings->is_admin == 1)
+                                <div id='nfo'>[<a href='/?page=game_edit&id=@{{ data.id }}'>edit</a>]</div>
+                            @endif
+                        </th>
+                    </tr>
+                    <tr>
+                        <td rowspan='3' id='screenshot'>
+                            <img src='/content/screenshots/@{{ data.pictitle }}' style="width: 400px"  alt='Titelbild' title='Titelbild' />
+                        </td>
+                        <td colspan='2'>
+                            <table id='stattable'>
+                                <tr>
+                                    <td>maker :</td>
+                                    <td>
+                                        <span class="type type_{{ $game->makershort }}">{{ $game->makertitle }}</span> {{ $game->makertitle }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>typ :</td>
+                                    <td>
+                                        <ul>
+                                            <li>
+                                                <span class='type type_@{{ data.game_type }}'>@{{ data.game_type }}</span> @{{ data.game_type }}
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Entwickler :</td>
+                                    <td>
+                                        @foreach($developer as $dev)
+                                        <a href="/?page=creator&id={{ $dev->id }}">{{ $dev->name }}</a>
+                                            @if($dev != $developer->last())
+                                                ::
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>release date :</td>
+                                    <td>@{{ data.release_day }}.@{{ data.release_month }}.@{{ data.release_year }}</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class='r2'>
+                            <ul>
+                                <li><img src='/assets/imgs/rate_up.gif' alt='super' />&nbsp;@{{ data.rating.rate_up | default(0)}}</li>
+                                <li><img src='/assets/imgs/rate_neut.gif' alt='ok' />&nbsp;@{{ data.rating.rate_neut | default(0) }}</li>
+                                <li><img src='/assets/imgs/rate_down.gif' alt='scheiße' />&nbsp;@{{ data.rating.rate_down | default(0) }}</li>
+                            </ul>
+                        </td>
+                        <td id='popularity'>
+                            popularität : @{{ data.views.percent }}%
+                            <br/>
+                            <div class='outerbar' title='0%'>
+                                <div class='innerbar' style='width: @{{ data.views.percent }}%'>&nbsp;<span>@{{ data.views.percent }}%</span>
+                                </div>
+                            </div>
+                            <div class='awards'></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class='r2'>
+                            <ul id='avgstats'>
+                                <li><img src='/assets/imgs/rate_@{{ data.rating.icon }}.gif' alt='ok' />&nbsp;@{{ data.rating.avg | default(0) }}</li>
+                                {% if data.cdc > 0 %}
+                                <li><img src="/assets/imgs/cdc.png" alt="cdcs">&nbsp;@{{ data.cdc }}</li>
+                                {% endif %}
+                            </ul>
+                            <div id='alltimerank'>alltime top: #0</div>
+                        </td>
+                        <td id='links'>
+                            <ul>
+                                {% for file in data.files %}
+                                <li>@{{ "%02d"|format(file.release_day) }}.@{{ "%02d"|format(file.release_month) }}.@{{ file.release_year }} [<a href="/download.php?id=@{{ file.id }}">@{{ file.version_type }} @{{ file.version }}</a>]</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id='credits' colspan='3' class='r2'>
+                            <ul>
+                                {#
+                                <li>
+                                    <a href='user.php?who=1230' class='usera' title="se7en"><img src='http://content.pouet.net/avatars/rez64.gif' alt="se7en" class='avatar' />
+                                    </a> <a href='user.php?who=1230' class='user'>se7en</a> [code, graphics]
+                                </li>
+                                <li>
+                                    <a href='user.php?who=43119' class='usera' title="dalezy"><img src='http://content.pouet.net/avatars/dalezy3.gif' alt="dalezy" class='avatar' />
+                                    </a> <a href='user.php?who=43119' class='user'>dalezy</a> [music]
+                                </li>
+                                #}
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id='credits' colspan='3' class='r2'>
+                            @{{ data.desc|raw }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id='credits' colspan='3' class='r2'>
+                            {% for aw in data.awards %}
+                            <ul>
+                                <li>
+                                    <img src="/assets/imgs/@{{ aw.medal }}">(@{{ aw.year }}) Platz @{{ aw.place }} - @{{ aw.page }} <a href="/?page=award&website=@{{ aw.page }}&year=@{{ aw.year }}&title=@{{ aw.title }}">@{{ aw.title }} - @{{ aw.subtitle }}</a>
+                                </li>
+                            </ul>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class='foot' colspan='3'>hinzugefügt am @{{ data.date_add }} von <a href='/?page=user&id=@{{ data.user_id }}' class='user'>@{{ data.user.username }}</a>
+                            <a href='/?page=user&id=@{{ data.user_id }}' class='usera' title="@{{ data.user.username }}"><img src='http://ava.rmarchiv.de/?gender=@{{ data.user.gender }}&id=@{{ data.user_id }}' alt="@{{ data.user.username }}" class='avatar' />
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                <div class='rmarchivtbl' id='rmarchivbox_prodpopularityhelper'>
+                    <h2>{{ trans('app.news.popularity_helper.title') }}</h2>
+                    <div class='content'>
+                        <p>{{ trans('app.news.popularity_helper.msg') }}</p>
+                        <input type='text' value='{{ Request::fullUrl() }}' size='50' readonly='readonly' />
+                    </div>
+                </div>
+
+                @if($comments->count() > 0)
+                    <div class='rmarchivtbl' id='rmarchivbox_prodcomments'>
+                        <h2>kommentare</h2>
+                        @foreach($comments as $comment)
+                            <div class='comment cite-{{ $comment->user_id }}' id='c{{ $comment->id }}'>
+                                <div class='content'>
+                                    {!! $comment->comment_html !!}
+                                </div>
+                                <div class='foot'>
+                                    @if($comment->vote_up == 1 and $comment->vote_down == 0)
+                                        <span class='vote up'>up</span>
+                                    @elseif($comment->vote_up == 0 and $comment->vote_down == 1)
+                                        <span class='vote down'>down</span>
+                                    @endif
+
+                                    <span class='tools' data-cid='{{ $game->id }}'></span> hinzugefügt am {{ $comment->created_at }} von <a href='{{ url('user', $comment->user_id) }}' class='user'>{{ $comment->name }}</a>
+                                    <a href='{{ url('users', $comment->user_id) }}' class='usera' title="{{ $comment->name }}"><img src='http://ava.rmarchiv.de/?gender=male&id={{ $comment->user_id }}' alt="{{ $comment->name }}" class='avatar' />
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    <div class='rmarchivtbl' id='rmarchivbox_prodcomments'>
+                        <h2>kommentare</h2>
+                        <div class="comment">
+                            <div class="content">
+                                Es sind noch keine Kommentare vorhanden.
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                <div class='rmarchivtbl' id='rmarchivbox_prodsubmitchanges'>
+                    <h2>kommentarhinweise</h2>
+                    <div class='content'>
+                        <p>wip</p>
+                    </div>
+                </div>
+
+                @if(Auth::check())
+                    <div class='rmarchivtbl' id='rmarchivbox_prodpost'>
+                        <h2>kommentar hinzufügen</h2>
+                        {!! Form::open(['action' => ['CommentController@add']]) !!}
+                        {!! Form::hidden('content_id', $game->gameid) !!}
+                        {!! Form::hidden('content_type', 'news') !!}
+                        <div class='content'>
+                            @if(CheckRateable::checkRateable('game', $game->gameid, Auth::id()) === true)
+                                <div id='prodvote'>
+                                    hier wird diese news bewertet:<br>
+                                    diese news<br>
+                                    <input type='radio' name='rating' id='ratingrulez' value='up' />
+                                    <label for='ratingrulez'>ist super</label>
+                                    <input type='radio' name='rating' id='ratingpig' value='neut' checked='checked' />
+                                    <label for='ratingpig'>ist ok</label>
+                                    <input type='radio' name='rating' id='ratingsucks' value='down' />
+                                    <label for='ratingsucks'>ist scheiße</label>
+                                </div>
+                            @endif
+                            <textarea name='comment' id='comment'></textarea>
+                            <div><a href='/?page=faq#markdown'><b>markown</b></a> kann benutzt werden</div>
+                        </div>
+                        <div class='foot'>
+                            <input type='submit' value='Submit' id='submit'>
+                        </div>
+                        {!! Form::close() !!}
+                    </div>
+                @endif
+            </div>
+        @else
+            <h2>zu dieser id existiert keine news</h2>
+        @endif
+    </div>
+@endsection
