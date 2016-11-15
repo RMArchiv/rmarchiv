@@ -13,7 +13,7 @@ class GameController extends Controller
      */
     public function index()
     {
-        //
+        return view('games.index');
     }
 
     /**
@@ -23,7 +23,11 @@ class GameController extends Controller
      */
     public function create()
     {
-        //
+        $maker = \DB::table('makers')
+            ->orderBy('makers.title')
+            ->get();
+
+        return view('games.create', ['makers' => $maker]);
     }
 
     /**
@@ -34,7 +38,14 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'subtitle' => 'required',
+            'maker' => 'required|alpha_num',
+            'developer' => 'required',
+        ]);
+
+
     }
 
     /**
@@ -45,7 +56,7 @@ class GameController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('games.show');
     }
 
     /**
@@ -56,7 +67,7 @@ class GameController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('games.edit');
     }
 
     /**

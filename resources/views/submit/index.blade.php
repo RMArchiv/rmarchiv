@@ -6,7 +6,7 @@
             <div class="rmarchivtbl" id="rmarchivbox_submit">
                 <h2>Was willst du einsenden?</h2>
                 <ul class='boxlist'>
-                    <li><a href='{{ url('submit/game') }}'>einsenden eines spiels</a></li>
+                    <li><a href='{{ url('games/create') }}'>einsenden eines spiels</a></li>
                     <li><a href='{{ url('submit/developer') }}'>einsenden eines entwicklers</a></li>
                     <li><a href='{{ url('submit/resources') }}'>einsenden von ressourcen</a></li>
                     <li><a href='{{ url('news/create') }}'>einsenden von news</a></li>

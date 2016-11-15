@@ -43,11 +43,10 @@ Route::get('submit/resource', 'SubmitController@resource_index');
 Route::get('submit/news', 'SubmitController@news_index');
 //Logo Routen
 Route::get('submit/logo', 'SubmitController@logo_index');
-
 Route::post('submit/logo', 'SubmitController@logo_add');
 
 //Autocomplete Routen
-Route::get('ac_developer', 'AutocompleteController@developer');
+Route::get('ac_developer/{term}', 'AutocompleteController@developer');
 
 //Routen für Messageboxen
 Route::get('submit/logo/success', 'MsgBoxController@submit_logo')->name('submit.logo.success');
