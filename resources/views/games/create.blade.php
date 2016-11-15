@@ -31,9 +31,19 @@
                         <div class='row' id='row_maker'>
                             <label for='maker'>erstellt mit:</label>
                             <select name='maker' id='maker'>
-                                <option>Bitte Maker version auswhählen</option>
+                                <option>bitte maker version auswählen</option>
                                 @foreach($makers as $maker)
                                 <option value="{{ $maker->id }}">{{ $maker->title }}</option>
+                                @endforeach
+                            </select>
+                            <span> [<span class="req">req</span>]</span>
+                        </div>
+                        <div class='row' id='row_language'>
+                            <label for='language'>erstellt mit:</label>
+                            <select name='language' id='language'>
+                                <option>bitte sprache des spiels auswählen</option>
+                                @foreach($langs as $lang)
+                                    <option value="{{ $lang->short }}">{{ $lang->name }}</option>
                                 @endforeach
                             </select>
                             <span> [<span class="req">req</span>]</span>

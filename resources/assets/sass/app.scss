@@ -82,6 +82,7 @@ $url_30: url(/assets/watchlist-off.png);
 $url_31: url(/assets/icon_youtube.png);
 $url_32: url(/assets/icon_rmarchiv.png);
 $url_33: url(/assets/icon_demozoo.png);
+$url_lang_16_de: url(/assets/lng/16/de.png);
 
 //@extend-elements
 //original selectors
@@ -2128,3 +2129,5 @@ tr.sortable th {
   color: $color_bittersweet_approx;
   font-weight: bold;
 }
+
+select#language option[value="de"] {background-image:$url_lang_16_de;}

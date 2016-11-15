@@ -27,7 +27,11 @@ class GameController extends Controller
             ->orderBy('makers.title')
             ->get();
 
-        return view('games.create', ['makers' => $maker]);
+        $langs = \DB::table('languages')
+            ->orderBy('id')
+            ->get();
+
+        return view('games.create', ['makers' => $maker, 'langs' => $langs]);
     }
 
     /**
