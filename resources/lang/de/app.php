@@ -31,7 +31,7 @@ return [
             'success' => [
                 'title' => 'kommentar erfolgreich hinzugefügt',
                 'msg' => 'dein kommentar wurde erfolgreich hinzugefügt.',
-                'redirect' => 'zurück zur news...',
+                'redirect' => 'zurück zum inhalt...',
             ],
         ],
         'add' => [

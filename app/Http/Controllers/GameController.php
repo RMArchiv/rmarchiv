@@ -93,15 +93,26 @@ class GameController extends Controller
         $game = \DB::table('games')
             ->leftJoin('users', 'games.user_id', '=', 'users.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
+            ->leftJoin('comments', function($join){
+                $join->on('comments.content_id', '=', 'games.id');
+                $join->on('comments.content_type', '=', \DB::raw("'game'"));
+            })
             ->select([
                 'games.id as gameid',
                 'users.id as userid',
+                'users.name as username',
                 'games.title',
                 'games.subtitle',
                 'makers.title as makertitle',
                 'makers.short as makershort',
                 'makers.id as makerid',
+                'games.created_at as createdate',
+                'games.desc_html as desc'
             ])
+            ->selectRaw('SUM(comments.id) AS commentcount')
+            ->selectRaw('SUM(comments.vote_up) AS voteup')
+            ->selectRaw('SUM(comments.vote_down) AS votedown')
+            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
             ->where('games.id', '=', $id)
             ->first();
 

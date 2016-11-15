@@ -33,6 +33,7 @@ class CommentController extends Controller
 
         $comment->save();
 
-        return redirect()->action('MsgBoxController@comment_add', [$request->get('content_id')]);
+
+        return redirect()->action('MsgBoxController@comment_add', [$request->get('content_type') ,$request->get('content_id')]);
     }
 }

@@ -55,9 +55,8 @@
                     <tr>
                         <td class='r2'>
                             <ul>
-                                <li><img src='/assets/imgs/rate_up.gif' alt='super' />&nbsp;@{{ data.rating.rate_up | default(0)}}</li>
-                                <li><img src='/assets/imgs/rate_neut.gif' alt='ok' />&nbsp;@{{ data.rating.rate_neut | default(0) }}</li>
-                                <li><img src='/assets/imgs/rate_down.gif' alt='scheiße' />&nbsp;@{{ data.rating.rate_down | default(0) }}</li>
+                                <li><img src='/assets/rate_up.gif' alt='super' />&nbsp;{{ $game->voteup or 0 }}</li>
+                                <li><img src='/assets/rate_down.gif' alt='scheiße' />&nbsp;{{ $game->votedown or 0 }}</li>
                             </ul>
                         </td>
                         <td id='popularity'>
@@ -73,9 +72,17 @@
                     <tr>
                         <td class='r2'>
                             <ul id='avgstats'>
-                                <li><img src='/assets/imgs/rate_@{{ data.rating.icon }}.gif' alt='ok' />&nbsp;@{{ data.rating.avg | default(0) }}</li>
+                                @if($game->voteup > $game->votedown)
+                                    <li><img src='/assets/rate_up.gif' alt='ok' />&nbsp;{{ $game->voteavg or 0 }}</li>
+                                @elseif($game->voteup < $game->votedown)
+                                    <li><img src='/assets/rate_down.gif' alt='ok' />&nbsp;{{ $game->voteavg or 0 }}</li>
+                                @elseif($game->voteup = $game->votedown)
+                                    <li><img src='/assets/rate_neut.gif' alt='ok' />&nbsp;{{ $game->voteavg or 0 }}</li>
+                                @else
+                                    <li><img src='/assets/rate_neut.gif' alt='ok' />&nbsp;{{ $game->voteavg or 0 }}</li>
+                                @endif
                                 {% if data.cdc > 0 %}
-                                <li><img src="/assets/imgs/cdc.png" alt="cdcs">&nbsp;@{{ data.cdc }}</li>
+                                <li><img src="/assets/cdc.png" alt="cdcs">&nbsp;@{{ data.cdc }}</li>
                                 {% endif %}
                             </ul>
                             <div id='alltimerank'>alltime top: #0</div>
@@ -106,7 +113,8 @@
                     </tr>
                     <tr>
                         <td id='credits' colspan='3' class='r2'>
-                            @{{ data.desc|raw }}
+                            <h2>spielbeschreibung</h2>
+                            {!! $game->desc !!}
                         </td>
                     </tr>
                     <tr>
@@ -121,12 +129,13 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class='foot' colspan='3'>hinzugefügt am @{{ data.date_add }} von <a href='/?page=user&id=@{{ data.user_id }}' class='user'>@{{ data.user.username }}</a>
-                            <a href='/?page=user&id=@{{ data.user_id }}' class='usera' title="@{{ data.user.username }}"><img src='http://ava.rmarchiv.de/?gender=@{{ data.user.gender }}&id=@{{ data.user_id }}' alt="@{{ data.user.username }}" class='avatar' />
+                        <td class='foot' colspan='3'>hinzugefügt am {{ $game->createdate }} von <a href='{{ url('users', $game->userid) }}' class='user'>{{ $game->username }}</a>
+                            <a href='{{ url('users', $game->userid) }}' class='usera' title="{{ $game->username }}"><img src='http://ava.rmarchiv.de/?gender=male&id={{ $game->userid }}' alt="{{ $game->username }}" class='avatar' />
                             </a>
                         </td>
                     </tr>
                 </table>
+
                 <div class='rmarchivtbl' id='rmarchivbox_prodpopularityhelper'>
                     <h2>{{ trans('app.news.popularity_helper.title') }}</h2>
                     <div class='content'>
@@ -150,7 +159,7 @@
                                         <span class='vote down'>down</span>
                                     @endif
 
-                                    <span class='tools' data-cid='{{ $game->id }}'></span> hinzugefügt am {{ $comment->created_at }} von <a href='{{ url('user', $comment->user_id) }}' class='user'>{{ $comment->name }}</a>
+                                    <span class='tools' data-cid='{{ $game->gameid }}'></span> hinzugefügt am {{ $comment->created_at }} von <a href='{{ url('user', $comment->user_id) }}' class='user'>{{ $comment->name }}</a>
                                     <a href='{{ url('users', $comment->user_id) }}' class='usera' title="{{ $comment->name }}"><img src='http://ava.rmarchiv.de/?gender=male&id={{ $comment->user_id }}' alt="{{ $comment->name }}" class='avatar' />
                                     </a>
                                 </div>
@@ -180,7 +189,7 @@
                         <h2>kommentar hinzufügen</h2>
                         {!! Form::open(['action' => ['CommentController@add']]) !!}
                         {!! Form::hidden('content_id', $game->gameid) !!}
-                        {!! Form::hidden('content_type', 'news') !!}
+                        {!! Form::hidden('content_type', 'game') !!}
                         <div class='content'>
                             @if(CheckRateable::checkRateable('game', $game->gameid, Auth::id()) === true)
                                 <div id='prodvote'>
