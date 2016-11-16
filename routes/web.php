@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'IndexController@index');
+Route::get('/', 'IndexController@index')->name('home');
 
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -51,6 +51,9 @@ Route::get('submit/news', 'SubmitController@news_index');
 //Logo Routen
 Route::get('submit/logo', 'SubmitController@logo_index');
 Route::post('submit/logo', 'SubmitController@logo_add');
+
+//Shoutbox Routen
+Route::post('shoutbox', 'ShoutboxController@store');
 
 //Autocomplete Routen
 Route::get('ac_developer/{term}', 'AutocompleteController@developer');

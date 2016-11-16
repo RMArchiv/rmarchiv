@@ -14,8 +14,22 @@ class IndexController extends Controller
             ->orderBy('news.created_at', 'desc')
             ->get()->take(5);
 
+        $shoutbox = \DB::table('shoutbox')
+            ->select([
+                'users.id as userid',
+                'users.name as username',
+                'shoutbox.shout_html as shouthtml',
+                'shoutbox.created_at as shoutcreated_at'
+            ])
+            ->leftJoin('users', 'shoutbox.user_id', '=', 'users.id')
+            ->orderBy('shoutbox.created_at', 'desc')
+            ->limit(5)
+            ->get()
+            ->reverse();
+
         return view('index.index', [
             'news' => $news,
+            'shoutbox' => $shoutbox,
         ]);
     }
 }

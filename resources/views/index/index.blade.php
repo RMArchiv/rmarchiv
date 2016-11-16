@@ -15,7 +15,7 @@
             {% include 'index/_partial/topalltime.twig' %}
         </div>
         <div id='middlebar' class='column'>
-            {% include 'index/_partial/shoutbox.twig' %}
+            @include('index._partials.shoutbox')
             {% include 'index/_partial/board_latest.twig' %}
             @include('index._partials.news')
         </div>
