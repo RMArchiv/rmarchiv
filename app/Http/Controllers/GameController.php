@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\GameView;
 use App\Helpers\DatabaseHelper;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -187,6 +188,7 @@ class GameController extends Controller
             ->where('content_id', '=', $id)
             ->orderBy('created_at', 'asc')->get();
 
+        event(new GameView($id));
 
         return view('games.show', [
             'game' => $game,
