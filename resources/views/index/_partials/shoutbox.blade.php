@@ -5,7 +5,7 @@
         <li>
             <a href='{{ url('users' , $shout->userid) }}' class='usera' title="{{ $shout->username }}">
                 <img src='http://ava.rmarchiv.de/?gender=male&id={{ $shout->userid  }}' alt="{{ $shout->username }}" class='avatar' /> {{ $shout->username }}
-            </a> :: {{ $shout->shoutcreated_at }}
+            </a> :: <time datetime='{{ $shout->shoutcreated_at }}' title='{{ $shout->shoutcreated_at }}'>{{ $shout->shoutcreated_at }}</time>
             {!! $shout->shouthtml !!}
         </li>
         @endforeach

@@ -54,6 +54,7 @@ Route::post('submit/logo', 'SubmitController@logo_add');
 
 //Shoutbox Routen
 Route::post('shoutbox', 'ShoutboxController@store');
+Route::get('shoutbox', 'ShoutboxController@index');
 
 //Autocomplete Routen
 Route::get('ac_developer/{term}', 'AutocompleteController@developer');
