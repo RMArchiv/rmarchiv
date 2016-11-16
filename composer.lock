@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6a791fbbf6f76c62a148e6d8bc0ffab4",
-    "content-hash": "5de19e4d928c2ab159385d33da96ccc5",
+    "hash": "6f821a9f2658c89678b75759d391109b",
+    "content-hash": "279c2fa1ec93f95ebf947c911a759bf0",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -1553,6 +1553,74 @@
                 "php"
             ],
             "time": "2016-09-16 12:04:44"
+        },
+        {
+            "name": "optimus/fineuploader-server",
+            "version": "0.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/esbenp/fineuploader-server.git",
+                "reference": "1c77972400094a13d779dddc04919104eeded8a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/esbenp/fineuploader-server/zipball/1c77972400094a13d779dddc04919104eeded8a7",
+                "reference": "1c77972400094a13d779dddc04919104eeded8a7",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.2",
+                "optimus/onion": "0.1.x"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "orchestra/testbench": "~3.1",
+                "phpunit/phpunit": "~4.7",
+                "satooshi/php-coveralls": "dev-master@dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Optimus\\FineuploaderServer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2016-09-19 14:06:10"
+        },
+        {
+            "name": "optimus/onion",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/esbenp/onion.git",
+                "reference": "e87d84c8d85f9812238804be7fb3452ad0d2cf3f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/esbenp/onion/zipball/e87d84c8d85f9812238804be7fb3452ad0d2cf3f",
+                "reference": "e87d84c8d85f9812238804be7fb3452ad0d2cf3f",
+                "shasum": ""
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "orchestra/testbench": "~3.1",
+                "phpunit/phpunit": "~4.7",
+                "satooshi/php-coveralls": "dev-master@dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Optimus\\Onion\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2015-06-30 23:05:03"
         },
         {
             "name": "paragonie/random_compat",

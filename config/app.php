@@ -184,6 +184,7 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
+        Optimus\FineuploaderServer\Provider\LaravelServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -26,6 +26,10 @@ Route::get('news/{id}/approve/{approve}', 'NewsController@approve');
 Route::resource('games', 'GameController');
 Route::post('games/{id}/developer', 'GameController@store_developer')->name('games.developer.store');
 Route::post('games/{id}/developer/delete', 'GameController@destroy_developer')->name('games.developer.delete');
+Route::get('games/{id}/gamefiles', 'GameFileController@create')->name('gamefiles.index');
+Route::post('games/{id}/gamefiles', 'GameFileController@store')->name('gamefiles.store');
+Route::post('games/{id}/gamefiles/upload', 'GameFileController@upload')->name('gamefiles.upload');
+Route::post('games/{id}/gamefiles/delete', 'GameFileController@destroy')->name('gamefiles.delete');
 
 //Ressource Routen
 Route::resource('resources', 'ResourceController');
@@ -43,10 +47,6 @@ Route::post('logo/vote/{id}', 'LogoController@vote_add');
 
 //Submit Routen
 Route::get('submit', 'SubmitController@index');
-Route::get('submit/game', 'SubmitController@game_index');
-Route::get('submit/developer', 'SubmitController@developer_index');
-Route::get('submit/resource', 'SubmitController@resource_index');
-Route::get('submit/news', 'SubmitController@news_index');
 
 //Logo Routen
 Route::get('submit/logo', 'SubmitController@logo_index');

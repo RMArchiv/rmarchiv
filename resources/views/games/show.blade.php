@@ -92,6 +92,7 @@
                                 {% for file in data.files %}
                                 <li>@{{ "%02d"|format(file.release_day) }}.@{{ "%02d"|format(file.release_month) }}.@{{ file.release_year }} [<a href="/download.php?id=@{{ file.id }}">@{{ file.version_type }} @{{ file.version }}</a>]</li>
                                 {% endfor %}
+                                <li><a href="{{ action('GameFileController@create', $game->gameid) }}">dateiliste/hinzufügen</a></li>
                             </ul>
                         </td>
                     </tr>
