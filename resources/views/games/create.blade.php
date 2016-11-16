@@ -67,7 +67,7 @@
                 <div class="content">
                     <div class="formifier">
                         <div class="row" id="row_websiteurl">
-                            <label for="websiteurl">url youtube trailer:</label>
+                            <label for="websiteurl">website:</label>
                             <input name="websiteurl" id="websiteurl" placeholder="https://www.anno1602.de" value=""/>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
                             ].join('\n'),
                             suggestion: function(data) {
                                 console.log(data);
-                                return '<p><strong>' + data.value + '</strong> – ' + data.id + '</p>';
+                                return '<p><strong>' + data.value + '</strong></p>';
                             }
                         }
                     });

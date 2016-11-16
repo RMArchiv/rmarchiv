@@ -21,7 +21,13 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //News Routen
 Route::resource('news', 'NewsController');
 Route::get('news/{id}/approve/{approve}', 'NewsController@approve');
+
+//Games Routen
 Route::resource('games', 'GameController');
+Route::post('games/{id}/developer', 'GameController@store_developer')->name('games.developer.store');
+Route::post('games/{id}/developer/delete', 'GameController@destroy_developer')->name('games.developer.delete');
+
+//Ressource Routen
 Route::resource('resources', 'ResourceController');
 
 //User Routings
@@ -41,6 +47,7 @@ Route::get('submit/game', 'SubmitController@game_index');
 Route::get('submit/developer', 'SubmitController@developer_index');
 Route::get('submit/resource', 'SubmitController@resource_index');
 Route::get('submit/news', 'SubmitController@news_index');
+
 //Logo Routen
 Route::get('submit/logo', 'SubmitController@logo_index');
 Route::post('submit/logo', 'SubmitController@logo_add');

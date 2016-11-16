@@ -8,7 +8,7 @@
                         <th colspan='3'>
                             <span id='title'><big>{{ $game->title }}</big> :: {{ $game->subtitle }}</span>
                             @if($game->userid == Auth::id() or Auth::user()->settings->is_admin == 1)
-                                <div id='nfo'>[<a href='/?page=game_edit&id=@{{ data.id }}'>edit</a>]</div>
+                                <div id='nfo'>[<a href='{{ route('games.edit', [ 'id' => $game->gameid]) }}'>edit</a>]</div>
                             @endif
                         </th>
                     </tr>
@@ -47,7 +47,7 @@
                                 </tr>
                                 <tr>
                                     <td>release date :</td>
-                                    <td>@{{ data.release_day }}.@{{ data.release_month }}.@{{ data.release_year }}</td>
+                                    <td>releasedatefromgamefile</td>
                                 </tr>
                             </table>
                         </td>
@@ -60,7 +60,7 @@
                             </ul>
                         </td>
                         <td id='popularity'>
-                            popularität : @{{ data.views.percent }}%
+                            popularität : totalviewsinpercent
                             <br/>
                             <div class='outerbar' title='0%'>
                                 <div class='innerbar' style='width: @{{ data.views.percent }}%'>&nbsp;<span>@{{ data.views.percent }}%</span>

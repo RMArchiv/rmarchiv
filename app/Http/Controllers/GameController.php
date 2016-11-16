@@ -15,7 +15,35 @@ class GameController extends Controller
      */
     public function index()
     {
-        return view('games.index');
+        $games = \DB::table('games')
+            ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
+            ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
+            ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
+            ->leftJoin('comments', function($join){
+                $join->on('comments.content_id', '=', 'games.id');
+                $join->on('comments.content_type', '=', \DB::raw("'game'"));
+            })
+            ->select([
+                'games.id as gameid',
+                'games.title as gametitle',
+                'games.subtitle as gamesubtitle',
+                'developer.name as developername',
+                'developer.id as developerid',
+                'games.created_at as gamecreated_at',
+                'makers.short as makershort',
+                'makers.title as makertitle',
+                'makers.id as makerid'
+            ])
+            ->selectRaw('COUNT(comments.id) as commentcount')
+            ->selectRaw('SUM(comments.vote_up) AS voteup')
+            ->selectRaw('SUM(comments.vote_down) AS votedown')
+            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
+            ->groupBy('games.id')
+            ->get();
+
+        return view('games.index', [
+            'games' => $games,
+        ]);
     }
 
     /**
@@ -82,6 +110,33 @@ class GameController extends Controller
     }
 
     /**
+     * Add developer to game
+     *
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store_developer(Request $request, $id){
+        $this->validate($request, [
+            'developer' => 'required',
+        ]);
+
+        $devid = DatabaseHelper::developerId_from_developerName($request->get('developer'));
+        if ($devid == 0) {
+            $devid = DatabaseHelper::developer_add_and_get_developerId($request->get('developer'));
+        }
+
+        \DB::table('games_developer')->insert([
+            'user_id' => \Auth::id(),
+            'game_id' => $id,
+            'developer_id' => $devid,
+            'created_at' => Carbon::now(),
+        ]);
+
+        return redirect()->action('GameController@edit', [$id]);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int $id
@@ -109,7 +164,7 @@ class GameController extends Controller
                 'games.created_at as createdate',
                 'games.desc_html as desc'
             ])
-            ->selectRaw('SUM(comments.id) AS commentcount')
+            ->selectRaw('COUNT(comments.id) AS commentcount')
             ->selectRaw('SUM(comments.vote_up) AS voteup')
             ->selectRaw('SUM(comments.vote_down) AS votedown')
             ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
@@ -149,7 +204,41 @@ class GameController extends Controller
      */
     public function edit($id)
     {
-        return view('games.edit');
+        $game = \DB::table('games')
+            ->select([
+                'games.id as gameid',
+                'games.title as gametitle',
+                'games.subtitle as gamesubtitle',
+                'games.maker_id as gamemakerid',
+                'games.lang_id as gamelangid',
+                'games.desc_md as gamedescmd',
+                'games.website_url as websiteurl'
+            ])
+            ->where('games.id', '=', $id)
+            ->first();
+
+        $makers = \DB::table('makers')
+            ->get();
+
+        $langs = \DB::table('languages')
+            ->get();
+
+        $developers = \DB::table('developer')
+            ->select([
+                'developer.name as devname',
+                'developer.id as devid'
+            ])
+            ->leftJoin('games_developer', 'games_developer.developer_id', '=', 'developer.id')
+            ->where('games_developer.game_id', '=', $id)
+            ->get();
+
+        return view('games.edit', [
+            'game' => $game,
+            'makers' => $makers,
+            'developers' => $developers,
+            'gamefiles' => '',
+            'langs' => $langs,
+        ]);
     }
 
     /**
@@ -173,5 +262,14 @@ class GameController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function destroy_developer(Request $request, $id){
+        \DB::table('games_developer')
+            ->where('game_id', '=', $id)
+            ->where('developer_id', '=', $request->get('devid'))
+            ->delete();
+
+        return redirect()->action('GameController@edit', [$id]);
     }
 }
