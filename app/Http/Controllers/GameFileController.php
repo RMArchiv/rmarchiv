@@ -2,16 +2,45 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
-use Optimus\FineuploaderServer\Config\Config;
-use Optimus\FineuploaderServer\Storage\LocalStorage;
-use Optimus\FineuploaderServer\Storage\StorageInterface;
-use Optimus\FineuploaderServer\Uploader;
-use Optimus\FineuploaderServer\Vendor\FineUploader;
+
 
 class GameFileController extends Controller
 {
+
+    public function download($id){
+
+        \DB::table('games_files')
+            ->where('id', '=', $id)
+            ->increment('downloadcount');
+
+        $g = \DB::table('games')
+            ->select([
+                'games.title as gametitle',
+                'games.subtitle as gamesubtitle',
+                'games_files.filename as filename',
+                'games_files.extension as fileextension',
+                'games_files_types.title as filetype',
+                'games_files.release_version as fileversion',
+                'games_files.release_day as fileday',
+                'games_files.release_month as filemonth',
+                'games_files.release_year as fileyear',
+            ])
+            ->leftJoin('games_files', 'games.id', '=', 'games_files.game_id')
+            ->leftJoin('games_files_types', 'games_files.release_type', '=', 'games_files_types.id')
+            ->where('games_files.id', '=', $id)
+            ->limit(1)
+            ->first();
+
+        $filepath = storage_path('app/public/'.$g->filename);
+
+        $newfilename = $g->gametitle.' - '.$g->gamesubtitle.' ['.$g->filetype.'-'.$g->fileversion.']-'.str_pad($g->fileyear, 2, 0, STR_PAD_LEFT)
+            .'-'.str_pad($g->filemonth, 2, 0, STR_PAD_LEFT).'-'.str_pad($g->fileday, 2, 0, STR_PAD_LEFT).'.'.$g->fileextension;
+
+        return response()->download($filepath, $newfilename);
+    }
+
     public function create($id){
         $gamefiles = \DB::table('games_files')
             ->select([
@@ -28,9 +57,13 @@ class GameFileController extends Controller
                 'users.id as userid',
                 'users.name as username',
                 'games_files.created_at as filecreated_at',
+                'games_files.downloadcount as downloadcount',
+                'games.title as gametitle',
+                'games.subtitle as gamesubtitle'
             ])
             ->leftJoin('games_files_types', 'games_files.release_type', '=', 'games_files_types.id')
             ->leftJoin('users', 'games_files.user_id', '=', 'users.id')
+            ->leftJoin('games', 'games.id', '=', 'games_files.game_id')
             ->where('games_files.game_id', '=', $id)
             ->orderBy('games_files_types.id', 'desc')
             ->orderBy('fileyear', 'desc')
@@ -48,33 +81,61 @@ class GameFileController extends Controller
         ]);
     }
 
-    public function upload(Request $request, $id){
-
-        $uploaddir = storage_path();
-
-        $file = new FineUploader();
-        $file->handleUpload($uploaddir, 'file');
-
-        return json_encode($file);
-    }
-
     public function store(Request $request, $id){
-
-        dd($request);
 /*
-        \DB::table('games_files')->insert([
+   +request: ParameterBag {#41 ▼
+    #parameters: array:9 [▼
+      "_token" => "wTPL1yBVVilQG62BNCGxolpfJIir0bAfU550Dapx"
+      "filetype" => "0"
+      "version" => ""
+      "releasedate_day" => "0"
+      "releasedate_month" => "0"
+      "releasedate_year" => "0"
+      "qqfile" => ""
+      "uuid" => "2f4ce7c7-0b07-4186-9683-bd63e7cc1ed1"
+      "filename" => "undefined"
+    ]
+  }
+ */
 
+        $this->validate($request, [
+            'uuid' => 'required',
+            'version' => 'required',
+            'releasedate_day' => 'required|not_in:0',
+            'releasedate_month' => 'required|not_in:0',
+            'releasedate_year' => 'required|not_in:0',
+            'filetype' => 'required|not_in:0'
         ]);
 
-        $l = new Logo;
-        $l->extension = \Storage::mimeType($imageName);
-        $l->filename = str_replace($extorig, '', $imageName);
-        $l->title = $request->get('logoname');
-        $l->user_id = \Auth::id();
+        $storagetemp = 'temp/'.$request->get('uuid').'/file';
+        $storagedest = 'games/'.$request->get('uuid').'.'.$request->get('ext');
 
+        $meta['mime'] = \Storage::mimeType($storagetemp);
+        $meta['size'] = \Storage::size($storagetemp);
+        $meta['ext'] = $request->get('ext');
 
-        $l->save();
-*/
+        $exists = \Storage::disk('local')->exists($storagetemp);
+
+        if($exists === true){
+            \Storage::move($storagetemp, $storagedest);
+
+            \DB::table('games_files')->insert([
+                'game_id' => $id,
+                'filesize' => $meta['size'],
+                'extension' => $meta['ext'],
+                'release_type' => $request->get('filetype'),
+                'release_version' => $request->get('version'),
+                'release_day' => $request->get('releasedate_day'),
+                'release_month' => $request->get('releasedate_month'),
+                'release_year' => $request->get('releasedate_year'),
+                'user_id' => \Auth::id(),
+                'filename' => $storagedest,
+                'created_at' => Carbon::now(),
+            ]);
+
+            return redirect()->route('gamefiles.index', [$id]);
+        }
+
     }
 
     public function destroy(Request $request, $id){

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6f821a9f2658c89678b75759d391109b",
-    "content-hash": "279c2fa1ec93f95ebf947c911a759bf0",
+    "hash": "4d455d0b0b0351dd2e3813c1a93ba2c6",
+    "content-hash": "a6aa7c6f905362a28939ca9c5e82aff2",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -731,6 +731,58 @@
                 "parser"
             ],
             "time": "2014-09-09 13:34:57"
+        },
+        {
+            "name": "gabrielelana/byte-units",
+            "version": "0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gabrielelana/byte-units.git",
+                "reference": "6ac5429755cd3d2eec3b05c28699538ba7cdfb70"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gabrielelana/byte-units/zipball/6ac5429755cd3d2eec3b05c28699538ba7cdfb70",
+                "reference": "6ac5429755cd3d2eec3b05c28699538ba7cdfb70",
+                "shasum": ""
+            },
+            "require": {
+                "ext-bcmath": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ByteUnits\\": "src/ByteUnits"
+                },
+                "files": [
+                    "src/ByteUnits/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gabriele Lana",
+                    "email": "gabriele.lana@gmail.com"
+                }
+            ],
+            "description": "Library to parse, format and convert byte units",
+            "homepage": "https://github.com/gabrielelana/byte-units",
+            "keywords": [
+                "byte",
+                "convert",
+                "format",
+                "parse",
+                "size",
+                "units"
+            ],
+            "time": "2016-08-02 13:20:29"
         },
         {
             "name": "graham-campbell/markdown",
@@ -3127,16 +3179,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "0.9.5",
+            "version": "0.9.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "4db079511a283e5aba1b3c2fb19037c645e70fc2"
+                "reference": "65d4ca18e15cb02eeb1e5336f884e46b9b905be0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/4db079511a283e5aba1b3c2fb19037c645e70fc2",
-                "reference": "4db079511a283e5aba1b3c2fb19037c645e70fc2",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/65d4ca18e15cb02eeb1e5336f884e46b9b905be0",
+                "reference": "65d4ca18e15cb02eeb1e5336f884e46b9b905be0",
                 "shasum": ""
             },
             "require": {
@@ -3188,7 +3240,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2016-05-22 21:52:33"
+            "time": "2016-09-30 12:09:40"
         },
         {
             "name": "myclabs/deep-copy",
@@ -3637,16 +3689,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.4.8",
+            "version": "1.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "3144ae21711fb6cac0b1ab4cbe63b75ce3d4e8da"
+                "reference": "3b402f65a4cc90abf6e1104e388b896ce209631b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/3144ae21711fb6cac0b1ab4cbe63b75ce3d4e8da",
-                "reference": "3144ae21711fb6cac0b1ab4cbe63b75ce3d4e8da",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/3b402f65a4cc90abf6e1104e388b896ce209631b",
+                "reference": "3b402f65a4cc90abf6e1104e388b896ce209631b",
                 "shasum": ""
             },
             "require": {
@@ -3682,7 +3734,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2015-09-15 10:49:45"
+            "time": "2016-11-15 14:06:22"
         },
         {
             "name": "phpunit/phpunit",
@@ -4156,21 +4208,21 @@
         },
         {
             "name": "sebastian/object-enumerator",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/object-enumerator.git",
-                "reference": "d4ca2fb70344987502567bc50081c03e6192fb26"
+                "reference": "12dc92be4c9b1286fd37c15d54f7c9d8524f29e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/object-enumerator/zipball/d4ca2fb70344987502567bc50081c03e6192fb26",
-                "reference": "d4ca2fb70344987502567bc50081c03e6192fb26",
+                "url": "https://api.github.com/repos/sebastianbergmann/object-enumerator/zipball/12dc92be4c9b1286fd37c15d54f7c9d8524f29e0",
+                "reference": "12dc92be4c9b1286fd37c15d54f7c9d8524f29e0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6",
-                "sebastian/recursion-context": "~1.0"
+                "sebastian/recursion-context": "~1.0.4"
             },
             "require-dev": {
                 "phpunit/phpunit": "~5"
@@ -4198,7 +4250,7 @@
             ],
             "description": "Traverses array structures and object graphs to enumerate all referenced objects",
             "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
-            "time": "2016-01-28 13:25:10"
+            "time": "2016-11-16 07:17:31"
         },
         {
             "name": "sebastian/recursion-context",

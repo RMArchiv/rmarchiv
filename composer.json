@@ -13,7 +13,8 @@
         "doctrine/dbal": "^2.5",
         "laravelcollective/html": "^5.3",
         "graham-campbell/markdown": "^7.0",
-        "optimus/fineuploader-server": "^0.2.5"
+        "optimus/fineuploader-server": "^0.2.5",
+        "gabrielelana/byte-units": "^0.4.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -13,8 +13,50 @@
                 </div>
             </div>
         @endif
-
-        //Hier kommt noch die Tabelle mit den vorhandenen dateien rein.
+            <h2>{{ $gamefiles->first()->gametitle }}<small> {{ $gamefiles->first()->gamesubtitle }}</small></h2>
+            <table id='pouetbox_prodlist' class='boxtable pagedtable'>
+                <thead>
+                <tr class='sortable'>
+                    <th></th>
+                    <th>typ</th>
+                    <th>version</th>
+                    <th>release date</th>
+                    <th>filesize</th>
+                    <th>downloads</th>
+                    <th>uploaded by</th>
+                    <th>uploaded at</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                @foreach($gamefiles as $gf)
+                <tr>
+                    <td>
+                        <span class='typeiconlist'>
+                            <span class='typei type_{{ $gf->filetypeshort }}' title='{{ $gf->filetypetitle }}'>{{ $gf->filetypetitle }}</span>
+                        </span>
+                    </td>
+                    <td>{{ $gf->filetypetitle }}</td>
+                    <td>{{ $gf->fileversion }}</td>
+                    <td>{{ str_pad($gf->fileyear, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->filemonth, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->fileday, 2, 0, STR_PAD_LEFT) }}</td>
+                    <td>{{ ByteUnits\Metric::bytes($gf->filesize)->format() }}</td>
+                    <td>{{ $gf->downloadcount or 0 }}</td>
+                    <td>
+                        <a href="{{ url('/user', $gf->userid) }}" class="usera" title="{{ $gf->username }}">
+                            <img src="http://ava.rmarchiv.de/?gender=male&amp;id={{ $gf->userid }}" alt="{{ $gf->username }}" class="avatar">
+                        </a> <a href="{{ url('/user', $gf->userid) }}" class="user">{{ $gf->username }}</a>
+                    </td>
+                    <td>{{ $gf->filecreated_at }}</td>
+                    @if(Auth::check())
+                        <td>
+                            [<a href="{{ url('games/download', $gf->fileid) }}">download</a>]
+                        @if(Auth::user()->settings->is_admin)
+                                :: [<a href="{{ route("gamefiles.delete", $gameid) }}">löschen</a>]
+                        @endif
+                        </td>
+                    @endif
+                </tr>
+                @endforeach
+            </table>
 
         {!! Form::open(['route' => ['gamefiles.store', $gameid]]) !!}
         <div class="rmarchivtbl" id="rmarchivbox_submitprod">
@@ -61,12 +103,11 @@
                         </div>
                         <span>[<span class="req">req</span>]</span>
                     </div>
-                    <div class="row" id="row_upload">
                         <div class="row" id="row_file">
                             <label for="fine-uploader">datei hochladen:</label>
                             <div id="fine-uploader"></div>
+                            <span>[<span class="req">req</span>]</span>
                         </div>
-                    </div>
                 </div>
             </div>
 
@@ -167,7 +208,7 @@
                     enabled: true
                 },
                 success: {
-                    endpoint: "/games/"+ {{ $gameid }}+"/gamefiles"
+                    endpoint: "/games/"+ {{ $gameid }}+"/gamefiles/upload"
                 }
             },
             resume: {
@@ -182,7 +223,7 @@
             multiple: false,
             deleteFile: {
                 enabled: true,
-                endpoint: "/games/"+ {{ $gameid }}+"/gamefiles/delete"
+                endpoint: "/games/"+ {{ $gameid }}+"/gamefiles/upload"
             },
             retry: {
                 enableAuto: true
@@ -195,6 +236,7 @@
                     if (responseJSON.success) {
                         $('#fine-uploader').append('<input type="hidden" name="uuid" value="' + responseJSON.uuid + '">');
                         $('#fine-uploader').append('<input type="hidden" name="filename" value="' + responseJSON.uploadName + '">');
+                        $('#fine-uploader').append('<input type="hidden" name="ext" value="' + responseJSON.ext + '">');
                     }
                 }
             }
