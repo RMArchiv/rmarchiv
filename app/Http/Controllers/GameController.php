@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\GameView;
 use App\Helpers\DatabaseHelper;
 use Carbon\Carbon;
+use Doctrine\DBAL\Driver\IBMDB2\DB2Connection;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
@@ -33,9 +34,9 @@ class GameController extends Controller
                 'games.created_at as gamecreated_at',
                 'makers.short as makershort',
                 'makers.title as makertitle',
-                'makers.id as makerid'
+                'makers.id as makerid',
             ])
-            ->selectRaw('COUNT(comments.id) as commentcount')
+            ->selectRaw('(SELECT COUNT(id) FROM comments WHERE content_id = games.id AND content_type = "game") as commentcount')
             ->selectRaw('SUM(comments.vote_up) AS voteup')
             ->selectRaw('SUM(comments.vote_down) AS votedown')
             ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
@@ -188,12 +189,54 @@ class GameController extends Controller
             ->where('content_id', '=', $id)
             ->orderBy('created_at', 'asc')->get();
 
+        $files = \DB::table('games_files')
+            ->select([
+                'games_files.id as fileid',
+                'games_files_types.title as filetypetitle',
+                'games_files_types.short as filetypeshort',
+                'games_files.release_version as fileversion',
+                'games_files.filename as filename',
+                'games_files.extension as fileextension',
+                'games_files.filesize as filesize',
+                'games_files.release_year as fileyear',
+                'games_files.release_month as filemonth',
+                'games_files.release_day as fileday',
+                'users.id as userid',
+                'users.name as username',
+                'games_files.created_at as filecreated_at',
+                'games_files.downloadcount as downloadcount',
+                'games.title as gametitle',
+                'games.subtitle as gamesubtitle'
+            ])
+            ->leftJoin('games_files_types', 'games_files.release_type', '=', 'games_files_types.id')
+            ->leftJoin('users', 'games_files.user_id', '=', 'users.id')
+            ->leftJoin('games', 'games.id', '=', 'games_files.game_id')
+            ->where('games_files.game_id', '=', $id)
+            ->orderBy('games_files_types.id', 'desc')
+            ->orderBy('fileyear', 'desc')
+            ->orderBy('filemonth', 'desc')
+            ->orderBy('fileday', 'desc')
+            ->limit(5)
+            ->get();
+
+        $releasedate = \DB::table('games_files')
+            ->where('game_id', '=', $id)
+            ->orderBy('release_type', 'desc')
+            ->orderBy('release_year', 'desc')
+            ->orderBy('release_month', 'desc')
+            ->orderBy('release_day', 'desc')
+            ->groupBy('release_type')
+            ->first();
+
+
         event(new GameView($id));
 
         return view('games.show', [
             'game' => $game,
             'comments' => $comments,
             'developer' => $developer,
+            'files' => $files,
+            'releasedate' => $releasedate,
         ]);
 
     }

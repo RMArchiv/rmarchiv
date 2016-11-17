@@ -46,8 +46,8 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>release date :</td>
-                                    <td>releasedatefromgamefile</td>
+                                    <td>release date:</td>
+                                    <td>{{ $releasedate->release_year }}-{{ $releasedate->release_month }}-{{ $releasedate->release_day }}</td>
                                 </tr>
                             </table>
                         </td>
@@ -81,17 +81,24 @@
                                 @else
                                     <li><img src='/assets/rate_neut.gif' alt='ok' />&nbsp;{{ $game->voteavg or 0 }}</li>
                                 @endif
-                                {% if data.cdc > 0 %}
-                                <li><img src="/assets/cdc.png" alt="cdcs">&nbsp;@{{ data.cdc }}</li>
-                                {% endif %}
+                                    {{-- data.cdc > 0
+                                <li><img src="/assets/cdc.png" alt="cdcs">cdc's</li>
+                                 endif
+                                 --}}
                             </ul>
                             <div id='alltimerank'>alltime top: #0</div>
                         </td>
                         <td id='links'>
                             <ul>
-                                {% for file in data.files %}
-                                <li>@{{ "%02d"|format(file.release_day) }}.@{{ "%02d"|format(file.release_month) }}.@{{ file.release_year }} [<a href="/download.php?id=@{{ file.id }}">@{{ file.version_type }} @{{ file.version }}</a>]</li>
-                                {% endfor %}
+                                @foreach($files as $f)
+                                <li>
+                                    {{ str_pad($f->fileyear, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->filemonth, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->fileday, 2, 0, STR_PAD_LEFT) }}
+                                    @if(Auth::check())
+                                        [<a href="{{ url('games/download', $f->fileid) }}">{{ $f->filetypetitle }} - {{ $f->fileversion }}</a>] ({{ $f->downloadcount }})
+                                    @endif
+                                </li>
+                                @endforeach
+                                <li>------------</li>
                                 <li><a href="{{ action('GameFileController@create', $game->gameid) }}">dateiliste/hinzufügen</a></li>
                             </ul>
                         </td>
