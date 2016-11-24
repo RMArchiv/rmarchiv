@@ -13,6 +13,7 @@
                 </div>
             </div>
         @endif
+        @if($gamefiles->count() <> 0)
             <h2>{{ $gamefiles->first()->gametitle }}<small> {{ $gamefiles->first()->gamesubtitle }}</small></h2>
             <table id='pouetbox_prodlist' class='boxtable pagedtable'>
                 <thead>
@@ -57,6 +58,9 @@
                 </tr>
                 @endforeach
             </table>
+        @else
+            <h2>es sind noch keine dateien zu diesem spiel vorhanden</h2>
+        @endif
 
         {!! Form::open(['route' => ['gamefiles.store', $gameid]]) !!}
         <div class="rmarchivtbl" id="rmarchivbox_submitprod">

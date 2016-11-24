@@ -45,10 +45,12 @@
                                         @endforeach
                                     </td>
                                 </tr>
+                                @if($releasedate)
                                 <tr>
                                     <td>release date:</td>
                                     <td>{{ $releasedate->release_year }}-{{ $releasedate->release_month }}-{{ $releasedate->release_day }}</td>
                                 </tr>
+                                @endif
                             </table>
                         </td>
                     </tr>
