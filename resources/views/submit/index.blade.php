@@ -7,8 +7,7 @@
                 <h2>Was willst du einsenden?</h2>
                 <ul class='boxlist'>
                     <li><a href='{{ url('games/create') }}'>einsenden eines spiels</a></li>
-                    <li><a href='{{ url('submit/developer') }}'>einsenden eines entwicklers</a></li>
-                    <li><a href='{{ url('submit/resources') }}'>einsenden von ressourcen</a></li>
+                    <li><a href='{{ url('resources/create') }}'>einsenden von ressourcen</a></li>
                     <li><a href='{{ url('news/create') }}'>einsenden von news</a></li>
                     <li><a href='{{ url('submit/logo') }}'>upload eines logos</a></li>
                     <li><a href='{{ url('logo/vote') }}'>bewerte logos</a></li>

@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2016-11-17.
+    * Generated on 2016-11-24.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -43,6 +43,7 @@ namespace PHPSTORM_META {
             'markdown.environment' instanceof \League\CommonMark\Environment,
             'markdown' instanceof \League\CommonMark\Converter,
             'markdown.compiler' instanceof \GrahamCampbell\Markdown\Compilers\MarkdownCompiler,
+            'tntsearch' instanceof \TeamTNT\TNTSearch\TNTSearch,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
@@ -165,6 +166,7 @@ namespace PHPSTORM_META {
             'markdown.environment' instanceof \League\CommonMark\Environment,
             'markdown' instanceof \League\CommonMark\Converter,
             'markdown.compiler' instanceof \GrahamCampbell\Markdown\Compilers\MarkdownCompiler,
+            'tntsearch' instanceof \TeamTNT\TNTSearch\TNTSearch,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
@@ -287,6 +289,7 @@ namespace PHPSTORM_META {
             'markdown.environment' instanceof \League\CommonMark\Environment,
             'markdown' instanceof \League\CommonMark\Converter,
             'markdown.compiler' instanceof \GrahamCampbell\Markdown\Compilers\MarkdownCompiler,
+            'tntsearch' instanceof \TeamTNT\TNTSearch\TNTSearch,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
@@ -409,6 +412,7 @@ namespace PHPSTORM_META {
             'markdown.environment' instanceof \League\CommonMark\Environment,
             'markdown' instanceof \League\CommonMark\Converter,
             'markdown.compiler' instanceof \GrahamCampbell\Markdown\Compilers\MarkdownCompiler,
+            'tntsearch' instanceof \TeamTNT\TNTSearch\TNTSearch,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,

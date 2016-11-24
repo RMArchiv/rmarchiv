@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.23 on 2016-11-17.
+ * Generated for Laravel 5.3.24 on 2016-11-24.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -2969,8 +2969,12 @@ namespace {
         }
         
         /**
-         * 
+         * Run a select statement against the database and returns a generator.
          *
+         * @param string $query
+         * @param array $bindings
+         * @param bool $useReadPdo
+         * @return \Generator 
          * @static 
          */
         public static function cursor($query, $bindings = array(), $useReadPdo = true){
@@ -8595,11 +8599,12 @@ namespace {
          *
          * @param int $status
          * @param array $headers
+         * @param string $fallback
          * @return \Illuminate\Http\RedirectResponse 
          * @static 
          */
-        public static function back($status = 302, $headers = array()){
-            return \Illuminate\Routing\Redirector::back($status, $headers);
+        public static function back($status = 302, $headers = array(), $fallback = false){
+            return \Illuminate\Routing\Redirector::back($status, $headers, $fallback);
         }
         
         /**
@@ -10351,7 +10356,7 @@ namespace {
          * It works if your JavaScript library sets an X-Requested-With HTTP header.
          * It is known to work with common JavaScript frameworks:
          *
-         * @link http://en.wikipedia.org/wiki/List_of_Ajax_frameworks#JavaScript
+         * @see http://en.wikipedia.org/wiki/List_of_Ajax_frameworks#JavaScript
          * @return bool true if the request is an XMLHttpRequest, false otherwise
          * @static 
          */
@@ -12362,6 +12367,209 @@ namespace {
          */
         public static function getDriver(){
             return \Illuminate\Filesystem\FilesystemAdapter::getDriver();
+        }
+        
+    }
+
+
+    class TNTSearch extends \TeamTNT\TNTSearch\Facades\TNTSearch{
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function loadConfig($config){
+            return \TeamTNT\TNTSearch\TNTSearch::loadConfig($config);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function setDatabaseHandle($dbh){
+            return \TeamTNT\TNTSearch\TNTSearch::setDatabaseHandle($dbh);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function setTokenizer($tokenizer){
+            return \TeamTNT\TNTSearch\TNTSearch::setTokenizer($tokenizer);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function createIndex($indexName){
+            return \TeamTNT\TNTSearch\TNTSearch::createIndex($indexName);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function selectIndex($indexName){
+            return \TeamTNT\TNTSearch\TNTSearch::selectIndex($indexName);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function search($phrase, $numOfResults = 100){
+            return \TeamTNT\TNTSearch\TNTSearch::search($phrase, $numOfResults);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function searchBoolean($phrase, $numOfResults = 100){
+            return \TeamTNT\TNTSearch\TNTSearch::searchBoolean($phrase, $numOfResults);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getAllDocumentsForKeyword($keyword, $noLimit = false, $isLastKeyword = false){
+            return \TeamTNT\TNTSearch\TNTSearch::getAllDocumentsForKeyword($keyword, $noLimit, $isLastKeyword);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getAllDocumentsForWhereKeywordNot($keyword, $noLimit = false){
+            return \TeamTNT\TNTSearch\TNTSearch::getAllDocumentsForWhereKeywordNot($keyword, $noLimit);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function totalMatchingDocuments($keyword, $isLastWord = false){
+            return \TeamTNT\TNTSearch\TNTSearch::totalMatchingDocuments($keyword, $isLastWord);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getWordlistByKeyword($keyword, $isLastWord = false){
+            return \TeamTNT\TNTSearch\TNTSearch::getWordlistByKeyword($keyword, $isLastWord);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function fuzzySearch($keyword){
+            return \TeamTNT\TNTSearch\TNTSearch::fuzzySearch($keyword);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function totalDocumentsInCollection(){
+            return \TeamTNT\TNTSearch\TNTSearch::totalDocumentsInCollection();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getStemmer(){
+            return \TeamTNT\TNTSearch\TNTSearch::getStemmer();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function setStemmer(){
+            return \TeamTNT\TNTSearch\TNTSearch::setStemmer();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function isFileSystemIndex(){
+            return \TeamTNT\TNTSearch\TNTSearch::isFileSystemIndex();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function filesystemMapIdsToPaths($docs){
+            return \TeamTNT\TNTSearch\TNTSearch::filesystemMapIdsToPaths($docs);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function info($str){
+            return \TeamTNT\TNTSearch\TNTSearch::info($str);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function breakIntoTokens($text){
+            return \TeamTNT\TNTSearch\TNTSearch::breakIntoTokens($text);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function highlight($text, $needle, $tag = 'em', $options = array()){
+            return \TeamTNT\TNTSearch\TNTSearch::highlight($text, $needle, $tag, $options);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function snippet($words, $fulltext, $rellength = 300, $prevcount = 50, $indicator = '...'){
+            return \TeamTNT\TNTSearch\TNTSearch::snippet($words, $fulltext, $rellength, $prevcount, $indicator);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getIndex(){
+            return \TeamTNT\TNTSearch\TNTSearch::getIndex();
         }
         
     }
