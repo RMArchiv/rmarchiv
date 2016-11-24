@@ -185,6 +185,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
         Optimus\FineuploaderServer\Provider\LaravelServiceProvider::class,
+        TeamTNT\TNTSearch\TNTSearchServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -245,6 +246,7 @@ return [
         'Schema' => Illuminate\Support\Facades\Schema::class,
         'Session' => Illuminate\Support\Facades\Session::class,
         'Storage' => Illuminate\Support\Facades\Storage::class,
+        'TNTSearch' => \TeamTNT\TNTSearch\Facades\TNTSearch::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
