@@ -32,6 +32,9 @@ Route::post('games/{id}/gamefiles/upload', 'FineUploaderController@endpoint@uplo
 Route::post('games/{id}/gamefiles/delete', 'GameFileController@destroy')->name('gamefiles.delete');
 Route::get('games/download/{id}', 'GameFileController@download')->name('gamefiles.download');
 
+//Entwickler Routen
+Route::resource('developer', 'DeveloperController');
+
 //CDC Routen
 Route::resource('cdc', 'CDCController');
 

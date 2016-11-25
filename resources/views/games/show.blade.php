@@ -38,7 +38,7 @@
                                     <td>Entwickler :</td>
                                     <td>
                                         @foreach($developer as $dev)
-                                        <a href="/?page=creator&id={{ $dev->id }}">{{ $dev->name }}</a>
+                                        <a href="{{ url('developer',$dev->id) }}">{{ $dev->name }}</a>
                                             @if($dev != $developer->last())
                                                 ::
                                             @endif

@@ -13,7 +13,19 @@ class DeveloperController extends Controller
      */
     public function index()
     {
-        //
+        $developer = \DB::table('developer')
+            ->leftJoin('games_developer', 'games_developer.developer_id', '=', 'developer.id')
+            ->select([
+                'developer.id as devid',
+                'developer.name as devname',
+            ])
+            ->selectRaw('COUNT(games_developer.id) as gamecount')
+            ->groupBy('developer.id')
+            ->get();
+
+        return view('developer.index', [
+            'developer' => $developer,
+        ]);
     }
 
     /**
@@ -23,7 +35,7 @@ class DeveloperController extends Controller
      */
     public function create()
     {
-        //
+        echo "create";
     }
 
     /**
