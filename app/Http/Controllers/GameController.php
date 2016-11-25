@@ -41,6 +41,7 @@ class GameController extends Controller
             ->selectRaw('(SELECT SUM(vote_up) FROM comments WHERE content_id = games.id AND content_type = "game") as voteup')
             ->selectRaw('(SELECT SUM(vote_down) FROM comments WHERE content_id = games.id AND content_type = "game") as votedown')
             ->selectRaw('MAX(games_files.release_type) as gametype')
+            ->selectRaw("(SELECT STR_TO_DATE(CONCAT(release_year,'-',release_month,'-',release_day ), '%Y-%m-%d') FROM games_files WHERE game_id = games.id ORDER BY release_year DESC, release_month DESC, release_day DESC LIMIT 1) as releasedate")
             ->groupBy('games.id')
             ->get();
 
@@ -182,6 +183,7 @@ class GameController extends Controller
             ->selectRaw('SUM(comments.vote_up) AS voteup')
             ->selectRaw('SUM(comments.vote_down) AS votedown')
             ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
+            ->selectRaw("(SELECT STR_TO_DATE(CONCAT(release_year,'-',release_month,'-',release_day ), '%Y-%m-%d') FROM games_files WHERE game_id = games.id ORDER BY release_year DESC, release_month DESC, release_day DESC LIMIT 1) as releasedate")
             ->where('games.id', '=', $id)
             ->first();
 

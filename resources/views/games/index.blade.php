@@ -45,7 +45,7 @@
                 <td>
                     <a href="{{ url('developer', $game->developerid) }}">{{ $game->developername }}</a>
                 </td>
-                <td class='date'>releasedatefromgamefiles</td>
+                <td class='date'>{{ $game->releasedate }}</td>
                 <td class='date'>{{ $game->gamecreated_at }}</td>
                 <td class='votes'>{{ $game->voteup or 0 }}</td>
                 <td class='votes'>{{ $game->votedown or 0 }}</td>
