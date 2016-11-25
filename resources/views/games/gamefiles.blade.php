@@ -3,7 +3,7 @@
     <div id="content">
         @if (count($errors) > 0)
             <div class="rmarchivtbl errorbox">
-                <h2>spieldateien</h2>
+                <h2>{{trans('app.games.gamefiles.title')}}</h2>
                 <div class="content">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -19,14 +19,14 @@
                 <thead>
                 <tr class='sortable'>
                     <th></th>
-                    <th>typ</th>
-                    <th>version</th>
-                    <th>release date</th>
-                    <th>filesize</th>
-                    <th>downloads</th>
-                    <th>uploaded by</th>
-                    <th>uploaded at</th>
-                    <th>actions</th>
+                    <th>{{trans('app.games.gamefiles.type')}}</th>
+                    <th>{{trans('app.games.gamefiles.version')}}</th>
+                    <th>{{trans('app.games.gamefiles.release_date')}}</th>
+                    <th>{{trans('app.games.gamefiles.filesize')}}</th>
+                    <th>{{trans('app.games.gamefiles.downloads')}}</th>
+                    <th>{{trans('app.games.gamefiles.uploaded_by')}}</th>
+                    <th>{{trans('app.games.gamefiles.uploaded_at')}}</th>
+                    <th>{{trans('app.games.gamefiles.actions')}}</th>
                 </tr>
                 </thead>
                 @foreach($gamefiles as $gf)
@@ -49,9 +49,9 @@
                     <td>{{ $gf->filecreated_at }}</td>
                     @if(Auth::check())
                         <td>
-                            [<a href="{{ url('games/download', $gf->fileid) }}">download</a>]
+                            [<a href="{{ url('games/download', $gf->fileid) }}">{{trans('app.misc.download')}}</a>]
                         @if(Auth::user()->settings->is_admin)
-                                :: [<a href="{{ route("gamefiles.delete", $gameid) }}">löschen</a>]
+                                :: [<a href="{{ route("gamefiles.delete", $gameid) }}">{{trans('app.misc.delete')}}</a>]
                         @endif
                         </td>
                     @endif
@@ -59,19 +59,19 @@
                 @endforeach
             </table>
         @else
-            <h2>es sind noch keine dateien zu diesem spiel vorhanden</h2>
+            <h2>{{trans('app.games.gamefiles.no_files')}}</h2>
         @endif
 
         {!! Form::open(['route' => ['gamefiles.store', $gameid]]) !!}
         <div class="rmarchivtbl" id="rmarchivbox_submitprod">
-            <h2>hinzufügen einer spieledatei</h2>
+            <h2>{{trans('app.games.gamefiles.add_file')}}</h2>
 
             <div class="content">
                 <div class="formifier">
                     <div class='row' id='row_filetype'>
-                        <label for='filetype'>dateityp:</label>
+                        <label for='filetype'>{{trans('app.games.gamefiles.filetype')}}</label>
                         <select name='filetype' id='filetype'>
-                            <option value="0">bitte wähle einen dateityp</option>
+                            <option value="0">{{trans('app.games.gamefiles.filetype_choose')}}</option>
                             @foreach($filetypes as $types)
                                 <option value="{{ $types->id }}">{{ $types->title }}</option>
                             @endforeach
@@ -79,27 +79,27 @@
                         <span>[<span class="req">req</span>]</span>
                     </div>
                     <div class="row" id="row_version">
-                        <label for="version">version:</label>
+                        <label for="version">{{trans('app.games.gamefiles.version2')}}</label>
                         <input name="version" id="version" value="" placeholder="1.0"/>
                         <span> [<span class="req">req</span>]</span>
                     </div>
                     <div class="row" id="row_releasedate">
-                        <label for="releasedate">release datum:</label>
+                        <label for="releasedate">{{trans('app.games.gamefiles.release_date2')}}</label>
                         <div class="formdate" id="releasedate">
                             <select name="releasedate_day" id="releasedate_day">
-                                <option value="0">tag</option>
+                                <option value="0">{{trans('app.games.gamefiles.day')}}</option>
                                 @for($i = 1; $i < 32; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                 @endfor
                             </select>
                             <select name="releasedate_month" id="releasedate_month">
-                                <option value="0">monat</option>
+                                <option value="0">{{trans('app.games.gamefiles.month')}}</option>
                                 @for($i = 1; $i < 13; $i++)
                                     <option value="{{ $i }}">{{ trans('app.misc.month.'.$i) }}</option>
                                 @endfor
                             </select>
                             <select name="releasedate_year" id="releasedate_year">
-                                <option value="0">jahr</option>
+                                <option value="0">{{trans('app.games.gamefiles.year')}}</option>
                                 @for($i = 1990; $i < date("Y") + 1; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                 @endfor
@@ -108,7 +108,7 @@
                         <span>[<span class="req">req</span>]</span>
                     </div>
                         <div class="row" id="row_file">
-                            <label for="fine-uploader">datei hochladen:</label>
+                            <label for="fine-uploader">{{trans('app.misc.upload_file')}}:</label>
                             <div id="fine-uploader"></div>
                             <span>[<span class="req">req</span>]</span>
                         </div>

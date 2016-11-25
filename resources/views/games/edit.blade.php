@@ -16,24 +16,24 @@
 
         {!! Form::open(['method' => 'PUT', 'route' => ['games.update', $game->gameid]]) !!}
         <div class="rmarchivtbl" id="rmarchivbox_submitprod">
-            <h2>bearbeiten eines Spiels</h2>
+            <h2>{{trans('app.games.edit.title')}}</h2>
 
             <div class="content">
                 <div class="formifier">
                     <div class="row" id="row_title">
-                        <label for="title">spieltitel</label>
+                        <label for="title">{{trans('app.games.add.gametitle')}}</label>
                         <input name="title" id="title" value="{{ $game->gametitle }}"/>
                         <span> [<span class="req">req</span>]</span>
                     </div>
                     <div class="row" id="row_subtitle">
-                        <label for="subtitle">untertitel:</label>
+                        <label for="subtitle">{{trans('app.games.add.subtitle')}}</label>
                         <input name="subtitle" id="subtitle" value="{{ $game->gamesubtitle }}"/>
                         <span> [<span class="req">req</span>]</span>
                     </div>
                     <div class='row' id='row_maker'>
-                        <label for='maker'>erstellt mit:</label>
+                        <label for='maker'>{{trans('app.games.add.maker')}}</label>
                         <select name='maker' id='maker'>
-                            <option value="0">bitte maker version auswählen</option>
+                            <option value="0">{{trans('app.games.add.maker_choose')}}</option>
                             @foreach($makers as $maker)
                                 @if($game->gamemakerid == $maker->id)
                                     <option selected="selected" value="{{ $maker->id }}">{{ $maker->title }}</option>
@@ -45,9 +45,9 @@
                         <span> [<span class="req">req</span>]</span>
                     </div>
                     <div class='row' id='row_language'>
-                        <label for='language'>sprache:</label>
+                        <label for='language'>{{trans('app.games.add.language')}}</label>
                         <select name='language' id='language'>
-                            <option value="0">bitte sprache des spiels auswählen</option>
+                            <option value="0">{{trans('app.games.add.langauge_choose')}}</option>
                             @foreach($langs as $lang)
                                 @if($game->gamelangid == $lang->id)
                                     <option selected="selected" value="{{ $lang->short }}">{{ $lang->name }}</option>
@@ -61,34 +61,34 @@
                 </div>
             </div>
 
-            <h2>Beschreibungstext ändern/hinzufügen</h2>
+            <h2>{{trans('app.games.add.description_title')}}</h2>
             <div class="content">
                 <div class="formifier">
                     <div class="row" id="row_desc">
-                        <label for="desc">Beschreibung:</label>
-                        <textarea name="desc" id="desc" maxlength="2000" rows="10" placeholder="Beschreibung des Spiels (2000 Zeichen)">{{ $game->gamedescmd }}</textarea>
+                        <label for="desc">{{trans('app.games.add.description')}}</label>
+                        <textarea name="desc" id="desc" maxlength="2000" rows="10" placeholder="{{trans('app.games.add.description_help')}}">{{ $game->gamedescmd }}</textarea>
                     </div>
                 </div>
             </div>
 
-            <h2>Links</h2>
+            <h2>{{trans('app.games.add.links')}}</h2>
             <div class="content">
                 <div class="formifier">
                     <div class="row" id="row_websiteurl">
-                        <label for="websiteurl">website:</label>
+                        <label for="websiteurl">{{trans('app.games.add.website')}}</label>
                         <input name="websiteurl" id="websiteurl" placeholder="https://www.anno1602.de" value="{{ $game->websiteurl }}"/>
                     </div>
                 </div>
             </div>
 
             <div class="foot">
-                <input type="submit" value="senden">
+                <input type="submit" value="{{trans('app.misc.send')}}">
             </div>
         </div>
         {!! Form::close() !!}
 
         <div class="rmarchivtbl" id="rmarchivbox_submitprod">
-            <h2>Verbundene entwickler</h2>
+            <h2>{{trans('app.games.edit.developer')}}</h2>
             <div class="content">
                 <div class="formifier">
                     @foreach($developers as $dev)
@@ -96,7 +96,7 @@
                         {!! Form::open(['method' => 'POST', 'route' => ['games.developer.delete', $game->gameid]]) !!}
                         {!! Form::hidden('devid', $dev->devid) !!}
                         {!! Form::label($dev->devid, $dev->devname) !!}
-                        {!! Form::submit('löschen',['name' => $dev->devid]) !!}
+                        {!! Form::submit(trans('app.misc.delete'),['name' => $dev->devid]) !!}
                         {!! Form::close() !!}
                     </div>
                     @endforeach
@@ -104,12 +104,12 @@
             </div>
 
         {!! Form::open(['method' => 'POST', 'route' => ['games.developer.store', $game->gameid]]) !!}
-            <h2>entwickler zum spiel hinzufügen</h2>
+            <h2>{{trans('app.games.edit.developer_add')}}</h2>
             <div class="content">
                 <div class="formifier">
                     <div class="row" id="row_developer">
-                        <label for="developer">entwickler name:</label>
-                        <input autocomplete="off" class="auto" name="developer" id="developer" placeholder="Einfach Entwicklernamen eintippen" value=""/>
+                        <label for="developer">{{trans('app.games.add.developer')}}</label>
+                        <input autocomplete="off" class="auto" name="developer" id="developer" placeholder="{{trans('app.games.edit.developer_help')}}" value=""/>
                         <span> [<span class="req">req</span>]</span>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                     templates: {
                         empty: [
                             '<div class="empty-message">',
-                            'Noch wurde nichts gefunden.',
+                            '{{trans('app.misc.nothing_found')}}',
                             '</div>'
                         ].join('\n'),
                         suggestion: function(data) {
@@ -144,7 +144,7 @@
                 });
             </script>
             <div class="foot">
-                <input type="submit" value="senden">
+                <input type="submit" value="{{trans('app.misc.send')}}">
             </div>
         {!! Form::close() !!}
         </div>
