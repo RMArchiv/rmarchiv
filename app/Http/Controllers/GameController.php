@@ -25,6 +25,7 @@ class GameController extends Controller
                 $join->on('comments.content_id', '=', 'games.id');
                 $join->on('comments.content_type', '=', \DB::raw("'game'"));
             })
+            ->leftJoin('games_files', 'games_files.game_id', '=', 'games.id')
             ->select([
                 'games.id as gameid',
                 'games.title as gametitle',
@@ -37,14 +38,25 @@ class GameController extends Controller
                 'makers.id as makerid',
             ])
             ->selectRaw('(SELECT COUNT(id) FROM comments WHERE content_id = games.id AND content_type = "game") as commentcount')
-            ->selectRaw('SUM(comments.vote_up) AS voteup')
-            ->selectRaw('SUM(comments.vote_down) AS votedown')
-            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
+            ->selectRaw('(SELECT SUM(vote_up) FROM comments WHERE content_id = games.id AND content_type = "game") as voteup')
+            ->selectRaw('(SELECT SUM(vote_down) FROM comments WHERE content_id = games.id AND content_type = "game") as votedown')
+            ->selectRaw('MAX(games_files.release_type) as gametype')
             ->groupBy('games.id')
             ->get();
 
+        $gametypes = \DB::table('games_files_types')
+            ->select('id', 'title', 'short')
+            ->get();
+        $gtypes = array();
+        foreach ($gametypes as $gt){
+            $t['title'] = $gt->title;
+            $t['short'] = $gt->short;
+            $gtypes[$gt->id] = $t;
+        }
+
         return view('games.index', [
             'games' => $games,
+            'gametypes' => $gtypes,
         ]);
     }
 

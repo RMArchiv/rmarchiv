@@ -20,9 +20,11 @@
             @foreach($games as $game)
             <tr>
                 <td>
+                    @if(is_null($game->gametype) == false)
                     <span class='typeiconlist'>
-                        <span class='typei type_@{{ $game->gametype }}' title='@{{ game.game_type }}'>@{{ game.game_type }}</span>
+                        <span class='typei type_{{ $gametypes[$game->gametype]['short'] }}' title='{{ $gametypes[$game->gametype]['title'] }}'>{{ $gametypes[$game->gametype]['title'] }}</span>
                     </span>
+                    @endif
                     <span class="platformiconlist">
                         <span class="typei type_{{ $game->makershort }}" title="{{ $game->makertitle }}">{{ $game->makertitle }}</span>
                     </span>
@@ -47,12 +49,13 @@
                 <td class='date'>{{ $game->gamecreated_at }}</td>
                 <td class='votes'>{{ $game->voteup or 0 }}</td>
                 <td class='votes'>{{ $game->votedown or 0 }}</td>
-                <td class='votes'>{{ number_format($game->voteavg, 2) }}&nbsp;
-                    @if($game->voteavg > 0)
+                {{ $avg = @(($game->voteup - $game->votedown) / ($game->voteup + $game->votedown)) }}
+                <td class='votes'>{{ number_format($avg, 2) }}&nbsp;
+                    @if($avg > 0)
                     <img src='/assets/rate_up.gif' alt='up' />
-                    @elseif($game->voteavg == 0)
+                    @elseif($avg == 0)
                     <img src='/assets/rate_neut.gif' alt='neut' />
-                    @elseif($game->voteavg < 0)
+                    @elseif($avg < 0)
                     <img src='/assets/rate_down.gif' alt='down' />
                     @endif
                 </td>
