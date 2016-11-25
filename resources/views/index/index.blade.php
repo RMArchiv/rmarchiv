@@ -8,7 +8,9 @@
             @else
                 @include('index._partials.login')
             @endif
-            {% include 'index/_partial/cdc.twig' %}
+            @if($cdc)
+                @include('index._partials.cdc')
+            @endif
             {% include 'index/_partial/latestadded.twig' %}
             {% include 'index/_partial/latestreleased.twig' %}
             {% include 'index/_partial/topmonth.twig' %}

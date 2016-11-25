@@ -36,11 +36,11 @@
                             @endif
                         </a>
                     </span>
-                    {% if game.cdc > 0 %}
-                    <div class="cdcstack">
-                        <img src="/assets/cdc.png" title="cdc" alt="cdc">
-                    </div>
-                    {% endif %}
+                        @if($game->cdccount > 0)
+                        <div class="cdcstack">
+                            <img src="/assets/cdc.png" title="cdc" alt="cdc">
+                        </div>
+                        @endif
                 </td>
                 <td>
                     <a href="{{ url('developer', $game->developerid) }}">{{ $game->developername }}</a>

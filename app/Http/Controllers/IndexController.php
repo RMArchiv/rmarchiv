@@ -32,9 +32,14 @@ class IndexController extends Controller
             ->get()
             ->reverse();
 
+        $cdc = \DB::table('games_coupdecoeur')#
+            ->orderBy('created_at', 'desc')
+            ->first();
+
         return view('index.index', [
             'news' => $news,
             'shoutbox' => $shoutbox,
+            'cdc' => $cdc,
         ]);
     }
 }
