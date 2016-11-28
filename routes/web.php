@@ -13,8 +13,10 @@
 
 Route::get('/', 'IndexController@index')->name('home');
 
+//Benutzer und Authentifizierung
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::resource('user_settings', 'UserSettingsController');
 
 //Route::get('/home', 'HomeController@index');
 

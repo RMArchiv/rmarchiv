@@ -11,8 +11,8 @@
             @if($cdc)
                 @include('index._partials.cdc')
             @endif
-            {% include 'index/_partial/latestadded.twig' %}
-            {% include 'index/_partial/latestreleased.twig' %}
+            @include('index._partials.latestadded')
+            @include('index._partials.latestreleased')
             {% include 'index/_partial/topmonth.twig' %}
             {% include 'index/_partial/topalltime.twig' %}
         </div>
