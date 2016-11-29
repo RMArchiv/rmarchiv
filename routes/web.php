@@ -34,6 +34,10 @@ Route::post('games/{id}/gamefiles/upload', 'FineUploaderController@endpoint@uplo
 Route::post('games/{id}/gamefiles/delete', 'GameFileController@destroy')->name('gamefiles.delete');
 Route::get('games/download/{id}', 'GameFileController@download')->name('gamefiles.download');
 
+//Suchrouten
+Route::get('search', 'SearchController@index');
+Route::get('search/{term}', 'SearchController@search');
+
 //Entwickler Routen
 Route::resource('developer', 'DeveloperController');
 

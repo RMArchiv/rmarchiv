@@ -22,7 +22,7 @@
             @include('index._partials.news')
         </div>
         <div id='rightbar' class='column'>
-            {% include 'index/_partial/searchbox.twig' %}
+            @include('index._partials.search')
             {% include 'index/_partial/stats.twig' %}
             {% include 'index/_partial/welike.twig' %}
             {% include 'index/_partial/latestcomments.twig' %}
