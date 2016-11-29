@@ -80,6 +80,7 @@ class DeveloperController extends Controller
                 'makers.short as makershort',
                 'makers.title as makertitle',
                 'makers.id as makerid',
+                'games.views as views'
             ])
             ->selectRaw('(SELECT COUNT(id) FROM comments WHERE content_id = games.id AND content_type = "game") as commentcount')
             ->selectRaw('(SELECT SUM(vote_up) FROM comments WHERE content_id = games.id AND content_type = "game") as voteup')

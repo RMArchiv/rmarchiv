@@ -112,10 +112,13 @@
                             </ul>
                         </td>
                         <td id='popularity'>
-                            popularität : totalviewsinpercent
+                            @php
+                                $perc = \App\Helpers\MiscHelper::getPopularity($game->views, \App\Helpers\DatabaseHelper::getGameViewsMax());
+                            @endphp
+                            popularität: {{ round($perc, 2) }}%
                             <br/>
-                            <div class='outerbar' title='0%'>
-                                <div class='innerbar' style='width: @{{ data.views.percent }}%'>&nbsp;<span>@{{ data.views.percent }}%</span>
+                            <div class='outerbar' title='{{ round($perc, 2) }}%'>
+                                <div class='innerbar' style='width: {{ $perc }}%'>&nbsp;<span>{{ $perc }}%</span>
                                 </div>
                             </div>
                             <div class='awards'></div>

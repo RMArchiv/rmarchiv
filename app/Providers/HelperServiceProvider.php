@@ -25,5 +25,6 @@ class HelperServiceProvider extends ServiceProvider
     {
         require_once(app_path().'/Helpers/CheckRateableHelper.php');
         require_once(app_path().'/Helpers/DatabaseHelper.php');
+        require_once(app_path().'/Helpers/MiscHelper.php');
     }
 }

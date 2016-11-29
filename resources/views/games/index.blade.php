@@ -1,20 +1,20 @@
 @extends('layouts.app')
-
 @section('content')
     <div id='content'>
+        <h2>Spiele</h2>
         <table id='pouetbox_prodlist' class='boxtable pagedtable'>
             <thead>
-            <tr class='sortable'>
-                <th>spielname</th>
-                <th>entwickler</th>
-                <th>release date</th>
-                <th>hinzugefügt</th>
-                <th><img src='/assets/rate_up.gif' alt='super' /></th>
-                <th><img src='/assets/rate_down.gif' alt='scheiße' /></th>
-                <th>avg</th>
-                <th>popularität</th>
-                <th>kommentare</th>
-            </tr>
+                <tr class='sortable'>
+                    <th>spielname</th>
+                    <th>entwickler</th>
+                    <th>release date</th>
+                    <th>hinzugefügt</th>
+                    <th><img src='/assets/rate_up.gif' alt='super' /></th>
+                    <th><img src='/assets/rate_down.gif' alt='scheiße' /></th>
+                    <th>avg</th>
+                    <th>popularität</th>
+                    <th>kommentare</th>
+                </tr>
             </thead>
 
             @foreach($games as $game)
@@ -59,7 +59,10 @@
                     <img src='/assets/rate_down.gif' alt='down' />
                     @endif
                 </td>
-                <td><div class='innerbar_solo' style='width: @{{ game.views.percent }}px' title='@{{ game.views.percent }}%'>&nbsp;<span>@{{ game.views.percent }}</span></div></td>
+                @php
+                    $perc = \App\Helpers\MiscHelper::getPopularity($game->views, \App\Helpers\DatabaseHelper::getGameViewsMax());
+                @endphp
+                <td><div class='innerbar_solo' style='width: {{ $perc }}%' title='{{ $perc }}%'><span>{{ $perc }}</span></div></td>
                 <td>{{ $game->commentcount }}</td>
             </tr>
             @endforeach

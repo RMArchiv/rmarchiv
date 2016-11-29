@@ -58,7 +58,10 @@
                         <img src='/assets/rate_down.gif' alt='down' />
                     @endif
                 </td>
-                <td><div class='innerbar_solo' style='width: @{{ game.views.percent }}px' title='@{{ game.views.percent }}%'>&nbsp;<span>@{{ game.views.percent }}</span></div></td>
+                @php
+                    $perc = \App\Helpers\MiscHelper::getPopularity($g->views, \App\Helpers\DatabaseHelper::getGameViewsMax());
+                @endphp
+                <td><div class='innerbar_solo' style='width: {{ $perc }}%' title='{{ $perc }}%'><span>{{ $perc }}</span></div></td>
                 <td>{{ $g->commentcount }}</td>
             </tr>
             @endforeach

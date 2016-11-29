@@ -5,6 +5,15 @@ namespace App\Helpers;
 use App\Models\Developer;
 
 class DatabaseHelper{
+
+    public static function getGameViewsMax(){
+        $v = \DB::table('games')
+            ->selectRaw('MAX(views) as maxviews')
+            ->first();
+
+        return $v->maxviews;
+    }
+
     public static function langId_from_short($short){
         $lang = \DB::table('languages')
             ->select('id')
