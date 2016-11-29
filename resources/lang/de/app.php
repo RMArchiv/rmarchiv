@@ -45,6 +45,9 @@ return [
     'games' => [
         'title' => 'spiele',
 
+        'index' => [
+        ],
+
         'gamefiles' => [
             'title' => 'dateien zum spiel',
             'type' => 'typ',
