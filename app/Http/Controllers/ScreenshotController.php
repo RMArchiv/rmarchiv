@@ -26,7 +26,6 @@ class ScreenshotController extends Controller
             $storagePath = \Storage::get($s->filename);
         }
 
-
         return Image::make($storagePath)->response();
     }
 
