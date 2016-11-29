@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\UploadedFile;
@@ -11,18 +12,20 @@ class ScreenshotController extends Controller
 {
     public function show($gameid, $screenid){
         $s = \DB::table('screenshots')
+            ->select('filename')
             ->where('game_id', '=', $gameid)
             ->where('screenshot_id', '=', $screenid)
-            ->get();
+            ->first();
 
         $storagePath = '';
 
         //Prüfen ob Screenshots vorhanden sind
-        if($s){//Es sind keine Screenshots vorhanden
+        if(is_null($s)){//Es sind keine Screenshots vorhanden
             $storagePath = public_path().'/assets/no_image.png';
         }else{//Es sind Screenshots vorhanden
-            $storagePath = \Storage::get('screenshots/'.$gameid.'.'.$screenid.'.png');
+            $storagePath = \Storage::get($s->filename);
         }
+
 
         return Image::make($storagePath)->response();
     }
@@ -46,15 +49,14 @@ class ScreenshotController extends Controller
         $imageName = \Storage::putFile('screenshots', new UploadedFile($file->path(), $file->getClientOriginalName()));
         //dd($file);
 
-        $l = new Logo;
-        $l->extension = \Storage::mimeType($imageName);
-        $l->filename = str_replace($extorig, '', $imageName);
-        $l->title = $request->get('logoname');
-        $l->user_id = \Auth::id();
+        $s = \DB::table('screenshots')->insert([
+            'game_id' => $gameid,
+            'user_id' => \Auth::id(),
+            'screenshot_id' => $screenid,
+            'created_at' => Carbon::now(),
+            'filename' => str_replace($extorig, '', $imageName),
+        ]);
 
-
-        $l->save();
-
-        return redirect()->route('submit.logo.success');
+        return redirect()->route('screenshot.upload.success', $gameid);
     }
 }

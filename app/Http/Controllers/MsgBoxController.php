@@ -43,4 +43,15 @@ class MsgBoxController extends Controller
 
         return view('msgbox', $msg);
     }
+
+    public function screenshot_add($gameid){
+        $msg = [
+            'title' => 'screenshot erfolgreich hinzugefügt',
+            'msg' => 'der screenshot wurde erfolgreich hinzugefügt',
+            'redirect' => 'zurück zum spiel...',
+            'redirect_to' => url('games', $gameid),
+        ];
+
+        return view('msgbox', $msg);
+    }
 }

@@ -79,4 +79,5 @@ Route::get('ac_developer/{term}', 'AutocompleteController@developer');
 Route::get('submit/logo/success', 'MsgBoxController@submit_logo')->name('submit.logo.success');
 Route::get('comment/success/{type}/{id}', 'MsgBoxController@comment_add')->name('news.comment.add.success');
 Route::get('games/success/{id}', 'MsgBoxController@game_add')->name('game.add.success');
+Route::get('screenshot/upload/success/{gameid}', 'MsgBoxController@screenshot_add')->name('screenshot.upload.success');
 
