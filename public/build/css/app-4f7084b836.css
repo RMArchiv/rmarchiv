@@ -2269,4 +2269,84 @@ tr.sortable th {
 select#language option[value="de"] {
   background-image: url(/assets/lng/16/de.png); }
 
+.style-tabs {
+  background: #446688;
+  width: 420px; }
+
+.style-tabs,
+.style-tabs .ui-tabs-nav li a,
+.style-tabs .ui-tabs-nav {
+  padding: 0; }
+
+.style-tabs .ui-tabs-panel {
+  padding: 5px; }
+
+.style-tabs .ui-widget-header {
+  border: #00001a;
+  background: #4E6F90;
+  width: 100%; }
+
+.style-tabs .ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+  border-bottom-right-radius: 0; }
+
+.style-tabs .ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {
+  border-bottom-left-radius: 0; }
+
+.style-tabs .ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
+  border-top-right-radius: 0; }
+
+.style-tabs .ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
+  border-top-left-radius: 0; }
+
+.style-tabs .ui-tabs-nav li {
+  position: relative;
+  height: 100%;
+  cursor: pointer;
+  margin: 0;
+  top: 0; }
+
+.style-tabs .ui-widget-header .ui-state-default {
+  background: none;
+  border: none; }
+
+.style-tabs .ui-tabs-nav li.ui-tabs-active,
+.style-tabs .ui-tabs-nav li:hover a:hover {
+  background: #4E6F90;
+  color: #ffdf00; }
+
+.style-tabs .ui-tabs-nav li .icon {
+  color: #ffbf00;
+  background-position: center 3px;
+  padding-top: 40px;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  width: 80px; }
+
+.style-tabs .ui-tabs-nav li.ui-tabs-active .icon,
+.style-tabs .ui-tabs-nav li:hover .icon {
+  color: #ffbf00; }
+
+.style-tabs .ui-tabs-nav li.ui-tabs-active .icon:before,
+.style-tabs .ui-tabs-nav li:hover .icon:before {
+  position: absolute;
+  right: 0;
+  top: 0; }
+
+.style-tabs .ui-tabs-nav li.ui-tabs-active .icon:after,
+.style-tabs .ui-tabs-nav li:hover .icon:after {
+  position: absolute;
+  left: 0;
+  top: 0; }
+
+.style-tabs .ui-tabs-nav li a {
+  outline: none; }
+
+.style-tabs .ui-tabs-nav li.ui-tabs-active a {
+  cursor: pointer; }
+
+.style-tabs .ui-widget-content {
+  border: 1px solid #00001a;
+  color: #ffffe0; }
+
 /*# sourceMappingURL=app.css.map */
