@@ -2137,12 +2137,16 @@ select#language option[value="de"] {background-image:$url_lang_16_de;}
 .style-tabs {
   background: #446688;
   width: 420px;
+  border: 0;
+  border-radius: 0;
 }
 
 .style-tabs,
 .style-tabs .ui-tabs-nav li a,
 .style-tabs .ui-tabs-nav {
-  padding: 0;
+  padding: 0 6px;
+  color: $color_link;
+  border: 0px solid $color_background;
 }
 .style-tabs .ui-tabs-panel {
   padding: 5px;
@@ -2150,9 +2154,10 @@ select#language option[value="de"] {background-image:$url_lang_16_de;}
 
 .style-tabs .ui-widget-header {
   border: $color_background;
-  background: #4E6F90;
+  background: #446688;
   //height: 74px;
-  width: 100%;
+  //width: 100%;
+  margin-right: 6px;
 }
 
 .style-tabs .ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
@@ -2180,7 +2185,6 @@ select#language option[value="de"] {background-image:$url_lang_16_de;}
   background: none;
   border: none;
   color: #ffbf00;
-
 }
 
 .style-tabs .ui-tabs-nav li.ui-tabs-active,
@@ -2192,8 +2196,8 @@ select#language option[value="de"] {background-image:$url_lang_16_de;}
   color: $color_link;
   background-position: center 3px;
   padding-top: 40px;
-  font-weight: bold;
-  font-size: 12px;
+  //font-weight: bold;
+  //font-size: 12px;
   text-align: center;
   width: 80px;
 }
@@ -2218,9 +2222,20 @@ select#language option[value="de"] {background-image:$url_lang_16_de;}
 }
 .style-tabs .ui-tabs-nav li.ui-tabs-active a {
   cursor: pointer;
+  border-top: 1px solid $color_background;
+  border-left: 1px solid $color_background;
+  border-right: 1px solid $color_background;
 }
 
 .style-tabs .ui-widget-content {
   border: 1px solid $color_background;
   color: $color_text;
+}
+
+.style-tabs .ui-widget-content a{
+  color: $color_link;
+}
+
+.style-tabs .ui-widget-content a:hover{
+  color: $color_link_hover;
 }

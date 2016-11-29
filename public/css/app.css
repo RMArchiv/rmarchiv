@@ -2271,20 +2271,24 @@ select#language option[value="de"] {
 
 .style-tabs {
   background: #446688;
-  width: 420px; }
+  width: 420px;
+  border: 0;
+  border-radius: 0; }
 
 .style-tabs,
 .style-tabs .ui-tabs-nav li a,
 .style-tabs .ui-tabs-nav {
-  padding: 0; }
+  padding: 0 6px;
+  color: #ffbf00;
+  border: 0px solid #00001a; }
 
 .style-tabs .ui-tabs-panel {
   padding: 5px; }
 
 .style-tabs .ui-widget-header {
   border: #00001a;
-  background: #4E6F90;
-  width: 100%; }
+  background: #446688;
+  margin-right: 6px; }
 
 .style-tabs .ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
   border-bottom-right-radius: 0; }
@@ -2307,7 +2311,8 @@ select#language option[value="de"] {
 
 .style-tabs .ui-widget-header .ui-state-default {
   background: none;
-  border: none; }
+  border: none;
+  color: #ffbf00; }
 
 .style-tabs .ui-tabs-nav li.ui-tabs-active,
 .style-tabs .ui-tabs-nav li:hover a:hover {
@@ -2318,8 +2323,6 @@ select#language option[value="de"] {
   color: #ffbf00;
   background-position: center 3px;
   padding-top: 40px;
-  font-weight: bold;
-  font-size: 12px;
   text-align: center;
   width: 80px; }
 
@@ -2343,10 +2346,19 @@ select#language option[value="de"] {
   outline: none; }
 
 .style-tabs .ui-tabs-nav li.ui-tabs-active a {
-  cursor: pointer; }
+  cursor: pointer;
+  border-top: 1px solid #00001a;
+  border-left: 1px solid #00001a;
+  border-right: 1px solid #00001a; }
 
 .style-tabs .ui-widget-content {
   border: 1px solid #00001a;
   color: #ffffe0; }
+
+.style-tabs .ui-widget-content a {
+  color: #ffbf00; }
+
+.style-tabs .ui-widget-content a:hover {
+  color: #ffdf00; }
 
 /*# sourceMappingURL=app.css.map */

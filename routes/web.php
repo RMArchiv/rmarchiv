@@ -33,7 +33,7 @@ Route::post('games/{id}/gamefiles', 'GameFileController@store')->name('gamefiles
 Route::post('games/{id}/gamefiles/upload', 'FineUploaderController@endpoint@upload')->name('gamefiles.upload');
 Route::post('games/{id}/gamefiles/delete', 'GameFileController@destroy')->name('gamefiles.delete');
 Route::get('games/download/{id}', 'GameFileController@download')->name('gamefiles.download');
-Route::get('games/screenshot/{gameid}/{screenid}', 'ScreenshotController@show')->name('screenshot.show');
+Route::get('games/{gameid}/screenshot/{screenid}', 'ScreenshotController@show')->name('screenshot.show');
 Route::get('games/{gameid}/screenshot/create/{screenid}', 'ScreenshotController@create')->name('screenshot.create');
 Route::post('games/{gameid}/screenshot/upload/{screenid}', 'ScreenshotController@upload')->name('screenshot.upload');
 
