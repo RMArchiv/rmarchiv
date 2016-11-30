@@ -37,7 +37,9 @@
                             <td>
                                 <a href="{{ route('board.cat.order', [$cat->catid, 'down']) }}"><img src="/assets/sort_up.png"></a> -
                                 <a href="{{ route('board.cat.order', [$cat->catid, 'up']) }}"><img src="/assets/sort_down.png"></a> ::
-                                <a href="#">[löschen]</a>
+                                @if($cat->catthreads == 0 and $cat->catposts == 0)
+                                    <a href="#">[löschen]</a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
