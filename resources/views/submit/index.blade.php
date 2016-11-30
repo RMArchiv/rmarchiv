@@ -15,8 +15,8 @@
                 @if(Auth::user()->settings->is_admin)
                 <h2>Admin Only</h2>
                 <ul class="boxlist">
-                    <li><a href="{{ url('cdc/create') }}">changelog hinzufügen</a></li>
-                    <li><a href="#">'coup de coeur' hinzufügen</a></li>
+                    <li><a href="#">changelog hinzufügen</a></li>
+                    <li><a href="{{ url('cdc/create') }}">'coup de coeur' hinzufügen</a></li>
                     <li><a href="#">maker hinzufügen</a></li>
                     <li><a href="#">genre hinzufügen</a></li>
                     <li><a href="#">faq hinzufügen</a></li>

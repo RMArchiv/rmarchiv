@@ -54,4 +54,15 @@ class MsgBoxController extends Controller
 
         return view('msgbox', $msg);
     }
+
+    public function cdc_add($gameid){
+        $msg = [
+            'title' => 'coup de coeur erfolgreich hinzugefügt',
+            'msg' => 'coup de coeur wurde erfolgreich hinzugefügt',
+            'redirect' => 'zurück zum index...',
+            'redirect_to' => url('/'),
+        ];
+
+        return view('msgbox', $msg);
+    }
 }
