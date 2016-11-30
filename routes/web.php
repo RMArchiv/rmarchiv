@@ -72,6 +72,18 @@ Route::post('submit/logo', 'SubmitController@logo_add');
 Route::post('shoutbox', 'ShoutboxController@store');
 Route::get('shoutbox', 'ShoutboxController@index');
 
+//Routen für Forum/Board
+Route::get('board', 'BoardController@index')->name('board.show');
+Route::get('board/create', 'BoardController@create_cat')->name('board.cat.create');
+Route::post('board/create', 'BoardController@store_cat')->name('board.cat.store');
+Route::get('board/{catid}', 'BoardController@show_cat')->name('board.cat.show');
+Route::get('board/{catid}/{direction}', 'BoardController@order_cat')->name('board.cat.order');
+Route::get('board/{catid}/thread/create', 'BoardController@create_thread')->name('board.thread.create');
+Route::post('board/{catid}/thread/create', 'BoardController@store_thread')->name('board.thread.store');
+Route::get('board/thread/{threadid}', 'BoardController@show_thread')->name('board.thread.show');
+Route::post('board/thread/{threadid}', 'BoardController@store_post')->name('board.post.store');
+
+
 //Autocomplete Routen
 Route::get('ac_developer/{term}', 'AutocompleteController@developer');
 Route::get('ac_games/{term}', 'AutocompleteController@game');
