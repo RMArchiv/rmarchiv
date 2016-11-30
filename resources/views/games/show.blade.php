@@ -79,7 +79,11 @@
                                     <td>
                                         <ul>
                                             <li>
-                                                <span class='type type_@{{ data.game_type }}'>@{{ data.game_type }}</span> @{{ data.game_type }}
+                                                @if(count($files) > 0)
+                                                    <span class='type type_{{ $files->first()->filetypeshort }}'>{{ $files->first()->filetypetitle }}</span> {{ $files->first()->filetypetitle }}
+                                                @else
+                                                    keine spieldateien vorhanden
+                                                @endif
                                             </li>
                                         </ul>
                                     </td>

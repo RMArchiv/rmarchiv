@@ -246,6 +246,7 @@ class GameController extends Controller
             ->groupBy('release_type')
             ->first();
 
+        //dd($files);
 
         event(new GameView($id));
 
