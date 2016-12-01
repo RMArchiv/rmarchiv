@@ -187,6 +187,7 @@ return [
         Optimus\FineuploaderServer\Provider\LaravelServiceProvider::class,
         TeamTNT\TNTSearch\TNTSearchServiceProvider::class,
         Intervention\Image\ImageServiceProviderLaravel5::class,
+        Zizaco\Entrust\EntrustServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -226,6 +227,7 @@ return [
         'DB' => Illuminate\Support\Facades\DB::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Eloquent' => Illuminate\Database\Eloquent\Model::class,
+        'Entrust' => Zizaco\Entrust\EntrustFacade::class,
         'Event' => Illuminate\Support\Facades\Event::class,
         'File' => Illuminate\Support\Facades\File::class,
         'Form' => Collective\Html\FormFacade::class,

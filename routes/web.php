@@ -16,6 +16,8 @@ Route::get('/', 'IndexController@index')->name('home');
 //Administration
 Route::get('users/admin/{userid}', 'UserController@admin')->name('user.admin');
 Route::post('users/admin/{userid}', 'UserController@admin_store');
+Route::get('users/perm/role', 'UserPermissionController@createRole');
+Route::post('users/perm/role', 'UserPermissionController@storeRole')->name('user.perm.role.store');
 
 //Benutzer und Authentifizierung
 Auth::routes();
