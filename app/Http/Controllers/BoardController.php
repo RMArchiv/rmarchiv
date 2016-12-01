@@ -67,7 +67,7 @@ class BoardController extends Controller
             ->orderBy('board_threads.id', 'desc')
             ->get();
 
-        return view('board.cats.index', [
+        return view('board.threads.index', [
             'threads' => $thr,
         ]);
     }
@@ -122,7 +122,31 @@ class BoardController extends Controller
     }
 
     public function show_thread($threadid){
-        return('Test');
+
+        $posts = \DB::table('board_posts as p')
+            ->leftJoin('board_threads as t', 'p.thread_id', '=', 't.id')
+            ->leftjoin('board_cats as c', 'p.cat_id', '=', 'c.id')
+            ->leftJoin('users as u', 'p.user_id', '=', 'u.id')
+            ->select([
+                'p.id as pid',
+                'u.id as uid',
+                'p.cat_id as pcatid',
+                'p.content_md as pcontent_md',
+                'p.content_html as pcontent_html',
+                'p.created_at as pdate',
+                't.id as tid',
+                't.title as ttitle',
+                'c.title as ctitle',
+                'u.name as uname',
+                'c.id as cid'
+            ])
+            ->where('p.thread_id', '=', $threadid)
+            ->orderBy('p.id', 'asc')
+            ->get();
+
+        return view('board.threads.show', [
+            'posts' => $posts,
+        ]);
     }
 
     public function create_thread($catid){
@@ -155,7 +179,38 @@ class BoardController extends Controller
         return redirect()->action('BoardController@show_thread', [$threadid]);
     }
 
-    public function store_post($threadid){
+    public function store_post(Request $request, $threadid){
+        $this->validate($request, [
+            'catid' => 'required',
+            'message' => 'required',
+        ]);
 
+        $date = Carbon::now();
+
+        $pid = \DB::table('board_posts')->insertGetId([
+            'user_id' => \Auth::id(),
+            'cat_id' => $request->get('catid'),
+            'thread_id' => $threadid,
+            'content_md' => $request->get('message'),
+            'content_html' => \Markdown::convertToHtml($request->get('message')),
+            'created_at' => $date,
+        ]);
+
+        \DB::table('board_threads')
+            ->where('id', '=', $threadid)
+            ->update([
+                'last_created_at' => $date,
+                'last_user_id' => \Auth::id(),
+            ]);
+
+        \DB::table('board_cats')
+            ->where('id', '=', $request->get('catid'))
+            ->update([
+                'last_created_at' => $date,
+                'last_user_id' => \Auth::id(),
+            ]);
+
+        $url = \URL::route('board.thread.show', [$threadid]).'#c'.$pid;
+        return redirect()->to($url);
     }
 }
