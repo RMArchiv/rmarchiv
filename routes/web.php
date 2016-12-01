@@ -13,6 +13,10 @@
 
 Route::get('/', 'IndexController@index')->name('home');
 
+//Administration
+Route::get('users/admin/{userid}', 'UserController@admin')->name('user.admin');
+Route::post('users/admin/{userid}', 'UserController@admin_store');
+
 //Benutzer und Authentifizierung
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
