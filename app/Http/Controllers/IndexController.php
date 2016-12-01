@@ -148,6 +148,26 @@ class IndexController extends Controller
             ->groupBy('games.id')
             ->limit(5)->get();
 
+        $threads = \DB::table('board_threads as t')
+            ->leftJoin('users as u', 't.user_id', '=', 'u.id')
+            ->leftJoin('users as lu', 't.last_user_id', '=', 'u.id')
+            ->leftJoin('board_cats as c', 'c.id', '=', 't.cat_id')
+            ->select([
+                'u.id as uid',
+                'u.name as uname',
+                'c.id as cid',
+                'c.title as ctitle',
+                't.id as tid',
+                't.title as ttitle',
+                'lu.id as luid',
+                'lu.name as luname'
+            ])
+            ->selectRaw('(SELECT COUNT(id) FROM board_posts WHERE thread_id = t.id) as pcount')
+            ->groupBy('t.id')
+            ->orderBy('t.last_created_at', 'desc')
+            ->limit(10)
+            ->get();
+
         return view('index.index', [
             'news' => $news,
             'shoutbox' => $shoutbox,
@@ -155,6 +175,7 @@ class IndexController extends Controller
             'latestadded' => $latestadded,
             'gametypes' => $gtypes,
             'latestreleased' => $latestreleased,
+            'threads' => $threads,
         ]);
     }
 }

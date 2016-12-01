@@ -18,7 +18,7 @@
         </div>
         <div id='middlebar' class='column'>
             @include('index._partials.shoutbox')
-            {% include 'index/_partial/board_latest.twig' %}
+            @include('index._partials.board')
             @include('index._partials.news')
         </div>
         <div id='rightbar' class='column'>

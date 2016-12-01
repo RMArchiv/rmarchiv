@@ -1174,9 +1174,11 @@ td.date {
   vertical-align: middle; }
 
 #rmarchivbox_latestbbs .category {
-  width: 50px;
   padding-left: 5px;
-  padding-right: 5px; }
+  padding-right: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 #rmarchivbox_latestbbs .topic {
   font-weight: bold;
