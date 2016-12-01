@@ -18,13 +18,15 @@ Route::get('users/admin/{userid}', 'UserController@admin')->name('user.admin');
 Route::post('users/admin/{userid}', 'UserController@admin_store');
 Route::get('users/perm/role', 'UserPermissionController@createRole');
 Route::post('users/perm/role', 'UserPermissionController@storeRole')->name('user.perm.role.store');
+Route::get('users/perm/permissions', 'UserPermissionController@createPermission');
+Route::post('users/perm/permission', 'UserPermissionController@storePermission')->name('user.perm.perm.store');
+Route::get('users/perm/role/{id}', 'UserPermissionController@showRole');
+Route::get('users/perm/permissions/{id}', 'UserPermissionController@showPermission');
 
 //Benutzer und Authentifizierung
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::resource('user_settings', 'UserSettingsController');
-
-//Route::get('/home', 'HomeController@index');
 
 //News Routen
 Route::resource('news', 'NewsController');

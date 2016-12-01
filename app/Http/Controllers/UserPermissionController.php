@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserPermission;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
 
@@ -23,5 +24,31 @@ class UserPermissionController extends Controller
         $r->save();
 
         return redirect()->action('UserPermissionController@createRole');
+    }
+
+    public function createPermission(){
+        $perms = UserPermission::all();
+
+        return view('users.entrust.addperm', [
+            'perms' => $perms
+        ]);
+    }
+
+    public function storePermission(Request $request){
+        $p = new UserPermission();
+        $p->name = $request->get('name');
+        $p->display_name = $request->get('dname');
+        $p->description = $request->get('desc');
+        $p->save();
+
+        return redirect()->action('UserPermissionController@createPermission');
+    }
+
+    public function showRole($id){
+
+    }
+
+    public function  showPermission($id){
+
     }
 }
