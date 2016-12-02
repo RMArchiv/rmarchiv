@@ -22,6 +22,8 @@ Route::get('users/perm/permissions', 'UserPermissionController@createPermission'
 Route::post('users/perm/permission', 'UserPermissionController@storePermission')->name('user.perm.perm.store');
 Route::get('users/perm/role/{id}', 'UserPermissionController@showRole');
 Route::get('users/perm/permissions/{id}', 'UserPermissionController@showPermission');
+Route::post('users/perm/role/{roleid}', 'UserPermissionController@addPermToRole')->name('user.perm.permtorole');
+Route::get('users/perm/role/{roleid}/remove/{permid}', 'UserPermissionController@removePermFromRole')->name('user.perm.removefromrole');
 
 //Benutzer und Authentifizierung
 Auth::routes();

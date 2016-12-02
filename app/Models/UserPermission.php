@@ -2,24 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Zizaco\Entrust\EntrustPermission;
 
 /**
  * Class UserPermission
  */
-class UserPermission extends Model
+class UserPermission extends EntrustPermission
 {
-    protected $table = 'user_permissions';
-
-    public $timestamps = true;
-
-    protected $fillable = [
-        'name',
-        'display_name',
-        'description'
-    ];
-
-    protected $guarded = [];
-
-        
+    //
 }

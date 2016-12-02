@@ -45,7 +45,37 @@ class UserPermissionController extends Controller
     }
 
     public function showRole($id){
+        $p = \DB::table('user_permission_role as pr')
+            ->leftJoin('user_permissions as p', 'pr.permission_id', '=', 'p.id')
+            ->where('pr.role_id', '=', $id)
+            ->get();
 
+        $ptoadd = UserPermission::all();
+
+        return view('users.entrust.showrole', [
+            'perms' => $p,
+            'roleid' => $id,
+            'permstoadd' => $ptoadd,
+        ]);
+    }
+
+    public function addPermToRole(Request $request, $roleid){
+
+        $role = UserRole::all()->where('id', '=', $roleid)->first();
+        $perm = UserPermission::all()->where('id', '=', $request->get('perm'))->first();
+
+        $role->attachPermission($perm);
+
+        return redirect()->action('UserPermissionController@showRole', $roleid);
+    }
+
+    public function removePermFromRole($roleid, $permid){
+        $role = UserRole::all()->where('id', '=', $roleid)->first();
+        $perm = UserPermission::all()->where('id', '=', $permid)->first();
+
+        $role->detachPermission($perm);
+
+        return redirect()->action('UserPermissionController@showRole', $roleid);
     }
 
     public function  showPermission($id){

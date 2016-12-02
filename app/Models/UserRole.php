@@ -2,24 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Zizaco\Entrust\EntrustRole;
 
-/**
- * Class UserRole
- */
-class UserRole extends Model
+class UserRole extends EntrustRole
 {
-    protected $table = 'user_roles';
-
-    public $timestamps = true;
-
-    protected $fillable = [
-        'name',
-        'display_name',
-        'description'
-    ];
-
-    protected $guarded = [];
-
-        
+    //
 }
