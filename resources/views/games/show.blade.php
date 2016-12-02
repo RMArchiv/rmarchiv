@@ -251,7 +251,7 @@
                     </div>
                 </div>
 
-                @if(Auth::check())
+                @permission(('create-game-comment'))
                     <div class='rmarchivtbl' id='rmarchivbox_prodpost'>
                         <h2>kommentar hinzufügen</h2>
                         {!! Form::open(['action' => ['CommentController@add']]) !!}
@@ -278,7 +278,14 @@
                         </div>
                         {!! Form::close() !!}
                     </div>
-                @endif
+                @else
+                    <div class="rmarchivtbl" id="rmarchivbox_prodpost">
+                        <h2>Keine Berechtigung</h2>
+                        <div class="content">
+                            Dir fehlen die Berechtigung Kommentare zu posten.
+                        </div>
+                    </div>
+                @endpermission
             </div>
         @else
             <h2>zu dieser id existiert keine news</h2>

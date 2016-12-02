@@ -80,6 +80,8 @@ class RegisterController extends Controller
 
         $us->save();
 
+        $user->attachRole('user');
+
         return $user;
     }
 }

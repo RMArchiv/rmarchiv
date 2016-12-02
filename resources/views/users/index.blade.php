@@ -24,15 +24,7 @@
                 <span title="{{ $user->created_at }}"><!-- {{ $user->created_at }} -->{{ $user->created_at }}</span>
             </td>
             <td>
-                @if($user->settings->is_admin == 1)
-                    {{ trans('app.user.user_level.admin') }}
-                @else
-                    @if($user->settings->is_moderator == 1)
-                        {{ trans('app.user.user_level.moderator') }}
-                    @else
-                        {{ trans('app.user.user_level.user') }}
-                    @endif
-                @endif
+                <span title="{{ $user->roles[0]->description }}">{{ $user->roles[0]->display_name }}</span>
             </td>
             <td>
                 <div class='innerbar_solo' style='width: 50px' title='50 obeys'>&nbsp;<span>50 obeys</span></div>

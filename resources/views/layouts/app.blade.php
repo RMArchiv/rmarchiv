@@ -30,6 +30,7 @@
 
 @include('_partials.header')
 @include('_partials.navigation', ['part' => 'toppart'])
+@include('_partials.banned')
 
 @yield('content')
 

@@ -10,7 +10,7 @@
         </li>
         @endforeach
     </ul>
-    @if(Auth::check())
+    @permission(('create-shoutbox'))
     <div class='foot loggedin'>
         <span><a href='{{ url('shoutbox') }}'>mehr</a>...</span>
         {!! Form::open(['action' => ['ShoutboxController@store']]) !!}
@@ -20,5 +20,5 @@
     </div>
     @else
     <div class='foot'><a href='{{ url('shoutbox') }}'>mehr</a>...</div>
-    @endif
+    @endpermission
 </div>

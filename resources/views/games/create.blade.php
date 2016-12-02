@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+    @permission(('create-games'))
     <div id="content">
         {!! Form::open(['action' => ['GameController@store']]) !!}
         @if (count($errors) > 0)
@@ -120,4 +121,7 @@
             </div>
         {!! Form::close() !!}
     </div>
+    @else
+        @include('_partials.accessdenied')
+    @endpermission
 @endsection
