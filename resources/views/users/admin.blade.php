@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
     <div id="content">
-        <form action="{{ url('users/admin', $user->uid) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ url('users/admin', $user->id) }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="rmarchivtbl" id="rmarchivbox_useradmin">
-                <h2>benutzeradministration für: {{ $user->uname }}</h2>
+                <h2>benutzeradministration für: {{ $user->name }}</h2>
 
                 @if (count($errors) > 0))
                 <div class="rmarchivtbl errorbox">
@@ -19,17 +19,19 @@
 
                 <div class="content">
                     <div class="formifier">
-                        <div class="row" id="row_ismod">
-                            <label for="moderator">moderator</label>
-                            <input type="checkbox" name="moderator" {{ ($user->usmod == 1) ? 'checked="checked"' : '' }}>
-                        </div>
-                        <div class="row" id="row_admin">
-                            <label for="admin">admin</label>
-                            <input type="checkbox" name="admin" {{ ($user->usadmin == 1) ? 'checked="checked"' : '' }}>
-                        </div>
-                        <div class="row" id="row_banned">
-                            <label for="banned">gebannt</label>
-                            <input type="checkbox" name="banned" {{ ($user->usbanned == 1) ? 'checked="checked"' : '' }}>
+                        <div class='row' id='row_maker'>
+                            <label for='perm'>berechtigung verknüpfen</label>
+                            <select name='perm' id='perm'>
+                                <option value="0">bitte berechtigung wählen</option>
+                                @foreach($perms as $perm)
+                                    @if($perm->id == $user->hasRole($perm->name))
+                                        <option selected="selected" value="{{ $perm->id }}">{{ $perm->name }}</option>
+                                    @else
+                                        <option value="{{ $perm->id }}">{{ $perm->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            <span> [<span class="req">req</span>]</span>
                         </div>
                     </div>
                 </div>

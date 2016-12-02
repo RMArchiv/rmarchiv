@@ -12,9 +12,10 @@
                     <li><a href='{{ url('submit/logo') }}'>upload eines logos</a></li>
                     <li><a href='{{ url('logo/vote') }}'>bewerte logos</a></li>
                 </ul>
-                @if(Auth::user()->settings->is_admin)
+                @role(('owner', 'admin'))
                 <h2>Admin Only</h2>
                 <ul class="boxlist">
+                    <li><a href="{{ url('users/perm/role') }}">benutzerberechtigungen</a></li>
                     <li><a href="{{ url('board/create') }}">board kategorie hinzufügen</a></li>
                     <li><a href="{{ url('cdc/create') }}">'coup de coeur' hinzufügen</a></li>
                     <li><a href="#">maker hinzufügen</a></li>
@@ -22,7 +23,7 @@
                     <li><a href="#">faq hinzufügen</a></li>
                     <li><a href="#">award-kategorie hinzufügen</a></li>
                 </ul>
-                @endif
+                @endrole
             </div>
         </div>
     @else

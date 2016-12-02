@@ -26,7 +26,7 @@
                 </thead>
                 @foreach($perms as $r)
                     <tr>
-                        <td><a href="{{ action('UserPermissionController@showPermission', $r->id) }}">{{ $r->name }}</a></td>
+                        <td>{{ $r->name }}</td>
                         <td>{{ $r->display_name }}</td>
                         <td>{{ $r->description }}</td>
                     </tr>
