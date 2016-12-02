@@ -1,4 +1,3 @@
-@role(('banned'))
 <div class="rmarchivtbl errorbox">
     <h2>zugriff verweigert!</h2>
     <div class="content">
@@ -7,4 +6,3 @@
         <p>zurück zur <a href="{{ url('/') }}">hauptseite</a></p>
     </div>
 </div>
-@endrole

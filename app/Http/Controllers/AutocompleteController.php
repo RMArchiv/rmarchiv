@@ -48,4 +48,21 @@ class AutocompleteController extends Controller
 
         return \Response::json($result);
     }
+
+    public function faqcat($term){
+        $result = array();
+
+        //$devs = Developer::whereName($term)->get();
+        $devs = \DB::table('faq')
+            ->select(['id','cat'])
+            ->where('faq.cat', 'like', '%'.$term.'%')
+            ->groupBy('faq.cat')
+            ->get();
+
+        foreach ($devs as $dev){
+            $result[] = ['id' => $dev->id, 'value' => $dev->cat];
+        }
+
+        return \Response::json($result);
+    }
 }

@@ -93,10 +93,16 @@ Route::post('board/thread/create', 'BoardController@store_thread')->name('board.
 Route::get('board/thread/{threadid}', 'BoardController@show_thread')->name('board.thread.show');
 Route::post('board/thread/{threadid}', 'BoardController@store_post')->name('board.post.store');
 
+//Routen für FAQ
+Route::get('faq', 'FaqController@index');
+Route::get('faq/create', 'FaqController@create');
+Route::post('faq', 'FaqController@store');
+
 
 //Autocomplete Routen
 Route::get('ac_developer/{term}', 'AutocompleteController@developer');
 Route::get('ac_games/{term}', 'AutocompleteController@game');
+Route::get('ac_faqcat/{term}', 'AutocompleteController@faqcat');
 
 //Routen für Messageboxen
 Route::get('submit/logo/success', 'MsgBoxController@submit_logo')->name('submit.logo.success');
