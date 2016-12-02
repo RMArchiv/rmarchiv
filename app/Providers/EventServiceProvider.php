@@ -16,6 +16,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\GameView' => [
             'App\Listeners\GameViewListener',
         ],
+
+        'App\Events\Obyx' => [
+            'App\Listeners\ObyxListener',
+        ]
     ];
 
     /**
