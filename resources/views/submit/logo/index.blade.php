@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('pagetitle', 'logo upload')
 @section('content')
     <div id="content">
         <form action="{{ url('submit/logo') }}" method="post" enctype="multipart/form-data">

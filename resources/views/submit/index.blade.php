@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('pagetitle', 'einsenden')
 @section('content')
     @if(Auth::check())
         <div id="content">

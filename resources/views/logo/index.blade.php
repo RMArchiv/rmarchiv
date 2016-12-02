@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('pagetitle', 'logos bewerten')
 @section('content')
     <div id="content">
         <div class="rmarchivtbl">

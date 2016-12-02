@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', 'spiel anlegen')
 @section('content')
     @permission(('create-games'))
     <div id="content">

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('pagetitle', 'login')
 @section('content')
     <div id="content">
         <div class='rmarchivtbl' id='rmarchivbox_login'>

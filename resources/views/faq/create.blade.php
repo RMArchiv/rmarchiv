@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@section('pagetitle', 'faq erstellen')
 @permission(('create-faq'))
 <div id="content">
     <form action="{{ url('faq') }}" method="post" enctype="multipart/form-data">

@@ -1,3 +1,4 @@
+@section('pagetitle', 'zugriff verweigert')
 <div class="rmarchivtbl errorbox">
     <h2>zugriff verweigert!</h2>
     <div class="content">

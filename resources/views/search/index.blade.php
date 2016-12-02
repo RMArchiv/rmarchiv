@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', 'suche')
 @section('content')
     <div id='content'>
         <div class='rmarchivtbl' id='rmarchivbox_search'>

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', $posts->first()->ttitle)
 @section('content')
     <div id='content'>
         <div class='rmarchivtbl' id='rmarchivbox_bbsview'>

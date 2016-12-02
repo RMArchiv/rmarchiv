@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('pagetitle', 'benutzerliste')
 @section('content')
 <div id='content'>
     <table id='pouetbox_userlist' class='boxtable pagedtable'>

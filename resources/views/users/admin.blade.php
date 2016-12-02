@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', 'benutzeradministration')
 @section('content')
     <div id="content">
         <form action="{{ url('users/admin', $user->id) }}" method="post" enctype="multipart/form-data">

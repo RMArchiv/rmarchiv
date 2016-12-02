@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', 'spieleliste')
 @section('content')
     <div id='content'>
         <h2>Spiele</h2>

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', 'shoutbox historie')
 @section('content')
     <div id="content">
         <div class="rmarchivtbl" id="rmarchivbox_onelinerview">

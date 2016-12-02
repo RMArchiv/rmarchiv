@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', 'spiel bearbeiten')
 @section('content')
     <div id="content">
         @if (count($errors) > 0)

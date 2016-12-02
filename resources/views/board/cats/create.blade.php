@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', 'forenkategorie hinzufügen')
 @section('content')
     <div id="content">
         @if (count($errors) > 0)

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', 'coup de coeur hinzufügen')
 @section('content')
     <div id="content">
         <form action="{{ url('cdc') }}" method="post" enctype="multipart/form-data">

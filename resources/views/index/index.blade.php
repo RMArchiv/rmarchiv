@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('pagetitle', 'home')
 @section('content')
     <div id='content' class='frontpage'>
         <div id='leftbar' class='column'>

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', 'entwicklerlsite')
 @section('content')
     <div id="content">
         <div class='rmarchivtbl' id='rmarchivbox_grouplist'>

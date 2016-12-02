@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', 'faq')
 @section('content')
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.1.0/prototype.js"></script>
 

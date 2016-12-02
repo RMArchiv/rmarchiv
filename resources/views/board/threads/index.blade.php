@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', $threads->first()->cattitle)
 @section('content')
     <div id="content">
         @if($threads)

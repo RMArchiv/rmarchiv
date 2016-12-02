@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', $game->title)
 @section('content')
     <div id="content">
         @if(count($game) > 0)

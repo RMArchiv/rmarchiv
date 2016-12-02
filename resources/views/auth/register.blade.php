@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('pagetitle', 'registrierung')
 @section('content')
     <div id="content">
         <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">

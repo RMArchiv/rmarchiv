@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de">
 <head>
     <title>
-        rmarchiv.de :: your online rpgmaker resource
+        @yield('pagetitle') :: rmarchiv.de :: your online rpgmaker resource
     </title>
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>

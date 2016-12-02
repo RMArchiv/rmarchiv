@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', 'news: '.$news->title)
 @section('content')
     <div id="content">
         @if(count($news) > 0)

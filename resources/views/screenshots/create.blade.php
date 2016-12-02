@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('pagetitle', 'screenshot hinzufügen')
 @section('content')
     <div id="content">
         <form action="{{ route('screenshot.upload', [$gameid, $screenid]) }}" method="post" enctype="multipart/form-data">

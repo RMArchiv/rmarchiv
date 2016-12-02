@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', 'forum übersicht')
 @section('content')
     <div id='content'>
         <h1>das rmarchiv forum</h1>

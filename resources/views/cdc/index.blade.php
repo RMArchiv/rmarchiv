@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', 'coup de coeur historie')
 @section('content')
     <div class="content">
         <div class="rmarchivtbl" id="rmarchivbox_cdcmoderator">

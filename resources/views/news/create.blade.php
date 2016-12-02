@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('pagetitle', 'news erstellen')
 @section('content')
     <div id="content">
         <form action="{{ url('/news') }}" method="post" enctype="multipart/form-data">
