@@ -6,6 +6,14 @@ use App\Models\Developer;
 
 class DatabaseHelper{
 
+    public static function getObyxPoints($reason){
+        $obyx = \DB::table('obyx')
+            ->where('reason', '=', $reason)
+            ->first();
+
+        return $obyx->value;
+    }
+
     public static function getGameViewsMax(){
         $v = \DB::table('games')
             ->selectRaw('MAX(views) as maxviews')

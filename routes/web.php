@@ -62,14 +62,14 @@ Route::resource('resources', 'ResourceController');
 
 //User Routings
 Route::get('users', 'UserController@index');
-Route::get('users/{id}', 'UserController@get');
+Route::get('users/{id}', 'UserController@show');
 
 //Comment routings
 Route::post('comment', 'CommentController@add');
 
 //Logo Voting
 Route::get('logo/vote', 'LogoController@vote_get')->name('logo.vote');
-Route::post('logo/vote/{id}', 'LogoController@vote_add');
+Route::post('logo/vote/{userid}', 'LogoController@vote_add');
 
 //Submit Routen
 Route::get('submit', 'SubmitController@index');

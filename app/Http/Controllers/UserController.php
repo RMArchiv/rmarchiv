@@ -43,8 +43,32 @@ class UserController extends Controller
         ]);
     }
 
-    public function get(){
+    public function show($userid){
 
+        $user = \DB::table('users as u')
+            ->leftJoin('user_role_user as uru', 'u.id', '=', 'uru.user_id')
+            ->leftJoin('user_roles as ur', 'ur.id', '=', 'uru.role_id')
+            ->select([
+                'u.id as userid',
+                'u.name as username',
+                'ur.display_name as rolename',
+                'u.created_at as usercreated_at'
+            ])
+            ->selectRaw('(SELECT SUM(obyx.value) FROM user_obyx LEFT JOIN obyx ON obyx.id = user_obyx.obyx_id WHERE user_obyx.user_id = u.id) as obyx')
+            ->selectRaw('(SELECT COUNT(games.id) FROM games WHERE user_id = u.id) as gamecount')
+            ->selectRaw('(SELECT COUNT(comments.id) FROM comments WHERE user_id = u.id) as commentcount')
+            ->selectRaw('(SELECT COUNT(comments.id) FROM comments WHERE user_id = u.id AND vote_up = 1 OR vote_down = 1) as ratecount')
+            ->selectRaw('(SELECT COUNT(id) FROM shoutbox WHERE user_id = u.id) as shoutboxcount')
+            ->selectRaw('(SELECT COUNT(id) FROM board_threads WHERE user_id = u.id) as threadcount')
+            ->selectRaw('(SELECT COUNT(id) FROM board_posts WHERE user_id = u.id) as postcount')
+            ->selectRaw('(SELECT COUNT(id) FROM developer WHERE user_id = u.id) as devcount')
+            ->where('u.id', '=', $userid)
+            ->first();
+
+
+        return view('users.show', [
+            'user' => $user,
+        ]);
     }
 
     public function admin($userid){
