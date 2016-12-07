@@ -124,7 +124,7 @@ class GameController extends Controller
             'created_at' => Carbon::now(),
         ]);
 
-        event(new Obyx('game_add', \Auth::id()));
+        event(new Obyx('game-add', \Auth::id()));
 
         return redirect()->action('MsgBoxController@game_add', [$gameid]);
 

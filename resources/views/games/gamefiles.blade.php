@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@section('pagetitle', 'spieledateien für '.$gamefiles->first()->gametitle)
 @section('content')
     <div id="content">
         @if (count($errors) > 0)
