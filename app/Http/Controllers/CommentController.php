@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Obyx;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use GrahamCampbell\Markdown\Facades\Markdown;
@@ -23,15 +24,19 @@ class CommentController extends Controller
         if($rate == 'up'){
             $comment->vote_up = 1;
             $comment->vote_down = 0;
+            event(new Obyx('rating', \Auth::id()));
         }elseif($rate == 'down'){
             $comment->vote_up = 0;
             $comment->vote_down = 1;
+            event(new Obyx('rating', \Auth::id()));
         }else{
             $comment->vote_up = 0;
             $comment->vote_down = 0;
         }
 
         $comment->save();
+
+        event(new Obyx('comment', \Auth::id()));
 
 
         return redirect()->action('MsgBoxController@comment_add', [$request->get('content_type') ,$request->get('content_id')]);

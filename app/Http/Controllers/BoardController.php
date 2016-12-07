@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Obyx;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -167,6 +168,8 @@ class BoardController extends Controller
             'last_created_at' => $date,
         ]);
 
+        event(new Obyx('thread-add', \Auth::id()));
+
         \DB::table('board_posts')->insert([
             'cat_id' => $request->get('category'),
             'thread_id' => $threadid,
@@ -211,6 +214,9 @@ class BoardController extends Controller
             ]);
 
         $url = \URL::route('board.thread.show', [$threadid]).'#c'.$pid;
+
+        event(new Obyx('post-add', \Auth::id()));
+
         return redirect()->to($url);
     }
 }

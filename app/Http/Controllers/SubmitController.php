@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Obyx;
 use App\Models\Logo;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -42,6 +43,8 @@ class SubmitController extends Controller
 
 
         $l->save();
+
+        event(new Obyx('logo-add', \Auth::id()));
 
         return redirect()->route('submit.logo.success');
     }

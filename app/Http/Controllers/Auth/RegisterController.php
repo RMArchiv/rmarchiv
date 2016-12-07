@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\Obyx;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Models\UserSetting;
@@ -80,7 +81,9 @@ class RegisterController extends Controller
 
         $us->save();
 
-        $user->attachRole('user');
+        $user->roles()->attach(4);
+
+        event(new Obyx('register', $user->id));
 
         return $user;
     }

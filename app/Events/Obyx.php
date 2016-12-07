@@ -14,15 +14,17 @@ class Obyx
     use InteractsWithSockets, SerializesModels;
 
     public $reason;
+    public $user_id;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($reason)
+    public function __construct($reason, $user_id)
     {
         $this->reason = $reason;
+        $this->user_id = $user_id;
     }
 
     /**

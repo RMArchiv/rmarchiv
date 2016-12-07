@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\GameView;
+use App\Events\Obyx;
 use App\Helpers\DatabaseHelper;
 use Carbon\Carbon;
 use Doctrine\DBAL\Driver\IBMDB2\DB2Connection;
@@ -99,6 +100,7 @@ class GameController extends Controller
         $devid = DatabaseHelper::developerId_from_developerName($request->get('developer'));
         if ($devid == 0) {
             $devid = DatabaseHelper::developer_add_and_get_developerId($request->get('developer'));
+            event(new Obyx('dev-add', \Auth::id()));
         }
 
         $langid = DatabaseHelper::langId_from_short($request->get('language'));
@@ -121,6 +123,8 @@ class GameController extends Controller
             'developer_id' => $devid,
             'created_at' => Carbon::now(),
         ]);
+
+        event(new Obyx('game_add', \Auth::id()));
 
         return redirect()->action('MsgBoxController@game_add', [$gameid]);
 

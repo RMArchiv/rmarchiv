@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Obyx;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,8 @@ class ShoutboxController extends Controller
                 'user_id' => \Auth::id(),
                 'created_at' => Carbon::now()
             ]);
+
+        event(new Obyx('shoutbox', \Auth::id()));
 
         return redirect()->route('home');
     }

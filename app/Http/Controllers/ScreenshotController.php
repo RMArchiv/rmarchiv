@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Obyx;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -55,6 +56,8 @@ class ScreenshotController extends Controller
             'created_at' => Carbon::now(),
             'filename' => str_replace($extorig, '', $imageName),
         ]);
+
+        event(new Obyx('screenshot-add', \Auth::id()));
 
         return redirect()->route('screenshot.upload.success', $gameid);
     }
