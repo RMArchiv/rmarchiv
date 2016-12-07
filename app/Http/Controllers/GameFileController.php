@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Obyx;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -132,6 +133,8 @@ class GameFileController extends Controller
                 'filename' => $storagedest,
                 'created_at' => Carbon::now(),
             ]);
+
+            event(new Obyx('gamefile-add', \Auth::id()));
 
             return redirect()->route('gamefiles.index', [$id]);
         }

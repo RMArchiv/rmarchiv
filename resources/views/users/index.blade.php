@@ -17,26 +17,26 @@
         @foreach($users as $user)
         <tr>
             <td>
-                <a href='{{ url('users', $user->id) }}' class='usera' title="{{ $user->name }}">
-                    <img src='http://ava.rmarchiv.de/?gender=male&id={{ $user->id }}' alt="{{ $user->name }}" class='avatar'/>
-                </a> <a href='{{ url('users', $user->id) }}' class='user'>{{ $user->name }}</a></td>
+                <a href='{{ url('users', $user->userid) }}' class='usera' title="{{ $user->username }}">
+                    <img src='http://ava.rmarchiv.de/?gender=male&id={{ $user->userid }}' alt="{{ $user->username }}" class='avatar'/>
+                </a> <a href='{{ url('users', $user->userid) }}' class='user'>{{ $user->username }}</a></td>
             <td class='date'>
-                <span title="{{ $user->created_at }}"><!-- {{ $user->created_at }} -->{{ $user->created_at }}</span>
+                <span title="{{ $user->usercreated_at }}"><!-- {{ $user->usercreated_at }} -->{{ $user->usercreated_at }}</span>
             </td>
             <td>
-                <span title="{{ $user->roles[0]->description }}">{{ $user->roles[0]->display_name }}</span>
+                <span title="{{ $user->roledesc }}">{{ $user->rolename }}</span>
             </td>
             <td>
-                <div class='innerbar_solo' style='width: 50px' title='50 obeys'>&nbsp;<span>50 obeys</span></div>
+                <div class='innerbar_solo' style='width: {{ ($user->obyx / $obyxmax->value) * 100 }}px' title='{{ $user->obyx or 0 }} obyx'>&nbsp;<span>{{ $user->obyx or 0 }} obyx</span></div>
             </td>
             @if(Auth::check())
                 @if(Auth::user()->settings->is_admin)
-                    <td><a href="{{ route('user.admin', $user->id) }}">[edit]</a></td>
+                    <td><a href="{{ route('user.admin', $user->userid) }}">[edit]</a></td>
                 @endif
             @endif
         </tr>
         @endforeach
     </table>
-    {{ $users->links() }}
+    {{-- $users->links() --}}
 </div>
 @endsection

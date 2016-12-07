@@ -34,6 +34,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $filename
+ * @property integer $downloadcount
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereFilename($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereDownloadcount($value)
  */
 class GamesFile extends Model
 {

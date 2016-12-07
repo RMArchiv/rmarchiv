@@ -34,6 +34,7 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
  * @property-read \App\Models\UserSetting $settings
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Logo[] $logo
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\LogoVote[] $logovote
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserRole[] $roles
  */
 class User extends Authenticatable
 {
@@ -76,5 +77,9 @@ class User extends Authenticatable
 
     public function logovote(){
         return $this->belongsToMany('App\Models\LogoVote');
+    }
+
+    public function userobyx(){
+        return $this->hasMany('App\Models\UserObyx', 'user_id', 'id');
     }
 }
