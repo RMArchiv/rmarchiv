@@ -28,7 +28,7 @@
             {% include 'index/_partial/latestcomments.twig' %}
             {% include 'index/_partial/upcomingparties.twig' %}
             {% include 'index/_partial/wanted.twig' %}
-            {% include 'index/_partial/topusers.twig' %}
+            @include('index._partials.topusers')
         </div>
     </div>
 @endsection
