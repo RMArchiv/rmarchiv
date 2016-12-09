@@ -60,10 +60,13 @@ class BoardController extends Controller
                 'board_threads.created_at as threaddate',
                 'board_threads.last_created_at as lastdate',
                 'bc.title as cattitle',
-                'bc.id as catid'
+                'bc.id as catid',
+                'board_threads.pinned as threadpinned',
+                'board_threads.closed as threadclosed'
             ])
             ->selectRaw('(SELECT COUNT(*) FROM board_posts WHERE board_posts.thread_id = board_threads.id) as posts')
             ->where('board_threads.cat_id', '=', $catid)
+            ->orderBy('board_threads.pinned', 'desc')
             ->orderBy('board_threads.last_created_at', 'desc')
             ->orderBy('board_threads.id', 'desc')
             ->get();
@@ -148,10 +151,6 @@ class BoardController extends Controller
         return view('board.threads.show', [
             'posts' => $posts,
         ]);
-    }
-
-    public function create_thread($catid){
-
     }
 
     public function store_thread(Request $request){
