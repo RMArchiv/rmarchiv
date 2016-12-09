@@ -1091,6 +1091,22 @@ td.date {
   #rmarchivbox_stats td:nth-child(2) {
     text-align: right; }
 
+#rmarchivbox_pm {
+  width: 100%; }
+  #rmarchivbox_pm th.header {
+    padding: 0;
+    padding-left: 22px;
+    padding-bottom: 2px;
+    background-color: #4e6f90;
+    background-position: 2px 2px;
+    text-align: left; }
+  #rmarchivbox_pm th:nth-child(2) {
+    text-align: right; }
+  #rmarchivbox_pm .stat {
+    text-align: right; }
+  #rmarchivbox_pm td:nth-child(2) {
+    text-align: right; }
+
 #rmarchivbox_upcomingparties {
   text-transform: lowercase; }
   #rmarchivbox_upcomingparties h2 {

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3e750788de48826fa9a96d01a3453b91",
-    "content-hash": "89f4a3541173d14f90b1801efdb466fd",
+    "hash": "2035c557f940869f5cdfab535ae63b1a",
+    "content-hash": "cbe7bdc05e87f80eeff425415b2e0291",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -229,6 +229,61 @@
                 "preload"
             ],
             "time": "2016-09-16 12:50:15"
+        },
+        {
+            "name": "cmgmyr/messenger",
+            "version": "2.13.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cmgmyr/laravel-messenger.git",
+                "reference": "ea45e22251ef2fb4400deeb9f5b1ba98f7340867"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cmgmyr/laravel-messenger/zipball/ea45e22251ef2fb4400deeb9f5b1ba98f7340867",
+                "reference": "ea45e22251ef2fb4400deeb9f5b1ba98f7340867",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "~5.0",
+                "illuminate/database": "~5.0",
+                "illuminate/support": "~5.0",
+                "nesbot/carbon": "~1.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "adamwathan/faktory": "0.3.*",
+                "friendsofphp/php-cs-fixer": "^1.11",
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "~1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Cmgmyr\\Messenger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Gmyr",
+                    "email": "cmgmyr@gmail.com",
+                    "homepage": "https://github.com/cmgmyr",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple user messaging tool for Laravel",
+            "keywords": [
+                "Messenger",
+                "laravel",
+                "messaging",
+                "user messaging"
+            ],
+            "time": "2016-10-08 12:28:04"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

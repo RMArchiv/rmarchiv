@@ -190,6 +190,13 @@ class IndexController extends Controller
             ->orderByRaw('SUM(o.value) DESC')
             ->first();
 
+        if(\Auth::check()){
+            $pm = \Auth::user()->newThreadsCount();
+        }else{
+            $pm = '';
+        }
+
+
         return view('index.index', [
             'news' => $news,
             'shoutbox' => $shoutbox,
@@ -200,6 +207,7 @@ class IndexController extends Controller
             'threads' => $threads,
             'obeymax' => $obyxmax,
             'topusers' => $topusers,
+            'pm' => $pm,
         ]);
     }
 }

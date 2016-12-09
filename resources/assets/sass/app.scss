@@ -697,6 +697,28 @@ td {
     text-align: right;
   }
 }
+#rmarchivbox_pm {
+  width: 100%;
+  th {
+    &.header {
+      padding: 0;
+      padding-left: 22px;
+      padding-bottom: 2px;
+      background-color: $color_kashmir_blue_approx;
+      background-position: 2px 2px;
+      text-align: left;
+    }
+    &:nth-child(2) {
+      text-align: right;
+    }
+  }
+  .stat {
+    text-align: right;
+  }
+  td:nth-child(2) {
+    text-align: right;
+  }
+}
 #rmarchivbox_upcomingparties {
   text-transform: lowercase;
   h2 {

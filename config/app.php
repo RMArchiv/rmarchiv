@@ -189,6 +189,7 @@ return [
         TeamTNT\TNTSearch\TNTSearchServiceProvider::class,
         Intervention\Image\ImageServiceProviderLaravel5::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+        Cmgmyr\Messenger\MessengerServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -8,13 +8,16 @@
             @else
                 @include('index._partials.login')
             @endif
+            @if(Auth::check() == true)
+                @include('index._partials.pm')
+            @endif
             @if($cdc)
                 @include('index._partials.cdc')
             @endif
             @include('index._partials.latestadded')
             @include('index._partials.latestreleased')
-            {% include 'index/_partial/topmonth.twig' %}
-            {% include 'index/_partial/topalltime.twig' %}
+
+
         </div>
         <div id='middlebar' class='column'>
             @include('index._partials.shoutbox')
@@ -23,11 +26,6 @@
         </div>
         <div id='rightbar' class='column'>
             @include('index._partials.search')
-            {% include 'index/_partial/stats.twig' %}
-            {% include 'index/_partial/welike.twig' %}
-            {% include 'index/_partial/latestcomments.twig' %}
-            {% include 'index/_partial/upcomingparties.twig' %}
-            {% include 'index/_partial/wanted.twig' %}
             @include('index._partials.topusers')
         </div>
     </div>
