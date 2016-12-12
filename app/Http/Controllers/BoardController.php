@@ -142,7 +142,9 @@ class BoardController extends Controller
                 't.title as ttitle',
                 'c.title as ctitle',
                 'u.name as uname',
-                'c.id as cid'
+                'c.id as cid',
+                't.pinned as threadpinned',
+                't.closed as threadclosed'
             ])
             ->where('p.thread_id', '=', $threadid)
             ->orderBy('p.id', 'asc')

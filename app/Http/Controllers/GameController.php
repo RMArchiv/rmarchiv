@@ -46,6 +46,8 @@ class GameController extends Controller
             ->selectRaw("(SELECT STR_TO_DATE(CONCAT(release_year,'-',release_month,'-',release_day ), '%Y-%m-%d') FROM games_files WHERE game_id = games.id ORDER BY release_year DESC, release_month DESC, release_day DESC LIMIT 1) as releasedate")
             ->selectRaw('(SELECT COUNT(id) FROM games_coupdecoeur WHERE game_id = games.id) as cdccount')
             ->groupBy('games.id')
+            ->orderBy('gametitle')
+            ->orderBy('gamesubtitle')
             ->get();
 
         $gametypes = \DB::table('games_files_types')
@@ -61,6 +63,7 @@ class GameController extends Controller
         return view('games.index', [
             'games' => $games,
             'gametypes' => $gtypes,
+            'maxviews' => DatabaseHelper::getGameViewsMax(),
         ]);
     }
 
