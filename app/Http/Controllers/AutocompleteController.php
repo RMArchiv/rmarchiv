@@ -65,4 +65,18 @@ class AutocompleteController extends Controller
 
         return \Response::json($result);
     }
+
+    public function awardcat($term){
+        $result = array();
+        $aw = \DB::table('award_pages')->get();
+
+        foreach ($aw as $item){
+            $result[] = [
+                'id' => $item->id,
+                'value' => $item->title
+            ];
+        }
+
+        return \Response::json($result);
+    }
 }

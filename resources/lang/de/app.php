@@ -182,6 +182,13 @@ return [
         ],
     ],
 
+    'comments' => [
+        'tip1' => 'Der erste Kommentar bei dem du eine Bewertung auswählst, ist auch gleichzeitig die letzte Bewertung für dieses Spiel/News/Ressource. Also wähle mit bedacht.',
+        'tip2' => 'Kommentieren kann man auch ohne Bewertung. Dafür wählte einfach "ist ok". ',
+        'tip3' => 'Sei nett. Nur weil das Spiel/News/Ressource scheiße ist, sollte man es trotzdem nicht schreiben. Es sei denn man begründet es vernünftig.',
+        'tip4' => 'Kommentiert ihr wie Ärsche, dann werdet ihr so behandelt. Also abgewischt und ab in die Banntoilette.',
+    ],
+
     'misc' => [
         'send' => 'senden',
         'delete' => 'löschen',

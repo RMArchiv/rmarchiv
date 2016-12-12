@@ -74,11 +74,12 @@
                     </div>
                 @endif
 
-                <div class='rmarchivtbl' id='rmarchivbox_prodsubmitchanges'>
-                    <h2>kommentarhinweise</h2>
-                    <div class='content'>
-                        <p>wip</p>
-                    </div>
+                <h2>kommentarhinweise</h2>
+                <div class='content'>
+                    <p>{{ trans('app.comments.tip1') }}</p>
+                    <p>{{ trans('app.comments.tip2') }}</p>
+                    <p>{{ trans('app.comments.tip3') }}</p>
+                    <p>{{ trans('app.comments.tip4') }}</p>
                 </div>
 
                 @if(Auth::check())

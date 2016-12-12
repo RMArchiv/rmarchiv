@@ -107,11 +107,16 @@ Route::get('faq', 'FaqController@index');
 Route::get('faq/create', 'FaqController@create');
 Route::post('faq', 'FaqController@store');
 
+//Routen für Awards
+Route::get('awards', 'AwardController@index');
+Route::get('awards/{awardid}', 'AwardController@show');
+
 
 //Autocomplete Routen
 Route::get('ac_developer/{term}', 'AutocompleteController@developer');
 Route::get('ac_games/{term}', 'AutocompleteController@game');
 Route::get('ac_faqcat/{term}', 'AutocompleteController@faqcat');
+Route::get('ac_award_page/{term}', 'AutocompleteController@awardcat');
 
 //Routen für Messageboxen
 Route::get('submit/logo/success', 'MsgBoxController@submit_logo')->name('submit.logo.success');

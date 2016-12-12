@@ -149,5 +149,47 @@
             </div>
         {!! Form::close() !!}
         </div>
+
+        <div class="rmarchivtbl" id="rmarchivbox_submitprod">
+            <h2>auszeichnungen hinzufügen</h2>
+            <div class="content">
+                <div class="formifier">
+                    <div class="row" id="row_awardpage">
+                        <label for="awardpage">Auszeichnungsseite</label>
+                        <input autocomplete="off" class="auto" name="awardpage" id="awardpage" placeholder="awardpage" value=""/>
+                        <span> [<span class="req">req</span>]</span>
+                    </div>
+                    <script type="text/javascript">
+                        var sourcepath = new Bloodhound({
+                            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                            queryTokenizer: Bloodhound.tokenizers.whitespace,
+                            //prefetch: '../data/films/post_1960.json',
+                            remote: {
+                                url: '/ac_award_page/%QUERY',
+                                wildcard: '%QUERY'
+                            }
+                        });
+
+                        $('#row_awardpage .auto').typeahead(null, {
+                            name: 'awardpage',
+                            display: 'value',
+                            source: sourcepath,
+                            limit: 5,
+                            templates: {
+                                empty: [
+                                    '<div class="empty-message">',
+                                    '{{trans('app.misc.nothing_found')}}',
+                                    '</div>'
+                                ].join('\n'),
+                                suggestion: function(data) {
+                                    console.log(data);
+                                    return '<p><strong>' + data.value + '</strong></p>';
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
