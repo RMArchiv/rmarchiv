@@ -196,6 +196,17 @@ class IndexController extends Controller
             $pm = '';
         }
 
+        $stats = \DB::table('games')
+            ->selectRaw('COUNT(id) as gamecount')
+            ->selectRaw('(SELECT COUNT(id) FROM makers) as makercount')
+            ->selectRaw('(SELECT COUNT(id) FROM developer) as developercount')
+            ->selectRaw('(SELECT COUNT(id) FROM users) as usercount')
+            ->selectRaw('(SELECT COUNT(id) FROM board_threads) as threadcount')
+            ->selectRaw('(SELECT COUNT(id) FROM board_posts) as postcount')
+            ->selectRaw('(SELECT COUNT(id) FROM shoutbox) as shoutboxcount')
+            ->selectRAW('(SELECT COUNT(id) FROM comments) as commentcount')
+            ->selectRaw('(SELECT COUNT(id) FROM logos) as logocount')
+            ->first();
 
         return view('index.index', [
             'news' => $news,
@@ -208,6 +219,7 @@ class IndexController extends Controller
             'obeymax' => $obyxmax,
             'topusers' => $topusers,
             'pm' => $pm,
+            'stats' => $stats,
         ]);
     }
 }
