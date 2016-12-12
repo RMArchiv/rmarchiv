@@ -12,13 +12,13 @@
     </ul>
     @permission(('create-shoutbox'))
     <div class='foot loggedin'>
-        <span><a href='{{ url('shoutbox') }}'>mehr</a>...</span>
+        <span><a href='{{ url('shoutbox') }}'>more</a>...</span>
         {!! Form::open(['action' => ['ShoutboxController@store']]) !!}
             <input type='text' name='shout' placeholder='sags mit worten. in einem satz. (300 zeichen max.)' id='onelinermsg' maxlength='300'/>
             <input type='submit' value='Submit'/>
         {!! Form::close() !!}
     </div>
     @else
-    <div class='foot'><a href='{{ url('shoutbox') }}'>mehr</a>...</div>
+    <div class='foot'><a href='{{ url('shoutbox') }}'>more</a>...</div>
     @endpermission
 </div>

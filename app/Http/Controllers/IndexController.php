@@ -25,6 +25,7 @@ class IndexController extends Controller
             })
             ->select(['news.id', 'news.title', 'news.user_id', 'users.name', 'news.created_at', 'news.approved', 'news.news_html'])
             ->selectRaw('COUNT(comments.id) as counter')
+            ->where('news.approved', '=', 1)
             ->orderBy('news.created_at', 'desc')
             ->groupBy('news.id')
             ->get()->take(5);
