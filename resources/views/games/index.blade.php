@@ -63,7 +63,7 @@
                 @php
                     $perc = \App\Helpers\MiscHelper::getPopularity($game->views, $maxviews);
                 @endphp
-                <td><div class='innerbar_solo' style='width: {{ $perc }}%' title='{{ $perc }}%'><span>{{ $perc }}</span></div></td>
+                <td><div class='innerbar_solo' style='width: {{ $perc }}%' title='{{ number_format($perc, 2) }}%'><span>{{ $perc }}</span></div></td>
                 <td>{{ $game->commentcount }}</td>
             </tr>
             @endforeach

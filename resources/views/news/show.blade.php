@@ -33,6 +33,7 @@
                             </div>
                     @endif
                 </div>
+
                 <div class='rmarchivtbl' id='rmarchivbox_prodpopularityhelper'>
                     <h2>{{ trans('app.news.popularity_helper.title') }}</h2>
                     <div class='content'>
@@ -74,12 +75,14 @@
                     </div>
                 @endif
 
-                <h2>kommentarhinweise</h2>
-                <div class='content'>
-                    <p>{{ trans('app.comments.tip1') }}</p>
-                    <p>{{ trans('app.comments.tip2') }}</p>
-                    <p>{{ trans('app.comments.tip3') }}</p>
-                    <p>{{ trans('app.comments.tip4') }}</p>
+                <div class='rmarchivtbl' id='rmarchivbox_prodsubmitchanges'>
+                    <h2>kommentarhinweise</h2>
+                    <div class='content'>
+                        <p>{{ trans('app.comments.tip1') }}</p>
+                        <p>{{ trans('app.comments.tip2') }}</p>
+                        <p>{{ trans('app.comments.tip3') }}</p>
+                        <p>{{ trans('app.comments.tip4') }}</p>
+                    </div>
                 </div>
 
                 @if(Auth::check())
