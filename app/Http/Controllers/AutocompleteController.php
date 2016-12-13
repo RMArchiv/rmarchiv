@@ -66,7 +66,7 @@ class AutocompleteController extends Controller
         return \Response::json($result);
     }
 
-    public function awardcat($term){
+    public function awardpage($term){
         $result = array();
         $aw = \DB::table('award_pages')->get();
 
@@ -79,4 +79,34 @@ class AutocompleteController extends Controller
 
         return \Response::json($result);
     }
+
+    public function awardcat($term){
+        $result = array();
+        $aw = \DB::table('award_cats')->get();
+
+        foreach ($aw as $item){
+            $result[] = [
+                'id' => $item->id,
+                'value' => $item->title
+            ];
+        }
+
+        return \Response::json($result);
+    }
+
+    public function awardsubcat($term){
+        $result = array();
+        $aw = \DB::table('award_subcats')->get();
+
+        foreach ($aw as $item){
+            $result[] = [
+                'id' => $item->id,
+                'value' => $item->title
+            ];
+        }
+
+        return \Response::json($result);
+    }
+
+
 }
