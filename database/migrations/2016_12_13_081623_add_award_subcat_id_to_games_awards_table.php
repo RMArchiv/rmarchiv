@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateResourcesTable extends Migration
+class AddAwardSubcatIdToGamesAwardsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateResourcesTable extends Migration
      */
     public function up()
     {
-        Schema::create('resources', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::table('games_awards', function (Blueprint $table) {
+            $table->integer('award_subcat_id');
         });
     }
 
@@ -26,6 +25,8 @@ class CreateResourcesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resources');
+        Schema::table('games_awards', function (Blueprint $table) {
+            $table->dropColumn('award_subcat_id');
+        });
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateResourcesPacksRelationTable extends Migration
+class CreateAwardSubcatTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateResourcesPacksRelationTable extends Migration
      */
     public function up()
     {
-        Schema::create('resources_packs_relation', function (Blueprint $table) {
+        Schema::create('award_subcats', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
+            $table->string('desc_html', 2000);
+            $table->string('desc_md', 1024);
+
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateResourcesPacksRelationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resources_packs_relation');
+        Schema::dropIfExists('award_subcats');
     }
 }
