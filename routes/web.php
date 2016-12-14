@@ -28,7 +28,9 @@ Route::get('users/perm/role/{roleid}/remove/{permid}', 'UserPermissionController
 //Benutzer und Authentifizierung
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-Route::resource('user_settings', 'UserSettingsController');
+//Benutzereinstellungen
+Route::get('user_settings', 'UserSettingsController@index');
+Route::post('user_settings/password', 'UserSettingsController@store_password');
 
 //News Routen
 Route::resource('news', 'NewsController');
