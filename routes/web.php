@@ -108,8 +108,14 @@ Route::get('faq/create', 'FaqController@create');
 Route::post('faq', 'FaqController@store');
 
 //Routen für Awards
-Route::get('awards', 'AwardController@index');
-Route::get('awards/{awardid}', 'AwardController@show');
+Route::get('awards', 'AwardController@index')->name('awards.index');
+Route::get('awards/create', 'AwardController@create')->name('awards.create');
+Route::get('awards/gameadd/{subcatid}', 'AwardController@gameadd')->name('awards.gameadd');
+Route::get('awards/{awardid}', 'AwardController@show')->name('awards.show');
+Route::post('awards/store/page', 'AwardController@store_page');
+Route::post('awards/store/cat', 'AwardController@store_cat');
+Route::post('awards/store/subcat', 'AwardController@store_subcat');
+Route::post('awards/gameadd/', 'AwardController@gameadd_store');
 
 
 //Autocomplete Routen

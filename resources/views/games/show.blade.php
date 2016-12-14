@@ -200,15 +200,25 @@
                     </tr>
                     <tr>
                         <td id='credits' colspan='3' class='r2'>
-                            {{--
-                        {% for aw in data.awards %}
+                        @foreach($awards as $aw)
+                        <?php
+                        if($aw->place == 1){
+                            $icon = 'medal_gold.png';
+                        }elseif($aw->place == 2){
+                            $icon = 'medal_silver.png';
+                        }elseif($aw->place == 3){
+                            $icon = 'medal_bronze.png';
+                        }else{
+                            $icon = 'no';
+                        }
+                        ?>
                         <ul>
                             <li>
-                                <img src="/assets/imgs/@{{ aw.medal }}">(@{{ aw.year }}) Platz @{{ aw.place }} - @{{ aw.page }} <a href="/?page=award&website=@{{ aw.page }}&year=@{{ aw.year }}&title=@{{ aw.title }}">@{{ aw.title }} - @{{ aw.subtitle }}</a>
+                                <img src="/assets/{{ $icon }}">({{ $aw->year }}) Platz {{ $aw->place }} - {{ $aw->pagetitle }} <a href="{{ url('awards', $aw->catid) }}">{{ $aw->cattitle }} - {{ $aw->subtitle }}</a>
                             </li>
                         </ul>
-                        {% endfor %}
-                        --}}
+                        @endforeach
+
                         </td>
                     </tr>
                     <tr>

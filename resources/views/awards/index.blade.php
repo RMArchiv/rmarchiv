@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="content">
+        @include('awards._partials.nav')
 
         {{ $ayear = null }}
         <div style="width: 80%" class="rmarchivtbl" id="rmarchivbox_awards">

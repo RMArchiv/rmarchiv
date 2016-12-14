@@ -253,7 +253,20 @@ class GameController extends Controller
             ->groupBy('release_type')
             ->first();
 
-        //dd($files);
+        $awards = \DB::table('games_awards')
+            ->leftJoin('award_cats', 'games_awards.award_cat_id', '=', 'award_cats.id')
+            ->leftJoin('award_pages', 'award_pages.id', '=', 'games_awards.award_page_id')
+            ->leftJoin('award_subcats', 'award_subcats.id', '=', 'games_awards.award_subcat_id')
+            ->select([
+                'games_awards.place as place',
+                'award_cats.year as year',
+                'award_pages.title as pagetitle',
+                'award_cats.id as catid',
+                'award_cats.title as cattitle',
+                'award_subcats.title as subtitle'
+            ])
+            ->where('games_awards.game_id', '=', $id)
+            ->get();
 
         event(new GameView($id));
 
@@ -263,6 +276,7 @@ class GameController extends Controller
             'developer' => $developer,
             'files' => $files,
             'releasedate' => $releasedate,
+            'awards' => $awards,
         ]);
 
     }
