@@ -325,7 +325,7 @@
                     @endpermission
             </div>
         @else
-            <h2>zu dieser id existiert keine news</h2>
+            <h2>zu dieser id existiert kein spiel</h2>
         @endif
     </div>
 @endsection
