@@ -279,6 +279,33 @@ class IndexController extends Controller
             ->groupBy('games.id')
             ->limit(5)->get();
 
+        $latestcomments = \DB::table('comments')
+            ->leftJoin('users', 'users.id', '=', 'comments.user_id')
+            ->leftJoin('games', 'games.id', '=', 'comments.content_id')
+            ->leftJoin('games_files', 'games_files.game_id', '=', 'games.id')
+            ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
+            ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
+            ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
+            ->select([
+                'games.id as gameid',
+                'games.title as gametitle',
+                'games.subtitle as gamesubtitle',
+                'developer.name as developername',
+                'developer.id as developerid',
+                'developer.created_at as developerdate',
+                'developer.user_id as developeruserid',
+                'makers.short as makershort',
+                'makers.title as makertitle',
+                'makers.id as makerid',
+                'users.id as userid',
+                'users.name as username'
+            ])
+            ->selectRaw('MAX(games_files.release_type) as gametype')
+            ->where('comments.content_type', '=', 'game')
+            ->orderBy('comments.created_at')
+            ->limit(5)
+            ->get();
+
         return view('index.index', [
             'news' => $news,
             'shoutbox' => $shoutbox,
@@ -293,6 +320,7 @@ class IndexController extends Controller
             'stats' => $stats,
             'topmonth' => $topmonth,
             'topalltime' => $topalltime,
+            'latestcomments' => $latestcomments,
         ]);
     }
 }

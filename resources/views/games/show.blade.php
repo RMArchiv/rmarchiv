@@ -8,7 +8,7 @@
                     <tr id='prodheader'>
                         <th colspan='3'>
                             <span id='title'><big>{{ $game->title }}</big> :: {{ $game->subtitle }}</span>
-                            @permission(('create-games')))
+                            @permission(('create-games'))
                                 <div id='nfo'>[<a href='{{ route('games.edit', [ 'id' => $game->gameid]) }}'>edit</a>]
                                 </div>
                             @endpermission

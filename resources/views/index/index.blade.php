@@ -28,6 +28,9 @@
             @include('index._partials.search')
             @include('index._partials.stats')
             @include('index._partials.topusers')
+            @include('index._partials.latestcomments_game')
+            @include('index._partials.nextparty')
+            @include('index._partials.welike')
         </div>
     </div>
 @endsection
