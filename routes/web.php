@@ -135,6 +135,11 @@ Route::get('games/success/{id}', 'MsgBoxController@game_add')->name('game.add.su
 Route::get('screenshot/upload/success/{gameid}', 'MsgBoxController@screenshot_add')->name('screenshot.upload.success');
 Route::get('cdc/success/{gameid}', 'MsgBoxController@cdc_add');
 
+//Sonstige Seiten
+Route::get("/impressum", function(){
+    return View::make("_pages.impressum");
+});
+
 //Routen für Sitemap
 Route::get('sitemap', 'SitemapController@index')->name('sitemap.index');
 Route::get('sitemap/users', 'SitemapController@users')->name('sitemap.users');

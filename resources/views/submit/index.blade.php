@@ -18,10 +18,8 @@
                     <li><a href="{{ url('users/perm/role') }}">benutzerberechtigungen</a></li>
                     <li><a href="{{ url('board/create') }}">board kategorie hinzufügen</a></li>
                     <li><a href="{{ url('cdc/create') }}">'coup de coeur' hinzufügen</a></li>
-                    <li><a href="#">maker hinzufügen</a></li>
-                    <li><a href="#">genre hinzufügen</a></li>
                     <li><a href="{{ url('faq/create') }}">faq hinzufügen</a></li>
-                    <li><a href="#">award-kategorie hinzufügen</a></li>
+                    <li><a href="{{ url('awards/create') }}">award-kategorie hinzufügen</a></li>
                 </ul>
                 @endrole
             </div>
