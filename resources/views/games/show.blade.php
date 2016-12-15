@@ -161,12 +161,15 @@
                             <ul>
                                 @foreach($files as $f)
                                     <li>
-                                        {{ str_pad($f->fileyear, 2, 0, STR_PAD_LEFT) }}
-                                        -{{ str_pad($f->filemonth, 2, 0, STR_PAD_LEFT) }}
-                                        -{{ str_pad($f->fileday, 2, 0, STR_PAD_LEFT) }}
+
                                         @if(Auth::check())
+                                            {{ str_pad($f->fileyear, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->filemonth, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->fileday, 2, 0, STR_PAD_LEFT) }}
                                             [<a href="{{ url('games/download', $f->fileid) }}">{{ $f->filetypetitle }}
                                                 - {{ $f->fileversion }}</a>] ({{ $f->downloadcount }})
+                                        @else
+                                            {{ str_pad($f->fileyear, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->filemonth, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->fileday, 2, 0, STR_PAD_LEFT) }}
+                                            [{{ $f->filetypetitle }}
+                                                - {{ $f->fileversion }}] ({{ $f->downloadcount }})
                                         @endif
                                     </li>
                                 @endforeach

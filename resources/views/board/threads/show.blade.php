@@ -41,7 +41,7 @@
             <h2>leider bist du nicht angemeldet.</h2>
             <div class="content">
                 du bist nicht angemeldet.<br>
-                um einen thread erstellen zu können, <a href="{{ url('login') }}">logge</a> dich ein.<br>
+                um einen post erstellen zu können, <a href="{{ url('login') }}">logge</a> dich ein.<br>
                 wenn du keinen account hast, <a href="{{ url('register') }}">registriere</a> dich doch einfach.
             </div>
         </div>

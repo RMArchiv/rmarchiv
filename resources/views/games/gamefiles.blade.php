@@ -26,7 +26,9 @@
                     <th>{{trans('app.games.gamefiles.downloads')}}</th>
                     <th>{{trans('app.games.gamefiles.uploaded_by')}}</th>
                     <th>{{trans('app.games.gamefiles.uploaded_at')}}</th>
-                    <th>{{trans('app.games.gamefiles.actions')}}</th>
+                    @if(Auth::check())
+                        <th>{{trans('app.games.gamefiles.actions')}}</th>
+                    @endif
                 </tr>
                 </thead>
                 @foreach($gamefiles as $gf)
@@ -62,6 +64,7 @@
             <h2>{{trans('app.games.gamefiles.no_files')}}</h2>
         @endif
 
+        @if(Auth::check())
         {!! Form::open(['route' => ['gamefiles.store', $gameid]]) !!}
         <div class="rmarchivtbl" id="rmarchivbox_submitprod">
             <h2>{{trans('app.games.gamefiles.add_file')}}</h2>
@@ -120,6 +123,7 @@
             </div>
         </div>
         {!! Form::close() !!}
+        @endif
     </div>
     <script type="text/template" id="qq-template">
         <div class="qq-uploader-selector qq-uploader qq-gallery" qq-drop-area-text="Drop files here">
