@@ -190,6 +190,7 @@ return [
         Intervention\Image\ImageServiceProviderLaravel5::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Cmgmyr\Messenger\MessengerServiceProvider::class,
+        Watson\Sitemap\SitemapServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -251,6 +252,7 @@ return [
         'Route' => Illuminate\Support\Facades\Route::class,
         'Schema' => Illuminate\Support\Facades\Schema::class,
         'Session' => Illuminate\Support\Facades\Session::class,
+        'Sitemap' => Watson\Sitemap\Facades\Sitemap::class,
         'Storage' => Illuminate\Support\Facades\Storage::class,
         'TNTSearch' => \TeamTNT\TNTSearch\Facades\TNTSearch::class,
         'URL' => Illuminate\Support\Facades\URL::class,

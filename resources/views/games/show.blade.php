@@ -8,10 +8,10 @@
                     <tr id='prodheader'>
                         <th colspan='3'>
                             <span id='title'><big>{{ $game->title }}</big> :: {{ $game->subtitle }}</span>
-                            @if($game->userid == Auth::id() or Auth::user()->settings->is_admin == 1)
+                            @permission(('create-games')))
                                 <div id='nfo'>[<a href='{{ route('games.edit', [ 'id' => $game->gameid]) }}'>edit</a>]
                                 </div>
-                            @endif
+                            @endpermission
                         </th>
                     </tr>
                     <tr>

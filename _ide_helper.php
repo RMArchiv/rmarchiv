@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.26 on 2016-12-13.
+ * Generated for Laravel 5.3.26 on 2016-12-14.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -10387,6 +10387,8 @@ namespace {
         /**
          * Checks whether the method is safe or not.
          *
+         * @see https://tools.ietf.org/html/rfc7231#section-4.2.1
+         * @param bool $andCacheable Adds the additional condition that the method should be cacheable. True by default.
          * @return bool 
          * @static 
          */
@@ -10398,6 +10400,7 @@ namespace {
         /**
          * Checks whether the method is cacheable or not.
          *
+         * @see https://tools.ietf.org/html/rfc7231#section-4.2.3
          * @return bool 
          * @static 
          */
@@ -12132,6 +12135,169 @@ namespace {
          */
         public static function setRequestOnHandler($request){
             \Illuminate\Session\Store::setRequestOnHandler($request);
+        }
+        
+    }
+
+
+    class Sitemap extends \Watson\Sitemap\Facades\Sitemap{
+        
+        /**
+         * Add new sitemap to the sitemaps index.
+         *
+         * @param \Watson\Sitemap\Tags\Sitemap|string $location
+         * @param string $lastModified
+         * @return void 
+         * @static 
+         */
+        public static function addSitemap($location, $lastModified = null){
+            \Watson\Sitemap\Sitemap::addSitemap($location, $lastModified);
+        }
+        
+        /**
+         * Retrieve the array of sitemaps.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function getSitemaps(){
+            return \Watson\Sitemap\Sitemap::getSitemaps();
+        }
+        
+        /**
+         * Render an index of sitemaps.
+         *
+         * @return \Illuminate\Http\Response 
+         * @static 
+         */
+        public static function index(){
+            return \Watson\Sitemap\Sitemap::index();
+        }
+        
+        /**
+         * Render an index of sitemaps.
+         *
+         * @return \Illuminate\Http\Response 
+         * @static 
+         */
+        public static function renderSitemapIndex(){
+            return \Watson\Sitemap\Sitemap::renderSitemapIndex();
+        }
+        
+        /**
+         * Add a new sitemap tag to the sitemap.
+         *
+         * @param \Watson\Sitemap\Tags\Tag|string $location
+         * @param \DateTime|string $lastModified
+         * @param string $changeFrequency
+         * @param string $priority
+         * @return \Watson\Sitemap\Tags\Tag 
+         * @static 
+         */
+        public static function addTag($location, $lastModified = null, $changeFrequency = null, $priority = null){
+            return \Watson\Sitemap\Sitemap::addTag($location, $lastModified, $changeFrequency, $priority);
+        }
+        
+        /**
+         * Add a new expired tag to the sitemap.
+         *
+         * @param string $location
+         * @param \DateTime|string $expired
+         * @return void 
+         * @static 
+         */
+        public static function addExpiredTag($location, $expired = null){
+            \Watson\Sitemap\Sitemap::addExpiredTag($location, $expired);
+        }
+        
+        /**
+         * Retrieve the array of tags.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function getTags(){
+            return \Watson\Sitemap\Sitemap::getTags();
+        }
+        
+        /**
+         * Get the formatted sitemap.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function xml(){
+            return \Watson\Sitemap\Sitemap::xml();
+        }
+        
+        /**
+         * Get the formatted sitemap index.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function xmlIndex(){
+            return \Watson\Sitemap\Sitemap::xmlIndex();
+        }
+        
+        /**
+         * Render a sitemap.
+         *
+         * @return \Illuminate\Http\Response 
+         * @static 
+         */
+        public static function render(){
+            return \Watson\Sitemap\Sitemap::render();
+        }
+        
+        /**
+         * Render a sitemap.
+         *
+         * @return \Illuminate\Http\Response 
+         * @static 
+         */
+        public static function renderSitemap(){
+            return \Watson\Sitemap\Sitemap::renderSitemap();
+        }
+        
+        /**
+         * Clear all the existing sitemaps and tags.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function clear(){
+            \Watson\Sitemap\Sitemap::clear();
+        }
+        
+        /**
+         * Remove all the existing sitemaps.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function clearSitemaps(){
+            \Watson\Sitemap\Sitemap::clearSitemaps();
+        }
+        
+        /**
+         * Remove all the existing tags.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function clearTags(){
+            \Watson\Sitemap\Sitemap::clearTags();
+        }
+        
+        /**
+         * Check whether the sitemap has a cached view or not.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function hasCachedView(){
+            return \Watson\Sitemap\Sitemap::hasCachedView();
         }
         
     }

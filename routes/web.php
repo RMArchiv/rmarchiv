@@ -64,7 +64,7 @@ Route::resource('resources', 'ResourceController');
 
 //User Routings
 Route::get('users', 'UserController@index');
-Route::get('users/{id}', 'UserController@show');
+Route::get('users/{id}', 'UserController@show')->name('users.show');
 
 //PN Routen
 Route::group(['prefix' => 'messages'], function () {
@@ -135,3 +135,10 @@ Route::get('games/success/{id}', 'MsgBoxController@game_add')->name('game.add.su
 Route::get('screenshot/upload/success/{gameid}', 'MsgBoxController@screenshot_add')->name('screenshot.upload.success');
 Route::get('cdc/success/{gameid}', 'MsgBoxController@cdc_add');
 
+//Routen für Sitemap
+Route::get('sitemap', 'SitemapController@index')->name('sitemap.index');
+Route::get('sitemap/users', 'SitemapController@users')->name('sitemap.users');
+Route::get('sitemap/games', 'SitemapController@games')->name('sitemap.games');
+Route::get('sitemap/developer', 'SitemapController@developer')->name('sitemap.developer');
+Route::get('sitemap/board', 'SitemapController@board')->name('sitemap.board');
+Route::get('sitemap/news', 'SitemapController@news')->name('sitemap.news');

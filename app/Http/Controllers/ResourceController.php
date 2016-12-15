@@ -13,7 +13,7 @@ class ResourceController extends Controller
      */
     public function index()
     {
-        //
+        return view('resources.index');
     }
 
     /**
