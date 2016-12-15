@@ -16,8 +16,8 @@
             @endif
             @include('index._partials.latestadded')
             @include('index._partials.latestreleased')
-
-
+            @include('index._partials.topmonth')
+            @include('index._partials.topalltime')
         </div>
         <div id='middlebar' class='column'>
             @include('index._partials.shoutbox')
