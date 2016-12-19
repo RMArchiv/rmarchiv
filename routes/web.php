@@ -40,6 +40,7 @@ Route::get('news/{id}/approve/{approve}', 'NewsController@approve');
 Route::resource('games', 'GameController');
 Route::post('games/{id}/developer', 'GameController@store_developer')->name('games.developer.store');
 Route::post('games/{id}/developer/delete', 'GameController@destroy_developer')->name('games.developer.delete');
+//Gamefiles routen
 Route::get('games/{id}/gamefiles', 'GameFileController@create')->name('gamefiles.index');
 Route::post('games/{id}/gamefiles', 'GameFileController@store')->name('gamefiles.store');
 Route::post('games/{id}/gamefiles/upload', 'FineUploaderController@endpoint@upload')->name('gamefiles.upload');
@@ -48,6 +49,9 @@ Route::get('games/download/{id}', 'GameFileController@download')->name('gamefile
 Route::get('games/{gameid}/screenshot/{screenid}', 'ScreenshotController@show')->name('screenshot.show');
 Route::get('games/{gameid}/screenshot/create/{screenid}', 'ScreenshotController@create')->name('screenshot.create');
 Route::post('games/{gameid}/screenshot/upload/{screenid}', 'ScreenshotController@upload')->name('screenshot.upload');
+//Gamecredits routen
+Route::post('games/{id}/credit', 'UserCreditsController@store')->name('gamecredits.store');
+Route::get('games/{id}/credit/{credit_id}/delete', 'UserCreditsController@destroy')->name('gamecredits-delete');
 
 //Suchrouten
 Route::get('search', 'SearchController@index');
@@ -127,6 +131,7 @@ Route::get('ac_faqcat/{term}', 'AutocompleteController@faqcat');
 Route::get('ac_award_page/{term}', 'AutocompleteController@awardpage');
 Route::get('ac_award_cat/{term}', 'AutocompleteController@awardcat');
 Route::get('ac_award_subcat/{term}', 'AutocompleteController@awardsubcat');
+Route::get('ac_user/{term}', 'AutocompleteController@user');
 
 //Routen für Messageboxen
 Route::get('submit/logo/success', 'MsgBoxController@submit_logo')->name('submit.logo.success');

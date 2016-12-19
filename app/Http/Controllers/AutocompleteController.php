@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Models\Developer;
@@ -102,6 +103,20 @@ class AutocompleteController extends Controller
             $result[] = [
                 'id' => $item->id,
                 'value' => $item->title
+            ];
+        }
+
+        return \Response::json($result);
+    }
+
+    public function user($term){
+        $result = array();
+        $users = User::where('name', 'like', '%'.$term.'%')->get();
+
+        foreach ($users as $user){
+            $result[] = [
+                'id' => $user->id,
+                'value' => $user->name,
             ];
         }
 

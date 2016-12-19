@@ -150,5 +150,88 @@
         {!! Form::close() !!}
         </div>
 
+        <div class="rmarchivtbl" id="rmarchivbox_submitprod">
+            <h2>verbundene user credits</h2>
+            <table id='pouetbox_prodlist' class='boxtable pagedtable'>
+                <thead>
+                    <tr class='sortable'>
+                        <th>user</th>
+                        <th>bereich</th>
+                        <th>aktionen</th>
+                    </tr>
+                </thead>
+                @foreach($credits as $cr)
+                    <tr>
+                        <td>
+                            <a class='usera' href='{{ url('users', $cr->userid) }}' title="{{ $cr->username }}">
+                                <img alt="{{ $cr->username }}" class='avatar' src='http://ava.rmarchiv.de/?gender=male&id={{ $cr->userid }}'>
+                            </a>
+                            <span class='prod'><a href='{{ url('users', $cr->userid) }}' class='user'>{{ $cr->username }}</a></span>
+                        </td>
+                        <td>
+                            {{ $credittypes[$cr->credit_type_id]['title'] }}
+                        </td>
+                        <td>
+                            [<a href="{{ action('UserCreditsController@destroy', [$game->gameid, $cr->id]) }}">löschen</a>]
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
+
+            {!! Form::open(['method' => 'POST', 'route' => ['gamecredits.store', $game->gameid]]) !!}
+            <h2>credits hinzufügen</h2>
+            <div class="content">
+                <div class="formifier">
+                    <div class="row" id="row_user">
+                        <label for="user">benutzername</label>
+                        <input autocomplete="off" class="auto" name="user" id="user" placeholder="{{trans('app.games.edit.developer_help')}}" value=""/>
+                        <span> [<span class="req">req</span>]</span>
+                    </div>
+                    <div class="row" id="row_credittype">
+                        <label for="credit">bereich:</label>
+                        <select name='credit' id='credit'>
+                            <option value="0">Bitte Bereich auswählen</option>
+                        @foreach($credittypes as $ct)
+                            <option value="{{ $ct['id'] }}">{{$ct['title']}}</option>
+                        @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                var sourcepath = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    //prefetch: '../data/films/post_1960.json',
+                    remote: {
+                        url: '/ac_user/%QUERY',
+                        wildcard: '%QUERY'
+                    }
+                });
+
+                $('#row_user .auto').typeahead(null, {
+                    name: 'user',
+                    display: 'value',
+                    source: sourcepath,
+                    limit: 5,
+                    templates: {
+                        empty: [
+                            '<div class="empty-message">',
+                            '{{trans('app.misc.nothing_found')}}',
+                            '</div>'
+                        ].join('\n'),
+                        suggestion: function(data) {
+                            console.log(data);
+                            return '<p><strong>' + data.value + '</strong></p>';
+                        }
+                    }
+                });
+            </script>
+            <div class="foot">
+                <input type="submit" value="{{trans('app.misc.send')}}">
+            </div>
+            {!! Form::close() !!}
+        </div>
+
     </div>
 @endsection

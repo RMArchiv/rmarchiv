@@ -270,6 +270,27 @@ class GameController extends Controller
             ->where('games_awards.game_id', '=', $id)
             ->get();
 
+        $creds = \DB::table('user_credit_types')
+            ->orderBy('title')
+            ->get();
+
+        $credittypes = array();
+        foreach ($creds as $cred) {
+            $credittypes[$cred->id]['title'] = $cred->title;
+            $credittypes[$cred->id]['id'] = $cred->id;
+        }
+
+        $credits = \DB::table('user_credits')
+            ->leftJoin('users', 'users.id', '=', 'user_credits.user_id')
+            ->select([
+                'user_credits.credit_type_id as credit_type_id',
+                'user_credits.id as id',
+                'users.id as userid',
+                'users.name as username',
+            ])
+            ->where('game_id', '=', $id)
+            ->get();
+
         event(new GameView($id));
 
         return view('games.show', [
@@ -279,6 +300,8 @@ class GameController extends Controller
             'files' => $files,
             'releasedate' => $releasedate,
             'awards' => $awards,
+            'credittypes' => $credittypes,
+            'credits' => $credits,
         ]);
 
     }
@@ -319,12 +342,35 @@ class GameController extends Controller
             ->where('games_developer.game_id', '=', $id)
             ->get();
 
+        $creds = \DB::table('user_credit_types')
+            ->orderBy('title')
+            ->get();
+
+        $credittypes = array();
+        foreach ($creds as $cred) {
+            $credittypes[$cred->id]['title'] = $cred->title;
+            $credittypes[$cred->id]['id'] = $cred->id;
+        }
+
+        $credits = \DB::table('user_credits')
+            ->leftJoin('users', 'users.id', '=', 'user_credits.user_id')
+            ->select([
+                'user_credits.credit_type_id as credit_type_id',
+                'user_credits.id as id',
+                'users.id as userid',
+                'users.name as username',
+            ])
+            ->where('game_id', '=', $id)
+            ->get();
+
         return view('games.edit', [
             'game' => $game,
             'makers' => $makers,
             'developers' => $developers,
             'gamefiles' => '',
             'langs' => $langs,
+            'credittypes' => $credittypes,
+            'credits' => $credits,
         ]);
     }
 

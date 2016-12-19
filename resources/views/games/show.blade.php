@@ -182,16 +182,12 @@
                     <tr>
                         <td id='credits' colspan='3' class='r2'>
                             <ul>
-                                {{--
-                                <li>
-                                    <a href='user.php?who=1230' class='usera' title="se7en"><img src='http://content.pouet.net/avatars/rez64.gif' alt="se7en" class='avatar' />
-                                    </a> <a href='user.php?who=1230' class='user'>se7en</a> [code, graphics]
-                                </li>
-                                <li>
-                                    <a href='user.php?who=43119' class='usera' title="dalezy"><img src='http://content.pouet.net/avatars/dalezy3.gif' alt="dalezy" class='avatar' />
-                                    </a> <a href='user.php?who=43119' class='user'>dalezy</a> [music]
-                                </li>
-                                --}}
+                                @foreach($credits as $cr)
+                                    <li>
+                                        <a href='{{ url('users', $cr->userid) }}' class='usera' title="{{ $cr->username }}"><img src='http://ava.rmarchiv.de/?gender=male&id={{ $cr->userid }}' alt="{{ $cr->username }}" class='avatar' />
+                                        </a> <a href='{{ url('users', $cr->userid) }}' class='user'>{{ $cr->username }}</a> [{{ $credittypes[$cr->id]['title'] }}]
+                                    </li>
+                                @endforeach
                             </ul>
                         </td>
                     </tr>
