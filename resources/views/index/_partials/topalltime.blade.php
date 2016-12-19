@@ -1,7 +1,7 @@
 <div class='rmarchivtbl' id='rmarchivbox_latestadded'>
     <h2>alltime top</h2>
     <ul class='boxlist boxlisttable'>
-        @foreach($latestadded as $g)
+        @foreach($topalltime as $g)
             <li>
             <span class='rowprod'>
                 <span class='prodentry'>
