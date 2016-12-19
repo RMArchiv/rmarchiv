@@ -53,7 +53,7 @@
                         <td>
                             [<a href="{{ url('games/download', $gf->fileid) }}">{{trans('app.misc.download')}}</a>]
                         @if(Auth::user()->settings->is_admin)
-                                :: [<a href="{{ route("gamefiles.delete", $gameid) }}">{{trans('app.misc.delete')}}</a>]
+                                :: [<a href="{{ route("gamefiles.delete", [$gameid, $gf->fileid]) }}">{{trans('app.misc.delete')}}</a>]
                         @endif
                         </td>
                     @endif

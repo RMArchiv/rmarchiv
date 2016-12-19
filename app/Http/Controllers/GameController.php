@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Events\GameView;
 use App\Events\Obyx;
 use App\Helpers\DatabaseHelper;
+use App\Models\Game;
+use App\Models\Language;
 use Carbon\Carbon;
 use Doctrine\DBAL\Driver\IBMDB2\DB2Connection;
 use Illuminate\Http\Request;
@@ -335,7 +337,20 @@ class GameController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $lang = Language::whereShort($request->get('language'))->first();
+
+        $game = Game::whereId($id)->first();
+        $game->title = $request->get('title');
+        $game->subtitle = $request->get('subtitle');
+        $game->maker_id = $request->get('maker');
+        $game->lang_id = $lang->id;
+        $game->desc_md = $request->get('desc');
+        $game->desc_html = \Markdown::convertToHtml($request->get('desc'));
+        $game->website_url = $request->get('websiteurl');
+        $game->save();
+
+        return redirect()->action('GameController@edit', [$id]);
+
     }
 
     /**

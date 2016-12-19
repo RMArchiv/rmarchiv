@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\Obyx;
+use App\Models\GamesFile;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -83,21 +84,6 @@ class GameFileController extends Controller
     }
 
     public function store(Request $request, $id){
-/*
-   +request: ParameterBag {#41 ▼
-    #parameters: array:9 [▼
-      "_token" => "wTPL1yBVVilQG62BNCGxolpfJIir0bAfU550Dapx"
-      "filetype" => "0"
-      "version" => ""
-      "releasedate_day" => "0"
-      "releasedate_month" => "0"
-      "releasedate_year" => "0"
-      "qqfile" => ""
-      "uuid" => "2f4ce7c7-0b07-4186-9683-bd63e7cc1ed1"
-      "filename" => "undefined"
-    ]
-  }
- */
 
         $this->validate($request, [
             'uuid' => 'required',
@@ -141,7 +127,13 @@ class GameFileController extends Controller
 
     }
 
-    public function destroy(Request $request, $id){
+    public function destroy(Request $request, $id, $fileid){
 
+        $gf = GamesFile::whereId($fileid)->first();
+        \Storage::delete($gf->filename);
+
+        $gf->delete();
+
+        return redirect()->route('gamefiles.index', [$id]);
     }
 }
