@@ -90,6 +90,7 @@ class DeveloperController extends Controller
             ->selectRaw("(SELECT STR_TO_DATE(CONCAT(release_year,'-',release_month,'-',release_day ), '%Y-%m-%d') FROM games_files WHERE game_id = games.id ORDER BY release_year DESC, release_month DESC, release_day DESC LIMIT 1) as releasedate")
             ->selectRaw('(SELECT COUNT(id) FROM games_coupdecoeur WHERE game_id = games.id) as cdccount')
             ->where('games_developer.developer_id', '=', $id)
+            ->orderBy('games.title')
             ->groupBy('games.id')
             ->get();
 
