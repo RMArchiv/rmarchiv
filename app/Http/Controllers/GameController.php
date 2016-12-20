@@ -268,6 +268,9 @@ class GameController extends Controller
                 'award_subcats.title as subtitle'
             ])
             ->where('games_awards.game_id', '=', $id)
+            ->where('games_awards.place', '<', 4)
+            ->orderBy('games_awards.place')
+            ->orderBy('award_subcats.title')
             ->get();
 
         $creds = \DB::table('user_credit_types')
