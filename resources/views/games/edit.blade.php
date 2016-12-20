@@ -15,6 +15,8 @@
             </div>
         @endif
 
+        <h2>Bearbeiten von: <a href="{{ url('games', $game->gameid) }}">{{ $game->gametitle }}</a></h2>
+
         {!! Form::open(['method' => 'PUT', 'route' => ['games.update', $game->gameid]]) !!}
         <div class="rmarchivtbl" id="rmarchivbox_submitprod">
             <h2>{{trans('app.games.edit.title')}}</h2>
