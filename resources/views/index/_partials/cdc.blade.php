@@ -26,7 +26,7 @@
                         @endif
                         </a></span>
                     <span class='group'>:: <a
-                                href="{{ url('developers', $cdc->developerid) }}">{{ $cdc->developername }}</a>
+                                href="{{ url('developer', $cdc->developerid) }}">{{ $cdc->developername }}</a>
                     </span>
                 </span>
             </span>

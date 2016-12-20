@@ -41,7 +41,9 @@
                     </td>
                     <td width="60%">
                     <span class='typeiconlist'>
-                        <span class='typei type_{{ $game_types[$game->gametype]['short'] }}' title='{{ $game->gametype }}'>{{ $game->gametype }}</span>
+                        @if($game->gametype)
+                            <span class='typei type_{{ $game_types[$game->gametype]['short'] }}' title='{{ $game->gametype }}'>{{ $game->gametype }}</span>
+                        @endif
                     </span>
                         <span class='platformiconlist'>
                         <span class='typei type_{{ $game->makershort }}' title='{{ $game->makertitle }}'>{{ $game->makertitle }}</span>

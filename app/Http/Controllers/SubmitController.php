@@ -15,10 +15,12 @@ use Illuminate\Http\UploadedFile;
 class SubmitController extends Controller
 {
     public function index(){
+        //Zeige Submit View
         return view('submit.index');
     }
 
     public function logo_index(){
+        //Zeige View zum Einsenden eines Logos
         return view('submit.logo.index');
     }
 
@@ -40,8 +42,6 @@ class SubmitController extends Controller
         $l->filename = str_replace($extorig, '', $imageName);
         $l->title = $request->get('logoname');
         $l->user_id = \Auth::id();
-
-
         $l->save();
 
         event(new Obyx('logo-add', \Auth::id()));
