@@ -22,7 +22,7 @@
                                     <img src="http://ava.rmarchiv.de/?gender=male&amp;id={{ $new->user_id }}" alt="{{ $new->name }}" class="avatar">
                                 </a> <a href="{{ url('/user', $new->user_id) }}" class="user">{{ $new->name }}</a>
                             </td>
-                            <td>{{ $new->created_at }}</td>
+                            <td><time datetime='{{ $new->created_at }}' title='{{ $new->created_at }}'>{{ \Carbon\Carbon::parse($new->created_at)->diffForHumans() }}</time></td>
                             <td><a href="{{ url('/news', $new->id) }}">{{ $new->title }}</a></td>
                             <td>{{ $new->counter or 0 }}</td>
                         </tr>

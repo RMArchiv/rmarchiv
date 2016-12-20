@@ -221,7 +221,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class='foot' colspan='3'>hinzugefügt am {{ $game->createdate }} von <a
+                        <td class='foot' colspan='3'>hinzugefügt <time datetime='{{ $game->createdate }}' title='{{ $game->createdate }}'>{{ \Carbon\Carbon::parse($game->createdate)->diffForHumans() }}</time> von <a
                                     href='{{ url('users', $game->userid) }}' class='user'>{{ $game->username }}</a>
                             <a href='{{ url('users', $game->userid) }}' class='usera' title="{{ $game->username }}"><img
                                         src='http://ava.rmarchiv.de/?gender=male&id={{ $game->userid }}'

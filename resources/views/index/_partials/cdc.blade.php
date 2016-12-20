@@ -32,5 +32,5 @@
             </span>
         </li>
     </ul>
-    <div class='foot'>seit {{ $cdc->cdcdate }} :: <a href='{{ url('cdc') }}'>more</a>...</div>
+    <div class='foot'><time datetime='{{ $cdc->cdcdate }}' title='{{ $cdc->cdcdate }}'>{{ \Carbon\Carbon::parse($cdc->cdcdate)->diffForHumans() }}</time> :: <a href='{{ url('cdc') }}'>more</a>...</div>
 </div>

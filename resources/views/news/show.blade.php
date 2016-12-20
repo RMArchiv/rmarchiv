@@ -10,7 +10,7 @@
                         {!! $news->news_html !!}
                     </div>
                     <div class="foot">
-                        {{ trans('app.news.show.submit_by') }} <a href='{{ url('users', $news->user_id) }}'>{{ $news->name }}</a> {{ trans('app.news.show.at') }} {{ $news->created_at }}
+                        {{ trans('app.news.show.submit_by') }} <a href='{{ url('users', $news->user_id) }}'>{{ $news->name }}</a> :: <time datetime='{{ $news->created_at }}' title='{{ $news->created_at }}'>{{ \Carbon\Carbon::parse($news->created_at)->diffForHumans() }}</time>
                     </div>
                     @if(Auth::check())
                             <div class="foot">

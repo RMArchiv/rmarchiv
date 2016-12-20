@@ -47,7 +47,7 @@
                     <a href="{{ url('developer', $game->developerid) }}">{{ $game->developername }}</a>
                 </td>
                 <td class='date'>{{ $game->releasedate }}</td>
-                <td class='date'>{{ $game->gamecreated_at }}</td>
+                <td class='date'><time datetime='{{ $game->gamecreated_at }}' title='{{ $game->gamecreated_at }}'>{{ \Carbon\Carbon::parse($game->gamecreated_at)->diffForHumans() }}</time></td>
                 <td class='votes'>{{ $game->voteup or 0 }}</td>
                 <td class='votes'>{{ $game->votedown or 0 }}</td>
                 {{ $avg = @(($game->voteup - $game->votedown) / ($game->voteup + $game->votedown)) }}
