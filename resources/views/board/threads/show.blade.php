@@ -4,7 +4,7 @@
     <div id='content'>
         <div class='rmarchivtbl' id='rmarchivbox_bbsview'>
             <h2>{{ $posts->first()->ttitle }}</h2>
-            <div class='threadcategory'><b>kategorie:</b> {{ $posts->first()->ctitle }}
+            <div class='threadcategory'><b>kategorie:</b> <a href="{{ url('board/cat', $posts->first()->pcatid) }}">{{ $posts->first()->ctitle }}</a>
             </div>
 
             @foreach($posts as $post)
