@@ -14,7 +14,7 @@
             </div>
         @endif
         @if($gamefiles->count() <> 0)
-            <h2>{{ $gamefiles->first()->gametitle }}<small> {{ $gamefiles->first()->gamesubtitle }}</small></h2>
+            <h2>Spieledateien von: <a href="{{ url('games', $gamefiles->first()->gameid) }}">{{ $gamefiles->first()->gametitle }}<small> {{ $gamefiles->first()->gamesubtitle }}</small></a></h2>
             <table id='pouetbox_prodlist' class='boxtable pagedtable'>
                 <thead>
                 <tr class='sortable'>
