@@ -40,7 +40,7 @@
                             name: 'game',
                             display: 'id',
                             source: sourcepath,
-                            limit: 5,
+                            limit: 9,
                             templates: {
                                 empty: [
                                     '<div style="color: #00001a;">',

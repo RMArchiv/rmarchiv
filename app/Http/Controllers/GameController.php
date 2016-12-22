@@ -294,6 +294,14 @@ class GameController extends Controller
             ->where('game_id', '=', $id)
             ->get();
 
+        if(\Auth::check()){
+            $userlists = \DB::table('user_lists')
+                ->where('user_id', '=', \Auth::id())
+                ->get();
+        }else{
+            $userlists = null;
+        }
+
         event(new GameView($id));
 
         return view('games.show', [
@@ -305,6 +313,7 @@ class GameController extends Controller
             'awards' => $awards,
             'credittypes' => $credittypes,
             'credits' => $credits,
+            'userlists' => $userlists,
         ]);
 
     }
@@ -365,6 +374,9 @@ class GameController extends Controller
             ])
             ->where('game_id', '=', $id)
             ->get();
+
+
+
 
         return view('games.edit', [
             'game' => $game,

@@ -8,10 +8,44 @@
                     <tr id='prodheader'>
                         <th colspan='3'>
                             <span id='title'><big>{{ $game->title }}</big> :: {{ $game->subtitle }}</span>
-                            @permission(('create-games'))
-                                <div id='nfo'>[<a href='{{ route('games.edit', [ 'id' => $game->gameid]) }}'>edit</a>]
+                            @if(Auth::check())
+                                <script>
+                                    /* When the user clicks on the button,
+                                     toggle between hiding and showing the dropdown content */
+                                    function listDD() {
+                                        document.getElementById("myUserList").classList.toggle("show");
+                                    }
+
+                                    // Close the dropdown menu if the user clicks outside of it
+                                    window.onclick = function(event) {
+                                        if (!event.target.matches('.dropbtn')) {
+
+                                            var dropdowns = document.getElementsByClassName("dropdown-content");
+                                            var i;
+                                            for (i = 0; i < dropdowns.length; i++) {
+                                                var openDropdown = dropdowns[i];
+                                                if (openDropdown.classList.contains('show')) {
+                                                    openDropdown.classList.remove('show');
+                                                }
+                                            }
+                                        }
+                                    }
+                                </script>
+                                <div id='nfo'>
+                                    [<button onclick="listDD()" class="dropbtn">+</button>]
+                                    <div id="myUserList" class="dropdown-content">
+                                        <a href="{{ url('lists/create') }}">erstelle userliste</a>
+                                        @if($userlists)
+                                            @foreach($userlists as $list)
+                                                <a href="{{ route('lists.add_game', [$list->id, $game->gameid])  }}">{{ $list->title }}</a>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                @permission(('create-games'))
+                                    [<a href='{{ route('games.edit', [ 'id' => $game->gameid]) }}'>edit</a>]
+                                @endpermission
                                 </div>
-                            @endpermission
+                            @endif
                         </th>
                     </tr>
                     <tr>
