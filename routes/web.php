@@ -129,7 +129,8 @@ Route::get('lists/create', 'UserListController@create');
 Route::post('lists/create', 'UserListController@store');
 Route::get('lists/{listid}/add_game/{gameid}', 'UserListController@add_game')->name('lists.add_game');
 Route::get('lists/{userid}/show/{listid}', 'UserListController@show');
-
+Route::get('lists/{listid}/delete/game/{itemid}', 'UserListController@delete_game')->name('lists.delete_game');
+Route::get('lists/delete/{listid}', 'UserListController@delete');
 
 //Autocomplete Routen
 Route::get('ac_developer/{term}', 'AutocompleteController@developer');

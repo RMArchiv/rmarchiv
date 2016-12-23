@@ -29,8 +29,45 @@ class UserListController extends Controller
         return \Redirect::back();
     }
 
-    public function delete_game(){
+    public function delete_game($listid, $itemid){
+        $item = \DB::table('user_list_items')
+            ->where('list_id', '=', $listid)
+            ->where('content_id', '=', $itemid)
+            ->where('content_type', '=', 'game')
+            ->delete();
 
+        return \Redirect::back();
+    }
+
+    public function delete($listid){
+        if(\Auth::check()){
+            if(\Auth::user()->hasRole('admin')){
+                $item = \DB::table('user_list_items')
+                    ->where('list_id', '=', $listid)
+                    ->delete();
+
+                $list = \DB::table('user_lists')
+                    ->where('id', '=', $listid)
+                    ->delete();
+            }else{
+                $list = \DB::table('user_lists')
+                    ->where('id', '=', $listid)
+                    ->where('user_id', '=', \Auth::id())
+                    ->get();
+
+                if($list->count() <> 0){
+                    $list = \DB::table('user_lists')
+                        ->where('id', '=', $listid)
+                        ->delete();
+
+                    $item = \DB::table('user_list_items')
+                        ->where('list_id', '=', $listid)
+                        ->delete();
+                }
+            }
+        }
+
+        return \Redirect::back();
     }
 
     public function add_game(Request $request, $listid, $gameid){

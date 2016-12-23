@@ -78,8 +78,8 @@
                     <td>{{ $game->commentcount }}</td>
                     <td>
                         @if(Auth::check())
-                            @if(Auth::id() == $list->user_id)
-
+                            @if(Auth::id() == $list->user_id or Auth::user()->hasRole('admin'))
+                                [<a href="{{ route('lists.delete_game', [$list->id, $game->gameid])  }}">löschen</a>]
                             @endif
                         @endif
                     </td>
