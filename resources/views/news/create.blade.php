@@ -5,7 +5,7 @@
         <form action="{{ url('/news') }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
 
-            <div class="rmarchivtbl" id="rmarchivbox_submitavatar">
+            <div class="rmarchivtbl" id="rmarchivbox_submitnews">
                 <h2>{{ trans('app.news.add.title') }}</h2>
 
                 @if (count($errors) > 0))
