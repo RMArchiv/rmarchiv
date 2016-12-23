@@ -4,7 +4,7 @@
     <div id='content'>
         <h1>das rmarchiv forum</h1>
         @foreach($cats as $cat)
-            <h2>{{ $cat->title }}</h2>
+            <h2><a href="{{ url('board/cat', $cat->id) }}">{{ $cat->title }}</a></h2>
             <table id="rmarchivbox_bbslist" class="boxtable pagedtable" width="80%">
                 <thead>
                     <tr>
