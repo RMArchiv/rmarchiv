@@ -124,11 +124,11 @@ Route::post('awards/store/subcat', 'AwardController@store_subcat');
 Route::post('awards/gameadd/', 'AwardController@gameadd_store');
 
 //Routen für Userlisten
-Route::get('lists', 'UserListController@index');
+Route::get('lists/{userid}', 'UserListController@index');
 Route::get('lists/create', 'UserListController@create');
 Route::post('lists/create', 'UserListController@store');
 Route::get('lists/{listid}/add_game/{gameid}', 'UserListController@add_game')->name('lists.add_game');
-Route::get('lists/{listid}', 'UserListController@show');
+Route::get('lists/{userid}/show/{listid}', 'UserListController@show');
 
 
 //Autocomplete Routen

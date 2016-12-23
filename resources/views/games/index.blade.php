@@ -3,7 +3,7 @@
 @section('content')
     <div id='content'>
         <h2>Spiele</h2>
-        <table id='pouetbox_prodlist' class='boxtable pagedtable'>
+        <table id='rmarchiv_prodlist' class='boxtable pagedtable'>
             <thead>
                 <tr class='sortable'>
                     <th>spielname</th>

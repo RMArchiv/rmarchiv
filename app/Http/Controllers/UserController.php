@@ -62,6 +62,7 @@ class UserController extends Controller
             ->selectRaw('(SELECT COUNT(id) FROM board_threads WHERE user_id = u.id) as threadcount')
             ->selectRaw('(SELECT COUNT(id) FROM board_posts WHERE user_id = u.id) as postcount')
             ->selectRaw('(SELECT COUNT(id) FROM developer WHERE user_id = u.id) as devcount')
+            ->selectRaw('(SELECT COUNT(id) FROM user_lists WHERE user_id = u.id) as listcount')
             ->where('u.id', '=', $userid)
             ->first();
 

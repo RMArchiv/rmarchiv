@@ -21,6 +21,7 @@
             <div class='contribheader'>shoutpox posts: {{ $user->shoutboxcount }} <span>:: {{ ($user->shoutboxcount * \App\Helpers\DatabaseHelper::getObyxPoints('shoutbox')) }} Obeys</span> [<a href='#'>show</a>]</div>
             <div class='contribheader'>board topics eröffnet: {{ $user->threadcount }} <span>:: {{ ($user->shoutboxcount * \App\Helpers\DatabaseHelper::getObyxPoints('thread-add')) }} Obeys</span> [<a href='#'>show</a>]</div>
             <div class='contribheader'>board posts: {{ $user->postcount }} <span>:: {{ ($user->shoutboxcount * \App\Helpers\DatabaseHelper::getObyxPoints('post-add')) }} Obeys</span> [<a href='#'>show</a>]</div>
+            <div class="contribheader">erstellte listen: {{$user->listcount}} <span>:: </span>[<a href='{{ action('UserListController@index', $user->userid) }}'>show</a>]</div>
             <div class='foot'>account erstellt am {{ $user->usercreated_at }}</div>
         </div>
     </div>
