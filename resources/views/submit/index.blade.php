@@ -12,6 +12,12 @@
                     <li><a href='{{ url('submit/logo') }}'>upload eines logos</a></li>
                     <li><a href='{{ url('logo/vote') }}'>bewerte logos</a></li>
                 </ul>
+                <h2>Fehlende Dinge</h2>
+                <ul class='boxlist'>
+                    <li><a href='{{ url('missing/gamescreens') }}'>fehlende spielescreenshots</a></li>
+                    <li><a href='{{ url('missing/gamefiles') }}'>fehlende spieledateien</a></li>
+                    <li><a href='{{ url('missing/gamedesc') }}'>fehlende spielebeschreibungen</a></li>
+                </ul>
                 @role(('owner', 'admin'))
                 <h2>Admin Only</h2>
                 <ul class="boxlist">

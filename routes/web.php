@@ -64,7 +64,6 @@ Route::resource('developer', 'DeveloperController');
 Route::resource('cdc', 'CDCController');
 
 //Ressource Routen
-
 Route::group(['prefix' => 'resources'], function () {
     Route::get('/', ['as' => 'resources', 'uses' => 'ResourceController@index']);
     Route::get('/gfx', ['as' => 'resources.gfx', 'uses' => 'ResourceController@index']);
@@ -154,6 +153,11 @@ Route::get('comment/success/{type}/{id}', 'MsgBoxController@comment_add')->name(
 Route::get('games/success/{id}', 'MsgBoxController@game_add')->name('game.add.success');
 Route::get('screenshot/upload/success/{gameid}', 'MsgBoxController@screenshot_add')->name('screenshot.upload.success');
 Route::get('cdc/success/{gameid}', 'MsgBoxController@cdc_add');
+
+//Routen für Fehlendes oder Statistiken
+Route::get('missing/gamescreens', 'MissingController@index_gamescreens');
+Route::get('missing/gamefiles', 'MissingController@index_gamefiles');
+Route::get('missing/gamedesc', 'MissingController@index_gamedesc');
 
 //Sonstige Seiten
 Route::get("/impressum", function(){
