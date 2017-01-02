@@ -36,6 +36,10 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Logo[] $logo
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\LogoVote[] $logovote
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserRole[] $roles
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserObyx[] $userobyx
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Cmgmyr\Messenger\Models\Message[] $messages
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Cmgmyr\Messenger\Models\Participant[] $participants
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Cmgmyr\Messenger\Models\Thread[] $threads
  */
 class User extends Authenticatable
 {

@@ -26,6 +26,7 @@
                     <li><a href="{{ url('cdc/create') }}">'coup de coeur' hinzufügen</a></li>
                     <li><a href="{{ url('faq/create') }}">faq hinzufügen</a></li>
                     <li><a href="{{ url('awards/create') }}">award-kategorie hinzufügen</a></li>
+                    <li><a href="{{ url('reported/comments') }}"></a>gemeldete kommentare</li>
                 </ul>
                 @endrole
             </div>

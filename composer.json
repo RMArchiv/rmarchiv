@@ -20,7 +20,8 @@
         "webuni/commonmark-table-extension": "^0.6.0",
         "zizaco/entrust": "^1.7",
         "cmgmyr/messenger": "^2.13",
-        "watson/sitemap": "^2.0"
+        "watson/sitemap": "^2.0",
+        "dingo/api": "1.0.*@dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

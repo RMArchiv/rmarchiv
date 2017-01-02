@@ -171,3 +171,9 @@ Route::get('sitemap/games', 'SitemapController@games')->name('sitemap.games');
 Route::get('sitemap/developer', 'SitemapController@developer')->name('sitemap.developer');
 Route::get('sitemap/board', 'SitemapController@board')->name('sitemap.board');
 Route::get('sitemap/news', 'SitemapController@news')->name('sitemap.news');
+
+//Routen für API
+$api = app('Dingo\Api\Routing\Router');
+$api->version('v1', function ($api) {
+    $api->get('games', 'App\Http\Controllers\Api\v1\GameController@index');
+});

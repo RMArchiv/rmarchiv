@@ -30,6 +30,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesAward wherePlace($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesAward whereDescription($value)
  * @mixin \Eloquent
+ * @property int $award_subcat_id
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesAward whereAwardSubcatId($value)
  */
 class GamesAward extends Model
 {

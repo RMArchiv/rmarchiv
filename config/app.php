@@ -191,6 +191,7 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         Cmgmyr\Messenger\MessengerServiceProvider::class,
         Watson\Sitemap\SitemapServiceProvider::class,
+        Dingo\Api\Provider\LaravelServiceProvider::class,
 
         /*
          * Application Service Providers...
