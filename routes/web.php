@@ -64,7 +64,14 @@ Route::resource('developer', 'DeveloperController');
 Route::resource('cdc', 'CDCController');
 
 //Ressource Routen
-Route::resource('resources', 'ResourceController');
+
+Route::group(['prefix' => 'resources'], function () {
+    Route::get('/', ['as' => 'resources', 'uses' => 'ResourceController@index']);
+    Route::get('/gfx', ['as' => 'resources.gfx', 'uses' => 'ResourceController@index']);
+    Route::get('/sfx', ['as' => 'resources.sfx', 'uses' => 'ResourceController@index']);
+    Route::get('/scripts', ['as' => 'resources.scripts', 'uses' => 'ResourceController@index']);
+    Route::get('/tools', ['as' => 'resources.tools', 'uses' => 'ResourceController@index']);
+});
 
 //User Routings
 Route::get('users', 'UserController@index');
