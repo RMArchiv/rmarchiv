@@ -6,7 +6,7 @@
             <h1>
                 {{ $award->pagetitle }}: {{ $award->cattitle }} - {{ $award->catyear }}
                 @if($award->catmonth <> 0)
-                     - {{ trans('app.misc.month.'.$award->month) }}
+                     - {{ trans('app.misc.month.'.$award->catmonth) }}
                 @endif
             </h1>
 

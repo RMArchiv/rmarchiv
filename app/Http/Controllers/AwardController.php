@@ -18,6 +18,8 @@ class AwardController extends Controller
                 'award_cats.month as month',
                 'award_pages.title as awardpage'
             ])
+            ->orderBy('year', 'desc')
+            ->orderBy('month', 'desc')
             ->get();
 
         return view('awards.index', [
