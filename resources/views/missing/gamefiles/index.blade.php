@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('pagetitle', 'spiele mit fehlendem titelbild')
+@section('pagetitle', 'spiele mit fehlenden spieledateien')
 @section('content')
     <div id='content'>
-        <h2>spiele mit fehlendem titelbild</h2>
+        <h2>spiele mit fehlenden spieledateien</h2>
         <table id='rmarchiv_prodlist' class='boxtable pagedtable'>
             <thead>
             <tr class='sortable'>
