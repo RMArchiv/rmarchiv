@@ -66,11 +66,24 @@ Route::resource('cdc', 'CDCController');
 //Ressource Routen
 Route::group(['prefix' => 'resources'], function () {
     Route::get('/', ['as' => 'resources', 'uses' => 'ResourceController@index']);
-    Route::get('/gfx', ['as' => 'resources.gfx', 'uses' => 'ResourceController@index']);
-    Route::get('/sfx', ['as' => 'resources.sfx', 'uses' => 'ResourceController@index']);
-    Route::get('/scripts', ['as' => 'resources.scripts', 'uses' => 'ResourceController@index']);
-    Route::get('/tools', ['as' => 'resources.tools', 'uses' => 'ResourceController@index']);
+    Route::get('/gfx', ['as' => 'resources.gfx', 'uses' => 'ResourceController@index_gfx']);
+    Route::get('/gfx/{cat}', ['as' => 'resources.gfx.cat', 'uses' => 'ResourceController@index_gfx_cat']);
+    Route::get('/sfx', ['as' => 'resources.sfx', 'uses' => 'ResourceController@index_sfx']);
+    Route::get('/sfx/{cat}', ['as' => 'resources.sfx.cat', 'uses' => 'ResourceController@index_sfx_cat']);
+    Route::get('/scripts', ['as' => 'resources.scripts', 'uses' => 'ResourceController@index_scripts']);
+    Route::get('/scripts/{cat}', ['as' => 'resources.scripts.cat', 'uses' => 'ResourceController@index_scripts_cat']);
+    Route::get('/tools', ['as' => 'resources.tools', 'uses' => 'ResourceController@index_tools']);
+    Route::get('/tools/{cat}', ['as' => 'resources.tools.cat', 'uses' => 'ResourceController@index_tools_cat']);
+
+    Route::get('/{type}/{cat}/{id}', ['as' => 'resources.show', 'uses' => 'ResourceController@show']);
+
+    Route::post('/create', ['as' => 'resources.create_steps', 'uses' => 'ResourceController@create_steps']);
+    Route::get('/create', ['as' => 'resources.create', 'uses' => 'ResourceController@create']);
+    Route::post('/create/store', ['as' => 'resources.store', 'uses' => 'ResourceController@store']);
 });
+
+Route::post('resources/upload', 'FineUploaderController@endpoint@upload')->name('resources.upload');
+
 
 //User Routings
 Route::get('users', 'UserController@index');
