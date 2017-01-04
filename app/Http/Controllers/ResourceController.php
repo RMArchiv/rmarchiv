@@ -44,35 +44,266 @@ class ResourceController extends Controller
     }
 
     public function index_gfx(){
-        return view('resources.gfx.index');
+        $res = \DB::table('resources')
+            ->leftJoin('users', 'users.id', '=', 'resources.user_id')
+            ->leftJoin('comments', function($join){
+                $join->on('comments.content_id', '=', 'resources.id');
+                $join->on('comments.content_type', '=', \DB::raw("'resource'"));
+            })
+            ->select([
+                'resources.id as resid',
+                'resources.type as restype',
+                'resources.cat as rescat',
+                'resources.user_id as userid',
+                'users.name as username',
+                'resources.title as restitle',
+                'resources.created_at as rescreatedat',
+                'resources.content_type as contenttype'
+            ])
+            ->selectRaw('COUNT(comments.id) AS commentcount')
+            ->selectRaw('SUM(comments.vote_up) AS voteup')
+            ->selectRaw('SUM(comments.vote_down) AS votedown')
+            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
+            ->where('resources.type', '=', 'gfx')
+            ->groupBy('resources.id')
+            ->orderBy('resources.created_at', 'desc')
+            ->limit(20)
+            ->get();
+
+        return view('resources.gfx.index',[
+            'resources' => $res,
+            'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
+        ]);
     }
 
     public function index_sfx(){
-        return view('resources.sfx.index');
+        $res = \DB::table('resources')
+            ->leftJoin('users', 'users.id', '=', 'resources.user_id')
+            ->leftJoin('comments', function($join){
+                $join->on('comments.content_id', '=', 'resources.id');
+                $join->on('comments.content_type', '=', \DB::raw("'resource'"));
+            })
+            ->select([
+                'resources.id as resid',
+                'resources.type as restype',
+                'resources.cat as rescat',
+                'resources.user_id as userid',
+                'users.name as username',
+                'resources.title as restitle',
+                'resources.created_at as rescreatedat',
+                'resources.content_type as contenttype'
+            ])
+            ->selectRaw('COUNT(comments.id) AS commentcount')
+            ->selectRaw('SUM(comments.vote_up) AS voteup')
+            ->selectRaw('SUM(comments.vote_down) AS votedown')
+            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
+            ->where('resources.type', '=', 'sfx')
+            ->groupBy('resources.id')
+            ->orderBy('resources.created_at', 'desc')
+            ->limit(20)
+            ->get();
+
+        return view('resources.sfx.index',[
+            'resources' => $res,
+            'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
+        ]);
     }
 
     public function index_scripts(){
-        return view('resources.scripts.index');
+        $res = \DB::table('resources')
+            ->leftJoin('users', 'users.id', '=', 'resources.user_id')
+            ->leftJoin('comments', function($join){
+                $join->on('comments.content_id', '=', 'resources.id');
+                $join->on('comments.content_type', '=', \DB::raw("'resource'"));
+            })
+            ->select([
+                'resources.id as resid',
+                'resources.type as restype',
+                'resources.cat as rescat',
+                'resources.user_id as userid',
+                'users.name as username',
+                'resources.title as restitle',
+                'resources.created_at as rescreatedat',
+                'resources.content_type as contenttype'
+            ])
+            ->selectRaw('COUNT(comments.id) AS commentcount')
+            ->selectRaw('SUM(comments.vote_up) AS voteup')
+            ->selectRaw('SUM(comments.vote_down) AS votedown')
+            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
+            ->where('resources.type', '=', 'scripts')
+            ->groupBy('resources.id')
+            ->orderBy('resources.created_at', 'desc')
+            ->limit(20)
+            ->get();
+
+        return view('resources.scripts.index',[
+            'resources' => $res,
+            'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
+        ]);
     }
 
     public function index_tools(){
-        return view('resources.tools.index');
-    }
+        $res = \DB::table('resources')
+            ->leftJoin('users', 'users.id', '=', 'resources.user_id')
+            ->leftJoin('comments', function($join){
+                $join->on('comments.content_id', '=', 'resources.id');
+                $join->on('comments.content_type', '=', \DB::raw("'resource'"));
+            })
+            ->select([
+                'resources.id as resid',
+                'resources.type as restype',
+                'resources.cat as rescat',
+                'resources.user_id as userid',
+                'users.name as username',
+                'resources.title as restitle',
+                'resources.created_at as rescreatedat',
+                'resources.content_type as contenttype'
+            ])
+            ->selectRaw('COUNT(comments.id) AS commentcount')
+            ->selectRaw('SUM(comments.vote_up) AS voteup')
+            ->selectRaw('SUM(comments.vote_down) AS votedown')
+            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
+            ->where('resources.type', '=', 'tools')
+            ->groupBy('resources.id')
+            ->orderBy('resources.created_at', 'desc')
+            ->limit(20)
+            ->get();
+
+        return view('resources.tools.index',[
+            'resources' => $res,
+            'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
+        ]);    }
 
     public function index_gfx_cat($cat){
+        $res = \DB::table('resources')
+            ->leftJoin('users', 'users.id', '=', 'resources.user_id')
+            ->leftJoin('comments', function($join){
+                $join->on('comments.content_id', '=', 'resources.id');
+                $join->on('comments.content_type', '=', \DB::raw("'resource'"));
+            })
+            ->select([
+                'resources.id as resid',
+                'resources.type as restype',
+                'resources.cat as rescat',
+                'resources.user_id as userid',
+                'users.name as username',
+                'resources.title as restitle',
+                'resources.created_at as rescreatedat',
+                'resources.content_type as contenttype'
+            ])
+            ->selectRaw('COUNT(comments.id) AS commentcount')
+            ->selectRaw('SUM(comments.vote_up) AS voteup')
+            ->selectRaw('SUM(comments.vote_down) AS votedown')
+            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
+            ->where('resources.type', '=', 'gfx')
+            ->where('resources.cat', '=', $cat)
+            ->groupBy('resources.id')
+            ->orderBy('resources.created_at', 'desc')
+            ->get();
 
+        return view('resources.gfx.index_cat',[
+            'resources' => $res,
+            'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
+        ]);
     }
 
     public function index_sfx_cat($cat){
+        $res = \DB::table('resources')
+            ->leftJoin('users', 'users.id', '=', 'resources.user_id')
+            ->leftJoin('comments', function($join){
+                $join->on('comments.content_id', '=', 'resources.id');
+                $join->on('comments.content_type', '=', \DB::raw("'resource'"));
+            })
+            ->select([
+                'resources.id as resid',
+                'resources.type as restype',
+                'resources.cat as rescat',
+                'resources.user_id as userid',
+                'users.name as username',
+                'resources.title as restitle',
+                'resources.created_at as rescreatedat',
+                'resources.content_type as contenttype'
+            ])
+            ->selectRaw('COUNT(comments.id) AS commentcount')
+            ->selectRaw('SUM(comments.vote_up) AS voteup')
+            ->selectRaw('SUM(comments.vote_down) AS votedown')
+            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
+            ->where('resources.type', '=', 'sfx')
+            ->where('resources.cat', '=', $cat)
+            ->groupBy('resources.id')
+            ->orderBy('resources.created_at', 'desc')
+            ->get();
 
+        return view('resources.sfx.index_cat',[
+            'resources' => $res,
+            'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
+        ]);
     }
 
     public function index_scripts_cat($cat){
+        $res = \DB::table('resources')
+            ->leftJoin('users', 'users.id', '=', 'resources.user_id')
+            ->leftJoin('comments', function($join){
+                $join->on('comments.content_id', '=', 'resources.id');
+                $join->on('comments.content_type', '=', \DB::raw("'resource'"));
+            })
+            ->select([
+                'resources.id as resid',
+                'resources.type as restype',
+                'resources.cat as rescat',
+                'resources.user_id as userid',
+                'users.name as username',
+                'resources.title as restitle',
+                'resources.created_at as rescreatedat',
+                'resources.content_type as contenttype'
+            ])
+            ->selectRaw('COUNT(comments.id) AS commentcount')
+            ->selectRaw('SUM(comments.vote_up) AS voteup')
+            ->selectRaw('SUM(comments.vote_down) AS votedown')
+            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
+            ->where('resources.type', '=', 'scripts')
+            ->where('resources.cat', '=', $cat)
+            ->groupBy('resources.id')
+            ->orderBy('resources.created_at', 'desc')
+            ->get();
 
+        return view('resources.scripts.index_cat',[
+            'resources' => $res,
+            'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
+        ]);
     }
 
     public function index_tools_cat($cat){
+        $res = \DB::table('resources')
+            ->leftJoin('users', 'users.id', '=', 'resources.user_id')
+            ->leftJoin('comments', function($join){
+                $join->on('comments.content_id', '=', 'resources.id');
+                $join->on('comments.content_type', '=', \DB::raw("'resource'"));
+            })
+            ->select([
+                'resources.id as resid',
+                'resources.type as restype',
+                'resources.cat as rescat',
+                'resources.user_id as userid',
+                'users.name as username',
+                'resources.title as restitle',
+                'resources.created_at as rescreatedat',
+                'resources.content_type as contenttype'
+            ])
+            ->selectRaw('COUNT(comments.id) AS commentcount')
+            ->selectRaw('SUM(comments.vote_up) AS voteup')
+            ->selectRaw('SUM(comments.vote_down) AS votedown')
+            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
+            ->where('resources.type', '=', 'tools')
+            ->where('resources.cat', '=', $cat)
+            ->groupBy('resources.id')
+            ->orderBy('resources.created_at', 'desc')
+            ->get();
 
+        return view('resources.tools.index_cat',[
+            'resources' => $res,
+            'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
+        ]);
     }
 
     public function show($type, $cat, $id){

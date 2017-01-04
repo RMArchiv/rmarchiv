@@ -2,8 +2,8 @@
 @section('content')
     @include('resources._partials.nav')
     <div id="content">
-        @include('resources.scripts._partials.nav')
-        <h1>scripts (die neuesten 20)</h1>
+        @include('resources.gfx._partials.nav')
+        <h1>grafik -> {{ Request::route('cat') }}</h1>
         <table id='rmarchiv_prodlist' class='boxtable pagedtable'>
             <thead>
             <tr class='sortable'>
