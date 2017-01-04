@@ -28,9 +28,9 @@
                     <td class='date'><time datetime='{{ $res->rescreatedat }}' title='{{ $res->rescreatedat }}'>{{ \Carbon\Carbon::parse($res->rescreatedat)->diffForHumans() }}</time></td>
                     <td><a href="{{ route('resources.show', [$res->restype, $res->rescat, $res->resid]) }}">{{ $res->restitle }}</a></td>
                     <td>{{ $res->contenttype }}</td>
-                    <td class='votes'>@{{ $game->voteup or 0 }}</td>
-                    <td class='votes'>@{{ $game->votedown or 0 }}</td>
-                    {{ $avg = @(($game->voteup - $game->votedown) / ($game->voteup + $game->votedown)) }}
+                    <td class='votes'>{{ $res->voteup or 0 }}</td>
+                    <td class='votes'>{{ $res->votedown or 0 }}</td>
+                    @php $avg = @(($res->voteup - $res->votedown) / ($res->voteup + $res->votedown)) @endphp
                     <td class='votes'>{{ number_format($avg, 2) }}&nbsp;
                         @if($avg > 0)
                             <img src='/assets/rate_up.gif' alt='up' />
@@ -44,7 +44,7 @@
                         //$perc = \App\Helpers\MiscHelper::getPopularity($game->views, $maxviews);
                     @endphp
                     <td><div class='innerbar_solo' style='width: @{{ $perc }}%' title='@{{ number_format($perc, 2) }}%'><span>@{{ $perc }}</span></div></td>
-                    <td>@{{ $game->commentcount }}</td>
+                    <td>{{ $res->commentcount }}</td>
                 </tr>
             @endforeach
         </table>

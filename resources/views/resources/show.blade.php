@@ -10,14 +10,16 @@
                         </th>
                     </tr>
                     <tr>
-                        <td rowspan='3' id='screenshot'>
-                            @if($resource->content_type == 'url')
+                        @if($resource->content_type == 'url')
 
-                            @else
-                            <img src='{{ route('screenshot.show', [$resource->content_path, 6]) }}' style="width: 400px"
+                        @else
+                        <td rowspan='3' id='screenshot'>
+
+                            <img src='{{ asset('storage/'.$resource->content_path) }}' style="max-width: 400px; max-height: 400px"
                                  alt='Titelbild' title='Titelbild'/>
-                            @endif
+
                         </td>
+                        @endif
                         <td colspan='2'>
                             <table id='stattable'>
                                 <tr>
@@ -45,7 +47,7 @@
                         </td>
                         <td id='popularity'>
                             @php
-                                //$perc = \App\Helpers\MiscHelper::getPopularity($game->views, \App\Helpers\DatabaseHelper::getGameViewsMax());
+                                $perc = \App\Helpers\MiscHelper::getPopularity($game->views, \App\Helpers\DatabaseHelper::getGameViewsMax());
                             @endphp
                             popularität: @{{ round($perc, 2) }}%
                             <br/>
@@ -79,9 +81,9 @@
                             <ul>
                                     <li>
                                         @if($resource->content_type == 'url')
-                                            {{ $resource->content_path }}
+                                            <h1><a href="{{ $resource->content_path }}">Link zur Seite</a></h1>
                                         @else
-                                            {{ $resource->content_path }}
+                                            <a href="{{ asset('storage/'.$resource->content_path) }}" download target="_blank">download</a>
                                         @endif
                                     </li>
                                 </li>
@@ -128,7 +130,7 @@
                                         <span class='vote down'>down</span>
                                     @endif
 
-                                    <span class='tools' data-cid='{{ $game->gameid }}'></span> hinzugefügt
+                                    <span class='tools' data-cid='{{ $resource->id }}'></span> hinzugefügt
                                     am {{ $comment->created_at }} von <a href='{{ url('user', $comment->user_id) }}'
                                                                          class='user'>{{ $comment->name }}</a>
                                     <a href='{{ url('users', $comment->user_id) }}' class='usera'

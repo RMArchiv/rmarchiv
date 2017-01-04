@@ -13,6 +13,10 @@ class ResourceController extends Controller
     public function index(){
         $res = \DB::table('resources')
             ->leftJoin('users', 'users.id', '=', 'resources.user_id')
+            ->leftJoin('comments', function($join){
+                $join->on('comments.content_id', '=', 'resources.id');
+                $join->on('comments.content_type', '=', \DB::raw("'resource'"));
+            })
             ->select([
                 'resources.id as resid',
                 'resources.type as restype',
@@ -23,6 +27,11 @@ class ResourceController extends Controller
                 'resources.created_at as rescreatedat',
                 'resources.content_type as contenttype'
             ])
+            ->selectRaw('COUNT(comments.id) AS commentcount')
+            ->selectRaw('SUM(comments.vote_up) AS voteup')
+            ->selectRaw('SUM(comments.vote_down) AS votedown')
+            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
+            ->groupBy('resources.id')
             ->orderBy('resources.created_at', 'desc')
             ->limit(20)
             ->get();
