@@ -47,12 +47,12 @@
                         </td>
                         <td id='popularity'>
                             @php
-                                $perc = \App\Helpers\MiscHelper::getPopularity($game->views, \App\Helpers\DatabaseHelper::getGameViewsMax());
+                                $perc = \App\Helpers\MiscHelper::getPopularity($resource->commentcount, \App\Helpers\DatabaseHelper::getCommentsMax('resource'));
                             @endphp
-                            popularität: @{{ round($perc, 2) }}%
+                            popularität: {{ round($perc, 2) }}%
                             <br/>
-                            <div class='outerbar' title='@{{ round($perc, 2) }}%'>
-                                <div class='innerbar' style='width: @{{ $perc }}%'>&nbsp;<span>@{{ $perc }}%</span>
+                            <div class='outerbar' title='{{ round($perc, 2) }}%'>
+                                <div class='innerbar' style='width: {{ $perc }}%'>&nbsp;<span>{{ $perc }}%</span>
                                 </div>
                             </div>
                             <div class='awards'></div>
@@ -170,7 +170,7 @@
                     {!! Form::hidden('content_id', $resource->id) !!}
                     {!! Form::hidden('content_type', 'resource') !!}
                     <div class='content'>
-                        @if(CheckRateable::checkRateable('game', $resource->id, Auth::id()) === true)
+                        @if(CheckRateable::checkRateable('resource', $resource->id, Auth::id()) === true)
                             <div id='prodvote'>
                                 hier wird diese news bewertet:<br>
                                 diese news<br>

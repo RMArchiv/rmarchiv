@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\Obyx;
+use App\Helpers\DatabaseHelper;
 use Carbon\Carbon;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Http\Request;
@@ -38,6 +39,7 @@ class ResourceController extends Controller
 
         return view('resources.index',[
             'resources' => $res,
+            'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
         ]);
     }
 

@@ -6,6 +6,20 @@ use App\Models\Developer;
 
 class DatabaseHelper{
 
+    public static function getResourcePathArray($id){
+        $resource = \DB::table('resources')
+            ->where('id', '=', $id)
+            ->first();
+
+        $res = [
+            'type' => $resource->type,
+            'cat' => $resource->cat,
+            'id' => $id,
+        ];
+
+        return $res;
+    }
+
     public static function getObyxPoints($reason){
         $obyx = \DB::table('obyx')
             ->where('reason', '=', $reason)
@@ -17,6 +31,15 @@ class DatabaseHelper{
     public static function getGameViewsMax(){
         $v = \DB::table('games')
             ->selectRaw('MAX(views) as maxviews')
+            ->first();
+
+        return $v->maxviews;
+    }
+
+    public static function getCommentsMax($type){
+        $v = \DB::table('comments')
+            ->selectRaw('count(id) as maxviews')
+            ->where('content_type', '=', \DB::raw("'".$type."'"))
             ->first();
 
         return $v->maxviews;

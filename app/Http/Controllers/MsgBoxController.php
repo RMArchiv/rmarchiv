@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\DatabaseHelper;
 use Illuminate\Http\Request;
+use Symfony\Component\VarDumper\Cloner\Data;
 
 class MsgBoxController extends Controller
 {
@@ -29,7 +31,7 @@ class MsgBoxController extends Controller
         }elseif($type == 'game'){
             $msg['redirect_to'] = url('games', $id);
         }elseif($type == 'resource'){
-            $msg['redirect_to'] = url('resource', $id);
+            $msg['redirect_to'] = route('resources.show', DatabaseHelper::getResourcePathArray($id));
         }
 
         return view('msgbox', $msg);
