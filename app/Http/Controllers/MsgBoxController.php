@@ -28,6 +28,8 @@ class MsgBoxController extends Controller
             $msg['redirect_to'] = url('news', $id);
         }elseif($type == 'game'){
             $msg['redirect_to'] = url('games', $id);
+        }elseif($type == 'resource'){
+            $msg['redirect_to'] = url('resource', $id);
         }
 
         return view('msgbox', $msg);
