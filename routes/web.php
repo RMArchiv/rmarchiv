@@ -185,6 +185,9 @@ Route::get('sitemap/developer', 'SitemapController@developer')->name('sitemap.de
 Route::get('sitemap/board', 'SitemapController@board')->name('sitemap.board');
 Route::get('sitemap/news', 'SitemapController@news')->name('sitemap.news');
 
+//Routen für Statistiken
+Route::get('stats', 'StatsticController@show');
+
 //Routen für API
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {

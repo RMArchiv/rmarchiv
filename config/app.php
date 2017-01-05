@@ -192,6 +192,7 @@ return [
         Cmgmyr\Messenger\MessengerServiceProvider::class,
         Watson\Sitemap\SitemapServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
 
         /*
          * Application Service Providers...

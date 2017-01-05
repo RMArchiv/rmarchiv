@@ -21,7 +21,8 @@
         "zizaco/entrust": "^1.7",
         "cmgmyr/messenger": "^2.13",
         "watson/sitemap": "^2.0",
-        "dingo/api": "1.0.*@dev"
+        "dingo/api": "1.0.*@dev",
+        "khill/lavacharts" : "3.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
