@@ -126,6 +126,7 @@ Route::get('board/cat/{catid}/thread/create', 'BoardController@create_thread')->
 Route::post('board/thread/create', 'BoardController@store_thread')->name('board.thread.store');
 Route::get('board/thread/{threadid}', 'BoardController@show_thread')->name('board.thread.show');
 Route::post('board/thread/{threadid}', 'BoardController@store_post')->name('board.post.store');
+Route::get('board/thread/{id}/switchclosestate/{state}', 'BoardController@thread_close_switch')->name('board.thread.switch.close');
 
 //Routen für FAQ
 Route::get('faq', 'FaqController@index');

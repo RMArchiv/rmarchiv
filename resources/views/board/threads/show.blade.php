@@ -3,10 +3,17 @@
 @section('content')
     <div id='content'>
         <div class='rmarchivtbl' id='rmarchivbox_bbsview'>
-            <h2>{{ $posts->first()->ttitle }}</h2>
+            <h2>{{ $posts->first()->ttitle }}
+                @permission(('mod-threads'))
+                    @if($posts->first()->threadclosed == 0)
+                        :: <a href="{{ route('board.thread.switch.close', [$posts->first()->pid, 1]) }}">schließen</a>
+                    @else
+                        :: <a href="{{ route('board.thread.switch.close', [$posts->first()->pid, 0]) }}">öffnen</a>
+                    @endif
+                @endpermission
+            </h2>
             <div class='threadcategory'><b>kategorie:</b> <a href="{{ url('board/cat', $posts->first()->pcatid) }}">{{ $posts->first()->ctitle }}</a>
             </div>
-
             @foreach($posts as $post)
             <div class='content cite-{{ $post->tid  }}' id='c{{ $post->pid }}'>{!! $post->pcontent_html !!}</div>
             <div class='foot'>
@@ -24,17 +31,25 @@
 
         @if(Auth::check())
         <div class='rmarchivtbl' id='rmarchivbox_bbspost'>
-            <h2>poste eine antwort</h2>
-            {!! Form::open(['action' => ['BoardController@store_post', $posts->first()->tid], 'id' => 'frmBBSPost']) !!}
-                <input type='hidden' name='catid' value='{{ $posts->first()->cid }}'>
-                <div class='content'>
-                    nachricht:
-                    <textarea name='message' id='message'></textarea>
-                    <div><a href='#'><b>markdown</b></a> kann hier genutzt werden</div>
+            @if($post->threadclosed == 0)
+                <h2>poste eine antwort</h2>
+                {!! Form::open(['action' => ['BoardController@store_post', $posts->first()->tid], 'id' => 'frmBBSPost']) !!}
+                    <input type='hidden' name='catid' value='{{ $posts->first()->cid }}'>
+                    <div class='content'>
+                        nachricht:
+                        <textarea name='message' id='message'></textarea>
+                        <div><a href='#'><b>markdown</b></a> kann hier genutzt werden</div>
+                    </div>
+                    <div class='foot'>
+                        <input type='submit' value='Submit' id='submit'></div>
+                {!! Form::close() !!}
+            @else
+                <h2>Thread geschlossen</h2>
+                <div class="content">
+                    der thread wurde geschlossen.<br>
+                    du kannst hier also nichts posten.
                 </div>
-                <div class='foot'>
-                    <input type='submit' value='Submit' id='submit'></div>
-            {!! Form::close() !!}
+            @endif
         </div>
         @else
         <div class="rmarchivtbl">

@@ -11,7 +11,11 @@
             </td>
             <td class='category'><a href="{{ route('board.cat.show', $t->cid) }}">{{ $t->ctitle }}</a></td>
             <td class='topic'>
-                <a href='{{ route('board.thread.show', $t->tid) }}'>{{ $t->ttitle }}</a>
+                <a href='{{ route('board.thread.show', $t->tid) }}'>
+                    @if($t->closed == 1)
+                        <img src="/assets/lock.png">
+                    @endif
+                    {{ $t->ttitle }}</a>
             </td>
             <td class='count' title=''>{{ $t->pcount  }}</td>
             <td>

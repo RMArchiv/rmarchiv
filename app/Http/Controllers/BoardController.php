@@ -28,6 +28,8 @@ class BoardController extends Controller
                     'userlast.name as userlastname',
                     'board_threads.created_at as threaddate',
                     'board_threads.last_created_at as lastdate',
+                    'board_threads.pinned as threadpinned',
+                    'board_threads.closed as threadclosed'
                 ])
                 ->selectRaw('(SELECT COUNT(*) FROM board_posts WHERE board_posts.thread_id = board_threads.id) as posts')
                 ->where('board_threads.cat_id', '=', $cat->id)
@@ -219,5 +221,22 @@ class BoardController extends Controller
         event(new Obyx('post-add', \Auth::id()));
 
         return redirect()->to($url);
+    }
+
+    public function thread_close_switch($id, $state){
+        if(\Auth::check()){
+            if(\Auth::user()->can('mod-threads')){
+                if(is_numeric($id)){
+                    if($state == 1 or $state == 0){
+                        \DB::table('board_threads')
+                            ->where('id', '=', $id)
+                            ->update([
+                                'closed' => $state,
+                            ]);
+                    }
+                }
+            }
+        }
+        return redirect()->action('BoardController@show_thread', $id);
     }
 }

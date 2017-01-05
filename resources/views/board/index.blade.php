@@ -27,7 +27,13 @@
                         </a> <a href='{{ url('users', $thread->usercreateid) }}' class='user'>{{ $thread->usercreatename }}</a>
                     </td>
                     <td><a href="{{ route('board.cat.show', $cat->id) }}">{{ $cat->title }}</a></td>
-                    <td><a href="{{ route('board.thread.show', $thread->threadid) }}">{{ $thread->threadtitle }}</a></td>
+                    <td>
+                        <a href="{{ route('board.thread.show', $thread->threadid) }}">
+                            @if($thread->threadclosed == 1)
+                                <img src="/assets/lock.png">
+                            @endif
+                            {{ $thread->threadtitle }}</a>
+                    </td>
                     <td>{{ $thread->posts }}</td>
                     <td>{{ $thread->lastdate }}</td>
                     <td>

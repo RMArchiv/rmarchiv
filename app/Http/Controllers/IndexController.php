@@ -162,7 +162,8 @@ class IndexController extends Controller
                 't.id as tid',
                 't.title as ttitle',
                 'lu.id as luid',
-                'lu.name as luname'
+                'lu.name as luname',
+                't.closed as closed'
             ])
             ->selectRaw('(SELECT COUNT(id) FROM board_posts WHERE thread_id = t.id) as pcount')
             ->groupBy('t.id')
