@@ -22,7 +22,8 @@
         "cmgmyr/messenger": "^2.13",
         "watson/sitemap": "^2.0",
         "dingo/api": "1.0.*@dev",
-        "khill/lavacharts" : "3.0.*"
+        "khill/lavacharts" : "3.0.*",
+        "kyslik/column-sortable": "^5.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

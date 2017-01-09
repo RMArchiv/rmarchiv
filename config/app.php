@@ -193,6 +193,7 @@ return [
         Watson\Sitemap\SitemapServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
+        Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
 
         /*
          * Application Service Providers...

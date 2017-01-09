@@ -6,15 +6,105 @@
         <table id='rmarchiv_prodlist' class='boxtable pagedtable'>
             <thead>
                 <tr class='sortable'>
-                    <th>spielname</th>
-                    <th>entwickler</th>
-                    <th>release date</th>
-                    <th>hinzugefügt</th>
-                    <th><img src='/assets/rate_up.gif' alt='super' /></th>
-                    <th><img src='/assets/rate_down.gif' alt='scheiße' /></th>
-                    <th>avg</th>
-                    <th>popularität</th>
-                    <th>kommentare</th>
+                    <th>
+                        @if($orderby == 'gametitle')
+                            @if($direction == 'asc')
+                                <a class="activated" href="{{ route('games.index.sorted', ['gametitle', 'desc']) }}">spielname</a>
+                            @else
+                                <a class="activated reverse" href="{{ route('games.index.sorted', ['gametitle', 'asc']) }}">spielname</a>
+                            @endif
+                        @else
+                            <a class="" href="{{ route('games.index.sorted', ['gametitle', 'asc']) }}">spielname</a>
+                        @endif
+                    </th>
+                    <th>
+                        @if($orderby == 'developername')
+                            @if($direction == 'asc')
+                                <a class="activated" href="{{ route('games.index.sorted', ['developername', 'desc']) }}">entwickler</a>
+                            @else
+                                <a class="activated reverse" href="{{ route('games.index.sorted', ['developername', 'asc']) }}">entwickler</a>
+                            @endif
+                        @else
+                            <a class="" href="{{ route('games.index.sorted', ['developername', 'asc']) }}">entwickler</a>
+                        @endif
+                    </th>
+                    <th>
+                        @if($orderby == 'releasedate')
+                            @if($direction == 'asc')
+                                <a class="activated" href="{{ route('games.index.sorted', ['releasedate', 'desc']) }}">release date</a>
+                            @else
+                                <a class="activated reverse" href="{{ route('games.index.sorted', ['releasedate', 'asc']) }}">release date</a>
+                            @endif
+                        @else
+                            <a class="" href="{{ route('games.index.sorted', ['releasedate', 'asc']) }}">release date</a>
+                        @endif
+                    </th>
+                    <th>
+                        @if($orderby == 'gamecreated_at')
+                            @if($direction == 'asc')
+                                <a class="activated" href="{{ route('games.index.sorted', ['gamecreated_at', 'desc']) }}">hinzugefügt</a>
+                            @else
+                                <a class="activated reverse" href="{{ route('games.index.sorted', ['gamecreated_at', 'asc']) }}">hinzugefügt</a>
+                            @endif
+                        @else
+                            <a class="" href="{{ route('games.index.sorted', ['gamecreated_at', 'asc']) }}">hinzugefügt</a>
+                        @endif
+                    </th>
+                    <th>
+                        @if($orderby == 'voteup')
+                            @if($direction == 'asc')
+                                <a class="activated" href="{{ route('games.index.sorted', ['voteup', 'desc']) }}"><img src='/assets/rate_up.gif' alt='super' /></a>
+                            @else
+                                <a class="activated reverse" href="{{ route('games.index.sorted', ['voteup', 'asc']) }}"><img src='/assets/rate_up.gif' alt='super' /></a>
+                            @endif
+                        @else
+                            <a class="" href="{{ route('games.index.sorted', ['voteup', 'asc']) }}"><img src='/assets/rate_up.gif' alt='super' /></a>
+                        @endif
+                    </th>
+                    <th>
+                        @if($orderby == 'votedown')
+                            @if($direction == 'asc')
+                                <a class="activated" href="{{ route('games.index.sorted', ['votedown', 'desc']) }}"><img src='/assets/rate_down.gif' alt='scheiße' /></a>
+                            @else
+                                <a class="activated reverse" href="{{ route('games.index.sorted', ['votedown', 'asc']) }}"><img src='/assets/rate_down.gif' alt='scheiße' /></a>
+                            @endif
+                        @else
+                            <a class="" href="{{ route('games.index.sorted', ['votedown', 'asc']) }}"><img src='/assets/rate_down.gif' alt='scheiße' /></a>
+                        @endif
+                    </th>
+                    <th>
+                        @if($orderby == 'avg')
+                            @if($direction == 'asc')
+                                <a class="activated" href="{{ route('games.index.sorted', ['avg', 'desc']) }}">avg</a>
+                            @else
+                                <a class="activated reverse" href="{{ route('games.index.sorted', ['avg', 'asc']) }}">avg</a>
+                            @endif
+                        @else
+                            <a class="" href="{{ route('games.index.sorted', ['avg', 'asc']) }}">avg</a>
+                        @endif
+                    </th>
+                    <th>
+                        @if($orderby == 'views')
+                            @if($direction == 'asc')
+                                <a class="activated" href="{{ route('games.index.sorted', ['views', 'desc']) }}">popularität</a>
+                            @else
+                                <a class="activated reverse" href="{{ route('games.index.sorted', ['views', 'asc']) }}">popularität</a>
+                            @endif
+                        @else
+                            <a class="" href="{{ route('games.index.sorted', ['views', 'asc']) }}">popularität</a>
+                        @endif
+                    </th>
+                    <th>
+                        @if($orderby == 'commentcount')
+                            @if($direction == 'asc')
+                                <a class="activated" href="{{ route('games.index.sorted', ['commentcount', 'desc']) }}">kommentare</a>
+                            @else
+                                <a class="activated reverse" href="{{ route('games.index.sorted', ['commentcount', 'asc']) }}">kommentare</a>
+                            @endif
+                        @else
+                            <a class="" href="{{ route('games.index.sorted', ['commentcount', 'asc']) }}">kommentare</a>
+                        @endif
+                    </th>
                 </tr>
             </thead>
 
@@ -67,6 +157,7 @@
                 <td>{{ $game->commentcount }}</td>
             </tr>
             @endforeach
+            {{ $games->links('vendor.pagination.gamelist') }}
         </table>
     </div>
 @endsection

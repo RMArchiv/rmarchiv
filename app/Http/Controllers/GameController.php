@@ -18,7 +18,7 @@ class GameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($orderby = 'gametitle', $direction = 'asc')
     {
         $games = \DB::table('games')
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
@@ -47,10 +47,13 @@ class GameController extends Controller
             ->selectRaw('MAX(games_files.release_type) as gametype')
             ->selectRaw("(SELECT STR_TO_DATE(CONCAT(release_year,'-',release_month,'-',release_day ), '%Y-%m-%d') FROM games_files WHERE game_id = games.id ORDER BY release_year DESC, release_month DESC, release_day DESC LIMIT 1) as releasedate")
             ->selectRaw('(SELECT COUNT(id) FROM games_coupdecoeur WHERE game_id = games.id) as cdccount')
+            ->selectRaw('(SELECT (voteup - votedown) / (voteup + votedown)) as avg')
             ->groupBy('games.id')
+            ->orderByRaw($orderby.' '.$direction)
             ->orderBy('gametitle')
             ->orderBy('gamesubtitle')
-            ->get();
+            ->paginate(20);
+
 
         $gametypes = \DB::table('games_files_types')
             ->select('id', 'title', 'short')
@@ -66,6 +69,8 @@ class GameController extends Controller
             'games' => $games,
             'gametypes' => $gtypes,
             'maxviews' => DatabaseHelper::getGameViewsMax(),
+            'orderby' => $orderby,
+            'direction' => $direction,
         ]);
     }
 

@@ -38,6 +38,7 @@ Route::get('news/{id}/approve/{approve}', 'NewsController@approve');
 
 //Games Routen
 Route::resource('games', 'GameController');
+Route::get('games/{orderby?}/{direction?}', 'GameController@index')->name('games.index.sorted');
 Route::post('games/{id}/developer', 'GameController@store_developer')->name('games.developer.store');
 Route::post('games/{id}/developer/delete', 'GameController@destroy_developer')->name('games.developer.delete');
 //Gamefiles routen
