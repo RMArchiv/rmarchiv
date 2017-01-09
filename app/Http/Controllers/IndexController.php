@@ -150,24 +150,27 @@ class IndexController extends Controller
             ->groupBy('games.id')
             ->limit(5)->get();
 
-        $threads = \DB::table('board_threads as t')
-            ->leftJoin('users as u', 't.user_id', '=', 'u.id')
-            ->leftJoin('users as lu', 't.last_user_id', '=', 'u.id')
-            ->leftJoin('board_cats as c', 'c.id', '=', 't.cat_id')
+        $threads = \DB::table('board_threads')
+            ->leftJoin('users as usercreate', 'board_threads.user_id', '=', 'usercreate.id')
+            ->leftJoin('users as userlast', 'board_threads.last_user_id', '=', 'userlast.id')
+            ->leftJoin('board_cats as cat', 'cat.id', '=', 'board_threads.cat_id')
             ->select([
-                'u.id as uid',
-                'u.name as uname',
-                'c.id as cid',
-                'c.title as ctitle',
-                't.id as tid',
-                't.title as ttitle',
-                'lu.id as luid',
-                'lu.name as luname',
-                't.closed as closed'
+                'board_threads.id as threadid',
+                'board_threads.title as threadtitle',
+                'usercreate.id as usercreateid',
+                'usercreate.name as usercreatename',
+                'userlast.id as userlastid',
+                'userlast.name as userlastname',
+                'board_threads.created_at as threaddate',
+                'board_threads.last_created_at as lastdate',
+                'board_threads.pinned as threadpinned',
+                'board_threads.closed as threadclosed',
+                'cat.title as cattitle',
+                'cat.id as catid'
             ])
-            ->selectRaw('(SELECT COUNT(id) FROM board_posts WHERE thread_id = t.id) as pcount')
-            ->groupBy('t.id')
-            ->orderBy('t.last_created_at', 'desc')
+            ->selectRaw('(SELECT COUNT(*) FROM board_posts WHERE board_posts.thread_id = board_threads.id) as posts')
+            ->orderBy('board_threads.last_created_at', 'desc')
+            ->orderBy('board_threads.id', 'desc')
             ->limit(10)
             ->get();
 

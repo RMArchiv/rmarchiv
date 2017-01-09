@@ -38,7 +38,6 @@ Route::get('news/{id}/approve/{approve}', 'NewsController@approve');
 
 //Games Routen
 Route::resource('games', 'GameController');
-Route::get('games/{orderby?}/{direction?}', 'GameController@index')->name('games.index.sorted');
 Route::post('games/{id}/developer', 'GameController@store_developer')->name('games.developer.store');
 Route::post('games/{id}/developer/delete', 'GameController@destroy_developer')->name('games.developer.delete');
 //Gamefiles routen
@@ -50,6 +49,8 @@ Route::get('games/download/{id}', 'GameFileController@download')->name('gamefile
 Route::get('games/{gameid}/screenshot/{screenid}', 'ScreenshotController@show')->name('screenshot.show');
 Route::get('games/{gameid}/screenshot/create/{screenid}', 'ScreenshotController@create')->name('screenshot.create');
 Route::post('games/{gameid}/screenshot/upload/{screenid}', 'ScreenshotController@upload')->name('screenshot.upload');
+Route::get('games/index/{orderby?}/{direction?}', 'GameController@index')->name('games.index.sorted');
+
 //Gamecredits routen
 Route::post('games/{id}/credit', 'UserCreditsController@store')->name('gamecredits.store');
 Route::get('games/{id}/credit/{credit_id}/delete', 'UserCreditsController@destroy')->name('gamecredits-delete');

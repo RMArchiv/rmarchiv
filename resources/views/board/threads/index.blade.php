@@ -35,7 +35,7 @@
                         <td>{{ $thread->lastdate }}</td>
                         <td>
                             <a href='{{ url('users', $thread->userlastid) }}' class='usera' title="{{ $thread->userlastname }}">
-                                <img src='http://ava.rmarchiv.de/?gender=male&id={{ $thread->usercreateid }}' alt="{{ $thread->userlastname }}" class='avatar'/>
+                                <img src='http://ava.rmarchiv.de/?gender=male&id={{ $thread->userlastid }}' alt="{{ $thread->userlastname }}" class='avatar'/>
                             </a> <a href='{{ url('users', $thread->userlastid) }}' class='user'>{{ $thread->userlastname }}</a>
                         </td>
                     </tr>

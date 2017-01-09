@@ -4,25 +4,25 @@
         @foreach($threads as $t)
         <tr class=''>
             <td>
-                <a href='{{ url('users', $t->uid) }}' class='usera' title="{{ $t->uname }}">
-                    <img src='http://ava.rmarchiv.de/?gender=male&id={{ $t->uid }}' alt="{{ $t->uname }}" class='avatar'/>
+                <a href='{{ url('users', $t->usercreateid) }}' class='usera' title="{{ $t->usercreatename }}">
+                    <img src='http://ava.rmarchiv.de/?gender=male&id={{ $t->usercreateid }}' alt="{{ $t->usercreatename }}" class='avatar'/>
                 </a>
-                <a href='{{ url('users', $t->uid) }}' class='usera' title="{{ $t->uname }}">{{ $t->uname }}</a>
+                <a href='{{ url('users', $t->usercreateid) }}' class='usera' title="{{ $t->usercreatename }}">{{ $t->usercreatename }}</a>
             </td>
-            <td class='category'><a href="{{ route('board.cat.show', $t->cid) }}">{{ $t->ctitle }}</a></td>
+            <td class='category'><a href="{{ route('board.cat.show', $t->catid) }}">{{ $t->cattitle }}</a></td>
             <td class='topic'>
-                <a href='{{ route('board.thread.show', $t->tid) }}'>
-                    @if($t->closed == 1)
+                <a href='{{ route('board.thread.show', $t->threadid) }}'>
+                    @if($t->threadclosed == 1)
                         <img src="/assets/lock.png">
                     @endif
-                    {{ $t->ttitle }}</a>
+                    {{ $t->threadtitle }}</a>
             </td>
-            <td class='count' title=''>{{ $t->pcount  }}</td>
+            <td class='count' title=''>{{ $t->posts  }}</td>
             <td>
-                <a href='{{ url('users', $t->luid) }}' class='usera' title="{{ $t->luname }}">
-                    <img src='http://ava.rmarchiv.de/?gender=&id={{ $t->luid }}' alt="{{ $t->luname }}" class='avatar'/>
+                <a href='{{ url('users', $t->userlastid) }}' class='usera' title="{{ $t->userlastname }}">
+                    <img src='http://ava.rmarchiv.de/?gender=&id={{ $t->userlastid }}' alt="{{ $t->userlastname }}" class='avatar'/>
                 </a>
-                <a href='{{ url('users', $t->luid) }}' class='usera' title="{{ $t->luname }}">{{ $t->luname }}</a>
+                <a href='{{ url('users', $t->userlastid) }}' class='usera' title="{{ $t->userlastname }}">{{ $t->userlastname }}</a>
             </td>
         </tr>
         @endforeach
