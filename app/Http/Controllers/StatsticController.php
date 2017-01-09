@@ -71,6 +71,36 @@ class StatsticController extends Controller
         }
         $lava->AreaChart('Kommentare', $com, $lava_config);
 
+        // Kommentare pro Monat
+        $gamesperyear = \DB::table('games_files')
+            ->select('release_year as year')
+            ->selectRaw('COUNT(release_year) as count')
+            ->groupBy('release_year')
+            ->orderBy('release_year')
+            ->get();
+        $com = $lava->DataTable();
+        $com->addStringColumn('Datum')
+            ->addNumberColumn('Releases pro Jahr');
+        foreach ($gamesperyear as $game){
+            $com->addRow([$game->year, $game->count]);
+        }
+        $lava->AreaChart('Releases', $com, $lava_config);
+
+        // Kommentare pro Monat
+        $gamespermonth = \DB::table('games_files')
+            ->select('release_month as year')
+            ->selectRaw('COUNT(release_month) as count')
+            ->groupBy('release_month')
+            ->orderBy('release_month')
+            ->get();
+        $com = $lava->DataTable();
+        $com->addStringColumn('Datum')
+            ->addNumberColumn('Releases pro Monat');
+        foreach ($gamespermonth as $game){
+            $com->addRow([$game->year, $game->count]);
+        }
+        $lava->AreaChart('ReleasesMon', $com, $lava_config);
+
         return view('statistics.index',[
             'lava' => $lava,
         ]);
