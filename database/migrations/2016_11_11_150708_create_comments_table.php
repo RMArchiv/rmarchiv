@@ -18,8 +18,8 @@ class CreateCommentsTable extends Migration
             $table->integer('user_id');
             $table->integer('content_id');
             $table->string('content_type');
-            $table->string('comment_md');
-            $table->string('comment_html');
+            $table->string('comment_md', 5000);
+            $table->string('comment_html', 6000);
             $table->timestamps();
             $table->softDeletes();
 
