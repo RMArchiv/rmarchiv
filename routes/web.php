@@ -57,10 +57,11 @@ Route::get('games/{id}/credit/{credit_id}/delete', 'UserCreditsController@destro
 
 //Suchrouten
 Route::get('search', 'SearchController@index');
-Route::get('search/{term}', 'SearchController@search');
+Route::post('search', 'SearchController@search');
 
 //Entwickler Routen
 Route::resource('developer', 'DeveloperController');
+Route::get('developer/{orderby?}/{direction?}', 'DeveloperController@index')->name('developer.index.sorted');
 
 //CDC Routen
 Route::resource('cdc', 'CDCController');

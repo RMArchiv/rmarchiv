@@ -219,7 +219,7 @@
                                 @foreach($credits as $cr)
                                     <li>
                                         <a href='{{ url('users', $cr->userid) }}' class='usera' title="{{ $cr->username }}"><img src='http://ava.rmarchiv.de/?gender=male&id={{ $cr->userid }}' alt="{{ $cr->username }}" class='avatar' />
-                                        </a> <a href='{{ url('users', $cr->userid) }}' class='user'>{{ $cr->username }}</a> [{{ $credittypes[$cr->id]['title'] }}]
+                                        </a> <a href='{{ url('users', $cr->userid) }}' class='user'>{{ $cr->username }}</a> [{{ $credittypes[$cr->credit_type_id]['title'] }}]
                                     </li>
                                 @endforeach
                             </ul>

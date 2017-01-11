@@ -4,17 +4,22 @@
     <div id='content'>
         <div class='rmarchivtbl' id='rmarchivbox_search'>
             <h2>suche</h2>
-            <form action='{{ url('search') }}' method='get'>
-                <input type="hidden" name="page" id="page" value="search" />
+            {{ Form::open(['action' => ['SearchController@search']]) }}
                 <div class='content center'>
-                    <input type='text' name='term' size='64' value="{{ Session::get('term') }}" />
+                    @if(isset($term))
+                        <input type='text' name='term' size='64' value="{{ $term }}" />
+                    @else
+                        <input type='text' name='term' size='64' placeholder="Suche" />
+                    @endif
                 </div>
                 <div class='foot'>
                     <input type='submit' value='Submit' />
                 </div>
-            </form>
+            {{ Form::close() }}
         </div>
-        <h3>suche nach: '{{ Session::get('term') }}' - nach relevanz</h3><br>
+        @if(isset($term))
+        <h3>suche nach: '{{ $term }}' - nach relevanz</h3><br>
+        @endif
 
         @if(isset($games))
         <h2>spiele</h2>
@@ -25,45 +30,61 @@
                 <th>entwickler</th>
                 <th>release date</th>
                 <th>hinzugefügt</th>
-                <th><img src='/assets/imgs/rate_up.gif' alt='super' /></th>
-                <th><img src='/assets/imgs/rate_neut.gif' alt='ok' /></th>
-                <th><img src='/assets/imgs/rate_down.gif' alt='scheiße' /></th>
+                <th><img src='/assets/rate_up.gif' alt='super' /></th>
+                <th><img src='/assets/rate_neut.gif' alt='ok' /></th>
+                <th><img src='/assets/rate_down.gif' alt='scheiße' /></th>
                 <th>avg</th>
                 <th>popularität</th>
             </tr>
-            {% for game in data.games if game.approved == 1 %}
-            <tr>
-                <td>
-                    <span class='typeiconlist'>
-                        <span class='typei type_{{ game.game_type }}' title='{{ game.game_type }}'>{{ game.game_type }}</span>
+            @foreach($games as $game)
+                <tr>
+                    <td>
+                        @if(is_null($game->gametype) == false)
+                            <span class='typeiconlist'>
+                        <span class='typei type_{{ $gametypes[$game->gametype]['short'] }}' title='{{ $gametypes[$game->gametype]['title'] }}'>{{ $gametypes[$game->gametype]['title'] }}</span>
                     </span>
-                    <span class="platformiconlist">
-                        <span class="typei type_{{ game.maker.short }}" title="{{ game.maker.name }}">{{ game.maker.name }}</span>
+                        @endif
+                        <span class="platformiconlist">
+                        <span class="typei type_{{ $game->makershort }}" title="{{ $game->makertitle }}">{{ $game->makertitle }}</span>
                     </span>
-                    <span class='prod'>
-                        <a href='/?page=game&id={{ game.id }}'>{{ game.title }}{% if not game.subtitle == '' %}<small> - {{ game.subtitle }}</small>{% endif %}</a>
+                        <span class='prod'>
+                        <a href='{{ url('games', $game->gameid) }}'>
+                            {{ $game->gametitle }}
+                            @if($game->gamesubtitle != '')
+                                <small> - {{ $game->gamesubtitle }}</small>
+                            @endif
+                        </a>
                     </span>
-                </td>
-                <td>
-                    <a href="/?page=creator&id={{ game.creator.id }}">{{ game.creator.name }}</a>
-                </td>
-                <td class='date'>{{ game.release_month }}{{ game.release_year }}</td>
-                <td class='date'>vor {{ game.date_add_since }}</td>
-                <td class='votes'>{{ game.rating.rate_up }}</td>
-                <td class='votes'>{{ game.rating.rate_neut }}</td>
-                <td class='votes'>{{ game.rating.rate_down }}</td>
-                <td class='votes'>{{ game.rating.avg }}&nbsp;
-                    {% if game.rating.avg > 0 %}
-                    <img src='/assets/imgs/rate_up.gif' alt='up' />
-                    {% elseif game.rating.avg == 0 %}
-                    <img src='/assets/imgs/rate_neut.gif' alt='neut' />
-                    {% elseif game.rating.avg < 0 %}
-                    <img src='/assets/imgs/rate_down.gif' alt='down' />
-                    {% endif %}
-                </td>
-                <td><div class='innerbar_solo' style='width: {{ game.views.percent }}px' title='{{ game.views.percent }}%'>&nbsp;<span>{{ game.views.percent }}%</span></div></td>
-            </tr>
-            {% endfor %}
+                        @if($game->cdccount > 0)
+                            <div class="cdcstack">
+                                <img src="/assets/cdc.png" title="cdc" alt="cdc">
+                            </div>
+                        @endif
+                    </td>
+                    <td>
+                        <a href="{{ url('developer', $game->developerid) }}">{{ $game->developername }}</a>
+                    </td>
+                    <td class='date'>{{ $game->releasedate }}</td>
+                    <td class='date'><time datetime='{{ $game->gamecreated_at }}' title='{{ $game->gamecreated_at }}'>{{ \Carbon\Carbon::parse($game->gamecreated_at)->diffForHumans() }}</time></td>
+                    <td class='votes'>{{ $game->voteup or 0 }}</td>
+                    <td class='votes'>{{ $game->votedown or 0 }}</td>
+                    @php $avg = @(($game->voteup - $game->votedown) / ($game->voteup + $game->votedown)) @endphp
+                    <td class='votes'>{{ number_format($avg, 2) }}&nbsp;
+                        @if($avg > 0)
+                            <img src='/assets/rate_up.gif' alt='up' />
+                        @elseif($avg == 0)
+                            <img src='/assets/rate_neut.gif' alt='neut' />
+                        @elseif($avg < 0)
+                            <img src='/assets/rate_down.gif' alt='down' />
+                        @endif
+                    </td>
+                    @php
+                        $perc = \App\Helpers\MiscHelper::getPopularity($game->views, $maxviews);
+                    @endphp
+                    <td><div class='innerbar_solo' style='width: {{ $perc }}%' title='{{ number_format($perc, 2) }}%'><span>{{ $perc }}</span></div></td>
+                    <td>{{ $game->commentcount }}</td>
+                </tr>
+            @endforeach
         </table>
         @endif
 

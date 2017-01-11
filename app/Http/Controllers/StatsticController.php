@@ -31,8 +31,16 @@ class StatsticController extends Controller
             'pointSize' => 5,
             'pointShape' => [
                 'type' => 'circle',
-                'rotation' => 180
-            ]
+                'rotation' => 180,
+            ],
+            'trendlines' => [
+                0 => [
+                    'type' => 'line',
+                    'color' => 'red',
+                    'pointsVisible'=>true,
+                    'pointSize' => 1,
+                ],
+            ],
         ];
 
         $lava = new Lavacharts;

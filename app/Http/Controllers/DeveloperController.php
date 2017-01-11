@@ -11,7 +11,7 @@ class DeveloperController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($orderby = 'devname', $direction = 'asc')
     {
         $developer = \DB::table('developer')
             ->leftJoin('games_developer', 'games_developer.developer_id', '=', 'developer.id')
@@ -21,11 +21,13 @@ class DeveloperController extends Controller
             ])
             ->selectRaw('COUNT(games_developer.id) as gamecount')
             ->groupBy('developer.id')
-            ->orderBy('developer.name')
+            ->orderBy($orderby, $direction)
             ->get();
 
         return view('developer.index', [
             'developer' => $developer,
+            'orderby' => $orderby,
+            'direction' => $direction,
         ]);
     }
 
