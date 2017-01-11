@@ -6,6 +6,22 @@ use App\Models\Developer;
 
 class DatabaseHelper{
 
+    public static function getDevelopersUrlList($gameid){
+        $developers = \DB::table('games_developer')
+            ->leftJoin('developer', 'developer.id', '=', 'games_developer.developer_id')
+            ->where('games_developer.game_id', '=', $gameid)
+            ->get();
+
+        $res = '';
+        foreach ($developers as $dev){
+            $res = $res.'<a href="'.url('developer', $dev->id).'">'.$dev->name.'</a> :: ';
+        }
+
+        $res = substr($res, 0, -4);
+
+        return $res;
+    }
+
     public static function getResourcePathArray($id){
         $resource = \DB::table('resources')
             ->where('id', '=', $id)
