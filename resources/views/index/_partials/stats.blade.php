@@ -47,4 +47,14 @@
             {{ $stats->commentcount }} kommentare
         </td>
     </tr>
+    <tr>
+        <td class='r1'>
+            {{ $stats->downloadcount }} downloads
+        </td>
+    </tr>
+    <tr>
+        <td class='r1'>
+            {{ $size }} downloadtraffic
+        </td>
+    </tr>
 </table>

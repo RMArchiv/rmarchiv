@@ -2,7 +2,7 @@
 @section('pagetitle', 'spiele mit fehlender spielebescreibung')
 @section('content')
     <div id='content'>
-        <h2>spiele mit fehlender spielebeschreibung</h2>
+        <h2>spiele mit fehlender spielebeschreibung ({{ $games->count() }})</h2>
         <table id='rmarchiv_prodlist' class='boxtable pagedtable'>
             <thead>
             <tr class='sortable'>

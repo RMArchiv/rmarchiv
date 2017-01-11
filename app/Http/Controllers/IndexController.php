@@ -212,7 +212,26 @@ class IndexController extends Controller
             ->selectRaw('(SELECT COUNT(id) FROM shoutbox) as shoutboxcount')
             ->selectRAW('(SELECT COUNT(id) FROM comments) as commentcount')
             ->selectRaw('(SELECT COUNT(id) FROM logos) as logocount')
+            ->selectRaw('(SELECT SUM(downloadcount) FROM games_files) as downloadcount')
             ->first();
+
+        $size = \DB::table('games_files')
+            ->selectRaw('SUM(filesize * downloadcount) as downsize')
+            ->groupBy('id')
+            ->get();
+
+        $res = 0;
+        foreach ($size as $s){
+            $res += $s->downsize;
+        }
+        $bytes = $res;
+
+        if ($bytes == 0)
+            return "0.00 B";
+
+        $s = array('B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB');
+        $e = floor(log($bytes, 1024));
+        $size = round($bytes/pow(1024, $e), 2).' '.$s[$e];
 
         $topmonth = \DB::table('games')
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
@@ -325,6 +344,7 @@ class IndexController extends Controller
             'topmonth' => $topmonth,
             'topalltime' => $topalltime,
             'latestcomments' => $latestcomments,
+            'size' => $size,
         ]);
     }
 }

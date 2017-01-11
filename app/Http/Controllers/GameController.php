@@ -54,7 +54,6 @@ class GameController extends Controller
             ->orderBy('gamesubtitle')
             ->paginate(20);
 
-
         $gametypes = \DB::table('games_files_types')
             ->select('id', 'title', 'short')
             ->get();
