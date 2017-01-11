@@ -194,7 +194,8 @@ class GameController extends Controller
                 'makers.id as makerid',
                 'games.created_at as createdate',
                 'games.desc_html as desc',
-                'games.views as views'
+                'games.views as views',
+                'games.website_url as url',
             ])
             ->selectRaw('COUNT(comments.id) AS commentcount')
             ->selectRaw('SUM(comments.vote_up) AS voteup')

@@ -148,6 +148,12 @@
                                             -{{ $releasedate->release_day }}</td>
                                     </tr>
                                 @endif
+                                @if($game->url)
+                                    <tr>
+                                        <td>website:</td>
+                                        <td><a href="{{ $game->url }}" target="_blank">KLICK!</a></td>
+                                    </tr>
+                                @endif
                             </table>
                         </td>
                     </tr>
