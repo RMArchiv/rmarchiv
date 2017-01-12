@@ -58,7 +58,7 @@
                     </span>
                     </td>
                     <td width="14%">
-                        <a href='{{ url('developer', $game->devid) }}'>{{ $game->devname }}</a>
+                        {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($game->gameid) !!}
                     </td>
                     <td>
                         {{ $game->award_desc }}

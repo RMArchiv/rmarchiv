@@ -21,7 +21,7 @@
                         </a>
                     </span>
                     <span class='group'>
-                        :: <a href="{{ url('developer', $g->developerid) }}">{{ $g->developername }}</a>
+                        :: {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($g->gameid) !!}
                     </span>
                 </span>
             </span>

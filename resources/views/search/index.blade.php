@@ -62,7 +62,7 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{ url('developer', $game->developerid) }}">{{ $game->developername }}</a>
+                        {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($game->gameid) !!}
                     </td>
                     <td class='date'>{{ $game->releasedate }}</td>
                     <td class='date'><time datetime='{{ $game->gamecreated_at }}' title='{{ $game->gamecreated_at }}'>{{ \Carbon\Carbon::parse($game->gamecreated_at)->diffForHumans() }}</time></td>

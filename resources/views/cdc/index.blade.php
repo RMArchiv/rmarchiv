@@ -34,7 +34,7 @@
                         </a></span>
                         </td>
                         <td>
-                            <a href="{{ url('developers', $cdc->developerid) }}">{{ $cdc->developername }}</a>
+                            {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($cdc->gameid) !!}
                         </td>
                         <td>
                             {{ $cdc->cdcdate  }}

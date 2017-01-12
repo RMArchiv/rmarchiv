@@ -25,8 +25,7 @@
                             <small> - {{ $cdc->gamesubtitle }}</small>
                         @endif
                         </a></span>
-                    <span class='group'>:: <a
-                                href="{{ url('developer', $cdc->developerid) }}">{{ $cdc->developername }}</a>
+                    <span class='group'>:: {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($cdc->gameid) !!}
                     </span>
                 </span>
             </span>

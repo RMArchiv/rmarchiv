@@ -24,7 +24,7 @@
                             @endif
                         </a>
                     </span>
-                    <span class='group'>:: <a href='{{ url('developer', $com->developerid) }}'>{{ $com->developername }}</a>
+                    <span class='group'>:: {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($com->gameid) !!}
                     </span>
                 </span>
             </span>

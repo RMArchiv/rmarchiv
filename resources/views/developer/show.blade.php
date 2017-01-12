@@ -43,7 +43,7 @@
                     @endif
                 </td>
                 <td>
-                    <a href="{{ url('developer', $g->developerid) }}">{{ $g->developername }}</a>
+                    {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($g->gameid) !!}
                 </td>
                 <td class='date'>{{ $g->releasedate }}</td>
                 <td class='date'>{{ $g->gamecreated_at }}</td>
