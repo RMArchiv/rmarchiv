@@ -4,7 +4,7 @@
     <div id="content">
         @if(count($news) > 0)
             <div id="prodpagecontainer">
-                <div class="rmarchivtbl" id="rmarchivbox_news">
+                <div class="rmarchivtbl rmarchivbox_newsbox" id="rmarchivbox_newsbox">
                     <h2>{{ $news->title }}</h2>
                     <div class="content">
                         {!! $news->news_html !!}
