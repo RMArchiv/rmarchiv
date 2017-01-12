@@ -24,10 +24,6 @@ class GameController extends Controller
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('comments', function($join){
-                $join->on('comments.content_id', '=', 'games.id');
-                $join->on('comments.content_type', '=', \DB::raw("'game'"));
-            })
             ->leftJoin('games_files', 'games_files.game_id', '=', 'games.id')
             ->select([
                 'games.id as gameid',
@@ -307,6 +303,15 @@ class GameController extends Controller
             $userlists = null;
         }
 
+        $tags = \DB::table('tag_relations')
+            ->leftJoin('tags', 'tags.id', '=', 'tag_relations.tag_id')
+            ->where('content_id', '=', $id)
+            ->where('content_type', '=', 'game')
+            ->groupBy('tags.id')
+            ->orderByRaw('COUNT(tag_relations.id)')
+            ->limit(10)
+            ->get();
+
         event(new GameView($id));
 
         return view('games.show', [
@@ -319,6 +324,7 @@ class GameController extends Controller
             'credittypes' => $credittypes,
             'credits' => $credits,
             'userlists' => $userlists,
+            'tags' => $tags,
         ]);
 
     }

@@ -20,7 +20,7 @@
                                     window.onclick = function(event) {
                                         if (!event.target.matches('.dropbtn')) {
 
-                                            var dropdowns = document.getElementsByClassName("dropdown-content");
+                                            var dropdowns = document.getElementsById("myUserList");
                                             var i;
                                             for (i = 0; i < dropdowns.length; i++) {
                                                 var openDropdown = dropdowns[i];
@@ -175,7 +175,42 @@
                                 <div class='innerbar' style='width: {{ $perc }}%'>&nbsp;<span>{{ $perc }}%</span>
                                 </div>
                             </div>
-                            <div class='awards'></div>
+                            <div class='awards'>Tags:
+                                @if(Auth::check())
+                                    <script>
+                                        /* When the user clicks on the button,
+                                         toggle between hiding and showing the dropdown content */
+                                        function tagDD() {
+                                            document.getElementById("myNewTag").classList.toggle("show");
+                                        }
+                                    </script>
+                                    <div id='nfo'>
+                                        [<button onclick="tagDD()" class="dropbtn">+</button>]
+                                        <div id="myNewTag" class="dropdown-content" style="margin-left: -400px">
+                                            {!! Form::open(['action' => ['TaggingController@store']]) !!}
+                                            {!! Form::hidden('content_id', $game->gameid) !!}
+                                            {!! Form::hidden('content_type', 'game') !!}
+                                            <div class="formifier">
+                                                <div class="row" id="row_developer">
+                                                    <label for="title" style="color: black">Neuen Tag hinzufügen</label>
+                                                    <input name="title" id="title" placeholder="" value=""/>
+                                                </div>
+                                            </div>
+                                            <div class='foot'>
+                                                <input type='submit' value='Submit' id='submit'>
+                                            </div>
+                                            {!! Form::close() !!}
+                                        </div>
+                                    </div>
+                                @endif
+                                <br>
+                                @foreach($tags as $tag)
+                                    <a href="{{ action('TaggingController@showGames', [$tag->id]) }}">{{ $tag->title }}</a>
+                                    @if($tag != end($tags))
+                                        ::
+                                    @endif
+                                @endforeach
+                            </div>
                         </td>
                     </tr>
                     <tr>

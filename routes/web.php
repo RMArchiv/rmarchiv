@@ -192,6 +192,10 @@ Route::get('sitemap/news', 'SitemapController@news')->name('sitemap.news');
 //Routen für Statistiken
 Route::get('stats', 'StatsticController@show');
 
+//Routen für Tags
+Route::post('tags/create', 'TaggingController@store');
+Route::get('tags/game/{tagid}', 'TaggingController@showGames');
+
 //Routen für API
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {
