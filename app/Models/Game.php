@@ -38,6 +38,7 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Maker $maker
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesDeveloper[] $developer
  */
 class Game extends Model
 {
@@ -59,12 +60,33 @@ class Game extends Model
     ];
 
     protected $guarded = [];
+    protected $appends = ['votes'];
 
     public function user(){
-        return $this->hasOne('App\Models\User');
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 
     public function maker(){
-        return $this->hasOne('App\Models\Maker');
+        return $this->hasOne('App\Models\Maker', 'id', 'maker_id');
+    }
+
+    public function developers(){
+        return $this->hasManyThrough('App\Models\Developer', 'App\Models\GamesDeveloper', 'developer_id', 'id');
+    }
+
+    public function screenshots(){
+        return $this->hasMany('App\Models\Screenshot');
+    }
+
+    public function comments(){
+        return $this->hasMany('App\Models\Comment', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'game'"))->with('user');
+    }
+
+    public function getVotesAttribute(){
+        $vote['up'] = intval($this->comments()->sum('vote_up'));
+        $vote['down'] = intval($this->comments()->sum('vote_down'));
+        $vote['avg'] = @round(($vote['up'] - $vote['down']) / ($vote['up'] + $vote['down']), 2);
+        //(voteup - votedown) / (voteup + votedown)
+        return $vote;
     }
 }

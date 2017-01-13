@@ -47,8 +47,12 @@ class ScreenshotController extends Controller
         $imageName = \Storage::putFile('screenshots', new UploadedFile($file->path(), $file->getClientOriginalName()));
         //dd($file);
 
-        //Löschen des vorhandenen Bildes
-        Screenshot::whereGameId($gameid)->where('screenshot_id', '=', $screenid)->delete();
+        //Löschen des vorhandenen DB Eintrages
+        $old = Screenshot::whereGameId($gameid)->where('screenshot_id', '=', $screenid)->first();
+        if($old){
+            $old->delete();
+        }
+
 
         //Speichern des Screenshots
         $scr = new Screenshot;
@@ -56,6 +60,7 @@ class ScreenshotController extends Controller
         $scr->user_id = \Auth::id();
         $scr->screenshot_id = $screenid;
         $scr->filename = str_replace($extorig, '', $imageName);
+        $scr->save();
 
         event(new Obyx('screenshot-add', \Auth::id()));
 

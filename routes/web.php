@@ -200,4 +200,6 @@ Route::get('tags/game/{tagid}', 'TaggingController@showGames');
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {
     $api->get('games', 'App\Http\Controllers\Api\v1\GameController@index');
+    $api->get('games/{id}', 'App\Http\Controllers\Api\v1\GameController@show');
+    $api->get('games_app', 'App\Http\Controllers\Api\v1\GameController@show_app');
 });
