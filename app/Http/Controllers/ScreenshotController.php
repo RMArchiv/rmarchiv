@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\Obyx;
+use App\Models\Screenshot;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -12,10 +13,7 @@ use Illuminate\Http\UploadedFile;
 class ScreenshotController extends Controller
 {
     public function show($gameid, $screenid){
-        $s = \DB::table('screenshots')
-            ->select('filename')
-            ->where('game_id', '=', $gameid)
-            ->where('screenshot_id', '=', $screenid)
+        $s = Screenshot::whereGameId($gameid)->where('screenshot_id', $screenid)
             ->first();
 
         $storagePath = '';
@@ -49,13 +47,15 @@ class ScreenshotController extends Controller
         $imageName = \Storage::putFile('screenshots', new UploadedFile($file->path(), $file->getClientOriginalName()));
         //dd($file);
 
-        $s = \DB::table('screenshots')->insert([
-            'game_id' => $gameid,
-            'user_id' => \Auth::id(),
-            'screenshot_id' => $screenid,
-            'created_at' => Carbon::now(),
-            'filename' => str_replace($extorig, '', $imageName),
-        ]);
+        //Löschen des vorhandenen Bildes
+        Screenshot::whereGameId($gameid)->where('screenshot_id', '=', $screenid)->delete();
+
+        //Speichern des Screenshots
+        $scr = new Screenshot;
+        $scr->game_id = $gameid;
+        $scr->user_id = \Auth::id();
+        $scr->screenshot_id = $screenid;
+        $scr->filename = str_replace($extorig, '', $imageName);
 
         event(new Obyx('screenshot-add', \Auth::id()));
 

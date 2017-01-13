@@ -169,7 +169,7 @@ return [
     */
 
     'auth' => [
-
+        'basic' => 'Dingo\Api\Auth\Provider\Basic'
     ],
 
     /*
