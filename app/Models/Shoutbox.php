@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Shoutbox whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Shoutbox whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\User $user
  */
 class Shoutbox extends Model
 {
@@ -37,5 +38,8 @@ class Shoutbox extends Model
 
     protected $guarded = [];
 
+    public function user(){
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
         
 }

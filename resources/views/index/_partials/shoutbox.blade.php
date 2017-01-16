@@ -3,10 +3,10 @@
     <ul class='boxlist'>
         @foreach($shoutbox as $shout)
         <li>
-            <a href='{{ url('users' , $shout->userid) }}' class='usera' title="{{ $shout->username }}">
-                <img src='http://ava.rmarchiv.de/?gender=male&id={{ $shout->userid  }}' alt="{{ $shout->username }}" class='avatar' /> {{ $shout->username }}
-            </a> :: <time datetime='{{ $shout->shoutcreated_at }}' title='{{ $shout->shoutcreated_at }}'>{{ \Carbon\Carbon::parse($shout->shoutcreated_at)->diffForHumans() }}</time>
-            {!! $shout->shouthtml !!}
+            <a href='{{ url('users' , $shout->user->id) }}' class='usera' title="{{ $shout->user->name }}">
+                <img src='http://ava.rmarchiv.de/?gender=male&id={{ $shout->user->id  }}' alt="{{ $shout->user->name }}" class='avatar' /> {{ $shout->user->name }}
+            </a> :: <time datetime='{{ $shout->created_at }}' title='{{ $shout->created_at }}'>{{ \Carbon\Carbon::parse($shout->created_at)->diffForHumans() }}</time>
+            {!! $shout->shout_html !!}
         </li>
         @endforeach
     </ul>

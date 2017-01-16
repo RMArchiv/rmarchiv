@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\Shoutbox;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -19,22 +20,10 @@ class IndexController extends Controller
             $gtypes[$gt->id] = $t;
         }
 
-        $news = News::orderBy('created_at', 'desc')->where('approved', '=', 1)->get()->take(5);
+        $news = News::with('user', 'comments')->orderBy('created_at', 'desc')->where('approved', '=', 1)->get()->take(5);
+        $shoutbox = Shoutbox::with('user')->orderBy('created_at', 'desc')->limit(5)->get()->reverse();
 
         $elo = 0;
-        $shoutbox = \DB::table('shoutbox')
-            ->select([
-                'users.id as userid',
-                'users.name as username',
-                'shoutbox.shout_html as shouthtml',
-                'shoutbox.created_at as shoutcreated_at'
-            ])
-            ->leftJoin('users', 'shoutbox.user_id', '=', 'users.id')
-            ->orderBy('shoutbox.created_at', 'desc')
-            ->limit(5)
-            ->get()
-            ->reverse();
-
         $cdc = \DB::table('games_coupdecoeur')
             ->leftJoin('games', 'games.id', '=', 'games_coupdecoeur.game_id')
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
