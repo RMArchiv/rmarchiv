@@ -98,4 +98,15 @@ class Game extends Model
     public function language(){
         return $this->hasOne('App\Models\Language', 'id', 'lang_id');
     }
+
+    public function gamefiles(){
+        return $this->hasMany('App\Models\GamesFile', 'game_id', 'id');
+    }
+
+    public function gametype(){
+        $gf = GamesFile::whereId($this->id)->orderBy('release_type', 'desc')->first();
+        $gt = GamesFilesType::whereId($gf->id)->first();
+
+        return $gt;
+    }
 }
