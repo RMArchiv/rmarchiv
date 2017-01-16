@@ -2400,7 +2400,27 @@ namespace {
          * @static 
          */
         public static function flush(){
-            \Illuminate\Cache\ArrayStore::flush();
+            \Illuminate\Cache\FileStore::flush();
+        }
+        
+        /**
+         * Get the Filesystem instance.
+         *
+         * @return \Illuminate\Filesystem\Filesystem 
+         * @static 
+         */
+        public static function getFilesystem(){
+            return \Illuminate\Cache\FileStore::getFilesystem();
+        }
+        
+        /**
+         * Get the working directory of the cache.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getDirectory(){
+            return \Illuminate\Cache\FileStore::getDirectory();
         }
         
         /**
@@ -2410,7 +2430,7 @@ namespace {
          * @static 
          */
         public static function getPrefix(){
-            return \Illuminate\Cache\ArrayStore::getPrefix();
+            return \Illuminate\Cache\FileStore::getPrefix();
         }
         
     }
@@ -2653,57 +2673,6 @@ namespace {
          */
         public static function getQueuedCookies(){
             return \Illuminate\Cookie\CookieJar::getQueuedCookies();
-        }
-        
-    }
-
-
-    class Crypt extends \Illuminate\Support\Facades\Crypt{
-        
-        /**
-         * Determine if the given key and cipher combination is valid.
-         *
-         * @param string $key
-         * @param string $cipher
-         * @return bool 
-         * @static 
-         */
-        public static function supported($key, $cipher){
-            return \Illuminate\Encryption\Encrypter::supported($key, $cipher);
-        }
-        
-        /**
-         * Encrypt the given value.
-         *
-         * @param mixed $value
-         * @return string 
-         * @throws \Illuminate\Contracts\Encryption\EncryptException
-         * @static 
-         */
-        public static function encrypt($value){
-            return \Illuminate\Encryption\Encrypter::encrypt($value);
-        }
-        
-        /**
-         * Decrypt the given value.
-         *
-         * @param mixed $payload
-         * @return string 
-         * @throws \Illuminate\Contracts\Encryption\DecryptException
-         * @static 
-         */
-        public static function decrypt($payload){
-            return \Illuminate\Encryption\Encrypter::decrypt($payload);
-        }
-        
-        /**
-         * Get the encryption key.
-         *
-         * @return string 
-         * @static 
-         */
-        public static function getKey(){
-            return \Illuminate\Encryption\Encrypter::getKey();
         }
         
     }
@@ -13955,6 +13924,239 @@ namespace {
          */
         public static function store($lavaObj){
             return \Khill\Lavacharts\Lavacharts::store($lavaObj);
+        }
+        
+    }
+
+
+    class TagCloud extends \LithiumDev\TagCloud\Facade\TagCloud{
+        
+        /**
+         * Convert a string into a array
+         *
+         * @param string $string The string to use
+         * @param string $separator The separator to extract the tags
+         * @return $this 
+         * @static 
+         */
+        public static function addString($string, $separator = ''){
+            return \LithiumDev\TagCloud\TagCloud::addString($string, $separator);
+        }
+        
+        /**
+         * Parse tag into safe format
+         *
+         * @param string $string Tag to be formatted
+         * @return mixed 
+         * @static 
+         */
+        public static function formatTag($string){
+            return \LithiumDev\TagCloud\TagCloud::formatTag($string);
+        }
+        
+        /**
+         * Assign multiple tags to array
+         *
+         * @param array $tags A collection of multiple tabs
+         * @return $this 
+         * @static 
+         */
+        public static function addTags($tags = array()){
+            return \LithiumDev\TagCloud\TagCloud::addTags($tags);
+        }
+        
+        /**
+         * Assign tag to array
+         *
+         * @param array $tagAttributes Tags or tag attributes array
+         * @return bool 
+         * @static 
+         */
+        public static function addTag($tagAttributes = array()){
+            return \LithiumDev\TagCloud\TagCloud::addTag($tagAttributes);
+        }
+        
+        /**
+         * Add all attributes to cached array
+         *
+         * @param $attributes
+         * @return $this 
+         * @static 
+         */
+        public static function addAttributes($attributes){
+            return \LithiumDev\TagCloud\TagCloud::addAttributes($attributes);
+        }
+        
+        /**
+         * Set option value
+         *
+         * @param string $option Option property name
+         * @param string $value New property value
+         * @return $this 
+         * @static 
+         */
+        public static function setOption($option, $value){
+            return \LithiumDev\TagCloud\TagCloud::setOption($option, $value);
+        }
+        
+        /**
+         * Get option by name otherwise return all options
+         *
+         * @param string $option Option property name
+         * @return array 
+         * @static 
+         */
+        public static function getOption($option = null){
+            return \LithiumDev\TagCloud\TagCloud::getOption($option);
+        }
+        
+        /**
+         * Assign the order field and order direction of the array
+         * 
+         * Order by tag or size / defaults to random
+         *
+         * @param string $field The name of the field to sort by
+         * @param string $direction The sort direction ASC|DESC
+         * @return $this 
+         * @static 
+         */
+        public static function setOrder($field, $direction = 'ASC'){
+            return \LithiumDev\TagCloud\TagCloud::setOrder($field, $direction);
+        }
+        
+        /**
+         * Inject a custom function/closure for generating the rendered HTML
+         *
+         * @param callable $htmlizeTagFunction The function/closure
+         * @return mixed 
+         * @static 
+         */
+        public static function setHtmlizeTagFunction($htmlizeTagFunction){
+            return \LithiumDev\TagCloud\TagCloud::setHtmlizeTagFunction($htmlizeTagFunction);
+        }
+        
+        /**
+         * Generate the output for each tag.
+         *
+         * @param string $returnType The type of data to return [html|array]
+         * @return array|null|string 
+         * @static 
+         */
+        public static function render($returnType = 'html'){
+            return \LithiumDev\TagCloud\TagCloud::render($returnType);
+        }
+        
+        /**
+         * Get the list of remove tags
+         *
+         * @return array A collection of tags to remove
+         * @static 
+         */
+        public static function getRemoveTags(){
+            return \LithiumDev\TagCloud\TagCloud::getRemoveTags();
+        }
+        
+        /**
+         * Remove multiple tags from the array
+         *
+         * @param $tags A collection of removable tags
+         * @return $this 
+         * @static 
+         */
+        public static function setRemoveTags($tags){
+            return \LithiumDev\TagCloud\TagCloud::setRemoveTags($tags);
+        }
+        
+        /**
+         * Gets the minimum length value
+         *
+         * @return int 
+         * @static 
+         */
+        public static function getMinLength(){
+            return \LithiumDev\TagCloud\TagCloud::getMinLength();
+        }
+        
+        /**
+         * Sets a minimum string length for the tags to display
+         *
+         * @param int $minLength The minimum string length of a tag
+         * @return $this 
+         * @static 
+         */
+        public static function setMinLength($minLength){
+            return \LithiumDev\TagCloud\TagCloud::setMinLength($minLength);
+        }
+        
+        /**
+         * Get attributes from cache
+         *
+         * @return array Collection of Attributes
+         * @static 
+         */
+        public static function getAttributes(){
+            return \LithiumDev\TagCloud\TagCloud::getAttributes();
+        }
+        
+        /**
+         * Get the limit for the amount tags to display
+         *
+         * @return int The maximum number
+         * @static 
+         */
+        public static function getLimit(){
+            return \LithiumDev\TagCloud\TagCloud::getLimit();
+        }
+        
+        /**
+         * Sets a limit for the amount of clouds
+         *
+         * @param int $limit The maximum number to display
+         * @return $this 
+         * @static 
+         */
+        public static function setLimit($limit){
+            return \LithiumDev\TagCloud\TagCloud::setLimit($limit);
+        }
+        
+        /**
+         * Convert a tag into an html-snippet
+         * 
+         * This function is mainly an anchor to decide if a user-supplied
+         * custom function should be used or the normal output method.
+         * 
+         * This will most likely only work in PHP >= 5.3
+         *
+         * @param array $arrayInfo The data to pass into the closure
+         * @param string $sizeRange The size to pass into the closure
+         * @return string 
+         * @static 
+         */
+        public static function htmlizeTag($arrayInfo, $sizeRange){
+            return \LithiumDev\TagCloud\TagCloud::htmlizeTag($arrayInfo, $sizeRange);
+        }
+        
+        /**
+         * Assign a tag to be removed from the array
+         *
+         * @param string $tag The tag value
+         * @return $this 
+         * @static 
+         */
+        public static function setRemoveTag($tag){
+            return \LithiumDev\TagCloud\TagCloud::setRemoveTag($tag);
+        }
+        
+        /**
+         * Calculate the class given to a tag from the
+         * weight percentage of the given tag.
+         *
+         * @param int $percent The percentage value
+         * @return float|int 
+         * @static 
+         */
+        public static function calculateClassFromPercent($percent){
+            return \LithiumDev\TagCloud\TagCloud::calculateClassFromPercent($percent);
         }
         
     }
