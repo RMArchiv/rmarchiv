@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\Obyx;
 use App\Models\GamesFile;
+use App\Models\GamesFilesType;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -134,6 +135,60 @@ class GameFileController extends Controller
         \Storage::delete($gf->filename);
 
         $gf->delete();
+
+        return redirect()->route('gamefiles.index', [$id]);
+    }
+
+    public function edit($id, $gamefileid){
+        $gamefile = GamesFile::whereId($gamefileid)->first();
+        $filetypes = GamesFilesType::get();
+
+        return view('games.gamefiles_edit', [
+            'gamefile' => $gamefile,
+            'filetypes' => $filetypes,
+        ]);
+    }
+
+    public function update(Request $request, $id, $gamefileid){
+        $this->validate($request, [
+            //'uuid' => 'required',
+            'version' => 'required',
+            'releasedate_day' => 'required|not_in:0',
+            'releasedate_month' => 'required|not_in:0',
+            'releasedate_year' => 'required|not_in:0',
+            'filetype' => 'required|not_in:0'
+        ]);
+
+        $gamefile = GamesFile::whereId($gamefileid)->first();
+
+        $gamefile->release_version = $request->get('version');
+        $gamefile->release_day = $request->get('releasedate_day');
+        $gamefile->release_month = $request->get('releasedate_month');
+        $gamefile->release_year = $request->get('releasedate_year');
+        $gamefile->release_type = $request->get('filetype');
+
+        if($request->get('uuid')){
+            \Storage::delete($gamefile->filename);
+
+            $storagetemp = 'temp/'.$request->get('uuid').'/file';
+            $storagedest = 'games/'.$request->get('uuid').'.'.$request->get('ext');
+
+            $meta['mime'] = \Storage::mimeType($storagetemp);
+            $meta['size'] = \Storage::size($storagetemp);
+            $meta['ext'] = $request->get('ext');
+
+            $exists = \Storage::disk('local')->exists($storagetemp);
+
+            if($exists === true){
+                \Storage::move($storagetemp, $storagedest);
+                $gamefile->filesize = $meta['size'];
+                $gamefile->extension = $meta['ext'];
+                $gamefile->filename = $storagedest;
+            }
+        }
+
+        $gamefile->user_id = \Auth::id();
+        $gamefile->save();
 
         return redirect()->route('gamefiles.index', [$id]);
     }
