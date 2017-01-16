@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GamesCoupdecoeur;
 use App\Models\News;
 use App\Models\Shoutbox;
 use Carbon\Carbon;
@@ -23,7 +24,6 @@ class IndexController extends Controller
         $news = News::with('user', 'comments')->orderBy('created_at', 'desc')->where('approved', '=', 1)->get()->take(5);
         $shoutbox = Shoutbox::with('user')->orderBy('created_at', 'desc')->limit(5)->get()->reverse();
 
-        $elo = 0;
         $cdc = \DB::table('games_coupdecoeur')
             ->leftJoin('games', 'games.id', '=', 'games_coupdecoeur.game_id')
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
@@ -325,8 +325,6 @@ class IndexController extends Controller
             'topalltime' => $topalltime,
             'latestcomments' => $latestcomments,
             'size' => $size,
-
-            'elotest' => $elo,
         ]);
     }
 }

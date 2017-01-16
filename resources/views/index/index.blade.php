@@ -23,9 +23,6 @@
             @include('index._partials.shoutbox')
             @include('index._partials.board')
             @include('index._partials.news')
-            <div class='rmarchivtbl rmarchivbox_newsbox'>
-                {{ debug($elotest) }}
-            </div>
         </div>
         <div id='rightbar' class='column'>
             @include('index._partials.search')
