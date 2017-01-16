@@ -65,7 +65,7 @@ class Game extends Model
     ];
 
     protected $guarded = [];
-    protected $appends = ['votes', 'gametype'];
+    protected $appends = ['votes'];
 
     public function user(){
         return $this->hasOne('App\Models\User', 'id', 'user_id');
@@ -100,17 +100,11 @@ class Game extends Model
     }
 
     public function gamefiles(){
-        return $this->hasMany('App\Models\GamesFile', 'game_id', 'id');
-    }
+        return $this->hasMany('App\Models\GamesFile', 'game_id', 'id')
+            ->orderBy('release_type', 'desc')
+            ->orderBy('release_year', 'desc')
+            ->orderBy('release_month', 'desc')
+            ->orderBy('release_day', 'desc')
+            ->with('gamefiletype');    }
 
-    public function getGametypeAttribute(){
-        $gf = GamesFile::whereId($this->id)
-            ->orderBy('release_year', 'asc')
-            ->orderBy('release_month', 'asc')
-            ->orderBy('release_day', 'asc')
-            ->groupBy('release_type')
-            ->first();
-
-        return $gf->gamefiletype;
-    }
 }
