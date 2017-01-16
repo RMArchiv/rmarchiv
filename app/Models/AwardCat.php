@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardCat whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardCat whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\AwardPage $awardpage
+ * @property-read \App\Models\User $user
  */
 class AwardCat extends Model
 {

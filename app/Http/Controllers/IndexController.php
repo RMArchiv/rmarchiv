@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
+use App\Models\Shoutbox;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -18,32 +20,10 @@ class IndexController extends Controller
             $gtypes[$gt->id] = $t;
         }
 
-        $news = \DB::table('news')
-            ->leftJoin('users', 'news.user_id', '=', 'users.id')
-            ->leftJoin('comments', function($join){
-                $join->on('comments.content_id', '=', 'news.id');
-                $join->on('comments.content_type', '=', \DB::raw("'news'"));
-            })
-            ->select(['news.id', 'news.title', 'news.user_id', 'users.name', 'news.created_at', 'news.approved', 'news.news_html'])
-            ->selectRaw('COUNT(comments.id) as counter')
-            ->where('news.approved', '=', 1)
-            ->orderBy('news.created_at', 'desc')
-            ->groupBy('news.id')
-            ->get()->take(5);
+        $news = News::with('user', 'comments')->orderBy('created_at', 'desc')->where('approved', '=', 1)->get()->take(5);
+        $shoutbox = Shoutbox::with('user')->orderBy('created_at', 'desc')->limit(5)->get()->reverse();
 
-        $shoutbox = \DB::table('shoutbox')
-            ->select([
-                'users.id as userid',
-                'users.name as username',
-                'shoutbox.shout_html as shouthtml',
-                'shoutbox.created_at as shoutcreated_at'
-            ])
-            ->leftJoin('users', 'shoutbox.user_id', '=', 'users.id')
-            ->orderBy('shoutbox.created_at', 'desc')
-            ->limit(5)
-            ->get()
-            ->reverse();
-
+        $elo = 0;
         $cdc = \DB::table('games_coupdecoeur')
             ->leftJoin('games', 'games.id', '=', 'games_coupdecoeur.game_id')
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
@@ -345,6 +325,8 @@ class IndexController extends Controller
             'topalltime' => $topalltime,
             'latestcomments' => $latestcomments,
             'size' => $size,
+
+            'elotest' => $elo,
         ]);
     }
 }

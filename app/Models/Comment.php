@@ -31,6 +31,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment whereVoteUp($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment whereVoteDown($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $content
+ * @property-read \App\Models\User $user
  */
 class Comment extends Model
 {

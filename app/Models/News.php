@@ -29,6 +29,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\User $user
  * @property integer $approved
  * @method static \Illuminate\Database\Query\Builder|\App\Models\News whereApproved($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
  */
 class News extends Model
 {
@@ -41,12 +42,17 @@ class News extends Model
         'news_md',
         'news_html',
         'news_category',
-        'user_id'
+        'user_id',
+        'approved',
     ];
 
     protected $guarded = [];
 
     public function user(){
-        return $this->hasOne('App\Models\User');
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
+
+    public function comments(){
+        return $this->hasMany('App\Models\Comment', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'news'"))->with('user');
     }
 }
