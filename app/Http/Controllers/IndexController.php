@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -18,19 +19,9 @@ class IndexController extends Controller
             $gtypes[$gt->id] = $t;
         }
 
-        $news = \DB::table('news')
-            ->leftJoin('users', 'news.user_id', '=', 'users.id')
-            ->leftJoin('comments', function($join){
-                $join->on('comments.content_id', '=', 'news.id');
-                $join->on('comments.content_type', '=', \DB::raw("'news'"));
-            })
-            ->select(['news.id', 'news.title', 'news.user_id', 'users.name', 'news.created_at', 'news.approved', 'news.news_html'])
-            ->selectRaw('COUNT(comments.id) as counter')
-            ->where('news.approved', '=', 1)
-            ->orderBy('news.created_at', 'desc')
-            ->groupBy('news.id')
-            ->get()->take(5);
+        $news = News::orderBy('created_at', 'desc')->where('approved', '=', 1)->get()->take(5);
 
+        $elo = 0;
         $shoutbox = \DB::table('shoutbox')
             ->select([
                 'users.id as userid',
@@ -345,6 +336,8 @@ class IndexController extends Controller
             'topalltime' => $topalltime,
             'latestcomments' => $latestcomments,
             'size' => $size,
+
+            'elotest' => $elo,
         ]);
     }
 }

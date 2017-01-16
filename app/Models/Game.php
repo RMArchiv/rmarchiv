@@ -39,6 +39,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Maker $maker
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesDeveloper[] $developer
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Developer[] $developers
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Screenshot[] $screenshots
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
+ * @property-read mixed $votes
+ * @property-read \App\Models\Language $language
  */
 class Game extends Model
 {
