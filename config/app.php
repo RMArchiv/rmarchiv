@@ -194,6 +194,7 @@ return [
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
         Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
+        LithiumDev\TagCloud\ServiceProvider::class,
 
         /*
          * Application Service Providers...

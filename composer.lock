@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2c063768278444ddfd0067e51c462b67",
+    "content-hash": "bcd2d8f383db8b1568997d24c3f9c4de",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -1831,6 +1831,51 @@
                 "rest"
             ],
             "time": "2016-07-21T09:56:14+00:00"
+        },
+        {
+            "name": "lithiumdev/laravel-tagcloud",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LithiumHosting/laravel-tagcloud.git",
+                "reference": "9ccd7c804ee7a5db1dcf54218546a360244c3a8f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LithiumHosting/laravel-tagcloud/zipball/9ccd7c804ee7a5db1dcf54218546a360244c3a8f",
+                "reference": "9ccd7c804ee7a5db1dcf54218546a360244c3a8f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "LithiumDev\\TagCloud": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Troy Siedsma",
+                    "email": "tsiedsma@lithiumhosting.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel package for generating tag clouds.",
+            "keywords": [
+                "laravel",
+                "laravel tag cloud",
+                "laravel tagcloud",
+                "tag cloud",
+                "tagcloud"
+            ],
+            "time": "2016-12-20T17:17:14+00:00"
         },
         {
             "name": "maximebf/debugbar",

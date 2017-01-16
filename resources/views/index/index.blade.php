@@ -26,6 +26,7 @@
         </div>
         <div id='rightbar' class='column'>
             @include('index._partials.search')
+            @include('index._partials.tagcloud')
             @include('index._partials.stats')
             @include('index._partials.topusers')
             @include('index._partials.latestcomments_game')

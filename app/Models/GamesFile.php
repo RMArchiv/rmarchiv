@@ -59,7 +59,7 @@ class GamesFile extends Model
 
     protected $guarded = [];
 
-    public function gametype(){
+    public function gamefiletype(){
         return $this->hasOne('App\Models\GamesFilesType', 'id', 'release_type');
     }
         

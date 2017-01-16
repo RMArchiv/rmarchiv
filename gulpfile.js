@@ -10,7 +10,8 @@ elixir(function(mix) {
         'jquery':       './bower_components/jquery/dist/',
         'jquery_ui':    './bower_components/jquery-ui/',
         'typeahead':    './bower_components/typeahead.js/dist/',
-        'fineuploader':     './bower_components/fine-uploader/dist/',
+        'fineuploader': './bower_components/fine-uploader/dist/',
+        'jqcloud2':     './bower_components/jqcloud2/dist/'
     };
 
     mix.sass(
@@ -26,7 +27,8 @@ elixir(function(mix) {
             paths.jquery        + 'jquery.js',
             paths.jquery_ui     + 'jquery-ui.js',
             paths.typeahead     + 'typeahead.bundle.js',
-            paths.fineuploader  + 'fine-uploader.js'
+            paths.fineuploader  + 'fine-uploader.js',
+            paths.jqcloud2      + 'jqcloud.js'
             //paths.js            + 'app.js'
         ])
 
