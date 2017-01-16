@@ -5,7 +5,7 @@
         <li>
             <span class='rowprod'>
                 <span class='prodentry'>
-                    @if($g->gamefiles)
+                    @if(isset($g->gamefiles[0]))
                     <span class='typeiconlist'>
                         <span class='typei type_{{ $g->gamefiles[0]->gamefiletype->short }}' title='{{ $g->gamefiles[0]->gamefiletype->title }}'>{{ $g->gamefiles[0]->gamefiletype->title }}</span>
                     </span>
@@ -19,6 +19,8 @@
                             <small> - {{ $g->subtitle }}</small>
                         @endif
                         </a>
+                        <span><img src="/assets/lng/16/{{ strtoupper($g->language->short) }}.png" title="{{ $g->langname }}"></span>
+
                     </span>
                     <span class='group'>
                         :: {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($g->id) !!}

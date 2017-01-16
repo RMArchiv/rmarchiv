@@ -24,7 +24,10 @@
                         @if($cdc->game->subtitle)
                             <small> - {{ $cdc->game->subtitle }}</small>
                         @endif
-                        </a></span>
+                        </a>
+                        <span><img src="/assets/lng/16/{{ strtoupper($cdc->game->language->short) }}.png" title="{{ $cdc->game->language->name }}"></span>
+
+                    </span>
                     <span class='group'>:: {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($cdc->game_id) !!}
                     </span>
                 </span>
