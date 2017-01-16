@@ -32,5 +32,12 @@ class GamesCoupdecoeur extends Model
 
     protected $guarded = [];
 
+    public function game(){
+        return $this->hasOne('App\Models\Game', 'id', 'game_id')->with('maker', 'developers', 'gamefiles');
+    }
+
+    public function user(){
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
         
 }
