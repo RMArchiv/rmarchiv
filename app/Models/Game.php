@@ -89,4 +89,8 @@ class Game extends Model
         //(voteup - votedown) / (voteup + votedown)
         return $vote;
     }
+
+    public function language(){
+        return $this->hasOne('App\Models\Language', 'id', 'lang_id');
+    }
 }

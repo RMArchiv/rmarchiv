@@ -125,6 +125,7 @@
                             @if($game->gamesubtitle != '')
                                 <small> - {{ $game->gamesubtitle }}</small>
                             @endif
+                            <span><img src="assets/lng/16/{{ strtoupper($game->langshort) }}.png" title="{{ $game->langname }}"></span>
                         </a>
                     </span>
                         @if($game->cdccount > 0)
