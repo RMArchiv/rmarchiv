@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\MiscHelper;
 use App\Models\Game;
 use App\Models\GamesCoupdecoeur;
 use App\Models\News;
@@ -126,6 +127,8 @@ class IndexController extends Controller
             ->selectRAW('(SELECT COUNT(id) FROM comments) as commentcount')
             ->selectRaw('(SELECT COUNT(id) FROM logos) as logocount')
             ->selectRaw('(SELECT SUM(downloadcount) FROM games_files) as downloadcount')
+            ->selectRaw('(SELECT SUM(filesize) FROM games_files) as totalsize')
+            ->selectRaw('(SELECT COUNT(id) FROM games_files) as filecount')
             ->first();
 
         $size = \DB::table('games_files')
@@ -137,14 +140,7 @@ class IndexController extends Controller
         foreach ($size as $s){
             $res += $s->downsize;
         }
-        $bytes = $res;
-
-        if ($bytes == 0)
-            return "0.00 B";
-
-        $s = array('B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB');
-        $e = floor(log($bytes, 1024));
-        $size = round($bytes/pow(1024, $e), 2).' '.$s[$e];
+        $size = MiscHelper::getReadableBytes($res);
 
         $topmonth = \DB::table('games')
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')

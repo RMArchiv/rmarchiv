@@ -49,6 +49,16 @@
     </tr>
     <tr>
         <td class='r1'>
+            {{ $stats->filecount }} spieledateien
+        </td>
+    </tr>
+    <tr>
+        <td class='r1'>
+            {{ \App\Helpers\MiscHelper::getReadableBytes($stats->totalsize) }} gesamtgröße der dateien
+        </td>
+    </tr>
+    <tr>
+        <td class='r1'>
             {{ $stats->downloadcount }} downloads
         </td>
     </tr>
