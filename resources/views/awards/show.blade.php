@@ -58,7 +58,7 @@
                     </span>
                     </td>
                     <td width="14%">
-                        {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($game->gameid) !!}
+                        {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($game->id) !!}
                     </td>
                     <td>
                         {{ $game->award_desc }}
