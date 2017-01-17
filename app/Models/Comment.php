@@ -64,5 +64,9 @@ class Comment extends Model
     public function user(){
         return $this->belongsTo('App\Models\User');
     }
-        
+
+    public function game(){
+        return $this->hasOne('App\Models\Game', 'id', 'content_id')->with('user', 'maker', 'gamefiles', 'language');
+    }
+
 }
