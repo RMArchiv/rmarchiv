@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\MiscHelper;
+use App\Models\BoardThread;
 use App\Models\Comment;
 use App\Models\Game;
 use App\Models\GamesCoupdecoeur;
@@ -65,7 +66,10 @@ class IndexController extends Controller
             ->groupBy('games.id')
             ->limit(5)->get();
 
-        $threads = \DB::table('board_threads')
+
+        $threads = BoardThread::with('posts', 'user', 'last_user')->orderBy('last_created_at', 'desc')->limit(10)->get();
+
+        $elo = \DB::table('board_threads')
             ->leftJoin('users as usercreate', 'board_threads.user_id', '=', 'usercreate.id')
             ->leftJoin('users as userlast', 'board_threads.last_user_id', '=', 'userlast.id')
             ->leftJoin('board_cats as cat', 'cat.id', '=', 'board_threads.cat_id')

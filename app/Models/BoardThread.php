@@ -47,5 +47,19 @@ class BoardThread extends Model
 
     protected $guarded = [];
 
-        
+    public function cat(){
+        return $this->belongsTo('App\Models\BoardCat', 'cat_id', 'id');
+    }
+
+    public function posts(){
+        return $this->hasMany('App\Models\BoardPost', 'thread_id', 'id');
+    }
+
+    public function user(){
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
+
+    public function last_user(){
+        return $this->hasOne('App\Models\User', 'id', 'last_user_id');
+    }
 }
