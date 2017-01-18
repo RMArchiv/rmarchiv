@@ -17,9 +17,16 @@
             @foreach($posts as $post)
             <div class='content cite-{{ $post->thread->id  }}' id='c{{ $post->id }}'>{!! $post->content_html !!}</div>
             <div class='foot'>
-                <span class='tools' data-cid='{{ $post->id }}'></span>
-                gepostet am
-                <a href='{{ route('board.thread.show', [$post->thread->id]) }}#c{{ $post->id }}'>{{ $post->created_at }}</a>
+                @if(Auth::id() == $post->user->id)
+                <span class='tools' data-cid='{{ $post->id }}'>
+                    [<a href="{{ route('board.post.edit', [$post->thread->id, $post->id]) }}" data-rel="popup">bearbeiten</a>]
+                </span>
+                @endif
+                gepostet
+                <a href='{{ route('board.thread.show', [$post->thread->id]) }}#c{{ $post->id }}'><time datetime='{{ $post->created_at }}' title='{{ $post->created_at }}'>{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</time></a>
+                @if($post->updated_at)
+                    - editiert {{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}
+                @endif
                 von
                 <a href='{{ url('users', $post->user->id) }}' class='user'>{{ $post->user->name }}</a>
                 <a href='{{ url('users', $post->user->id) }}' class='usera' title="{{ $post->user->name }}">

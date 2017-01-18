@@ -19,7 +19,9 @@
 
                 @foreach($threads as $thread)
                     <tr>
-                        <td>{{ $thread->created_at }}</td>
+                        <td>
+                            <time datetime='{{ $thread->created_at }}' title='{{ $thread->created_at }}'>{{ \Carbon\Carbon::parse($thread->created_at)->diffForHumans() }}</time>
+                        </td>
                         <td>
                             <a href='{{ url('users', $thread->user->id) }}' class='usera' title="{{ $thread->user->name }}">
                                 <img src='http://ava.rmarchiv.de/?gender=male&id={{ $thread->user->id }}' alt="{{ $thread->user->name }}" class='avatar'/>
@@ -32,7 +34,9 @@
                                 @endif
                                 {{ $thread->title }}</a></td>
                         <td>{{ $thread->posts->count() }}</td>
-                        <td>{{ $thread->last_created_at }}</td>
+                        <td>
+                            <time datetime='{{ $thread->last_created_at }}' title='{{ $thread->last_created_at }}'>{{ \Carbon\Carbon::parse($thread->last_created_at)->diffForHumans() }}</time>
+                        </td>
                         <td>
                             <a href='{{ url('users', $thread->last_user->id) }}' class='usera' title="{{ $thread->last_user->name }}">
                                 <img src='http://ava.rmarchiv.de/?gender=male&id={{ $thread->last_user->id }}' alt="{{ $thread->last_user->name }}" class='avatar'/>

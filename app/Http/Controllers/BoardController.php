@@ -171,4 +171,29 @@ class BoardController extends Controller
         }
         return redirect()->action('BoardController@show_thread', $id);
     }
+
+    public function post_edit($threadid, $postid){
+        $post = BoardPost::whereId($postid)->first();
+
+        return view('board.post.edit', [
+            'post' => $post,
+        ]);
+    }
+
+    public function post_update(Request $request, $threadid, $postid){
+        if(\Auth::check()){
+            $this->validate($request, [
+                'thread_id' => 'required',
+                'post_id' => 'required',
+                'msg' => 'required',
+            ]);
+
+            $post = BoardPost::whereId($postid)->first();
+            $post->content_md = $request->get('msg');
+            $post->content_html = \Markdown::convertToHtml($request->get('msg'));
+            $post->save();
+        }
+
+        return redirect()->action('BoardController@show_thread', $threadid);
+    }
 }

@@ -40,6 +40,7 @@ Route::get('news/{id}/approve/{approve}', 'NewsController@approve');
 Route::resource('games', 'GameController');
 Route::post('games/{id}/developer', 'GameController@store_developer')->name('games.developer.store');
 Route::post('games/{id}/developer/delete', 'GameController@destroy_developer')->name('games.developer.delete');
+
 //Gamefiles routen
 Route::get('games/{id}/gamefiles', 'GameFileController@create')->name('gamefiles.index');
 Route::post('games/{id}/gamefiles', 'GameFileController@store')->name('gamefiles.store');
@@ -129,6 +130,8 @@ Route::get('board/cat/{catid}', 'BoardController@show_cat')->name('board.cat.sho
 Route::get('board/cat/{catid}/{direction}', 'BoardController@order_cat')->name('board.cat.order');
 Route::get('board/cat/{catid}/thread/create', 'BoardController@create_thread')->name('board.thread.create');
 Route::post('board/thread/create', 'BoardController@store_thread')->name('board.thread.store');
+Route::get('board/thread/{threadid}/edit/{postid}', 'BoardController@post_edit')->name('board.post.edit');
+Route::post('board/thread/{threadid}/edit/{postid}', 'BoardController@post_update')->name('board.post.update');
 Route::get('board/thread/{threadid}', 'BoardController@show_thread')->name('board.thread.show');
 Route::post('board/thread/{threadid}', 'BoardController@store_post')->name('board.post.store');
 Route::get('board/thread/{id}/switchclosestate/{state}', 'BoardController@thread_close_switch')->name('board.thread.switch.close');
