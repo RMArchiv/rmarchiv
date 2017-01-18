@@ -66,32 +66,7 @@ class IndexController extends Controller
             ->groupBy('games.id')
             ->limit(5)->get();
 
-
         $threads = BoardThread::with('posts', 'user', 'last_user')->orderBy('last_created_at', 'desc')->limit(10)->get();
-
-        $elo = \DB::table('board_threads')
-            ->leftJoin('users as usercreate', 'board_threads.user_id', '=', 'usercreate.id')
-            ->leftJoin('users as userlast', 'board_threads.last_user_id', '=', 'userlast.id')
-            ->leftJoin('board_cats as cat', 'cat.id', '=', 'board_threads.cat_id')
-            ->select([
-                'board_threads.id as threadid',
-                'board_threads.title as threadtitle',
-                'usercreate.id as usercreateid',
-                'usercreate.name as usercreatename',
-                'userlast.id as userlastid',
-                'userlast.name as userlastname',
-                'board_threads.created_at as threaddate',
-                'board_threads.last_created_at as lastdate',
-                'board_threads.pinned as threadpinned',
-                'board_threads.closed as threadclosed',
-                'cat.title as cattitle',
-                'cat.id as catid'
-            ])
-            ->selectRaw('(SELECT COUNT(*) FROM board_posts WHERE board_posts.thread_id = board_threads.id) as posts')
-            ->orderBy('board_threads.last_created_at', 'desc')
-            ->orderBy('board_threads.id', 'desc')
-            ->limit(10)
-            ->get();
 
         $topusers = \DB::table('users as u')
             ->leftJoin('user_role_user as uru', 'u.id', '=', 'uru.user_id')
