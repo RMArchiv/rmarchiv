@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\Obyx;
+use App\Models\Shoutbox;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,9 @@ class ShoutboxController extends Controller
     }
 
     public function index(){
-        $shoutbox = \DB::table('shoutbox')
+        $shoutbox = Shoutbox::with('user')->orderBy('created_at', 'desc')->paginate(25);
+
+        $elo = \DB::table('shoutbox')
             ->select([
                 'users.id as userid',
                 'users.name as username',
