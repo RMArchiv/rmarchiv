@@ -1,29 +1,29 @@
 @extends('layouts.app')
-@section('pagetitle', $posts->first()->ttitle)
+@section('pagetitle', $posts->first()->thread->title)
 @section('content')
     <div id='content'>
         <div class='rmarchivtbl' id='rmarchivbox_bbsview'>
-            <h2>{{ $posts->first()->ttitle }}
+            <h2>{{ $posts->first()->thread->title }}
                 @permission(('mod-threads'))
-                    @if($posts->first()->threadclosed == 0)
-                        :: <a href="{{ route('board.thread.switch.close', [$posts->first()->pid, 1]) }}">schließen</a>
+                    @if($posts->first()->thread->closed == 0)
+                        :: <a href="{{ route('board.thread.switch.close', [$posts->first()->thread->id, 1]) }}">schließen</a>
                     @else
-                        :: <a href="{{ route('board.thread.switch.close', [$posts->first()->pid, 0]) }}">öffnen</a>
+                        :: <a href="{{ route('board.thread.switch.close', [$posts->first()->thread->id, 0]) }}">öffnen</a>
                     @endif
                 @endpermission
             </h2>
-            <div class='threadcategory'><b>kategorie:</b> <a href="{{ url('board/cat', $posts->first()->pcatid) }}">{{ $posts->first()->ctitle }}</a>
+            <div class='threadcategory'><b>kategorie:</b> <a href="{{ url('board/cat', $posts->first()->cat->id) }}">{{ $posts->first()->cat->title }}</a>
             </div>
             @foreach($posts as $post)
-            <div class='content cite-{{ $post->tid  }}' id='c{{ $post->pid }}'>{!! $post->pcontent_html !!}</div>
+            <div class='content cite-{{ $post->thread->id  }}' id='c{{ $post->id }}'>{!! $post->content_html !!}</div>
             <div class='foot'>
-                <span class='tools' data-cid='{{ $post->pid }}'></span>
+                <span class='tools' data-cid='{{ $post->id }}'></span>
                 gepostet am
-                <a href='{{ route('board.thread.show', [$post->tid]) }}#c{{ $post->pid }}'>{{ $post->pdate }}</a>
+                <a href='{{ route('board.thread.show', [$post->thread->id]) }}#c{{ $post->id }}'>{{ $post->created_at }}</a>
                 von
-                <a href='{{ url('users', $post->uid) }}' class='user'>{{ $post->uname }}</a>
-                <a href='{{ url('users', $post->uid) }}' class='usera' title="{{ $post->uname }}">
-                    <img src='http://ava.rmarchiv.de/?gender=male&id={{ $post->uid }}' alt="{{ $post->uname }}" class='avatar'/>
+                <a href='{{ url('users', $post->user->id) }}' class='user'>{{ $post->user->name }}</a>
+                <a href='{{ url('users', $post->user->id) }}' class='usera' title="{{ $post->user->name }}">
+                    <img src='http://ava.rmarchiv.de/?gender=male&id={{ $post->user->id }}' alt="{{ $post->user->name }}" class='avatar'/>
                 </a>
             </div>
             @endforeach
@@ -31,10 +31,10 @@
 
         @if(Auth::check())
         <div class='rmarchivtbl' id='rmarchivbox_bbspost'>
-            @if($post->threadclosed == 0)
+            @if($post->thread->closed == 0)
                 <h2>poste eine antwort</h2>
-                {!! Form::open(['action' => ['BoardController@store_post', $posts->first()->tid], 'id' => 'frmBBSPost']) !!}
-                    <input type='hidden' name='catid' value='{{ $posts->first()->cid }}'>
+                {!! Form::open(['action' => ['BoardController@store_post', $posts->first()->thread->id], 'id' => 'frmBBSPost']) !!}
+                    <input type='hidden' name='catid' value='{{ $posts->first()->cat->id }}'>
                     <div class='content'>
                         nachricht:
                         <textarea name='message' id='message'></textarea>

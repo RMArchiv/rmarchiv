@@ -3,71 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Events\Obyx;
+use App\Models\BoardCat;
+use App\Models\BoardPost;
+use App\Models\BoardThread;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BoardController extends Controller
 {
     public function index(){
-        $cats = \DB::table('board_cats')
-            ->orderBy('order')
-            ->get();
-
-        $threads = array();
-
-        foreach ($cats as $cat){
-            $thr = \DB::table('board_threads')
-                ->leftJoin('users as usercreate', 'board_threads.user_id', '=', 'usercreate.id')
-                ->leftJoin('users as userlast', 'board_threads.last_user_id', '=', 'userlast.id')
-                ->select([
-                    'board_threads.id as threadid',
-                    'board_threads.title as threadtitle',
-                    'usercreate.id as usercreateid',
-                    'usercreate.name as usercreatename',
-                    'userlast.id as userlastid',
-                    'userlast.name as userlastname',
-                    'board_threads.created_at as threaddate',
-                    'board_threads.last_created_at as lastdate',
-                    'board_threads.pinned as threadpinned',
-                    'board_threads.closed as threadclosed'
-                ])
-                ->selectRaw('(SELECT COUNT(*) FROM board_posts WHERE board_posts.thread_id = board_threads.id) as posts')
-                ->where('board_threads.cat_id', '=', $cat->id)
-                ->orderBy('board_threads.last_created_at', 'desc')
-                ->orderBy('board_threads.id', 'desc')
-                ->limit(10)
-                ->get();
-
-            $threads[$cat->id] = $thr;
-        }
+        $cats = BoardCat::with('last_user', 'threads')->orderBy('order')->get();
 
         return view('board.index', [
             'cats' => $cats,
-            'threads' => $threads,
         ]);
     }
 
     public function show_cat($catid){
-        $thr = \DB::table('board_threads')
-            ->leftJoin('users as usercreate', 'board_threads.user_id', '=', 'usercreate.id')
-            ->leftJoin('users as userlast', 'board_threads.last_user_id', '=', 'userlast.id')
-            ->leftJoin('board_cats as bc', 'board_threads.cat_id', '=', 'bc.id')
-            ->select([
-                'board_threads.id as threadid',
-                'board_threads.title as threadtitle',
-                'usercreate.id as usercreateid',
-                'usercreate.name as usercreatename',
-                'userlast.id as userlastid',
-                'userlast.name as userlastname',
-                'board_threads.created_at as threaddate',
-                'board_threads.last_created_at as lastdate',
-                'bc.title as cattitle',
-                'bc.id as catid',
-                'board_threads.pinned as threadpinned',
-                'board_threads.closed as threadclosed'
-            ])
-            ->selectRaw('(SELECT COUNT(*) FROM board_posts WHERE board_posts.thread_id = board_threads.id) as posts')
-            ->where('board_threads.cat_id', '=', $catid)
+        $thr = BoardThread::with('user', 'cat', 'last_user', 'posts')
+            ->whereCatId($catid)
             ->orderBy('board_threads.pinned', 'desc')
             ->orderBy('board_threads.last_created_at', 'desc')
             ->orderBy('board_threads.id', 'desc')
@@ -128,29 +82,7 @@ class BoardController extends Controller
     }
 
     public function show_thread($threadid){
-
-        $posts = \DB::table('board_posts as p')
-            ->leftJoin('board_threads as t', 'p.thread_id', '=', 't.id')
-            ->leftjoin('board_cats as c', 'p.cat_id', '=', 'c.id')
-            ->leftJoin('users as u', 'p.user_id', '=', 'u.id')
-            ->select([
-                'p.id as pid',
-                'u.id as uid',
-                'p.cat_id as pcatid',
-                'p.content_md as pcontent_md',
-                'p.content_html as pcontent_html',
-                'p.created_at as pdate',
-                't.id as tid',
-                't.title as ttitle',
-                'c.title as ctitle',
-                'u.name as uname',
-                'c.id as cid',
-                't.pinned as threadpinned',
-                't.closed as threadclosed'
-            ])
-            ->where('p.thread_id', '=', $threadid)
-            ->orderBy('p.id', 'asc')
-            ->get();
+        $posts = BoardPost::with('user', 'thread', 'cat')->whereThreadId($threadid)->orderBy('id')->get();
 
         return view('board.threads.show', [
             'posts' => $posts,

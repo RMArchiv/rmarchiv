@@ -18,28 +18,28 @@
                     </tr>
                 </thead>
 
-                @foreach($threads[$cat->id] as $thread)
+                @foreach($cat->threads->sortByDesc('last_created_at')->take(15) as $thread)
                 <tr>
-                    <td>{{ $thread->threaddate }}</td>
+                    <td>{{ $thread->created_at }}</td>
                     <td>
-                        <a href='{{ url('users', $thread->usercreateid) }}' class='usera' title="{{ $thread->usercreatename }}">
-                            <img src='http://ava.rmarchiv.de/?gender=male&id={{ $thread->usercreateid }}' alt="{{ $thread->usercreatename }}" class='avatar'/>
-                        </a> <a href='{{ url('users', $thread->usercreateid) }}' class='user'>{{ $thread->usercreatename }}</a>
+                        <a href='{{ url('users', $thread->user->id) }}' class='usera' title="{{ $thread->user->name }}">
+                            <img src='http://ava.rmarchiv.de/?gender=male&id={{ $thread->user->id }}' alt="{{ $thread->user->name }}" class='avatar'/>
+                        </a> <a href='{{ url('users', $thread->user->id) }}' class='user'>{{ $thread->user->name }}</a>
                     </td>
                     <td><a href="{{ route('board.cat.show', $cat->id) }}">{{ $cat->title }}</a></td>
                     <td>
-                        <a href="{{ route('board.thread.show', $thread->threadid) }}">
-                            @if($thread->threadclosed == 1)
+                        <a href="{{ route('board.thread.show', $thread->id) }}">
+                            @if($thread->closed == 1)
                                 <img src="/assets/lock.png">
                             @endif
-                            {{ $thread->threadtitle }}</a>
+                            {{ $thread->title }}</a>
                     </td>
-                    <td>{{ $thread->posts }}</td>
-                    <td>{{ $thread->lastdate }}</td>
+                    <td>{{ $thread->posts->count() }}</td>
+                    <td>{{ $thread->last_created_at }}</td>
                     <td>
-                        <a href='{{ url('users', $thread->userlastid) }}' class='usera' title="{{ $thread->userlastname }}">
-                            <img src='http://ava.rmarchiv.de/?gender=male&id={{ $thread->userlastid }}' alt="{{ $thread->userlastname }}" class='avatar'/>
-                        </a> <a href='{{ url('users', $thread->userlastid) }}' class='user'>{{ $thread->userlastname }}</a>
+                        <a href='{{ url('users', $thread->last_user->id) }}' class='usera' title="{{ $thread->last_user->name }}">
+                            <img src='http://ava.rmarchiv.de/?gender=male&id={{ $thread->last_user->id }}' alt="{{ $thread->last_user->name }}" class='avatar'/>
+                        </a> <a href='{{ url('users', $thread->last_user->id) }}' class='user'>{{ $thread->last_user->name }}</a>
                     </td>
                 </tr>
                 @endforeach
