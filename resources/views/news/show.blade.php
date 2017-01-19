@@ -5,7 +5,9 @@
         @if(count($news) > 0)
             <div id="prodpagecontainer">
                 <div class="rmarchivtbl rmarchivbox_newsbox" id="rmarchivbox_newsbox">
-                    <h2>{{ $news->title }}</h2>
+                    <h2>
+                        {{ $news->title }}
+                    </h2>
                     <div class="content">
                         {!! $news->news_html !!}
                     </div>
@@ -30,6 +32,9 @@
                                         <a href="{{ url('news/'.$news->id.'/approve/1') }}">[{{ trans('app.news.show.approve') }}]</a>
                                     @endif
                                 @endif
+                                @permission(('edit-news'))
+                                :: <a href="{{ action('NewsController@edit', $news->id) }}">[edit]</a>
+                                @endpermission
                             </div>
                     @endif
                 </div>

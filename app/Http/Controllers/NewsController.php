@@ -6,7 +6,6 @@ use App\Models\Comment;
 use App\Models\News;
 use App\Models\UserSetting;
 use Illuminate\Http\Request;
-use GrahamCampbell\Markdown\Facades\Markdown;
 
 class NewsController extends Controller
 {
@@ -122,7 +121,11 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $news = News::whereId($id)->first();
+
+        return view('news.edit', [
+            'news' => $news,
+        ]);
     }
 
     /**
@@ -134,7 +137,21 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'msg' => 'required',
+            'cat' => 'required',
+        ]);
+
+        $news = News::whereId($id)->first();
+
+        $news->title = $request->get('title');
+        $news->news_md = $request->get('msg');
+        $news->news_html = \Markdown::convertToHtml($request->get('msg'));
+        $news->news_category = $request->get('cat');
+        $news->save();
+
+        return redirect()->action('NewsController@show', $id);
     }
 
     /**
