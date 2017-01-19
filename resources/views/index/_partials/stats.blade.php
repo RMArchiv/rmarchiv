@@ -1,6 +1,6 @@
 <table class='boxtable' id='rmarchivbox_stats'>
     <tr>
-        <th class='header'>some stats</th>
+        <th class='header'><a href="{{ url('stats') }}">some stats</a></th>
     </tr>
     <tr>
         <td class='r1'>
@@ -19,7 +19,7 @@
     </tr>
     <tr>
         <td class='r1'>
-            {{ $stats->usercount }} <a href='{{ url('users') }}'>user</a>
+            {{ $stats->usercount }} <a href='{{ url('users') }}'>user</a> - <a href="{{ url('users/activity') }}">aktivitäten</a>
         </td>
     </tr>
     <tr>

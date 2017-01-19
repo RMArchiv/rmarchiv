@@ -25,4 +25,16 @@
             <div class='foot'>account erstellt am {{ $user->usercreated_at }}</div>
         </div>
     </div>
+    <div id="content">
+        <div class="rmarchivtbl" id="rmarchivbox_onelinerview">
+            <h2>die letzten 10 obyx für</h2>
+            <ul class="boxlist">
+                @foreach($obyx as $o)
+                    <li><time datetime='{{ $o->created_at }}' title='{{ $o->created_at }}'>{{ \Carbon\Carbon::parse($o->created_at)->diffForHumans() }}</time>
+                        <br>{!! $o->obyx->value !!} obyx für: {{ $o->obyx->reason_visible }}
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
 @endsection

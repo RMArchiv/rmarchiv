@@ -93,7 +93,9 @@ Route::post('resources/upload', 'FineUploaderController@endpoint@upload')->name(
 
 //User Routings
 Route::get('users', 'UserController@index');
+Route::get('users/activity', 'UserController@activity_index');
 Route::get('users/{id}', 'UserController@show')->name('users.show');
+
 
 //PN Routen
 Route::group(['prefix' => 'messages'], function () {
@@ -201,6 +203,7 @@ Route::get('stats', 'StatsticController@show');
 Route::post('tags/create', 'TaggingController@store');
 Route::get('tags/game/{tagid}', 'TaggingController@showGames');
 
+//Spezialrouten
 Route::post('tako/downlbla', 'GameFileController@download_wo_count');
 
 //Routen für API

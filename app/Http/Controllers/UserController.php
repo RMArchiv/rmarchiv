@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserObyx;
 use App\Models\UserPermission;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
@@ -66,9 +67,11 @@ class UserController extends Controller
             ->where('u.id', '=', $userid)
             ->first();
 
+        $data = UserObyx::with('obyx', 'user')->orderBy('created_at', 'desc')->where('user_id', '=', $userid)->take(10)->get();
 
         return view('users.show', [
             'user' => $user,
+            'obyx' => $data,
         ]);
     }
 
@@ -98,5 +101,13 @@ class UserController extends Controller
         $user->attachRole($role);
 
         return redirect()->action('UserController@admin', [$userid]);
+    }
+
+    public function activity_index(){
+        $data = UserObyx::with('obyx', 'user')->orderBy('created_at', 'desc')->paginate(25);
+
+        return view('users.activity.index', [
+            'obyx' => $data
+        ]);
     }
 }
