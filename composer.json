@@ -24,7 +24,8 @@
         "dingo/api": "1.0.*@dev",
         "khill/lavacharts" : "3.0.*",
         "kyslik/column-sortable": "^5.1",
-        "lithiumdev/laravel-tagcloud": "^1.0"
+        "lithiumdev/laravel-tagcloud": "^1.0",
+        "mews/captcha": "^2.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -33,6 +33,14 @@
                         </div>
                     </div>
                 @endif
+                @if ($errors->has('captcha'))
+                    <div class="rmarchivtbl errorbox">
+                        <h2>{{ trans('app.auth.register_failed') }}</h2>
+                        <div class="content">
+                            <strong>{{ $errors->first('captcha') }}</strong>
+                        </div>
+                    </div>
+                @endif
 
                 <div class="content">
                     <div class="formifier">
@@ -54,6 +62,12 @@
                         <div class="row" id="row_pass2">
                             <label for="password-confirm" class="col-md-4 control-label">{{ trans('app.auth.password_confirm') }}</label>
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            <span> [<span class="req">req</span>]</span>
+                        </div>
+                        <div class="row" id="row_captcha">
+                            <label for="captcha" class="col-md-4 control-label">captcha:</label>
+                            {!! captcha_img('rmarchiv') !!}
+                            <input id="captcha" class="form-control" name="captcha" required>
                             <span> [<span class="req">req</span>]</span>
                         </div>
                     </div>

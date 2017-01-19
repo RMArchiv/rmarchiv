@@ -28,7 +28,7 @@ class IndexController extends Controller
         $news = News::with('user', 'comments')->orderBy('created_at', 'desc')->where('approved', '=', 1)->get()->take(5);
         $shoutbox = Shoutbox::with('user')->orderBy('created_at', 'desc')->limit(5)->get()->reverse();
         $cdc = GamesCoupdecoeur::with('game')->orderBy('created_at', 'desc')->get()->first();
-        $latestadded = Game::with('maker', 'gamefiles', 'language')->orderBy('created_at', 'desc')->limit(5)->get();
+        $latestadded = Game::with('maker', 'gamefiles', 'language', 'developers')->orderBy('created_at', 'desc')->limit(5)->get();
 
         $latestreleased = \DB::table('games')
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')

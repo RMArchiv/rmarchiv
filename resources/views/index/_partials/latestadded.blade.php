@@ -20,7 +20,6 @@
                         @endif
                         </a>
                         <span><img src="/assets/lng/16/{{ strtoupper($g->language->short) }}.png" title="{{ $g->langname }}"></span>
-
                     </span>
                     <span class='group'>
                         :: {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($g->id) !!}

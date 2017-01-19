@@ -5,11 +5,17 @@ namespace App\Http\Controllers;
 use App\Events\GameView;
 use App\Events\Obyx;
 use App\Helpers\DatabaseHelper;
+use App\Models\Comment;
 use App\Models\Game;
+use App\Models\GamesDeveloper;
+use App\Models\GamesFile;
 use App\Models\Language;
+use App\Models\Screenshot;
+use App\Models\TagRelation;
 use Carbon\Carbon;
 use Doctrine\DBAL\Driver\IBMDB2\DB2Connection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class GameController extends Controller
 {
@@ -439,7 +445,24 @@ class GameController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $validate = Input::get('confirm','');
+        if(\Auth::check()){
+            if(\Auth::user()->can('delete-games')){
+                if($validate == 'CONFIRM+'.$id){
+                    Game::whereId($id)->delete();
+                    GamesFile::whereGameId($id)->delete();
+                    Screenshot::whereGameId($id)->delete();
+                    GamesDeveloper::whereGameId($id)->delete();
+                    Comment::whereContentId($id)->where('content_type', '=', 'game')->delete();
+                    TagRelation::whereContentId($id)->where('content_type', '=', 'game')->delete();
+                }else{
+                    return redirect()->action('GameController@edit', $id);
+                }
+            }
+        }
+
+
+        return redirect()->route('home');
     }
 
     public function destroy_developer(Request $request, $id){

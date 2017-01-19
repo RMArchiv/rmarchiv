@@ -235,5 +235,25 @@
             {!! Form::close() !!}
         </div>
 
+        @permission(("delete-games"))
+        <div class="rmarchivtbl errorbox" id="rmarchivbox_submitprod">
+            <h2>löschen des spiels</h2>
+            <div class="content">
+                <div class="formifier">
+                    <div class="row" id="row_delete">
+                        {!! Form::open(['method' => 'DELETE', 'action' => ['GameController@destroy', $game->gameid]]) !!}
+                        <label for="confirm">tippe CONFIRM+GameID zur bestätigung</label>
+                        <input name="confirm" id="confirm" placeholder="CONFIRM+1014" value=""/>
+                        <span> [<span class="req">req</span>]</span>
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+            </div>
+            <div class="foot">
+                <input type="submit" value="{{trans('app.misc.send')}}">
+            </div>
+        </div>
+        @endpermission
+
     </div>
 @endsection

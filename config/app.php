@@ -195,6 +195,7 @@ return [
         Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
         Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
         LithiumDev\TagCloud\ServiceProvider::class,
+        Mews\Captcha\CaptchaServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -227,6 +228,7 @@ return [
         'Blade' => Illuminate\Support\Facades\Blade::class,
         'Bus' => Illuminate\Support\Facades\Bus::class,
         'Cache' => Illuminate\Support\Facades\Cache::class,
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'CheckRateable' => App\Helpers\CheckRateable::class,
         'Config' => Illuminate\Support\Facades\Config::class,
         'Cookie' => Illuminate\Support\Facades\Cookie::class,
