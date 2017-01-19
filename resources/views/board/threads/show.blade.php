@@ -14,6 +14,7 @@
             </h2>
             <div class='threadcategory'><b>kategorie:</b> <a href="{{ url('board/cat', $posts->first()->cat->id) }}">{{ $posts->first()->cat->title }}</a>
             </div>
+            {{ $posts->links('vendor/pagination/board_thread') }}
             @foreach($posts as $post)
             <div class='content cite-{{ $post->thread->id  }}' id='c{{ $post->id }}'>{!! $post->content_html !!}</div>
             <div class='foot'>
@@ -34,6 +35,7 @@
                 </a>
             </div>
             @endforeach
+            {{ $posts->links('vendor/pagination/board_thread') }}
         </div>
 
         @if(Auth::check())

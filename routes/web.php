@@ -201,10 +201,13 @@ Route::get('stats', 'StatsticController@show');
 Route::post('tags/create', 'TaggingController@store');
 Route::get('tags/game/{tagid}', 'TaggingController@showGames');
 
+Route::post('tako/downlbla', 'GameFileController@download_wo_count');
+
 //Routen für API
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {
     $api->get('games', 'App\Http\Controllers\Api\v1\GameController@index');
     $api->get('games/{id}', 'App\Http\Controllers\Api\v1\GameController@show');
     $api->get('games_app', 'App\Http\Controllers\Api\v1\GameController@show_app');
+    $api->get('tako/filelist', 'App\Http\Controllers\Api\v1\TakoController@filelist');
 });

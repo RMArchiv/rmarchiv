@@ -44,6 +44,14 @@ class GameFileController extends Controller
         return response()->download($filepath, $newfilename);
     }
 
+    public function download_wo_count(Request $request){
+        $filepath = storage_path('app/public/'.$request->get('filename'));
+
+        $newfilename = $request->get('id');
+
+        return response()->download($filepath, $newfilename);
+    }
+
     public function create($id){
         $gamefiles = \DB::table('games_files')
             ->select([
@@ -187,7 +195,6 @@ class GameFileController extends Controller
             }
         }
 
-        $gamefile->user_id = \Auth::id();
         $gamefile->save();
 
         return redirect()->route('gamefiles.index', [$id]);

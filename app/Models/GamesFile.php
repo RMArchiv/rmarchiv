@@ -62,5 +62,9 @@ class GamesFile extends Model
     public function gamefiletype(){
         return $this->hasOne('App\Models\GamesFilesType', 'id', 'release_type');
     }
+
+    public function game(){
+        return $this->belongsTo('App\Models\Game', 'game_id', 'id')->with('maker', 'developers');
+    }
         
 }

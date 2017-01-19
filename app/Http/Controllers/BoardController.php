@@ -8,6 +8,8 @@ use App\Models\BoardPost;
 use App\Models\BoardThread;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Input;
 
 class BoardController extends Controller
 {
@@ -82,11 +84,16 @@ class BoardController extends Controller
     }
 
     public function show_thread($threadid){
-        $posts = BoardPost::with('user', 'thread', 'cat')->whereThreadId($threadid)->orderBy('id')->get();
+        $posts = BoardPost::with('user', 'thread', 'cat')->whereThreadId($threadid)->orderBy('id')->paginate(25);
+        if(!Input::get('page')){
+           return redirect('board/thread/'.$threadid.'?page='.$posts->lastPage());
+        }else{
+            return view('board.threads.show', [
+                'posts' => $posts,
+            ]);
+        }
 
-        return view('board.threads.show', [
-            'posts' => $posts,
-        ]);
+
     }
 
     public function store_thread(Request $request){
