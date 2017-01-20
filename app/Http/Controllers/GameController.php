@@ -45,6 +45,7 @@ class GameController extends Controller
                 'games.views as views',
                 'languages.name as langname',
                 'languages.short as langshort',
+                'games.youtube as youtube',
             ])
             ->selectRaw('(SELECT COUNT(id) FROM comments WHERE content_id = games.id AND content_type = "game") as commentcount')
             ->selectRaw('(SELECT SUM(vote_up) FROM comments WHERE content_id = games.id AND content_type = "game") as voteup')
@@ -128,6 +129,7 @@ class GameController extends Controller
             'maker_id' => $request->get('maker'),
             'lang_id' => $langid,
             'user_id' => \Auth::id(),
+            'youtube' => $request->get('youtube'),
             'created_at' => Carbon::now(),
         ]);
 
@@ -203,6 +205,7 @@ class GameController extends Controller
                 'games.website_url as url',
                 'languages.name as langname',
                 'languages.short as langshort',
+                'games.youtube as youtube',
             ])
             ->selectRaw('COUNT(comments.id) AS commentcount')
             ->selectRaw('SUM(comments.vote_up) AS voteup')
@@ -357,7 +360,8 @@ class GameController extends Controller
                 'games.maker_id as gamemakerid',
                 'games.lang_id as gamelangid',
                 'games.desc_md as gamedescmd',
-                'games.website_url as websiteurl'
+                'games.website_url as websiteurl',
+                'games.youtube as youtube'
             ])
             ->where('games.id', '=', $id)
             ->first();
@@ -431,6 +435,7 @@ class GameController extends Controller
         $game->desc_md = $request->get('desc');
         $game->desc_html = \Markdown::convertToHtml($request->get('desc'));
         $game->website_url = $request->get('websiteurl');
+        $game->youtube = $request->get('youtube');
         $game->save();
 
         return redirect()->action('GameController@edit', [$id]);

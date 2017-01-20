@@ -63,6 +63,9 @@
                                     <li><a href="#tabs-4">bild 3</a></li>
                                     <li><a href="#tabs-5">bild 4</a></li>
                                     <li><a href="#tabs-6">bild 5</a></li>
+                                    @if($game->youtube)
+                                        <li><a href="#tabs-7">trailer</a></li>
+                                    @endif
                                 </ul>
                                 <div id="tabs-1">
                                     <img src='{{ route('screenshot.show', [$game->gameid, 1]) }}' style="width: 400px"
@@ -106,6 +109,15 @@
                                         <span><a href="{{ route('screenshot.create', [$game->gameid, 6]) }}">screenshot hochladen</a></span>
                                     @endif
                                 </div>
+                                @if($game->youtube)
+                                    @php
+                                        $vid = str_replace('watch?v=', "embed/", $game->youtube);
+                                    @endphp
+                                <div id="tabs-7">
+                                    <iframe width="400px" height="300px" src="{{ $vid }}" frameborder="0" allowfullscreen></iframe>
+                                </div>
+
+                                @endif
                             </div>
                         </td>
                         <td colspan='2'>
