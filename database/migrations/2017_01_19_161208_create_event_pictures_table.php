@@ -15,7 +15,15 @@ class CreateEventPicturesTable extends Migration
     {
         Schema::create('event_pictures', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('event_id');
+            $table->string('title');
+            $table->string('desc', 9999);
+            $table->string('filename');
             $table->timestamps();
+
+            $table->index('user_id');
+            $table->index('event_id');
         });
     }
 

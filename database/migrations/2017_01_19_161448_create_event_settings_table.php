@@ -20,7 +20,10 @@ class CreateEventSettingsTable extends Migration
             $table->timestamp('reg_start_date');
             $table->timestamp('reg_end_date');
             $table->integer('reg_allowed');
+            $table->integer('reg_price');
             $table->timestamps();
+
+            $table->index('event_id');
         });
     }
 
