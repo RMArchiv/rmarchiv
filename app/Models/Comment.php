@@ -33,6 +33,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $content
  * @property-read \App\Models\User $user
+ * @property-read \App\Models\Game $game
  */
 class Comment extends Model
 {

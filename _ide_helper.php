@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.29 on 2017-01-19.
+ * Generated for Laravel 5.3.29 on 2017-01-20.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -2411,6 +2411,55 @@ namespace {
          */
         public static function getPrefix(){
             return \Illuminate\Cache\ArrayStore::getPrefix();
+        }
+        
+    }
+
+
+    class Captcha extends \Mews\Captcha\Facades\Captcha{
+        
+        /**
+         * Create captcha image
+         *
+         * @param string $config
+         * @return \Mews\Captcha\ImageManager->response 
+         * @static 
+         */
+        public static function create($config = 'default'){
+            return \Mews\Captcha\Captcha::create($config);
+        }
+        
+        /**
+         * Captcha check
+         *
+         * @param $value
+         * @return bool 
+         * @static 
+         */
+        public static function check($value){
+            return \Mews\Captcha\Captcha::check($value);
+        }
+        
+        /**
+         * Generate captcha image source
+         *
+         * @param null $config
+         * @return string 
+         * @static 
+         */
+        public static function src($config = null){
+            return \Mews\Captcha\Captcha::src($config);
+        }
+        
+        /**
+         * Generate captcha image html tag
+         *
+         * @param null $config
+         * @return string 
+         * @static 
+         */
+        public static function img($config = null){
+            return \Mews\Captcha\Captcha::img($config);
         }
         
     }

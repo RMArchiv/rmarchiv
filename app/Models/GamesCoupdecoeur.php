@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesCoupdecoeur whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesCoupdecoeur whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Game $game
+ * @property-read \App\Models\User $user
  */
 class GamesCoupdecoeur extends Model
 {

@@ -38,6 +38,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $downloadcount
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereFilename($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereDownloadcount($value)
+ * @property-read \App\Models\GamesFilesType $gamefiletype
+ * @property-read \App\Models\Game $game
  */
 class GamesFile extends Model
 {

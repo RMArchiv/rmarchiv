@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\TagRelation whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\TagRelation whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Tag $tag
  */
 class TagRelation extends Model
 {

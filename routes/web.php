@@ -203,6 +203,34 @@ Route::get('stats', 'StatsticController@show');
 Route::post('tags/create', 'TaggingController@store');
 Route::get('tags/game/{tagid}', 'TaggingController@showGames');
 
+//Routen für Events
+Route::group(['prefix' => 'events'], function () {
+    Route::get('/', ['as' => 'events', 'uses' => 'EventController@index']);
+    Route::get('create', ['as' => 'events.create', 'uses' => 'EventController@create']);
+    Route::post('/', ['as' => 'events.store', 'uses' => 'EventController@store']);
+    Route::get('{id}', ['as' => 'events.show', 'uses' => 'EventController@show']);
+    Route::get('{id}/edit', ['as' => 'events.edit', 'uses' => 'EventController@edit']);
+    Route::put('{id}', ['as' => 'events.update', 'uses' => 'EventController@update']);
+
+    Route::group(['prefix' => 'meetings'], function () {
+        Route::get('/', ['as' => 'meetings', 'uses' => 'EventController@meeting_index']);
+        Route::get('create', ['as' => 'meetings.create', 'uses' => 'EventController@meeting_create']);
+        Route::post('/', ['as' => 'meetings.store', 'uses' => 'EventController@meeting_store']);
+        Route::get('{id}', ['as' => 'meetings.show', 'uses' => 'EventController@meeting_show']);
+        Route::get('{id}/edit', ['as' => 'meetings.edit', 'uses' => 'EventController@meeting_edit']);
+        Route::put('{id}', ['as' => 'meetings.update', 'uses' => 'EventController@meeting_update']);
+    });
+
+    Route::group(['prefix' => 'pictures'], function () {
+        Route::get('/', ['as' => 'pictures', 'uses' => 'EventController@picture_index']);
+        Route::get('create', ['as' => 'pictures.create', 'uses' => 'EventController@picture_create']);
+        Route::post('/', ['as' => 'pictures.store', 'uses' => 'EventController@picture_store']);
+        Route::get('{id}', ['as' => 'pictures.show', 'uses' => 'EventController@picture_show']);
+        Route::get('{id}/edit', ['as' => 'pictures.edit', 'uses' => 'EventController@picture_edit']);
+        Route::put('{id}', ['as' => 'pictures.update', 'uses' => 'EventController@picture_update']);
+    });
+});
+
 //Spezialrouten
 Route::post('tako/downlbla', 'GameFileController@download_wo_count');
 

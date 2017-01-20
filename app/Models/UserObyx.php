@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserObyx whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserObyx whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\User $user
+ * @property-read \App\Models\Obyx $obyx
  */
 class UserObyx extends Model
 {
