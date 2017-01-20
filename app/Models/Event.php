@@ -77,4 +77,8 @@ class Event extends Model
     public function pictures(){
         return $this->hasMany('App\Models\EventPicture', 'event_id', 'id');
     }
+
+    public function comments(){
+        return $this->hasMany('App\Models\Comment', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'game'"))->with('user');
+    }
 }

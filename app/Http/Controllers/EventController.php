@@ -19,7 +19,11 @@ class EventController extends Controller
     }
 
     public function show($id){
+        $event = Event::whereId($id)->first();
 
+        return view('events.show', [
+            'event' => $event,
+        ]);
     }
 
     public function create(){
