@@ -918,9 +918,9 @@ td {
 #rmarchivbox_bbsview {
   width: 75%;
   display: block;
-  width: 75%;
   .content {
     overflow: hidden;
+    margin-bottom: -15px;
   }
   .blank {
     background: $color_bay_of_many_approx;
@@ -946,6 +946,9 @@ td {
     width: 320px;
     margin: 0 auto;
   }
+  p {
+    margin-bottom: 15px;
+  }
   h2 {
     text-align: center;
     overflow: hidden;
@@ -956,6 +959,9 @@ td {
   div:target {
     border: 3px solid $color_polo_blue_approx;
     padding: 5px;
+  }
+  li:last-child {
+    margin-bottom: 15px;
   }
 }
 #rmarchivbox_prodmain {

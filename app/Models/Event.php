@@ -63,7 +63,7 @@ class Event extends Model
     }
 
     public function settings(){
-        return $this->hasMany('App\Models\EventSetting', 'event_id', 'id');
+        return $this->hasOne('App\Models\EventSetting', 'event_id', 'id');
     }
 
     public function meetings(){

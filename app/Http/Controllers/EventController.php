@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\EventSetting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class EventController extends Controller
 {
     //-------------------------------------------------
     // Events
     public function index(){
-        $events = Event::orderBy('start_date', 'desc');
+        $events = Event::orderBy('start_date', 'desc')->get();
 
         return view('events.index', [
             'events' => $events,
@@ -54,12 +55,26 @@ class EventController extends Controller
         return redirect()->action('EventController@show', $e->id);
     }
 
-    public function edit(){
+    public function edit($id){
+        $event = Event::whereId($id)->first();
 
+        return view('events.edit', [
+            'event' => $event,
+        ]);
     }
 
-    public function update(){
+    public function update($id){
+        $e = Event::whereId($id)->first();
+        $e->title = Input::get('title');
+        $e->description = Input::get('desc');
+        $e->start_date = Input::get('start');
+        $e->end_date = Input::get('end');
+        $e->save();
 
+        $es = EventSetting::whereEventId($id)->first();
+        $es->slots = Input::get('slots');
+
+        return redirect()->action('EventController@show', $e->id);
     }
 
     //-------------------------------------------------
@@ -80,11 +95,11 @@ class EventController extends Controller
 
     }
 
-    public function meeting_edit(){
+    public function meeting_edit($id){
 
     }
 
-    public function meeting_update(){
+    public function meeting_update($id){
 
     }
 
@@ -106,11 +121,11 @@ class EventController extends Controller
 
     }
 
-    public function picture_edit(){
+    public function picture_edit($id){
 
     }
 
-    public function picture_update(){
+    public function picture_update($id){
 
     }
 }
