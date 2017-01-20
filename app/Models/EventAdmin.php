@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventAdmin whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventAdmin whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\User $user
+ * @property-read \App\Models\Event $event
  */
 class EventAdmin extends Model
 {
@@ -32,5 +34,12 @@ class EventAdmin extends Model
 
     protected $guarded = [];
 
+    public function user(){
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
+
+    public function event(){
+        return $this->hasOne('App\Models\Event', 'id', 'user_id');
+    }
         
 }

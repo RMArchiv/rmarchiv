@@ -32,6 +32,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Event whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Event whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\User $user
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EventSetting[] $settings
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EventMeeting[] $meetings
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EventUserRegistered[] $users_registered
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EventPicture[] $pictures
  */
 class Event extends Model
 {
@@ -53,5 +58,23 @@ class Event extends Model
 
     protected $guarded = [];
 
-        
+    public function user(){
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
+
+    public function settings(){
+        return $this->hasMany('App\Models\EventSetting', 'event_id', 'id');
+    }
+
+    public function meetings(){
+        return $this->hasMany('App\Models\EventMeeting', 'event_id', 'id');
+    }
+
+    public function users_registered(){
+        return $this->hasMany('App\Models\EventUserRegistered', 'event_id', 'id');
+    }
+
+    public function pictures(){
+        return $this->hasMany('App\Models\EventPicture', 'event_id', 'id');
+    }
 }

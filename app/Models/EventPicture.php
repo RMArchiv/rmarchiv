@@ -24,6 +24,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventPicture whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventPicture whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\User $user
+ * @property-read \App\Models\Event $event
  */
 class EventPicture extends Model
 {
@@ -41,5 +43,11 @@ class EventPicture extends Model
 
     protected $guarded = [];
 
-        
+    public function user(){
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
+
+    public function event(){
+        return $this->hasOne('App\Models\Event', 'id', 'event_id');
+    }
 }

@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventMeeting whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventMeeting whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Event $event
  */
 class EventMeeting extends Model
 {
@@ -41,5 +42,7 @@ class EventMeeting extends Model
 
     protected $guarded = [];
 
-        
+    public function event(){
+        return $this->hasOne('App\Models\Event', 'id', 'event_id');
+    }
 }

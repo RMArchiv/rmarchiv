@@ -22,6 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventUserRegistered whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventUserRegistered whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Event $event
+ * @property-read \App\Models\Event $user
  */
 class EventUserRegistered extends Model
 {
@@ -38,5 +40,12 @@ class EventUserRegistered extends Model
 
     protected $guarded = [];
 
+    public function event(){
+        return $this->hasOne('App\Models\Event', 'id', 'event_id');
+    }
+
+    public function user(){
+        return $this->hasOne('App\Models\Event', 'id', 'user_id');
+    }
         
 }
