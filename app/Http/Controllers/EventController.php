@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
+use App\Models\EventSetting;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -9,7 +11,11 @@ class EventController extends Controller
     //-------------------------------------------------
     // Events
     public function index(){
+        $events = Event::orderBy('start_date', 'desc');
 
+        return view('events.index', [
+            'events' => $events,
+        ]);
     }
 
     public function show($id){
@@ -17,11 +23,31 @@ class EventController extends Controller
     }
 
     public function create(){
-
+        return view('events.create');
     }
 
-    public function store(){
+    public function store(Request $request){
+        $this->validate($request, [
+            'title' => 'required',
+            'desc' => 'required',
+            'start' => 'required|date',
+            'end' => 'required|date',
+        ]);
 
+        $e = new Event;
+        $e->title = $request->get('title');
+        $e->description = $request->get('desc');
+        $e->start_date = $request->get('start');
+        $e->end_date = $request->get('end');
+        $e->user_id = \Auth::id();
+        $e->save();
+
+        $es = new EventSetting;
+        $es->event_id = $e->id;
+        $es->slots = $request->get('slots');
+        $es->save();
+
+        return redirect()->action('EventController@show', $e->id);
     }
 
     public function edit(){
