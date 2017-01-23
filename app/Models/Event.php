@@ -37,6 +37,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EventMeeting[] $meetings
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EventUserRegistered[] $users_registered
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EventPicture[] $pictures
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
  */
 class Event extends Model
 {

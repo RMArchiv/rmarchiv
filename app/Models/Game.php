@@ -45,6 +45,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read mixed $votes
  * @property-read \App\Models\Language $language
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesFile[] $gamefiles
+ * @property string $youtube
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereYoutube($value)
  */
 class Game extends Model
 {

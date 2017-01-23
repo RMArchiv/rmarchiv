@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\EventSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Validation\Rules\In;
 
 class EventController extends Controller
 {
@@ -32,11 +33,15 @@ class EventController extends Controller
     }
 
     public function store(Request $request){
+        dd($request);
         $this->validate($request, [
             'title' => 'required',
             'desc' => 'required',
             'start' => 'required|date',
             'end' => 'required|date',
+            'slots' => 'required|numeric',
+            'reg_start_date' => 'date',
+            'reg_end_date' => 'date'
         ]);
 
         $e = new Event;
@@ -50,6 +55,14 @@ class EventController extends Controller
         $es = new EventSetting;
         $es->event_id = $e->id;
         $es->slots = $request->get('slots');
+        $es->reg_price = $request->get('price');
+        $es->reg_start_date = $request->get('reg_start');
+        $es->reg_end_date = $request->get('reg_end');
+        if($request->get('reg_allowed') == "on"){
+            $es->reg_allowed = 1;
+        }else{
+            $es->reg_allowed = 0;
+        }
         $es->save();
 
         return redirect()->action('EventController@show', $e->id);
@@ -69,10 +82,12 @@ class EventController extends Controller
         $e->description = Input::get('desc');
         $e->start_date = Input::get('start');
         $e->end_date = Input::get('end');
+        $e->settings->slots = Input::get('slots');
+        $e->settings->reg_price = Input::get('price');
+        $e->settings->reg_start_date = Input::get('reg_start');
+        $e->settings->reg_end_date = Input::get('reg_end');
+        $e->settings->reg_allowed = Input::get('reg_allowed');
         $e->save();
-
-        $es = EventSetting::whereEventId($id)->first();
-        $es->slots = Input::get('slots');
 
         return redirect()->action('EventController@show', $e->id);
     }

@@ -25,7 +25,10 @@
         "khill/lavacharts" : "3.0.*",
         "kyslik/column-sortable": "^5.1",
         "lithiumdev/laravel-tagcloud": "^1.0",
-        "mews/captcha": "^2.1"
+        "mews/captcha": "^2.1",
+        "backpack/backupmanager": "^1.1",
+        "irazasyed/telegram-bot-sdk": "^2.2",
+        "backpack/base": "^0.7.14"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

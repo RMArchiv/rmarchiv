@@ -32,7 +32,19 @@
                     <td><time datetime='{{ $e->end_date }}' title='{{ $e->end_date }}'>{{ \Carbon\Carbon::parse($e->end_date)->diffForHumans() }}</time></td>
                     <td>{{ $e->users_registered->count() }}</td>
                     <td>{{ $e->settings->slots }}</td>
-                    <td>anmeldung offen</td>
+                    <td>
+                        @if($e->settings->reg_allowed)
+                            @if($e->settings->reg_start_date > \Carbon\Carbon::now())
+                                <span style="color: green;">steht an</span>
+                            @elseif($e->settings->reg_start_date < \Carbon\Carbon::now() and $e->settings->reg_end_date > \Carbon\Carbon::now())
+                                <span style="color: yellow;">anmeldung läuft</span>
+                            @elseif($e->settings->reg_end_date < \Carbon\Carbon::now())
+                                <span style="color: red;">anmeldung geschlossen</span>
+                            @endif
+                        @else
+                            <span style="color:red">anmeldung geschlossen</span>
+                        @endif
+                    </td>
                     <td>{{ $e->comments->count() }}</td>
                     <td><time datetime='{{ $e->created_at }}' title='{{ $e->created_at }}'>{{ \Carbon\Carbon::parse($e->created_at)->diffForHumans() }}</time></td>
                 </tr>

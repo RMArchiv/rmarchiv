@@ -34,25 +34,47 @@
                             <textarea name="desc" id="desc" maxlength="9999" rows="10" placeholder="eventbeschreibung"></textarea>
                             <span> [<span class="req">req</span>] Markdown!</span>
                         </div>
+                        <div class="row" id="row_start">
+                            <label for="start">beginn des events:</label>
+                            <input class="start" name="start" id="start" value="" type="text"/>
+                            <span> [<span class="req">req</span>]</span>
+                        </div>
+                        <div class="row" id="row_end">
+                            <label for="end">ende des events:</label>
+                            <input class="end" name="end" id="end" value="" type="text"/>
+                            <span> [<span class="req">req</span>]</span>
+                        </div>
+                    </div>
+                </div>
+                <h2>anmeldungseinstellungen</h2>
+                <div class="content">
+                    <div class="formifier">
                         <div class="row" id="row_slots">
                             <label for="slots">anzahl der möglichen anmeldungen:</label>
                             <input name="slots" id="slots" value="" placeholder="anzahl (0 = unbegrenzt)"/>
                             <span> [<span class="req">req</span>]</span>
                         </div>
-                        <div class="row" id="row_start">
-                            <label for="start">beginn des events:</label>
-                            <input class="start" name="start" id="start" type="text"/>
-                            <span> [<span class="req">req</span>]</span>
+                        <div class="row" id="row_price">
+                            <label for="price">anmeldegebühr:</label>
+                            <input name="price" id="price" value="" placeholder="Betrag in €"/>
                         </div>
-                        <div class="row" id="row_end">
-                            <label for="end">ende des events:</label>
-                            <input class="end" name="end" id="end" type="text"/>
-                            <span> [<span class="req">req</span>]</span>
+                        <div class="row" id="row_reg_allowed">
+                            <label for="reg_start">anmeldung geöffnet:</label>
+                            <input type="checkbox" name="reg_allowed" id="reg_allowed"  />
+                            wenn deaktiviert, werden untere zeiten ignoriert!
+                        </div>
+                        <div class="row" id="row_reg_start">
+                            <label for="reg_start">beginn des nnmeldezeitraumes:</label>
+                            <input class="reg_start" name="reg_start" id="reg_start" value="" type="text"/>
+                        </div>
+                        <div class="row" id="row_reg_end">
+                            <label for="reg_end">ende des anmeldezeitraumes:</label>
+                            <input class="reg_end" name="reg_end" id="reg_end" value="" type="text"/>
                         </div>
                     </div>
                 </div>
                 <div class="foot">
-                    <input type="submit" value="event einsenden">
+                    <input type="submit" value="änderungen speichern">
                 </div>
             </div>
         </form>
@@ -63,6 +85,14 @@
             time_24hr: true
         });
         $(".end").flatpickr({
+            enableTime: true,
+            time_24hr: true
+        });
+        $(".reg_end").flatpickr({
+            enableTime: true,
+            time_24hr: true
+        });
+        $(".reg_start").flatpickr({
             enableTime: true,
             time_24hr: true
         });

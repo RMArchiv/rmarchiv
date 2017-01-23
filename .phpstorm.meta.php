@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-01-20.
+    * Generated on 2017-01-23.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -71,6 +71,11 @@ namespace PHPSTORM_META {
             'lavacharts' instanceof \Khill\Lavacharts\Lavacharts,
             'TagCloud' instanceof \LithiumDev\TagCloud\TagCloud,
             'captcha' instanceof \Mews\Captcha\Captcha,
+            'command.backup:run' instanceof \Spatie\Backup\Commands\BackupCommand,
+            'command.backup:clean' instanceof \Spatie\Backup\Commands\CleanupCommand,
+            'command.backup:list' instanceof \Spatie\Backup\Commands\ListCommand,
+            'command.backup:monitor' instanceof \Spatie\Backup\Commands\MonitorCommand,
+            'Spatie\Backup\Helpers\ConsoleOutput' instanceof \Spatie\Backup\Helpers\ConsoleOutput,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -158,6 +163,7 @@ namespace PHPSTORM_META {
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
             'html' instanceof \Collective\Html\HtmlBuilder,
             'form' instanceof \Collective\Html\FormBuilder,
+            'Telegram\Bot\Api' instanceof \Telegram\Bot\Api,
         ],
         \Illuminate\Contracts\Container\Container::make('') => [
             '' == '@',
@@ -221,6 +227,11 @@ namespace PHPSTORM_META {
             'lavacharts' instanceof \Khill\Lavacharts\Lavacharts,
             'TagCloud' instanceof \LithiumDev\TagCloud\TagCloud,
             'captcha' instanceof \Mews\Captcha\Captcha,
+            'command.backup:run' instanceof \Spatie\Backup\Commands\BackupCommand,
+            'command.backup:clean' instanceof \Spatie\Backup\Commands\CleanupCommand,
+            'command.backup:list' instanceof \Spatie\Backup\Commands\ListCommand,
+            'command.backup:monitor' instanceof \Spatie\Backup\Commands\MonitorCommand,
+            'Spatie\Backup\Helpers\ConsoleOutput' instanceof \Spatie\Backup\Helpers\ConsoleOutput,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -308,6 +319,7 @@ namespace PHPSTORM_META {
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
             'html' instanceof \Collective\Html\HtmlBuilder,
             'form' instanceof \Collective\Html\FormBuilder,
+            'Telegram\Bot\Api' instanceof \Telegram\Bot\Api,
         ],
         \App::make('') => [
             '' == '@',
@@ -371,6 +383,11 @@ namespace PHPSTORM_META {
             'lavacharts' instanceof \Khill\Lavacharts\Lavacharts,
             'TagCloud' instanceof \LithiumDev\TagCloud\TagCloud,
             'captcha' instanceof \Mews\Captcha\Captcha,
+            'command.backup:run' instanceof \Spatie\Backup\Commands\BackupCommand,
+            'command.backup:clean' instanceof \Spatie\Backup\Commands\CleanupCommand,
+            'command.backup:list' instanceof \Spatie\Backup\Commands\ListCommand,
+            'command.backup:monitor' instanceof \Spatie\Backup\Commands\MonitorCommand,
+            'Spatie\Backup\Helpers\ConsoleOutput' instanceof \Spatie\Backup\Helpers\ConsoleOutput,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -458,6 +475,7 @@ namespace PHPSTORM_META {
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
             'html' instanceof \Collective\Html\HtmlBuilder,
             'form' instanceof \Collective\Html\FormBuilder,
+            'Telegram\Bot\Api' instanceof \Telegram\Bot\Api,
         ],
         \app('') => [
             '' == '@',
@@ -521,6 +539,11 @@ namespace PHPSTORM_META {
             'lavacharts' instanceof \Khill\Lavacharts\Lavacharts,
             'TagCloud' instanceof \LithiumDev\TagCloud\TagCloud,
             'captcha' instanceof \Mews\Captcha\Captcha,
+            'command.backup:run' instanceof \Spatie\Backup\Commands\BackupCommand,
+            'command.backup:clean' instanceof \Spatie\Backup\Commands\CleanupCommand,
+            'command.backup:list' instanceof \Spatie\Backup\Commands\ListCommand,
+            'command.backup:monitor' instanceof \Spatie\Backup\Commands\MonitorCommand,
+            'Spatie\Backup\Helpers\ConsoleOutput' instanceof \Spatie\Backup\Helpers\ConsoleOutput,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -608,6 +631,7 @@ namespace PHPSTORM_META {
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
             'html' instanceof \Collective\Html\HtmlBuilder,
             'form' instanceof \Collective\Html\FormBuilder,
+            'Telegram\Bot\Api' instanceof \Telegram\Bot\Api,
         ],
     ];
 }

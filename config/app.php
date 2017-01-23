@@ -196,6 +196,10 @@ return [
         Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
         LithiumDev\TagCloud\ServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
+        Telegram\Bot\Laravel\TelegramServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
+        Backpack\BackupManager\BackupManagerServiceProvider::class,
+        Backpack\Base\BaseServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -260,6 +264,7 @@ return [
         'Session' => Illuminate\Support\Facades\Session::class,
         'Sitemap' => Watson\Sitemap\Facades\Sitemap::class,
         'Storage' => Illuminate\Support\Facades\Storage::class,
+        'Telegram' => Telegram\Bot\Laravel\Facades\Telegram::class,
         'TNTSearch' => \TeamTNT\TNTSearch\Facades\TNTSearch::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
