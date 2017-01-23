@@ -237,7 +237,7 @@
                                 @foreach($files as $f)
                                     <li>
 
-                                        @if(Auth::check())
+                                        @if(Auth::check() and !$f->deleted_at)
                                             {{ str_pad($f->fileyear, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->filemonth, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->fileday, 2, 0, STR_PAD_LEFT) }}
                                             [<a href="{{ url('games/download', $f->fileid) }}">{{ $f->filetypetitle }}
                                                 - {{ $f->fileversion }}</a>] ({{ $f->downloadcount }})

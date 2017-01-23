@@ -246,7 +246,8 @@ class GameController extends Controller
                 'games_files.created_at as filecreated_at',
                 'games_files.downloadcount as downloadcount',
                 'games.title as gametitle',
-                'games.subtitle as gamesubtitle'
+                'games.subtitle as gamesubtitle',
+                'games_files.deleted_at as deleted_at'
             ])
             ->leftJoin('games_files_types', 'games_files.release_type', '=', 'games_files_types.id')
             ->leftJoin('users', 'games_files.user_id', '=', 'users.id')
