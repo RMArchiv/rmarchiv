@@ -20,6 +20,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserCredit whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserCredit whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\UserCreditType $type
+ * @property-read \App\Models\User $user
  */
 class UserCredit extends Model
 {

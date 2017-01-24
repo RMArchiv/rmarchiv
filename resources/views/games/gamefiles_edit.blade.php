@@ -52,6 +52,12 @@
                         <div id="fine-uploader"></div>
                         <span>[<span class="req">req</span>]</span>
                     </div>
+                    @if(Auth::user()->hasRole(['admin', 'owner']))
+                        <div class="row" id="row_forbidden">
+                            <label for="forbidden">download link entfernen</label>
+                            <input name="forbidden" id="forbidden" value="" placeholder="Begründung" />
+                        </div>
+                    @endif
                 </div>
             </div>
 

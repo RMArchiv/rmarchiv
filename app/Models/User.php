@@ -40,6 +40,7 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cmgmyr\Messenger\Models\Message[] $messages
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cmgmyr\Messenger\Models\Participant[] $participants
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cmgmyr\Messenger\Models\Thread[] $threads
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserList[] $userlists
  */
 
 use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNotification;

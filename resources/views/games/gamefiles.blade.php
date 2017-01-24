@@ -51,10 +51,14 @@
                     <td>{{ $gf->filecreated_at }}</td>
                     @if(Auth::check() and !$gf->deleted_at)
                         <td>
-                            [<a href="{{ url('games/download', $gf->fileid) }}">{{trans('app.misc.download')}}</a>]
+                            @if($gf->forbidden == 1)
+                                [<span title="{{ $gf->reason }}">download entfernt</span>]
+                            @else
+                                [<a href="{{ url('games/download', $gf->fileid) }}">{{trans('app.misc.download')}}</a>]
+                            @endif
                             :: [<a href="{{ route('gamefiles.edit', [$gf->gameid, $gf->fileid]) }}">edit</a>]
                         @if(Auth::user()->settings->is_admin)
-                                :: [<a href="{{ route("gamefiles.delete", [$gameid, $gf->fileid]) }}">{{trans('app.misc.delete')}}</a>]
+                            :: [<a href="{{ route("gamefiles.delete", [$gameid, $gf->fileid]) }}">{{trans('app.misc.delete')}}</a>]
                         @endif
                         </td>
                     @endif

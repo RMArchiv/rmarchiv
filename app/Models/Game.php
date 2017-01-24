@@ -47,6 +47,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesFile[] $gamefiles
  * @property string $youtube
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereYoutube($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TagRelation[] $tags
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserCredit[] $credits
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesAward[] $awards
  */
 class Game extends Model
 {

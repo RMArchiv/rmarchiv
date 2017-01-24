@@ -72,7 +72,9 @@ class GameFileController extends Controller
                 'games.title as gametitle',
                 'games.subtitle as gamesubtitle',
                 'games.id as gameid',
-                'games_files.deleted_at as deleted_at'
+                'games_files.deleted_at as deleted_at',
+                'games_files.forbidden as forbidden',
+                'games_files.reason as reason',
             ])
             ->leftJoin('games_files_types', 'games_files.release_type', '=', 'games_files_types.id')
             ->leftJoin('users', 'games_files.user_id', '=', 'users.id')
@@ -193,7 +195,16 @@ class GameFileController extends Controller
                 $gamefile->filesize = $meta['size'];
                 $gamefile->extension = $meta['ext'];
                 $gamefile->filename = $storagedest;
+
             }
+        }
+
+        if($request->get('forbidden') and ($request->get('forbidden') <> '')){
+            $gamefile->forbidden = 1;
+            $gamefile->reason = $request->get('forbidden');
+        }else{
+            $gamefile->forbidden = 0;
+            $gamefile->reason = '';
         }
 
         $gamefile->save();

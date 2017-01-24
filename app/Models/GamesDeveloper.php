@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesDeveloper whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesDeveloper whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Developer $developer
  */
 class GamesDeveloper extends Model
 {

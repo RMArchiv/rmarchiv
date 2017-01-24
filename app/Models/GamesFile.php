@@ -41,6 +41,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereDownloadcount($value)
  * @property-read \App\Models\GamesFilesType $gamefiletype
  * @property-read \App\Models\Game $game
+ * @property int $forbidden
+ * @property string $reason
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereForbidden($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereReason($value)
  */
 class GamesFile extends Model
 {

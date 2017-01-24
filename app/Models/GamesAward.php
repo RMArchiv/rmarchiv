@@ -32,6 +32,10 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property int $award_subcat_id
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesAward whereAwardSubcatId($value)
+ * @property-read \App\Models\User $user
+ * @property-read \App\Models\AwardCat $cat
+ * @property-read \App\Models\AwardPage $page
+ * @property-read \App\Models\AwardSubcat $subcat
  */
 class GamesAward extends Model
 {
