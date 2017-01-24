@@ -17,7 +17,7 @@ class ReportController extends Controller
     }
 
     public function create_game_report($gameid){
-        $g = Game::whereId($gameid);
+        $g = Game::whereId($gameid)->first();
 
         return view('reports.create', [
             'game' => $g,
@@ -25,7 +25,14 @@ class ReportController extends Controller
     }
 
     public function store_game_report(Request $request, $gameid){
+        $r = new UserReport;
+        $r->content_id = $gameid;
+        $r->content_type = 'game';
+        $r->reason = $request->get('msg');
+        $r->user_id = \Auth::id();
+        $r->save();
 
+        return redirect()->action('ReportController@index_user', [\Auth::id()]);
     }
 
     public function index_user($userid){
