@@ -55,7 +55,7 @@ class NewsController extends Controller
         $n->news_category = $request->get('cat');
         $n->user_id = \Auth::id();
         $n->news_md = $request->get('msg');
-        $n->news_html = Markdown::convertToHtml($request->get('msg'));
+        $n->news_html = \Markdown::convertToHtml($request->get('msg'));
         $n->title = $request->get('title');
         $n->approved = 0;
 

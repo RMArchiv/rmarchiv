@@ -24,6 +24,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardCat whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardCat whereLastCreatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BoardThread[] $threads
+ * @property-read \App\Models\User $last_user
  */
 class BoardCat extends Model
 {

@@ -41,11 +41,25 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cmgmyr\Messenger\Models\Participant[] $participants
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cmgmyr\Messenger\Models\Thread[] $threads
  */
+
+use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNotification;
+
 class User extends Authenticatable
 {
     use Notifiable;
     use EntrustUserTrait;
     use Messagable;
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -87,5 +101,9 @@ class User extends Authenticatable
 
     public function userobyx(){
         return $this->hasMany('App\Models\UserObyx', 'user_id', 'id');
+    }
+
+    public function userlists(){
+        return $this->hasMany('App\Models\UserList', 'user_id', 'id');
     }
 }

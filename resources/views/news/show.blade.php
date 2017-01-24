@@ -4,7 +4,7 @@
     <div id="content">
         @if(count($news) > 0)
             <div id="prodpagecontainer">
-                <div class="rmarchivtbl rmarchivbox_newsbox" id="rmarchivbox_newsbox">
+                <div class="rmarchivtbl rmarchivbox_newsbox" id="rmarchivbox_prodmain">
                     <h2>
                         {{ $news->title }}
                     </h2>
@@ -25,13 +25,13 @@
                                         [{{ trans('app.news.show.delete') }}]
                                     </a> ::
                                 @endif
-                                @if(Auth::user()->settings->is_admin or Auth::user()->settings->is_moderator)
+                                @permission(('edit-news'))
                                     @if($news->approved == 1)
                                         <a href="{{ url('news/'.$news->id.'/approve/0') }}">[{{ trans('app.news.show.disapprove') }}]</a>
                                     @else
                                         <a href="{{ url('news/'.$news->id.'/approve/1') }}">[{{ trans('app.news.show.approve') }}]</a>
                                     @endif
-                                @endif
+                                @endpermission
                                 @permission(('edit-news'))
                                 :: <a href="{{ action('NewsController@edit', $news->id) }}">[edit]</a>
                                 @endpermission

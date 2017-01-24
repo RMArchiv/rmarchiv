@@ -15,7 +15,14 @@ class CreateEventUserRegisteredTable extends Migration
     {
         Schema::create('event_user_registered', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('event_id');
+            $table->integer('user_id');
+            $table->integer('reg_price_payed');
+            $table->integer('reg_state');
             $table->timestamps();
+
+            $table->index('event_id');
+            $table->index('user_id');
         });
     }
 

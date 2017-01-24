@@ -28,6 +28,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardThread whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardThread whereLastCreatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\BoardCat $cat
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BoardPost[] $posts
+ * @property-read \App\Models\User $user
+ * @property-read \App\Models\User $last_user
  */
 class BoardThread extends Model
 {

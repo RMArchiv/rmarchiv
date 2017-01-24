@@ -37,5 +37,8 @@ class GamesDeveloper extends Model
 
     protected $guarded = [];
 
+    public function developer(){
+        return $this->hasOne('App\Models\Developer', 'id', 'developer_id');
+    }
         
 }

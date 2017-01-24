@@ -1,0 +1,42 @@
+{
+  "name": "Autocomplete",
+  "version": "2.0.5",
+  "authors": [
+    "Ben Tedder <ben.tedder@lonelyplanet.com>",
+    "WunderBart <hello@wunderbart.com>"
+  ],
+  "main": "dist/autocomplete.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "spec",
+    "index.html",
+    "package.json",
+    "README.md",
+    "src",
+    "autocomplete-example.png",
+    "bower.json",
+    "Gruntfile.js"
+  ],
+  "dependencies": {
+    "jquery": "~1.11.0",
+    "requirejs": "~2.1.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lonelyplanet/autocomplete.git"
+  },
+  "homepage": "https://github.com/lonelyplanet/autocomplete",
+  "_release": "2.0.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.0.5",
+    "commit": "93e9efffe10b3f8ea502e07bf59dad5bba2eb17f"
+  },
+  "_source": "https://github.com/lonelyplanet/autocomplete.git",
+  "_target": "^2.0.5",
+  "_originalSource": "autocomplete",
+  "_direct": true
+}

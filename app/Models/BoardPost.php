@@ -24,6 +24,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPost whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPost whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\BoardCat $cat
+ * @property-read \App\Models\BoardThread $thread
+ * @property-read \App\Models\User $user
  */
 class BoardPost extends Model
 {

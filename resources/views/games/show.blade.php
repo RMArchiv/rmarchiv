@@ -7,7 +7,7 @@
                 <table id='rmarchivbox_prodmain'>
                     <tr id='prodheader'>
                         <th colspan='3'>
-                            <span id='title'><big>{{ $game->title }}</big> :: {{ $game->subtitle }}</span>
+                            <span id='title'><big>{{ $game->title }}</big>@if($game->subtitle) :: {{ $game->subtitle }}@endif</span>
                             @if(Auth::check())
                                 <script>
                                     /* When the user clicks on the button,
@@ -35,14 +35,14 @@
                                     [<button onclick="listDD()" class="dropbtn">+</button>]
                                     <div id="myUserList" class="dropdown-content">
                                         <a href="{{ url('lists/create') }}">erstelle userliste</a>
-                                        @if($userlists)
-                                            @foreach($userlists as $list)
-                                                <a href="{{ route('lists.add_game', [$list->id, $game->gameid])  }}">{{ $list->title }}</a>
+                                        @if(Auth::user()->userlists)
+                                            @foreach(Auth::user()->userlists as $list)
+                                                <a href="{{ route('lists.add_game', [$list->id, $game->id])  }}">{{ $list->title }}</a>
                                             @endforeach
                                         @endif
                                     </div>
                                 @permission(('create-games'))
-                                    [<a href='{{ route('games.edit', [ 'id' => $game->gameid]) }}'>edit</a>]
+                                    [<a href='{{ route('games.edit', [ 'id' => $game->id]) }}'>edit</a>]
                                 @endpermission
                                 </div>
                             @endif
@@ -63,49 +63,61 @@
                                     <li><a href="#tabs-4">bild 3</a></li>
                                     <li><a href="#tabs-5">bild 4</a></li>
                                     <li><a href="#tabs-6">bild 5</a></li>
+                                    @if($game->youtube)
+                                        <li><a href="#tabs-7">trailer</a></li>
+                                    @endif
                                 </ul>
                                 <div id="tabs-1">
-                                    <img src='{{ route('screenshot.show', [$game->gameid, 1]) }}' style="width: 400px"
+                                    <img src='{{ route('screenshot.show', [$game->id, 1]) }}' style="width: 400px"
                                          alt='Titelbild' title='Titelbild'/>
                                     @if(Auth::check())
-                                        <span><a href="{{ route('screenshot.create', [$game->gameid, 1]) }}">titelbild hochladen</a></span>
+                                        <span><a href="{{ route('screenshot.create', [$game->id, 1]) }}">titelbild hochladen</a></span>
                                     @endif
                                 </div>
                                 <div id="tabs-2">
-                                    <img src='{{ route('screenshot.show', [$game->gameid, 2]) }}' style="width: 400px"
+                                    <img src='{{ route('screenshot.show', [$game->id, 2]) }}' style="width: 400px"
                                          alt='Titelbild' title='Titelbild'/>
                                     @if(Auth::check())
-                                        <span><a href="{{ route('screenshot.create', [$game->gameid, 2]) }}">screenshot hochladen</a></span>
+                                        <span><a href="{{ route('screenshot.create', [$game->id, 2]) }}">screenshot hochladen</a></span>
                                     @endif
                                 </div>
                                 <div id="tabs-3">
-                                    <img src='{{ route('screenshot.show', [$game->gameid, 3]) }}' style="width: 400px"
+                                    <img src='{{ route('screenshot.show', [$game->id, 3]) }}' style="width: 400px"
                                          alt='Titelbild' title='Titelbild'/>
                                     @if(Auth::check())
-                                        <span><a href="{{ route('screenshot.create', [$game->gameid, 3]) }}">screenshot hochladen</a></span>
+                                        <span><a href="{{ route('screenshot.create', [$game->id, 3]) }}">screenshot hochladen</a></span>
                                     @endif
                                 </div>
                                 <div id="tabs-4">
-                                    <img src='{{ route('screenshot.show', [$game->gameid, 4]) }}' style="width: 400px"
+                                    <img src='{{ route('screenshot.show', [$game->id, 4]) }}' style="width: 400px"
                                          alt='Titelbild' title='Titelbild'/>
                                     @if(Auth::check())
-                                        <span><a href="{{ route('screenshot.create', [$game->gameid, 4]) }}">screenshot hochladen</a></span>
+                                        <span><a href="{{ route('screenshot.create', [$game->id, 4]) }}">screenshot hochladen</a></span>
                                     @endif
                                 </div>
                                 <div id="tabs-5">
-                                    <img src='{{ route('screenshot.show', [$game->gameid, 5]) }}' style="width: 400px"
+                                    <img src='{{ route('screenshot.show', [$game->id, 5]) }}' style="width: 400px"
                                          alt='Titelbild' title='Titelbild'/>
                                     @if(Auth::check())
-                                        <span><a href="{{ route('screenshot.create', [$game->gameid, 5]) }}">screenshot hochladen</a></span>
+                                        <span><a href="{{ route('screenshot.create', [$game->id, 5]) }}">screenshot hochladen</a></span>
                                     @endif
                                 </div>
                                 <div id="tabs-6">
-                                    <img src='{{ route('screenshot.show', [$game->gameid, 6]) }}' style="width: 400px"
+                                    <img src='{{ route('screenshot.show', [$game->id, 6]) }}' style="width: 400px"
                                          alt='Titelbild' title='Titelbild'/>
                                     @if(Auth::check())
-                                        <span><a href="{{ route('screenshot.create', [$game->gameid, 6]) }}">screenshot hochladen</a></span>
+                                        <span><a href="{{ route('screenshot.create', [$game->id, 6]) }}">screenshot hochladen</a></span>
                                     @endif
                                 </div>
+                                @if($game->youtube)
+                                    @php
+                                        $vid = str_replace('watch?v=', "embed/", $game->youtube);
+                                    @endphp
+                                <div id="tabs-7">
+                                    <iframe width="400px" height="300px" src="{{ $vid }}" frameborder="0" allowfullscreen></iframe>
+                                </div>
+
+                                @endif
                             </div>
                         </td>
                         <td colspan='2'>
@@ -113,7 +125,7 @@
                                 <tr>
                                     <td>maker :</td>
                                     <td>
-                                        <span class="type type_{{ $game->makershort }}">{{ $game->makertitle }}</span> {{ $game->makertitle }}
+                                        <span class="type type_{{ $game->maker->short }}">{{ $game->maker->title }}</span> {{ $game->maker->title }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -121,8 +133,8 @@
                                     <td>
                                         <ul>
                                             <li>
-                                                @if(count($files) > 0)
-                                                    <span class='type type_{{ $files->first()->filetypeshort }}'>{{ $files->first()->filetypetitle }}</span> {{ $files->first()->filetypetitle }}
+                                                @if(count($game->gamefiles) > 0)
+                                                    <span class='type type_{{ $game->gamefiles->first()->gamefiletype->short }}'>{{ $game->gamefiles->first()->gamefiletype->title }}</span> {{ $game->gamefiles->first()->gamefiletype->title }}
                                                 @else
                                                     keine spieldateien vorhanden
                                                 @endif
@@ -133,9 +145,9 @@
                                 <tr>
                                     <td>Entwickler :</td>
                                     <td>
-                                        @foreach($developer as $dev)
-                                            <a href="{{ url('developer',$dev->developer_id) }}">{{ $dev->name }}</a>
-                                            @if($dev != $developer->last())
+                                        @foreach($game->developers as $dev)
+                                            <a href="{{ url('developer',$dev->developer_id) }}">{{ $dev->developer->name }}</a>
+                                            @if($dev != $game->developers->last())
                                                 ::
                                             @endif
                                         @endforeach
@@ -148,10 +160,10 @@
                                             -{{ $releasedate->release_day }}</td>
                                     </tr>
                                 @endif
-                                @if($game->url)
+                                @if($game->website_url)
                                     <tr>
                                         <td>website:</td>
-                                        <td><a href="{{ $game->url }}" target="_blank">KLICK!</a></td>
+                                        <td><a href="{{ $game->website_url }}" target="_blank">KLICK!</a></td>
                                     </tr>
                                 @endif
                             </table>
@@ -160,8 +172,8 @@
                     <tr>
                         <td class='r2'>
                             <ul>
-                                <li><img src='/assets/rate_up.gif' alt='super'/>&nbsp;{{ $game->voteup or 0 }}</li>
-                                <li><img src='/assets/rate_down.gif' alt='scheiße'/>&nbsp;{{ $game->votedown or 0 }}
+                                <li><img src='/assets/rate_up.gif' alt='super'/>&nbsp;{{ $game->votes['up'] or 0 }}</li>
+                                <li><img src='/assets/rate_down.gif' alt='scheiße'/>&nbsp;{{ $game->votes['down'] or 0 }}
                                 </li>
                             </ul>
                         </td>
@@ -188,7 +200,7 @@
                                         [<button onclick="tagDD()" class="dropbtn">+</button>]
                                         <div id="myNewTag" class="dropdown-content" style="margin-left: -400px">
                                             {!! Form::open(['action' => ['TaggingController@store']]) !!}
-                                            {!! Form::hidden('content_id', $game->gameid) !!}
+                                            {!! Form::hidden('content_id', $game->id) !!}
                                             {!! Form::hidden('content_type', 'game') !!}
                                             <div class="formifier">
                                                 <div class="row" id="row_developer">
@@ -204,9 +216,9 @@
                                     </div>
                                 @endif
                                 <br>
-                                @foreach($tags as $tag)
-                                    <a href="{{ action('TaggingController@showGames', [$tag->id]) }}">{{ $tag->title }}</a>
-                                    @if($tag != end($tags))
+                                @foreach($game->tags as $tag)
+                                    <a href="{{ action('TaggingController@showGames', [$tag->tag_id]) }}">{{ $tag->tag->title }}</a>
+                                    @if($tag != $game->tags->last())
                                         ::
                                     @endif
                                 @endforeach
@@ -216,14 +228,14 @@
                     <tr>
                         <td class='r2'>
                             <ul id='avgstats'>
-                                @if($game->voteup > $game->votedown)
-                                    <li><img src='/assets/rate_up.gif' alt='ok'/>&nbsp;{{ $game->voteavg or 0 }}</li>
-                                @elseif($game->voteup < $game->votedown)
-                                    <li><img src='/assets/rate_down.gif' alt='ok'/>&nbsp;{{ $game->voteavg or 0 }}</li>
-                                @elseif($game->voteup = $game->votedown)
-                                    <li><img src='/assets/rate_neut.gif' alt='ok'/>&nbsp;{{ $game->voteavg or 0 }}</li>
+                                @if($game->votes['up'] > $game->votes['down'])
+                                    <li><img src='/assets/rate_up.gif' alt='ok'/>&nbsp;{{ $game->votes['avg'] or 0 }}</li>
+                                @elseif($game->votes['up'] < $game->votes['down'])
+                                    <li><img src='/assets/rate_down.gif' alt='ok'/>&nbsp;{{ $game->votes['avg'] or 0 }}</li>
+                                @elseif($game->votes['up'] == $game->votes['down'])
+                                    <li><img src='/assets/rate_neut.gif' alt='ok'/>&nbsp;{{ $game->votes['avg'] or 0 }}</li>
                                 @else
-                                    <li><img src='/assets/rate_neut.gif' alt='ok'/>&nbsp;{{ $game->voteavg or 0 }}</li>
+                                    <li><img src='/assets/rate_neut.gif' alt='ok'/>&nbsp;{{ $game->votes['avg'] or 0 }}</li>
                                 @endif
                                 {{-- data.cdc > 0
                             <li><img src="/assets/cdc.png" alt="cdcs">cdc's</li>
@@ -234,22 +246,21 @@
                         </td>
                         <td id='links'>
                             <ul>
-                                @foreach($files as $f)
+                                @foreach($game->gamefiles as $f)
                                     <li>
-
                                         @if(Auth::check())
-                                            {{ str_pad($f->fileyear, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->filemonth, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->fileday, 2, 0, STR_PAD_LEFT) }}
-                                            [<a href="{{ url('games/download', $f->fileid) }}">{{ $f->filetypetitle }}
-                                                - {{ $f->fileversion }}</a>] ({{ $f->downloadcount }})
+                                            {{ str_pad($f->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_day, 2, 0, STR_PAD_LEFT) }}
+                                            [<a href="{{ url('games/download', $f->id) }}">{{ $f->gamefiletype->title }}
+                                                - {{ $f->release_version }}</a>] ({{ $f->downloadcount }})
                                         @else
-                                            {{ str_pad($f->fileyear, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->filemonth, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->fileday, 2, 0, STR_PAD_LEFT) }}
-                                            [{{ $f->filetypetitle }}
-                                                - {{ $f->fileversion }}] ({{ $f->downloadcount }})
+                                            {{ str_pad($f->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_day, 2, 0, STR_PAD_LEFT) }}
+                                            [{{ $f->gamefiletype->title }}
+                                                - {{ $f->release_version }}] ({{ $f->downloadcount }})
                                         @endif
                                     </li>
                                 @endforeach
                                 <li>------------</li>
-                                <li><a href="{{ action('GameFileController@create', $game->gameid) }}">dateiliste/hinzufügen</a>
+                                <li><a href="{{ action('GameFileController@create', $game->id) }}">dateiliste/hinzufügen</a>
                                 </li>
                             </ul>
                         </td>
@@ -257,10 +268,10 @@
                     <tr>
                         <td id='credits' colspan='3' class='r2'>
                             <ul>
-                                @foreach($credits as $cr)
+                                @foreach($game->credits as $cr)
                                     <li>
-                                        <a href='{{ url('users', $cr->userid) }}' class='usera' title="{{ $cr->username }}"><img src='http://ava.rmarchiv.de/?gender=male&id={{ $cr->userid }}' alt="{{ $cr->username }}" class='avatar' />
-                                        </a> <a href='{{ url('users', $cr->userid) }}' class='user'>{{ $cr->username }}</a> [{{ $credittypes[$cr->credit_type_id]['title'] }}]
+                                        <a href='{{ url('users', $cr->user_id) }}' class='usera' title="{{ $cr->user->name }}"><img src='http://ava.rmarchiv.de/?gender=male&id={{ $cr->user_id }}' alt="{{ $cr->user->name }}" class='avatar' />
+                                        </a> <a href='{{ url('users', $cr->user_id) }}' class='user'>{{ $cr->user->name }}</a> [{{ $cr->type->title }}]
                                     </li>
                                 @endforeach
                             </ul>
@@ -269,12 +280,12 @@
                     <tr>
                         <td id='credits' colspan='3' class='r2'>
                             <h2>spielbeschreibung</h2>
-                            {!! $game->desc !!}
+                            {!! $game->desc_html !!}
                         </td>
                     </tr>
                     <tr>
                         <td id='credits' colspan='3' class='r2'>
-                        @foreach($awards as $aw)
+                        @foreach($game->awards as $aw)
                         <?php
                         if($aw->place == 1){
                             $icon = 'medal_gold.png';
@@ -288,7 +299,7 @@
                         ?>
                         <ul>
                             <li>
-                                <img src="/assets/{{ $icon }}">({{ $aw->year }}) Platz {{ $aw->place }} - {{ $aw->pagetitle }} <a href="{{ url('awards', $aw->catid) }}">{{ $aw->cattitle }} - {{ $aw->subtitle }}</a>
+                                <img src="/assets/{{ $icon }}">({{ $aw->cat->year }}) Platz {{ $aw->place }} - {{ $aw->page->title }} <a href="{{ url('awards', $aw->award_cat_id) }}">{{ $aw->cat->title }} - {{ $aw->subcat->title }}</a>
                             </li>
                         </ul>
                         @endforeach
@@ -296,11 +307,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class='foot' colspan='3'>hinzugefügt <time datetime='{{ $game->createdate }}' title='{{ $game->createdate }}'>{{ \Carbon\Carbon::parse($game->createdate)->diffForHumans() }}</time> von <a
-                                    href='{{ url('users', $game->userid) }}' class='user'>{{ $game->username }}</a>
-                            <a href='{{ url('users', $game->userid) }}' class='usera' title="{{ $game->username }}"><img
-                                        src='http://ava.rmarchiv.de/?gender=male&id={{ $game->userid }}'
-                                        alt="{{ $game->username }}" class='avatar'/>
+                        <td class='foot' colspan='3'>hinzugefügt <time datetime='{{ $game->created_at }}' title='{{ $game->created_at }}'>{{ \Carbon\Carbon::parse($game->created_at)->diffForHumans() }}</time> von <a
+                                    href='{{ url('users', $game->user_id) }}' class='user'>{{ $game->user->name }}</a>
+                            <a href='{{ url('users', $game->user_id) }}' class='usera' title="{{ $game->user->name }}"><img
+                                        src='http://ava.rmarchiv.de/?gender=male&id={{ $game->user_id }}'
+                                        alt="{{ $game->user->name }}" class='avatar'/>
                             </a>
                         </td>
                     </tr>
@@ -314,10 +325,10 @@
                     </div>
                 </div>
 
-                @if($comments->count() > 0)
+                @if($game->comments->count() > 0)
                     <div class='rmarchivtbl' id='rmarchivbox_prodcomments'>
                         <h2>kommentare</h2>
-                        @foreach($comments as $comment)
+                        @foreach($game->comments as $comment)
                             <div class='comment cite-{{ $comment->user_id }}' id='c{{ $comment->id }}'>
                                 <div class='content'>
                                     {!! $comment->comment_html !!}
@@ -329,13 +340,13 @@
                                         <span class='vote down'>down</span>
                                     @endif
 
-                                    <span class='tools' data-cid='{{ $game->gameid }}'></span> hinzugefügt
+                                    <span class='tools' data-cid='{{ $game->id }}'></span> hinzugefügt
                                     am {{ $comment->created_at }} von <a href='{{ url('user', $comment->user_id) }}'
                                                                          class='user'>{{ $comment->name }}</a>
                                     <a href='{{ url('users', $comment->user_id) }}' class='usera'
-                                       title="{{ $comment->name }}"><img
+                                       title="{{ $comment->user->name }}"><img
                                                 src='http://ava.rmarchiv.de/?gender=male&id={{ $comment->user_id }}'
-                                                alt="{{ $comment->name }}" class='avatar'/>
+                                                alt="{{ $comment->user->name }}" class='avatar'/>
                                     </a>
                                 </div>
                             </div>

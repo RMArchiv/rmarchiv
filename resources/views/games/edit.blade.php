@@ -81,6 +81,10 @@
                         <label for="websiteurl">{{trans('app.games.add.website')}}</label>
                         <input name="websiteurl" id="websiteurl" placeholder="https://www.anno1602.de" value="{{ $game->websiteurl }}"/>
                     </div>
+                    <div class="row" id="row_youtube">
+                        <label for="youtube">trailer (youtube)</label>
+                        <input name="youtube" id="youtube" placeholder="https://www.youtube.com/watch?v=V7tKQ4AuOk8" value="{{ $game->youtube }}"/>
+                    </div>
                 </div>
             </div>
 

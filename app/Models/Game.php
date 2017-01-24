@@ -44,6 +44,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
  * @property-read mixed $votes
  * @property-read \App\Models\Language $language
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesFile[] $gamefiles
+ * @property string $youtube
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereYoutube($value)
  */
 class Game extends Model
 {
@@ -76,7 +79,7 @@ class Game extends Model
     }
 
     public function developers(){
-        return $this->hasManyThrough('App\Models\Developer', 'App\Models\GamesDeveloper', 'developer_id', 'id');
+        return $this->hasMany('App\Models\GamesDeveloper', 'game_id', 'id');
     }
 
     public function screenshots(){
@@ -105,6 +108,20 @@ class Game extends Model
             ->orderBy('release_year', 'desc')
             ->orderBy('release_month', 'desc')
             ->orderBy('release_day', 'desc')
-            ->with('gamefiletype');    }
+            ->with('gamefiletype')
+            ->withTrashed();
+    }
+
+    public function tags(){
+        return $this->hasMany('App\Models\TagRelation', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'game'"))->with('tag');
+    }
+
+    public function credits(){
+        return $this->hasMany('App\Models\UserCredit', 'game_id', 'id');
+    }
+
+    public function awards(){
+        return $this->hasMany('App\Models\GamesAward', 'game_id', 'id')->Where('place', '<=', 3);
+    }
 
 }

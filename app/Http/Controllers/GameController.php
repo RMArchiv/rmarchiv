@@ -45,6 +45,7 @@ class GameController extends Controller
                 'games.views as views',
                 'languages.name as langname',
                 'languages.short as langshort',
+                'games.youtube as youtube',
             ])
             ->selectRaw('(SELECT COUNT(id) FROM comments WHERE content_id = games.id AND content_type = "game") as commentcount')
             ->selectRaw('(SELECT SUM(vote_up) FROM comments WHERE content_id = games.id AND content_type = "game") as voteup')
@@ -128,6 +129,7 @@ class GameController extends Controller
             'maker_id' => $request->get('maker'),
             'lang_id' => $langid,
             'user_id' => \Auth::id(),
+            'youtube' => $request->get('youtube'),
             'created_at' => Carbon::now(),
         ]);
 
@@ -179,85 +181,7 @@ class GameController extends Controller
      */
     public function show($id)
     {
-
-        $game = \DB::table('games')
-            ->leftJoin('users', 'games.user_id', '=', 'users.id')
-            ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('languages', 'languages.id', '=', 'games.lang_id')
-            ->leftJoin('comments', function($join){
-                $join->on('comments.content_id', '=', 'games.id');
-                $join->on('comments.content_type', '=', \DB::raw("'game'"));
-            })
-            ->select([
-                'games.id as gameid',
-                'users.id as userid',
-                'users.name as username',
-                'games.title',
-                'games.subtitle',
-                'makers.title as makertitle',
-                'makers.short as makershort',
-                'makers.id as makerid',
-                'games.created_at as createdate',
-                'games.desc_html as desc',
-                'games.views as views',
-                'games.website_url as url',
-                'languages.name as langname',
-                'languages.short as langshort',
-            ])
-            ->selectRaw('COUNT(comments.id) AS commentcount')
-            ->selectRaw('SUM(comments.vote_up) AS voteup')
-            ->selectRaw('SUM(comments.vote_down) AS votedown')
-            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
-            ->selectRaw("(SELECT STR_TO_DATE(CONCAT(release_year,'-',release_month,'-',release_day ), '%Y-%m-%d') FROM games_files WHERE game_id = games.id ORDER BY release_year DESC, release_month DESC, release_day DESC LIMIT 1) as releasedate")
-            ->selectRaw('(SELECT COUNT(id) FROM games_coupdecoeur WHERE game_id = games.id) as cdccount')
-            ->where('games.id', '=', $id)
-            ->first();
-
-        $developer = \DB::table('developer')
-            ->leftJoin('games_developer', 'developer.id', '=', 'games_developer.developer_id')
-            ->where('games_developer.game_id', '=', $id)
-            ->orderBy('games_developer.id')
-            ->get();
-
-        $content_type = 'game';
-
-        $comments = \DB::table('comments')
-            ->leftJoin('users', 'comments.user_id', '=', 'users.id')
-            ->select(['comments.id', 'comments.user_id', 'comments.comment_html', 'comments.created_at', 'users.name',
-                'comments.vote_up', 'comments.vote_down'])
-            ->where('content_type', '=', $content_type)
-            ->where('content_id', '=', $id)
-            ->orderBy('created_at', 'asc')->get();
-
-        $files = \DB::table('games_files')
-            ->select([
-                'games_files.id as fileid',
-                'games_files_types.title as filetypetitle',
-                'games_files_types.short as filetypeshort',
-                'games_files.release_version as fileversion',
-                'games_files.filename as filename',
-                'games_files.extension as fileextension',
-                'games_files.filesize as filesize',
-                'games_files.release_year as fileyear',
-                'games_files.release_month as filemonth',
-                'games_files.release_day as fileday',
-                'users.id as userid',
-                'users.name as username',
-                'games_files.created_at as filecreated_at',
-                'games_files.downloadcount as downloadcount',
-                'games.title as gametitle',
-                'games.subtitle as gamesubtitle'
-            ])
-            ->leftJoin('games_files_types', 'games_files.release_type', '=', 'games_files_types.id')
-            ->leftJoin('users', 'games_files.user_id', '=', 'users.id')
-            ->leftJoin('games', 'games.id', '=', 'games_files.game_id')
-            ->where('games_files.game_id', '=', $id)
-            ->orderBy('games_files_types.id', 'desc')
-            ->orderBy('fileyear', 'desc')
-            ->orderBy('filemonth', 'desc')
-            ->orderBy('fileday', 'desc')
-            ->limit(5)
-            ->get();
+        $game = Game::with('developers')->whereId($id)->first();
 
         $releasedate = \DB::table('games_files')
             ->where('game_id', '=', $id)
@@ -268,75 +192,11 @@ class GameController extends Controller
             ->groupBy('release_type')
             ->first();
 
-        $awards = \DB::table('games_awards')
-            ->leftJoin('award_cats', 'games_awards.award_cat_id', '=', 'award_cats.id')
-            ->leftJoin('award_pages', 'award_pages.id', '=', 'games_awards.award_page_id')
-            ->leftJoin('award_subcats', 'award_subcats.id', '=', 'games_awards.award_subcat_id')
-            ->select([
-                'games_awards.place as place',
-                'award_cats.year as year',
-                'award_pages.title as pagetitle',
-                'award_cats.id as catid',
-                'award_cats.title as cattitle',
-                'award_subcats.title as subtitle'
-            ])
-            ->where('games_awards.game_id', '=', $id)
-            ->where('games_awards.place', '<', 4)
-            ->orderBy('games_awards.place')
-            ->orderBy('award_subcats.title')
-            ->get();
-
-        $creds = \DB::table('user_credit_types')
-            ->orderBy('title')
-            ->get();
-
-        $credittypes = array();
-        foreach ($creds as $cred) {
-            $credittypes[$cred->id]['title'] = $cred->title;
-            $credittypes[$cred->id]['id'] = $cred->id;
-        }
-
-        $credits = \DB::table('user_credits')
-            ->leftJoin('users', 'users.id', '=', 'user_credits.user_id')
-            ->select([
-                'user_credits.credit_type_id as credit_type_id',
-                'user_credits.id as id',
-                'users.id as userid',
-                'users.name as username',
-            ])
-            ->where('game_id', '=', $id)
-            ->get();
-
-        if(\Auth::check()){
-            $userlists = \DB::table('user_lists')
-                ->where('user_id', '=', \Auth::id())
-                ->get();
-        }else{
-            $userlists = null;
-        }
-
-        $tags = \DB::table('tag_relations')
-            ->leftJoin('tags', 'tags.id', '=', 'tag_relations.tag_id')
-            ->where('content_id', '=', $id)
-            ->where('content_type', '=', 'game')
-            ->groupBy('tags.id')
-            ->orderByRaw('COUNT(tag_relations.id)')
-            ->limit(10)
-            ->get();
-
         event(new GameView($id));
 
         return view('games.show', [
             'game' => $game,
-            'comments' => $comments,
-            'developer' => $developer,
-            'files' => $files,
             'releasedate' => $releasedate,
-            'awards' => $awards,
-            'credittypes' => $credittypes,
-            'credits' => $credits,
-            'userlists' => $userlists,
-            'tags' => $tags,
         ]);
 
     }
@@ -357,7 +217,8 @@ class GameController extends Controller
                 'games.maker_id as gamemakerid',
                 'games.lang_id as gamelangid',
                 'games.desc_md as gamedescmd',
-                'games.website_url as websiteurl'
+                'games.website_url as websiteurl',
+                'games.youtube as youtube'
             ])
             ->where('games.id', '=', $id)
             ->first();
@@ -431,6 +292,7 @@ class GameController extends Controller
         $game->desc_md = $request->get('desc');
         $game->desc_html = \Markdown::convertToHtml($request->get('desc'));
         $game->website_url = $request->get('websiteurl');
+        $game->youtube = $request->get('youtube');
         $game->save();
 
         return redirect()->action('GameController@edit', [$id]);

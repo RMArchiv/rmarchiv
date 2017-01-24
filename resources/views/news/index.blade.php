@@ -27,7 +27,7 @@
                             <td>{{ $new->counter or 0 }}</td>
                         </tr>
                     @else
-                        @if(Auth::user()->settings->is_admin or Auth::user()->settings->is_moderator)
+                        @permission(('edit-news'))
                             <tr style="color: #ff4f4f !important;">
                                 <td>
                                     <a href="{{ url('/user', $new->user_id) }}" class="usera" title="{{ $new->name }}">
@@ -38,7 +38,7 @@
                                 <td><a href="{{ url('/news', $new->id) }}">{{ $new->title }}</a></td>
                                 <td>{{ $new->counter or 0 }}</td>
                             </tr>
-                        @endif
+                        @endpermission
                     @endif
                 @endforeach
             </table>

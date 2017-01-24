@@ -15,7 +15,14 @@ class CreateEventMeetingsTable extends Migration
     {
         Schema::create('event_meetings', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('event_id');
+            $table->integer('reg_type'); // 0=offen für alle, 1=slots
+            $table->integer('slots');
+            $table->timestamp('start_date');
+            $table->timestamp('end_date');
             $table->timestamps();
+
+            $table->index('event_id');
         });
     }
 

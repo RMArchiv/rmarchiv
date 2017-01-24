@@ -1,0 +1,64 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+.autocomplete {
+  width: 250px;
+}
+
+.autocomplete__input,
+.autocomplete__results,
+.autocomplete__list__item {
+  width: 100%;
+  background-color: white;
+}
+
+.autocomplete__input,
+.autocomplete__list,
+.autocomplete__list__item {
+  border-style: solid;
+  border-color: silver;
+}
+
+.autocomplete__input,
+.autocomplete__list__item {
+  padding: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.autocomplete__input {
+  border-width: 1px;
+}
+
+.autocomplete__results {
+  display: none;
+}
+
+.autocomplete.is-visible .autocomplete__results {
+  display: block;
+}
+
+.autocomplete__list {
+  border-width: 1px 1px 0 1px;
+}
+
+.autocomplete__list__item {
+  border-width: 0 0 1px 0;
+  cursor: pointer;
+}
+
+.autocomplete.is-loading .autocomplete__input,
+.autocomplete__list__item--highlighted {
+  background-color: whitesmoke;
+}
+
+.autocomplete__list__item--disabled {
+  color: gray;
+  cursor: default;
+}
+
+.autocomplete__list__item__search-term {
+  background-color: khaki;
+}
