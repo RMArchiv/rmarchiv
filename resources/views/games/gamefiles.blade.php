@@ -49,7 +49,7 @@
                         </a> <a href="{{ url('/user', $gf->userid) }}" class="user">{{ $gf->username }}</a>
                     </td>
                     <td>{{ $gf->filecreated_at }}</td>
-                    @if(Auth::check())
+                    @if(Auth::check() and !$gf->deleted_at)
                         <td>
                             [<a href="{{ url('games/download', $gf->fileid) }}">{{trans('app.misc.download')}}</a>]
                             :: [<a href="{{ route('gamefiles.edit', [$gf->gameid, $gf->fileid]) }}">edit</a>]
