@@ -40,15 +40,26 @@
 
         @if(Auth::check())
             <div class='rmarchivtbl' id='rmarchivbox_bbsopen'>
-                <h2>erstelle einen neuen thread</h2>
-                {!! Form::open(['route' => ['board.thread.store']]) !!}
+                <h2>erstelle eine neue privatnachricht</h2>
+                {!! Form::open(['route' => 'messages.store']) !!}
                 <div class='content'>
-                    <label for='topic'>titel:</label>
-                    <input name='topic' id='topic'/>
+                    {!! Form::label('subject', 'betreff:', ['class' => 'control-label']) !!}
+                    {!! Form::text('subject', null, ['class' => 'form-control']) !!}
 
-                    <label for='message'>nachricht:</label>
-                    <textarea name='message' id='message'></textarea>
-                    <div><a href='#'><b>markdown</b></a> ist hier möglich.</div>
+                    {!! Form::label('message', 'nachricht:', ['class' => 'control-label']) !!}
+                    {!! Form::textarea('message', null, ['class' => 'form-control']) !!}
+
+                    <div>
+                        empfänger: (mehrfachauswahl möglich)
+                        <br>
+                        @if($users->count() > 0)
+                            <div class="checkbox">
+                                @foreach($users as $user)
+                                    <label title="{{ $user->name }}"><input type="checkbox" name="recipients[]" value="{{ $user->id }}">{!!$user->name!!}</label>
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
                 </div>
                 <div class='foot'>
                     <input type='submit' value='Submit' id='submit'></div>

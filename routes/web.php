@@ -54,6 +54,11 @@ Route::get('games/{gameid}/screenshot/create/{screenid}', 'ScreenshotController@
 Route::post('games/{gameid}/screenshot/upload/{screenid}', 'ScreenshotController@upload')->name('screenshot.upload');
 Route::get('games/index/{orderby?}/{direction?}', 'GameController@index')->name('games.index.sorted');
 
+//Reporting Routen
+Route::get('reports', 'ReportController@index');
+Route::get('reports/add/game/{gameid}', 'ReportController@create_game_report');
+Route::post('reports/add/game/{gameid}', 'ReportController@store_game_report');
+
 //Gamecredits routen
 Route::post('games/{id}/credit', 'UserCreditsController@store')->name('gamecredits.store');
 Route::get('games/{id}/credit/{credit_id}/delete', 'UserCreditsController@destroy')->name('gamecredits-delete');
@@ -94,6 +99,7 @@ Route::post('resources/upload', 'FineUploaderController@endpoint@upload')->name(
 //User Routings
 Route::get('users', 'UserController@index');
 Route::get('users/activity', 'UserController@activity_index');
+Route::get('users/reports', 'ReportController@index_user');
 Route::get('users/{id}', 'UserController@show')->name('users.show');
 
 

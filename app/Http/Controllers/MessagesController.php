@@ -25,7 +25,9 @@ class MessagesController extends Controller
         // All threads that user is participating in, with new messages
         // $threads = Thread::forUserWithNewMessages($currentUserId)->latest('updated_at')->get();
 
-        return view('messenger.index', compact('threads', 'currentUserId'));
+        $users = User::where('id', '!=', \Auth::id())->get();
+
+        return view('messenger.index', compact('threads', 'currentUserId', 'users'));
     }
 
     public function create(){
