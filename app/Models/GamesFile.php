@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class GamesFile
@@ -43,6 +44,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class GamesFile extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'games_files';
 
     public $timestamps = true;
@@ -60,6 +63,7 @@ class GamesFile extends Model
     ];
 
     protected $guarded = [];
+    protected $dates = ['deleted_at'];
 
     public function gamefiletype(){
         return $this->hasOne('App\Models\GamesFilesType', 'id', 'release_type');

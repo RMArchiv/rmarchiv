@@ -102,4 +102,8 @@ class User extends Authenticatable
     public function userobyx(){
         return $this->hasMany('App\Models\UserObyx', 'user_id', 'id');
     }
+
+    public function userlists(){
+        return $this->hasMany('App\Models\UserList', 'user_id', 'id');
+    }
 }

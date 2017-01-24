@@ -40,6 +40,6 @@ class TagRelation extends Model
     protected $guarded = [];
 
     public function tag(){
-        return $this->belongsTo('App\Models\Tag', 'tag_id', 'id');
+        return $this->hasOne('App\Models\Tag', 'id', 'tag_id');
     }
 }
