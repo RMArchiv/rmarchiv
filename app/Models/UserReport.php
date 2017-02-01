@@ -22,6 +22,17 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $closed
+ * @property int $closed_user_id
+ * @property string $closed_remarks
+ * @property string $closed_at
+ * @property-read \App\Models\Game $game
+ * @property-read \App\Models\User $user
+ * @property-read \App\Models\User $user_closed
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereClosed($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereClosedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereClosedRemarks($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereClosedUserId($value)
  */
 class UserReport extends Model
 {
@@ -33,10 +44,24 @@ class UserReport extends Model
         'user_id',
         'content_id',
         'content_type',
-        'reason'
+        'reason',
+        'closed_user_id',
+        'closed',
+        'closed_remarks',
+        'closed_at',
     ];
 
     protected $guarded = [];
 
-        
+    public function user(){
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
+
+    public function user_closed(){
+        return $this->hasOne('App\Models\User', 'id', 'closed_user_id');
+    }
+
+    public function game(){
+        return $this->hasOne('App\Models\Game', 'id', 'content_id');
+    }
 }

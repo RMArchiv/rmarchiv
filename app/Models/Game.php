@@ -127,4 +127,8 @@ class Game extends Model
         return $this->hasMany('App\Models\GamesAward', 'game_id', 'id')->Where('place', '<=', 3);
     }
 
+    public function cdcs(){
+        return $this->hasMany('App\Models\GamesCoupdecoeur', 'game_id', 'id');
+    }
+
 }

@@ -3,8 +3,38 @@
 namespace App\Helpers;
 
 use App\Models\Developer;
+use App\Models\Game;
+use Carbon\Carbon;
 
 class DatabaseHelper{
+
+    public static function getReleaseDateFromGameId($gameid){
+        $game = Game::whereId($gameid)->first();
+
+        if(is_null($game)){
+            return '';
+        }
+
+        if(Carbon::parse($game->release_date)->year == -1 or is_null($game->release_date)){
+            $releasedate = \DB::table('games_files')
+                ->where('game_id', '=', $gameid)
+                ->orderBy('release_type', 'desc')
+                ->orderBy('release_year', 'desc')
+                ->orderBy('release_month', 'desc')
+                ->orderBy('release_day', 'desc')
+                ->groupBy('release_type')
+                ->first();
+
+            if($releasedate){
+                return Carbon::createFromDate($releasedate->release_year, $releasedate->release_month, $releasedate->release_day)->toDateString();
+            }else{
+                return '';
+            }
+
+        }else{
+            return Carbon::parse($game->release_date)->toDateString();
+        }
+    }
 
     public static function getDevelopersUrlList($gameid){
         $developers = \DB::table('games_developer')

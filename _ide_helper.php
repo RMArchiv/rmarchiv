@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.29 on 2017-01-24.
+ * Generated for Laravel 5.3.30 on 2017-01-31.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -7245,6 +7245,17 @@ namespace {
         }
         
         /**
+         * Convert all applicable characters to HTML entities.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */
+        public static function escapeAll($value){
+            return \Collective\Html\HtmlBuilder::escapeAll($value);
+        }
+        
+        /**
          * Convert entities to HTML characters.
          *
          * @param string $value
@@ -8508,6 +8519,212 @@ namespace {
          */
         public static function setDefaultDriver($name){
             \Illuminate\Auth\Passwords\PasswordBrokerManager::setDefaultDriver($name);
+        }
+        
+    }
+
+
+    class Piwik extends \RobBrazier\Piwik\Facades\Piwik{
+        
+        /**
+         * actions
+         * Get actions (hits) for the specific time period
+         *
+         * @access public
+         * @param string $format Override string for the format of the API Query to be returned as
+         * @return object 
+         * @static 
+         */
+        public static function actions($format = null){
+            return \RobBrazier\Piwik\Piwik::actions($format);
+        }
+        
+        /**
+         * downloads
+         * Get file downloads for the specific time period
+         *
+         * @access public
+         * @param string $format Override string for the format of the API Query to be returned as
+         * @return array 
+         * @static 
+         */
+        public static function downloads($format = null){
+            return \RobBrazier\Piwik\Piwik::downloads($format);
+        }
+        
+        /**
+         * keywords
+         * Get search keywords for the specific time period
+         *
+         * @access public
+         * @param string $format Override string for the format of the API Query to be returned as
+         * @return array 
+         * @static 
+         */
+        public static function keywords($format = null){
+            return \RobBrazier\Piwik\Piwik::keywords($format);
+        }
+        
+        /**
+         * last_visits
+         * Get information about last 10 visits (ip, time, country, pages, etc.)
+         *
+         * @access public
+         * @param int $count Limit the number of visits returned by $count
+         * @param string $format Override string for the format of the API Query to be returned as
+         * @return array 
+         * @static 
+         */
+        public static function last_visits($count, $format = null){
+            return \RobBrazier\Piwik\Piwik::last_visits($count, $format);
+        }
+        
+        /**
+         * last_visits_parsed
+         * Get information about last 10 visits (ip, time, country, pages, etc.) in a formatted array with GeoIP information if enabled
+         *
+         * @access public
+         * @param int $count Limit the number of visits returned by $count
+         * @param string $format Override string for the format of the API Query to be returned as
+         * @return array 
+         * @static 
+         */
+        public static function last_visits_parsed($count, $format = null){
+            return \RobBrazier\Piwik\Piwik::last_visits_parsed($count, $format);
+        }
+        
+        /**
+         * actions
+         * Get outlinks for the specific time period
+         *
+         * @access public
+         * @param string $format Override string for the format of the API Query to be returned as
+         * @return array 
+         * @static 
+         */
+        public static function outlinks($format = null){
+            return \RobBrazier\Piwik\Piwik::outlinks($format);
+        }
+        
+        /**
+         * page_titles
+         * Get page visit information for the specific time period
+         *
+         * @access public
+         * @param string $format Override string for the format of the API Query to be returned as
+         * @return array 
+         * @static 
+         */
+        public static function page_titles($format = null){
+            return \RobBrazier\Piwik\Piwik::page_titles($format);
+        }
+        
+        /**
+         * search_engines
+         * Get search engine referer information for the specific time period
+         *
+         * @access public
+         * @param string $format Override string for the format of the API Query to be returned as
+         * @return array 
+         * @static 
+         */
+        public static function search_engines($format = null){
+            return \RobBrazier\Piwik\Piwik::search_engines($format);
+        }
+        
+        /**
+         * unique_visitors
+         * Get unique visitors for the specific time period
+         *
+         * @access public
+         * @param string $format Override string for the format of the API Query to be returned as
+         * @return array 
+         * @static 
+         */
+        public static function unique_visitors($format = null){
+            return \RobBrazier\Piwik\Piwik::unique_visitors($format);
+        }
+        
+        /**
+         * visits
+         * Get all visits for the specific time period
+         *
+         * @access public
+         * @param string $format Override string for the format of the API Query to be returned as
+         * @return array 
+         * @static 
+         */
+        public static function visits($format = null){
+            return \RobBrazier\Piwik\Piwik::visits($format);
+        }
+        
+        /**
+         * websites
+         * Get refering websites (traffic sources) for the specific time period
+         *
+         * @access public
+         * @param string $format Override string for the format of the API Query to be returned as
+         * @return array 
+         * @static 
+         */
+        public static function websites($format = null){
+            return \RobBrazier\Piwik\Piwik::websites($format);
+        }
+        
+        /**
+         * tag
+         * Get javascript tag for use in tracking the website
+         * 
+         * Note: Works best when using PHP as the format
+         *
+         * @access public
+         * @return string 
+         * @static 
+         */
+        public static function tag(){
+            return \RobBrazier\Piwik\Piwik::tag();
+        }
+        
+        /**
+         * seo_rank
+         * Get SEO Rank for the website
+         *
+         * @access public
+         * @param $id
+         * @param string $format Override string for the format of the API Query to be returned as
+         * @return array 
+         * @static 
+         */
+        public static function seo_rank($id, $format = 'json'){
+            return \RobBrazier\Piwik\Piwik::seo_rank($id, $format);
+        }
+        
+        /**
+         * version
+         * Get Version of the Piwik Server
+         *
+         * @access public
+         * @param string $format Override string for the format of the API Query to be returned as
+         * @return array 
+         * @static 
+         */
+        public static function version($format = null){
+            return \RobBrazier\Piwik\Piwik::version($format);
+        }
+        
+        /**
+         * 
+         *
+         * @param $method
+         * @param array $arguments
+         * @param mixed $id values can be true/false to add the default site id, or you can specify the id here
+         * @param bool $period
+         * @param string $format
+         * @return array 
+         * @static 
+         */
+        public static function custom($method, $arguments, $id = false, $period = false, $format = null){
+            return \RobBrazier\Piwik\Piwik::custom($method, $arguments, $id, $period, $format);
         }
         
     }

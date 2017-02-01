@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-01-24.
+    * Generated on 2017-01-31.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -77,6 +77,7 @@ namespace PHPSTORM_META {
             'command.backup:monitor' instanceof \Spatie\Backup\Commands\MonitorCommand,
             'Spatie\Backup\Helpers\ConsoleOutput' instanceof \Spatie\Backup\Helpers\ConsoleOutput,
             'alerts' instanceof \Prologue\Alerts\AlertsMessageBag,
+            'piwik' instanceof \RobBrazier\Piwik\Piwik,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -234,6 +235,7 @@ namespace PHPSTORM_META {
             'command.backup:monitor' instanceof \Spatie\Backup\Commands\MonitorCommand,
             'Spatie\Backup\Helpers\ConsoleOutput' instanceof \Spatie\Backup\Helpers\ConsoleOutput,
             'alerts' instanceof \Prologue\Alerts\AlertsMessageBag,
+            'piwik' instanceof \RobBrazier\Piwik\Piwik,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -391,6 +393,7 @@ namespace PHPSTORM_META {
             'command.backup:monitor' instanceof \Spatie\Backup\Commands\MonitorCommand,
             'Spatie\Backup\Helpers\ConsoleOutput' instanceof \Spatie\Backup\Helpers\ConsoleOutput,
             'alerts' instanceof \Prologue\Alerts\AlertsMessageBag,
+            'piwik' instanceof \RobBrazier\Piwik\Piwik,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -548,6 +551,7 @@ namespace PHPSTORM_META {
             'command.backup:monitor' instanceof \Spatie\Backup\Commands\MonitorCommand,
             'Spatie\Backup\Helpers\ConsoleOutput' instanceof \Spatie\Backup\Helpers\ConsoleOutput,
             'alerts' instanceof \Prologue\Alerts\AlertsMessageBag,
+            'piwik' instanceof \RobBrazier\Piwik\Piwik,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,

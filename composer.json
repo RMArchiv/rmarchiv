@@ -28,7 +28,8 @@
         "mews/captcha": "^2.1",
         "backpack/backupmanager": "^1.1",
         "irazasyed/telegram-bot-sdk": "^2.2",
-        "backpack/base": "^0.7.14"
+        "backpack/base": "^0.7.14",
+        "RobBrazier/Piwik": "^2.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

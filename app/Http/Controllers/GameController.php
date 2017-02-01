@@ -24,55 +24,25 @@ class GameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($orderby = 'gametitle', $direction = 'asc')
+    public function index($orderby = 'title', $direction = 'asc')
     {
-        $games = \DB::table('games')
-            ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
-            ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
-            ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('languages', 'languages.id', '=', 'games.lang_id')
-            ->leftJoin('games_files', 'games_files.game_id', '=', 'games.id')
-            ->select([
-                'games.id as gameid',
-                'games.title as gametitle',
-                'games.subtitle as gamesubtitle',
-                'developer.name as developername',
-                'developer.id as developerid',
-                'games.created_at as gamecreated_at',
-                'makers.short as makershort',
-                'makers.title as makertitle',
-                'makers.id as makerid',
-                'games.views as views',
-                'languages.name as langname',
-                'languages.short as langshort',
-                'games.youtube as youtube',
-            ])
-            ->selectRaw('(SELECT COUNT(id) FROM comments WHERE content_id = games.id AND content_type = "game") as commentcount')
-            ->selectRaw('(SELECT SUM(vote_up) FROM comments WHERE content_id = games.id AND content_type = "game") as voteup')
-            ->selectRaw('(SELECT SUM(vote_down) FROM comments WHERE content_id = games.id AND content_type = "game") as votedown')
-            ->selectRaw('MAX(games_files.release_type) as gametype')
-            ->selectRaw("(SELECT STR_TO_DATE(CONCAT(release_year,'-',release_month,'-',release_day ), '%Y-%m-%d') FROM games_files WHERE game_id = games.id ORDER BY release_year DESC, release_month DESC, release_day DESC LIMIT 1) as releasedate")
-            ->selectRaw('(SELECT COUNT(id) FROM games_coupdecoeur WHERE game_id = games.id) as cdccount')
-            ->selectRaw('(SELECT (voteup - votedown) / (voteup + votedown)) as avg')
-            ->groupBy('games.id')
-            ->orderByRaw($orderby.' '.$direction)
-            ->orderBy('gametitle')
-            ->orderBy('gamesubtitle')
-            ->paginate(20);
-
-        $gametypes = \DB::table('games_files_types')
-            ->select('id', 'title', 'short')
-            ->get();
-        $gtypes = array();
-        foreach ($gametypes as $gt){
-            $t['title'] = $gt->title;
-            $t['short'] = $gt->short;
-            $gtypes[$gt->id] = $t;
+        if($orderby == 'developer.name') {
+            $games = Game::Join('games_developer', 'games.id', '=', 'games_developer.game_id')
+                ->Join('developer', 'games_developer.developer_id', '=', 'developer.id')
+                ->orderBy($orderby, $direction)->select('games.*')->paginate(20);
+        }elseif($orderby == 'game.release_date'){
+            $games = Game::Join('games_files', 'games.id', '=', 'games_files.game_id')
+                ->orderBy('games_files.release_year', $direction)
+                ->orderBy('games_files.release_month', $direction)
+                ->orderBy('games_files.release_day', $direction)
+                ->select('games.*')
+                ->paginate(20);
+        }else{
+            $games = Game::orderBy($orderby,$direction)->orderBy('title')->orderBy('subtitle')->paginate(20);
         }
 
         return view('games.index', [
             'games' => $games,
-            'gametypes' => $gtypes,
             'maxviews' => DatabaseHelper::getGameViewsMax(),
             'orderby' => $orderby,
             'direction' => $direction,
@@ -183,20 +153,10 @@ class GameController extends Controller
     {
         $game = Game::with('developers')->whereId($id)->first();
 
-        $releasedate = \DB::table('games_files')
-            ->where('game_id', '=', $id)
-            ->orderBy('release_type', 'desc')
-            ->orderBy('release_year', 'desc')
-            ->orderBy('release_month', 'desc')
-            ->orderBy('release_day', 'desc')
-            ->groupBy('release_type')
-            ->first();
-
         event(new GameView($id));
 
         return view('games.show', [
             'game' => $game,
-            'releasedate' => $releasedate,
         ]);
 
     }
@@ -218,7 +178,8 @@ class GameController extends Controller
                 'games.lang_id as gamelangid',
                 'games.desc_md as gamedescmd',
                 'games.website_url as websiteurl',
-                'games.youtube as youtube'
+                'games.youtube as youtube',
+                'games.release_date as release_date',
             ])
             ->where('games.id', '=', $id)
             ->first();
@@ -293,6 +254,7 @@ class GameController extends Controller
         $game->desc_html = \Markdown::convertToHtml($request->get('desc'));
         $game->website_url = $request->get('websiteurl');
         $game->youtube = $request->get('youtube');
+        $game->release_date = Carbon::createFromDate($request->get('releasedate_year'), $request->get('releasedate_month'), $request->get('releasedate_day'));
         $game->save();
 
         return redirect()->action('GameController@edit', [$id]);

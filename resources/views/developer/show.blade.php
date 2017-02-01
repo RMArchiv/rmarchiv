@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('pagetitle', 'entwicklerprofil: '. $games->first()->developername)
+@section('pagetitle', 'entwicklerprofil: '. $games->first()->developer->name)
 @section('content')
     <div id='content'>
-        <h1>{{ $games->first()->developername }}</h1>
-        hinzugefügt am {{ $games->first()->developerdate }} von <a href='{{ url('users', $games->first()->developeruserid) }}' class='user'>{{ $games->first()->developerusername }}</a> <a href='{{ url('users', $games->first()->developeruserid) }}' class='usera' title="{{ $games->first()->developerusername }}"><img src='http://ava.rmarchiv.de/?gender=male&id={{ $games->first()->developeruserid }}' alt="{{ $games->first()->developerusername }}" class='avatar'/></a>
+        <h1>{{ $games->first()->developer->name }}</h1>
+        hinzugefügt am {{ $games->first()->developer->created_at }} von <a href='{{ url('users', $games->first()->developer->user->id) }}' class='user'>{{ $games->first()->developer->user->name }}</a> <a href='{{ url('users', $games->first()->developer->user->id) }}' class='usera' title="{{ $games->first()->developer->user->name }}"><img src='http://ava.rmarchiv.de/?gender=male&id={{ $games->first()->developer->user->id }}' alt="{{ $games->first()->developer->user->name }}" class='avatar'/></a>
         <br><br>
         <table id='rmarchivbox_groupmain' class='boxtable pagedtable'>
             <thead>
@@ -23,47 +23,46 @@
             @foreach($games as $g)
             <tr>
                 <td>
-                    @if(is_null($g->gametype) == false)
+                    @if(is_null($g->game->gamefiles->first()->gamefiletype) == false)
                     <span class='typeiconlist'>
-                    <span class='typei type_{{ $gametypes[$g->gametype]['short'] }}' title='{{ $gametypes[$g->gametype]['title'] }}'>{{ $gametypes[$g->gametype]['title'] }}</span>
+                    <span class='typei type_{{ $g->game->gamefiles->first()->gamefiletype->short }}' title='{{ $g->game->gamefiles->first()->gamefiletype->title }}'>{{ $g->game->gamefiles->first()->gamefiletype->title }}</span>
                 </span>
                     @endif
                     <span class='platformiconlist'>
-                    <span class='typei type_{{ $g->makershort }}' title='{{ $g->makertitle }}'>$g->makertitle</span>
+                    <span class='typei type_{{ $g->game->maker->short }}' title='{{ $g->game->maker->title }}'>$g->game->maker->title</span>
                 </span>
-                    <span class='prod'><a href='{{ url('games', $g->gameid) }}'>{{ $g->gametitle }}
-                        @if($g->gamesubtitle)
-                        <small> - {{ $g->gamesubtitle }}</small>
+                    <span class='prod'><a href='{{ url('games', $g->game->id) }}'>{{ $g->game->title }}
+                        @if($g->game->subtitle)
+                        <small> - {{ $g->game->subtitle }}</small>
                         @endif
                     </a></span>
-                    @if($g->cdccount > 0)
+                    @if($g->game->cdcs->count() > 0)
                         <div class="cdcstack">
                             <img src="/assets/cdc.png" title="cdc" alt="cdc">
                         </div>
                     @endif
                 </td>
                 <td>
-                    {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($g->gameid) !!}
+                    {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($g->game_id) !!}
                 </td>
-                <td class='date'>{{ $g->releasedate }}</td>
-                <td class='date'>{{ $g->gamecreated_at }}</td>
-                <td class='votes'>{{ $g->voteup or 0 }}</td>
-                <td class='votes'>{{ $g->votedown or 0 }}</td>
-                {{ $avg = @(($g->voteup - $g->votedown) / ($g->voteup + $g->votedown)) }}
-                <td class='votes'>{{ number_format($avg, 2) }}&nbsp;
-                    @if($avg > 0)
+                <td class='date'>{{ \App\Helpers\DatabaseHelper::getReleaseDateFromGameId($g->game_id) }}</td>
+                <td class='date'>{{ $g->game->created_at }}</td>
+                <td class='votes'>{{ $g->game->votes['up'] or 0 }}</td>
+                <td class='votes'>{{ $g->game->votes['down'] or 0 }}</td>
+                <td class='votes'>{{ $g->game->votes['avg'] or 0 }}&nbsp;
+                    @if($g->game->votes['avg'] > 0)
                         <img src='/assets/rate_up.gif' alt='up' />
-                    @elseif($avg == 0)
+                    @elseif($g->game->votes['avg'] == 0)
                         <img src='/assets/rate_neut.gif' alt='neut' />
-                    @elseif($avg < 0)
+                    @elseif($g->game->votes['avg'] < 0)
                         <img src='/assets/rate_down.gif' alt='down' />
                     @endif
                 </td>
                 @php
-                    $perc = \App\Helpers\MiscHelper::getPopularity($g->views, \App\Helpers\DatabaseHelper::getGameViewsMax());
+                    $perc = \App\Helpers\MiscHelper::getPopularity($g->game->views, \App\Helpers\DatabaseHelper::getGameViewsMax());
                 @endphp
                 <td><div class='innerbar_solo' style='width: {{ $perc }}%' title='{{ $perc }}%'><span>{{ $perc }}</span></div></td>
-                <td>{{ $g->commentcount }}</td>
+                <td>{{ $g->game->comments->count() }}</td>
             </tr>
             @endforeach
         </table>

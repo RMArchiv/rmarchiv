@@ -18,17 +18,27 @@
                     <li><a href='{{ url('missing/gamefiles') }}'>fehlende spieledateien</a></li>
                     <li><a href='{{ url('missing/gamedesc') }}'>fehlende spielebeschreibungen</a></li>
                 </ul>
-                @role(('owner', 'admin'))
                 <h2>Admin Only</h2>
                 <ul class="boxlist">
-                    <li><a href="{{ url('users/perm/role') }}">benutzerberechtigungen</a></li>
-                    <li><a href="{{ url('board/create') }}">board kategorie hinzufügen</a></li>
-                    <li><a href="{{ url('cdc/create') }}">'coup de coeur' hinzufügen</a></li>
-                    <li><a href="{{ url('faq/create') }}">faq hinzufügen</a></li>
-                    <li><a href="{{ url('awards/create') }}">award-kategorie hinzufügen</a></li>
-                    <li><a href="{{ url('reported/comments') }}"></a>gemeldete kommentare</li>
+                    @permission(('admin-user'))
+                        <li><a href="{{ url('users/perm/role') }}">benutzerberechtigungen</a></li>
+                    @endpermission
+                    @permission(('admin-board'))
+                        <li><a href="{{ url('board/create') }}">board kategorie hinzufügen</a></li>
+                    @endpermission
+                    @permission(('admin-cdc'))
+                        <li><a href="{{ url('cdc/create') }}">'coup de coeur' hinzufügen</a></li>
+                    @endpermission
+                    @permission(('create-faq'))
+                        <li><a href="{{ url('faq/create') }}">faq hinzufügen</a></li>
+                    @endpermission
+                    @permission(('create-awards'))
+                        <li><a href="{{ url('awards/create') }}">award-kategorie hinzufügen</a></li>
+                    @endpermission
+                    @permission(('admin-comments'))
+                        <li><a href="{{ url('reported/comments') }}"></a>gemeldete kommentare</li>
+                    @endpermission
                 </ul>
-                @endrole
             </div>
         </div>
     @else

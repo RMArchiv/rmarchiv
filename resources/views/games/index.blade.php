@@ -7,47 +7,47 @@
             <thead>
                 <tr class='sortable'>
                     <th>
-                        @if($orderby == 'gametitle')
+                        @if($orderby == 'title')
                             @if($direction == 'asc')
-                                <a class="activated" href="{{ route('games.index.sorted', ['gametitle', 'desc']) }}">spielname</a>
+                                <a class="activated" href="{{ route('games.index.sorted', ['title', 'desc']) }}">spielname</a>
                             @else
-                                <a class="activated reverse" href="{{ route('games.index.sorted', ['gametitle', 'asc']) }}">spielname</a>
+                                <a class="activated reverse" href="{{ route('games.index.sorted', ['title', 'asc']) }}">spielname</a>
                             @endif
                         @else
-                            <a class="" href="{{ route('games.index.sorted', ['gametitle', 'asc']) }}">spielname</a>
+                            <a class="" href="{{ route('games.index.sorted', ['title', 'asc']) }}">spielname</a>
                         @endif
                     </th>
                     <th>
-                        @if($orderby == 'developername')
+                        @if($orderby == 'developer.name')
                             @if($direction == 'asc')
-                                <a class="activated" href="{{ route('games.index.sorted', ['developername', 'desc']) }}">entwickler</a>
+                                <a class="activated" href="{{ route('games.index.sorted', ['developer.name', 'desc']) }}">entwickler</a>
                             @else
-                                <a class="activated reverse" href="{{ route('games.index.sorted', ['developername', 'asc']) }}">entwickler</a>
+                                <a class="activated reverse" href="{{ route('games.index.sorted', ['developer.name', 'asc']) }}">entwickler</a>
                             @endif
                         @else
-                            <a class="" href="{{ route('games.index.sorted', ['developername', 'asc']) }}">entwickler</a>
+                            <a class="" href="{{ route('games.index.sorted', ['developer.name', 'asc']) }}">entwickler</a>
                         @endif
                     </th>
                     <th>
-                        @if($orderby == 'releasedate')
+                        @if($orderby == 'game.release_date')
                             @if($direction == 'asc')
-                                <a class="activated" href="{{ route('games.index.sorted', ['releasedate', 'desc']) }}">release date</a>
+                                <a class="activated" href="{{ route('games.index.sorted', ['game.release_date', 'desc']) }}">release date</a>
                             @else
-                                <a class="activated reverse" href="{{ route('games.index.sorted', ['releasedate', 'asc']) }}">release date</a>
+                                <a class="activated reverse" href="{{ route('games.index.sorted', ['game.release_date', 'asc']) }}">release date</a>
                             @endif
                         @else
-                            <a class="" href="{{ route('games.index.sorted', ['releasedate', 'asc']) }}">release date</a>
+                            <a class="" href="{{ route('games.index.sorted', ['game.release_date', 'asc']) }}">release date</a>
                         @endif
                     </th>
                     <th>
-                        @if($orderby == 'gamecreated_at')
+                        @if($orderby == 'created_at')
                             @if($direction == 'asc')
-                                <a class="activated" href="{{ route('games.index.sorted', ['gamecreated_at', 'desc']) }}">hinzugefügt</a>
+                                <a class="activated" href="{{ route('games.index.sorted', ['created_at', 'desc']) }}">hinzugefügt</a>
                             @else
-                                <a class="activated reverse" href="{{ route('games.index.sorted', ['gamecreated_at', 'asc']) }}">hinzugefügt</a>
+                                <a class="activated reverse" href="{{ route('games.index.sorted', ['created_at', 'asc']) }}">hinzugefügt</a>
                             @endif
                         @else
-                            <a class="" href="{{ route('games.index.sorted', ['gamecreated_at', 'asc']) }}">hinzugefügt</a>
+                            <a class="" href="{{ route('games.index.sorted', ['created_at', 'asc']) }}">hinzugefügt</a>
                         @endif
                     </th>
                     <th>
@@ -111,44 +111,49 @@
             @foreach($games as $game)
             <tr>
                 <td>
-                    @if(is_null($game->gametype) == false)
+                    @if($game->gamefiles->count() > 0)
                     <span class='typeiconlist'>
-                        <span class='typei type_{{ $gametypes[$game->gametype]['short'] }}' title='{{ $gametypes[$game->gametype]['title'] }}'>{{ $gametypes[$game->gametype]['title'] }}</span>
+                        <span class='typei type_{{ $game->gamefiles->first()->gamefiletype->short }}' title='{{ $game->gamefiles->first()->gamefiletype->title }}'>{{ $game->gamefiles->first()->gamefiletype->title }}</span>
                     </span>
                     @endif
                     <span class="platformiconlist">
-                        <span class="typei type_{{ $game->makershort }}" title="{{ $game->makertitle }}">{{ $game->makertitle }}</span>
+                        <span class="typei type_{{ $game->maker->short }}" title="{{ $game->maker->title }}">{{ $game->maker->title }}</span>
                     </span>
                     <span class='prod'>
-                        <a href='{{ url('games', $game->gameid) }}'>
-                            {{ $game->gametitle }}
-                            @if($game->gamesubtitle != '')
-                                <small> - {{ $game->gamesubtitle }}</small>
+                        <a href='{{ url('games', $game->id) }}'>
+                            {{ $game->title }}
+                            @if($game->subtitle)
+                                <small> - {{ $game->subtitle }}</small>
                             @endif
-                            <span><img src="/assets/lng/16/{{ strtoupper($game->langshort) }}.png" title="{{ $game->langname }}"></span>
+                            <span><img src="/assets/lng/16/{{ strtoupper($game->language->short) }}.png" title="{{ $game->language->name }}"></span>
                         </a>
                     </span>
-                        @if($game->cdccount > 0)
+                        @if($game->cdcs->count() > 0)
                         <div class="cdcstack">
                             <img src="/assets/cdc.png" title="cdc" alt="cdc">
                         </div>
                         @endif
                 </td>
                 <td>
-                    {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($game->gameid) !!}
+                    {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($game->id) !!}
                     {{-- <a href="{{ url('developer', $game->developerid) }}">{{ $game->developername }}</a> --}}
                 </td>
-                <td class='date'>{{ $game->releasedate }}</td>
-                <td class='date'><time datetime='{{ $game->gamecreated_at }}' title='{{ $game->gamecreated_at }}'>{{ \Carbon\Carbon::parse($game->gamecreated_at)->diffForHumans() }}</time></td>
-                <td class='votes'>{{ $game->voteup or 0 }}</td>
-                <td class='votes'>{{ $game->votedown or 0 }}</td>
-                @php $avg = @(($game->voteup - $game->votedown) / ($game->voteup + $game->votedown)) @endphp
-                <td class='votes'>{{ number_format($avg, 2) }}&nbsp;
-                    @if($avg > 0)
+                <td class='date'>
+                    @if(\Carbon\Carbon::parse($game->release_date)->year != -1 )
+                        {{ $game->release_date }}
+                    @else
+                        {{ \Carbon\Carbon::parse(\App\Helpers\DatabaseHelper::getReleaseDateFromGameId($game->id))->toDateString() }}
+                    @endif
+                </td>
+                <td class='date'><time datetime='{{ $game->created_at }}' title='{{ $game->created_at }}'>{{ \Carbon\Carbon::parse($game->created_at)->diffForHumans() }}</time></td>
+                <td class='votes'>{{ $game->vote['up'] or 0 }}</td>
+                <td class='votes'>{{ $game->vote['down'] or 0 }}</td>
+                <td class='votes'>{{ number_format($game->vote['avg'], 2) }}&nbsp;
+                    @if($game->vote['avg'] > 0)
                     <img src='/assets/rate_up.gif' alt='up' />
-                    @elseif($avg == 0)
+                    @elseif($game->vote['avg'] == 0)
                     <img src='/assets/rate_neut.gif' alt='neut' />
-                    @elseif($avg < 0)
+                    @elseif($game->vote['avg'] < 0)
                     <img src='/assets/rate_down.gif' alt='down' />
                     @endif
                 </td>
@@ -156,7 +161,7 @@
                     $perc = \App\Helpers\MiscHelper::getPopularity($game->views, $maxviews);
                 @endphp
                 <td><div class='innerbar_solo' style='width: {{ $perc }}%' title='{{ number_format($perc, 2) }}%'><span>{{ $perc }}</span></div></td>
-                <td>{{ $game->commentcount }}</td>
+                <td>{{ $game->comments->count() }}</td>
             </tr>
             @endforeach
             {{ $games->links('vendor.pagination.gamelist') }}

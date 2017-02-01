@@ -61,6 +61,42 @@
                         </select>
                         <span> [<span class="req">req</span>]</span>
                     </div>
+                    <div class="row" id="row_releasedate">
+                        <label for="releasedate">{{trans('app.games.gamefiles.release_date2')}}</label>
+                        <div class="formdate" id="releasedate">
+                            @php $reldate = \Carbon\Carbon::parse($game->release_date) @endphp
+                            <select name="releasedate_day" id="releasedate_day">
+                                <option value="0">{{trans('app.games.gamefiles.day')}}</option>
+                                @for($i = 1; $i < 32; $i++)
+                                    <option value="{{ $i }}"
+                                    @if($reldate->day == $i and $reldate->year != -1)
+                                        selected="selected"
+                                    @endif
+                                    >{{ $i }}</option>
+                                @endfor
+                            </select>
+                            <select name="releasedate_month" id="releasedate_month">
+                                <option value="0">{{trans('app.games.gamefiles.month')}}</option>
+                                @for($i = 1; $i < 13; $i++)
+                                    <option value="{{ $i }}"
+                                            @if($reldate->month == $i and $reldate->year != -1)
+                                            selected="selected"
+                                            @endif
+                                    >{{ trans('app.misc.month.'.$i) }}</option>
+                                @endfor
+                            </select>
+                            <select name="releasedate_year" id="releasedate_year">
+                                <option value="0">{{trans('app.games.gamefiles.year')}}</option>
+                                @for($i = 1990; $i < date("Y") + 1; $i++)
+                                    <option value="{{ $i }}"
+                                            @if($reldate->year == $i and $reldate->year != -1)
+                                            selected="selected"
+                                            @endif
+                                    >{{ $i }}</option>
+                                @endfor
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
 

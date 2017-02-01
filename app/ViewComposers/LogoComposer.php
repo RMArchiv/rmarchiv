@@ -2,6 +2,7 @@
 
 use Illuminate\Contracts\View\View;
 use App\Models\Logo;
+use RobBrazier\Piwik\Facades\Piwik;
 
 class LogoComposer {
 

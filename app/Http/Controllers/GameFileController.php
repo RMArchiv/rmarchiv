@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\Obyx;
 use App\Models\GamesFile;
 use App\Models\GamesFilesType;
+use App\Models\UserDownloadLog;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -35,6 +36,12 @@ class GameFileController extends Controller
             ->where('games_files.id', '=', $id)
             ->limit(1)
             ->first();
+
+        UserDownloadLog::insert([
+            'user_id' => \Auth::id(),
+            'gamefile_id' => $id,
+            'created_at' => Carbon::now(),
+        ]);
 
         $filepath = storage_path('app/public/'.$g->filename);
 

@@ -143,7 +143,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Entwickler :</td>
+                                    <td>entwickler :</td>
                                     <td>
                                         @foreach($game->developers as $dev)
                                             <a href="{{ url('developer',$dev->developer_id) }}">{{ $dev->developer->name }}</a>
@@ -153,13 +153,10 @@
                                         @endforeach
                                     </td>
                                 </tr>
-                                @if($releasedate)
                                     <tr>
                                         <td>release date:</td>
-                                        <td>{{ $releasedate->release_year }}-{{ $releasedate->release_month }}
-                                            -{{ $releasedate->release_day }}</td>
+                                        <td>{{ \App\Helpers\DatabaseHelper::getReleaseDateFromGameId($game->id) }}</td>
                                     </tr>
-                                @endif
                                 @if($game->website_url)
                                     <tr>
                                         <td>website:</td>
