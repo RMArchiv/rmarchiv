@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -90,20 +91,12 @@ class CDCController extends Controller
 
         // Prüfen ob das Spiel auch wirklich existiert
         $title = explode(" -=- ",$request->get('gamename'));
-
+        
         if(count($title) == 1){
-            $game = \DB::table('games')
-                ->select([
-                    'id'
-                ])
-                ->where('title', '=', $title[0])
+            $game = Game::whereTitle($title[0])
                 ->first();
         }else{
-            $game = \DB::table('games')
-                ->select([
-                    'id'
-                ])
-                ->where('title', '=', $title[0])
+            $game = Game::whereTitle($title[0])
                 ->orWhere('subtitle', '=', $title[1])
                 ->first();
         }

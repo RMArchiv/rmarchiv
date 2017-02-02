@@ -42,7 +42,7 @@ class AutocompleteController extends Controller
             if(is_null($g->subtitle) or $g->subtitle == ''){
                 $result[] = ['id' => $g->id, 'value' => $g->title];
             }else{
-                $result[] = ['id' => $g->id, 'value' => $g->title.' - '.$g->subtitle];
+                $result[] = ['id' => $g->id, 'value' => $g->title.' -=- '.$g->subtitle];
             }
 
         }

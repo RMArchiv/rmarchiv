@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use App\Models\Developer;
 use App\Models\Game;
+use App\Models\GamesFile;
 use Carbon\Carbon;
 
 class DatabaseHelper{
@@ -16,17 +17,14 @@ class DatabaseHelper{
         }
 
         if(Carbon::parse($game->release_date)->year == -1 or is_null($game->release_date)){
-            $releasedate = \DB::table('games_files')
-                ->where('game_id', '=', $gameid)
+            $releasedate = GamesFile::whereGameId($gameid)
+                ->selectRaw('CONCAT(release_year, "-", LPAD(release_month, 2, "0"), "-", release_day) as reldate')
                 ->orderBy('release_type', 'desc')
-                ->orderBy('release_year', 'desc')
-                ->orderBy('release_month', 'desc')
-                ->orderBy('release_day', 'desc')
-                ->groupBy('release_type')
+                ->orderBy('reldate', 'asc')
                 ->first();
 
             if($releasedate){
-                return Carbon::createFromDate($releasedate->release_year, $releasedate->release_month, $releasedate->release_day)->toDateString();
+                return Carbon::parse($releasedate->reldate)->toDateString();
             }else{
                 return '';
             }
