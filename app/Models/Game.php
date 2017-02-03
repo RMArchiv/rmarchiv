@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Game
@@ -53,6 +54,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Game extends Model
 {
+    use LogsActivity;
+
     protected $table = 'games';
 
     public $timestamps = true;
@@ -66,6 +69,16 @@ class Game extends Model
         'user_id',
         'views',
         'release_date',
+        'maker_id',
+        'lang_id'
+    ];
+
+    protected static $logAttributes = [
+        'title',
+        'subtitle',
+        'desc_md',
+        'website_url',
+        'user_id',
         'maker_id',
         'lang_id'
     ];

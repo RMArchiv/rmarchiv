@@ -201,6 +201,9 @@ return [
         Backpack\BackupManager\BackupManagerServiceProvider::class,
         Backpack\Base\BaseServiceProvider::class,
         RobBrazier\Piwik\PiwikServiceProvider::class,
+        Way\Generators\GeneratorsServiceProvider::class,
+        Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
+        Spatie\Activitylog\ActivitylogServiceProvider::class,
 
         /*
          * Application Service Providers...

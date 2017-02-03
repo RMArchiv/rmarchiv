@@ -54,6 +54,9 @@ Route::get('games/{gameid}/screenshot/create/{screenid}', 'ScreenshotController@
 Route::post('games/{gameid}/screenshot/upload/{screenid}', 'ScreenshotController@upload')->name('screenshot.upload');
 Route::get('games/index/{orderby?}/{direction?}', 'GameController@index')->name('games.index.sorted');
 
+//History Routen
+Route::get('history/game/{id}', 'HistoryController@index')->name('history.game.index');
+
 //Reporting Routen
 Route::get('reports', 'ReportController@index');
 Route::get('reports/add/game/{gameid}', 'ReportController@create_game_report');

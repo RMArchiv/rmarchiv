@@ -44,6 +44,7 @@
                                 @permission(('create-games'))
                                     [<a href='{{ route('games.edit', [ 'id' => $game->id]) }}'>edit</a>]
                                 @endpermission
+                                    [<a href="{{ route('history.game.index', ['id' => $game->id]) }}">history</a>]
                                 </div>
                             @endif
                         </th>

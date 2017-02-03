@@ -90,29 +90,28 @@ class GameController extends Controller
 
         $langid = DatabaseHelper::langId_from_short($request->get('language'));
 
-        $gameid = \DB::table('games')->insertGetId([
-            'title' => $request->get('title'),
-            'subtitle' => $request->get('subtitle', ''),
-            'desc_md' => $request->get('desc'),
-            'desc_html' => \Markdown::convertToHtml($request->get('desc')),
-            'website_url' => $request->get('websiteurl', ''),
-            'maker_id' => $request->get('maker'),
-            'lang_id' => $langid,
-            'user_id' => \Auth::id(),
-            'youtube' => $request->get('youtube'),
-            'created_at' => Carbon::now(),
-        ]);
+        $g = new Game;
+        $g->title = $request->get('title');
+        $g->subtitle =  $request->get('subtitle', '');
+        $g->desc_md = $request->get('desc');
+        $g->desc_html = \Markdown::convertToHtml($request->get('desc'));
+        $g->website_url = $request->get('websiteurl', '');
+        $g->maker_id = $request->get('maker');
+        $g->lang_id = $langid;
+        $g->user_id = \Auth::id();
+        $g->youtube = $request->get('youtube');
+        $g->save();
 
         \DB::table('games_developer')->insert([
             'user_id' => \Auth::id(),
-            'game_id' => $gameid,
+            'game_id' => $g->id,
             'developer_id' => $devid,
             'created_at' => Carbon::now(),
         ]);
 
         event(new Obyx('game-add', \Auth::id()));
 
-        return redirect()->action('MsgBoxController@game_add', [$gameid]);
+        return redirect()->action('MsgBoxController@game_add', [$g->id]);
 
     }
 
