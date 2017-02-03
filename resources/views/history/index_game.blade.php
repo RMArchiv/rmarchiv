@@ -1,8 +1,9 @@
 @extends('layouts.app')
-@section('pagetitle', 'historie für: '. $activity->first()->subject->title)
+@section('pagetitle', 'historie')
 @section('content')
     <div id="content">
         <div class='rmarchivtbl' id='rmarchivbox_grouplist'>
+            @if($activity->count() != 0)
             <table id="rmarchiv_creatortable" class='boxtable'>
                 <thead>
                 <tr class='sortable'>
@@ -21,7 +22,6 @@
                 </tr>
                 </thead>
                 @foreach($activity as $a)
-
                         <tr>
                             <td>
                                 {{ $a->description }}
@@ -42,6 +42,9 @@
                         </tr>
                 @endforeach
             </table>
+            @else
+                Hier wurde noch nichts verändert =)
+            @endif
         </div>
     </div>
 @endsection
