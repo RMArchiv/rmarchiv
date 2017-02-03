@@ -4,7 +4,7 @@ Es wird... Echtjetzt.
 ## Vorbereitung für Entwicklung
 Klonen des Scripts
 ```bash
-git clone https://git.x-scripter.com/ryg/quartier_laravel.git quartier
+git clone URL zum Repo quartier
 ```
 Installieren der PHP Abhängigkeiten
 ```bash
