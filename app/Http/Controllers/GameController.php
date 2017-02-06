@@ -26,19 +26,19 @@ class GameController extends Controller
      */
     public function index($orderby = 'title', $direction = 'asc')
     {
-        if($orderby == 'developer.name') {
+        if ($orderby == 'developer.name') {
             $games = Game::Join('games_developer', 'games.id', '=', 'games_developer.game_id')
                 ->Join('developer', 'games_developer.developer_id', '=', 'developer.id')
                 ->orderBy($orderby, $direction)->select('games.*')->paginate(20);
-        }elseif($orderby == 'game.release_date'){
+        }elseif ($orderby == 'game.release_date') {
             $games = Game::Join('games_files', 'games.id', '=', 'games_files.game_id')
                 ->orderBy('games_files.release_year', $direction)
                 ->orderBy('games_files.release_month', $direction)
                 ->orderBy('games_files.release_day', $direction)
                 ->select('games.*')
                 ->paginate(20);
-        }else{
-            $games = Game::orderBy($orderby,$direction)->orderBy('title')->orderBy('subtitle')->paginate(20);
+        }else {
+            $games = Game::orderBy($orderby, $direction)->orderBy('title')->orderBy('subtitle')->paginate(20);
         }
 
         return view('games.index', [
@@ -71,7 +71,7 @@ class GameController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -92,7 +92,7 @@ class GameController extends Controller
 
         $g = new Game;
         $g->title = $request->get('title');
-        $g->subtitle =  $request->get('subtitle', '');
+        $g->subtitle = $request->get('subtitle', '');
         $g->desc_md = $request->get('desc');
         $g->desc_html = \Markdown::convertToHtml($request->get('desc'));
         $g->website_url = $request->get('websiteurl', '');
@@ -122,7 +122,7 @@ class GameController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store_developer(Request $request, $id){
+    public function store_developer(Request $request, $id) {
         $this->validate($request, [
             'developer' => 'required',
         ]);
@@ -238,7 +238,7 @@ class GameController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
@@ -264,21 +264,21 @@ class GameController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        $validate = Input::get('confirm','');
-        if(\Auth::check()){
-            if(\Auth::user()->can('delete-games')){
-                if($validate == 'CONFIRM+'.$id){
+        $validate = Input::get('confirm', '');
+        if (\Auth::check()) {
+            if (\Auth::user()->can('delete-games')) {
+                if ($validate == 'CONFIRM+'.$id) {
                     Game::whereId($id)->delete();
                     GamesFile::whereGameId($id)->delete();
                     Screenshot::whereGameId($id)->delete();
                     GamesDeveloper::whereGameId($id)->delete();
                     Comment::whereContentId($id)->where('content_type', '=', 'game')->delete();
                     TagRelation::whereContentId($id)->where('content_type', '=', 'game')->delete();
-                }else{
+                }else {
                     return redirect()->action('GameController@edit', $id);
                 }
             }
@@ -288,7 +288,7 @@ class GameController extends Controller
         return redirect()->route('home');
     }
 
-    public function destroy_developer(Request $request, $id){
+    public function destroy_developer(Request $request, $id) {
         \DB::table('games_developer')
             ->where('game_id', '=', $id)
             ->where('developer_id', '=', $request->get('devid'))

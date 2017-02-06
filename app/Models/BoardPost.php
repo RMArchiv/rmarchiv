@@ -44,15 +44,15 @@ class BoardPost extends Model
 
     protected $guarded = [];
 
-    public function cat(){
+    public function cat() {
         return $this->belongsTo('App\Models\BoardCat', 'cat_id', 'id');
     }
 
-    public function thread(){
+    public function thread() {
         return $this->belongsTo('App\Models\BoardThread', 'thread_id', 'id');
     }
 
-    public function user(){
+    public function user() {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 }

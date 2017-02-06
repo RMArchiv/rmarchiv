@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 
 class TaggingController extends Controller
 {
-    public function showGames($tagid){
+    public function showGames($tagid) {
         $games = \DB::table('games')
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('tag_relations', function($join){
+            ->leftJoin('tag_relations', function($join) {
                 $join->on('tag_relations.content_id', '=', 'games.id');
                 $join->on('tag_relations.content_type', '=', \DB::raw("'game'"));
             })
@@ -52,7 +52,7 @@ class TaggingController extends Controller
             ->select('id', 'title', 'short')
             ->get();
         $gtypes = array();
-        foreach ($gametypes as $gt){
+        foreach ($gametypes as $gt) {
             $t['title'] = $gt->title;
             $t['short'] = $gt->short;
             $gtypes[$gt->id] = $t;
@@ -64,7 +64,7 @@ class TaggingController extends Controller
         ]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request) {
         $this->validate($request, [
             'title' => 'required',
             'content_id' => 'required',
@@ -81,11 +81,11 @@ class TaggingController extends Controller
             'content_type' => $request->get('content_type'),
         ]);
 
-        if($request->get('content_type') == 'news'){
+        if ($request->get('content_type') == 'news') {
             return \Redirect::action('NewsController@show', $request->get('content_id'));
-        }elseif($request->get('content_type') == 'game'){
+        }elseif ($request->get('content_type') == 'game') {
             return \Redirect::action('GameController@show', $request->get('content_id'));
-        }elseif($request->get('content_type') == 'resource'){
+        }elseif ($request->get('content_type') == 'resource') {
             return \Redirect::action('ResourceController@show', $request->get('content_id'));
         }
 

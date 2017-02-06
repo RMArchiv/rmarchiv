@@ -59,27 +59,27 @@ class Event extends Model
 
     protected $guarded = [];
 
-    public function user(){
+    public function user() {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 
-    public function settings(){
+    public function settings() {
         return $this->hasOne('App\Models\EventSetting', 'event_id', 'id');
     }
 
-    public function meetings(){
+    public function meetings() {
         return $this->hasMany('App\Models\EventMeeting', 'event_id', 'id');
     }
 
-    public function users_registered(){
+    public function users_registered() {
         return $this->hasMany('App\Models\EventUserRegistered', 'event_id', 'id');
     }
 
-    public function pictures(){
+    public function pictures() {
         return $this->hasMany('App\Models\EventPicture', 'event_id', 'id');
     }
 
-    public function comments(){
+    public function comments() {
         return $this->hasMany('App\Models\Comment', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'game'"))->with('user');
     }
 }

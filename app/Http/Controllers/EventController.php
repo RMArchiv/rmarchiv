@@ -12,7 +12,7 @@ class EventController extends Controller
 {
     //-------------------------------------------------
     // Events
-    public function index(){
+    public function index() {
         $events = Event::orderBy('start_date', 'desc')->get();
 
         return view('events.index', [
@@ -20,7 +20,7 @@ class EventController extends Controller
         ]);
     }
 
-    public function show($id){
+    public function show($id) {
         $event = Event::whereId($id)->first();
 
         return view('events.show', [
@@ -28,11 +28,11 @@ class EventController extends Controller
         ]);
     }
 
-    public function create(){
+    public function create() {
         return view('events.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request) {
         dd($request);
         $this->validate($request, [
             'title' => 'required',
@@ -58,9 +58,9 @@ class EventController extends Controller
         $es->reg_price = $request->get('price');
         $es->reg_start_date = $request->get('reg_start');
         $es->reg_end_date = $request->get('reg_end');
-        if($request->get('reg_allowed') == "on"){
+        if ($request->get('reg_allowed') == "on") {
             $es->reg_allowed = 1;
-        }else{
+        }else {
             $es->reg_allowed = 0;
         }
         $es->save();
@@ -68,7 +68,7 @@ class EventController extends Controller
         return redirect()->action('EventController@show', $e->id);
     }
 
-    public function edit($id){
+    public function edit($id) {
         $event = Event::whereId($id)->first();
 
         return view('events.edit', [
@@ -76,7 +76,7 @@ class EventController extends Controller
         ]);
     }
 
-    public function update($id){
+    public function update($id) {
         $e = Event::whereId($id)->first();
         $e->title = Input::get('title');
         $e->description = Input::get('desc');
@@ -94,53 +94,53 @@ class EventController extends Controller
 
     //-------------------------------------------------
     // Meetings
-    public function meeting_index($eventid){
+    public function meeting_index($eventid) {
 
     }
 
-    public function meeting_show($id){
+    public function meeting_show($id) {
 
     }
 
-    public function meeting_create(){
+    public function meeting_create() {
 
     }
 
-    public function meeting_store(){
+    public function meeting_store() {
 
     }
 
-    public function meeting_edit($id){
+    public function meeting_edit($id) {
 
     }
 
-    public function meeting_update($id){
+    public function meeting_update($id) {
 
     }
 
     //-------------------------------------------------
     // Pictures
-    public function picture_index(){
+    public function picture_index() {
 
     }
 
-    public function picture_show($id){
+    public function picture_show($id) {
 
     }
 
-    public function picture_create(){
+    public function picture_create() {
 
     }
 
-    public function picture_store(){
+    public function picture_store() {
 
     }
 
-    public function picture_edit($id){
+    public function picture_edit($id) {
 
     }
 
-    public function picture_update($id){
+    public function picture_update($id) {
 
     }
 }

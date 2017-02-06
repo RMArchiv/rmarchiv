@@ -40,11 +40,11 @@ class EventUserRegistered extends Model
 
     protected $guarded = [];
 
-    public function event(){
+    public function event() {
         return $this->hasOne('App\Models\Event', 'id', 'event_id');
     }
 
-    public function user(){
+    public function user() {
         return $this->hasOne('App\Models\Event', 'id', 'user_id');
     }
         

@@ -42,11 +42,11 @@ class LogoVote extends Model
 
     protected $guarded = [];
 
-    public function user(){
+    public function user() {
         return $this->hasOne('App\Models\User');
     }
 
-    public function logo(){
+    public function logo() {
         return $this->hasOne('App\Models\Logo');
     }
 }

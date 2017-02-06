@@ -20,7 +20,7 @@ class CDCController extends Controller
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function($join) {
                 $join->on('comments.content_id', '=', 'games.id');
                 $join->on('comments.content_type', '=', \DB::raw("'game'"));
             })
@@ -55,13 +55,13 @@ class CDCController extends Controller
             ->select('id', 'title', 'short')
             ->get();
         $gtypes = array();
-        foreach ($gametypes as $gt){
+        foreach ($gametypes as $gt) {
             $t['title'] = $gt->title;
             $t['short'] = $gt->short;
             $gtypes[$gt->id] = $t;
         }
 
-        return view('cdc.index',[
+        return view('cdc.index', [
             'cdcs' => $cdc,
             'gametypes' => $gtypes,
         ]);
@@ -81,7 +81,7 @@ class CDCController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -90,12 +90,12 @@ class CDCController extends Controller
         ]);
 
         // Prüfen ob das Spiel auch wirklich existiert
-        $title = explode(" -=- ",$request->get('gamename'));
+        $title = explode(" -=- ", $request->get('gamename'));
         
-        if(count($title) == 1){
+        if (count($title) == 1) {
             $game = Game::whereTitle($title[0])
                 ->first();
-        }else{
+        }else {
             $game = Game::whereTitle($title[0])
                 ->orWhere('subtitle', '=', $title[1])
                 ->first();

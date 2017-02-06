@@ -9,7 +9,7 @@ use App\Models\Developer;
 
 class AutocompleteController extends Controller
 {
-    public function developer($term){
+    public function developer($term) {
         $result = array();
 
         //$devs = Developer::whereName($term)->get();
@@ -18,14 +18,14 @@ class AutocompleteController extends Controller
             ->where('developer.name', 'like', '%'.$term.'%')
             ->get();
 
-        foreach ($devs as $dev){
+        foreach ($devs as $dev) {
             $result[] = ['id' => $dev->id, 'value' => $dev->name];
         }
 
         return \Response::json($result);
     }
 
-    public function game($term){
+    public function game($term) {
         $result = array();
 
         $games = \DB::table('games')
@@ -38,10 +38,10 @@ class AutocompleteController extends Controller
             ->orWhere('subtitle', 'like', '%'.$term.'%')
             ->get();
 
-        foreach($games as $g){
-            if(is_null($g->subtitle) || $g->subtitle == ''){
+        foreach ($games as $g) {
+            if (is_null($g->subtitle) || $g->subtitle == '') {
                 $result[] = ['id' => $g->id, 'value' => $g->title];
-            }else{
+            }else {
                 $result[] = ['id' => $g->id, 'value' => $g->title.' -=- '.$g->subtitle];
             }
 
@@ -50,28 +50,28 @@ class AutocompleteController extends Controller
         return \Response::json($result);
     }
 
-    public function faqcat($term){
+    public function faqcat($term) {
         $result = array();
 
         //$devs = Developer::whereName($term)->get();
         $devs = \DB::table('faq')
-            ->select(['id','cat'])
+            ->select(['id', 'cat'])
             ->where('faq.cat', 'like', '%'.$term.'%')
             ->groupBy('faq.cat')
             ->get();
 
-        foreach ($devs as $dev){
+        foreach ($devs as $dev) {
             $result[] = ['id' => $dev->id, 'value' => $dev->cat];
         }
 
         return \Response::json($result);
     }
 
-    public function awardpage($term){
+    public function awardpage($term) {
         $result = array();
         $aw = \DB::table('award_pages')->get();
 
-        foreach ($aw as $item){
+        foreach ($aw as $item) {
             $result[] = [
                 'id' => $item->id,
                 'value' => $item->title
@@ -81,11 +81,11 @@ class AutocompleteController extends Controller
         return \Response::json($result);
     }
 
-    public function awardcat($term){
+    public function awardcat($term) {
         $result = array();
         $aw = \DB::table('award_cats')->get();
 
-        foreach ($aw as $item){
+        foreach ($aw as $item) {
             $result[] = [
                 'id' => $item->id,
                 'value' => $item->title
@@ -95,11 +95,11 @@ class AutocompleteController extends Controller
         return \Response::json($result);
     }
 
-    public function awardsubcat($term){
+    public function awardsubcat($term) {
         $result = array();
         $aw = \DB::table('award_subcats')->get();
 
-        foreach ($aw as $item){
+        foreach ($aw as $item) {
             $result[] = [
                 'id' => $item->id,
                 'value' => $item->title
@@ -109,11 +109,11 @@ class AutocompleteController extends Controller
         return \Response::json($result);
     }
 
-    public function user($term){
+    public function user($term) {
         $result = array();
         $users = User::where('name', 'like', '%'.$term.'%')->get();
 
-        foreach ($users as $user){
+        foreach ($users as $user) {
             $result[] = [
                 'id' => $user->id,
                 'value' => $user->name,
