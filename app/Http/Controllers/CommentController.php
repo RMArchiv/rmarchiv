@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Events\Obyx;
 use App\Models\Comment;
-use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Http\Request;
+use GrahamCampbell\Markdown\Facades\Markdown;
 
 class CommentController extends Controller
 {

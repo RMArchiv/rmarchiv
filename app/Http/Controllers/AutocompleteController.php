@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Developer;
 use App\Models\User;
+use App\Models\Developer;
 
 class AutocompleteController extends Controller
 {
