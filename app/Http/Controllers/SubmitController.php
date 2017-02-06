@@ -31,7 +31,6 @@ class SubmitController extends Controller
         ]);
 
         $file = $request->file('file');
-        $ext = $file->getClientOriginalExtension();
         $extorig = $file->getExtension();
 
         $imageName = \Storage::putFile('logos', new UploadedFile($file->path(), $file->getClientOriginalName()));

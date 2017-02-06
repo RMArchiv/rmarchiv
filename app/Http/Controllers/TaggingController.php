@@ -84,7 +84,7 @@ class TaggingController extends Controller
         $tag = Tag::firstOrCreate(['title' => $request->get('title')]);
         $tagid = $tag->id;
 
-        $tagrel = TagRelation::firstOrCreate([
+        TagRelation::firstOrCreate([
             'tag_id' => $tagid,
             'user_id' => \Auth::id(),
             'content_id' => $request->get('content_id'),

@@ -73,12 +73,12 @@ class RegisterController extends Controller
             'is_admin' => 0,
         ]);
 
-        $us = new UserSetting;
-        $us->avatar_path = '';
-        $us->user_id = $user->id;
-        $us->is_admin = 0;
+        $us               = new UserSetting;
+        $us->avatar_path  = '';
+        $us->user_id      = $user->id;
+        $us->is_admin     = 0;
         $us->is_moderator = 0;
-        $us->is_banned = 0;
+        $us->is_banned    = 0;
 
         $us->save();
 

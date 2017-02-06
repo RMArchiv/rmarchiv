@@ -369,8 +369,6 @@ class ResourceController extends Controller
             'content_type' => 'required'
         ]);
 
-        $content_path = '';
-
         if ($request->get('content_type') == 'url') {
             if (filter_var($request->get('url'), FILTER_VALIDATE_URL)) {
                 $content_path = $request->get('url');

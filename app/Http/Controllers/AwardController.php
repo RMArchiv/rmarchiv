@@ -82,7 +82,7 @@ class AwardController extends Controller
         $gametypes = \DB::table('games_files_types')
             ->select('id', 'title', 'short')
             ->get();
-        $gtypes = array();
+        $gtypes    = array();
         foreach ($gametypes as $gt) {
             $t['title'] = $gt->title;
             $t['short'] = $gt->short;

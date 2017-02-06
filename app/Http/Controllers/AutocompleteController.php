@@ -69,7 +69,7 @@ class AutocompleteController extends Controller
 
     public function awardpage($term) {
         $result = array();
-        $aw = \DB::table('award_pages')->get();
+        $aw     = \DB::table('award_pages')->get();
 
         foreach ($aw as $item) {
             $result[] = [
@@ -83,7 +83,7 @@ class AutocompleteController extends Controller
 
     public function awardcat($term) {
         $result = array();
-        $aw = \DB::table('award_cats')->get();
+        $aw     = \DB::table('award_cats')->get();
 
         foreach ($aw as $item) {
             $result[] = [
@@ -97,7 +97,7 @@ class AutocompleteController extends Controller
 
     public function awardsubcat($term) {
         $result = array();
-        $aw = \DB::table('award_subcats')->get();
+        $aw     = \DB::table('award_subcats')->get();
 
         foreach ($aw as $item) {
             $result[] = [
@@ -111,7 +111,7 @@ class AutocompleteController extends Controller
 
     public function user($term) {
         $result = array();
-        $users = User::where('name', 'like', '%'.$term.'%')->get();
+        $users  = User::where('name', 'like', '%'.$term.'%')->get();
 
         foreach ($users as $user) {
             $result[] = [

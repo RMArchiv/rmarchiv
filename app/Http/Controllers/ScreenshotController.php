@@ -16,8 +16,6 @@ class ScreenshotController extends Controller
         $s = Screenshot::whereGameId($gameid)->where('screenshot_id', $screenid)
             ->first();
 
-        $storagePath = '';
-
         //Prüfen ob Screenshots vorhanden sind
         if (is_null($s)) {//Es sind keine Screenshots vorhanden
             $storagePath = public_path().'/assets/no_image.png';
@@ -41,7 +39,6 @@ class ScreenshotController extends Controller
         ]);
 
         $file = $request->file('file');
-        $ext = $file->getClientOriginalExtension();
         $extorig = $file->getExtension();
 
         $imageName = \Storage::putFile('screenshots', new UploadedFile($file->path(), $file->getClientOriginalName()));

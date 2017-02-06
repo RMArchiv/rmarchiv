@@ -30,7 +30,7 @@ class UserListController extends Controller
     }
 
     public function delete_game($listid, $itemid) {
-        $item = \DB::table('user_list_items')
+        \DB::table('user_list_items')
             ->where('list_id', '=', $listid)
             ->where('content_id', '=', $itemid)
             ->where('content_type', '=', 'game')
@@ -42,11 +42,11 @@ class UserListController extends Controller
     public function delete($listid) {
         if (\Auth::check()) {
             if (\Auth::user()->hasRole('admin')) {
-                $item = \DB::table('user_list_items')
+                \DB::table('user_list_items')
                     ->where('list_id', '=', $listid)
                     ->delete();
 
-                $list = \DB::table('user_lists')
+                \DB::table('user_lists')
                     ->where('id', '=', $listid)
                     ->delete();
             } else {
@@ -56,11 +56,11 @@ class UserListController extends Controller
                     ->get();
 
                 if ($list->count() <> 0) {
-                    $list = \DB::table('user_lists')
+                    \DB::table('user_lists')
                         ->where('id', '=', $listid)
                         ->delete();
 
-                    $item = \DB::table('user_list_items')
+                    \DB::table('user_list_items')
                         ->where('list_id', '=', $listid)
                         ->delete();
                 }

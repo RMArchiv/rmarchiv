@@ -26,8 +26,6 @@ class MiscHelper {
 
     public static function getPopularity($views, $max) {
 
-        $ret = 0;
-
         if ($max == 0 || $views == 0) {
             $ret = 0;
         }else {
@@ -39,6 +37,7 @@ class MiscHelper {
 
     /**
      * @param integer $size
+     * @return string
      */
     public static function getReadableBytes($size) {
         $bytes = $size;

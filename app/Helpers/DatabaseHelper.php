@@ -121,8 +121,8 @@ class DatabaseHelper {
     }
 
     public static function developer_add_and_get_developerId($developername) {
-        $d = new Developer;
-        $d->name = $developername;
+        $d          = new Developer;
+        $d->name    = $developername;
         $d->user_id = \Auth::id();
         $d->save();
 
