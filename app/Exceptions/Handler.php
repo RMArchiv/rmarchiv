@@ -49,7 +49,7 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof NotFoundHttpException) {
             return response()->view('errors.404', [], 404);
-        }elseif ($exception instanceof AccessDeniedHttpException) {
+        } elseif ($exception instanceof AccessDeniedHttpException) {
             return response()->view('errors.403', [], 403);
         }
         return parent::render($request, $exception);

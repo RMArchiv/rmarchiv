@@ -49,7 +49,7 @@ class UserListController extends Controller
                 $list = \DB::table('user_lists')
                     ->where('id', '=', $listid)
                     ->delete();
-            }else {
+            } else {
                 $list = \DB::table('user_lists')
                     ->where('id', '=', $listid)
                     ->where('user_id', '=', \Auth::id())

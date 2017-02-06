@@ -209,7 +209,7 @@ class GameFileController extends Controller
         if ($request->get('forbidden') && ($request->get('forbidden') <> '')) {
             $gamefile->forbidden = 1;
             $gamefile->reason = $request->get('forbidden');
-        }else {
+        } else {
             $gamefile->forbidden = 0;
             $gamefile->reason = '';
         }

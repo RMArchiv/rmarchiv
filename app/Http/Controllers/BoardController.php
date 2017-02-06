@@ -58,7 +58,7 @@ class BoardController extends Controller
             \DB::table('board_cats')
                 ->where('id', '=', $catid)
                 ->increment('order');
-        }else {
+        } else {
             \DB::table('board_cats')
                 ->where('id', '=', $catid)
                 ->decrement('order');
@@ -83,11 +83,11 @@ class BoardController extends Controller
         return redirect()->action('BoardController@create_cat');
     }
 
-    public function show_thread($threadid){
+    public function show_thread($threadid) {
         $posts = BoardPost::with('user', 'thread', 'cat')->whereThreadId($threadid)->orderBy('id')->paginate(25);
-        if(!Input::get('page')){
+        if (!Input::get('page')) {
             return redirect('board/thread/'.$threadid.'?page='.$posts->lastPage());
-        }else{
+        }else {
             return view('board.threads.show', [
                 'posts' => $posts,
             ]);

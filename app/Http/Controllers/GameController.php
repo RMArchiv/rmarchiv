@@ -30,14 +30,14 @@ class GameController extends Controller
             $games = Game::Join('games_developer', 'games.id', '=', 'games_developer.game_id')
                 ->Join('developer', 'games_developer.developer_id', '=', 'developer.id')
                 ->orderBy($orderby, $direction)->select('games.*')->paginate(20);
-        }elseif ($orderby == 'game.release_date') {
+        } elseif ($orderby == 'game.release_date') {
             $games = Game::Join('games_files', 'games.id', '=', 'games_files.game_id')
                 ->orderBy('games_files.release_year', $direction)
                 ->orderBy('games_files.release_month', $direction)
                 ->orderBy('games_files.release_day', $direction)
                 ->select('games.*')
                 ->paginate(20);
-        }else {
+        } else {
             $games = Game::orderBy($orderby, $direction)->orderBy('title')->orderBy('subtitle')->paginate(20);
         }
 
@@ -278,7 +278,7 @@ class GameController extends Controller
                     GamesDeveloper::whereGameId($id)->delete();
                     Comment::whereContentId($id)->where('content_type', '=', 'game')->delete();
                     TagRelation::whereContentId($id)->where('content_type', '=', 'game')->delete();
-                }else {
+                } else {
                     return redirect()->action('GameController@edit', $id);
                 }
             }

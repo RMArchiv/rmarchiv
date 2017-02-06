@@ -28,9 +28,9 @@ class MsgBoxController extends Controller
 
         if ($type == 'news') {
             $msg['redirect_to'] = url('news', $id);
-        }elseif ($type == 'game') {
+        } elseif ($type == 'game') {
             $msg['redirect_to'] = url('games', $id);
-        }elseif ($type == 'resource') {
+        } elseif ($type == 'resource') {
             $msg['redirect_to'] = route('resources.show', DatabaseHelper::getResourcePathArray($id));
         }
 

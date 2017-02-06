@@ -374,17 +374,17 @@ class ResourceController extends Controller
         if ($request->get('content_type') == 'url') {
             if (filter_var($request->get('url'), FILTER_VALIDATE_URL)) {
                 $content_path = $request->get('url');
-            }else {
+            } else {
                 return back()->withInput();
             }
-        }else {
+        } else {
             $storagetemp = 'temp/'.$request->get('uuid').'/file';
             $storagedest = 'resources/'.$request->get('uuid').'.'.$request->get('ext');
 
             $exists = \Storage::disk('local')->exists($storagetemp);
             if ($exists === true) {
                 \Storage::move($storagetemp, $storagedest);
-            }else {
+            } else {
                 return back()->withInput();
             }
 

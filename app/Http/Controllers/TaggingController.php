@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class TaggingController extends Controller
 {
-    public function index($orderby = 'tag', $direction = 'asc'){
+    public function index($orderby = 'tag', $direction = 'asc') {
         $tags = Tag::all()->sortBy('title');
 
         return view('tags.index', [
@@ -93,9 +93,9 @@ class TaggingController extends Controller
 
         if ($request->get('content_type') == 'news') {
             return \Redirect::action('NewsController@show', $request->get('content_id'));
-        }elseif ($request->get('content_type') == 'game') {
+        } elseif ($request->get('content_type') == 'game') {
             return \Redirect::action('GameController@show', $request->get('content_id'));
-        }elseif ($request->get('content_type') == 'resource') {
+        } elseif ($request->get('content_type') == 'resource') {
             return \Redirect::action('ResourceController@show', $request->get('content_id'));
         }
 

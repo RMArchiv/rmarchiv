@@ -25,11 +25,11 @@ class CommentController extends Controller
             $comment->vote_up = 1;
             $comment->vote_down = 0;
             event(new Obyx('rating', \Auth::id()));
-        }elseif ($rate == 'down') {
+        } elseif ($rate == 'down') {
             $comment->vote_up = 0;
             $comment->vote_down = 1;
             event(new Obyx('rating', \Auth::id()));
-        }else {
+        } else {
             $comment->vote_up = 0;
             $comment->vote_down = 0;
         }

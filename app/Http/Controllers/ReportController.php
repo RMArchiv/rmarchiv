@@ -40,10 +40,10 @@ class ReportController extends Controller
         if(\Auth::check()){
             if(\Auth::user()->can('admin-games')){
                 $ur = UserReport::all();
-            }else{
+            } else{
                 $ur = UserReport::whereUserId(\Auth::id());
             }
-        }else{
+        } else{
             $ur = null;
         }
 
@@ -52,7 +52,7 @@ class ReportController extends Controller
         ]);
     }
 
-    public function close_ticket($id){
+    public function close_ticket($id) {
         $t = UserReport::whereId($id)->first();
         $t->closed = 1;
         $t->closed_at = Carbon::now();
@@ -62,7 +62,7 @@ class ReportController extends Controller
         return redirect()->action('ReportController@index_user');
     }
 
-    public function open_ticket($id){
+    public function open_ticket($id) {
         $t = UserReport::whereId($id)->first();
         $t->closed = 0;
         $t->closed_at = Carbon::now();
@@ -72,7 +72,7 @@ class ReportController extends Controller
         return redirect()->action('ReportController@index_user');
     }
 
-    public function remark_ticket($id){
+    public function remark_ticket($id) {
 
     }
 }

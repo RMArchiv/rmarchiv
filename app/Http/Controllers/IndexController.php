@@ -92,7 +92,7 @@ class IndexController extends Controller
 
         if (\Auth::check()) {
             $pm = \Auth::user()->newThreadsCount();
-        }else {
+        } else {
             $pm = '';
         }
 
