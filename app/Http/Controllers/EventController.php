@@ -65,7 +65,7 @@ class EventController extends Controller
         }
         $es->save();
 
-        return redirect()->action('EventController@show', $e->id);
+        return redirect()->action('EventController@show', [$e->id]);
     }
 
     public function edit($id) {
