@@ -9,7 +9,7 @@ use Doctrine\DBAL\Driver\IBMDB2\DB2Connection;
 
 class UserCreditsController extends Controller
 {
-    public function store(Request $request, $id){
+    public function store(Request $request, $id) {
         $this->validate($request, [
             'user' => 'required',
             'credit' => 'required|not_in:0',
@@ -27,7 +27,7 @@ class UserCreditsController extends Controller
         return redirect()->action('GameController@edit', [$id]);
     }
 
-    public function destroy($id, $credit_id){
+    public function destroy($id, $credit_id) {
         \DB::table('user_credits')
             ->where('game_id', '=', $id)
             ->where('id', '=', $credit_id)

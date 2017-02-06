@@ -34,11 +34,11 @@ class EventAdmin extends Model
 
     protected $guarded = [];
 
-    public function user(){
+    public function user() {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 
-    public function event(){
+    public function event() {
         return $this->hasOne('App\Models\Event', 'id', 'user_id');
     }
         

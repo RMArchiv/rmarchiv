@@ -7,7 +7,7 @@ use Khill\Lavacharts\Lavacharts;
 
 class StatsticController extends Controller
 {
-    public function show(){
+    public function show() {
         $lava_config = [
             'legend' => [
                 'position' => 'in',
@@ -74,7 +74,7 @@ class StatsticController extends Controller
         $com = $lava->DataTable();
         $com->addStringColumn('Datum')
             ->addNumberColumn('Kommentare pro Monat');
-        foreach ($comments as $comment){
+        foreach ($comments as $comment) {
             $com->addRow([$comment->year.'-'.$comment->month, $comment->count]);
         }
         $lava->AreaChart('Kommentare', $com, $lava_config);
@@ -89,7 +89,7 @@ class StatsticController extends Controller
         $com = $lava->DataTable();
         $com->addStringColumn('Datum')
             ->addNumberColumn('Releases pro Jahr');
-        foreach ($gamesperyear as $game){
+        foreach ($gamesperyear as $game) {
             $com->addRow([$game->year, $game->count]);
         }
         $lava->AreaChart('Releases', $com, $lava_config);
@@ -104,12 +104,12 @@ class StatsticController extends Controller
         $com = $lava->DataTable();
         $com->addStringColumn('Datum')
             ->addNumberColumn('Releases pro Monat');
-        foreach ($gamespermonth as $game){
+        foreach ($gamespermonth as $game) {
             $com->addRow([$game->year, $game->count]);
         }
         $lava->AreaChart('ReleasesMon', $com, $lava_config);
 
-        return view('statistics.index',[
+        return view('statistics.index', [
             'lava' => $lava,
         ]);
 

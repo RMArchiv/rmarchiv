@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Redirect;
 
 class ResourceController extends Controller
 {
-    public function index(){
+    public function index() {
         $res = \DB::table('resources')
             ->leftJoin('users', 'users.id', '=', 'resources.user_id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function($join) {
                 $join->on('comments.content_id', '=', 'resources.id');
                 $join->on('comments.content_type', '=', \DB::raw("'resource'"));
             })
@@ -37,16 +37,16 @@ class ResourceController extends Controller
             ->limit(20)
             ->get();
 
-        return view('resources.index',[
+        return view('resources.index', [
             'resources' => $res,
             'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
         ]);
     }
 
-    public function index_gfx(){
+    public function index_gfx() {
         $res = \DB::table('resources')
             ->leftJoin('users', 'users.id', '=', 'resources.user_id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function($join) {
                 $join->on('comments.content_id', '=', 'resources.id');
                 $join->on('comments.content_type', '=', \DB::raw("'resource'"));
             })
@@ -70,16 +70,16 @@ class ResourceController extends Controller
             ->limit(20)
             ->get();
 
-        return view('resources.gfx.index',[
+        return view('resources.gfx.index', [
             'resources' => $res,
             'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
         ]);
     }
 
-    public function index_sfx(){
+    public function index_sfx() {
         $res = \DB::table('resources')
             ->leftJoin('users', 'users.id', '=', 'resources.user_id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function($join) {
                 $join->on('comments.content_id', '=', 'resources.id');
                 $join->on('comments.content_type', '=', \DB::raw("'resource'"));
             })
@@ -103,16 +103,16 @@ class ResourceController extends Controller
             ->limit(20)
             ->get();
 
-        return view('resources.sfx.index',[
+        return view('resources.sfx.index', [
             'resources' => $res,
             'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
         ]);
     }
 
-    public function index_scripts(){
+    public function index_scripts() {
         $res = \DB::table('resources')
             ->leftJoin('users', 'users.id', '=', 'resources.user_id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function($join) {
                 $join->on('comments.content_id', '=', 'resources.id');
                 $join->on('comments.content_type', '=', \DB::raw("'resource'"));
             })
@@ -136,16 +136,16 @@ class ResourceController extends Controller
             ->limit(20)
             ->get();
 
-        return view('resources.scripts.index',[
+        return view('resources.scripts.index', [
             'resources' => $res,
             'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
         ]);
     }
 
-    public function index_tools(){
+    public function index_tools() {
         $res = \DB::table('resources')
             ->leftJoin('users', 'users.id', '=', 'resources.user_id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function($join) {
                 $join->on('comments.content_id', '=', 'resources.id');
                 $join->on('comments.content_type', '=', \DB::raw("'resource'"));
             })
@@ -169,15 +169,15 @@ class ResourceController extends Controller
             ->limit(20)
             ->get();
 
-        return view('resources.tools.index',[
+        return view('resources.tools.index', [
             'resources' => $res,
             'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
-        ]);    }
+        ]); }
 
-    public function index_gfx_cat($cat){
+    public function index_gfx_cat($cat) {
         $res = \DB::table('resources')
             ->leftJoin('users', 'users.id', '=', 'resources.user_id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function($join) {
                 $join->on('comments.content_id', '=', 'resources.id');
                 $join->on('comments.content_type', '=', \DB::raw("'resource'"));
             })
@@ -201,16 +201,16 @@ class ResourceController extends Controller
             ->orderBy('resources.created_at', 'desc')
             ->get();
 
-        return view('resources.gfx.index_cat',[
+        return view('resources.gfx.index_cat', [
             'resources' => $res,
             'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
         ]);
     }
 
-    public function index_sfx_cat($cat){
+    public function index_sfx_cat($cat) {
         $res = \DB::table('resources')
             ->leftJoin('users', 'users.id', '=', 'resources.user_id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function($join) {
                 $join->on('comments.content_id', '=', 'resources.id');
                 $join->on('comments.content_type', '=', \DB::raw("'resource'"));
             })
@@ -234,16 +234,16 @@ class ResourceController extends Controller
             ->orderBy('resources.created_at', 'desc')
             ->get();
 
-        return view('resources.sfx.index_cat',[
+        return view('resources.sfx.index_cat', [
             'resources' => $res,
             'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
         ]);
     }
 
-    public function index_scripts_cat($cat){
+    public function index_scripts_cat($cat) {
         $res = \DB::table('resources')
             ->leftJoin('users', 'users.id', '=', 'resources.user_id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function($join) {
                 $join->on('comments.content_id', '=', 'resources.id');
                 $join->on('comments.content_type', '=', \DB::raw("'resource'"));
             })
@@ -267,16 +267,16 @@ class ResourceController extends Controller
             ->orderBy('resources.created_at', 'desc')
             ->get();
 
-        return view('resources.scripts.index_cat',[
+        return view('resources.scripts.index_cat', [
             'resources' => $res,
             'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
         ]);
     }
 
-    public function index_tools_cat($cat){
+    public function index_tools_cat($cat) {
         $res = \DB::table('resources')
             ->leftJoin('users', 'users.id', '=', 'resources.user_id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function($join) {
                 $join->on('comments.content_id', '=', 'resources.id');
                 $join->on('comments.content_type', '=', \DB::raw("'resource'"));
             })
@@ -300,16 +300,16 @@ class ResourceController extends Controller
             ->orderBy('resources.created_at', 'desc')
             ->get();
 
-        return view('resources.tools.index_cat',[
+        return view('resources.tools.index_cat', [
             'resources' => $res,
             'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
         ]);
     }
 
-    public function show($type, $cat, $id){
+    public function show($type, $cat, $id) {
         $resource = \DB::table('resources')
             ->leftJoin('users', 'resources.user_id', '=', 'users.id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function($join) {
                 $join->on('comments.content_id', '=', 'resources.id');
                 $join->on('comments.content_type', '=', \DB::raw("'resource'"));
             })
@@ -348,18 +348,18 @@ class ResourceController extends Controller
         ]);
     }
 
-    public function create(){
+    public function create() {
         return view('resources.create');
     }
 
-    public function create_steps(Request $request){
+    public function create_steps(Request $request) {
         return view('resources.create', [
             'request' => $request,
         ]);
 
     }
 
-    public function store(Request $request){
+    public function store(Request $request) {
         $this->validate($request, [
             'step' => 'required',
             'type' => 'required|not_in:0',
@@ -371,20 +371,20 @@ class ResourceController extends Controller
 
         $content_path = '';
 
-        if($request->get('content_type') == 'url'){
-            if(filter_var($request->get('url'), FILTER_VALIDATE_URL)){
+        if ($request->get('content_type') == 'url') {
+            if (filter_var($request->get('url'), FILTER_VALIDATE_URL)) {
                 $content_path = $request->get('url');
-            }else{
+            }else {
                 return back()->withInput();
             }
-        }else{
+        }else {
             $storagetemp = 'temp/'.$request->get('uuid').'/file';
             $storagedest = 'resources/'.$request->get('uuid').'.'.$request->get('ext');
 
             $exists = \Storage::disk('local')->exists($storagetemp);
-            if($exists === true) {
+            if ($exists === true) {
                 \Storage::move($storagetemp, $storagedest);
-            }else{
+            }else {
                 return back()->withInput();
             }
 

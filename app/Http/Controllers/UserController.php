@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index(){
+    public function index() {
         $user = User::orderBy('name')->paginate(15);
 
         //name
@@ -44,7 +44,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function show($userid){
+    public function show($userid) {
 
         $user = \DB::table('users as u')
             ->leftJoin('user_role_user as uru', 'u.id', '=', 'uru.user_id')
@@ -75,10 +75,10 @@ class UserController extends Controller
         ]);
     }
 
-    public function admin($userid){
+    public function admin($userid) {
 
-        if(\Auth::check()){
-            if(\Auth::user()->settings->is_admin == 1){
+        if (\Auth::check()) {
+            if (\Auth::user()->settings->is_admin == 1) {
                 $user = User::whereId($userid)->first();
 
                 $perms = UserRole::all();
@@ -92,7 +92,7 @@ class UserController extends Controller
 
     }
 
-    public function admin_store(Request $request, $userid){
+    public function admin_store(Request $request, $userid) {
 
         $role = UserRole::all()->where('id', '=', $request->get('perm'))->first();
         $user = User::find($userid);
@@ -103,7 +103,7 @@ class UserController extends Controller
         return redirect()->action('UserController@admin', [$userid]);
     }
 
-    public function activity_index(){
+    public function activity_index() {
         $data = UserObyx::with('obyx', 'user')->orderBy('created_at', 'desc')->paginate(25);
 
         return view('users.activity.index', [

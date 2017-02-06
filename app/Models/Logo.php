@@ -43,15 +43,15 @@ class Logo extends Model
 
     protected $guarded = [];
 
-    public function user(){
+    public function user() {
         return $this->belongsTo('App\Models\User');
     }
 
-    public function logovote(){
+    public function logovote() {
         return $this->belongsToMany('App\Models\LogoVote');
     }
 
-    public function voteresult(){
+    public function voteresult() {
         $up = LogoVote::whereLogoId($this->id)->selectRaw('SUM(up) as sumup, SUM(down) as sumdown');
 
         $res = $up->get(array('sumup', 'sumdown'));

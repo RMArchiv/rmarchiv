@@ -56,19 +56,19 @@ class GamesAward extends Model
 
     protected $guarded = [];
 
-    public function user(){
+    public function user() {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 
-    public function cat(){
+    public function cat() {
         return $this->hasOne('App\Models\AwardCat', 'id', 'award_cat_id');
     }
 
-    public function page(){
+    public function page() {
         return $this->hasOne('App\Models\AwardPage', 'id', 'award_page_id');
     }
 
-    public function subcat(){
+    public function subcat() {
         return $this->hasOne('App\Models\AwardSubcat', 'id', 'award_subcat_id');
     }
 }

@@ -39,7 +39,7 @@ class TagRelation extends Model
 
     protected $guarded = [];
 
-    public function tag(){
+    public function tag() {
         return $this->hasOne('App\Models\Tag', 'id', 'tag_id');
     }
 }

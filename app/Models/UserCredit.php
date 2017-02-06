@@ -37,11 +37,11 @@ class UserCredit extends Model
 
     protected $guarded = [];
 
-    public function type(){
+    public function type() {
         return $this->hasOne('App\Models\UserCreditType', 'id', 'credit_type_id');
     }
 
-    public function user(){
+    public function user() {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 }

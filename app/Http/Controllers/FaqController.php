@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 class FaqController extends Controller
 {
-    public function index(){
+    public function index() {
         $faq = \DB::table('faq')
             ->get();
 
         $res = array();
-        foreach ($faq as $f){
+        foreach ($faq as $f) {
             $t['id'] = $f->id;
             $t['cat'] = $f->cat;
             $t['title'] = $f->title;
@@ -26,11 +26,11 @@ class FaqController extends Controller
         ]);
     }
 
-    public function create(){
+    public function create() {
         return view('faq.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request) {
         $this->validate($request, [
             'cat' => 'required',
             'title' => 'required',

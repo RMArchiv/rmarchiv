@@ -41,7 +41,7 @@ class Maker extends Model
 
     protected $guarded = [];
 
-    public function game(){
+    public function game() {
         return $this->belongsTo('App\Models\Game');
     }
 }

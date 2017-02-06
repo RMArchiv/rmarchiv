@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class ShoutboxController extends Controller
 {
-    public function store(Request $request){
+    public function store(Request $request) {
         $this->validate($request, [
             'shout' => 'required',
         ]);
@@ -27,7 +27,7 @@ class ShoutboxController extends Controller
         return redirect()->route('home');
     }
 
-    public function index(){
+    public function index() {
         $shoutbox = Shoutbox::with('user')->orderBy('created_at', 'desc')->paginate(25);
 
         $elo = \DB::table('shoutbox')

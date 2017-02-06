@@ -10,7 +10,7 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 
 class CommentController extends Controller
 {
-    public function add(Request $request){
+    public function add(Request $request) {
         $comment = new Comment;
 
         $comment->user_id = \Auth::id();
@@ -21,15 +21,15 @@ class CommentController extends Controller
 
         $rate = $request->get('rating');
 
-        if($rate == 'up'){
+        if ($rate == 'up') {
             $comment->vote_up = 1;
             $comment->vote_down = 0;
             event(new Obyx('rating', \Auth::id()));
-        }elseif($rate == 'down'){
+        }elseif ($rate == 'down') {
             $comment->vote_up = 0;
             $comment->vote_down = 1;
             event(new Obyx('rating', \Auth::id()));
-        }else{
+        }else {
             $comment->vote_up = 0;
             $comment->vote_down = 0;
         }
@@ -39,6 +39,6 @@ class CommentController extends Controller
         event(new Obyx('comment', \Auth::id()));
 
 
-        return redirect()->action('MsgBoxController@comment_add', [$request->get('content_type') ,$request->get('content_id')]);
+        return redirect()->action('MsgBoxController@comment_add', [$request->get('content_type'), $request->get('content_id')]);
     }
 }

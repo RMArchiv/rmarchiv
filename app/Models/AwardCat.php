@@ -45,11 +45,11 @@ class AwardCat extends Model
 
     protected $guarded = [];
 
-    public function awardpage(){
+    public function awardpage() {
         return $this->hasOne('App\Models\AwardPage', 'id', 'award_page_id');
     }
 
-    public function user(){
+    public function user() {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 
