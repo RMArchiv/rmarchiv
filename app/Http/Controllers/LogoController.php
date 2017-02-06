@@ -10,15 +10,15 @@ use Illuminate\Http\Request;
 class LogoController extends Controller
 {
 
-    public function vote_get(){
+    public function vote_get() {
         $logos = array();
 
-        if(\Auth::check()){
+        if (\Auth::check()) {
             $logos = \DB::table('logos')
                 ->leftJoin('logo_votes', 'logos.id', '=', 'logo_votes.logo_id')
                 ->leftJoin('users', 'logos.user_id', '=', 'users.id')
                 ->select(['logos.id', 'logos.filename', 'logos.title', 'users.name', 'logos.user_id'])
-                ->whereNotExists(function($query){
+                ->whereNotExists(function($query) {
                     $query->select(\DB::raw(1))
                         ->from('logo_votes')
                         ->whereRaw('logo_votes.logo_id = logos.id')
@@ -31,15 +31,15 @@ class LogoController extends Controller
         return view('logo.index', ['logo' => $logos]);
     }
 
-    public function vote_add($id, Request $request){
+    public function vote_add($id, Request $request) {
 
         $lv = new LogoVote;
         $lv->logo_id = $id;
         $lv->user_id = \Auth::id();
-        if($request->get('value') == 0){
+        if ($request->get('value') == 0) {
             $lv->down = 1;
             $lv->up = 0;
-        }else{
+        }else {
             $lv->down = 0;
             $lv->up = 1;
         }

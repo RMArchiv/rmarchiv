@@ -2,8 +2,8 @@
 
 namespace App\Helpers;
 
-class CheckRateable{
-    public static function checkRateable($content_type, $content_id, $user_id){
+class CheckRateable {
+    public static function checkRateable($content_type, $content_id, $user_id) {
         $up = 0;
         $down = 0;
 
@@ -14,9 +14,9 @@ class CheckRateable{
             ->where('comments.user_id', '=', $user_id)
             ->first();
 
-        if($comments->up > 0 || $comments->down > 0){
+        if ($comments->up > 0 || $comments->down > 0) {
             return false;
-        }else{
+        }else {
             return true;
         }
     }

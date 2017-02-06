@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class AwardController extends Controller
 {
-    public function index(){
+    public function index() {
 
         $awards = \DB::table('award_cats')
             ->leftJoin('award_pages', 'award_cats.award_page_id', '=', 'award_pages.id')
@@ -27,7 +27,7 @@ class AwardController extends Controller
         ]);
     }
 
-    public function show($awardid){
+    public function show($awardid) {
         $award = \DB::table('award_cats')
             ->leftJoin('award_pages', 'award_pages.id', '=', 'award_cats.award_page_id')
             ->select([
@@ -83,7 +83,7 @@ class AwardController extends Controller
             ->select('id', 'title', 'short')
             ->get();
         $gtypes = array();
-        foreach ($gametypes as $gt){
+        foreach ($gametypes as $gt) {
             $t['title'] = $gt->title;
             $t['short'] = $gt->short;
             $gtypes[$gt->id] = $t;
@@ -105,7 +105,7 @@ class AwardController extends Controller
         ]);
     }
 
-    public function create(){
+    public function create() {
         $pages = \DB::table('award_pages')
             ->orderBy('title')
             ->get();
@@ -131,13 +131,13 @@ class AwardController extends Controller
         ]);
     }
 
-    public function gameadd($subcatid){
+    public function gameadd($subcatid) {
         return view('awards.gameadd', [
             'subcatid' => $subcatid,
         ]);
     }
 
-    public function gameadd_store(Request $request){
+    public function gameadd_store(Request $request) {
         $this->validate($request, [
             'game' => 'required|numeric',
             'place' => 'required|numeric',
@@ -155,7 +155,7 @@ class AwardController extends Controller
 
         //dd($check);
 
-        if($check->count() == 0){
+        if ($check->count() == 0) {
             \DB::table('games_awards')->insert([
                 'game_id' => $request->get('game'),
                 'developer_id' => 0,
@@ -173,7 +173,7 @@ class AwardController extends Controller
 
     }
 
-    public function store_page(Request $request){
+    public function store_page(Request $request) {
         $this->validate($request, [
             'awardpage' => 'required',
         ]);
@@ -182,7 +182,7 @@ class AwardController extends Controller
             ->where('title', '=', $request->get('awardpage'))
             ->get();
 
-        if($check->count() == 0){
+        if ($check->count() == 0) {
             \DB::table('award_pages')->insert([
                 'title' => $request->get('awardpage'),
                 'website_url' => $request->get('awardpageurl'),
@@ -194,7 +194,7 @@ class AwardController extends Controller
         return redirect()->action('AwardController@create');
     }
 
-    public function store_cat(Request $request){
+    public function store_cat(Request $request) {
         $this->validate($request, [
             'awardpage' => 'required|not_in:0',
             'awardname' => 'required',
@@ -208,7 +208,7 @@ class AwardController extends Controller
             ->where('award_page_id', '=', $request->get('awardpage'))
             ->get();
 
-        if($check->count() == 0){
+        if ($check->count() == 0) {
             \DB::table('award_cats')->insert([
                 'title' => $request->get('awardname'),
                 'award_page_id' => $request->get('awardpage'),
@@ -222,13 +222,13 @@ class AwardController extends Controller
         return redirect()->action('AwardController@create');
     }
 
-    public function store_subcat(Request $request){
+    public function store_subcat(Request $request) {
         $this->validate($request, [
             'award' => 'required|not_in:0',
             'awardsubcat' => 'required',
         ]);
 
-        $aw = explode('-',$request->get('award'));
+        $aw = explode('-', $request->get('award'));
 
         $check = \DB::table('award_subcats')
             ->where('cat_id', '=', $aw[1])
@@ -236,7 +236,7 @@ class AwardController extends Controller
             ->where('title', '=', $request->get('awardsubcat'))
             ->get();
 
-        if($check->count() == 0){
+        if ($check->count() == 0) {
             \DB::table('award_subcats')->insert([
                 'title' => $request->get('awardsubcat'),
                 'created_at' => Carbon::now(),

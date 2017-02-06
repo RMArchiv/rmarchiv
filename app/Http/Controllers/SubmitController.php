@@ -14,17 +14,17 @@ use Illuminate\Http\UploadedFile;
 
 class SubmitController extends Controller
 {
-    public function index(){
+    public function index() {
         //Zeige Submit View
         return view('submit.index');
     }
 
-    public function logo_index(){
+    public function logo_index() {
         //Zeige View zum Einsenden eines Logos
         return view('submit.logo.index');
     }
 
-    public function logo_add(Request $request){
+    public function logo_add(Request $request) {
         $this->validate($request, [
             'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'logoname' => 'required',

@@ -7,16 +7,16 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function index(){
+    public function index() {
         return view('search.index');
     }
 
-    public function search(Request $request){
+    public function search(Request $request) {
         $games = \DB::table('games')
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function($join) {
                 $join->on('comments.content_id', '=', 'games.id');
                 $join->on('comments.content_type', '=', \DB::raw("'game'"));
             })
@@ -53,7 +53,7 @@ class SearchController extends Controller
             ->select('id', 'title', 'short')
             ->get();
         $gtypes = array();
-        foreach ($gametypes as $gt){
+        foreach ($gametypes as $gt) {
             $t['title'] = $gt->title;
             $t['short'] = $gt->short;
             $gtypes[$gt->id] = $t;

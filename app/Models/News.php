@@ -48,11 +48,11 @@ class News extends Model
 
     protected $guarded = [];
 
-    public function user(){
+    public function user() {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 
-    public function comments(){
+    public function comments() {
         return $this->hasMany('App\Models\Comment', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'news'"))->with('user');
     }
 }

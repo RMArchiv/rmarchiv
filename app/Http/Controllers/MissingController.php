@@ -8,16 +8,16 @@ use Illuminate\Http\Request;
 class MissingController extends Controller
 {
     //Spiele mit fehlenden Screenshots anzeigen
-    public function index_gamescreens(){
+    public function index_gamescreens() {
         $games = \DB::table('games')
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function($join) {
                 $join->on('comments.content_id', '=', 'games.id');
                 $join->on('comments.content_type', '=', \DB::raw("'game'"));
             })
-            ->leftJoin('screenshots', function($join){
+            ->leftJoin('screenshots', function($join) {
                 $join->on('screenshots.game_id', '=', 'games.id');
                 $join->on('screenshots.screenshot_id', '=', \DB::raw("1"));
             })
@@ -50,7 +50,7 @@ class MissingController extends Controller
             ->select('id', 'title', 'short')
             ->get();
         $gtypes = array();
-        foreach ($gametypes as $gt){
+        foreach ($gametypes as $gt) {
             $t['title'] = $gt->title;
             $t['short'] = $gt->short;
             $gtypes[$gt->id] = $t;
@@ -64,16 +64,16 @@ class MissingController extends Controller
     }
 
     //Spiele mit fehlenden Spieledateien anzeigen
-    public function index_gamefiles(){
+    public function index_gamefiles() {
         $games = \DB::table('games')
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function($join) {
                 $join->on('comments.content_id', '=', 'games.id');
                 $join->on('comments.content_type', '=', \DB::raw("'game'"));
             })
-            ->leftJoin('screenshots', function($join){
+            ->leftJoin('screenshots', function($join) {
                 $join->on('screenshots.game_id', '=', 'games.id');
                 $join->on('screenshots.screenshot_id', '=', \DB::raw("1"));
             })
@@ -106,7 +106,7 @@ class MissingController extends Controller
             ->select('id', 'title', 'short')
             ->get();
         $gtypes = array();
-        foreach ($gametypes as $gt){
+        foreach ($gametypes as $gt) {
             $t['title'] = $gt->title;
             $t['short'] = $gt->short;
             $gtypes[$gt->id] = $t;
@@ -120,16 +120,16 @@ class MissingController extends Controller
     }
 
     //Spiele mit fehlender Spielebeschreibung anzeigen
-    public function index_gamedesc(){
+    public function index_gamedesc() {
         $games = \DB::table('games')
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function($join) {
                 $join->on('comments.content_id', '=', 'games.id');
                 $join->on('comments.content_type', '=', \DB::raw("'game'"));
             })
-            ->leftJoin('screenshots', function($join){
+            ->leftJoin('screenshots', function($join) {
                 $join->on('screenshots.game_id', '=', 'games.id');
                 $join->on('screenshots.screenshot_id', '=', \DB::raw("1"));
             })
@@ -163,7 +163,7 @@ class MissingController extends Controller
             ->select('id', 'title', 'short')
             ->get();
         $gtypes = array();
-        foreach ($gametypes as $gt){
+        foreach ($gametypes as $gt) {
             $t['title'] = $gt->title;
             $t['short'] = $gt->short;
             $gtypes[$gt->id] = $t;

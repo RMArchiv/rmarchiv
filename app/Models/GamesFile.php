@@ -69,11 +69,11 @@ class GamesFile extends Model
     protected $guarded = [];
     protected $dates = ['deleted_at'];
 
-    public function gamefiletype(){
+    public function gamefiletype() {
         return $this->hasOne('App\Models\GamesFilesType', 'id', 'release_type');
     }
 
-    public function game(){
+    public function game() {
         return $this->belongsTo('App\Models\Game', 'game_id', 'id')->with('maker', 'developers');
     }
         

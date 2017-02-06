@@ -42,7 +42,7 @@ class EventMeeting extends Model
 
     protected $guarded = [];
 
-    public function event(){
+    public function event() {
         return $this->hasOne('App\Models\Event', 'id', 'event_id');
     }
 }

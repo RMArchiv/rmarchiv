@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class GameFileController extends Controller
 {
 
-    public function download($id){
+    public function download($id) {
 
         \DB::table('games_files')
             ->where('id', '=', $id)
@@ -51,7 +51,7 @@ class GameFileController extends Controller
         return response()->download($filepath, $newfilename);
     }
 
-    public function download_wo_count(Request $request){
+    public function download_wo_count(Request $request) {
         $filepath = storage_path('app/public/'.$request->get('filename'));
 
         $newfilename = $request->get('id');
@@ -59,7 +59,7 @@ class GameFileController extends Controller
         return response()->download($filepath, $newfilename);
     }
 
-    public function create($id){
+    public function create($id) {
         $gamefiles = \DB::table('games_files')
             ->select([
                 'games_files.id as fileid',
@@ -103,7 +103,7 @@ class GameFileController extends Controller
         ]);
     }
 
-    public function store(Request $request, $id){
+    public function store(Request $request, $id) {
 
         $this->validate($request, [
             'uuid' => 'required',
@@ -123,7 +123,7 @@ class GameFileController extends Controller
 
         $exists = \Storage::disk('local')->exists($storagetemp);
 
-        if($exists === true){
+        if ($exists === true) {
             \Storage::move($storagetemp, $storagedest);
 
             \DB::table('games_files')->insert([
@@ -147,7 +147,7 @@ class GameFileController extends Controller
 
     }
 
-    public function destroy(Request $request, $id, $fileid){
+    public function destroy(Request $request, $id, $fileid) {
 
         $gf = GamesFile::whereId($fileid)->first();
         \Storage::delete($gf->filename);
@@ -157,7 +157,7 @@ class GameFileController extends Controller
         return redirect()->route('gamefiles.index', [$id]);
     }
 
-    public function edit($id, $gamefileid){
+    public function edit($id, $gamefileid) {
         $gamefile = GamesFile::whereId($gamefileid)->first();
         $filetypes = GamesFilesType::get();
 
@@ -167,7 +167,7 @@ class GameFileController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id, $gamefileid){
+    public function update(Request $request, $id, $gamefileid) {
         $this->validate($request, [
             //'uuid' => 'required',
             'version' => 'required',
@@ -185,7 +185,7 @@ class GameFileController extends Controller
         $gamefile->release_year = $request->get('releasedate_year');
         $gamefile->release_type = $request->get('filetype');
 
-        if($request->get('uuid')){
+        if ($request->get('uuid')) {
             \Storage::delete($gamefile->filename);
 
             $storagetemp = 'temp/'.$request->get('uuid').'/file';
@@ -197,7 +197,7 @@ class GameFileController extends Controller
 
             $exists = \Storage::disk('local')->exists($storagetemp);
 
-            if($exists === true){
+            if ($exists === true) {
                 \Storage::move($storagetemp, $storagedest);
                 $gamefile->filesize = $meta['size'];
                 $gamefile->extension = $meta['ext'];
@@ -206,10 +206,10 @@ class GameFileController extends Controller
             }
         }
 
-        if($request->get('forbidden') && ($request->get('forbidden') <> '')){
+        if ($request->get('forbidden') && ($request->get('forbidden') <> '')) {
             $gamefile->forbidden = 1;
             $gamefile->reason = $request->get('forbidden');
-        }else{
+        }else {
             $gamefile->forbidden = 0;
             $gamefile->reason = '';
         }

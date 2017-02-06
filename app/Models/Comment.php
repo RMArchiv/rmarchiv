@@ -58,15 +58,15 @@ class Comment extends Model
 
     protected $guarded = [];
 
-    public function content(){
+    public function content() {
         return $this->morphTo();
     }
 
-    public function user(){
+    public function user() {
         return $this->belongsTo('App\Models\User');
     }
 
-    public function game(){
+    public function game() {
         return $this->hasOne('App\Models\Game', 'id', 'content_id')->with('user', 'maker', 'gamefiles', 'language');
     }
 

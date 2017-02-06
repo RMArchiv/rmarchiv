@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class UserListController extends Controller
 {
-    public function create(){
+    public function create() {
         return view('users.lists.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request) {
         $this->validate($request, [
             'title' => 'required',
             'desc' => 'required',
@@ -29,7 +29,7 @@ class UserListController extends Controller
         return \Redirect::back();
     }
 
-    public function delete_game($listid, $itemid){
+    public function delete_game($listid, $itemid) {
         $item = \DB::table('user_list_items')
             ->where('list_id', '=', $listid)
             ->where('content_id', '=', $itemid)
@@ -39,9 +39,9 @@ class UserListController extends Controller
         return \Redirect::back();
     }
 
-    public function delete($listid){
-        if(\Auth::check()){
-            if(\Auth::user()->hasRole('admin')){
+    public function delete($listid) {
+        if (\Auth::check()) {
+            if (\Auth::user()->hasRole('admin')) {
                 $item = \DB::table('user_list_items')
                     ->where('list_id', '=', $listid)
                     ->delete();
@@ -49,13 +49,13 @@ class UserListController extends Controller
                 $list = \DB::table('user_lists')
                     ->where('id', '=', $listid)
                     ->delete();
-            }else{
+            }else {
                 $list = \DB::table('user_lists')
                     ->where('id', '=', $listid)
                     ->where('user_id', '=', \Auth::id())
                     ->get();
 
-                if($list->count() <> 0){
+                if ($list->count() <> 0) {
                     $list = \DB::table('user_lists')
                         ->where('id', '=', $listid)
                         ->delete();
@@ -70,14 +70,14 @@ class UserListController extends Controller
         return \Redirect::back();
     }
 
-    public function add_game(Request $request, $listid, $gameid){
-        if(\Auth::check()){
+    public function add_game(Request $request, $listid, $gameid) {
+        if (\Auth::check()) {
             $check = \DB::table('user_list_items')
                 ->where('content_id', '=', $gameid)
                 ->where('content_type', '=', 'game')
                 ->where('list_id', '=', $listid)
                 ->get();
-            if($check->count() == 0){
+            if ($check->count() == 0) {
                 \DB::table('user_list_items')->insert([
                     'content_id' => $gameid,
                     'content_type' => 'game',
@@ -91,7 +91,7 @@ class UserListController extends Controller
         return \Redirect::action('GameController@show', $gameid);
     }
 
-    public function show($userid, $listid){
+    public function show($userid, $listid) {
         $list = \DB::table('user_lists')
             ->leftJoin('users', 'users.id', '=', 'user_lists.user_id')
             ->where('user_lists.id', '=', $listid)
@@ -102,7 +102,7 @@ class UserListController extends Controller
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function($join) {
                 $join->on('comments.content_id', '=', 'games.id');
                 $join->on('comments.content_type', '=', \DB::raw("'game'"));
             })
@@ -136,7 +136,7 @@ class UserListController extends Controller
             ->select('id', 'title', 'short')
             ->get();
         $gtypes = array();
-        foreach ($gametypes as $gt){
+        foreach ($gametypes as $gt) {
             $t['title'] = $gt->title;
             $t['short'] = $gt->short;
             $gtypes[$gt->id] = $t;
@@ -150,7 +150,7 @@ class UserListController extends Controller
         ]);
     }
 
-    public function index($userid){
+    public function index($userid) {
         $lists = \DB::table('user_lists')
             ->where('user_id', '=', $userid)
             ->select([
