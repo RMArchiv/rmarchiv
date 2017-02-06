@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Game;
 use Sitemap;
+use App\Models\Game;
 use App\Models\News;
 use App\Models\User;
 use App\Models\Developer;
