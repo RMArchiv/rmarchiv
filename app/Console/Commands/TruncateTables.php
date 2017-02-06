@@ -22,8 +22,6 @@ class TruncateTables extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -37,21 +35,21 @@ class TruncateTables extends Command
      */
     public function handle()
     {
-        $this->info("Leere Games Tabelle");
+        $this->info('Leere Games Tabelle');
         \DB::table('games')->truncate();
 
-        $this->info("Leere comments Tabelle");
+        $this->info('Leere comments Tabelle');
         \DB::table('comments')->truncate();
 
-        $this->info("Leere games_files Tabelle");
+        $this->info('Leere games_files Tabelle');
         \DB::table('games_files')->truncate();
 
-        $this->info("Leere games_developers Tabelle");
+        $this->info('Leere games_developers Tabelle');
         \DB::table('games_developers')->truncate();
 
-        $this->info("Leere developer Tabelle");
+        $this->info('Leere developer Tabelle');
         \DB::table('developer')->truncate();
 
-        $this->info("Tabellen wurden geleert.");
+        $this->info('Tabellen wurden geleert.');
     }
 }

@@ -5,7 +5,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=5.6.4",
+        "php": "^7.0",
         "laravel/framework": "5.3.*",
         "barryvdh/laravel-ide-helper": "^2.2",
         "barryvdh/laravel-debugbar": "^2.3",
@@ -29,7 +29,10 @@
         "backpack/backupmanager": "^1.1",
         "irazasyed/telegram-bot-sdk": "^2.2",
         "backpack/base": "^0.7.14",
-        "RobBrazier/Piwik": "^2.1"
+        "RobBrazier/Piwik": "^2.1",
+        "way/generators": "dev-feature/laravel-five-stable",
+        "xethron/migrations-generator": "^2.0",
+        "spatie/laravel-activitylog": "^1.11"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -72,5 +75,11 @@
     },
     "config": {
         "preferred-install": "dist"
+    },
+    "repositories": {
+        "repo-name": {
+            "type": "vcs",
+            "url": "https://github.com/jamisonvalenta/Laravel-4-Generators.git"
+        }
     }
 }

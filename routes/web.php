@@ -58,9 +58,14 @@ Route::get('games/index/{orderby?}/{direction?}', 'GameController@index')->name(
 Route::get('history/game/{id}', 'HistoryController@index')->name('history.game.index');
 
 //Reporting Routen
-Route::get('reports', 'ReportController@index');
+//Route::get('reports', 'ReportController@index');
+
 Route::get('reports/add/game/{gameid}', 'ReportController@create_game_report');
 Route::post('reports/add/game/{gameid}', 'ReportController@store_game_report');
+Route::get('reports', 'ReportController@index_user');
+Route::get('reports/close/{id}', 'ReportController@close_ticket');
+Route::get('reports/open/{id}', 'ReportController@open_ticket');
+Route::get('reports/remark/{id}', 'ReportController@remark_ticket');
 
 //Gamecredits routen
 Route::post('games/{id}/credit', 'UserCreditsController@store')->name('gamecredits.store');
@@ -98,13 +103,10 @@ Route::group(['prefix' => 'resources'], function () {
 
 Route::post('resources/upload', 'FineUploaderController@endpoint@upload')->name('resources.upload');
 
-
 //User Routings
 Route::get('users', 'UserController@index');
 Route::get('users/activity', 'UserController@activity_index');
-Route::get('users/reports', 'ReportController@index_user');
 Route::get('users/{id}', 'UserController@show')->name('users.show');
-
 
 //PN Routen
 Route::group(['prefix' => 'messages'], function () {
@@ -193,8 +195,8 @@ Route::get('missing/gamefiles', 'MissingController@index_gamefiles');
 Route::get('missing/gamedesc', 'MissingController@index_gamedesc');
 
 //Sonstige Seiten
-Route::get("/impressum", function(){
-    return View::make("_pages.impressum");
+Route::get('/impressum', function () {
+    return View::make('_pages.impressum');
 });
 
 //Routen für Sitemap
@@ -211,6 +213,8 @@ Route::get('stats', 'StatsticController@show');
 //Routen für Tags
 Route::post('tags/create', 'TaggingController@store');
 Route::get('tags/game/{tagid}', 'TaggingController@showGames');
+Route::get('tags', 'TaggingController@index');
+Route::get('tags/{orderby?}/{direction?}', 'TaggingController@index')->name('tags.index.sorted');
 
 //Routen für Events
 Route::group(['prefix' => 'events'], function () {

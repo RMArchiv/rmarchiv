@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class PasswordReset
+ * Class PasswordReset.
  *
  * @property string $email
  * @property string $token
  * @property \Carbon\Carbon $created_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PasswordReset whereEmail($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PasswordReset whereToken($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PasswordReset whereCreatedAt($value)
@@ -23,10 +24,8 @@ class PasswordReset extends Model
 
     protected $fillable = [
         'email',
-        'token'
+        'token',
     ];
 
     protected $guarded = [];
-
-        
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class EventSetting
+ * Class EventSetting.
  *
  * @property int $id
  * @property int $event_id
@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $reg_price
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventSetting whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventSetting whereEventId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventSetting whereSlots($value)
@@ -26,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventSetting whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventSetting whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property-read \App\Models\Event $event
  */
 class EventSetting extends Model
@@ -40,12 +42,13 @@ class EventSetting extends Model
         'reg_start_date',
         'reg_end_date',
         'reg_allowed',
-        'reg_price'
+        'reg_price',
     ];
 
     protected $guarded = [];
 
-    public function event(){
+    public function event()
+    {
         return $this->hasOne('App\Models\Event', 'id', 'event_id');
     }
 }

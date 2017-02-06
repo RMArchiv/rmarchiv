@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateGamesAwardsTable extends Migration
 {
@@ -13,7 +13,7 @@ class CreateGamesAwardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('games_awards', function (Blueprint $table){
+        Schema::create('games_awards', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('game_id');
             $table->integer('developer_id');

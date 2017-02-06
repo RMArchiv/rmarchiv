@@ -305,6 +305,9 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>
+                            [<a href="{{ action('ReportController@create_game_report', $game->id) }}">spiel melden</a>]
+                        </td>
                         <td class='foot' colspan='3'>hinzugefügt <time datetime='{{ $game->created_at }}' title='{{ $game->created_at }}'>{{ \Carbon\Carbon::parse($game->created_at)->diffForHumans() }}</time> von <a
                                     href='{{ url('users', $game->user_id) }}' class='user'>{{ $game->user->name }}</a>
                             <a href='{{ url('users', $game->user_id) }}' class='usera' title="{{ $game->user->name }}"><img

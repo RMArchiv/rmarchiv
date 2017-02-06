@@ -8,29 +8,32 @@ use Illuminate\Http\Request;
 
 class UserListController extends Controller
 {
-    public function create(){
+    public function create()
+    {
         return view('users.lists.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $this->validate($request, [
             'title' => 'required',
-            'desc' => 'required',
+            'desc'  => 'required',
         ]);
 
         \DB::table('user_lists')->insert([
-            'user_id' => \Auth::id(),
-            'title' => $request->get('title'),
-            'desc_md' => $request->get('desc'),
-            'desc_html' => \Markdown::convertToHtml($request->get('desc')),
-            'created_at' => Carbon::now()
+            'user_id'    => \Auth::id(),
+            'title'      => $request->get('title'),
+            'desc_md'    => $request->get('desc'),
+            'desc_html'  => \Markdown::convertToHtml($request->get('desc')),
+            'created_at' => Carbon::now(),
         ]);
 
         return \Redirect::back();
     }
 
-    public function delete_game($listid, $itemid){
-        $item = \DB::table('user_list_items')
+    public function delete_game($listid, $itemid)
+    {
+        \DB::table('user_list_items')
             ->where('list_id', '=', $listid)
             ->where('content_id', '=', $itemid)
             ->where('content_type', '=', 'game')
@@ -39,28 +42,29 @@ class UserListController extends Controller
         return \Redirect::back();
     }
 
-    public function delete($listid){
-        if(\Auth::check()){
-            if(\Auth::user()->hasRole('admin')){
-                $item = \DB::table('user_list_items')
+    public function delete($listid)
+    {
+        if (\Auth::check()) {
+            if (\Auth::user()->hasRole('admin')) {
+                \DB::table('user_list_items')
                     ->where('list_id', '=', $listid)
                     ->delete();
 
-                $list = \DB::table('user_lists')
+                \DB::table('user_lists')
                     ->where('id', '=', $listid)
                     ->delete();
-            }else{
+            } else {
                 $list = \DB::table('user_lists')
                     ->where('id', '=', $listid)
                     ->where('user_id', '=', \Auth::id())
                     ->get();
 
-                if($list->count() <> 0){
-                    $list = \DB::table('user_lists')
+                if ($list->count() != 0) {
+                    \DB::table('user_lists')
                         ->where('id', '=', $listid)
                         ->delete();
 
-                    $item = \DB::table('user_list_items')
+                    \DB::table('user_list_items')
                         ->where('list_id', '=', $listid)
                         ->delete();
                 }
@@ -70,20 +74,21 @@ class UserListController extends Controller
         return \Redirect::back();
     }
 
-    public function add_game(Request $request, $listid, $gameid){
-        if(\Auth::check()){
+    public function add_game(Request $request, $listid, $gameid)
+    {
+        if (\Auth::check()) {
             $check = \DB::table('user_list_items')
                 ->where('content_id', '=', $gameid)
                 ->where('content_type', '=', 'game')
                 ->where('list_id', '=', $listid)
                 ->get();
-            if($check->count() == 0){
+            if ($check->count() == 0) {
                 \DB::table('user_list_items')->insert([
-                    'content_id' => $gameid,
+                    'content_id'   => $gameid,
                     'content_type' => 'game',
-                    'user_id' => \Auth::id(),
-                    'list_id' => $listid,
-                    'created_at' => Carbon::now(),
+                    'user_id'      => \Auth::id(),
+                    'list_id'      => $listid,
+                    'created_at'   => Carbon::now(),
                 ]);
             }
         }
@@ -91,7 +96,8 @@ class UserListController extends Controller
         return \Redirect::action('GameController@show', $gameid);
     }
 
-    public function show($userid, $listid){
+    public function show($userid, $listid)
+    {
         $list = \DB::table('user_lists')
             ->leftJoin('users', 'users.id', '=', 'user_lists.user_id')
             ->where('user_lists.id', '=', $listid)
@@ -102,7 +108,7 @@ class UserListController extends Controller
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function ($join) {
                 $join->on('comments.content_id', '=', 'games.id');
                 $join->on('comments.content_type', '=', \DB::raw("'game'"));
             })
@@ -135,22 +141,23 @@ class UserListController extends Controller
         $gametypes = \DB::table('games_files_types')
             ->select('id', 'title', 'short')
             ->get();
-        $gtypes = array();
-        foreach ($gametypes as $gt){
+        $gtypes = [];
+        foreach ($gametypes as $gt) {
             $t['title'] = $gt->title;
             $t['short'] = $gt->short;
             $gtypes[$gt->id] = $t;
         }
 
         return view('users.lists.show', [
-            'games' => $games,
+            'games'     => $games,
             'gametypes' => $gtypes,
-            'maxviews' => DatabaseHelper::getGameViewsMax(),
-            'list' => $list,
+            'maxviews'  => DatabaseHelper::getGameViewsMax(),
+            'list'      => $list,
         ]);
     }
 
-    public function index($userid){
+    public function index($userid)
+    {
         $lists = \DB::table('user_lists')
             ->where('user_id', '=', $userid)
             ->select([
@@ -164,7 +171,7 @@ class UserListController extends Controller
             ->get();
 
         return view('users.lists.index', [
-            'lists' => $lists
+            'lists' => $lists,
         ]);
     }
 }

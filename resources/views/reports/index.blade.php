@@ -16,6 +16,7 @@
                         <th>bemerkung</th>
                         <th>letzte änderung am</th>
                         <th>letzte änderung von</th>
+                        <th>aktionen</th>
                     </tr>
                     </thead>
                     @foreach($reports as $r)
@@ -36,6 +37,15 @@
                                     <a href="{{ url('/user', $r->user_closed->id) }}" class="usera" title="{{ $r->user_closed->name }}">
                                         <img src="http://ava.rmarchiv.de/?gender=male&amp;id={{ $r->user_closed->id }}" alt="{{ $r->user_closed->name }}" class="avatar">
                                     </a> <a href="{{ url('/user', $r->user_closed->id) }}" class="user">{{ $r->user_closed->name }}</a>
+                                @endif
+                            </td>
+                            <td>
+                                @if(Auth::user()->can('admin-games'))
+                                    @if($r->closed == 1)
+                                        [<a href="{{ action('ReportController@open_ticket', $r->id) }}">öffnen</a>]
+                                    @else
+                                        [<a href="{{ action('ReportController@close_ticket', $r->id) }}">schließen</a>]
+                                    @endif
                                 @endif
                             </td>
                         </tr>

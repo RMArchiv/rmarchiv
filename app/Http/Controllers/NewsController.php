@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
 use App\Models\News;
 use App\Models\UserSetting;
 use Illuminate\Http\Request;
@@ -18,7 +17,7 @@ class NewsController extends Controller
     {
         $news = \DB::table('news')
             ->leftJoin('users', 'news.user_id', '=', 'users.id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function ($join) {
                 $join->on('comments.content_id', '=', 'news.id');
                 $join->on('comments.content_type', '=', \DB::raw("'news'"));
             })
@@ -46,12 +45,13 @@ class NewsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        $n = new News;
+        $n = new News();
         $n->news_category = $request->get('cat');
         $n->user_id = \Auth::id();
         $n->news_md = $request->get('msg');
@@ -67,19 +67,20 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        if(\Auth::check()){
-            if(UserSetting::whereUserId(\Auth::id())->first()->is_admin = 1){
+        if (\Auth::check()) {
+            if (UserSetting::whereUserId(\Auth::id())->first()->is_admin = 1) {
                 $news = \DB::table('news')
                     ->leftJoin('users', 'news.user_id', '=', 'users.id')
                     ->select(['news.id', 'news.title', 'news.news_html', 'news_category', 'users.name', 'news.user_id', 'news.created_at', 'news.approved'])
                     ->where('news.id', '=', $id)
                     ->first();
-            }else{
+            } else {
                 $news = \DB::table('news')
                     ->leftJoin('users', 'news.user_id', '=', 'users.id')
                     ->select(['news.id', 'news.title', 'news.news_html', 'news_category', 'users.name', 'news.user_id', 'news.created_at', 'news.approved'])
@@ -87,7 +88,7 @@ class NewsController extends Controller
                     ->where('approved', '=', '1')
                     ->first();
             }
-        }else{
+        } else {
             $news = \DB::table('news')
                 ->leftJoin('users', 'news.user_id', '=', 'users.id')
                 ->select(['news.id', 'news.title', 'news.news_html', 'news_category', 'users.name', 'news.user_id', 'news.created_at', 'news.approved'])
@@ -101,14 +102,13 @@ class NewsController extends Controller
         $comments = \DB::table('comments')
             ->leftJoin('users', 'comments.user_id', '=', 'users.id')
             ->select(['comments.id', 'comments.user_id', 'comments.comment_html', 'comments.created_at', 'users.name',
-            'comments.vote_up', 'comments.vote_down'])
+            'comments.vote_up', 'comments.vote_down', ])
             ->where('content_type', '=', $content_type)
             ->where('content_id', '=', $id)
             ->orderBy('created_at', 'asc')->get();
 
-
         return view('news.show', [
-            'news' => $news,
+            'news'     => $news,
             'comments' => $comments,
         ]);
     }
@@ -116,7 +116,8 @@ class NewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -131,16 +132,17 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
             'title' => 'required',
-            'msg' => 'required',
-            'cat' => 'required',
+            'msg'   => 'required',
+            'cat'   => 'required',
         ]);
 
         $news = News::whereId($id)->first();
@@ -157,8 +159,9 @@ class NewsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
@@ -168,7 +171,8 @@ class NewsController extends Controller
         return redirect()->action('NewsController@index');
     }
 
-    public function approve($id, $approve){
+    public function approve($id, $approve)
+    {
         $news = News::whereId($id)->first();
         $news->approved = $approve;
         $news->save();

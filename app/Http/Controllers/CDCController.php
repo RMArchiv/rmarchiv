@@ -20,7 +20,7 @@ class CDCController extends Controller
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function ($join) {
                 $join->on('comments.content_id', '=', 'games.id');
                 $join->on('comments.content_type', '=', \DB::raw("'game'"));
             })
@@ -54,15 +54,15 @@ class CDCController extends Controller
         $gametypes = \DB::table('games_files_types')
             ->select('id', 'title', 'short')
             ->get();
-        $gtypes = array();
-        foreach ($gametypes as $gt){
+        $gtypes = [];
+        foreach ($gametypes as $gt) {
             $t['title'] = $gt->title;
             $t['short'] = $gt->short;
             $gtypes[$gt->id] = $t;
         }
 
-        return view('cdc.index',[
-            'cdcs' => $cdc,
+        return view('cdc.index', [
+            'cdcs'      => $cdc,
             'gametypes' => $gtypes,
         ]);
     }
@@ -80,8 +80,9 @@ class CDCController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -90,68 +91,23 @@ class CDCController extends Controller
         ]);
 
         // Prüfen ob das Spiel auch wirklich existiert
-        $title = explode(" -=- ",$request->get('gamename'));
-        
-        if(count($title) == 1){
+        $title = explode(' -=- ', $request->get('gamename'));
+
+        if (count($title) == 1) {
             $game = Game::whereTitle($title[0])
                 ->first();
-        }else{
+        } else {
             $game = Game::whereTitle($title[0])
                 ->orWhere('subtitle', '=', $title[1])
                 ->first();
         }
 
         \DB::table('games_coupdecoeur')->insert([
-            'game_id' => $game->id,
-            'user_id' => \Auth::id(),
+            'game_id'    => $game->id,
+            'user_id'    => \Auth::id(),
             'created_at' => Carbon::now(),
         ]);
 
         return redirect()->action('MsgBoxController@cdc_add', [$game->id]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

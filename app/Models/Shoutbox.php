@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Shoutbox
+ * Class Shoutbox.
  *
- * @property integer $id
+ * @property int $id
  * @property string $shout_md
  * @property string $shout_html
- * @property integer $user_id
+ * @property int $user_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Shoutbox whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Shoutbox whereShoutMd($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Shoutbox whereShoutHtml($value)
@@ -22,6 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Shoutbox whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Shoutbox whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property-read \App\Models\User $user
  */
 class Shoutbox extends Model
@@ -33,13 +35,13 @@ class Shoutbox extends Model
     protected $fillable = [
         'shout_md',
         'shout_html',
-        'user_id'
+        'user_id',
     ];
 
     protected $guarded = [];
 
-    public function user(){
+    public function user()
+    {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
-        
 }

@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class AwardCat
+ * Class AwardCat.
  *
- * @property integer $id
+ * @property int $id
  * @property string $title
- * @property integer $award_page_id
- * @property integer $year
- * @property integer $month
- * @property integer $user_id
+ * @property int $award_page_id
+ * @property int $year
+ * @property int $month
+ * @property int $user_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardCat whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardCat whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardCat whereAwardPageId($value)
@@ -26,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardCat whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardCat whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property-read \App\Models\AwardPage $awardpage
  * @property-read \App\Models\User $user
  */
@@ -40,18 +42,18 @@ class AwardCat extends Model
         'award_page_id',
         'year',
         'month',
-        'user_id'
+        'user_id',
     ];
 
     protected $guarded = [];
 
-    public function awardpage(){
+    public function awardpage()
+    {
         return $this->hasOne('App\Models\AwardPage', 'id', 'award_page_id');
     }
 
-    public function user(){
+    public function user()
+    {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
-
-        
 }

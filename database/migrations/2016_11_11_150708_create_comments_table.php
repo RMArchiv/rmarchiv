@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateCommentsTable extends Migration
 {
@@ -25,7 +25,6 @@ class CreateCommentsTable extends Migration
 
             $table->index('user_id');
             $table->index(['content_id', 'content_type']);
-
         });
     }
 

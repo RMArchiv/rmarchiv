@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserObyx;
-use App\Models\UserPermission;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index(){
-        $user = User::orderBy('name')->paginate(15);
+    public function index()
+    {
+        // $user = User::orderBy('name')->paginate(15);
 
         //name
         //created_at
@@ -25,7 +25,7 @@ class UserController extends Controller
                 'u.name as username',
                 'u.created_at as usercreated_at',
                 'ur.display_name as rolename',
-                'ur.description as roledesc'
+                'ur.description as roledesc',
             ])
             ->selectRaw('(SELECT SUM(obyx.value) FROM user_obyx LEFT JOIN obyx ON obyx.id = user_obyx.obyx_id WHERE user_obyx.user_id = u.id) as obyx')
             ->orderBy('u.name')
@@ -39,13 +39,13 @@ class UserController extends Controller
             ->first();
 
         return view('users.index', [
-            'users' => $user,
+            'users'   => $user,
             'obyxmax' => $obyxmax,
         ]);
     }
 
-    public function show($userid){
-
+    public function show($userid)
+    {
         $user = \DB::table('users as u')
             ->leftJoin('user_role_user as uru', 'u.id', '=', 'uru.user_id')
             ->leftJoin('user_roles as ur', 'ur.id', '=', 'uru.role_id')
@@ -53,7 +53,7 @@ class UserController extends Controller
                 'u.id as userid',
                 'u.name as username',
                 'ur.display_name as rolename',
-                'u.created_at as usercreated_at'
+                'u.created_at as usercreated_at',
             ])
             ->selectRaw('(SELECT SUM(obyx.value) FROM user_obyx LEFT JOIN obyx ON obyx.id = user_obyx.obyx_id WHERE user_obyx.user_id = u.id) as obyx')
             ->selectRaw('(SELECT COUNT(games.id) FROM games WHERE user_id = u.id) as gamecount')
@@ -75,25 +75,24 @@ class UserController extends Controller
         ]);
     }
 
-    public function admin($userid){
-
-        if(\Auth::check()){
-            if(\Auth::user()->settings->is_admin == 1){
+    public function admin($userid)
+    {
+        if (\Auth::check()) {
+            if (\Auth::user()->settings->is_admin == 1) {
                 $user = User::whereId($userid)->first();
 
                 $perms = UserRole::all();
 
                 return view('users.admin', [
-                    'user' => $user,
+                    'user'  => $user,
                     'perms' => $perms,
                 ]);
             }
         }
-
     }
 
-    public function admin_store(Request $request, $userid){
-
+    public function admin_store(Request $request, $userid)
+    {
         $role = UserRole::all()->where('id', '=', $request->get('perm'))->first();
         $user = User::find($userid);
 
@@ -103,11 +102,12 @@ class UserController extends Controller
         return redirect()->action('UserController@admin', [$userid]);
     }
 
-    public function activity_index(){
+    public function activity_index()
+    {
         $data = UserObyx::with('obyx', 'user')->orderBy('created_at', 'desc')->paginate(25);
 
         return view('users.activity.index', [
-            'obyx' => $data
+            'obyx' => $data,
         ]);
     }
 }

@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\GameView;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class GameViewListener
 {
@@ -21,7 +19,8 @@ class GameViewListener
     /**
      * Handle the event.
      *
-     * @param  GameView  $event
+     * @param GameView $event
+     *
      * @return void
      */
     public function handle(GameView $event)

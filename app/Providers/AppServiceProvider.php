@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\User;
 use Illuminate\Support\ServiceProvider;
-use Webuni\CommonMark\TableExtension\TableExtension;
 
 class AppServiceProvider extends ServiceProvider
 {

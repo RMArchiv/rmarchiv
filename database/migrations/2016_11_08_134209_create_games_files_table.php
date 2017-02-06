@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateGamesFilesTable extends Migration
 {
@@ -13,7 +13,7 @@ class CreateGamesFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('games_files', function (Blueprint $table){
+        Schema::create('games_files', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('game_id');
             $table->integer('filesize');
@@ -29,7 +29,6 @@ class CreateGamesFilesTable extends Migration
 
             $table->index('user_id');
             $table->index('game_id');
-
         });
     }
 

@@ -6,22 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
- * Class Game
+ * Class Game.
  *
- * @property integer $id
+ * @property int $id
  * @property string $title
  * @property string $subtitle
  * @property string $desc_md
  * @property string $desc_html
  * @property string $website_url
- * @property integer $user_id
- * @property integer $views
+ * @property int $user_id
+ * @property int $views
  * @property string $release_date
- * @property integer $maker_id
- * @property integer $lang_id
+ * @property int $maker_id
+ * @property int $lang_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereSubtitle($value)
@@ -37,6 +38,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Maker $maker
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesDeveloper[] $developer
@@ -47,7 +49,9 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property-read \App\Models\Language $language
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesFile[] $gamefiles
  * @property string $youtube
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereYoutube($value)
+ *
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TagRelation[] $tags
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserCredit[] $credits
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesAward[] $awards
@@ -70,7 +74,7 @@ class Game extends Model
         'views',
         'release_date',
         'maker_id',
-        'lang_id'
+        'lang_id',
     ];
 
     protected static $logAttributes = [
@@ -80,33 +84,39 @@ class Game extends Model
         'website_url',
         'user_id',
         'maker_id',
-        'lang_id'
+        'lang_id',
     ];
 
     protected $guarded = [];
     protected $appends = ['votes'];
 
-    public function user(){
+    public function user()
+    {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 
-    public function maker(){
+    public function maker()
+    {
         return $this->hasOne('App\Models\Maker', 'id', 'maker_id');
     }
 
-    public function developers(){
+    public function developers()
+    {
         return $this->hasMany('App\Models\GamesDeveloper', 'game_id', 'id');
     }
 
-    public function screenshots(){
+    public function screenshots()
+    {
         return $this->hasMany('App\Models\Screenshot');
     }
 
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany('App\Models\Comment', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'game'"))->with('user');
     }
 
-    public function getVotesAttribute(){
+    public function getVotesAttribute()
+    {
         $vote['up'] = intval($this->comments()->sum('vote_up'));
         $vote['down'] = intval($this->comments()->sum('vote_down'));
         $vote['avg'] = @round(($vote['up'] - $vote['down']) / ($vote['up'] + $vote['down']), 2);
@@ -114,11 +124,13 @@ class Game extends Model
         return $vote;
     }
 
-    public function language(){
+    public function language()
+    {
         return $this->hasOne('App\Models\Language', 'id', 'lang_id');
     }
 
-    public function gamefiles(){
+    public function gamefiles()
+    {
         return $this->hasMany('App\Models\GamesFile', 'game_id', 'id')
             ->orderBy('release_type', 'desc')
             ->orderBy('release_year', 'desc')
@@ -128,20 +140,23 @@ class Game extends Model
             ->withTrashed();
     }
 
-    public function tags(){
+    public function tags()
+    {
         return $this->hasMany('App\Models\TagRelation', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'game'"))->with('tag');
     }
 
-    public function credits(){
+    public function credits()
+    {
         return $this->hasMany('App\Models\UserCredit', 'game_id', 'id');
     }
 
-    public function awards(){
+    public function awards()
+    {
         return $this->hasMany('App\Models\GamesAward', 'game_id', 'id')->Where('place', '<=', 3);
     }
 
-    public function cdcs(){
+    public function cdcs()
+    {
         return $this->hasMany('App\Models\GamesCoupdecoeur', 'game_id', 'id');
     }
-
 }

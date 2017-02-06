@@ -9,12 +9,10 @@ use App\Models\UserDownloadLog;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-
 class GameFileController extends Controller
 {
-
-    public function download($id){
-
+    public function download($id)
+    {
         \DB::table('games_files')
             ->where('id', '=', $id)
             ->increment('downloadcount');
@@ -38,9 +36,9 @@ class GameFileController extends Controller
             ->first();
 
         UserDownloadLog::insert([
-            'user_id' => \Auth::id(),
+            'user_id'     => \Auth::id(),
             'gamefile_id' => $id,
-            'created_at' => Carbon::now(),
+            'created_at'  => Carbon::now(),
         ]);
 
         $filepath = storage_path('app/public/'.$g->filename);
@@ -51,7 +49,8 @@ class GameFileController extends Controller
         return response()->download($filepath, $newfilename);
     }
 
-    public function download_wo_count(Request $request){
+    public function download_wo_count(Request $request)
+    {
         $filepath = storage_path('app/public/'.$request->get('filename'));
 
         $newfilename = $request->get('id');
@@ -59,7 +58,8 @@ class GameFileController extends Controller
         return response()->download($filepath, $newfilename);
     }
 
-    public function create($id){
+    public function create($id)
+    {
         $gamefiles = \DB::table('games_files')
             ->select([
                 'games_files.id as fileid',
@@ -99,19 +99,19 @@ class GameFileController extends Controller
         return view('games.gamefiles', [
             'gamefiles' => $gamefiles,
             'filetypes' => $filetypes,
-            'gameid' =>  $id,
+            'gameid'    => $id,
         ]);
     }
 
-    public function store(Request $request, $id){
-
+    public function store(Request $request, $id)
+    {
         $this->validate($request, [
-            'uuid' => 'required',
-            'version' => 'required',
-            'releasedate_day' => 'required|not_in:0',
+            'uuid'              => 'required',
+            'version'           => 'required',
+            'releasedate_day'   => 'required|not_in:0',
             'releasedate_month' => 'required|not_in:0',
-            'releasedate_year' => 'required|not_in:0',
-            'filetype' => 'required|not_in:0'
+            'releasedate_year'  => 'required|not_in:0',
+            'filetype'          => 'required|not_in:0',
         ]);
 
         $storagetemp = 'temp/'.$request->get('uuid').'/file';
@@ -123,32 +123,31 @@ class GameFileController extends Controller
 
         $exists = \Storage::disk('local')->exists($storagetemp);
 
-        if($exists === true){
+        if ($exists === true) {
             \Storage::move($storagetemp, $storagedest);
 
             \DB::table('games_files')->insert([
-                'game_id' => $id,
-                'filesize' => $meta['size'],
-                'extension' => $meta['ext'],
-                'release_type' => $request->get('filetype'),
+                'game_id'         => $id,
+                'filesize'        => $meta['size'],
+                'extension'       => $meta['ext'],
+                'release_type'    => $request->get('filetype'),
                 'release_version' => $request->get('version'),
-                'release_day' => $request->get('releasedate_day'),
-                'release_month' => $request->get('releasedate_month'),
-                'release_year' => $request->get('releasedate_year'),
-                'user_id' => \Auth::id(),
-                'filename' => $storagedest,
-                'created_at' => Carbon::now(),
+                'release_day'     => $request->get('releasedate_day'),
+                'release_month'   => $request->get('releasedate_month'),
+                'release_year'    => $request->get('releasedate_year'),
+                'user_id'         => \Auth::id(),
+                'filename'        => $storagedest,
+                'created_at'      => Carbon::now(),
             ]);
 
             event(new Obyx('gamefile-add', \Auth::id()));
 
             return redirect()->route('gamefiles.index', [$id]);
         }
-
     }
 
-    public function destroy(Request $request, $id, $fileid){
-
+    public function destroy(Request $request, $id, $fileid)
+    {
         $gf = GamesFile::whereId($fileid)->first();
         \Storage::delete($gf->filename);
 
@@ -157,24 +156,26 @@ class GameFileController extends Controller
         return redirect()->route('gamefiles.index', [$id]);
     }
 
-    public function edit($id, $gamefileid){
+    public function edit($id, $gamefileid)
+    {
         $gamefile = GamesFile::whereId($gamefileid)->first();
         $filetypes = GamesFilesType::get();
 
         return view('games.gamefiles_edit', [
-            'gamefile' => $gamefile,
+            'gamefile'  => $gamefile,
             'filetypes' => $filetypes,
         ]);
     }
 
-    public function update(Request $request, $id, $gamefileid){
+    public function update(Request $request, $id, $gamefileid)
+    {
         $this->validate($request, [
             //'uuid' => 'required',
-            'version' => 'required',
-            'releasedate_day' => 'required|not_in:0',
+            'version'           => 'required',
+            'releasedate_day'   => 'required|not_in:0',
             'releasedate_month' => 'required|not_in:0',
-            'releasedate_year' => 'required|not_in:0',
-            'filetype' => 'required|not_in:0'
+            'releasedate_year'  => 'required|not_in:0',
+            'filetype'          => 'required|not_in:0',
         ]);
 
         $gamefile = GamesFile::whereId($gamefileid)->first();
@@ -185,7 +186,7 @@ class GameFileController extends Controller
         $gamefile->release_year = $request->get('releasedate_year');
         $gamefile->release_type = $request->get('filetype');
 
-        if($request->get('uuid')){
+        if ($request->get('uuid')) {
             \Storage::delete($gamefile->filename);
 
             $storagetemp = 'temp/'.$request->get('uuid').'/file';
@@ -197,19 +198,18 @@ class GameFileController extends Controller
 
             $exists = \Storage::disk('local')->exists($storagetemp);
 
-            if($exists === true){
+            if ($exists === true) {
                 \Storage::move($storagetemp, $storagedest);
                 $gamefile->filesize = $meta['size'];
                 $gamefile->extension = $meta['ext'];
                 $gamefile->filename = $storagedest;
-
             }
         }
 
-        if($request->get('forbidden') and ($request->get('forbidden') <> '')){
+        if ($request->get('forbidden') && ($request->get('forbidden') != '')) {
             $gamefile->forbidden = 1;
             $gamefile->reason = $request->get('forbidden');
-        }else{
+        } else {
             $gamefile->forbidden = 0;
             $gamefile->reason = '';
         }
