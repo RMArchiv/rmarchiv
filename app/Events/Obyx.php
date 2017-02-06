@@ -19,7 +19,6 @@ class Obyx
     /**
      * Create a new event instance.
      *
-     * @return void
      */
     public function __construct($reason, $user_id)
     {

@@ -19,7 +19,6 @@ class GameView
      * Create a new event instance.
      *
      * @param $gameid
-     * @return void
      */
     public function __construct($gameid)
     {
