@@ -44,7 +44,7 @@ class MiscHelper {
         $bytes = $size;
 
         if ($bytes == 0) {
-                    return "0.00 B";
+                    return '0.00 B';
         }
 
         $s = array('B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB');

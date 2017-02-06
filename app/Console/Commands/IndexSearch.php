@@ -37,18 +37,18 @@ class IndexSearch extends Command
      */
     public function handle()
     {
-        $this->info("Erstellen des Suchindexes");
-        $this->info("------------------------------------");
-        $this->info("Erstelle Games Index");
+        $this->info('Erstellen des Suchindexes');
+        $this->info('------------------------------------');
+        $this->info('Erstelle Games Index');
         $i = \TNTSearch::createIndex('games.index');
         $i->query('SELECT id, title, subtitle, desc_md, desc_html FROM games');
         $i->run();
-        $this->info("------------------------------------");
-        $this->info("Erstelle Kommentar Index");
+        $this->info('------------------------------------');
+        $this->info('Erstelle Kommentar Index');
         $i = \TNTSearch::createIndex('comments.index');
         $i->query('SELECT id, comment_md, comment_html FROM comments');
         $i->run();
 
-        $this->info("Fertig!");
+        $this->info('Fertig!');
     }
 }

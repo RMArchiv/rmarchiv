@@ -22,7 +22,7 @@ class Obyx
      */
     public function __construct($reason, $user_id)
     {
-        $this->reason = $reason;
+        $this->reason  = $reason;
         $this->user_id = $user_id;
     }
 

@@ -44,20 +44,20 @@ class EventController extends Controller
             'reg_end_date' => 'date'
         ]);
 
-        $e = new Event;
-        $e->title = $request->get('title');
+        $e              = new Event;
+        $e->title       = $request->get('title');
         $e->description = $request->get('desc');
-        $e->start_date = $request->get('start');
-        $e->end_date = $request->get('end');
-        $e->user_id = \Auth::id();
+        $e->start_date  = $request->get('start');
+        $e->end_date    = $request->get('end');
+        $e->user_id     = \Auth::id();
         $e->save();
 
-        $es = new EventSetting;
-        $es->event_id = $e->id;
-        $es->slots = $request->get('slots');
-        $es->reg_price = $request->get('price');
+        $es                 = new EventSetting;
+        $es->event_id       = $e->id;
+        $es->slots          = $request->get('slots');
+        $es->reg_price      = $request->get('price');
         $es->reg_start_date = $request->get('reg_start');
-        $es->reg_end_date = $request->get('reg_end');
+        $es->reg_end_date   = $request->get('reg_end');
         if ($request->get('reg_allowed') == "on") {
             $es->reg_allowed = 1;
         } else {
