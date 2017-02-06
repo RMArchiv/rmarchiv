@@ -39,7 +39,7 @@ class AutocompleteController extends Controller
             ->get();
 
         foreach($games as $g){
-            if(is_null($g->subtitle) or $g->subtitle == ''){
+            if(is_null($g->subtitle) || $g->subtitle == ''){
                 $result[] = ['id' => $g->id, 'value' => $g->title];
             }else{
                 $result[] = ['id' => $g->id, 'value' => $g->title.' -=- '.$g->subtitle];

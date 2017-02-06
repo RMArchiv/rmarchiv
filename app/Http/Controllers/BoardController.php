@@ -166,7 +166,7 @@ class BoardController extends Controller
         if(\Auth::check()){
             if(\Auth::user()->can('mod-threads')){
                 if(is_numeric($id)){
-                    if($state == 1 or $state == 0){
+                    if($state == 1 || $state == 0){
                         \DB::table('board_threads')
                             ->where('id', '=', $id)
                             ->update([

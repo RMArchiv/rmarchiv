@@ -27,7 +27,7 @@ class MiscHelper{
 
         $ret = 0;
 
-        if($max == 0 or $views == 0){
+        if($max == 0 || $views == 0){
             $ret = 0;
         }else{
             $ret = ($views / $max) * 100;

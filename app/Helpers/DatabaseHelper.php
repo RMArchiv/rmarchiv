@@ -16,7 +16,7 @@ class DatabaseHelper{
             return '';
         }
 
-        if(Carbon::parse($game->release_date)->year == -1 or is_null($game->release_date)){
+        if(Carbon::parse($game->release_date)->year == -1 || is_null($game->release_date)){
             $releasedate = GamesFile::whereGameId($gameid)
                 ->selectRaw('CONCAT(release_year, "-", LPAD(release_month, 2, "0"), "-", release_day) as reldate')
                 ->orderBy('release_type', 'desc')
