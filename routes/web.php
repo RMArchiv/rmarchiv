@@ -58,9 +58,14 @@ Route::get('games/index/{orderby?}/{direction?}', 'GameController@index')->name(
 Route::get('history/game/{id}', 'HistoryController@index')->name('history.game.index');
 
 //Reporting Routen
-Route::get('reports', 'ReportController@index');
+//Route::get('reports', 'ReportController@index');
+
 Route::get('reports/add/game/{gameid}', 'ReportController@create_game_report');
 Route::post('reports/add/game/{gameid}', 'ReportController@store_game_report');
+Route::get('reports', 'ReportController@index_user');
+Route::get('reports/close/{id}', 'ReportController@close_ticket');
+Route::get('reports/open/{id}', 'ReportController@open_ticket');
+Route::get('reports/remark/{id}', 'ReportController@remark_ticket');
 
 //Gamecredits routen
 Route::post('games/{id}/credit', 'UserCreditsController@store')->name('gamecredits.store');
@@ -102,7 +107,6 @@ Route::post('resources/upload', 'FineUploaderController@endpoint@upload')->name(
 //User Routings
 Route::get('users', 'UserController@index');
 Route::get('users/activity', 'UserController@activity_index');
-Route::get('users/reports', 'ReportController@index_user');
 Route::get('users/{id}', 'UserController@show')->name('users.show');
 
 
