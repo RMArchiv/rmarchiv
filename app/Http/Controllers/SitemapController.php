@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
 use Sitemap;
 use App\Models\News;
 use App\Models\User;
@@ -34,10 +35,7 @@ class SitemapController extends Controller
 
     public function games()
     {
-        $games = \DB::table('games')
-            ->leftJoin('screenshots', 'games.id', '=', 'screenshots.game_id')
-            ->where('screenshots.screenshot_id', '=', 1)
-            ->get();
+        $games = Game::all();
 
         foreach ($games as $game) {
             $tag = Sitemap::addTag(url('games', $game->id), $game->created_at, 'monthly', '0.8');
