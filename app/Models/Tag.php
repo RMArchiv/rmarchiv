@@ -30,7 +30,7 @@ class Tag extends Model
 
     protected $guarded = [];
 
-    public function tag_relations(){
+    public function tag_relations() {
         return $this->hasMany('App\Models\TagRelation', 'tag_id', 'id');
     }
 

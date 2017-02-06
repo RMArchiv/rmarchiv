@@ -86,27 +86,27 @@ class Game extends Model
     protected $guarded = [];
     protected $appends = ['votes'];
 
-    public function user(){
+    public function user() {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 
-    public function maker(){
+    public function maker() {
         return $this->hasOne('App\Models\Maker', 'id', 'maker_id');
     }
 
-    public function developers(){
+    public function developers() {
         return $this->hasMany('App\Models\GamesDeveloper', 'game_id', 'id');
     }
 
-    public function screenshots(){
+    public function screenshots() {
         return $this->hasMany('App\Models\Screenshot');
     }
 
-    public function comments(){
+    public function comments() {
         return $this->hasMany('App\Models\Comment', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'game'"))->with('user');
     }
 
-    public function getVotesAttribute(){
+    public function getVotesAttribute() {
         $vote['up'] = intval($this->comments()->sum('vote_up'));
         $vote['down'] = intval($this->comments()->sum('vote_down'));
         $vote['avg'] = @round(($vote['up'] - $vote['down']) / ($vote['up'] + $vote['down']), 2);
@@ -114,11 +114,11 @@ class Game extends Model
         return $vote;
     }
 
-    public function language(){
+    public function language() {
         return $this->hasOne('App\Models\Language', 'id', 'lang_id');
     }
 
-    public function gamefiles(){
+    public function gamefiles() {
         return $this->hasMany('App\Models\GamesFile', 'game_id', 'id')
             ->orderBy('release_type', 'desc')
             ->orderBy('release_year', 'desc')
@@ -128,19 +128,19 @@ class Game extends Model
             ->withTrashed();
     }
 
-    public function tags(){
+    public function tags() {
         return $this->hasMany('App\Models\TagRelation', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'game'"))->with('tag');
     }
 
-    public function credits(){
+    public function credits() {
         return $this->hasMany('App\Models\UserCredit', 'game_id', 'id');
     }
 
-    public function awards(){
+    public function awards() {
         return $this->hasMany('App\Models\GamesAward', 'game_id', 'id')->Where('place', '<=', 3);
     }
 
-    public function cdcs(){
+    public function cdcs() {
         return $this->hasMany('App\Models\GamesCoupdecoeur', 'game_id', 'id');
     }
 

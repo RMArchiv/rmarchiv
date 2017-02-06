@@ -43,11 +43,11 @@ class BoardCat extends Model
 
     protected $guarded = [];
 
-    public function threads(){
+    public function threads() {
         return $this->hasMany('App\Models\BoardThread', 'cat_id', 'id');
     }
 
-    public function last_user(){
+    public function last_user() {
         return $this->hasOne('App\Models\User', 'id', 'last_user_id');
     }
 }

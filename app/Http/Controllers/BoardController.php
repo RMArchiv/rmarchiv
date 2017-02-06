@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Input;
 
 class BoardController extends Controller
 {
-    public function index(){
+    public function index() {
         $cats = BoardCat::with('last_user', 'threads')->orderBy('order')->get();
 
         return view('board.index', [
@@ -21,7 +21,7 @@ class BoardController extends Controller
         ]);
     }
 
-    public function show_cat($catid){
+    public function show_cat($catid) {
         $thr = BoardThread::with('user', 'cat', 'last_user', 'posts')
             ->whereCatId($catid)
             ->orderBy('board_threads.pinned', 'desc')
@@ -34,7 +34,7 @@ class BoardController extends Controller
         ]);
     }
 
-    public function create_cat(){
+    public function create_cat() {
 
         $cats = \DB::table('board_cats')
             ->select([
@@ -53,12 +53,12 @@ class BoardController extends Controller
         ]);
     }
 
-    public function order_cat($catid, $direction){
-        if($direction == 'up'){
+    public function order_cat($catid, $direction) {
+        if ($direction == 'up') {
             \DB::table('board_cats')
                 ->where('id', '=', $catid)
                 ->increment('order');
-        }else{
+        }else {
             \DB::table('board_cats')
                 ->where('id', '=', $catid)
                 ->decrement('order');
@@ -67,7 +67,7 @@ class BoardController extends Controller
         return redirect()->action('BoardController@create_cat');
     }
 
-    public function store_cat(Request $request){
+    public function store_cat(Request $request) {
         $this->validate($request, [
             'name' => 'required',
             'desc' => 'required',
@@ -86,7 +86,7 @@ class BoardController extends Controller
     public function show_thread($threadid){
         $posts = BoardPost::with('user', 'thread', 'cat')->whereThreadId($threadid)->orderBy('id')->paginate(25);
         if(!Input::get('page')){
-           return redirect('board/thread/'.$threadid.'?page='.$posts->lastPage());
+            return redirect('board/thread/'.$threadid.'?page='.$posts->lastPage());
         }else{
             return view('board.threads.show', [
                 'posts' => $posts,
@@ -96,7 +96,7 @@ class BoardController extends Controller
 
     }
 
-    public function store_thread(Request $request){
+    public function store_thread(Request $request) {
         $date = Carbon::now();
 
         $threadid = \DB::table('board_threads')->insertGetId([
@@ -124,7 +124,7 @@ class BoardController extends Controller
         return redirect()->action('BoardController@show_thread', [$threadid]);
     }
 
-    public function store_post(Request $request, $threadid){
+    public function store_post(Request $request, $threadid) {
         $this->validate($request, [
             'catid' => 'required',
             'message' => 'required',
@@ -162,11 +162,11 @@ class BoardController extends Controller
         return redirect()->to($url);
     }
 
-    public function thread_close_switch($id, $state){
-        if(\Auth::check()){
-            if(\Auth::user()->can('mod-threads')){
-                if(is_numeric($id)){
-                    if($state == 1 || $state == 0){
+    public function thread_close_switch($id, $state) {
+        if (\Auth::check()) {
+            if (\Auth::user()->can('mod-threads')) {
+                if (is_numeric($id)) {
+                    if ($state == 1 || $state == 0) {
                         \DB::table('board_threads')
                             ->where('id', '=', $id)
                             ->update([
@@ -179,7 +179,7 @@ class BoardController extends Controller
         return redirect()->action('BoardController@show_thread', $id);
     }
 
-    public function post_edit($threadid, $postid){
+    public function post_edit($threadid, $postid) {
         $post = BoardPost::whereId($postid)->first();
 
         return view('board.post.edit', [
@@ -187,8 +187,8 @@ class BoardController extends Controller
         ]);
     }
 
-    public function post_update(Request $request, $threadid, $postid){
-        if(\Auth::check()){
+    public function post_update(Request $request, $threadid, $postid) {
+        if (\Auth::check()) {
             $this->validate($request, [
                 'thread_id' => 'required',
                 'post_id' => 'required',

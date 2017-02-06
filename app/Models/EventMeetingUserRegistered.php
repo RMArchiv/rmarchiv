@@ -35,15 +35,15 @@ class EventMeetingUserRegistered extends Model
 
     protected $guarded = [];
 
-    public function event(){
+    public function event() {
         $this->hasOne('App\Models\Event', 'id', 'event_id');
     }
 
-    public function meeting(){
+    public function meeting() {
         $this->hasOne('App\Models\EventMeeting', 'id', 'meeting_id');
     }
 
-    public function user(){
+    public function user() {
         $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 }

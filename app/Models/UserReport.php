@@ -53,15 +53,15 @@ class UserReport extends Model
 
     protected $guarded = [];
 
-    public function user(){
+    public function user() {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 
-    public function user_closed(){
+    public function user_closed() {
         return $this->hasOne('App\Models\User', 'id', 'closed_user_id');
     }
 
-    public function game(){
+    public function game() {
         return $this->hasOne('App\Models\Game', 'id', 'content_id');
     }
 }
