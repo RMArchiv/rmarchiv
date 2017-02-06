@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Game;
 use App\Models\UserReport;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller

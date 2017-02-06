@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
-use App\Models\GamesDeveloper;
 use Illuminate\Http\Request;
+use App\Models\GamesDeveloper;
 
 class DeveloperController extends Controller
 {

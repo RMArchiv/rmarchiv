@@ -2,8 +2,8 @@
 
 namespace App\Listeners;
 
-use App\Events\Obyx;
 use Carbon\Carbon;
+use App\Events\Obyx;
 
 class ObyxListener
 {

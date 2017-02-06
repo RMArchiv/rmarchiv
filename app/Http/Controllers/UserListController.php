@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\DatabaseHelper;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Helpers\DatabaseHelper;
 
 class UserListController extends Controller
 {

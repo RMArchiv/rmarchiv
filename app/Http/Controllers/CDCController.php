@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Game;
 use Carbon\Carbon;
+use App\Models\Game;
 use Illuminate\Http\Request;
 
 class CDCController extends Controller
