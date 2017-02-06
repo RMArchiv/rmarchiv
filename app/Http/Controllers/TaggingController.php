@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 
 class TaggingController extends Controller
 {
+    public function index($orderby = 'tag', $direction = 'asc'){
+        $tags = Tag::all()->sortBy('title');
+
+        return view('tags.index', [
+            'tags' => $tags,
+            'orderby' => $orderby,
+            'direction' => $direction,
+        ]);
+    }
+
     public function showGames($tagid) {
         $games = \DB::table('games')
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
