@@ -95,7 +95,7 @@ class CDCController extends Controller
         if (count($title) == 1) {
             $game = Game::whereTitle($title[0])
                 ->first();
-        }else {
+        } else {
             $game = Game::whereTitle($title[0])
                 ->orWhere('subtitle', '=', $title[1])
                 ->first();

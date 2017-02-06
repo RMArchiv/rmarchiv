@@ -41,7 +41,7 @@ class AutocompleteController extends Controller
         foreach ($games as $g) {
             if (is_null($g->subtitle) || $g->subtitle == '') {
                 $result[] = ['id' => $g->id, 'value' => $g->title];
-            }else {
+            } else {
                 $result[] = ['id' => $g->id, 'value' => $g->title.' -=- '.$g->subtitle];
             }
 

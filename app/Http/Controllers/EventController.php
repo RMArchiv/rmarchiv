@@ -60,7 +60,7 @@ class EventController extends Controller
         $es->reg_end_date = $request->get('reg_end');
         if ($request->get('reg_allowed') == "on") {
             $es->reg_allowed = 1;
-        }else {
+        } else {
             $es->reg_allowed = 0;
         }
         $es->save();

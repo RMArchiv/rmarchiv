@@ -39,7 +39,7 @@ class LogoController extends Controller
         if ($request->get('value') == 0) {
             $lv->down = 1;
             $lv->up = 0;
-        }else {
+        } else {
             $lv->down = 0;
             $lv->up = 1;
         }

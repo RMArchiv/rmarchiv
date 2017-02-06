@@ -21,7 +21,7 @@ class ScreenshotController extends Controller
         //Prüfen ob Screenshots vorhanden sind
         if (is_null($s)) {//Es sind keine Screenshots vorhanden
             $storagePath = public_path().'/assets/no_image.png';
-        }else {//Es sind Screenshots vorhanden
+        } else {//Es sind Screenshots vorhanden
             $storagePath = \Storage::get($s->filename);
         }
 

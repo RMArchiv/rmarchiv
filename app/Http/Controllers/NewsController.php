@@ -79,7 +79,7 @@ class NewsController extends Controller
                     ->select(['news.id', 'news.title', 'news.news_html', 'news_category', 'users.name', 'news.user_id', 'news.created_at', 'news.approved'])
                     ->where('news.id', '=', $id)
                     ->first();
-            }else {
+            } else {
                 $news = \DB::table('news')
                     ->leftJoin('users', 'news.user_id', '=', 'users.id')
                     ->select(['news.id', 'news.title', 'news.news_html', 'news_category', 'users.name', 'news.user_id', 'news.created_at', 'news.approved'])
@@ -87,7 +87,7 @@ class NewsController extends Controller
                     ->where('approved', '=', '1')
                     ->first();
             }
-        }else {
+        } else {
             $news = \DB::table('news')
                 ->leftJoin('users', 'news.user_id', '=', 'users.id')
                 ->select(['news.id', 'news.title', 'news.news_html', 'news_category', 'users.name', 'news.user_id', 'news.created_at', 'news.approved'])

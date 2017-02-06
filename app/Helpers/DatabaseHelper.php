@@ -25,11 +25,11 @@ class DatabaseHelper {
 
             if ($releasedate) {
                 return Carbon::parse($releasedate->reldate)->toDateString();
-            }else {
+            } else {
                 return '';
             }
 
-        }else {
+        } else {
             return Carbon::parse($game->release_date)->toDateString();
         }
     }
@@ -83,7 +83,7 @@ class DatabaseHelper {
     /**
      * @param string $type
      */
-    public static function getCommentsMax($type){
+    public static function getCommentsMax($type) {
         $v = \DB::table('comments')
             ->selectRaw('count(id) as maxviews')
             ->where('content_type', '=', \DB::raw("'".$type."'"))
@@ -100,7 +100,7 @@ class DatabaseHelper {
 
         if ($lang) {
             return $lang->id;
-        }else {
+        } else {
             return 0;
         }
 
@@ -114,7 +114,7 @@ class DatabaseHelper {
 
         if ($dev) {
             return $dev->id;
-        }else {
+        } else {
             return 0;
         }
 
