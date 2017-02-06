@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNotification;
 use Cmgmyr\Messenger\Traits\Messagable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 /*
  * App\User
  *
@@ -42,7 +42,7 @@ use Illuminate\Notifications\Notifiable;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserList[] $userlists
  */
 
-use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNotification;
 
 class User extends Authenticatable
 {

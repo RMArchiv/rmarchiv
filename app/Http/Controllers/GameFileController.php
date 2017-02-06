@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Events\Obyx;
 use App\Models\GamesFile;
+use Illuminate\Http\Request;
 use App\Models\GamesFilesType;
 use App\Models\UserDownloadLog;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class GameFileController extends Controller
 {

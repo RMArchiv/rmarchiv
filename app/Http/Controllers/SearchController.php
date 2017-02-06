@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\DatabaseHelper;
 use Illuminate\Http\Request;
+use App\Helpers\DatabaseHelper;
 
 class SearchController extends Controller
 {
