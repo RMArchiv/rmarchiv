@@ -53,7 +53,7 @@ class ReportController extends Controller
     }
 
     public function close_ticket($id){
-        $t = UserReport::whereId($id);
+        $t = UserReport::whereId($id)->first();
         $t->closed = 1;
         $t->closed_at = Carbon::now();
         $t->closed_user_id = \Auth::id();
@@ -63,7 +63,7 @@ class ReportController extends Controller
     }
 
     public function open_ticket($id){
-        $t = UserReport::whereId($id);
+        $t = UserReport::whereId($id)->first();
         $t->closed = 0;
         $t->closed_at = Carbon::now();
         $t->closed_user_id = \Auth::id();
