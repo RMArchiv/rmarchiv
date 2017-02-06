@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Migration
+ * Class Migration.
  *
- * @property integer $id
+ * @property int $id
  * @property string $migration
- * @property integer $batch
+ * @property int $batch
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Migration whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Migration whereMigration($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Migration whereBatch($value)
@@ -23,10 +24,8 @@ class Migration extends Model
 
     protected $fillable = [
         'migration',
-        'batch'
+        'batch',
     ];
 
     protected $guarded = [];
-
-        
 }

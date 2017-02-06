@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Screenshot
+ * Class Screenshot.
  *
- * @property integer $id
- * @property integer $game_id
- * @property integer $user_id
- * @property integer $screenshot_id
+ * @property int $id
+ * @property int $game_id
+ * @property int $user_id
+ * @property int $screenshot_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $filename
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Screenshot whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Screenshot whereGameId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Screenshot whereUserId($value)
@@ -33,10 +34,8 @@ class Screenshot extends Model
         'game_id',
         'user_id',
         'screenshot_id',
-        'filename'
+        'filename',
     ];
 
     protected $guarded = [];
-
-        
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class MessengerParticipant
+ * Class MessengerParticipant.
  *
  * @property int $id
  * @property int $thread_id
@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerParticipant whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerParticipant whereThreadId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerParticipant whereUserId($value)
@@ -32,10 +33,8 @@ class MessengerParticipant extends Model
     protected $fillable = [
         'thread_id',
         'user_id',
-        'last_read'
+        'last_read',
     ];
 
     protected $guarded = [];
-
-        
 }

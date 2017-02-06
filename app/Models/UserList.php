@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class UserList
+ * Class UserList.
  *
  * @property int $id
  * @property int $user_id
@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $desc_md
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserList whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserList whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserList whereTitle($value)
@@ -33,10 +34,8 @@ class UserList extends Model
         'user_id',
         'title',
         'desc_html',
-        'desc_md'
+        'desc_md',
     ];
 
     protected $guarded = [];
-
-        
 }

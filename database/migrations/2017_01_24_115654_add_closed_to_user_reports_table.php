@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddClosedToUserReportsTable extends Migration
 {
@@ -16,7 +16,7 @@ class AddClosedToUserReportsTable extends Migration
         Schema::table('user_reports', function (Blueprint $table) {
             $table->integer('closed');
             $table->integer('closed_user_id');
-            $table->string('closed_remarks',9999);
+            $table->string('closed_remarks', 9999);
             $table->timestamp('closed_at');
         });
     }
@@ -33,7 +33,6 @@ class AddClosedToUserReportsTable extends Migration
             $table->dropColumn('closed_user_id');
             $table->dropColumn('closed_remarks');
             $table->dropColumn('closed_at');
-
         });
     }
 }

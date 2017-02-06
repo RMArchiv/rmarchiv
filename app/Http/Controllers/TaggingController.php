@@ -4,27 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use App\Models\TagRelation;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TaggingController extends Controller
 {
-    public function index($orderby = 'tag', $direction = 'asc') {
+    public function index($orderby = 'tag', $direction = 'asc')
+    {
         $tags = Tag::all()->sortBy('title');
 
         return view('tags.index', [
-            'tags' => $tags,
-            'orderby' => $orderby,
+            'tags'      => $tags,
+            'orderby'   => $orderby,
             'direction' => $direction,
         ]);
     }
 
-    public function showGames($tagid) {
+    public function showGames($tagid)
+    {
         $games = \DB::table('games')
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('tag_relations', function($join) {
+            ->leftJoin('tag_relations', function ($join) {
                 $join->on('tag_relations.content_id', '=', 'games.id');
                 $join->on('tag_relations.content_type', '=', \DB::raw("'game'"));
             })
@@ -61,7 +62,7 @@ class TaggingController extends Controller
         $gametypes = \DB::table('games_files_types')
             ->select('id', 'title', 'short')
             ->get();
-        $gtypes = array();
+        $gtypes = [];
         foreach ($gametypes as $gt) {
             $t['title'] = $gt->title;
             $t['short'] = $gt->short;
@@ -69,15 +70,16 @@ class TaggingController extends Controller
         }
 
         return view('tags.show', [
-            'games' => $games,
+            'games'     => $games,
             'gametypes' => $gtypes,
         ]);
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $this->validate($request, [
-            'title' => 'required',
-            'content_id' => 'required',
+            'title'        => 'required',
+            'content_id'   => 'required',
             'content_type' => 'required',
         ]);
 
@@ -85,9 +87,9 @@ class TaggingController extends Controller
         $tagid = $tag->id;
 
         TagRelation::firstOrCreate([
-            'tag_id' => $tagid,
-            'user_id' => \Auth::id(),
-            'content_id' => $request->get('content_id'),
+            'tag_id'       => $tagid,
+            'user_id'      => \Auth::id(),
+            'content_id'   => $request->get('content_id'),
             'content_type' => $request->get('content_type'),
         ]);
 

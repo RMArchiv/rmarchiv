@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-
 class IndexSearch extends Command
 {
     /**
@@ -23,7 +22,6 @@ class IndexSearch extends Command
 
     /**
      * Create a new command instance.
-     *
      */
     public function __construct()
     {

@@ -103,12 +103,10 @@ Route::group(['prefix' => 'resources'], function () {
 
 Route::post('resources/upload', 'FineUploaderController@endpoint@upload')->name('resources.upload');
 
-
 //User Routings
 Route::get('users', 'UserController@index');
 Route::get('users/activity', 'UserController@activity_index');
 Route::get('users/{id}', 'UserController@show')->name('users.show');
-
 
 //PN Routen
 Route::group(['prefix' => 'messages'], function () {
@@ -197,8 +195,8 @@ Route::get('missing/gamefiles', 'MissingController@index_gamefiles');
 Route::get('missing/gamedesc', 'MissingController@index_gamedesc');
 
 //Sonstige Seiten
-Route::get("/impressum", function(){
-    return View::make("_pages.impressum");
+Route::get('/impressum', function () {
+    return View::make('_pages.impressum');
 });
 
 //Routen für Sitemap

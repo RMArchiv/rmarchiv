@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class AwardController extends Controller
 {
-    public function index() {
-
+    public function index()
+    {
         $awards = \DB::table('award_cats')
             ->leftJoin('award_pages', 'award_cats.award_page_id', '=', 'award_pages.id')
             ->select([
@@ -16,7 +16,7 @@ class AwardController extends Controller
                 'award_cats.title as title',
                 'award_cats.year as year',
                 'award_cats.month as month',
-                'award_pages.title as awardpage'
+                'award_pages.title as awardpage',
             ])
             ->orderBy('year', 'desc')
             ->orderBy('month', 'desc')
@@ -27,7 +27,8 @@ class AwardController extends Controller
         ]);
     }
 
-    public function show($awardid) {
+    public function show($awardid)
+    {
         $award = \DB::table('award_cats')
             ->leftJoin('award_pages', 'award_pages.id', '=', 'award_cats.award_page_id')
             ->select([
@@ -36,7 +37,7 @@ class AwardController extends Controller
                 'award_cats.id as catid',
                 'award_cats.title as cattitle',
                 'award_cats.year as catyear',
-                'award_cats.month as catmonth'
+                'award_cats.month as catmonth',
             ])
             ->where('award_cats.id', '=', $awardid)
             ->first();
@@ -82,30 +83,30 @@ class AwardController extends Controller
         $gametypes = \DB::table('games_files_types')
             ->select('id', 'title', 'short')
             ->get();
-        $gtypes    = array();
+        $gtypes = [];
         foreach ($gametypes as $gt) {
             $t['title'] = $gt->title;
             $t['short'] = $gt->short;
             $gtypes[$gt->id] = $t;
         }
 
-        $gamesret = array();
+        $gamesret = [];
 
         foreach ($games as $game) {
             $id = $game->award_subcat_id;
             $gamesret[$id][] = $game;
         }
 
-
         return view('awards.show', [
-            'award' => $award,
-            'subcats' => $subcats,
-            'games' => $gamesret,
+            'award'      => $award,
+            'subcats'    => $subcats,
+            'games'      => $gamesret,
             'game_types' => $gtypes,
         ]);
     }
 
-    public function create() {
+    public function create()
+    {
         $pages = \DB::table('award_pages')
             ->orderBy('title')
             ->get();
@@ -126,21 +127,23 @@ class AwardController extends Controller
             ->get();
 
         return view('awards.create', [
-            'pages' => $pages,
+            'pages'  => $pages,
             'awards' => $awards,
         ]);
     }
 
-    public function gameadd($subcatid) {
+    public function gameadd($subcatid)
+    {
         return view('awards.gameadd', [
             'subcatid' => $subcatid,
         ]);
     }
 
-    public function gameadd_store(Request $request) {
+    public function gameadd_store(Request $request)
+    {
         $this->validate($request, [
-            'game' => 'required|numeric',
-            'place' => 'required|numeric',
+            'game'     => 'required|numeric',
+            'place'    => 'required|numeric',
             'subcatid' => 'required|numeric',
         ]);
 
@@ -157,23 +160,23 @@ class AwardController extends Controller
 
         if ($check->count() == 0) {
             \DB::table('games_awards')->insert([
-                'game_id' => $request->get('game'),
-                'developer_id' => 0,
-                'award_cat_id' => $subcat->cat_id,
-                'award_page_id' => $subcat->page_id,
-                'user_id' => \Auth::id(),
-                'created_at' => Carbon::now(),
-                'place' => $request->get('place'),
-                'description' => $request->get('desc'),
+                'game_id'         => $request->get('game'),
+                'developer_id'    => 0,
+                'award_cat_id'    => $subcat->cat_id,
+                'award_page_id'   => $subcat->page_id,
+                'user_id'         => \Auth::id(),
+                'created_at'      => Carbon::now(),
+                'place'           => $request->get('place'),
+                'description'     => $request->get('desc'),
                 'award_subcat_id' => $request->get('subcatid'),
             ]);
         }
 
         return redirect()->action('AwardController@show', $subcat->cat_id);
-
     }
 
-    public function store_page(Request $request) {
+    public function store_page(Request $request)
+    {
         $this->validate($request, [
             'awardpage' => 'required',
         ]);
@@ -184,20 +187,21 @@ class AwardController extends Controller
 
         if ($check->count() == 0) {
             \DB::table('award_pages')->insert([
-                'title' => $request->get('awardpage'),
+                'title'       => $request->get('awardpage'),
                 'website_url' => $request->get('awardpageurl'),
-                'user_id' => \Auth::id(),
-                'created_at' => Carbon::now()
+                'user_id'     => \Auth::id(),
+                'created_at'  => Carbon::now(),
             ]);
         }
 
         return redirect()->action('AwardController@create');
     }
 
-    public function store_cat(Request $request) {
+    public function store_cat(Request $request)
+    {
         $this->validate($request, [
-            'awardpage' => 'required|not_in:0',
-            'awardname' => 'required',
+            'awardpage'      => 'required|not_in:0',
+            'awardname'      => 'required',
             'awarddate_year' => 'required|not_in:0',
         ]);
 
@@ -210,21 +214,22 @@ class AwardController extends Controller
 
         if ($check->count() == 0) {
             \DB::table('award_cats')->insert([
-                'title' => $request->get('awardname'),
+                'title'         => $request->get('awardname'),
                 'award_page_id' => $request->get('awardpage'),
-                'year' => $request->get('awarddate_year'),
-                'month' => $request->get('awarddate_month'),
-                'user_id' => \Auth::id(),
-                'created_at' => Carbon::now(),
+                'year'          => $request->get('awarddate_year'),
+                'month'         => $request->get('awarddate_month'),
+                'user_id'       => \Auth::id(),
+                'created_at'    => Carbon::now(),
             ]);
         }
 
         return redirect()->action('AwardController@create');
     }
 
-    public function store_subcat(Request $request) {
+    public function store_subcat(Request $request)
+    {
         $this->validate($request, [
-            'award' => 'required|not_in:0',
+            'award'       => 'required|not_in:0',
             'awardsubcat' => 'required',
         ]);
 
@@ -238,10 +243,10 @@ class AwardController extends Controller
 
         if ($check->count() == 0) {
             \DB::table('award_subcats')->insert([
-                'title' => $request->get('awardsubcat'),
+                'title'      => $request->get('awardsubcat'),
                 'created_at' => Carbon::now(),
 
-                'cat_id' => $aw[1],
+                'cat_id'  => $aw[1],
                 'page_id' => $aw[0],
             ]);
         }

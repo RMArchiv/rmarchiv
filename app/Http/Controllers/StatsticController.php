@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Khill\Lavacharts\Lavacharts;
 
 class StatsticController extends Controller
 {
-    public function show() {
+    public function show()
+    {
         $lava_config = [
             'legend' => [
-                'position' => 'in',
+                'position'  => 'in',
                 'textStyle' => [
                     'color' => '#ffffe0',
                 ],
             ],
             'backgroundColor' => [
-                'fill' => '#17395c'
+                'fill' => '#17395c',
             ],
             'hAxis' => [
                 'textStyle' => [
@@ -28,22 +28,22 @@ class StatsticController extends Controller
                     'color' => '#ffffe0',
                 ],
             ],
-            'pointSize' => 5,
+            'pointSize'  => 5,
             'pointShape' => [
-                'type' => 'circle',
+                'type'     => 'circle',
                 'rotation' => 180,
             ],
             'trendlines' => [
                 0 => [
-                    'type' => 'line',
-                    'color' => 'red',
-                    'pointsVisible'=>true,
-                    'pointSize' => 1,
+                    'type'         => 'line',
+                    'color'        => 'red',
+                    'pointsVisible'=> true,
+                    'pointSize'    => 1,
                 ],
             ],
         ];
 
-        $lava = new Lavacharts;
+        $lava = new Lavacharts();
 
         // Anzahl der Registrierungen
         $users = \DB::table('users')
@@ -57,9 +57,9 @@ class StatsticController extends Controller
         $reg = $lava->DataTable();
         $reg->addStringColumn('Datum')
             ->addNumberColumn('Registrierungen pro Monat');
-            foreach ($users as $user) {
-                $reg->addRow([$user->year.'-'.$user->month, $user->count]);
-            }
+        foreach ($users as $user) {
+            $reg->addRow([$user->year.'-'.$user->month, $user->count]);
+        }
         $lava->AreaChart('Registrierungen', $reg, $lava_config);
 
         // Kommentare pro Monat
@@ -112,6 +112,5 @@ class StatsticController extends Controller
         return view('statistics.index', [
             'lava' => $lava,
         ]);
-
     }
 }

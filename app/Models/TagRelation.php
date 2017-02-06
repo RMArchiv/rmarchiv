@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class TagRelation
+ * Class TagRelation.
  *
  * @property int $id
  * @property int $tag_id
@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $content_type
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\TagRelation whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\TagRelation whereTagId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\TagRelation whereUserId($value)
@@ -22,6 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\TagRelation whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\TagRelation whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property-read \App\Models\Tag $tag
  */
 class TagRelation extends Model
@@ -34,12 +36,13 @@ class TagRelation extends Model
         'tag_id',
         'user_id',
         'content_id',
-        'content_type'
+        'content_type',
     ];
 
     protected $guarded = [];
 
-    public function tag() {
+    public function tag()
+    {
         return $this->hasOne('App\Models\Tag', 'id', 'tag_id');
     }
 }

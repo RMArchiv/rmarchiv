@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class BoardCat
+ * Class BoardCat.
  *
- * @property integer $id
- * @property integer $order
+ * @property int $id
+ * @property int $order
  * @property string $title
  * @property string $desc
- * @property integer $last_user_id
+ * @property int $last_user_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $last_created_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardCat whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardCat whereOrder($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardCat whereTitle($value)
@@ -24,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardCat whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardCat whereLastCreatedAt($value)
  * @mixin \Eloquent
+ *
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BoardThread[] $threads
  * @property-read \App\Models\User $last_user
  */
@@ -38,16 +40,18 @@ class BoardCat extends Model
         'title',
         'desc',
         'last_user_id',
-        'last_created_at'
+        'last_created_at',
     ];
 
     protected $guarded = [];
 
-    public function threads() {
+    public function threads()
+    {
         return $this->hasMany('App\Models\BoardThread', 'cat_id', 'id');
     }
 
-    public function last_user() {
+    public function last_user()
+    {
         return $this->hasOne('App\Models\User', 'id', 'last_user_id');
     }
 }

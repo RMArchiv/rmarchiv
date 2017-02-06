@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Developer
+ * Class Developer.
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property string $short
  * @property string $website_url
- * @property integer $user_id
+ * @property int $user_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Developer whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Developer whereName($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Developer whereShort($value)
@@ -35,12 +36,13 @@ class Developer extends Model
         'name',
         'short',
         'website_url',
-        'user_id'
+        'user_id',
     ];
 
     protected $guarded = [];
 
-    public function user() {
+    public function user()
+    {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 }

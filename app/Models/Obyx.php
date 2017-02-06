@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Obyx
+ * Class Obyx.
  *
- * @property integer $id
- * @property integer $value
+ * @property int $id
+ * @property int $value
  * @property string $reason
  * @property string $reason_visible
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Obyx whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Obyx whereValue($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Obyx whereReason($value)
@@ -30,10 +31,8 @@ class Obyx extends Model
     protected $fillable = [
         'value',
         'reason',
-        'reason_visible'
+        'reason_visible',
     ];
 
     protected $guarded = [];
-
-        
 }

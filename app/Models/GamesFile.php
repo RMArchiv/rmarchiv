@@ -6,21 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class GamesFile
+ * Class GamesFile.
  *
- * @property integer $id
- * @property integer $game_id
- * @property integer $filesize
+ * @property int $id
+ * @property int $game_id
+ * @property int $filesize
  * @property string $extension
- * @property integer $release_type
+ * @property int $release_type
  * @property string $release_version
- * @property integer $release_year
- * @property integer $release_month
- * @property integer $release_day
- * @property integer $user_id
+ * @property int $release_year
+ * @property int $release_month
+ * @property int $release_day
+ * @property int $user_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereGameId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereFilesize($value)
@@ -35,14 +36,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property string $filename
- * @property integer $downloadcount
+ * @property int $downloadcount
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereFilename($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereDownloadcount($value)
+ *
  * @property-read \App\Models\GamesFilesType $gamefiletype
  * @property-read \App\Models\Game $game
  * @property int $forbidden
  * @property string $reason
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereForbidden($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereReason($value)
  */
@@ -63,18 +68,19 @@ class GamesFile extends Model
         'release_year',
         'release_month',
         'release_day',
-        'user_id'
+        'user_id',
     ];
 
     protected $guarded = [];
     protected $dates = ['deleted_at'];
 
-    public function gamefiletype() {
+    public function gamefiletype()
+    {
         return $this->hasOne('App\Models\GamesFilesType', 'id', 'release_type');
     }
 
-    public function game() {
+    public function game()
+    {
         return $this->belongsTo('App\Models\Game', 'game_id', 'id')->with('maker', 'developers');
     }
-        
 }

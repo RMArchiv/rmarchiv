@@ -13,7 +13,6 @@ use App\Models\Language;
 use App\Models\Screenshot;
 use App\Models\TagRelation;
 use Carbon\Carbon;
-use Doctrine\DBAL\Driver\IBMDB2\DB2Connection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -42,9 +41,9 @@ class GameController extends Controller
         }
 
         return view('games.index', [
-            'games' => $games,
-            'maxviews' => DatabaseHelper::getGameViewsMax(),
-            'orderby' => $orderby,
+            'games'     => $games,
+            'maxviews'  => DatabaseHelper::getGameViewsMax(),
+            'orderby'   => $orderby,
             'direction' => $direction,
         ]);
     }
@@ -70,15 +69,16 @@ class GameController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
-            'maker' => 'required|not_in:0',
-            'language' => 'required|not_in:0',
+            'title'     => 'required',
+            'maker'     => 'required|not_in:0',
+            'language'  => 'required|not_in:0',
             'developer' => 'required',
         ]);
 
@@ -90,7 +90,7 @@ class GameController extends Controller
 
         $langid = DatabaseHelper::langId_from_short($request->get('language'));
 
-        $g = new Game;
+        $g = new Game();
         $g->title = $request->get('title');
         $g->subtitle = $request->get('subtitle', '');
         $g->desc_md = $request->get('desc');
@@ -103,26 +103,27 @@ class GameController extends Controller
         $g->save();
 
         \DB::table('games_developer')->insert([
-            'user_id' => \Auth::id(),
-            'game_id' => $g->id,
+            'user_id'      => \Auth::id(),
+            'game_id'      => $g->id,
             'developer_id' => $devid,
-            'created_at' => Carbon::now(),
+            'created_at'   => Carbon::now(),
         ]);
 
         event(new Obyx('game-add', \Auth::id()));
 
         return redirect()->action('MsgBoxController@game_add', [$g->id]);
-
     }
 
     /**
-     * Add developer to game
+     * Add developer to game.
      *
      * @param Request $request
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store_developer(Request $request, $id) {
+    public function store_developer(Request $request, $id)
+    {
         $this->validate($request, [
             'developer' => 'required',
         ]);
@@ -133,10 +134,10 @@ class GameController extends Controller
         }
 
         \DB::table('games_developer')->insert([
-            'user_id' => \Auth::id(),
-            'game_id' => $id,
+            'user_id'      => \Auth::id(),
+            'game_id'      => $id,
             'developer_id' => $devid,
-            'created_at' => Carbon::now(),
+            'created_at'   => Carbon::now(),
         ]);
 
         return redirect()->action('GameController@edit', [$id]);
@@ -145,7 +146,8 @@ class GameController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -157,13 +159,13 @@ class GameController extends Controller
         return view('games.show', [
             'game' => $game,
         ]);
-
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -192,7 +194,7 @@ class GameController extends Controller
         $developers = \DB::table('developer')
             ->select([
                 'developer.name as devname',
-                'developer.id as devid'
+                'developer.id as devid',
             ])
             ->leftJoin('games_developer', 'games_developer.developer_id', '=', 'developer.id')
             ->where('games_developer.game_id', '=', $id)
@@ -202,7 +204,7 @@ class GameController extends Controller
             ->orderBy('title')
             ->get();
 
-        $credittypes = array();
+        $credittypes = [];
         foreach ($creds as $cred) {
             $credittypes[$cred->id]['title'] = $cred->title;
             $credittypes[$cred->id]['id'] = $cred->id;
@@ -219,25 +221,23 @@ class GameController extends Controller
             ->where('game_id', '=', $id)
             ->get();
 
-
-
-
         return view('games.edit', [
-            'game' => $game,
-            'makers' => $makers,
-            'developers' => $developers,
-            'gamefiles' => '',
-            'langs' => $langs,
+            'game'        => $game,
+            'makers'      => $makers,
+            'developers'  => $developers,
+            'gamefiles'   => '',
+            'langs'       => $langs,
             'credittypes' => $credittypes,
-            'credits' => $credits,
+            'credits'     => $credits,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
@@ -257,13 +257,13 @@ class GameController extends Controller
         $game->save();
 
         return redirect()->action('GameController@edit', [$id]);
-
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
@@ -284,11 +284,11 @@ class GameController extends Controller
             }
         }
 
-
         return redirect()->route('home');
     }
 
-    public function destroy_developer(Request $request, $id) {
+    public function destroy_developer(Request $request, $id)
+    {
         \DB::table('games_developer')
             ->where('game_id', '=', $id)
             ->where('developer_id', '=', $request->get('devid'))
