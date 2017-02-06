@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Resource
+ * Class Resource.
  *
  * @property int $id
  * @property string $type
@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $content_path
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Resource whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Resource whereType($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Resource whereCat($value)
@@ -45,10 +46,8 @@ class Resource extends Model
         'desc_md',
         'desc_html',
         'content_type',
-        'content_path'
+        'content_path',
     ];
 
     protected $guarded = [];
-
-        
 }

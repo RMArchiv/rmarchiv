@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Faq
+ * Class Faq.
  */
 class Faq extends Model
 {
@@ -18,10 +18,8 @@ class Faq extends Model
         'title',
         'cat',
         'desc_md',
-        'desc_html'
+        'desc_html',
     ];
 
     protected $guarded = [];
-
-        
 }

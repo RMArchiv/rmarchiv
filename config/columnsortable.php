@@ -7,16 +7,16 @@ return [
     */
     'columns' => [
         'alpha' => [
-            'rows' => ['description', 'email', 'name', 'slug'],
+            'rows'  => ['description', 'email', 'name', 'slug'],
             'class' => 'fa fa-sort-alpha',
         ],
         'amount' => [
-            'rows' => ['amount', 'price'],
-            'class' => 'fa fa-sort-amount'
+            'rows'  => ['amount', 'price'],
+            'class' => 'fa fa-sort-amount',
         ],
         'numeric' => [
-            'rows' => ['created_at', 'updated_at', 'level', 'id', 'phone_number'],
-            'class' => 'fa fa-sort-numeric'
+            'rows'  => ['created_at', 'updated_at', 'level', 'id', 'phone_number'],
+            'class' => 'fa fa-sort-numeric',
         ],
     ],
 
@@ -79,5 +79,5 @@ return [
     /*
     default order for non-sorted columns
      */
-    'default_direction_unsorted' => 'asc'
+    'default_direction_unsorted' => 'asc',
 ];

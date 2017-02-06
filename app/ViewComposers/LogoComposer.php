@@ -1,20 +1,21 @@
-<?php namespace App\Http\ViewComposers;
+<?php
 
-use Illuminate\Contracts\View\View;
+namespace App\Http\ViewComposers;
+
 use App\Models\Logo;
-use RobBrazier\Piwik\Facades\Piwik;
+use Illuminate\Contracts\View\View;
 
-class LogoComposer {
-
+class LogoComposer
+{
     public function __construct()
     {
-
     }
 
     /**
      * Bind data to the view.
      *
-     * @param  View  $view
+     * @param View $view
+     *
      * @return void
      */
     public function compose(View $view)
@@ -30,5 +31,4 @@ class LogoComposer {
 
         $view->with('logo', $logo);
     }
-
 }

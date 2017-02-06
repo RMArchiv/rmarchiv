@@ -11,15 +11,15 @@ class GameFileTypesSeed extends Seeder
      */
     public function run()
     {
-        $l = array();
+        $l = [];
         $l[] = ['title' => 'TechDemo', 'short' => 'techdemo'];
         $l[] = ['title' => 'Demo', 'short' => 'demo'];
         $l[] = ['title' => 'Fullversion', 'short' => 'full'];
 
-        foreach ($l as $langs){
+        foreach ($l as $langs) {
             DB::table('games_files_types')->insert([
-                'title' => $langs['title'],
-                'short' => $langs['short'],
+                'title'      => $langs['title'],
+                'short'      => $langs['short'],
                 'created_at' => \Carbon\Carbon::now(),
             ]);
         }

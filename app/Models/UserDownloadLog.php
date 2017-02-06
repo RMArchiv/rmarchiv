@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class UserDownloadLog
+ * Class UserDownloadLog.
  *
  * @property int $id
  * @property int $user_id
  * @property int $gamefile_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserDownloadLog whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserDownloadLog whereGamefileId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserDownloadLog whereId($value)
@@ -27,10 +28,8 @@ class UserDownloadLog extends Model
 
     protected $fillable = [
         'user_id',
-        'gamefile_id'
+        'gamefile_id',
     ];
 
     protected $guarded = [];
-
-        
 }

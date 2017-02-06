@@ -20,7 +20,7 @@ class CDCController extends Controller
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('comments', function($join) {
+            ->leftJoin('comments', function ($join) {
                 $join->on('comments.content_id', '=', 'games.id');
                 $join->on('comments.content_type', '=', \DB::raw("'game'"));
             })
@@ -54,7 +54,7 @@ class CDCController extends Controller
         $gametypes = \DB::table('games_files_types')
             ->select('id', 'title', 'short')
             ->get();
-        $gtypes = array();
+        $gtypes = [];
         foreach ($gametypes as $gt) {
             $t['title'] = $gt->title;
             $t['short'] = $gt->short;
@@ -62,7 +62,7 @@ class CDCController extends Controller
         }
 
         return view('cdc.index', [
-            'cdcs' => $cdc,
+            'cdcs'      => $cdc,
             'gametypes' => $gtypes,
         ]);
     }
@@ -80,7 +80,8 @@ class CDCController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -90,8 +91,8 @@ class CDCController extends Controller
         ]);
 
         // Prüfen ob das Spiel auch wirklich existiert
-        $title = explode(" -=- ", $request->get('gamename'));
-        
+        $title = explode(' -=- ', $request->get('gamename'));
+
         if (count($title) == 1) {
             $game = Game::whereTitle($title[0])
                 ->first();
@@ -102,12 +103,11 @@ class CDCController extends Controller
         }
 
         \DB::table('games_coupdecoeur')->insert([
-            'game_id' => $game->id,
-            'user_id' => \Auth::id(),
+            'game_id'    => $game->id,
+            'user_id'    => \Auth::id(),
             'created_at' => Carbon::now(),
         ]);
 
         return redirect()->action('MsgBoxController@cdc_add', [$game->id]);
     }
-
 }

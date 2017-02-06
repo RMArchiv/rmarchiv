@@ -10,15 +10,15 @@ use App\Models\GamesCoupdecoeur;
 use App\Models\News;
 use App\Models\Shoutbox;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $gametypes = \DB::table('games_files_types')
             ->select('id', 'title', 'short')
             ->get();
-        $gtypes = array();
+        $gtypes = [];
         foreach ($gametypes as $gt) {
             $t['title'] = $gt->title;
             $t['short'] = $gt->short;
@@ -34,7 +34,7 @@ class IndexController extends Controller
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('comments', function($join) {
+            ->leftJoin('comments', function ($join) {
                 $join->on('comments.content_id', '=', 'games.id');
                 $join->on('comments.content_type', '=', \DB::raw("'game'"));
             })
@@ -76,7 +76,7 @@ class IndexController extends Controller
                 'u.name as username',
                 'u.created_at as usercreated_at',
                 'ur.display_name as rolename',
-                'ur.description as roledesc'
+                'ur.description as roledesc',
             ])
             ->selectRaw('(SELECT SUM(obyx.value) FROM user_obyx LEFT JOIN obyx ON obyx.id = user_obyx.obyx_id WHERE user_obyx.user_id = u.id) as obyx')
             ->orderBy('obyx', 'desc')
@@ -126,7 +126,7 @@ class IndexController extends Controller
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('comments', function($join) {
+            ->leftJoin('comments', function ($join) {
                 $join->on('comments.content_id', '=', 'games.id');
                 $join->on('comments.content_type', '=', \DB::raw("'game'"));
             })
@@ -161,7 +161,7 @@ class IndexController extends Controller
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('comments', function($join) {
+            ->leftJoin('comments', function ($join) {
                 $join->on('comments.content_id', '=', 'games.id');
                 $join->on('comments.content_type', '=', \DB::raw("'game'"));
             })
@@ -194,21 +194,21 @@ class IndexController extends Controller
         $latestcomments = Comment::with('game')->whereContentType('game')->orderBy('created_at', 'desc')->limit(5)->get();
 
         return view('index.index', [
-            'news' => $news,
-            'shoutbox' => $shoutbox,
-            'cdc' => $cdc,
-            'latestadded' => $latestadded,
-            'gametypes' => $gtypes,
+            'news'           => $news,
+            'shoutbox'       => $shoutbox,
+            'cdc'            => $cdc,
+            'latestadded'    => $latestadded,
+            'gametypes'      => $gtypes,
             'latestreleased' => $latestreleased,
-            'threads' => $threads,
-            'obeymax' => $obyxmax,
-            'topusers' => $topusers,
-            'pm' => $pm,
-            'stats' => $stats,
-            'topmonth' => $topmonth,
-            'topalltime' => $topalltime,
+            'threads'        => $threads,
+            'obeymax'        => $obyxmax,
+            'topusers'       => $topusers,
+            'pm'             => $pm,
+            'stats'          => $stats,
+            'topmonth'       => $topmonth,
+            'topalltime'     => $topalltime,
             'latestcomments' => $latestcomments,
-            'size' => $size,
+            'size'           => $size,
         ]);
     }
 }

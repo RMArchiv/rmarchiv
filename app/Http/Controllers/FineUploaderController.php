@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Optimus\FineuploaderServer\Vendor\FineUploader;
 
-
 /*
  * Hier muss ich mich erst einmal ein wenig durchwurschteln, da es dafür keine
  * Beispiele im Netz zu finden gibt...
@@ -15,7 +14,8 @@ use Optimus\FineuploaderServer\Vendor\FineUploader;
 
 class FineUploaderController extends Controller
 {
-    public function endpoint(Request $request) {
+    public function endpoint(Request $request)
+    {
         $fu = new FineUploader();
         $destpath = storage_path('app/public/temp');
         if (!file_exists($destpath)) {

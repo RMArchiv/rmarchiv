@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use App\Models\Developer;
+use App\Models\User;
 
 class AutocompleteController extends Controller
 {
-    public function developer($term) {
-        $result = array();
+    public function developer($term)
+    {
+        $result = [];
 
         //$devs = Developer::whereName($term)->get();
         $devs = \DB::table('developer')
@@ -25,14 +24,15 @@ class AutocompleteController extends Controller
         return \Response::json($result);
     }
 
-    public function game($term) {
-        $result = array();
+    public function game($term)
+    {
+        $result = [];
 
         $games = \DB::table('games')
             ->select([
                 'id',
                 'title',
-                'subtitle'
+                'subtitle',
             ])
             ->where('title', 'like', '%'.$term.'%')
             ->orWhere('subtitle', 'like', '%'.$term.'%')
@@ -44,14 +44,14 @@ class AutocompleteController extends Controller
             } else {
                 $result[] = ['id' => $g->id, 'value' => $g->title.' -=- '.$g->subtitle];
             }
-
         }
 
         return \Response::json($result);
     }
 
-    public function faqcat($term) {
-        $result = array();
+    public function faqcat($term)
+    {
+        $result = [];
 
         //$devs = Developer::whereName($term)->get();
         $devs = \DB::table('faq')
@@ -67,61 +67,63 @@ class AutocompleteController extends Controller
         return \Response::json($result);
     }
 
-    public function awardpage($term) {
-        $result = array();
-        $aw     = \DB::table('award_pages')->get();
+    public function awardpage($term)
+    {
+        $result = [];
+        $aw = \DB::table('award_pages')->get();
 
         foreach ($aw as $item) {
             $result[] = [
-                'id' => $item->id,
-                'value' => $item->title
+                'id'    => $item->id,
+                'value' => $item->title,
             ];
         }
 
         return \Response::json($result);
     }
 
-    public function awardcat($term) {
-        $result = array();
-        $aw     = \DB::table('award_cats')->get();
+    public function awardcat($term)
+    {
+        $result = [];
+        $aw = \DB::table('award_cats')->get();
 
         foreach ($aw as $item) {
             $result[] = [
-                'id' => $item->id,
-                'value' => $item->title
+                'id'    => $item->id,
+                'value' => $item->title,
             ];
         }
 
         return \Response::json($result);
     }
 
-    public function awardsubcat($term) {
-        $result = array();
-        $aw     = \DB::table('award_subcats')->get();
+    public function awardsubcat($term)
+    {
+        $result = [];
+        $aw = \DB::table('award_subcats')->get();
 
         foreach ($aw as $item) {
             $result[] = [
-                'id' => $item->id,
-                'value' => $item->title
+                'id'    => $item->id,
+                'value' => $item->title,
             ];
         }
 
         return \Response::json($result);
     }
 
-    public function user($term) {
-        $result = array();
-        $users  = User::where('name', 'like', '%'.$term.'%')->get();
+    public function user($term)
+    {
+        $result = [];
+        $users = User::where('name', 'like', '%'.$term.'%')->get();
 
         foreach ($users as $user) {
             $result[] = [
-                'id' => $user->id,
+                'id'    => $user->id,
                 'value' => $user->name,
             ];
         }
 
         return \Response::json($result);
     }
-
-
 }

@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class UserCreditType
+ * Class UserCreditType.
  *
  * @property int $id
  * @property string $title
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserCreditType whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserCreditType whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserCreditType whereCreatedAt($value)
@@ -24,10 +25,8 @@ class UserCreditType extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'title'
+        'title',
     ];
 
     protected $guarded = [];
-
-        
 }

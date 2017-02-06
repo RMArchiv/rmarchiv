@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class UserCredit
+ * Class UserCredit.
  *
  * @property int $id
  * @property int $user_id
@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $credit_type_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserCredit whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserCredit whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserCredit whereGameId($value)
@@ -20,6 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserCredit whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserCredit whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property-read \App\Models\UserCreditType $type
  * @property-read \App\Models\User $user
  */
@@ -32,16 +34,18 @@ class UserCredit extends Model
     protected $fillable = [
         'user_id',
         'game_id',
-        'credit_type_id'
+        'credit_type_id',
     ];
 
     protected $guarded = [];
 
-    public function type() {
+    public function type()
+    {
         return $this->hasOne('App\Models\UserCreditType', 'id', 'credit_type_id');
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class AwardSubcat
+ * Class AwardSubcat.
  *
  * @property int $id
  * @property string $title
@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $updated_at
  * @property int $page_id
  * @property int $cat_id
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardSubcat whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardSubcat whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardSubcat whereDescHtml($value)
@@ -36,10 +37,8 @@ class AwardSubcat extends Model
         'desc_html',
         'desc_md',
         'page_id',
-        'cat_id'
+        'cat_id',
     ];
 
     protected $guarded = [];
-
-        
 }

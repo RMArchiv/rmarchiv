@@ -5,17 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Tag
+ * Class Tag.
  *
  * @property int $id
  * @property string $title
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Tag whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Tag whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Tag whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Tag whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TagRelation[] $tag_relations
  */
 class Tag extends Model
@@ -25,14 +27,13 @@ class Tag extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'title'
+        'title',
     ];
 
     protected $guarded = [];
 
-    public function tag_relations() {
+    public function tag_relations()
+    {
         return $this->hasMany('App\Models\TagRelation', 'tag_id', 'id');
     }
-
-        
 }

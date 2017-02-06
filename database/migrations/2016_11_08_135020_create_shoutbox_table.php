@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateShoutboxTable extends Migration
 {
@@ -13,7 +13,7 @@ class CreateShoutboxTable extends Migration
      */
     public function up()
     {
-        Schema::create('shoutbox', function (Blueprint $table){
+        Schema::create('shoutbox', function (Blueprint $table) {
             $table->increments('id');
             $table->string('shout_md');
             $table->string('shout_html');

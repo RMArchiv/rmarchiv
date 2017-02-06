@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Events\Obyx;
 use App\Models\Comment;
-use Illuminate\Http\Request;
 use GrahamCampbell\Markdown\Facades\Markdown;
-
+use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function add(Request $request) {
-        $comment = new Comment;
+    public function add(Request $request)
+    {
+        $comment = new Comment();
 
         $comment->user_id = \Auth::id();
         $comment->content_id = $request->get('content_id');
@@ -37,7 +37,6 @@ class CommentController extends Controller
         $comment->save();
 
         event(new Obyx('comment', \Auth::id()));
-
 
         return redirect()->action('MsgBoxController@comment_add', [$request->get('content_type'), $request->get('content_id')]);
     }

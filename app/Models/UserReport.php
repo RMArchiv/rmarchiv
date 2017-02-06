@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class UserReport
+ * Class UserReport.
  *
  * @property int $id
  * @property int $user_id
@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $reason
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereContentId($value)
@@ -22,6 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property int $closed
  * @property int $closed_user_id
  * @property string $closed_remarks
@@ -29,6 +31,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\Game $game
  * @property-read \App\Models\User $user
  * @property-read \App\Models\User $user_closed
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereClosed($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereClosedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereClosedRemarks($value)
@@ -53,15 +56,18 @@ class UserReport extends Model
 
     protected $guarded = [];
 
-    public function user() {
+    public function user()
+    {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 
-    public function user_closed() {
+    public function user_closed()
+    {
         return $this->hasOne('App\Models\User', 'id', 'closed_user_id');
     }
 
-    public function game() {
+    public function game()
+    {
         return $this->hasOne('App\Models\Game', 'id', 'content_id');
     }
 }

@@ -5,18 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class LogoVote
+ * Class LogoVote.
  *
- * @property integer $id
- * @property integer $logo_id
- * @property integer $user_id
- * @property integer $up
- * @property integer $down
+ * @property int $id
+ * @property int $logo_id
+ * @property int $user_id
+ * @property int $up
+ * @property int $down
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Logo $logo
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\LogoVote whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\LogoVote whereLogoId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\LogoVote whereUserId($value)
@@ -37,16 +38,18 @@ class LogoVote extends Model
         'logo_id',
         'user_id',
         'up',
-        'down'
+        'down',
     ];
 
     protected $guarded = [];
 
-    public function user() {
+    public function user()
+    {
         return $this->hasOne('App\Models\User');
     }
 
-    public function logo() {
+    public function logo()
+    {
         return $this->hasOne('App\Models\Logo');
     }
 }

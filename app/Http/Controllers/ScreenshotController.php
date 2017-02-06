@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Events\Obyx;
 use App\Models\Screenshot;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
 use Illuminate\Http\UploadedFile;
-
+use Intervention\Image\Facades\Image;
 
 class ScreenshotController extends Controller
 {
-    public function show($gameid, $screenid) {
+    public function show($gameid, $screenid)
+    {
         $s = Screenshot::whereGameId($gameid)->where('screenshot_id', $screenid)
             ->first();
 
@@ -26,14 +25,16 @@ class ScreenshotController extends Controller
         return Image::make($storagePath)->response();
     }
 
-    public function create($gameid, $screenid) {
+    public function create($gameid, $screenid)
+    {
         return view('screenshots.create', [
-            'gameid' => $gameid,
+            'gameid'   => $gameid,
             'screenid' => $screenid,
         ]);
     }
 
-    public function upload(Request $request, $gameid, $screenid) {
+    public function upload(Request $request, $gameid, $screenid)
+    {
         $this->validate($request, [
             'file' => 'required|image|mimes:png|max:2048',
         ]);
@@ -50,9 +51,8 @@ class ScreenshotController extends Controller
             $old->delete();
         }
 
-
         //Speichern des Screenshots
-        $scr = new Screenshot;
+        $scr = new Screenshot();
         $scr->game_id = $gameid;
         $scr->user_id = \Auth::id();
         $scr->screenshot_id = $screenid;

@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
+use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNotification;
 use Cmgmyr\Messenger\Traits\Messagable;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Zizaco\Entrust\Traits\EntrustUserTrait;
-
-/**
+use Illuminate\Notifications\Notifiable;
+/*
  * App\User
  *
  * @property integer $id
@@ -43,7 +42,7 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserList[] $userlists
  */
 
-use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNotification;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
@@ -54,7 +53,8 @@ class User extends Authenticatable
     /**
      * Send the password reset notification.
      *
-     * @param  string  $token
+     * @param string $token
+     *
      * @return void
      */
     public function sendPasswordResetNotification($token)
@@ -68,7 +68,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'is_admin'
+        'name', 'email', 'password', 'is_admin',
     ];
 
     /**
@@ -80,31 +80,38 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function games() {
+    public function games()
+    {
         return $this->belongsToMany('App\Models\Game');
     }
 
-    public function news() {
+    public function news()
+    {
         return $this->belongsToMany('App\Models\News');
     }
 
-    public function settings() {
+    public function settings()
+    {
         return $this->hasOne('App\Models\UserSetting', 'user_id', 'id');
     }
 
-    public function logo() {
+    public function logo()
+    {
         return $this->hasMany('App\Models\Logo', 'user_id', 'id');
     }
 
-    public function logovote() {
+    public function logovote()
+    {
         return $this->belongsToMany('App\Models\LogoVote');
     }
 
-    public function userobyx() {
+    public function userobyx()
+    {
         return $this->hasMany('App\Models\UserObyx', 'user_id', 'id');
     }
 
-    public function userlists() {
+    public function userlists()
+    {
         return $this->hasMany('App\Models\UserList', 'user_id', 'id');
     }
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class EventMeetingUserRegistered
+ * Class EventMeetingUserRegistered.
  *
  * @property int $id
  * @property int $event_id
@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $user_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventMeetingUserRegistered whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventMeetingUserRegistered whereEventId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventMeetingUserRegistered whereMeetingId($value)
@@ -30,20 +31,23 @@ class EventMeetingUserRegistered extends Model
     protected $fillable = [
         'event_id',
         'meeting_id',
-        'user_id'
+        'user_id',
     ];
 
     protected $guarded = [];
 
-    public function event() {
+    public function event()
+    {
         $this->hasOne('App\Models\Event', 'id', 'event_id');
     }
 
-    public function meeting() {
+    public function meeting()
+    {
         $this->hasOne('App\Models\EventMeeting', 'id', 'meeting_id');
     }
 
-    public function user() {
+    public function user()
+    {
         $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 }
