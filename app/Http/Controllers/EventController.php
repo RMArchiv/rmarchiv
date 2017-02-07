@@ -104,8 +104,8 @@ class EventController extends Controller
         return redirect()->action('EventController@show', $e->id);
     }
 
-    public function register($eventid){
-
+    public function register($eventid)
+    {
     }
 
     //-------------------------------------------------
