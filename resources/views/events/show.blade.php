@@ -9,7 +9,28 @@
                         {{ $event->title }}
                     </h2>
                     <div class="content">
-                        {!! Markdown::convertToHtml($event->description) !!}
+                        <table id='rmarchiv_prodlist' class='boxtable pagedtable'>
+                            <tr>
+                                <td width="50%">
+                                    {!! Markdown::convertToHtml($event->description) !!}
+                                </td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                Slots: {{ $event->users_registered->count() }}/{{ $event->settings->slots }}
+                                                @if($event->settings->reg_allowed == 1 && $event->settings->slots > $event->users_registered->count())
+                                                    [<a href="{{ action('EventController@register', $event->id) }}">anmelden</a>]
+                                                @else
+                                                    (anmeldung geschlossen)
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
                     </div>
                     <div class="foot">
                         Event erstellt von <a href='{{ url('users', $event->user_id) }}'>{{ $event->user->name }}</a> :: <time datetime='{{ $event->created_at }}' title='{{ $event->created_at }}'>{{ \Carbon\Carbon::parse($event->created_at)->diffForHumans() }}</time>
@@ -43,7 +64,7 @@
                 @if($event->comments->count() > 0)
                     <div class='rmarchivtbl' id='rmarchivbox_prodcomments'>
                         <h2>kommentare</h2>
-                        @foreach($comments as $comment)
+                        @foreach($event->comments as $comment)
                             <div class='comment cite-{{ $comment->user_id }}' id='c{{ $comment->id }}'>
                                 <div class='content'>
                                     {!! $comment->comment_html !!}
@@ -55,7 +76,7 @@
                                         <span class='vote down'>down</span>
                                     @endif
 
-                                    <span class='tools' data-cid='{{ $news->id }}'></span> hinzugefügt am {{ $comment->created_at }} von <a href='{{ url('user', $comment->user_id) }}' class='user'>{{ $comment->name }}</a>
+                                    <span class='tools' data-cid='{{ $event->id }}'></span> hinzugefügt am {{ $comment->created_at }} von <a href='{{ url('user', $comment->user_id) }}' class='user'>{{ $comment->name }}</a>
                                     <a href='{{ url('users', $comment->user_id) }}' class='usera' title="{{ $comment->name }}"><img src='http://ava.rmarchiv.de/?gender=male&id={{ $comment->user_id }}' alt="{{ $comment->name }}" class='avatar' />
                                     </a>
                                 </div>
@@ -88,13 +109,12 @@
                         <h2>kommentar hinzufügen</h2>
                         {!! Form::open(['action' => ['CommentController@add']]) !!}
                         {!! Form::hidden('content_id', $event->id) !!}
-                        {!! Form::hidden('content_type', 'news') !!}
+                        {!! Form::hidden('content_type', 'event') !!}
                         <div class='content'>
-                            {{ CheckRateable::checkRateable('news', $event->id, Auth::id()) }}
                             @if(CheckRateable::checkRateable('news', $event->id, Auth::id()) === true)
                                 <div id='prodvote'>
-                                    hier wird diese news bewertet:<br>
-                                    diese news<br>
+                                    hier wird dieses event bewertet:<br>
+                                    dieses event<br>
                                     <input type='radio' name='rating' id='ratingrulez' value='up' />
                                     <label for='ratingrulez'>ist super</label>
                                     <input type='radio' name='rating' id='ratingpig' value='neut' checked='checked' />

@@ -88,6 +88,6 @@ class Event extends Model
 
     public function comments()
     {
-        return $this->hasMany('App\Models\Comment', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'game'"))->with('user');
+        return $this->hasMany('App\Models\Comment', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'event'"))->with('user');
     }
 }

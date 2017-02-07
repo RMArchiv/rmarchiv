@@ -225,6 +225,7 @@ Route::group(['prefix' => 'events'], function () {
     Route::get('{id}', ['as' => 'events.show', 'uses' => 'EventController@show']);
     Route::get('{id}/edit', ['as' => 'events.edit', 'uses' => 'EventController@edit']);
     Route::put('{id}', ['as' => 'events.update', 'uses' => 'EventController@update']);
+    Route::get('register/{eventid}', ['as' => 'events.register', 'uses' => 'EventController@register']);
 
     Route::group(['prefix' => 'meetings'], function () {
         Route::get('/', ['as' => 'meetings', 'uses' => 'EventController@meeting_index']);
