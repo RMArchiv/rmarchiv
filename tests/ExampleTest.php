@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
 
 class ExampleTest extends TestCase
 {

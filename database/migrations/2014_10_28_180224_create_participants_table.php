@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 use Cmgmyr\Messenger\Models\Models;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;

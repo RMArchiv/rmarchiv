@@ -1,10 +1,10 @@
 <?php
 
-/**
- * Laravel - A PHP Framework For Web Artisans.
- *
- * @author   Taylor Otwell <taylor@laravel.com>
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
  */
+
 $uri = urldecode(
     parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
 );
