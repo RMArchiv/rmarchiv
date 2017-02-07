@@ -23,13 +23,13 @@
                 <tr>
                     <td width="60px">
                         <?php
-                        if($game->place == 1){
+                        if ($game->place == 1) {
                             $icon = 'medal_gold.png';
-                        }elseif($game->place == 2){
+                        } elseif ($game->place == 2) {
                             $icon = 'medal_silver.png';
-                        }elseif($game->place == 3){
+                        } elseif ($game->place == 3) {
                             $icon = 'medal_bronze.png';
-                        }else{
+                        } else {
                             $icon = 'no';
                         }
                         ?>
