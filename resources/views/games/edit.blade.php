@@ -193,8 +193,26 @@
         </div>
 
         <div class="rmarchivtbl" id="rmarchivbox_submitprod">
+            <h2>zugewiesene tags</h2>
+            <table id="'rmarchivbox_prodlist" class="boxtable pagedtable">
+                <thead>
+                    <tr>
+                        <th>tag</th>
+                        <th>aktionen</th>
+                    </tr>
+                </thead>
+                @foreach($tags as $t)
+                    <tr>
+                        <td>{{ $t->tag->title }}</td>
+                        <td><a href="{{ action('TaggingController@delete_gametag', [$game->gameid, $t->tag->id]) }}">entfernen</a></td>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
+
+        <div class="rmarchivtbl" id="rmarchivbox_submitprod">
             <h2>verbundene user credits</h2>
-            <table id='pouetbox_prodlist' class='boxtable pagedtable'>
+            <table id='rmarchivbox_prodlist' class='boxtable pagedtable'>
                 <thead>
                     <tr class='sortable'>
                         <th>user</th>

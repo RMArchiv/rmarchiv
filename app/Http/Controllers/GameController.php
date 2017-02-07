@@ -221,6 +221,8 @@ class GameController extends Controller
             ->where('game_id', '=', $id)
             ->get();
 
+        $tags = TagRelation::whereContentId($id)->where('content_type', '=', 'game')->get();
+
         return view('games.edit', [
             'game'        => $game,
             'makers'      => $makers,
@@ -229,6 +231,7 @@ class GameController extends Controller
             'langs'       => $langs,
             'credittypes' => $credittypes,
             'credits'     => $credits,
+            'tags' => $tags,
         ]);
     }
 
