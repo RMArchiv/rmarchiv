@@ -1,15 +1,9 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Create The Application
-|--------------------------------------------------------------------------
-|
-| The first thing we will do is create a new Laravel application instance
-| which serves as the "glue" for all the components of Laravel, and is
-| the IoC container for the system binding all of the various parts.
-|
-*/
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
 
 setlocale(LC_TIME, 'de_DE');
 \Carbon\Carbon::setLocale('de');
