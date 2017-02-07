@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerThread whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerThread whereSubject($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerThread whereCreatedAt($value)

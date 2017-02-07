@@ -18,7 +18,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $body
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerMessage whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerMessage whereThreadId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerMessage whereUserId($value)

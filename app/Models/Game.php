@@ -27,7 +27,6 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereSubtitle($value)
@@ -43,7 +42,6 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereUpdatedAt($value)
  * @mixin \Eloquent
- *
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Maker $maker
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesDeveloper[] $developer
@@ -54,12 +52,12 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property-read \App\Models\Language $language
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesFile[] $gamefiles
  * @property string $youtube
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereYoutube($value)
- *
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TagRelation[] $tags
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserCredit[] $credits
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesAward[] $awards
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activity
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesCoupdecoeur[] $cdcs
  */
 class Game extends Model
 {

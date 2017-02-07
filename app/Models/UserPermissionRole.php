@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $permission_id
  * @property int $role_id
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserPermissionRole wherePermissionId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserPermissionRole whereRoleId($value)
  * @mixin \Eloquent

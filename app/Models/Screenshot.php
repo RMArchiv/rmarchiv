@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $filename
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Screenshot whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Screenshot whereGameId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Screenshot whereUserId($value)

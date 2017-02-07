@@ -20,7 +20,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $last_created_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardCat whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardCat whereOrder($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardCat whereTitle($value)
@@ -30,7 +29,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardCat whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardCat whereLastCreatedAt($value)
  * @mixin \Eloquent
- *
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BoardThread[] $threads
  * @property-read \App\Models\User $last_user
  */

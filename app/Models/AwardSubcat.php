@@ -20,7 +20,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $updated_at
  * @property int $page_id
  * @property int $cat_id
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardSubcat whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardSubcat whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardSubcat whereDescHtml($value)

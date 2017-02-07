@@ -25,6 +25,7 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //Benutzereinstellungen
 Route::get('user_settings', 'UserSettingsController@index');
 Route::post('user_settings/password', 'UserSettingsController@store_password');
+Route::get('user_settings/change/{setting}/{value}', 'UserSettingsController@change_setting');
 
 //News Routen
 Route::resource('news', 'NewsController');

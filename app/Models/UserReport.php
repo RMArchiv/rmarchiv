@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $reason
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereContentId($value)
@@ -28,7 +27,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereUpdatedAt($value)
  * @mixin \Eloquent
- *
  * @property int $closed
  * @property int $closed_user_id
  * @property string $closed_remarks
@@ -36,7 +34,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\Game $game
  * @property-read \App\Models\User $user
  * @property-read \App\Models\User $user_closed
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereClosed($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereClosedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereClosedRemarks($value)

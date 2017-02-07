@@ -21,6 +21,35 @@
                 </div>
             </div>
         </form>
+
+        <div class="rmarchivtbl" id="rmarchivbox_news">
+            <h2>deaktivieren von hauptseiten widgets</h2>
+            <div class="content">
+                daumen hoch = wird angezeigt.
+                <table>
+                    @foreach(Schema::getColumnListing('user_settings') as $s)
+                        @if(starts_with($s, 'disable_widget_'))
+                            <tr>
+                                <td>
+                                    {{ trans('app.user.settings.'.$s) }}
+                                </td>
+                                <td>
+                                    @if( Auth::user()->settings->getAttributeValue($s) == 0 )
+                                        <a href="{{ action('UserSettingsController@change_setting', [$s, 1])  }}"><img src="assets/rate_up.gif"></a>
+                                    @else
+                                        <a href="{{ action('UserSettingsController@change_setting', [$s, 0])  }}"><img src="assets/rate_down.gif"></a>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
+                </table>
+            </div>
+            <div class="foot">
+                <input type="submit" id="submit" value="senden">
+            </div>
+        </div>
+
         {!! Form::open(['action' => ['UserSettingsController@store_password']]) !!}
             <div class="rmarchivtbl" id="rmarchivbox_changepassword">
                 <h2>passwort ändern</h2>

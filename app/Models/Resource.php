@@ -23,7 +23,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $content_path
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Resource whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Resource whereType($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Resource whereCat($value)

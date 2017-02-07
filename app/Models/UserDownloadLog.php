@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $gamefile_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserDownloadLog whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserDownloadLog whereGamefileId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserDownloadLog whereId($value)

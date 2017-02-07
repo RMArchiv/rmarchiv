@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $migration
  * @property int $batch
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Migration whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Migration whereMigration($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Migration whereBatch($value)

@@ -24,7 +24,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $deleted_at
  * @property int $vote_up
  * @property int $vote_down
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment whereContentId($value)
@@ -37,7 +36,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment whereVoteUp($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment whereVoteDown($value)
  * @mixin \Eloquent
- *
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $content
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Game $game

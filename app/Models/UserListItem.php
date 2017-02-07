@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $list_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserListItem whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserListItem whereContentId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserListItem whereContentType($value)

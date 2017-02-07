@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $email
  * @property string $token
  * @property \Carbon\Carbon $created_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PasswordReset whereEmail($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PasswordReset whereToken($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PasswordReset whereCreatedAt($value)

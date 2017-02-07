@@ -8,28 +8,67 @@
             @else
                 @include('index._partials.login')
             @endif
-            @if(Auth::check() == true)
+
+            @if(Auth::check() == true || Auth::user()->settings->disable_widget_msg != 1)
                 @include('index._partials.pm')
             @endif
+
             @if($cdc)
-                @include('index._partials.cdc')
+                @if(!Auth::check() || Auth::user()->settings->disable_widget_cdc != 1)
+                    @include('index._partials.cdc')
+                @endif
             @endif
-            @include('index._partials.latestadded')
-            @include('index._partials.latestreleased')
-            @include('index._partials.topmonth')
-            @include('index._partials.topalltime')
+
+            @if(!Auth::check() || Auth::user()->settings->disable_widget_gamesadded != 1)
+                @include('index._partials.latestadded')
+            @endif
+
+            @if(!Auth::check() || Auth::user()->settings->disable_widget_gamesreleased != 1)
+                @include('index._partials.latestreleased')
+            @endif
+
+            @if(!Auth::check() || Auth::user()->settings->disable_widget_topmonth != 1)
+                @include('index._partials.topmonth')
+            @endif
+
+            @if(!Auth::check() || Auth::user()->settings->disable_widget_alltimetop != 1)
+                @include('index._partials.topalltime')
+            @endif
         </div>
         <div id='middlebar' class='column'>
-            @include('index._partials.shoutbox')
-            @include('index._partials.board')
-            @include('index._partials.news')
+            @if(!Auth::check() || Auth::user()->settings->disable_widget_shoutbox != 1)
+                @include('index._partials.shoutbox')
+            @endif
+
+            @if(!Auth::check() || Auth::user()->settings->disable_widget_board != 1)
+                @include('index._partials.board')
+            @endif
+
+            @if(!Auth::check() || Auth::user()->settings->disable_widget_news != 1)
+                @include('index._partials.news')
+            @endif
         </div>
         <div id='rightbar' class='column'>
-            @include('index._partials.search')
-            @include('index._partials.tagcloud')
-            @include('index._partials.stats')
-            @include('index._partials.topusers')
-            @include('index._partials.latestcomments_game')
+            @if(!Auth::check() || Auth::user()->settings->disable_widget_search != 1)
+                @include('index._partials.search')
+            @endif
+
+            @if(!Auth::check() || Auth::user()->settings->disable_widget_tags != 1)
+                @include('index._partials.tagcloud')
+            @endif
+
+            @if(!Auth::check() || Auth::user()->settings->disable_widget_stats != 1)
+                @include('index._partials.stats')
+            @endif
+
+            @if(!Auth::check() || Auth::user()->settings->disable_widget_obyx != 1)
+                @include('index._partials.topusers')
+            @endif
+
+            @if(!Auth::check() || Auth::user()->settings->disable_widget_comments != 1)
+                @include('index._partials.latestcomments_game')
+            @endif
+
             @include('index._partials.nextparty')
             @include('index._partials.welike')
         </div>

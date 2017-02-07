@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserSetting;
 use Illuminate\Http\Request;
 
 class UserSettingsController extends Controller
@@ -33,5 +34,13 @@ class UserSettingsController extends Controller
         }
 
         return view('auth.settings');
+    }
+
+    public function change_setting($setting, $value){
+        $set = UserSetting::whereUserId(\Auth::id())->first();
+
+        $set->update([$setting => $value]);
+
+        return redirect()->action('UserSettingsController@index');
     }
 }
