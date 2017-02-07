@@ -9,8 +9,10 @@
                 @include('index._partials.login')
             @endif
 
-            @if(Auth::check() == true || Auth::user()->settings->disable_widget_msg != 1)
-                @include('index._partials.pm')
+            @if(!Auth::check() || Auth::user()->settings->disable_widget_msg != 1)
+                @if(Auth::check() == true)
+                    @include('index._partials.pm')
+                @endif
             @endif
 
             @if($cdc)
