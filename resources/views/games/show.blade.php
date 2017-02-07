@@ -285,13 +285,13 @@
                         <td id='credits' colspan='3' class='r2'>
                         @foreach($game->awards as $aw)
                         <?php
-                        if($aw->place == 1){
+                        if ($aw->place == 1) {
                             $icon = 'medal_gold.png';
-                        }elseif($aw->place == 2){
+                        } elseif ($aw->place == 2) {
                             $icon = 'medal_silver.png';
-                        }elseif($aw->place == 3){
+                        } elseif ($aw->place == 3) {
                             $icon = 'medal_bronze.png';
-                        }else{
+                        } else {
                             $icon = 'no';
                         }
                         ?>
