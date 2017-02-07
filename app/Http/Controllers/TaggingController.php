@@ -104,7 +104,8 @@ class TaggingController extends Controller
         return \Redirect::action('IndexController@index');
     }
 
-    public function delete_gametag($gameid, $tagid){
+    public function delete_gametag($gameid, $tagid)
+    {
         $tag = TagRelation::whereContentId($gameid)->where('content_type', '=', 'game')->where('tag_id', '=', $tagid)->first();
         $tag->delete();
 
