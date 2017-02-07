@@ -9,8 +9,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\EventSetting;
-use App\Models\EventUserRegistered;
 use Illuminate\Http\Request;
+use App\Models\EventUserRegistered;
 use Illuminate\Support\Facades\Input;
 
 class EventController extends Controller
@@ -127,9 +127,8 @@ class EventController extends Controller
     {
         $event = Event::whereId($eventid)->first();
 
-        if($event->settings->reg_allowed == 1 && $event->settings->slots > $event->users_registered->count())
-        {
-            if(EventUserRegistered::whereEventId($eventid)->where('user_id', '=', \Auth::id())->count() == 0){
+        if ($event->settings->reg_allowed == 1 && $event->settings->slots > $event->users_registered->count()) {
+            if (EventUserRegistered::whereEventId($eventid)->where('user_id', '=', \Auth::id())->count() == 0) {
                 EventUserRegistered::firstOrNew([
                     'event_id' => $eventid,
                     'user_id' => \Auth::id(),
