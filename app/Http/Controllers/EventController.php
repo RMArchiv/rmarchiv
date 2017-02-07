@@ -9,6 +9,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\EventSetting;
+use App\Models\EventUserRegistered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -28,9 +29,11 @@ class EventController extends Controller
     public function show($id)
     {
         $event = Event::whereId($id)->first();
+        $reg = EventUserRegistered::whereEventId($id)->where('user_id', '=', \Auth::id())->get();
 
         return view('events.show', [
             'event' => $event,
+            'reg_user' => $reg,
         ]);
     }
 
@@ -111,6 +114,32 @@ class EventController extends Controller
 
     public function register($eventid)
     {
+        $event = Event::whereId($eventid)->first();
+        $reg = EventUserRegistered::whereEventId($eventid)->where('user_id', '=', \Auth::id())->get();
+
+        return view('events.register', [
+            'event' => $event,
+            'reg_user' => $reg,
+        ]);
+    }
+
+    public function register_store(Request $request, $eventid)
+    {
+        $event = Event::whereId($eventid)->first();
+
+        if($event->settings->reg_allowed == 1 && $event->settings->slots > $event->users_registered->count())
+        {
+            if(EventUserRegistered::whereEventId($eventid)->where('user_id', '=', \Auth::id())->count() == 0){
+                EventUserRegistered::firstOrNew([
+                    'event_id' => $eventid,
+                    'user_id' => \Auth::id(),
+                    'reg_price_payed' => 0,
+                    'reg_state' => 0,
+                ])->save();
+            }
+        }
+
+        return redirect()->action('EventController@show', $eventid);
     }
 
     //-------------------------------------------------

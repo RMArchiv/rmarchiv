@@ -20,7 +20,11 @@
                                             <td>
                                                 Slots: {{ $event->users_registered->count() }}/{{ $event->settings->slots }}
                                                 @if($event->settings->reg_allowed == 1 && $event->settings->slots > $event->users_registered->count())
-                                                    [<a href="{{ action('EventController@register', $event->id) }}">anmelden</a>]
+                                                    @if($reg_user->count() == 0)
+                                                        [<a href="{{ action('EventController@register', $event->id) }}">anmelden</a>]
+                                                    @else
+                                                        (du bist angemeldet)
+                                                    @endif
                                                 @else
                                                     (anmeldung geschlossen)
                                                 @endif
