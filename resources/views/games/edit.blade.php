@@ -107,6 +107,13 @@
                         <label for="desc">{{trans('app.games.add.description')}}</label>
                         <textarea name="desc" id="desc" maxlength="2000" rows="10" placeholder="{{trans('app.games.add.description_help')}}">{{ $game->gamedescmd }}</textarea>
                     </div>
+                    <script type="text/javascript">
+                        $(function() {
+                            $('textarea').inlineattachment({
+                                uploadUrl: 'http://rmarchiv.de/attachment/upload',
+                            });
+                        });
+                    </script>
                 </div>
             </div>
 

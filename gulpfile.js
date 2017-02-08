@@ -32,6 +32,7 @@ elixir(function(mix) {
             paths.jqcloud2         + 'jqcloud.js',
             paths.inlineattachment + 'inline-attachment.js',
             paths.inlineattachment + 'jquery.inline-attachment.js',
+            paths.js               + 'commonmark.js',
             //paths.js            + 'app.js'
         ])
 
