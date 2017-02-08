@@ -52,7 +52,8 @@ class SubmitController extends Controller
         return redirect()->route('submit.logo.success');
     }
 
-    public function attachment_submit(Request $request){
+    public function attachment_submit(Request $request)
+    {
         \Debugbar::disable();
 
         $this->validate($request, [
