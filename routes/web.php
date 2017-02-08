@@ -247,6 +247,8 @@ Route::post('attachment/upload', 'SubmitController@attachment_submit');
 
 //Spezialrouten
 Route::post('tako/downlbla', 'GameFileController@download_wo_count');
+Route::get('test', 'TestController@index');
+Route::post('tlg/webhook', 'TestController@webhook');
 
 //Routen für API
 $api = app('Dingo\Api\Routing\Router');

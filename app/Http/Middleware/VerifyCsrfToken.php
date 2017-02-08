@@ -19,5 +19,6 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         'tako/downlbla',
         'attachment/upload',
+        'tlg/webhook',
     ];
 }

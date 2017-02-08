@@ -9,6 +9,15 @@ namespace App\Helpers;
 
 class MiscHelper
 {
+    public static function sendTelegram($content){
+        \Telegram::sendMessage([
+            'chat_id' => 51419661,
+            'text' => $content,
+            'parse_mode' => 'markdown',
+            'disable_web_page_preview' => true,
+        ]);
+    }
+
     public static function array_diff_assoc_recursive($array1, $array2)
     {
         $difference = [];
