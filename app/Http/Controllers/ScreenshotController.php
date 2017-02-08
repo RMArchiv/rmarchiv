@@ -29,7 +29,7 @@ class ScreenshotController extends Controller
 
         $img = \Image::make($storagePath);
         $response = \Response::make($img->encode('jpg', 75));
-        $response->header('Content-Type' , 'image/jpg');
+        $response->header('Content-Type', 'image/jpg');
         $response->setMaxAge(604800);
         $response->setPublic();
 
