@@ -7,7 +7,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\MiscHelper;
 use Carbon\Carbon;
 use App\Events\Obyx;
 use App\Models\Game;
@@ -16,6 +15,7 @@ use App\Events\GameView;
 use App\Models\Language;
 use App\Models\GamesFile;
 use App\Models\Screenshot;
+use App\Helpers\MiscHelper;
 use App\Models\TagRelation;
 use Illuminate\Http\Request;
 use App\Models\GamesDeveloper;
