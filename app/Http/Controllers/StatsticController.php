@@ -7,7 +7,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\MiscHelper;
 use Khill\Lavacharts\Lavacharts;
 
 class StatsticController extends Controller
@@ -143,7 +142,7 @@ class StatsticController extends Controller
         ];
 
         $files = \Storage::files('attachments');
-        foreach ($files as $f){
+        foreach ($files as $f) {
             $filesize['attach']['size'] += \Storage::size($f);
         }
         $filesize['attach']['count'] = count($files);
@@ -151,7 +150,7 @@ class StatsticController extends Controller
         $filesize['sum']['count'] += $filesize['attach']['count'];
 
         $files = \Storage::files('screenshots');
-        foreach ($files as $f){
+        foreach ($files as $f) {
             $filesize['screens']['size'] += \Storage::size($f);
         }
         $filesize['screens']['count'] = count($files);
@@ -159,7 +158,7 @@ class StatsticController extends Controller
         $filesize['sum']['count'] += $filesize['screens']['count'];
 
         $files = \Storage::files('games');
-        foreach ($files as $f){
+        foreach ($files as $f) {
             $filesize['games']['size'] += \Storage::size($f);
         }
         $filesize['games']['count'] = count($files);
@@ -167,7 +166,7 @@ class StatsticController extends Controller
         $filesize['sum']['count'] += $filesize['games']['count'];
 
         $files = \Storage::files('logos');
-        foreach ($files as $f){
+        foreach ($files as $f) {
             $filesize['logos']['size'] += \Storage::size($f);
         }
         $filesize['logos']['count'] = count($files);
@@ -175,7 +174,7 @@ class StatsticController extends Controller
         $filesize['sum']['count'] += $filesize['logos']['count'];
 
         $files = \Storage::files('resources');
-        foreach ($files as $f){
+        foreach ($files as $f) {
             $filesize['resources']['size'] += \Storage::size($f);
         }
         $filesize['resources']['count'] = count($files);
