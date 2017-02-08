@@ -32,7 +32,8 @@
         "RobBrazier/Piwik": "^2.1",
         "way/generators": "dev-feature/laravel-five-stable",
         "xethron/migrations-generator": "^2.0",
-        "spatie/laravel-activitylog": "^1.11"
+        "spatie/laravel-activitylog": "^1.11",
+        "intervention/imagecache": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

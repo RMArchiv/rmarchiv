@@ -27,7 +27,15 @@ class ScreenshotController extends Controller
             $storagePath = \Storage::get($s->filename);
         }
 
-        return Image::make($storagePath)->response();
+        $img = \Image::make($storagePath);
+        $response = \Response::make($img->encode('jpg', 75));
+        $response->header('Content-Type' , 'image/jpg');
+        $response->setMaxAge(604800);
+        $response->setPublic();
+
+        return $response;
+
+        //return Image::make($storagePath)->response();
     }
 
     public function create($gameid, $screenid)
