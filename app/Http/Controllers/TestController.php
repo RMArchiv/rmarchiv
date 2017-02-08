@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
 
-use Illuminate\Http\Request;
+namespace App\Http\Controllers;
 
 class TestController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         //$response = \Telegram::getUpdates()[0]['message']['chat']['id'];
 
         \Telegram::sendMessage([
@@ -15,10 +19,10 @@ class TestController extends Controller
             'parse_mode' => 'markdown',
             'disable_web_page_preview',
         ]);
-
     }
 
-    public function webhook(){
+    public function webhook()
+    {
         $updates = \Telegram::getWebhookUpdates();
     }
 }
