@@ -9,7 +9,6 @@ namespace App\Listeners;
 
 use App\Events\TelegramNotification;
 
-
 class TelegramNotificationListener
 {
     /**
@@ -26,10 +25,8 @@ class TelegramNotificationListener
      * Handle the event.
      *
      * @param TelegramNotification $event
-     *
      */
     public function handle(TelegramNotification $event)
     {
-
     }
 }
