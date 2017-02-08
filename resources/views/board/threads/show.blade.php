@@ -47,6 +47,13 @@
                     <div class='content'>
                         nachricht:
                         <textarea name='message' id='message'></textarea>
+                        <script type="text/javascript">
+                            $(function() {
+                                $('textarea').inlineattachment({
+                                    uploadUrl: 'http://rmarchiv.de/attachment/upload',
+                                });
+                            });
+                        </script>
                         <div><a href='#'><b>markdown</b></a> kann hier genutzt werden</div>
                     </div>
                     <div class='foot'>

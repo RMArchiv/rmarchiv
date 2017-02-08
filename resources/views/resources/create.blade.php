@@ -102,6 +102,13 @@
                                 <div class="row" id="row_desc">
                                     <label for="desc">beschreibung::</label>
                                     <textarea name="desc" id="desc" maxlength="4000" rows="10" placeholder="hier kommt die ressourcenbeschreibung rein"></textarea>
+                                    <script type="text/javascript">
+                                        $(function() {
+                                            $('textarea').inlineattachment({
+                                                uploadUrl: 'http://rmarchiv.de/attachment/upload',
+                                            });
+                                        });
+                                    </script>
                                 </div>
                                 <div class='row' id='row_type'>
                                     <label for='content_type'>content typ:</label>

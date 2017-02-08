@@ -27,6 +27,13 @@
                 <div class='content'>
                     nachricht:
                     <textarea name='message' id='message'></textarea>
+                    <script type="text/javascript">
+                        $(function() {
+                            $('textarea').inlineattachment({
+                                uploadUrl: 'http://rmarchiv.de/attachment/upload',
+                            });
+                        });
+                    </script>
                     <br>
                     <br>
                     weitere user hinzufügen:

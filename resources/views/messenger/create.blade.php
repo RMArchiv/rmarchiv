@@ -11,6 +11,13 @@
 
                     {!! Form::label('message', 'nachricht:', ['class' => 'control-label']) !!}
                     {!! Form::textarea('message', null, ['class' => 'form-control']) !!}
+                    <script type="text/javascript">
+                        $(function() {
+                            $('textarea').inlineattachment({
+                                uploadUrl: 'http://rmarchiv.de/attachment/upload',
+                            });
+                        });
+                    </script>
 
                     <div>
                         empfänger: (mehrfachauswahl möglich)

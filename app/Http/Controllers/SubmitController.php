@@ -51,4 +51,20 @@ class SubmitController extends Controller
 
         return redirect()->route('submit.logo.success');
     }
+
+    public function attachment_submit(Request $request){
+        \Debugbar::disable();
+
+        $this->validate($request, [
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $file = $request->file('file');
+
+        $imageName = \Storage::putFile('attachments', new UploadedFile($file->path(), $file->getClientOriginalName()));
+
+        $response['filename'] = 'http://rmarchiv.de/storage/'.$imageName;
+
+        return json_encode($response);
+    }
 }

@@ -111,6 +111,13 @@
                             </div>
                             @endif
                             <textarea name='comment' id='comment'></textarea>
+                            <script type="text/javascript">
+                                $(function() {
+                                    $('textarea').inlineattachment({
+                                        uploadUrl: 'http://rmarchiv.de/attachment/upload',
+                                    });
+                                });
+                            </script>
                             <div><a href='/?page=faq#markdown'><b>markown</b></a> kann benutzt werden</div>
                         </div>
                         <div class='foot'>

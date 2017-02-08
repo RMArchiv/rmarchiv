@@ -242,6 +242,9 @@ Route::group(['prefix' => 'events'], function () {
     });
 });
 
+//attachment Routen
+Route::post('attachment/upload', 'SubmitController@attachment_submit');
+
 //Spezialrouten
 Route::post('tako/downlbla', 'GameFileController@download_wo_count');
 

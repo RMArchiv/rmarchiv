@@ -37,6 +37,13 @@
                     <div class="row" id="row_desc">
                         <label for="desc">antwort:</label>
                         <textarea name="desc" id="desc" maxlength="9999" rows="10" placeholder="FAQ Antwort"></textarea>
+                        <script type="text/javascript">
+                            $(function() {
+                                $('textarea').inlineattachment({
+                                    uploadUrl: 'http://rmarchiv.de/attachment/upload',
+                                });
+                            });
+                        </script>
                         <span> [<span class="req">req</span>] Markdown!</span>
                     </div>
                 </div>

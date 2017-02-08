@@ -30,6 +30,13 @@
                         <div class="row" id="row_message">
                             <label for="msg">beschreibung:</label>
                             <textarea name="msg" id="msg" maxlength="9999" rows="10" placeholder="Newsbeitrag">{{ $news->news_md }}</textarea>
+                            <script type="text/javascript">
+                                $(function() {
+                                    $('textarea').inlineattachment({
+                                        uploadUrl: 'http://rmarchiv.de/attachment/upload',
+                                    });
+                                });
+                            </script>
                             <span> [<span class="req">req</span>] Markdown!</span>
                         </div>
                         <div class="row" id="row_msg">
