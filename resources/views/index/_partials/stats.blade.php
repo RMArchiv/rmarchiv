@@ -4,52 +4,52 @@
     </tr>
     <tr>
         <td class='r1'>
-            {{ $stats->gamecount }} <a href='{{ url('games') }}'>spiele</a>
+            {{ number_format($stats->gamecount, 0, ',', '.') }} <a href='{{ url('games') }}'>spiele</a>
         </td>
     </tr>
     <tr>
         <td class='r1'>
-            {{ $stats->makercount }} unterstützte maker
+            {{ number_format($stats->makercount, 0, ',', '.') }} unterstützte maker
         </td>
     </tr>
     <tr>
         <td class='r1'>
-            {{ $stats->developercount }} <a href="{{ url('developer') }}">entwickler</a>
+            {{ number_format($stats->developercount, 0, ',', '.') }} <a href="{{ url('developer') }}">entwickler</a>
         </td>
     </tr>
     <tr>
         <td class='r1'>
-            {{ $stats->usercount }} <a href='{{ url('users') }}'>user</a> - <a href="{{ url('users/activity') }}">aktivitäten</a>
+            {{ number_format($stats->usercount, 0, ',', '.') }} <a href='{{ url('users') }}'>user</a> - <a href="{{ url('users/activity') }}">aktivitäten</a>
         </td>
     </tr>
     <tr>
         <td class='r1'>
-            {{ $stats->logocount }} <a href='{{ url('logo/vote') }}'>logos</a>
+            {{ number_format($stats->logocount, 0, ',', '.') }} <a href='{{ url('logo/vote') }}'>logos</a>
         </td>
     </tr>
     <tr>
         <td class='r1'>
-            {{ $stats->threadcount }} <a href='{{ url('board') }}'>board threads</a>
+            {{ number_format($stats->threadcount, 0, ',', '.') }} <a href='{{ url('board') }}'>board threads</a>
         </td>
     </tr>
     <tr>
         <td class='r1'>
-            {{ $stats->postcount }} <a href='{{ url('board') }}'>board posts</a>
+            {{ number_format($stats->postcount, 0, ',', '.') }} <a href='{{ url('board') }}'>board posts</a>
         </td>
     </tr>
     <tr>
         <td class='r1'>
-            {{ $stats->shoutboxcount }} <a href='{{ url('shoutbox') }}'>shouts</a>
+            {{ number_format($stats->shoutboxcount, 0, ',', '.') }} <a href='{{ url('shoutbox') }}'>shouts</a>
         </td>
     </tr>
     <tr>
         <td class='r1'>
-            {{ $stats->commentcount }} kommentare
+            {{ number_format($stats->commentcount, 0, ',', '.') }} kommentare
         </td>
     </tr>
     <tr>
         <td class='r1'>
-            {{ $stats->filecount }} spieledateien
+            {{ number_format($stats->filecount, 0, ',', '.') }} spieledateien
         </td>
     </tr>
     <tr>
@@ -59,7 +59,7 @@
     </tr>
     <tr>
         <td class='r1'>
-            {{ $stats->downloadcount }} downloads
+            {{ number_format($stats->downloadcount, 0, ',', '.') }} downloads
         </td>
     </tr>
     <tr>
