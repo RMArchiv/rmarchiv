@@ -1,13 +1,16 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 class TelegramNotification
 {
