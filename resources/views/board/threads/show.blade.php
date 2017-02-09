@@ -45,15 +45,7 @@
                 {!! Form::open(['action' => ['BoardController@store_post', $posts->first()->thread->id], 'id' => 'frmBBSPost']) !!}
                     <input type='hidden' name='catid' value='{{ $posts->first()->cat->id }}'>
                     <div class='content'>
-                        nachricht:
-                        <textarea name='message' id='message'></textarea>
-                        <script type="text/javascript">
-                            $(function() {
-                                $('textarea').inlineattachment({
-                                    uploadUrl: 'http://rmarchiv.de/attachment/upload',
-                                });
-                            });
-                        </script>
+                        @include('_partials.markdown_editor')
                         <div><a href='#'><b>markdown</b></a> kann hier genutzt werden</div>
                     </div>
                     <div class='foot'>
