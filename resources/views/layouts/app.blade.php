@@ -44,7 +44,9 @@
 <!--[if IE]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <script type="text/javascript">
     var _paq = _paq || [];
-    // tracker methods like "setCustomDimension" should be called before "trackPageView"
+    @if(Auth::check())
+        _paq.push(['setUserId', "{{ Auth::user()->name }}"]);
+    @endif
     _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);
     (function() {

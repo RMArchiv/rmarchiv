@@ -9,6 +9,7 @@ namespace App\Http\Controllers;
 
 use App\Events\Obyx;
 use App\Models\Screenshot;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Intervention\Image\Facades\Image;
@@ -62,6 +63,8 @@ class ScreenshotController extends Controller
         $old = Screenshot::whereGameId($gameid)->where('screenshot_id', '=', $screenid)->first();
         if ($old) {
             $old->delete();
+        }else{
+            event(new Obyx('screenshot-add', \Auth::id()));
         }
 
         //Speichern des Screenshots
@@ -71,8 +74,6 @@ class ScreenshotController extends Controller
         $scr->screenshot_id = $screenid;
         $scr->filename = str_replace($extorig, '', $imageName);
         $scr->save();
-
-        event(new Obyx('screenshot-add', \Auth::id()));
 
         return redirect()->route('screenshot.upload.success', $gameid);
     }

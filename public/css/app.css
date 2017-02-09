@@ -2471,46 +2471,56 @@ div.jqcloud span.w1 {
   font-size: 100%; }
 
 /* colors */
-div.jqcloud {
-  color: #09f; }
+span.jqcloud {
+  color: #ffbf00; }
 
-div.jqcloud a {
+span.jqcloud a {
   color: inherit; }
 
-div.jqcloud a:hover {
-  color: #0df; }
+span.jqcloud a:hover {
+  color: #ffdf00; }
 
-div.jqcloud a:hover {
-  color: #0cf; }
+span.jqcloud a:hover {
+  color: #ffdf00; }
 
-div.jqcloud span.w10 {
-  color: #0cf; }
+span.jqcloud a.w10 {
+  color: #ffbf00;
+  font-size: 4.2em; }
 
-div.jqcloud span.w9 {
-  color: #0cf; }
+span.jqcloud a.w9 {
+  color: #ffbf00;
+  font-size: 3.9em; }
 
-div.jqcloud span.w8 {
-  color: #0cf; }
+span.jqcloud a.w8 {
+  color: #ffbf00;
+  font-size: 3.6em; }
 
-div.jqcloud span.w7 {
-  color: #39d; }
+span.jqcloud a.w7 {
+  color: #ffbf00;
+  font-size: 3.3em; }
 
-div.jqcloud span.w6 {
-  color: #90c5f0; }
+span.jqcloud a.w6 {
+  color: #ffbf00;
+  font-size: 3.0em; }
 
-div.jqcloud span.w5 {
-  color: #90a0dd; }
+span.jqcloud a.w5 {
+  color: #ffbf00;
+  font-size: 2.6em; }
 
-div.jqcloud span.w4 {
-  color: #90c5f0; }
+span.jqcloud a.w4 {
+  color: #ffbf00;
+  font-size: 2.2em; }
 
-div.jqcloud span.w3 {
-  color: #a0ddff; }
+span.jqcloud a.w3 {
+  color: #ffbf00;
+  font-size: 1.8em; }
 
-div.jqcloud span.w2 {
-  color: #99ccee; }
+span.jqcloud a.w2 {
+  color: #ffbf00;
+  font-size: 1.4em; }
 
-div.jqcloud span.w1 {
-  color: #aab5f0; }
+span.jqcloud a.w1 {
+  color: #ffbf00;
+  font-size: 1.0em; }
 
 /*# sourceMappingURL=app.css.map */

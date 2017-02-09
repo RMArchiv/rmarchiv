@@ -15,8 +15,8 @@
         @endforeach
         @php
             $cloud->setHtmlizeTagFunction(function($tag, $size) {
-                $link = '<a style="font-size:'.($size * 30).'% !important; text-decoration: none !important;" href="'.$tag['url'].'">'.$tag['tag'].'</a>';
-                return "<span>{$link}</span> ";
+                $link = '<a class="w'.$size.'" href="'.$tag['url'].'">'.$tag['tag'].'</a>';
+                return "<span class='jqcloud'>{$link}</span> ";
                 //return "<span  class='tag size{$size}'>{$link}</span> ";
             });
             $cloud->setLimit(30);

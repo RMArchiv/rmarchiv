@@ -19,7 +19,9 @@ return [
         'developer_add'     => 5,
     ],
 
-    'version' => '0.1.7-preAlpha26',
+    'obyx_reget_wait' => 2, //Wartezeit für neue Obyx bei erneutem Hochladen eines Screenshots (bsp.)
+
+    'version' => '0.2.22-preAlpha1337',
 
     /*
     |--------------------------------------------------------------------------
