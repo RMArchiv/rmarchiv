@@ -248,7 +248,7 @@
                                     <li>
                                         @if(Auth::check() and !$f->forbidden == 1)
                                             {{ str_pad($f->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_day, 2, 0, STR_PAD_LEFT) }}
-                                            [<a href="{{ url('games/download', $f->id) }}">{{ $f->gamefiletype->title }}
+                                            [<a href="{{ url('games/download', $f->id) }}" class="down_l">{{ $f->gamefiletype->title }}
                                                 - {{ $f->release_version }}</a>] ({{ $f->downloadcount }})
                                         @else
                                             {{ str_pad($f->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_day, 2, 0, STR_PAD_LEFT) }}
