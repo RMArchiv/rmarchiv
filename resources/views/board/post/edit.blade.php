@@ -4,7 +4,7 @@
         <form action="{{ route('board.post.update', [$post->thread_id, $post->id]) }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
 
-            <div class="rmarchivtbl" id="rmarchivbox_submitnews">
+            <div class="rmarchivtbl" id="rmarchivbox_submitnews" style="width: 60%">
                 <h2>post bearbeiten</h2>
 
                 @if (count($errors) > 0))
@@ -22,9 +22,7 @@
                     <input type="hidden" name="thread_id" id="thread_id" value="{{ $post->thread_id }}">
                     <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
 
-                    <div class="formifier">
-                        @include('_partials.markdown_editor', ['edit_text' => $post->content_md])
-                    </div>
+                    @include('_partials.markdown_editor', ['edit_text' => $post->content_md])
                 </div>
                 <div class="foot">
                     <input type="submit" value="speichern">
