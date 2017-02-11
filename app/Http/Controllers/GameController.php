@@ -99,8 +99,8 @@ class GameController extends Controller
         $g = new Game();
         $g->title = $request->get('title');
         $g->subtitle = $request->get('subtitle', '');
-        $g->desc_md = $request->get('desc');
-        $g->desc_html = \Markdown::convertToHtml($request->get('desc'));
+        $g->desc_md = $request->get('msg');
+        $g->desc_html = \Markdown::convertToHtml($request->get('msg'));
         $g->website_url = $request->get('websiteurl', '');
         $g->maker_id = $request->get('maker');
         $g->lang_id = $langid;
@@ -259,8 +259,8 @@ class GameController extends Controller
         $game->subtitle = $request->get('subtitle');
         $game->maker_id = $request->get('maker');
         $game->lang_id = $lang->id;
-        $game->desc_md = $request->get('desc');
-        $game->desc_html = \Markdown::convertToHtml($request->get('desc'));
+        $game->desc_md = $request->get('msg');
+        $game->desc_html = \Markdown::convertToHtml($request->get('msg'));
         $game->website_url = $request->get('websiteurl');
         $game->youtube = $request->get('youtube');
         $game->release_date = Carbon::createFromDate($request->get('releasedate_year'), $request->get('releasedate_month'), $request->get('releasedate_day'));

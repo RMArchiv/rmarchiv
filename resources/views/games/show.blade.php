@@ -378,7 +378,7 @@
                 <div class='rmarchivtbl' id='rmarchivbox_prodpost'>
                     <h2>kommentar hinzufügen</h2>
                     {!! Form::open(['action' => ['CommentController@add']]) !!}
-                    {!! Form::hidden('content_id', $game->gameid) !!}
+                    {!! Form::hidden('content_id', $game->id) !!}
                     {!! Form::hidden('content_type', 'game') !!}
                     <div class='content'>
                         @if(CheckRateable::checkRateable('game', $game->gameid, Auth::id()) === true)
