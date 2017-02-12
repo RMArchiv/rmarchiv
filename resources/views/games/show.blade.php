@@ -175,7 +175,7 @@
                                 </li>
                             </ul>
                         </td>
-                        <td id='popularity'>
+                        <td id='popularity' style="width: 240px;">
                             @php
                                 $perc = \App\Helpers\MiscHelper::getPopularity($game->views, \App\Helpers\DatabaseHelper::getGameViewsMax());
                             @endphp
@@ -276,9 +276,13 @@
                         </td>
                     </tr>
                     <tr>
-                        <td id='credits' colspan='3' class='r2'>
+                        <td colspan='3'>
                             <h2>spielbeschreibung</h2>
-                            {!! $game->desc_html !!}
+                            <div class='rmarchivtbl' id='rmarchivbox_prodcomments'>
+                                <div class="content">
+                                    {!! $game->desc_html !!}
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     <tr>
