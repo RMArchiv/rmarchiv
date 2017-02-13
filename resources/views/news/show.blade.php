@@ -110,25 +110,18 @@
                                 <label for='ratingsucks'>ist scheiße</label>
                             </div>
                             @endif
-                            <textarea name='comment' id='comment'></textarea>
-                            <script type="text/javascript">
-                                $(function() {
-                                    $('textarea').inlineattachment({
-                                        uploadUrl: 'http://rmarchiv.de/attachment/upload',
-                                    });
-                                });
-                            </script>
-                            <div><a href='/?page=faq#markdown'><b>markown</b></a> kann benutzt werden</div>
-                        </div>
-                        <div class='foot'>
-                            <input type='submit' value='Submit' id='submit'>
-                        </div>
-                    {!! Form::close() !!}
-                </div>
-                @endif
-            </div>
-        @else
-            <h2>zu dieser id existiert keine news</h2>
-        @endif
-    </div>
+                            @include('_partials.markdown_editor')
+    <div><a href='/?page=faq#markdown'><b>markown</b></a> kann benutzt werden</div>
+</div>
+<div class='foot'>
+    <input type='submit' value='Submit' id='submit'>
+</div>
+{!! Form::close() !!}
+</div>
+@endif
+</div>
+@else
+<h2>zu dieser id existiert keine news</h2>
+@endif
+</div>
 @endsection

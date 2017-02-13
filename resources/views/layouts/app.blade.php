@@ -47,6 +47,7 @@
     @if(Auth::check())
         _paq.push(['setUserId', "{{ Auth::user()->name }}"]);
     @endif
+    _paq.push(['setDownloadClasses', "down_l"]);
     _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);
     (function() {

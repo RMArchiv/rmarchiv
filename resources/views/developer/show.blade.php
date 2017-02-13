@@ -23,10 +23,12 @@
             @foreach($games as $g)
             <tr>
                 <td>
+                    @if($g->game->gamefiles()->count() != 0)
                     @if(is_null($g->game->gamefiles->first()->gamefiletype) == false)
-                    <span class='typeiconlist'>
-                    <span class='typei type_{{ $g->game->gamefiles->first()->gamefiletype->short }}' title='{{ $g->game->gamefiles->first()->gamefiletype->title }}'>{{ $g->game->gamefiles->first()->gamefiletype->title }}</span>
-                </span>
+                        <span class='typeiconlist'>
+                            <span class='typei type_{{ $g->game->gamefiles->first()->gamefiletype->short }}' title='{{ $g->game->gamefiles->first()->gamefiletype->title }}'>{{ $g->game->gamefiles->first()->gamefiletype->title }}</span>
+                        </span>
+                    @endif
                     @endif
                     <span class='platformiconlist'>
                     <span class='typei type_{{ $g->game->maker->short }}' title='{{ $g->game->maker->title }}'>$g->game->maker->title</span>

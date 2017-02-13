@@ -124,8 +124,8 @@ class BoardController extends Controller
             'cat_id'       => $request->get('category'),
             'thread_id'    => $threadid,
             'user_id'      => \Auth::id(),
-            'content_md'   => $request->get('message'),
-            'content_html' => \Markdown::convertToHtml($request->get('message')),
+            'content_md'   => $request->get('msg'),
+            'content_html' => \Markdown::convertToHtml($request->get('msg')),
             'created_at'   => $date,
         ]);
 
@@ -136,7 +136,7 @@ class BoardController extends Controller
     {
         $this->validate($request, [
             'catid'   => 'required',
-            'message' => 'required',
+            'msg' => 'required',
         ]);
 
         $date = Carbon::now();
@@ -145,8 +145,8 @@ class BoardController extends Controller
             'user_id'      => \Auth::id(),
             'cat_id'       => $request->get('catid'),
             'thread_id'    => $threadid,
-            'content_md'   => $request->get('message'),
-            'content_html' => \Markdown::convertToHtml($request->get('message')),
+            'content_md'   => $request->get('msg'),
+            'content_html' => \Markdown::convertToHtml($request->get('msg')),
             'created_at'   => $date,
         ]);
 

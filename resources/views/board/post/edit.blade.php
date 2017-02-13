@@ -4,7 +4,7 @@
         <form action="{{ route('board.post.update', [$post->thread_id, $post->id]) }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
 
-            <div class="rmarchivtbl" id="rmarchivbox_submitnews">
+            <div class="rmarchivtbl" id="rmarchivbox_submitnews" style="width: 60%">
                 <h2>post bearbeiten</h2>
 
                 @if (count($errors) > 0))
@@ -22,20 +22,7 @@
                     <input type="hidden" name="thread_id" id="thread_id" value="{{ $post->thread_id }}">
                     <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
 
-                    <div class="formifier">
-                        <div class="row" id="row_message">
-                            <label for="msg">Beschreibung:</label>
-                            <textarea name="msg" id="msg" maxlength="9999" rows="10" placeholder="Post">{{ $post->content_md }}</textarea>
-                            <span> [<span class="req">req</span>] Markdown!</span>
-                        </div>
-                        <script type="text/javascript">
-                            $(function() {
-                                $('textarea').inlineattachment({
-                                    uploadUrl: 'http://rmarchiv.de/attachment/upload',
-                                });
-                            });
-                        </script>
-                    </div>
+                    @include('_partials.markdown_editor', ['edit_text' => $post->content_md])
                 </div>
                 <div class="foot">
                     <input type="submit" value="speichern">

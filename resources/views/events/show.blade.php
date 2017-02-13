@@ -127,7 +127,7 @@
                                     <label for='ratingsucks'>ist scheiße</label>
                                 </div>
                             @endif
-                            <textarea name='comment' id='comment'></textarea>
+                            @include('_partials.markdown_editor')
                             <div><a href='/?page=faq#markdown'><b>markown</b></a> kann benutzt werden</div>
                         </div>
                         <div class='foot'>

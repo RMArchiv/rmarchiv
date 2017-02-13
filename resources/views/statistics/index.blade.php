@@ -58,7 +58,7 @@
                             <td style="background-color: #2b542c">summe</td>
                             <td style="background-color: #2b542c">{{ number_format($files['sum']['count'], 0, ',', '.') }}</td>
                             <td style="background-color: #2b542c">{{ \App\Helpers\MiscHelper::getReadableBytes($files['sum']['size']) }}</td>
-                            <td style="background-color: #2b542c">{{ \App\Helpers\MiscHelper::getReadableBytes($files['logos']['size'] / $files['logos']['count']) }}</td>
+                            <td style="background-color: #2b542c">{{ \App\Helpers\MiscHelper::getReadableBytes($files['sum']['size'] / $files['logos']['count']) }}</td>
                         </tr>
                     </table>
 
