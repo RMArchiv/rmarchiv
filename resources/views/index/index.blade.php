@@ -68,7 +68,7 @@
             @endif
 
             @if(!Auth::check() || Auth::user()->settings->disable_widget_comments != 1)
-                @include('index._partials.latestcomments_game')
+                {{-- @include('index._partials.latestcomments_game') --}}
             @endif
 
             @include('index._partials.nextparty')

@@ -16,7 +16,7 @@
                     </span>
                     <span class='platformiconlist'>
                         <span class='typei type_{{ $com->game->maker->short }}' title='{{ $com->game->maker->title }}'>
-                            {{ $com->game->maker->title }}
+                            @{{ $com->game->maker->title }}
                         </span>
                     </span>
                     <span class='prod'>

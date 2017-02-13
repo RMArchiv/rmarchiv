@@ -54,7 +54,7 @@
                             @if($gf->forbidden == 1)
                                 [<span title="{{ $gf->reason }}">download entfernt</span>]
                             @else
-                                [<a href="{{ url('games/download', $gf->fileid) }}">{{trans('app.misc.download')}}</a>]
+                                [<a href="{{ url('games/download', $gf->fileid) }} " class="down_l">{{trans('app.misc.download')}}</a>]
                             @endif
                             :: [<a href="{{ route('gamefiles.edit', [$gf->gameid, $gf->fileid]) }}">edit</a>]
                         @if(Auth::user()->settings->is_admin)

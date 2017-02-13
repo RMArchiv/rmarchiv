@@ -59,14 +59,7 @@
                     <input name='topic' id='topic'/>
 
                     <label for='message'>nachricht:</label>
-                    <textarea name='message' id='message'></textarea>
-                    <script type="text/javascript">
-                        $(function() {
-                            $('textarea').inlineattachment({
-                                uploadUrl: 'http://rmarchiv.de/attachment/upload',
-                            });
-                        });
-                    </script>
+                    @include('_partials.markdown_editor')
                     <div><a href='#'><b>markdown</b></a> ist hier möglich.</div>
                 </div>
                 <div class='foot'>

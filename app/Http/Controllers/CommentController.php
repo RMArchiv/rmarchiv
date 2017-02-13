@@ -21,8 +21,8 @@ class CommentController extends Controller
         $comment->user_id = \Auth::id();
         $comment->content_id = $request->get('content_id');
         $comment->content_type = $request->get('content_type');
-        $comment->comment_md = $request->get('comment');
-        $comment->comment_html = Markdown::convertToHtml($request->get('comment'));
+        $comment->comment_md = $request->get('msg');
+        $comment->comment_html = Markdown::convertToHtml($request->get('msg'));
 
         $rate = $request->get('rating');
 

@@ -57,20 +57,8 @@
 
                 <h2>{{trans('app.games.add.description_title')}}</h2>
                 <div class="content">
-                    <div class="formifier">
-                        <div class="row" id="row_desc">
-                            <label for="desc">{{trans('app.games.add.description')}}</label>
-                            <textarea name="desc" id="desc" maxlength="2000" rows="10" placeholder="{{trans('app.games.add.description_help')}}"></textarea>
-                            <span> [<span>mardown</span>]</span>
-                        </div>
-                        <script type="text/javascript">
-                            $(function() {
-                                $('textarea').inlineattachment({
-                                    uploadUrl: 'http://rmarchiv.de/attachment/upload',
-                                });
-                            });
-                        </script>
-                    </div>
+                    @include('_partials.markdown_editor')
+
                 </div>
 
                 <h2>{{trans('app.games.add.links')}}</h2>

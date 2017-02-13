@@ -175,7 +175,7 @@
                                 </li>
                             </ul>
                         </td>
-                        <td id='popularity'>
+                        <td id='popularity' style="width: 240px;">
                             @php
                                 $perc = \App\Helpers\MiscHelper::getPopularity($game->views, \App\Helpers\DatabaseHelper::getGameViewsMax());
                             @endphp
@@ -248,7 +248,7 @@
                                     <li>
                                         @if(Auth::check() and !$f->forbidden == 1)
                                             {{ str_pad($f->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_day, 2, 0, STR_PAD_LEFT) }}
-                                            [<a href="{{ url('games/download', $f->id) }}">{{ $f->gamefiletype->title }}
+                                            [<a href="{{ url('games/download', $f->id) }}" class="down_l">{{ $f->gamefiletype->title }}
                                                 - {{ $f->release_version }}</a>] ({{ $f->downloadcount }})
                                         @else
                                             {{ str_pad($f->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_day, 2, 0, STR_PAD_LEFT) }}
@@ -276,9 +276,13 @@
                         </td>
                     </tr>
                     <tr>
-                        <td id='credits' colspan='3' class='r2'>
+                        <td colspan='3'>
                             <h2>spielbeschreibung</h2>
-                            {!! $game->desc_html !!}
+                            <div class='rmarchivtbl' id='rmarchivbox_prodcomments'>
+                                <div class="content">
+                                    {!! $game->desc_html !!}
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -378,7 +382,7 @@
                 <div class='rmarchivtbl' id='rmarchivbox_prodpost'>
                     <h2>kommentar hinzufügen</h2>
                     {!! Form::open(['action' => ['CommentController@add']]) !!}
-                    {!! Form::hidden('content_id', $game->gameid) !!}
+                    {!! Form::hidden('content_id', $game->id) !!}
                     {!! Form::hidden('content_type', 'game') !!}
                     <div class='content'>
                         @if(CheckRateable::checkRateable('game', $game->gameid, Auth::id()) === true)
@@ -393,14 +397,9 @@
                                 <label for='ratingsucks'>ist scheiße</label>
                             </div>
                         @endif
-                        <textarea name='comment' id='comment'></textarea>
-                            <script type="text/javascript">
-                                $(function() {
-                                    $('textarea').inlineattachment({
-                                        uploadUrl: 'http://rmarchiv.de/attachment/upload',
-                                    });
-                                });
-                            </script>
+
+                        @include('_partials.markdown_editor')
+
                         <div><a href='/?page=faq#markdown'><b>markown</b></a> kann benutzt werden</div>
                     </div>
                     <div class='foot'>
