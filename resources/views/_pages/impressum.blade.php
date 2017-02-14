@@ -6,8 +6,8 @@
             <p>Angaben gemäß § 5 TMG</p>
             <p>
                 Marcel Hering <br>
-                Frankenstraße 10<br>
-                52388 Nörvenich <br>
+                Marienstraße 8<br>
+                52372 Kreuzau <br>
             </p>
             <p>
                 <strong>Vertreten durch: </strong>

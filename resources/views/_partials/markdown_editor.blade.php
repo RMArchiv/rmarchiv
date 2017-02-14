@@ -12,13 +12,13 @@
 <div id="tabs_edit" class="style-tabs" style="width: 99%;">
     <ul>
         <li><a href="#tabs-1">bearbeiten</a></li>
-        <li><a href="#tabs-2">vorschau</a></li>
+        <li><a href="#tabs-2" id="preview">vorschau</a></li>
     </ul>
     <div id="tabs-1">
         <div class="row" id="row_message">
             <label for="msg">text:</label>
             <textarea name="msg" id="msg" maxlength="9999" rows="10" style="width: 99%;"
-                      placeholder="Markdown Text">@if(isset($edit_text)) {{ $edit_text}} @endif</textarea>
+                      placeholder="Markdown Text">@if(isset($edit_text)){{ $edit_text}}@endif</textarea>
         </div>
         <script type="text/javascript">
             $(function () {
@@ -41,7 +41,7 @@
                 var result = writer.render(parsed);
                 document.getElementById('preview_box').innerHTML = result;
 
-                document.getElementById('msg').onkeyup = function () {
+                document.getElementById('preview').onclick = function () {
                     var reader = new commonmark.Parser();
                     var writer = new commonmark.HtmlRenderer();
                     var parsed = reader.parse(document.getElementById('msg').value);
