@@ -15,7 +15,7 @@ use Intervention\Image\Facades\Image;
 
 class ScreenshotController extends Controller
 {
-    public function show($gameid, $screenid)
+    public function show($gameid, $screenid, $full = null)
     {
         $s = Screenshot::whereGameId($gameid)->where('screenshot_id', $screenid)
             ->first();
@@ -28,8 +28,13 @@ class ScreenshotController extends Controller
         }
 
         $img = \Image::make($storagePath);
-        $response = \Response::make($img->encode('jpg', 80));
-        $response->header('Content-Type', 'image/jpg');
+        if(!$full){
+            $response = \Response::make($img->encode('jpg', 80));
+            $response->header('Content-Type', 'image/jpg');
+        }else{
+            $response = \Response::make($img->encode('png'));
+            $response->header('Content-Type', 'image/png');
+        }
         //$response->setMaxAge(604800);
         $response->setPublic();
 

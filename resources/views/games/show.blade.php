@@ -71,44 +71,62 @@
                                 <div id="tabs-1">
                                     <img src='{{ route('screenshot.show', [$game->id, 1]) }}' style="width: 400px"
                                          alt='Titelbild' title='Titelbild'/>
+                                    <span>
+                                        <a href="{{ route('screenshot.show', [$game->id, 1, 1]) }}">originalbild anzeigen</a>
                                     @if(Auth::check())
-                                        <span><a href="{{ route('screenshot.create', [$game->id, 1]) }}">titelbild hochladen</a></span>
+                                        :: <a href="{{ route('screenshot.create', [$game->id, 1]) }}">titelbild hochladen</a>
                                     @endif
+                                    </span>
                                 </div>
                                 <div id="tabs-2">
                                     <img src='{{ route('screenshot.show', [$game->id, 2]) }}' style="width: 400px"
                                          alt='Titelbild' title='Titelbild'/>
-                                    @if(Auth::check())
-                                        <span><a href="{{ route('screenshot.create', [$game->id, 2]) }}">screenshot hochladen</a></span>
-                                    @endif
+                                    <span>
+                                        <a href="{{ route('screenshot.show', [$game->id, 2, 1]) }}">originalbild anzeigen</a>
+                                        @if(Auth::check())
+                                            :: <a href="{{ route('screenshot.create', [$game->id, 2]) }}">titelbild hochladen</a>
+                                        @endif
+                                    </span>
                                 </div>
                                 <div id="tabs-3">
                                     <img src='{{ route('screenshot.show', [$game->id, 3]) }}' style="width: 400px"
                                          alt='Titelbild' title='Titelbild'/>
-                                    @if(Auth::check())
-                                        <span><a href="{{ route('screenshot.create', [$game->id, 3]) }}">screenshot hochladen</a></span>
-                                    @endif
+                                    <span>
+                                        <a href="{{ route('screenshot.show', [$game->id, 3, 1]) }}">originalbild anzeigen</a>
+                                        @if(Auth::check())
+                                            :: <a href="{{ route('screenshot.create', [$game->id, 3]) }}">titelbild hochladen</a>
+                                        @endif
+                                    </span>
                                 </div>
                                 <div id="tabs-4">
                                     <img src='{{ route('screenshot.show', [$game->id, 4]) }}' style="width: 400px"
                                          alt='Titelbild' title='Titelbild'/>
-                                    @if(Auth::check())
-                                        <span><a href="{{ route('screenshot.create', [$game->id, 4]) }}">screenshot hochladen</a></span>
-                                    @endif
+                                    <span>
+                                        <a href="{{ route('screenshot.show', [$game->id, 4, 1]) }}">originalbild anzeigen</a>
+                                        @if(Auth::check())
+                                            :: <a href="{{ route('screenshot.create', [$game->id, 4]) }}">titelbild hochladen</a>
+                                        @endif
+                                    </span>
                                 </div>
                                 <div id="tabs-5">
                                     <img src='{{ route('screenshot.show', [$game->id, 5]) }}' style="width: 400px"
                                          alt='Titelbild' title='Titelbild'/>
-                                    @if(Auth::check())
-                                        <span><a href="{{ route('screenshot.create', [$game->id, 5]) }}">screenshot hochladen</a></span>
-                                    @endif
+                                    <span>
+                                        <a href="{{ route('screenshot.show', [$game->id, 5, 1]) }}">originalbild anzeigen</a>
+                                        @if(Auth::check())
+                                            :: <a href="{{ route('screenshot.create', [$game->id, 5]) }}">titelbild hochladen</a>
+                                        @endif
+                                    </span>
                                 </div>
                                 <div id="tabs-6">
                                     <img src='{{ route('screenshot.show', [$game->id, 6]) }}' style="width: 400px"
                                          alt='Titelbild' title='Titelbild'/>
-                                    @if(Auth::check())
-                                        <span><a href="{{ route('screenshot.create', [$game->id, 6]) }}">screenshot hochladen</a></span>
-                                    @endif
+                                    <span>
+                                        <a href="{{ route('screenshot.show', [$game->id, 6, 1]) }}">originalbild anzeigen</a>
+                                        @if(Auth::check())
+                                            :: <a href="{{ route('screenshot.create', [$game->id, 6]) }}">titelbild hochladen</a>
+                                        @endif
+                                    </span>
                                 </div>
                                 @if($game->youtube)
                                     @php
