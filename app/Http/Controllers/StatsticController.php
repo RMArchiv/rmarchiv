@@ -114,6 +114,24 @@ class StatsticController extends Controller
         }
         $lava->AreaChart('ReleasesMon', $com, $lava_config);
 
+        //Forenposts pro Monat
+        // Kommentare pro Monat
+        $postspermonth = \DB::table('board_posts')
+            ->selectRaw('YEAR(created_at) as year')
+            ->selectRaw('MONTH(created_at) as month')
+            ->selectRaw('COUNT(id) AS count')
+            ->orderBy('created_at')
+            ->groupBy(\DB::raw('YEAR(created_at)'))
+            ->groupBy(\DB::raw('MONTH(created_at)'))
+            ->get();
+        $com = $lava->DataTable();
+        $com->addStringColumn('Datum')
+            ->addNumberColumn('Forenposts pro Monat');
+        foreach ($postspermonth as $p) {
+            $com->addRow([$p->year.'-'.$p->month, $p->count]);
+        }
+        $lava->AreaChart('ForumPosts', $com, $lava_config);
+
         $filesize = [
             'attach' => [
                 'size' => 0,

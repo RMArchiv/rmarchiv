@@ -77,11 +77,17 @@
                 <div id="com_div"></div>
                 <div class='foot'>=D</div>
             </div>
+            <div class="rmarchivtbl" style="width: 95%">
+                <h2>Forenposts pro Monat</h2>
+                <div id="boardposts_div"></div>
+                <div class='foot'>=D</div>
+            </div>
         </div>
 
         {!! $lava->render('AreaChart', 'Registrierungen', 'reg_div') !!}
         {!! $lava->render('AreaChart', 'Kommentare', 'com_div') !!}
         {!! $lava->render('AreaChart', 'Releases', 'rel_div') !!}
         {!! $lava->render('AreaChart', 'ReleasesMon', 'relmon_div') !!}
+        {!! $lava->render('AreaChart', 'ForumPosts', 'boardposts_div') !!}
     </div>
 @endsection

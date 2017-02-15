@@ -44,7 +44,7 @@ Route::get('games/{id}/gamefiles/delete/{fileid}', 'GameFileController@destroy')
 Route::get('games/{id}/gamefiles/edit/{gamefileid}', 'GameFileController@edit')->name('gamefiles.edit');
 Route::post('games/{id}/gamefiles/edit/{gamefileid}/update', 'GameFileController@update')->name('gamefiles.update');
 Route::get('games/download/{id}', 'GameFileController@download')->name('gamefiles.download');
-Route::get('games/{gameid}/screenshot/{screenid}/{full?}', 'ScreenshotController@show')->name('screenshot.show');
+Route::get('games/{gameid}/screenshot/show/{screenid}/{full?}', 'ScreenshotController@show')->name('screenshot.show');
 Route::get('games/{gameid}/screenshot/create/{screenid}', 'ScreenshotController@create')->name('screenshot.create');
 Route::post('games/{gameid}/screenshot/upload/{screenid}', 'ScreenshotController@upload')->name('screenshot.upload');
 Route::get('games/index/{orderby?}/{direction?}', 'GameController@index')->name('games.index.sorted');
