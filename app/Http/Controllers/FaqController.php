@@ -1,18 +1,23 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Http\Controllers;
 
-use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Http\Request;
 
 class FaqController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $faq = \DB::table('faq')
             ->get();
 
-        $res = array();
-        foreach ($faq as $f){
+        $res = [];
+        foreach ($faq as $f) {
             $t['id'] = $f->id;
             $t['cat'] = $f->cat;
             $t['title'] = $f->title;
@@ -26,11 +31,13 @@ class FaqController extends Controller
         ]);
     }
 
-    public function create(){
+    public function create()
+    {
         return view('faq.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $this->validate($request, [
             'cat' => 'required',
             'title' => 'required',
@@ -41,7 +48,7 @@ class FaqController extends Controller
             'cat' => $request->get('cat'),
             'title' => $request->get('title'),
             'desc_md' => $request->get('desc'),
-            'desc_html' => \Markdown::convertToHtml($request->get('desc'))
+            'desc_html' => \Markdown::convertToHtml($request->get('desc')),
         ]);
 
         return redirect()->action('FaqController@index');
