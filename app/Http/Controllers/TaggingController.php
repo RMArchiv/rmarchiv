@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Http\Controllers;
 
 use App\Models\Tag;
@@ -104,7 +109,8 @@ class TaggingController extends Controller
         return \Redirect::action('IndexController@index');
     }
 
-    public function delete_gametag($gameid, $tagid){
+    public function delete_gametag($gameid, $tagid)
+    {
         $tag = TagRelation::whereContentId($gameid)->where('content_type', '=', 'game')->where('tag_id', '=', $tagid)->first();
         $tag->delete();
 
