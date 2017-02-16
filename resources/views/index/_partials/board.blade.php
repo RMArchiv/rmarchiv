@@ -2,7 +2,7 @@
     <h2>die 10 neuesten und fluffigsten threads</h2>
     <table class='boxtable'>
         @foreach($threads as $t)
-        <tr class=''>
+        <tr class='' @if(\App\Helpers\DatabaseHelper::isThreadUnread($t->id) === true) style="font-weight: bold;" @endif>
             <td>
                 <a href='{{ url('users', $t->user->id) }}' class='usera' title="{{ $t->user->name }}">
                     <img src='http://ava.rmarchiv.de/?gender=male&id={{ $t->user->id }}' alt="{{ $t->user->name }}" class='avatar'/>
@@ -10,7 +10,7 @@
                 <a href='{{ url('users', $t->user->id) }}' class='usera' title="{{ $t->user->name }}">{{ $t->user->name }}</a>
             </td>
             <td class='category'><a href="{{ route('board.cat.show', $t->cat->id) }}">{{ $t->cat->title }}</a></td>
-            <td class='topic'>
+            <td>
                 <a href='{{ route('board.thread.show', $t->id) }}'>
                     @if($t->closed == 1)
                         <img src="/assets/lock.png">

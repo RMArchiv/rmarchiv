@@ -123,7 +123,7 @@ class EventController extends Controller
         ]);
     }
 
-    public function register_store(Request $request, $eventid)
+    public function register_store($eventid)
     {
         $event = Event::whereId($eventid)->first();
 

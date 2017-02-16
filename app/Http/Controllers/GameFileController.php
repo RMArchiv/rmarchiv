@@ -146,12 +146,12 @@ class GameFileController extends Controller
             ]);
 
             event(new Obyx('gamefile-add', \Auth::id()));
-
-            return redirect()->route('gamefiles.index', [$id]);
         }
+
+        return redirect()->route('gamefiles.index', [$id]);
     }
 
-    public function destroy(Request $request, $id, $fileid)
+    public function destroy($id, $fileid)
     {
         $gf = GamesFile::whereId($fileid)->first();
         \Storage::delete($gf->filename);

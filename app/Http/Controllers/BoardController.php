@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\DatabaseHelper;
 use Carbon\Carbon;
 use App\Events\Obyx;
 use App\Models\BoardCat;
@@ -94,6 +95,9 @@ class BoardController extends Controller
     public function show_thread($threadid)
     {
         $posts = BoardPost::with('user', 'thread', 'cat')->whereThreadId($threadid)->orderBy('id')->paginate(25);
+
+        DatabaseHelper::setThreadViewDate($threadid);
+
         if (! Input::get('page')) {
             return redirect('board/thread/'.$threadid.'?page='.$posts->lastPage());
         } else {

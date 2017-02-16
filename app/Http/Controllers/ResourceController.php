@@ -11,7 +11,6 @@ use Carbon\Carbon;
 use App\Events\Obyx;
 use Illuminate\Http\Request;
 use App\Helpers\DatabaseHelper;
-use Illuminate\Support\Facades\Redirect;
 
 class ResourceController extends Controller
 {

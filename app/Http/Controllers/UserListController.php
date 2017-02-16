@@ -79,7 +79,7 @@ class UserListController extends Controller
         return \Redirect::back();
     }
 
-    public function add_game(Request $request, $listid, $gameid)
+    public function add_game($listid, $gameid)
     {
         if (\Auth::check()) {
             $check = \DB::table('user_list_items')

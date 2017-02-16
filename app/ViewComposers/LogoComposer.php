@@ -7,7 +7,6 @@
 
 namespace App\Http\ViewComposers;
 
-use App\Models\Logo;
 use Illuminate\Contracts\View\View;
 
 class LogoComposer

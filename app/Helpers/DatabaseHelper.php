@@ -7,6 +7,8 @@
 
 namespace App\Helpers;
 
+use App\Models\BoardThread;
+use App\Models\BoardThreadsTracker;
 use Carbon\Carbon;
 use App\Models\Game;
 use App\Models\Developer;
@@ -14,6 +16,39 @@ use App\Models\GamesFile;
 
 class DatabaseHelper
 {
+    public static function isThreadUnread($thread_id){
+        if(\Auth::check()){
+            $track = BoardThreadsTracker::where('thread_id', '=', $thread_id)
+                ->where('user_id', '=', \Auth::id())->first();
+
+            $thread = BoardThread::whereId($thread_id)->first();
+
+            if($track){
+                if(Carbon::parse($track->last_read)->timestamp < Carbon::parse($thread->last_created_at)->timestamp){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return true;
+            }
+
+        }else{
+            return false;
+        }
+    }
+
+    public static function setThreadViewDate($thread_id){
+        if(\Auth::check()){
+            $track = BoardThreadsTracker::updateOrInsert([
+                'user_id' => \Auth::id(),
+                'thread_id' => $thread_id,
+            ], [
+                'last_read' => Carbon::now()
+            ]);
+        }
+    }
+
     public static function getReleaseDateFromGameId($gameid)
     {
         $game = Game::whereId($gameid)->first();

@@ -11,7 +11,9 @@ class TestController extends Controller
 {
     public function index()
     {
-        //$response = \Telegram::getUpdates()[0]['message']['chat']['id'];
+        $response = \Telegram::getUpdates();
+
+        dd($response);
 
         \Telegram::sendMessage([
             'chat_id' => 51419661,

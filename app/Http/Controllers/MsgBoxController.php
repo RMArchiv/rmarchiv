@@ -68,7 +68,7 @@ class MsgBoxController extends Controller
         return view('msgbox', $msg);
     }
 
-    public function cdc_add($gameid)
+    public function cdc_add()
     {
         $msg = [
             'title'       => 'coup de coeur erfolgreich hinzugefügt',

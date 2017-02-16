@@ -11,7 +11,6 @@ use App\Events\Obyx;
 use App\Models\Logo;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\File;
 
 class SubmitController extends Controller
 {

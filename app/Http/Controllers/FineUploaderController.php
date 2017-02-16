@@ -19,7 +19,7 @@ use Optimus\FineuploaderServer\Vendor\FineUploader;
 
 class FineUploaderController extends Controller
 {
-    public function endpoint(Request $request)
+    public function endpoint()
     {
         $fu = new FineUploader();
         $destpath = storage_path('app/public/temp');

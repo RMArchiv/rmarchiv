@@ -8,7 +8,6 @@
 namespace App\Http\Controllers;
 
 use App\Events\Obyx;
-use App\Models\Logo;
 use App\Models\LogoVote;
 use Illuminate\Http\Request;
 
