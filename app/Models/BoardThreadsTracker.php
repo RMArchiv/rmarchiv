@@ -1,11 +1,16 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class BoardThreadsTracker
+ * Class BoardThreadsTracker.
  */
 class BoardThreadsTracker extends Model
 {
@@ -16,10 +21,8 @@ class BoardThreadsTracker extends Model
     protected $fillable = [
         'user_id',
         'thread_id',
-        'last_read'
+        'last_read',
     ];
 
     protected $guarded = [];
-
-        
 }
