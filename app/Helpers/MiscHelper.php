@@ -9,7 +9,8 @@ namespace App\Helpers;
 
 class MiscHelper
 {
-    public static function sendTelegram($content){
+    public static function sendTelegram($content)
+    {
         \Telegram::sendMessage([
             'chat_id' => 51419661,
             'text' => $content,
