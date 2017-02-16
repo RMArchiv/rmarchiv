@@ -133,6 +133,8 @@ class BoardController extends Controller
             'created_at'   => $date,
         ]);
 
+        DatabaseHelper::setThreadViewDate($threadid);
+
         return redirect()->action('BoardController@show_thread', [$threadid]);
     }
 

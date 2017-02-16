@@ -19,7 +19,7 @@
                 </thead>
 
                 @foreach($cat->threads->sortByDesc('last_created_at')->take(15) as $thread)
-                <tr>
+                <tr @if(\App\Helpers\DatabaseHelper::isThreadUnread($thread->id) === true) style="font-weight: bold;" @endif>
                     <td>
                         <time datetime='{{ $thread->created_at }}' title='{{ $thread->created_at }}'>{{ \Carbon\Carbon::parse($thread->created_at)->diffForHumans() }}</time>
                     </td>
