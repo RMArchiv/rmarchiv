@@ -23,7 +23,13 @@
                             @endif
                         </td>
                         <td>{{ $thread->created_at }}</td>
-                        <td>{!! link_to('messages/' . $thread->id, $thread->subject) !!}</td>
+                        <td><a href="{{ url('messages', $thread->id) }}">
+                                @if($thread->subject == '')
+                                    kein betreff
+                                @else
+                                    {{ $thread->subject }}
+                                @endif
+                            </a></td>
                         <td>{{ $thread->participantsString(Auth::id()) }}</td>
                         <td>{{ $thread->updated_at }}</td>
                         <td>

@@ -45,6 +45,7 @@ class IndexController extends Controller
             })
             ->leftJoin('games_files', 'games_files.game_id', '=', 'games.id')
             ->leftJoin('users', 'games_developer.user_id', '=', 'users.id')
+            ->leftJoin('languages', 'languages.id', '=', 'games.lang_id')
             ->select([
                 'games.id as gameid',
                 'games.title as gametitle',
@@ -58,6 +59,9 @@ class IndexController extends Controller
                 'makers.short as makershort',
                 'makers.title as makertitle',
                 'makers.id as makerid',
+                'languages.id as lang_id',
+                'languages.name as lang_name',
+                'languages.short as lang_short'
             ])
             ->selectRaw('(SELECT COUNT(id) FROM comments WHERE content_id = games.id AND content_type = "game") as commentcount')
             ->selectRaw('(SELECT SUM(vote_up) FROM comments WHERE content_id = games.id AND content_type = "game") as voteup')
@@ -131,6 +135,7 @@ class IndexController extends Controller
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
+            ->leftJoin('languages', 'languages.id', '=', 'games.lang_id')
             ->leftJoin('comments', function ($join) {
                 $join->on('comments.content_id', '=', 'games.id');
                 $join->on('comments.content_type', '=', \DB::raw("'game'"));
@@ -150,6 +155,9 @@ class IndexController extends Controller
                 'makers.short as makershort',
                 'makers.title as makertitle',
                 'makers.id as makerid',
+                'languages.id as lang_id',
+                'languages.name as lang_name',
+                'languages.short as lang_short'
             ])
             ->selectRaw('(SELECT COUNT(id) FROM comments WHERE content_id = games.id AND content_type = "game") as commentcount')
             ->selectRaw('(SELECT SUM(vote_up) FROM comments WHERE content_id = games.id AND content_type = "game") as voteup')
@@ -166,6 +174,7 @@ class IndexController extends Controller
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
+            ->leftJoin('languages', 'languages.id', '=', 'games.lang_id')
             ->leftJoin('comments', function ($join) {
                 $join->on('comments.content_id', '=', 'games.id');
                 $join->on('comments.content_type', '=', \DB::raw("'game'"));
@@ -185,6 +194,9 @@ class IndexController extends Controller
                 'makers.short as makershort',
                 'makers.title as makertitle',
                 'makers.id as makerid',
+                'languages.id as lang_id',
+                'languages.name as lang_name',
+                'languages.short as lang_short'
             ])
             ->selectRaw('(SELECT COUNT(id) FROM comments WHERE content_id = games.id AND content_type = "game") as commentcount')
             ->selectRaw('(SELECT SUM(vote_up) FROM comments WHERE content_id = games.id AND content_type = "game") as voteup')

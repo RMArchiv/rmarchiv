@@ -4989,24 +4989,70 @@
             "time": "2017-01-11T14:52:17+00:00"
         },
         {
-            "name": "xethron/migrations-generator",
-            "version": "v2.0.0",
+            "name": "xethron/laravel-4-generators",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Xethron/migrations-generator.git",
-                "reference": "aa7985074e47fed6a3cc14c1ebc5f9ec3a69a709"
+                "url": "https://github.com/Xethron/Laravel-4-Generators.git",
+                "reference": "56a88b27abfbf45ae48517aace6e099b19904d88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Xethron/migrations-generator/zipball/aa7985074e47fed6a3cc14c1ebc5f9ec3a69a709",
-                "reference": "aa7985074e47fed6a3cc14c1ebc5f9ec3a69a709",
+                "url": "https://api.github.com/repos/Xethron/Laravel-4-Generators/zipball/56a88b27abfbf45ae48517aace6e099b19904d88",
+                "reference": "56a88b27abfbf45ae48517aace6e099b19904d88",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "behat/behat": "~2.5.1",
+                "behat/mink": "~1.5.0",
+                "behat/mink-extension": "~1.2.0",
+                "behat/mink-goutte-driver": "~1.0.9",
+                "behat/mink-selenium2-driver": "~1.1.1",
+                "phpspec/phpspec": "~2.0",
+                "phpunit/phpunit": "~3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Way\\Generators": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey Way",
+                    "email": "jeffrey@jeffrey-way.com"
+                }
+            ],
+            "description": "Rapidly generate resources, migrations, models, and much more.",
+            "time": "2017-02-15T20:41:36+00:00"
+        },
+        {
+            "name": "xethron/migrations-generator",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Xethron/migrations-generator.git",
+                "reference": "8a9e187e6d851c59dbd8997a2ac63f0d25d2fe81"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Xethron/migrations-generator/zipball/8a9e187e6d851c59dbd8997a2ac63f0d25d2fe81",
+                "reference": "8a9e187e6d851c59dbd8997a2ac63f0d25d2fe81",
                 "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "~2.4",
                 "illuminate/support": ">=4.1",
                 "php": ">=5.4.0",
-                "way/generators": "dev-feature/laravel-five-stable"
+                "xethron/laravel-4-generators": "~3.1.0"
             },
             "require-dev": {
                 "illuminate/cache": ">=4.1.0",
@@ -5038,7 +5084,7 @@
                 "migration",
                 "migrations"
             ],
-            "time": "2016-11-20T14:29:11+00:00"
+            "time": "2017-02-15T21:39:05+00:00"
         },
         {
             "name": "zizaco/entrust",

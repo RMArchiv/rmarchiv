@@ -13,6 +13,9 @@
         <li><a href="{{ url('submit') }}">{{ trans('app.submit.title') }}</a></li>
         @if($part == 'toppart')
             @if(Auth::check())
+                @if(\Auth::user()->newThreadsCount() >= 1)
+                    <li><a class="adminlink" href='{{ url('messages') }}'>neue nachricht(en)</a></li>
+                @endif
                 <li><a class="adminlink" href="{{ url('logout') }}">{{ trans('app.auth.logout') }}</a></li>
             @else
                 <li><a class="adminlink" href="{{ url('login') }}">{{ trans('app.auth.login') }}</a></li>

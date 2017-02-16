@@ -19,6 +19,8 @@
                                 <small> - {{ $g->gamesubtitle }}</small>
                             @endif
                         </a>
+                                                <span><img src="/assets/lng/16/{{ strtoupper($g->lang_short) }}.png" title="{{ $g->lang_name }}"></span>
+
                     </span>
                     <span class='group'>
                         :: {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($g->gameid) !!}
