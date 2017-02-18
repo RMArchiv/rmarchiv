@@ -14,12 +14,17 @@ class GameController extends Controller
 {
     public function index()
     {
-        return Game::select([
-            'id',
-            'title',
-            'subtitle',
-        ])
+        $games = \DB::table('games')
+            ->select([
+                'id',
+                'title',
+                'subtitle',
+            ])
             ->get();
+
+
+
+        return $games;
     }
 
     public function show($id)

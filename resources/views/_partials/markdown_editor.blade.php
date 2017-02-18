@@ -17,7 +17,7 @@
     <div id="tabs-1">
         <div class="row" id="row_message">
             <label for="msg">text:</label>
-            <textarea name="msg" id="msg" maxlength="9999" rows="10" style="width: 99%;"
+            <textarea name="msg" id="msg" rows="10" style="width: 99%;"
                       placeholder="Markdown Text">@if(isset($edit_text)){{ $edit_text}}@endif</textarea>
         </div>
         <script type="text/javascript">

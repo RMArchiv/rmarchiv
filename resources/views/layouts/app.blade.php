@@ -27,6 +27,9 @@
     <meta charset="utf-8"/>
 </head>
 <body>
+@php
+    \App\Helpers\DatabaseHelper::setOnline(Request::url());
+@endphp
 
 @include('_partials.header')
 @include('_partials.navigation', ['part' => 'toppart'])

@@ -14,6 +14,7 @@ class FaqController extends Controller
     public function index()
     {
         $faq = \DB::table('faq')
+            ->orderBy('cat')
             ->get();
 
         $res = [];
@@ -41,14 +42,14 @@ class FaqController extends Controller
         $this->validate($request, [
             'cat' => 'required',
             'title' => 'required',
-            'desc' => 'required',
+            'msg' => 'required',
         ]);
 
         \DB::table('faq')->insert([
             'cat' => $request->get('cat'),
             'title' => $request->get('title'),
-            'desc_md' => $request->get('desc'),
-            'desc_html' => \Markdown::convertToHtml($request->get('desc')),
+            'desc_md' => $request->get('msg'),
+            'desc_html' => \Markdown::convertToHtml($request->get('msg')),
         ]);
 
         return redirect()->action('FaqController@index');
