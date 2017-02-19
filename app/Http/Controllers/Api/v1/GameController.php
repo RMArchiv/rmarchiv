@@ -22,8 +22,6 @@ class GameController extends Controller
             ])
             ->get();
 
-
-
         return $games;
     }
 
