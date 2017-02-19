@@ -16,6 +16,16 @@ use App\Models\BoardThreadsTracker;
 
 class DatabaseHelper
 {
+    public static function getOnlineUserCount()
+    {
+        $users = \DB::table('user_online')
+            ->selectRaw('COUNT(id) as online')
+            ->where('created_at', '>=', Carbon::now()->addMinutes(-10))
+            ->first();
+
+        return $users;
+    }
+
     public static function setOnline($where)
     {
         \DB::table('user_online')->updateOrInsert([

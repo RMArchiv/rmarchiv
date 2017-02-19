@@ -9,5 +9,8 @@
         <li>
             <a href="{{ url('/impressum') }}">impressum</a>
         </li>
+        <li>
+            users online: {{ \App\Helpers\DatabaseHelper::getOnlineUserCount()->online }}
+        </li>
     </ul>
 </footer>

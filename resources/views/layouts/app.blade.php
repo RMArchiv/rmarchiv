@@ -40,7 +40,6 @@
 @include('_partials.navigation', ['part' => 'bottompart'])
 @include('_partials.footer')
 
-
 </body>
 
 <!--[if lt IE 9]><script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script><![endif]-->
