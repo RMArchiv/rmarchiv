@@ -25,6 +25,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property int $maker_id
  * @property int $lang_id
  * @property string $deleted_at
+ * @property int $atelier_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereId($value)
@@ -78,6 +79,7 @@ class Game extends Model
         'release_date',
         'maker_id',
         'lang_id',
+        'atelier_id',
     ];
 
     protected static $logAttributes = [
@@ -88,6 +90,7 @@ class Game extends Model
         'user_id',
         'maker_id',
         'lang_id',
+        'atelier_id',
     ];
 
     protected $guarded = [];

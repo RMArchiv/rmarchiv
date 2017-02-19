@@ -17,6 +17,7 @@
                     <li><a href='{{ url('missing/gamescreens') }}'>fehlende spielescreenshots</a></li>
                     <li><a href='{{ url('missing/gamefiles') }}'>fehlende spieledateien</a></li>
                     <li><a href='{{ url('missing/gamedesc') }}'>fehlende spielebeschreibungen</a></li>
+                    <li><a href='{{ url('missing/notags') }}'>ohne tags</a></li>
                 </ul>
                 <h2>Admin Only</h2>
                 <ul class="boxlist">

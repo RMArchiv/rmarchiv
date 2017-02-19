@@ -8,9 +8,28 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\DatabaseHelper;
+use App\Models\Game;
 
 class MissingController extends Controller
 {
+    //Spiele mit fehlenden Tags
+    public function index_notags($orderby = 'title', $direction = 'asc')
+    {
+        $games = Game::whereHas('tags', function($q)
+        {
+            $q->whereRaw('COUNT(*) = 0');
+        })->orderBy($orderby, $direction)
+            ->orderBy('games.title')
+            ->orderBy('games.subtitle')
+            ->paginate(20);
+
+        return view('missing.notags.index', [
+            'games' => $games,
+            'orderby' => $orderby,
+            'direction' => $direction,
+        ]);
+    }
+
     //Spiele mit fehlenden Screenshots anzeigen
     public function index_gamescreens()
     {

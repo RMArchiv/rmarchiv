@@ -28,13 +28,15 @@ class DatabaseHelper
 
     public static function setOnline($where)
     {
-        \DB::table('user_online')->updateOrInsert([
-            'user_id' => \Auth::id(),
-        ], [
-                'last_place' => $where,
-                'created_at' => Carbon::now(),
-        ]
+        if(\Auth::check()){
+            \DB::table('user_online')->updateOrInsert([
+                'user_id' => \Auth::id(),
+            ], [
+                    'last_place' => $where,
+                    'created_at' => Carbon::now(),
+                ]
             );
+        }
     }
 
     public static function isThreadUnread($thread_id)

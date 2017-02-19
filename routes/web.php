@@ -188,6 +188,7 @@ Route::get('cdc/success/{gameid}', 'MsgBoxController@cdc_add');
 Route::get('missing/gamescreens', 'MissingController@index_gamescreens');
 Route::get('missing/gamefiles', 'MissingController@index_gamefiles');
 Route::get('missing/gamedesc', 'MissingController@index_gamedesc');
+Route::get('missing/notags/{orderby?}/{direction?}', 'MissingController@index_notags');
 
 //Sonstige Seiten
 Route::get('/impressum', function () {

@@ -97,6 +97,10 @@
                             </select>
                         </div>
                     </div>
+                    <div class="row" id="row_atelier_id">
+                        <label for="atelier_id">Atelier ID:</label>
+                        <input name="atelier_id" id="atelier_id" placeholder="820" value="{{ $game->atelier_id }}"/>
+                    </div>
                 </div>
             </div>
 

@@ -182,6 +182,12 @@
                                         <td><a href="{{ $game->website_url }}" target="_blank">KLICK!</a></td>
                                     </tr>
                                 @endif
+                                @if($game->atelier_id)
+                                    <tr>
+                                        <td>rpg-atelier link:</td>
+                                        <td><a href="http://www.rpg-atelier.net/index.php?site=showgame&gid={{ $game->atelier_id }}" target="_blank">KLICK!</a></td>
+                                    </tr>
+                                @endif
                             </table>
                         </td>
                     </tr>

@@ -106,6 +106,7 @@ class GameController extends Controller
         $g->lang_id = $langid;
         $g->user_id = \Auth::id();
         $g->youtube = $request->get('youtube');
+        $g->atelier_id = $request->get('atelier_id');
         $g->save();
 
         \DB::table('games_developer')->insert([
@@ -188,6 +189,7 @@ class GameController extends Controller
                 'games.website_url as websiteurl',
                 'games.youtube as youtube',
                 'games.release_date as release_date',
+                'games.atelier_id as atelier_id',
             ])
             ->where('games.id', '=', $id)
             ->first();
@@ -263,6 +265,7 @@ class GameController extends Controller
         $game->desc_html = \Markdown::convertToHtml($request->get('msg'));
         $game->website_url = $request->get('websiteurl');
         $game->youtube = $request->get('youtube');
+        $game->atelier_id = $request->get('atelier_id');
         $game->release_date = Carbon::createFromDate($request->get('releasedate_year'), $request->get('releasedate_month'), $request->get('releasedate_day'));
         $game->save();
 

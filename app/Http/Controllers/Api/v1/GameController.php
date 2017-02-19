@@ -17,6 +17,7 @@ class GameController extends Controller
         $games = \DB::table('games')
             ->select([
                 'id',
+                'atelier_id',
                 'title',
                 'subtitle',
             ])
