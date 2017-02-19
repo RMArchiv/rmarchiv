@@ -7,16 +7,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\DatabaseHelper;
 use App\Models\Game;
+use App\Helpers\DatabaseHelper;
 
 class MissingController extends Controller
 {
     //Spiele mit fehlenden Tags
     public function index_notags($orderby = 'title', $direction = 'asc')
     {
-        $games = Game::whereHas('tags', function($q)
-        {
+        $games = Game::whereHas('tags', function ($q) {
             $q->whereRaw('COUNT(*) = 0');
         })->orderBy($orderby, $direction)
             ->orderBy('games.title')
