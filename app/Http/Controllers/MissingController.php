@@ -15,14 +15,18 @@ class MissingController extends Controller
     //Spiele mit fehlenden Tags
     public function index_notags($orderby = 'title', $direction = 'asc')
     {
-        $games = Game::with(['tags' => function ($query) {
-            $query->groupBy('tag_relations.id');
-            $query->havingRaw('COUNT(tag_relations.id) = 0');
-        }])
+        $games = Game::with('tags')->select(['games.*', \DB::raw('COUNT(tr.id) as ctr')])
+            ->leftJoin('tag_relations as tr', function ($join) {
+                $join->on('tr.content_id', '=', 'games.id');
+                $join->on('tr.content_type', '=', \DB::raw("'game'"));
+            })
+            ->groupBy('games.id')
+            ->groupBy('tr.tag_id')
             ->orderBy($orderby, $direction)
-            ->orderBy('games.title')
-            ->orderBy('games.subtitle')
-            ->paginate(20);
+            ->havingRaw('COUNT(tr.id) < 1')
+            ->paginate(20, [
+                'games.*'
+            ]);
 
         return view('missing.notags.index', [
             'games' => $games,
