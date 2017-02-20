@@ -15,11 +15,10 @@ class MissingController extends Controller
     //Spiele mit fehlenden Tags
     public function index_notags($orderby = 'title', $direction = 'asc')
     {
-        $games = Game::with(array('tags' => function($query)
-            {
-                $query->groupBy('tag_relations.id');
-                $query->havingRaw('COUNT(tag_relations.id) = 0');
-            }))
+        $games = Game::with(['tags' => function ($query) {
+            $query->groupBy('tag_relations.id');
+            $query->havingRaw('COUNT(tag_relations.id) = 0');
+        }])
             ->orderBy($orderby, $direction)
             ->orderBy('games.title')
             ->orderBy('games.subtitle')
