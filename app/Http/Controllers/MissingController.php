@@ -18,7 +18,7 @@ class MissingController extends Controller
         $games = Game::with(['tags' => function ($query) {
             $query->groupBy('tag_relations.id');
             $query->havingRaw('COUNT(tag_relations.id) = 0');
-        }, ])
+        }])
             ->orderBy($orderby, $direction)
             ->orderBy('games.title')
             ->orderBy('games.subtitle')
