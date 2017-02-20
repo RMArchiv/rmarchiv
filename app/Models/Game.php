@@ -59,6 +59,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesAward[] $awards
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activity
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesCoupdecoeur[] $cdcs
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereAtelierId($value)
  */
 class Game extends Model
 {
@@ -149,6 +150,13 @@ class Game extends Model
     public function tags()
     {
         return $this->hasMany('App\Models\TagRelation', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'game'"))->with('tag');
+    }
+
+    public function tagCount()
+    {
+        return $this->tags()
+            ->selectRaw('id, count(*) as tagcount')
+            ->groupBy('id');
     }
 
     public function credits()

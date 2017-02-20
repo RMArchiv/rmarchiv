@@ -1,16 +1,11 @@
 <?php
 
-/*
- * rmarchiv.de
- * (c) 2016-2017 by Marcel 'ryg' Hering
- */
-
 namespace App\Http\Controllers\Auth;
 
 use App\Events\Obyx;
 use App\Models\User;
-use App\Models\UserSetting;
 use App\Http\Controllers\Controller;
+use App\Models\UserSetting;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -70,6 +65,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -77,12 +73,12 @@ class RegisterController extends Controller
             'is_admin' => 0,
         ]);
 
-        $us = new UserSetting;
-        $us->avatar_path = '';
-        $us->user_id = $user->id;
-        $us->is_admin = 0;
+        $us               = new UserSetting;
+        $us->avatar_path  = '';
+        $us->user_id      = $user->id;
+        $us->is_admin     = 0;
         $us->is_moderator = 0;
-        $us->is_banned = 0;
+        $us->is_banned    = 0;
 
         $us->save();
 
