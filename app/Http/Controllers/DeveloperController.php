@@ -8,7 +8,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
-use App\Models\GamesDeveloper;
 
 class DeveloperController extends Controller
 {
@@ -51,7 +50,7 @@ class DeveloperController extends Controller
             ->where('gd.developer_id', '=', $id)
             ->orderBy($orderby, $direction)
             ->paginate(20, [
-                'games.*'
+                'games.*',
             ]);
 
         return view('developer.show', [
