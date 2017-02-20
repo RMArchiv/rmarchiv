@@ -25,7 +25,7 @@ class MissingController extends Controller
             ->orderBy($orderby, $direction)
             ->havingRaw('COUNT(tr.id) < 1')
             ->paginate(20, [
-                'games.*'
+                'games.*',
             ]);
 
         return view('missing.notags.index', [
