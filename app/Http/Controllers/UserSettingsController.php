@@ -36,7 +36,8 @@ class UserSettingsController extends Controller
         return view('auth.settings');
     }
 
-    public function change_setting($setting, $value){
+    public function change_setting($setting, $value)
+    {
         $set = UserSetting::whereUserId(\Auth::id())->first();
 
         $set->update([$setting => $value]);

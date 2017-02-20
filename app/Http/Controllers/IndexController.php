@@ -61,7 +61,7 @@ class IndexController extends Controller
                 'makers.id as makerid',
                 'languages.id as lang_id',
                 'languages.name as lang_name',
-                'languages.short as lang_short'
+                'languages.short as lang_short',
             ])
             ->selectRaw('(SELECT COUNT(id) FROM comments WHERE content_id = games.id AND content_type = "game") as commentcount')
             ->selectRaw('(SELECT SUM(vote_up) FROM comments WHERE content_id = games.id AND content_type = "game") as voteup')
@@ -157,7 +157,7 @@ class IndexController extends Controller
                 'makers.id as makerid',
                 'languages.id as lang_id',
                 'languages.name as lang_name',
-                'languages.short as lang_short'
+                'languages.short as lang_short',
             ])
             ->selectRaw('(SELECT COUNT(id) FROM comments WHERE content_id = games.id AND content_type = "game") as commentcount')
             ->selectRaw('(SELECT SUM(vote_up) FROM comments WHERE content_id = games.id AND content_type = "game") as voteup')
@@ -196,7 +196,7 @@ class IndexController extends Controller
                 'makers.id as makerid',
                 'languages.id as lang_id',
                 'languages.name as lang_name',
-                'languages.short as lang_short'
+                'languages.short as lang_short',
             ])
             ->selectRaw('(SELECT COUNT(id) FROM comments WHERE content_id = games.id AND content_type = "game") as commentcount')
             ->selectRaw('(SELECT SUM(vote_up) FROM comments WHERE content_id = games.id AND content_type = "game") as voteup')
