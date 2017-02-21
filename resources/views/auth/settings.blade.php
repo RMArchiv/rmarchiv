@@ -2,10 +2,12 @@
 @section('pagetitle', 'profileinstellungen')
 @section('content')
     <div id="content">
+        <div id="prodpagecontainer">
+
         <form action="http://ava.rmarchiv.de/upload.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="posttype" value="avatar">
             <input type="hidden" name="userid" value="{{ Auth::id() }}">
-            <div class="rmarchivtbl" id="rmarchivbox_changeavatar">
+            <div class="rmarchivtbl rmarchivbox_newsbox" id="rmarchivbox_prodmain">
                 <h2>avatarupload</h2>
                 <div class="content">
                     <div class="formifier">
@@ -22,7 +24,7 @@
             </div>
         </form>
 
-        <div class="rmarchivtbl" id="rmarchivbox_news">
+            <div class="rmarchivtbl rmarchivbox_newsbox" id="rmarchivbox_prodmain">
             <h2>deaktivieren von hauptseiten widgets</h2>
             <div class="content">
                 daumen hoch = wird angezeigt.
@@ -51,7 +53,7 @@
         </div>
 
         {!! Form::open(['action' => ['UserSettingsController@store_rowsPerPage']]) !!}
-        <div class="rmarchivtbl" id="rmarchivbox_changepassword">
+            <div class="rmarchivtbl rmarchivbox_newsbox" id="rmarchivbox_prodmain">
             <h2>zeilen pro seite</h2>
             @if (count($errors) > 0)
                 <div class="rmarchivtbl errorbox">
@@ -100,7 +102,7 @@
         {!! Form::close() !!}
 
         {!! Form::open(['action' => ['UserSettingsController@store_password']]) !!}
-            <div class="rmarchivtbl" id="rmarchivbox_changepassword">
+            <div class="rmarchivtbl rmarchivbox_newsbox" id="rmarchivbox_prodmain">
                 <h2>passwort ändern</h2>
                 @if (count($errors) > 0)
                     <div class="rmarchivtbl errorbox">
@@ -139,6 +141,6 @@
             </div>
         {!! Form::close() !!}
 
-
+        </div>
     </div>
 @endsection
