@@ -75,7 +75,6 @@ Route::resource('developer', 'DeveloperController');
 Route::get('developer/index/{orderby?}/{direction?}', 'DeveloperController@index')->name('developer.index.sorted');
 Route::get('developer/{id}/{orderby?}/{direction?}', 'DeveloperController@show');
 
-
 //CDC Routen
 Route::resource('cdc', 'CDCController');
 
