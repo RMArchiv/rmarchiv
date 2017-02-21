@@ -1,11 +1,16 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class UserOnline
+ * Class UserOnline.
  *
  * @property int $id
  * @property int $user_id
@@ -27,10 +32,8 @@ class UserOnline extends Model
 
     protected $fillable = [
         'user_id',
-        'last_place'
+        'last_place',
     ];
 
     protected $guarded = [];
-
-        
 }
