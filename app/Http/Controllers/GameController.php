@@ -42,6 +42,7 @@ class GameController extends Controller
                 ->orderBy('games_files.release_year', $direction)
                 ->orderBy('games_files.release_month', $direction)
                 ->orderBy('games_files.release_day', $direction)
+                ->groupBy(['games.id'])
                 ->select('games.*')
                 ->paginate($rows);
         } else {
