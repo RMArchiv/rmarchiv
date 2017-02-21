@@ -18,6 +18,8 @@ class DeveloperController extends Controller
      */
     public function index($orderby = 'devname', $direction = 'asc')
     {
+        $rows = (\Auth::check()) ? \Auth::user()->settings->rows_per_page_developer : config('app.rows_per_page_developer');
+
         $developer = \DB::table('developer')
             ->leftJoin('games_developer', 'games_developer.developer_id', '=', 'developer.id')
             ->select([
@@ -27,7 +29,7 @@ class DeveloperController extends Controller
             ->selectRaw('COUNT(games_developer.id) as gamecount')
             ->groupBy('developer.id')
             ->orderBy($orderby, $direction)
-            ->paginate(20);
+            ->paginate($rows);
 
         return view('developer.index', [
             'developer' => $developer,

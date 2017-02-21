@@ -31,19 +31,21 @@ class GameController extends Controller
      */
     public function index($orderby = 'title', $direction = 'asc')
     {
+        $rows = (\Auth::check()) ? \Auth::user()->settings->rows_per_page_games : config('app.rows_per_page_games');
+
         if ($orderby == 'developer.name') {
             $games = Game::Join('games_developer', 'games.id', '=', 'games_developer.game_id')
                 ->Join('developer', 'games_developer.developer_id', '=', 'developer.id')
-                ->orderBy($orderby, $direction)->select('games.*')->paginate(20);
+                ->orderBy($orderby, $direction)->select('games.*')->paginate($rows);
         } elseif ($orderby == 'game.release_date') {
             $games = Game::Join('games_files', 'games.id', '=', 'games_files.game_id')
                 ->orderBy('games_files.release_year', $direction)
                 ->orderBy('games_files.release_month', $direction)
                 ->orderBy('games_files.release_day', $direction)
                 ->select('games.*')
-                ->paginate(20);
+                ->paginate($rows);
         } else {
-            $games = Game::orderBy($orderby, $direction)->orderBy('title')->orderBy('subtitle')->paginate(20);
+            $games = Game::orderBy($orderby, $direction)->orderBy('title')->orderBy('subtitle')->paginate($rows);
         }
 
         return view('games.index', [

@@ -50,6 +50,55 @@
             </div>
         </div>
 
+        {!! Form::open(['action' => ['UserSettingsController@store_rowsPerPage']]) !!}
+        <div class="rmarchivtbl" id="rmarchivbox_changepassword">
+            <h2>zeilen pro seite</h2>
+            @if (count($errors) > 0)
+                <div class="rmarchivtbl errorbox">
+                    <h2>zeilen pro seite</h2>
+                    <div class="content">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li><strong>{{ $error }}</strong></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endif
+            <div class="content">
+                <div class="formifier">
+                    <div class="row" id="row_developer">
+                        <label for="row_dev">zeilen in entwicklerliste</label>
+                        <select name='row_dev' id='row_dev'>
+                            @foreach([1, 5, 10, 15, 20, 25, 50, 100, 9999] as $rows)
+                                @if(Auth::user()->settings->rows_per_page_developer == $rows)
+                                    <option selected="selected" value="{{ $rows }}">{{ $rows  }}</option>
+                                @else
+                                    <option value="{{ $rows }}">{{ $rows }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="row" id="row_games">
+                        <label for="row_games">zeilen in spielelisten:</label>
+                        <select name='row_games' id='row_games'>
+                            @foreach([1, 5, 10, 15, 20, 25, 50, 100] as $rows)
+                                @if(Auth::user()->settings->rows_per_page_games == $rows)
+                                    <option selected="selected" value="{{ $rows }}">{{ $rows }}</option>
+                                @else
+                                    <option value="{{ $rows }}">{{ $rows }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="foot">
+                <input type="submit" id="submit" value="senden">
+            </div>
+        </div>
+        {!! Form::close() !!}
+
         {!! Form::open(['action' => ['UserSettingsController@store_password']]) !!}
             <div class="rmarchivtbl" id="rmarchivbox_changepassword">
                 <h2>passwort ändern</h2>
@@ -89,5 +138,7 @@
                 </div>
             </div>
         {!! Form::close() !!}
+
+
     </div>
 @endsection

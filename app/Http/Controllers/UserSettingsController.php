@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\UserSetting;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,21 @@ class UserSettingsController extends Controller
     public function index()
     {
         return view('auth.settings');
+    }
+
+    public function store_rowsPerPage(Request $req)
+    {
+        $this->validate($req, [
+            'row_dev' => 'required',
+            'row_games'   => 'required',
+        ]);
+
+        $set = UserSetting::whereUserId(\Auth::id())->first();
+        $set->rows_per_page_games = $req->get('row_games');
+        $set->rows_per_page_developer = $req->get('row_dev');
+        $set->save();
+
+        return redirect()->action('UserSettingsController@index');
     }
 
     public function store_password(Request $request)

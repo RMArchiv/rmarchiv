@@ -11,6 +11,20 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class BoardThreadsTracker.
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $thread_id
+ * @property string $last_read
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardThreadsTracker whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardThreadsTracker whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardThreadsTracker whereLastRead($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardThreadsTracker whereThreadId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardThreadsTracker whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardThreadsTracker whereUserId($value)
+ * @mixin \Eloquent
  */
 class BoardThreadsTracker extends Model
 {

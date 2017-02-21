@@ -20,6 +20,8 @@ return [
     ],
 
     'obyx_reget_wait' => 2, //Wartezeit für neue Obyx bei erneutem Hochladen eines Screenshots (bsp.)
+    'rows_per_page_developer' => 20,
+    'rows_per_page_games' => 20,
 
     'version' => '0.2.22-preAlpha1337',
 

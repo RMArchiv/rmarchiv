@@ -15,6 +15,8 @@ class MissingController extends Controller
     //Spiele mit fehlenden Tags
     public function index_notags($orderby = 'title', $direction = 'asc')
     {
+        $rows = (\Auth::check()) ? \Auth::user()->settings->rows_per_page_games : config('app.rows_per_page_games');
+
         if ($orderby == 'developer.name') {
             $games = Game::Join('games_developer', 'games.id', '=', 'games_developer.game_id')
                 ->Join('developer', 'games_developer.developer_id', '=', 'developer.id')
@@ -26,7 +28,7 @@ class MissingController extends Controller
                 ->groupBy('tr.tag_id')
                 ->orderBy($orderby, $direction)
                 ->havingRaw('COUNT(tr.id) < 1')
-                ->paginate(20, [
+                ->paginate($rows, [
                     'games.*',
                 ]);
         } elseif ($orderby == 'game.release_date') {
@@ -41,7 +43,7 @@ class MissingController extends Controller
                 ->orderBy('games_files.release_month', $direction)
                 ->orderBy('games_files.release_day', $direction)
                 ->havingRaw('COUNT(tr.id) < 1')
-                ->paginate(20, [
+                ->paginate($rows, [
                     'games.*',
                 ]);
         } else {
@@ -54,7 +56,7 @@ class MissingController extends Controller
                 ->groupBy('tr.tag_id')
                 ->orderBy($orderby, $direction)
                 ->havingRaw('COUNT(tr.id) < 1')
-                ->paginate(20, [
+                ->paginate($rows, [
                     'games.*',
                 ]);
         }

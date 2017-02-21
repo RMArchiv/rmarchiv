@@ -60,6 +60,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereDisableWidgetStats($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereDisableWidgetTags($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereDisableWidgetTopmonth($value)
+ * @property int $rows_per_page_developer
+ * @property int $rows_per_page_games
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereRowsPerPageDeveloper($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereRowsPerPageGames($value)
  */
 class UserSetting extends Model
 {
