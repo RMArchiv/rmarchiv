@@ -15,7 +15,7 @@ class MissingController extends Controller
     //Spiele mit fehlenden Tags
     public function index_notags($orderby = 'title', $direction = 'asc')
     {
-        if($orderby == 'developer.name'){
+        if ($orderby == 'developer.name') {
             $games = Game::Join('games_developer', 'games.id', '=', 'games_developer.game_id')
                 ->Join('developer', 'games_developer.developer_id', '=', 'developer.id')
                 ->leftJoin('tag_relations as tr', function ($join) {
@@ -29,7 +29,7 @@ class MissingController extends Controller
                 ->paginate(20, [
                     'games.*',
                 ]);
-        }elseif($orderby == 'game.release_date'){
+        } elseif ($orderby == 'game.release_date') {
             $games = Game::Join('games_files', 'games.id', '=', 'games_files.game_id')
                 ->leftJoin('tag_relations as tr', function ($join) {
                     $join->on('tr.content_id', '=', 'games.id');
@@ -44,7 +44,7 @@ class MissingController extends Controller
                 ->paginate(20, [
                     'games.*',
                 ]);
-        }else{
+        } else {
             $games = Game::with(['tags'])->select(['games.*', \DB::raw('COUNT(tr.id) as ctr')])
                 ->leftJoin('tag_relations as tr', function ($join) {
                     $join->on('tr.content_id', '=', 'games.id');
@@ -58,7 +58,6 @@ class MissingController extends Controller
                     'games.*',
                 ]);
         }
-
 
         return view('missing.notags.index', [
             'games' => $games,
