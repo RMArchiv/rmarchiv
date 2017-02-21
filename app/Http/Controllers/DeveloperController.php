@@ -27,7 +27,7 @@ class DeveloperController extends Controller
             ->selectRaw('COUNT(games_developer.id) as gamecount')
             ->groupBy('developer.id')
             ->orderBy($orderby, $direction)
-            ->get();
+            ->paginate(20);
 
         return view('developer.index', [
             'developer' => $developer,

@@ -42,6 +42,9 @@
                 </tr>
                     @endif
                 @endforeach
+                @if($developer instanceof \Illuminate\Pagination\LengthAwarePaginator )
+                    {{ $developer->links('vendor.pagination.gamelist') }}
+                @endif
             </table>
         </div>
     </div>

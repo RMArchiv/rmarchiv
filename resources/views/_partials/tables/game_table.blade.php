@@ -1,5 +1,5 @@
 <table id='rmarchiv_prodlist' class='boxtable pagedtable'>
-    @include('_partials.tables.game_table_head')
+    @include('_partials.tables.game_table_head', ['games' => $games, 'orderby' => $orderby, 'direction' => $direction])
 
     @php
         $maxviews = \App\Helpers\DatabaseHelper::getGameViewsMax()
