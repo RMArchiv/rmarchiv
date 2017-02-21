@@ -20,10 +20,12 @@
                     {!! $post->content_html !!}
                 </div>
                 <div class='foot'>
-                    @if(Auth::id() == $post->user->id or Auth::user()->hasRole('owner'))
-                    <span class='tools' data-cid='{{ $post->id }}'>
-                        [<a href="{{ route('board.post.edit', [$post->thread->id, $post->id]) }}" data-rel="popup">bearbeiten</a>]
-                    </span>
+                    @if(Auth::check())
+                        @if(Auth::id() == $post->user->id or Auth::user()->hasRole('owner'))
+                        <span class='tools' data-cid='{{ $post->id }}'>
+                            [<a href="{{ route('board.post.edit', [$post->thread->id, $post->id]) }}" data-rel="popup">bearbeiten</a>]
+                        </span>
+                        @endif
                     @endif
                     gepostet
                     <a href='{{ route('board.thread.show', [$post->thread->id]) }}#c{{ $post->id }}'><time datetime='{{ $post->created_at }}' title='{{ $post->created_at }}'>{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</time></a>

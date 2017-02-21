@@ -12,5 +12,10 @@
         <li>
             users online: {{ \App\Helpers\DatabaseHelper::getOnlineUserCount()->online }}
         </li>
+        @permission(('debug-data'))
+        <li>
+
+        </li>
+        @endpermission
     </ul>
 </footer>
