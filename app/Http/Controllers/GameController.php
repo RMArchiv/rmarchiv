@@ -124,12 +124,11 @@ class GameController extends Controller
 
         $gratzcount = Game::get()->count();
 
-        if($gratzcount == 1000){
+        if ($gratzcount == 1000) {
             return redirect()->route('gratz');
-        }else{
+        } else {
             return redirect()->action('MsgBoxController@game_add', [$g->id]);
         }
-
     }
 
     /**
