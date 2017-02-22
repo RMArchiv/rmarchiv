@@ -196,7 +196,7 @@ Route::get('missing/notags/{orderby?}/{direction?}', 'MissingController@index_no
 Route::get('/impressum', function () {
     return View::make('_pages.impressum');
 });
-Route::get('/gratz', function() {
+Route::get('/gratz', function () {
     return View::make('_pages.gratz');
 });
 
