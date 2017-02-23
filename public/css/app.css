@@ -1017,8 +1017,8 @@ td.date {
 #rmarchivbox_latestoneliner h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: #4e6f90 url(/assets/talk.gif) top left no-repeat;
-  background-position: 2px 2px; }
+    background: #4e6f90 url(/assets/talk.gif) no-repeat 2px 2px;
+}
 
 #rmarchivbox_latestoneliner .loggedin {
   text-align: center; }
@@ -1048,8 +1048,8 @@ td.date {
 #rmarchivbox_search h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: #4e6f90 url(/assets/search.gif) top left no-repeat;
-  background-position: 2px 2px; }
+  background: #4e6f90 url(/assets/search.gif) no-repeat 2px 2px;
+}
 
 #rmarchivbox_search .content {
   background: #4e6f90; }
@@ -1069,8 +1069,7 @@ td.date {
   width: 100%; }
   #rmarchivbox_stats th.header {
     padding: 0 0 2px 22px;
-    background: #4e6f90 url(/assets/stats.gif) top left no-repeat;
-    background-position: 2px 2px;
+    background: #4e6f90 url(/assets/stats.gif) no-repeat 2px 2px;
     text-align: left; }
   #rmarchivbox_stats th:nth-child(2) {
     text-align: right; }
@@ -1083,8 +1082,7 @@ td.date {
   width: 100%; }
   #rmarchivbox_pm th.header {
     padding: 0 0 2px 22px;
-    background-color: #4e6f90;
-    background-position: 2px 2px;
+    background: #4e6f90 2px 2px;
     text-align: left; }
   #rmarchivbox_pm th:nth-child(2) {
     text-align: right; }
@@ -1098,8 +1096,8 @@ td.date {
   #rmarchivbox_upcomingparties h2 {
     padding-left: 22px;
     padding-bottom: 2px;
-    background: #2d4f74 url(/assets/dpnet.gif) top left no-repeat;
-    background-position: 2px 2px; }
+    background: #2d4f74 url(/assets/dpnet.gif) no-repeat 2px 2px;
+  }
   #rmarchivbox_upcomingparties li {
     display: table-row; }
     #rmarchivbox_upcomingparties li > * {
@@ -1112,8 +1110,7 @@ td.date {
   border: 0;
   margin: 1px;
   padding: 3px 3px 2px 22px;
-  background: #4e6f90 url(/assets/bitfellas.gif) top left no-repeat;
-  background-position: 3px 3px;
+  background: #4e6f90 url(/assets/bitfellas.gif) no-repeat 3px 3px;
   color: #ffffe0;
   font-size: 100%; }
 
@@ -2061,8 +2058,8 @@ input[type="url"] {
   #rmarchivbox_fixmewarning h2 {
     padding-left: 22px;
     padding-bottom: 2px;
-    background: #883022 url(/assets/icon_youtube.png) top left no-repeat;
-    background-position: 2px 2px; }
+    background: #883022 url(/assets/icon_youtube.png) no-repeat 2px 2px;
+  }
 
 #rmarchivbox_admineditfaq #question {
   width: 600px; }
@@ -2138,26 +2135,26 @@ optgroup option {
 #rmarchivbox_feedpoundsoff h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: #4e6f90 url(/assets/poundsoff.gif) top left no-repeat;
-  background-position: 2px 2px; }
+  background: #4e6f90 url(/assets/poundsoff.gif) no-repeat 2px 2px;
+}
 
 #rmarchivbox_feedrmarchivtwitter h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: #4e6f90 url(/assets/twitter.png) top left no-repeat;
-  background-position: 2px 2px; }
+  background: #4e6f90 url(/assets/twitter.png) no-repeat 2px 2px;
+}
 
 #rmarchivbox_feedwanted h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: #4e6f90 url(/assets/wanted.png) top left no-repeat;
-  background-position: 2px 2px; }
+  background: #4e6f90 url(/assets/wanted.png) no-repeat 2px 2px;
+}
 
 #rmarchivbox_cdc h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: #4e6f90 url(/assets/cdc.png) top left no-repeat;
-  background-position: 2px 2px; }
+  background: #4e6f90 url(/assets/cdc.png) no-repeat 2px 2px;
+}
 
 #rmarchivbox_prodnfo.asciiviewer {
   display: table;
@@ -2171,8 +2168,7 @@ tr.sortable th {
   tr.sortable th #sort_platform {
     float: right; }
   tr.sortable th a {
-    background: url(/assets/sort_up.png) no-repeat;
-    background-position: 0 2px;
+    background: url(/assets/sort_up.png) no-repeat 0 2px;
     padding-left: 16px; }
     tr.sortable th a.selected {
       background-image: url(/assets/sort_up_active.png); }

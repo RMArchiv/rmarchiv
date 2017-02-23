@@ -139,10 +139,10 @@ class Game extends Model
     public function gamefiles()
     {
         return $this->hasMany('App\Models\GamesFile', 'game_id', 'id')
-            ->orderBy('release_type', 'asc')
-            ->orderBy('release_year', 'asc')
-            ->orderBy('release_month', 'asc')
-            ->orderBy('release_day', 'asc')
+            ->orderBy('release_type', 'desc')
+            ->orderBy('release_year', 'desc')
+            ->orderBy('release_month', 'desc')
+            ->orderBy('release_day', 'desc')
             ->with('gamefiletype')
             ->withTrashed();
     }
