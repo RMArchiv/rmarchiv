@@ -7,11 +7,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\TelegramNotification;
-use App\Helpers\MiscHelper;
 use Carbon\Carbon;
 use App\Events\Obyx;
 use App\Models\Shoutbox;
+use App\Helpers\MiscHelper;
 use Illuminate\Http\Request;
 
 class ShoutboxController extends Controller
@@ -30,10 +29,8 @@ class ShoutboxController extends Controller
                 'created_at' => Carbon::now(),
             ]);
 
-
         MiscHelper::sendTelegram('Shoutbox von ['.\Auth::user()->name.'](http://rmarchiv.de/users/'.\Auth::user()->id.')'.PHP_EOL.'*Nachricht:* '.$request->get('shout'));
         event(new Obyx('shoutbox', \Auth::id()));
-
 
         return redirect()->route('home');
     }

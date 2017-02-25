@@ -14,8 +14,6 @@ class MiscHelper
     public static function sendDiscord($content)
     {
         $dc = Discord::class;
-
-
     }
 
     public static function sendTelegram($content)

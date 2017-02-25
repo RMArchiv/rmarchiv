@@ -1,22 +1,29 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Http\Controllers;
 
-use App\Helpers\DatabaseHelper;
 use Illuminate\Http\Request;
+use App\Helpers\DatabaseHelper;
 
 class SearchController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('search.index');
     }
 
-    public function search(Request $request){
+    public function search(Request $request)
+    {
         $games = \DB::table('games')
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('comments', function($join){
+            ->leftJoin('comments', function ($join) {
                 $join->on('comments.content_id', '=', 'games.id');
                 $join->on('comments.content_type', '=', \DB::raw("'game'"));
             })
@@ -48,12 +55,11 @@ class SearchController extends Controller
             ->orderBy('gamesubtitle')
             ->paginate(20);
 
-
         $gametypes = \DB::table('games_files_types')
             ->select('id', 'title', 'short')
             ->get();
-        $gtypes = array();
-        foreach ($gametypes as $gt){
+        $gtypes = [];
+        foreach ($gametypes as $gt) {
             $t['title'] = $gt->title;
             $t['short'] = $gt->short;
             $gtypes[$gt->id] = $t;
@@ -65,6 +71,5 @@ class SearchController extends Controller
             'maxviews' => DatabaseHelper::getGameViewsMax(),
             'term' => $request->get('term'),
         ]);
-
     }
 }
