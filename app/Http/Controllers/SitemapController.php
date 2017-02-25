@@ -1,9 +1,14 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Http\Controllers;
 
-use App\Models\Game;
 use Sitemap;
+use App\Models\Game;
 use App\Models\News;
 use App\Models\User;
 use App\Models\Developer;
