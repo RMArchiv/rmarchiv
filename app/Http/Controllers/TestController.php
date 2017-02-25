@@ -11,16 +11,10 @@ class TestController extends Controller
 {
     public function index()
     {
-        $response = \Telegram::getUpdates();
+        $user = 'ryg#3553';
+        $channel = app(Discord::class)->getPrivateChannel($user);
 
-        dd($response);
-
-        \Telegram::sendMessage([
-            'chat_id' => 51419661,
-            'text' => '_test_ *test* [test](http://rmarchiv.de/games/1) `inline code`',
-            'parse_mode' => 'markdown',
-            'disable_web_page_preview',
-        ]);
+        dd($channel);
     }
 
     public function webhook()

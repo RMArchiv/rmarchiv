@@ -122,13 +122,7 @@ class GameController extends Controller
         event(new Obyx('game-add', \Auth::id()));
         MiscHelper::sendTelegram('['.\Auth::user()->name.'](http://rmarchiv.de/users/'.\Auth::user()->id.') hat ein neues Spiel angelegt:'.PHP_EOL.'*'.$g->title.'*');
 
-        $gratzcount = Game::get()->count();
-
-        if ($gratzcount == 1000) {
-            return redirect()->route('gratz');
-        } else {
-            return redirect()->action('MsgBoxController@game_add', [$g->id]);
-        }
+        return redirect()->action('MsgBoxController@game_add', [$g->id]);
     }
 
     /**

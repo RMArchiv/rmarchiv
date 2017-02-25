@@ -9,6 +9,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Models\GamesFile;
 use App\Http\Controllers\Controller;
+use Barryvdh\Debugbar\Middleware\Debugbar;
 
 class TakoController extends Controller
 {

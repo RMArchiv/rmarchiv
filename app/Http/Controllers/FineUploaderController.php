@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Optimus\FineuploaderServer\Vendor\FineUploader;
 
 /*

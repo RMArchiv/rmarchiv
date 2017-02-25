@@ -26,9 +26,7 @@
                             <input name="title" id="title" value=""/>
                             <span> [<span class="req">req</span>]</span>
                         </div>
-                        <div class="row" id="row_message">
                             @include('_partials.markdown_editor')
-                        </div>
                         <div class="row" id="row_msg">
                             <label for="cat">kategorie:</label>
                             <input name="cat" id="cat" value="" placeholder="allgemein"/>

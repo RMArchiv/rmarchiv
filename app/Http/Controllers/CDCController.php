@@ -1,14 +1,9 @@
 <?php
 
-/*
- * rmarchiv.de
- * (c) 2016-2017 by Marcel 'ryg' Hering
- */
-
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\Game;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CDCController extends Controller
@@ -25,7 +20,7 @@ class CDCController extends Controller
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
             ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('comments', function ($join) {
+            ->leftJoin('comments', function($join) {
                 $join->on('comments.content_id', '=', 'games.id');
                 $join->on('comments.content_type', '=', \DB::raw("'game'"));
             })
@@ -59,7 +54,7 @@ class CDCController extends Controller
         $gametypes = \DB::table('games_files_types')
             ->select('id', 'title', 'short')
             ->get();
-        $gtypes = [];
+        $gtypes = array();
         foreach ($gametypes as $gt) {
             $t['title'] = $gt->title;
             $t['short'] = $gt->short;
@@ -95,8 +90,8 @@ class CDCController extends Controller
         ]);
 
         // Prüfen ob das Spiel auch wirklich existiert
-        $title = explode(' -=- ', $request->get('gamename'));
-
+        $title = explode(" -=- ", $request->get('gamename'));
+        
         if (count($title) == 1) {
             $game = Game::whereTitle($title[0])
                 ->first();
@@ -114,4 +109,5 @@ class CDCController extends Controller
 
         return redirect()->action('MsgBoxController@cdc_add', [$game->id]);
     }
+
 }

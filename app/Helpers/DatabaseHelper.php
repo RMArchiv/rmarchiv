@@ -28,7 +28,7 @@ class DatabaseHelper
 
     public static function setOnline($where)
     {
-        if (\Auth::check()) {
+        if(\Auth::check()){
             \DB::table('user_online')->updateOrInsert([
                 'user_id' => \Auth::id(),
             ], [

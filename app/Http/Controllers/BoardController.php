@@ -7,13 +7,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\DatabaseHelper;
 use Carbon\Carbon;
 use App\Events\Obyx;
 use App\Models\BoardCat;
 use App\Models\BoardPost;
 use App\Models\BoardThread;
 use Illuminate\Http\Request;
-use App\Helpers\DatabaseHelper;
 use Illuminate\Support\Facades\Input;
 
 class BoardController extends Controller
