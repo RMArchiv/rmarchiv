@@ -1,22 +1,29 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Http\Controllers;
 
-use App\Models\UserPermission;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
+use App\Models\UserPermission;
 
 class UserPermissionController extends Controller
 {
-    public function createRole(){
+    public function createRole()
+    {
         $roles = UserRole::all();
 
         return view('users.entrust.addrole', [
-            'roles' => $roles
+            'roles' => $roles,
         ]);
     }
 
-    public function storeRole(Request $request){
+    public function storeRole(Request $request)
+    {
         $r = new UserRole();
         $r->name = $request->get('name');
         $r->display_name = $request->get('dname');
@@ -26,15 +33,17 @@ class UserPermissionController extends Controller
         return redirect()->action('UserPermissionController@createRole');
     }
 
-    public function createPermission(){
+    public function createPermission()
+    {
         $perms = UserPermission::all();
 
         return view('users.entrust.addperm', [
-            'perms' => $perms
+            'perms' => $perms,
         ]);
     }
 
-    public function storePermission(Request $request){
+    public function storePermission(Request $request)
+    {
         $p = new UserPermission();
         $p->name = $request->get('name');
         $p->display_name = $request->get('dname');
@@ -44,7 +53,8 @@ class UserPermissionController extends Controller
         return redirect()->action('UserPermissionController@createPermission');
     }
 
-    public function showRole($id){
+    public function showRole($id)
+    {
         $p = \DB::table('user_permission_role as pr')
             ->leftJoin('user_permissions as p', 'pr.permission_id', '=', 'p.id')
             ->where('pr.role_id', '=', $id)
@@ -59,8 +69,8 @@ class UserPermissionController extends Controller
         ]);
     }
 
-    public function addPermToRole(Request $request, $roleid){
-
+    public function addPermToRole(Request $request, $roleid)
+    {
         $role = UserRole::all()->where('id', '=', $roleid)->first();
         $perm = UserPermission::all()->where('id', '=', $request->get('perm'))->first();
 
@@ -69,7 +79,8 @@ class UserPermissionController extends Controller
         return redirect()->action('UserPermissionController@showRole', $roleid);
     }
 
-    public function removePermFromRole($roleid, $permid){
+    public function removePermFromRole($roleid, $permid)
+    {
         $role = UserRole::all()->where('id', '=', $roleid)->first();
         $perm = UserPermission::all()->where('id', '=', $permid)->first();
 
@@ -78,7 +89,7 @@ class UserPermissionController extends Controller
         return redirect()->action('UserPermissionController@showRole', $roleid);
     }
 
-    public function  showPermission($id){
-
+    public function showPermission($id)
+    {
     }
 }

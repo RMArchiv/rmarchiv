@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
 
-use App\User;
-use Illuminate\Http\Request;
+namespace App\Http\Controllers;
 
 class HomeController extends Controller
 {
