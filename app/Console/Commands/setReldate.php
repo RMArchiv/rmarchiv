@@ -1,9 +1,14 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Console\Commands;
 
-use App\Helpers\DatabaseHelper;
 use App\Models\Game;
+use App\Helpers\DatabaseHelper;
 use Illuminate\Console\Command;
 
 class setReldate extends Command
@@ -41,7 +46,7 @@ class setReldate extends Command
     {
         $games = Game::all();
 
-        foreach ($games as $g){
+        foreach ($games as $g) {
             $this->info('Setze Releasedate für: '.$g->title);
             DatabaseHelper::setReleaseInfos($g->id);
         }
