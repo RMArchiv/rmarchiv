@@ -212,6 +212,7 @@ return [
         Way\Generators\GeneratorsServiceProvider::class,
         Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
         Spatie\Activitylog\ActivitylogServiceProvider::class,
+        NotificationChannels\Discord\DiscordServiceProvider::class,
 
         /*
          * Application Service Providers...
