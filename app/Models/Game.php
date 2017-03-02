@@ -60,6 +60,15 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activity
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesCoupdecoeur[] $cdcs
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereAtelierId($value)
+ * @property int $release_type
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereReleaseType($value)
+ * @property int $voteup
+ * @property int $votedown
+ * @property string $avg
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereAvg($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereComments($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereVotedown($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereVoteup($value)
  */
 class Game extends Model
 {
@@ -81,6 +90,11 @@ class Game extends Model
         'maker_id',
         'lang_id',
         'atelier_id',
+        'release_type',
+        'voteup',
+        'votedown',
+        'avg',
+        'comments',
     ];
 
     protected static $logAttributes = [

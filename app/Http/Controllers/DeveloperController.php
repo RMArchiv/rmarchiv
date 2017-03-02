@@ -59,6 +59,7 @@ class DeveloperController extends Controller
             'games' => $games,
             'orderby' => $orderby,
             'direction' => $direction,
+            'id' => $id,
         ]);
     }
 }

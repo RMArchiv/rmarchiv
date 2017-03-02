@@ -16,6 +16,70 @@ use App\Models\BoardThreadsTracker;
 
 class DatabaseHelper
 {
+    public static function setVotesAndComments($gameid){
+        $game = Game::whereId($gameid)->first();
+
+        Game::whereId($gameid)
+            ->update([
+                'voteup' => $game->votes['up'],
+                'votedown' => $game->votes['down'],
+                'avg' => $game->votes['avg'],
+                'comments' => $game->comments()->count(),
+            ]);
+    }
+
+    public static function setReleaseInfos($gameid){
+
+        //prüfen ob Techdemo existiert
+        $gamefiles = GamesFile::whereGameId($gameid)
+            ->where('release_type', '=', 1)
+            ->orderBy('release_year', 'ASC')
+            ->orderBy('release_month', 'ASC')
+            ->orderBy('release_day', 'ASC')
+            ->first();
+
+        $reltype = 99;
+        $reldate = Carbon::create();
+
+        if($gamefiles){
+            $reltype = $gamefiles->release_type;
+            $reldate = Carbon::parse($gamefiles->release_year.'-'.$gamefiles->release_month.'-'.$gamefiles->release_day);
+        }
+
+        //Prüfen ob Demo vorhanden
+        $gamefiles = GamesFile::whereGameId($gameid)
+            ->where('release_type', '=', 2)
+            ->orderBy('release_year', 'ASC')
+            ->orderBy('release_month', 'ASC')
+            ->orderBy('release_day', 'ASC')
+            ->first();
+
+        if($gamefiles){
+            $reltype = $gamefiles->release_type;
+            $reldate = Carbon::parse($gamefiles->release_year.'-'.$gamefiles->release_month.'-'.$gamefiles->release_day);
+        }
+
+        //Prüfen ob Vollversion vorhanden.
+        $gamefiles = GamesFile::whereGameId($gameid)
+            ->where('release_type', '=', 3)
+            ->orderBy('release_year', 'ASC')
+            ->orderBy('release_month', 'ASC')
+            ->orderBy('release_day', 'ASC')
+            ->first();
+
+        if($gamefiles){
+            $reltype = $gamefiles->release_type;
+            $reldate = Carbon::parse($gamefiles->release_year.'-'.$gamefiles->release_month.'-'.$gamefiles->release_day);
+        }
+
+        Game::whereId($gameid)
+            ->update([
+                'release_type' => $reltype,
+                'release_date' => $reldate,
+            ]);
+
+    }
+
     public static function getOnlineUserCount()
     {
         $users = \DB::table('user_online')

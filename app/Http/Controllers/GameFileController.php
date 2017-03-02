@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\DatabaseHelper;
 use Carbon\Carbon;
 use App\Events\Obyx;
 use App\Models\GamesFile;
@@ -148,6 +149,8 @@ class GameFileController extends Controller
             event(new Obyx('gamefile-add', \Auth::id()));
         }
 
+        DatabaseHelper::setReleaseInfos($id);
+
         return redirect()->route('gamefiles.index', [$id]);
     }
 
@@ -220,6 +223,8 @@ class GameFileController extends Controller
         }
 
         $gamefile->save();
+
+        DatabaseHelper::setReleaseInfos($id);
 
         return redirect()->route('gamefiles.index', [$id]);
     }

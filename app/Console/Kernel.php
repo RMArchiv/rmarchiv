@@ -20,6 +20,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\TruncateTables::class,
         Commands\IndexSearch::class,
+        Commands\setReldate::class,
+        Commands\setVotes::class,
     ];
 
     /**

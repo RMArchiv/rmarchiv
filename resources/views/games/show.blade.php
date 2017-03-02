@@ -354,10 +354,10 @@
                     </div>
                 </div>
 
-                @if($game->comments->count() > 0)
+                @if($game->comments()->count() > 0)
                     <div class='rmarchivtbl' id='rmarchivbox_prodcomments'>
                         <h2>kommentare</h2>
-                        @foreach($game->comments as $comment)
+                        @foreach($game->comments()->get() as $comment)
                             <div class='comment cite-{{ $comment->user_id }}' id='c{{ $comment->id }}'>
                                 <div class='content'>
                                     {!! $comment->comment_html !!}
