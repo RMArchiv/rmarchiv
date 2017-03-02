@@ -1,9 +1,14 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Console\Commands;
 
-use App\Helpers\DatabaseHelper;
 use App\Models\Game;
+use App\Helpers\DatabaseHelper;
 use Illuminate\Console\Command;
 
 class setVotes extends Command

@@ -16,7 +16,8 @@ use App\Models\BoardThreadsTracker;
 
 class DatabaseHelper
 {
-    public static function setVotesAndComments($gameid){
+    public static function setVotesAndComments($gameid)
+    {
         $game = Game::whereId($gameid)->first();
 
         Game::whereId($gameid)
@@ -28,7 +29,8 @@ class DatabaseHelper
             ]);
     }
 
-    public static function setReleaseInfos($gameid){
+    public static function setReleaseInfos($gameid)
+    {
 
         //prüfen ob Techdemo existiert
         $gamefiles = GamesFile::whereGameId($gameid)
@@ -41,7 +43,7 @@ class DatabaseHelper
         $reltype = 99;
         $reldate = Carbon::create();
 
-        if($gamefiles){
+        if ($gamefiles) {
             $reltype = $gamefiles->release_type;
             $reldate = Carbon::parse($gamefiles->release_year.'-'.$gamefiles->release_month.'-'.$gamefiles->release_day);
         }
@@ -54,7 +56,7 @@ class DatabaseHelper
             ->orderBy('release_day', 'ASC')
             ->first();
 
-        if($gamefiles){
+        if ($gamefiles) {
             $reltype = $gamefiles->release_type;
             $reldate = Carbon::parse($gamefiles->release_year.'-'.$gamefiles->release_month.'-'.$gamefiles->release_day);
         }
@@ -67,7 +69,7 @@ class DatabaseHelper
             ->orderBy('release_day', 'ASC')
             ->first();
 
-        if($gamefiles){
+        if ($gamefiles) {
             $reltype = $gamefiles->release_type;
             $reldate = Carbon::parse($gamefiles->release_year.'-'.$gamefiles->release_month.'-'.$gamefiles->release_day);
         }
@@ -77,7 +79,6 @@ class DatabaseHelper
                 'release_type' => $reltype,
                 'release_date' => $reldate,
             ]);
-
     }
 
     public static function getOnlineUserCount()
