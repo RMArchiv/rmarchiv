@@ -1,15 +1,19 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Http\Controllers;
 
 use App\Models\Game;
 use App\Models\Maker;
-use Illuminate\Http\Request;
 
 class MakerController extends Controller
 {
-    public function index($orderby = 'title', $direction = 'asc'){
-
+    public function index($orderby = 'title', $direction = 'asc')
+    {
         $makers = Maker::orderBy($orderby, $direction)
             ->paginate(25);
 
@@ -20,7 +24,8 @@ class MakerController extends Controller
         ]);
     }
 
-    public function show($makerid, $orderby = 'title', $direction = 'asc'){
+    public function show($makerid, $orderby = 'title', $direction = 'asc')
+    {
         $games = Game::where('maker_id', '=', $makerid)
             ->orderBy($orderby, $direction)
             ->paginate(20);

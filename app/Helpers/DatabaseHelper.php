@@ -75,22 +75,20 @@ class DatabaseHelper
             $reldate = Carbon::parse($gamefiles->release_year.'-'.$gamefiles->release_month.'-'.$gamefiles->release_day);
         }
 
-        if($game->release_type == $reltype){
-            if(Carbon::parse($game->release_date) > $reldate){
+        if ($game->release_type == $reltype) {
+            if (Carbon::parse($game->release_date) > $reldate) {
                 Game::whereId($gameid)
                     ->update([
                         'release_date' => $reldate,
                     ]);
             }
-        }else{
+        } else {
             Game::whereId($gameid)
                 ->update([
                     'release_date' => $reldate,
                     'release_type' => $reltype,
                 ]);
         }
-
-
     }
 
     public static function getOnlineUserCount()
