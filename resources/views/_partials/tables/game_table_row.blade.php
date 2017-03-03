@@ -7,8 +7,11 @@
             </span>
         @endif
         <span class="platformiconlist">
-            <span class="typei type_{{ $game->maker->short }}"
-                  title="{{ $game->maker->title }}">{{ $game->maker->title }}</span>
+            <a href="{{ route('maker.show', $game->maker->id) }}">
+                <span class="typei type_{{ $game->maker->short }}" title="{{ $game->maker->title }}">
+                    {{ $game->maker->title }}
+                </span>
+            </a>
         </span>
         <span class='prod'>
             <a href='{{ url('games', $game->id) }}'>

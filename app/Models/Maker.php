@@ -46,8 +46,8 @@ class Maker extends Model
 
     protected $guarded = [];
 
-    public function game()
+    public function games()
     {
-        return $this->belongsTo('App\Models\Game');
+        return $this->hasMany('App\Models\Game', 'maker_id', 'id');
     }
 }

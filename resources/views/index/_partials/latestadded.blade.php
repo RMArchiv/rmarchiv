@@ -10,9 +10,13 @@
                         <span class='typei type_{{ $g->gamefiles[0]->gamefiletype->short }}' title='{{ $g->gamefiles[0]->gamefiletype->title }}'>{{ $g->gamefiles[0]->gamefiletype->title }}</span>
                     </span>
                     @endif
-                    <span class="platformiconlist">
-                        <span class="typei type_{{ $g->maker->short }}" title="{{ $g->maker->title }}">{{ $g->maker->title }}</span>
-                    </span>
+                        <span class="platformiconlist">
+            <a href="{{ route('maker.show', $g->maker->id) }}">
+                <span class="typei type_{{ $g->maker->short }}" title="{{ $g->maker->title }}">
+                    {{ $g->maker->title }}
+                </span>
+            </a>
+        </span>
                     <span class='prod'>
                         <a href='{{ url('games',$g->id) }}'>{{ $g->title }}
                         @if($g->subtitle != '')

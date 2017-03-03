@@ -53,6 +53,10 @@ Route::get('games/index/{orderby?}/{direction?}', 'GameController@index')->name(
 //History Routen
 Route::get('history/game/{id}', 'HistoryController@index')->name('history.game.index');
 
+//Routen für Maker Seiten
+Route::get('makers/{orderby?}/{direction?}', 'MakerController@index')->name('maker.index.sorted');
+Route::get('maker/{makerid}/{orderby?}/{direction?}', 'MakerController@show')->name('maker.show');
+
 //Reporting Routen
 //Route::get('reports', 'ReportController@index');
 

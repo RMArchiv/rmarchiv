@@ -15,10 +15,13 @@
                               title='{{ $cdc->game->gamefiles[0]->gamefiletype->title }}'>{{ $cdc->game->gamefiles[0]->gamefiletype->title }}</span>
                     </span>
                     @endif
-                    <span class="platformiconlist">
-                        <span class="type type_{{ $cdc->game->maker->short }}"
-                              title="{{ $cdc->game->maker->title }}">{{ $cdc->game->maker->title }}</span>
-                    </span>
+                        <span class="platformiconlist">
+            <a href="{{ route('maker.show', $cdc->game->maker->id) }}">
+                <span class="typei type_{{ $cdc->game->maker->short }}" title="{{ $cdc->game->maker->title }}">
+                    {{ $cdc->game->maker->title }}
+                </span>
+            </a>
+        </span>
                     <span class='prod'><a
                                 href='{{ url('games', $cdc->game_id) }}'>{{ $cdc->game->title }}
                         @if($cdc->game->subtitle)
