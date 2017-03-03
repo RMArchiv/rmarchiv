@@ -7,6 +7,8 @@
 
 namespace App\Http\Controllers;
 
+use NotificationChannels\Discord\Discord;
+
 class TestController extends Controller
 {
     public function index()

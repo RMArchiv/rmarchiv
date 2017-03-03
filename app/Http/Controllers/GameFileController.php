@@ -12,6 +12,7 @@ use App\Events\Obyx;
 use App\Models\GamesFile;
 use Illuminate\Http\Request;
 use App\Models\GamesFilesType;
+use App\Helpers\DatabaseHelper;
 use App\Models\UserDownloadLog;
 
 class GameFileController extends Controller
@@ -148,6 +149,8 @@ class GameFileController extends Controller
             event(new Obyx('gamefile-add', \Auth::id()));
         }
 
+        DatabaseHelper::setReleaseInfos($id);
+
         return redirect()->route('gamefiles.index', [$id]);
     }
 
@@ -220,6 +223,8 @@ class GameFileController extends Controller
         }
 
         $gamefile->save();
+
+        DatabaseHelper::setReleaseInfos($id);
 
         return redirect()->route('gamefiles.index', [$id]);
     }

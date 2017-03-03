@@ -41,14 +41,14 @@
         <time datetime='{{ $game->created_at }}'
               title='{{ $game->created_at }}'>{{ \Carbon\Carbon::parse($game->created_at)->diffForHumans() }}</time>
     </td>
-    <td class='votes'>{{ $game->vote['up'] or 0 }}</td>
-    <td class='votes'>{{ $game->vote['down'] or 0 }}</td>
-    <td class='votes'>{{ number_format($game->vote['avg'], 2) }}&nbsp;
-        @if($game->vote['avg'] > 0)
+    <td class='votes'>{{ $game->voteup or 0 }}</td>
+    <td class='votes'>{{ $game->votedown or 0 }}</td>
+    <td class='votes'>{{ number_format(floatval($game->avg), 2) }}&nbsp;
+        @if($game->avg > 0)
             <img src='/assets/rate_up.gif' alt='up'/>
-        @elseif($game->vote['avg'] == 0)
+        @elseif($game->avg == 0)
             <img src='/assets/rate_neut.gif' alt='neut'/>
-        @elseif($game->vote['avg'] < 0)
+        @elseif($game->avg < 0)
             <img src='/assets/rate_down.gif' alt='down'/>
         @endif
     </td>
@@ -59,5 +59,5 @@
         <div class='innerbar_solo' style='width: {{ $perc }}%' title='{{ number_format($perc, 2) }}%'>
             <span>{{ $perc }}</span></div>
     </td>
-    <td>{{ $game->comments->count() }}</td>
+    <td>{{ $game->comments }}</td>
 </tr>

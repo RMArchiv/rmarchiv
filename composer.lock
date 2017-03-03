@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d44476ccc57c413851ba1dfc27f18252",
+    "content-hash": "1b45fc569f4db5d05c1e7f89715fecbb",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -1937,6 +1937,61 @@
             "time": "2017-02-08T12:54:06+00:00"
         },
         {
+            "name": "laravel-notification-channels/discord",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-notification-channels/discord.git",
+                "reference": "30abdeb53604012b8e2516725b8767be26d3b50d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-notification-channels/discord/zipball/30abdeb53604012b8e2516725b8767be26d3b50d",
+                "reference": "30abdeb53604012b8e2516725b8767be26d3b50d",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "illuminate/console": "^5.3@dev",
+                "illuminate/notifications": "^5.3@dev",
+                "illuminate/queue": "^5.3@dev",
+                "illuminate/support": "^5.3@dev",
+                "php": ">=5.6.4",
+                "textalk/websocket": "1.0.*"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.5",
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NotificationChannels\\Discord\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cody Scott",
+                    "email": "cs475x@icloud.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel notification driver for Discord.",
+            "homepage": "https://github.com/laravel-notification-channels/discord",
+            "keywords": [
+                "channel",
+                "discord",
+                "driver",
+                "laravel",
+                "notification"
+            ],
+            "time": "2016-08-16T22:09:49+00:00"
+        },
+        {
             "name": "laravel-notification-channels/telegram",
             "version": "0.0.1",
             "source": {
@@ -2811,44 +2866,6 @@
                 "MIT"
             ],
             "time": "2017-02-19T13:57:25+00:00"
-        },
-        {
-            "name": "optimus/fineuploader-server-thumbnail-creator",
-            "version": "0.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/esbenp/fineuploader-server-thumbnail-creator.git",
-                "reference": "0754329b37825de6fd4cac10c98fd0747edf8cbe"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/esbenp/fineuploader-server-thumbnail-creator/zipball/0754329b37825de6fd4cac10c98fd0747edf8cbe",
-                "reference": "0754329b37825de6fd4cac10c98fd0747edf8cbe",
-                "shasum": ""
-            },
-            "require": {
-                "intervention/image": "~2.3",
-                "laravel/framework": "~5.1",
-                "optimus/fineuploader-server": "0.2.*",
-                "optimus/onion": "0.1.*"
-            },
-            "require-dev": {
-                "mockery/mockery": "0.9.*",
-                "orchestra/testbench": "~3.1",
-                "phpunit/phpunit": "~4.7",
-                "satooshi/php-coveralls": "dev-master@dev"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Optimus\\FineuploaderServer\\Middleware\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "time": "2015-11-26T16:24:53+00:00"
         },
         {
             "name": "optimus/onion",
@@ -4720,6 +4737,44 @@
             "time": "2016-11-09T19:13:06+00:00"
         },
         {
+            "name": "textalk/websocket",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Textalk/websocket-php.git",
+                "reference": "ba2e5f9ef7cf24d536d1c864ae74b2a9599b86eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Textalk/websocket-php/zipball/ba2e5f9ef7cf24d536d1c864ae74b2a9599b86eb",
+                "reference": "ba2e5f9ef7cf24d536d1c864ae74b2a9599b86eb",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.1.*",
+                "phpunit/phpunit-selenium": "1.3.3",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WebSocket\\": "lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Liljegren",
+                    "email": "fredrik.liljegren@textalk.se"
+                }
+            ],
+            "description": "WebSocket client and server",
+            "time": "2015-04-11T05:45:54+00:00"
+        },
+        {
             "name": "twig/twig",
             "version": "v1.32.0",
             "source": {
@@ -4923,7 +4978,7 @@
             "support": {
                 "source": "https://github.com/jamisonvalenta/Laravel-4-Generators/tree/feature/laravel-five-stable"
             },
-            "time": "2015-02-17T06:26:25+00:00"
+            "time": "2015-02-17 06:26:25"
         },
         {
             "name": "webmozart/assert",
@@ -5564,35 +5619,35 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "4.0.6",
+            "version": "4.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "ca060f645beeddebedb1885c97bf163e93264c35"
+                "reference": "09e2277d14ea467e5a984010f501343ef29ffc69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/ca060f645beeddebedb1885c97bf163e93264c35",
-                "reference": "ca060f645beeddebedb1885c97bf163e93264c35",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/09e2277d14ea467e5a984010f501343ef29ffc69",
+                "reference": "09e2277d14ea467e5a984010f501343ef29ffc69",
                 "shasum": ""
             },
             "require": {
+                "ext-dom": "*",
+                "ext-xmlwriter": "*",
                 "php": "^5.6 || ^7.0",
-                "phpunit/php-file-iterator": "~1.3",
-                "phpunit/php-text-template": "~1.2",
+                "phpunit/php-file-iterator": "^1.3",
+                "phpunit/php-text-template": "^1.2",
                 "phpunit/php-token-stream": "^1.4.2 || ^2.0",
-                "sebastian/code-unit-reverse-lookup": "~1.0",
+                "sebastian/code-unit-reverse-lookup": "^1.0",
                 "sebastian/environment": "^1.3.2 || ^2.0",
-                "sebastian/version": "~1.0|~2.0"
+                "sebastian/version": "^1.0 || ^2.0"
             },
             "require-dev": {
-                "ext-xdebug": ">=2.1.4",
-                "phpunit/phpunit": "^5.4"
+                "ext-xdebug": "^2.1.4",
+                "phpunit/phpunit": "^5.7"
             },
             "suggest": {
-                "ext-dom": "*",
-                "ext-xdebug": ">=2.4.0",
-                "ext-xmlwriter": "*"
+                "ext-xdebug": "^2.5.1"
             },
             "type": "library",
             "extra": {
@@ -5623,7 +5678,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-02-23T07:38:02+00:00"
+            "time": "2017-03-01T09:12:17+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",

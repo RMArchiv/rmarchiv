@@ -37,14 +37,6 @@ class GameController extends Controller
             $games = Game::Join('games_developer', 'games.id', '=', 'games_developer.game_id')
                 ->Join('developer', 'games_developer.developer_id', '=', 'developer.id')
                 ->orderBy($orderby, $direction)->select('games.*')->paginate($rows);
-        } elseif ($orderby == 'game.release_date') {
-            $games = Game::Join('games_files', 'games.id', '=', 'games_files.game_id')
-                ->orderBy('games_files.release_year', $direction)
-                ->orderBy('games_files.release_month', $direction)
-                ->orderBy('games_files.release_day', $direction)
-                ->groupBy(['games.id'])
-                ->select('games.*')
-                ->paginate($rows);
         } else {
             $games = Game::orderBy($orderby, $direction)->orderBy('title')->orderBy('subtitle')->paginate($rows);
         }
