@@ -808,6 +808,7 @@ input[type="submit"][value="Submit"], input[type="submit"][value="submit"] {
   overflow: hidden;
   text-indent: -90px;
   border: 0;
+  cursor: hand;
   cursor: pointer;
   color: transparent;
 }
@@ -820,6 +821,7 @@ input[type="submit"][value="preview"], input[type="submit"][value="Preview"], #s
   overflow: hidden;
   text-indent: -90px;
   border: 0;
+  cursor: hand;
   cursor: pointer;
   color: transparent;
 }
@@ -835,25 +837,30 @@ input[type="submit"][value="preview"], input[type="submit"][value="Preview"], #s
 .platform, .platformi {
   width: 16px;
   height: 16px;
+  background-repeat: no-repeat;
   display: inline-block;
   vertical-align: middle;
   overflow: hidden;
   line-height: 100px;
-  background: url(/assets/types.png) no-repeat;
+  background-image: url(/assets/types.png);
 }
 
 .type, .typei {
   width: 16px;
   height: 16px;
   display: inline-block;
+  background-repeat: no-repeat;
   vertical-align: middle;
   overflow: hidden;
   line-height: 100px;
-  background: url(/assets/types.png) no-repeat;
+  background-image: url(/assets/types.png);
 }
 
 .bbs_code, .bbs_quote {
-  margin: .5em 2em;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-top: .5em;
+  margin-bottom: .5em;
   display: block;
 }
 
@@ -1137,7 +1144,8 @@ nav li a.adminlink:first-letter {
   width: 100%;
   border-collapse: separate;
   border-spacing: 1px;
-  margin: -1px 0 0;
+  margin: 0;
+  margin-top: -1px;
 }
 
 .rmarchivtbl .boxlisttable.foot {
@@ -1192,6 +1200,7 @@ nav li a.adminlink:first-letter {
 .rmarchivtbl .content {
   background: #17395c;
   color: #ffffe0;
+  border: 1px solid #000000;
   padding: 2px;
   border: 0;
   margin: 1px;
@@ -1333,7 +1342,8 @@ td.date {
 #rmarchivbox_latestoneliner h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: no-repeat 2px 2px;
+  background: #4e6f90 url(/assets/talk.gif) top left no-repeat;
+  background-position: 2px 2px;
 }
 
 #rmarchivbox_latestoneliner .loggedin {
@@ -1376,7 +1386,8 @@ td.date {
 #rmarchivbox_search h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: no-repeat 2px 2px;
+  background: #4e6f90 url(/assets/search.gif) top left no-repeat;
+  background-position: 2px 2px;
 }
 
 #rmarchivbox_search .content {
@@ -1405,8 +1416,11 @@ td.date {
 }
 
 #rmarchivbox_stats th.header {
-  padding: 0 0 2px 22px;
-  background: no-repeat 2px 2px;
+  padding: 0;
+  padding-left: 22px;
+  padding-bottom: 2px;
+  background: #4e6f90 url(/assets/stats.gif) top left no-repeat;
+  background-position: 2px 2px;
   text-align: left;
 }
 
@@ -1427,8 +1441,11 @@ td.date {
 }
 
 #rmarchivbox_pm th.header {
-  padding: 0 0 2px 22px;
-  background: #4e6f90 2px 2px;
+  padding: 0;
+  padding-left: 22px;
+  padding-bottom: 2px;
+  background-color: #4e6f90;
+  background-position: 2px 2px;
   text-align: left;
 }
 
@@ -1451,7 +1468,8 @@ td.date {
 #rmarchivbox_upcomingparties h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: no-repeat 2px 2px;
+  background: #2d4f74 url(/assets/dpnet.gif) top left no-repeat;
+  background-position: 2px 2px;
 }
 
 #rmarchivbox_upcomingparties li {
@@ -1468,10 +1486,13 @@ td.date {
 }
 
 .rmarchivbox_newsbox h3 {
+  padding: 3px;
   border: 0;
   margin: 1px;
-  padding: 3px 3px 2px 22px;
-  background: no-repeat 3px 3px;
+  padding-left: 22px;
+  padding-bottom: 2px;
+  background: #4e6f90 url(/assets/bitfellas.gif) top left no-repeat;
+  background-position: 3px 3px;
   color: #ffffe0;
   font-size: 100%;
 }
@@ -1626,6 +1647,7 @@ td.date {
 
 #rmarchivbox_prodcomments img {
   max-width: 95%;
+  max-width: 95%;
 }
 
 #rmarchivbox_prodcomments div:target .content {
@@ -1746,6 +1768,7 @@ td.date {
 }
 
 #rmarchivbox_prodmain #partytable td {
+  padding: 1px;
   border: 1px solid #000000;
   padding: 2px;
 }
@@ -2080,12 +2103,13 @@ td.date {
 
 .vote {
   float: left;
+  margin: 0;
   padding: 0;
   width: 16px;
   height: 16px;
   overflow: hidden;
   line-height: 100px;
-  margin: 0 3px 0 0;
+  margin-right: 3px;
 }
 
 .vote.up {
@@ -2665,7 +2689,8 @@ input[type="url"] {
 
 #rmarchivbox_faq dd {
   background: #4e6f90;
-  padding: 5px 5px 5px 30px;
+  padding: 5px;
+  padding-left: 30px;
   margin: 1px;
 }
 
@@ -2806,6 +2831,7 @@ input[type="url"] {
   overflow: hidden;
   text-indent: -90px;
   border: 0;
+  cursor: hand;
   cursor: pointer;
   color: transparent;
 }
@@ -2844,7 +2870,8 @@ input[type="url"] {
 #rmarchivbox_fixmewarning h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: no-repeat 2px 2px;
+  background: #883022 url(/assets/icon_youtube.png) top left no-repeat;
+  background-position: 2px 2px;
 }
 
 #rmarchivbox_admineditfaq #question {
@@ -2945,25 +2972,29 @@ optgroup option {
 #rmarchivbox_feedpoundsoff h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: no-repeat 2px 2px;
+  background: #4e6f90 url(/assets/poundsoff.gif) top left no-repeat;
+  background-position: 2px 2px;
 }
 
 #rmarchivbox_feedrmarchivtwitter h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: no-repeat 2px 2px;
+  background: #4e6f90 url(/assets/twitter.png) top left no-repeat;
+  background-position: 2px 2px;
 }
 
 #rmarchivbox_feedwanted h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: no-repeat 2px 2px;
+  background: #4e6f90 url(/assets/wanted.png) top left no-repeat;
+  background-position: 2px 2px;
 }
 
 #rmarchivbox_cdc h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: no-repeat 2px 2px;
+  background: #4e6f90 url(/assets/cdc.png) top left no-repeat;
+  background-position: 2px 2px;
 }
 
 #rmarchivbox_prodnfo.asciiviewer {
@@ -2984,7 +3015,8 @@ tr.sortable th #sort_platform {
 }
 
 tr.sortable th a {
-  background: no-repeat 0 2px;
+  background: url(/assets/sort_up.png) no-repeat;
+  background-position: 0 2px;
   padding-left: 16px;
 }
 
@@ -3134,7 +3166,7 @@ select#language option[value="de"] {
 .style-tabs .ui-tabs-nav {
   padding: 0 6px;
   color: #ffbf00;
-  border: 0 solid #00001a;
+  border: 0px solid #00001a;
 }
 
 .style-tabs .ui-tabs-panel {
@@ -3260,7 +3292,7 @@ select#language option[value="de"] {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 /* Links inside the dropdown */

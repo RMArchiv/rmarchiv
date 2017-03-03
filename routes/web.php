@@ -50,6 +50,10 @@ Route::get('games/{gameid}/screenshot/create/{screenid}', 'ScreenshotController@
 Route::post('games/{gameid}/screenshot/upload/{screenid}', 'ScreenshotController@upload')->name('screenshot.upload');
 Route::get('games/index/{orderby?}/{direction?}', 'GameController@index')->name('games.index.sorted');
 
+Route::post('gameupload', '\Optimus\FineuploaderServer\Controller\LaravelController@upload');
+Route::delete('gameupload/delete/{uuid}', '\Optimus\FineuploaderServer\Controller\LaravelController@delete');
+Route::get('gameupload/session', '\Optimus\FineuploaderServer\Controller\LaravelController@session');
+
 //History Routen
 Route::get('history/game/{id}', 'HistoryController@index')->name('history.game.index');
 

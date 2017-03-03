@@ -11075,13 +11075,6 @@ namespace Mews\Captcha\Facades {
     }         
 }
     
-namespace App\Helpers {
-
-    class CheckRateable {
-        
-    }         
-}
-    
 namespace Barryvdh\Debugbar {
 
     class Facade {
@@ -14804,8 +14797,6 @@ namespace {
     class View extends \Illuminate\Support\Facades\View {}
     
     class Captcha extends \Mews\Captcha\Facades\Captcha {}
-    
-    class CheckRateable extends \App\Helpers\CheckRateable {}
     
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
     

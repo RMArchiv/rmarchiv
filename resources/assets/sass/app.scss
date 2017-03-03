@@ -103,6 +103,7 @@ $url_lang_16_de: url(/assets/lng/16/de.png);
   overflow: hidden;
   text-indent: -90px;
   border: 0;
+  cursor: hand;
   cursor: pointer;
   color: transparent;
 }
@@ -117,6 +118,7 @@ $url_lang_16_de: url(/assets/lng/16/de.png);
   overflow: hidden;
   text-indent: -90px;
   border: 0;
+  cursor: hand;
   cursor: pointer;
   color: transparent;
 }
@@ -136,11 +138,12 @@ $url_lang_16_de: url(/assets/lng/16/de.png);
 %extend_5 {
   width: 16px;
   height: 16px;
+  background-repeat: no-repeat;
   display: inline-block;
   vertical-align: middle;
   overflow: hidden;
   line-height: 100px;
-  background: $url_12 no-repeat;
+  background-image: $url_12;
 }
 
 //original selectors
@@ -149,16 +152,20 @@ $url_lang_16_de: url(/assets/lng/16/de.png);
   width: 16px;
   height: 16px;
   display: inline-block;
+  background-repeat: no-repeat;
   vertical-align: middle;
   overflow: hidden;
   line-height: 100px;
-  background: $url_12 no-repeat;
+  background-image: $url_12;
 }
 
 //original selectors
 //.bbs_code, .bbs_quote
 %extend_7 {
-  margin: .5em 2em;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-top: .5em;
+  margin-bottom: .5em;
   display: block;
 }
 
@@ -432,7 +439,8 @@ nav {
     width: 100%;
     border-collapse: separate;
     border-spacing: 1px;
-    margin: -1px 0 0;
+    margin: 0;
+    margin-top: -1px;
     &.foot {
       margin-top: 0;
     }
@@ -476,6 +484,7 @@ nav {
   .content {
     background: $color_border;
     color: $color_text;
+    border: 1px solid $black;
     padding: 2px;
     border: 0;
     margin: 1px;
@@ -607,7 +616,8 @@ td {
   h2 {
     padding-left: 22px;
     padding-bottom: 2px;
-    background: no-repeat 2px 2px;
+    background: $color_kashmir_blue_approx $url_talk top left no-repeat;
+    background-position: 2px 2px;
   }
   .loggedin {
     text-align: center;
@@ -645,7 +655,8 @@ td {
   h2 {
     padding-left: 22px;
     padding-bottom: 2px;
-    background: no-repeat 2px 2px;
+    background: $color_kashmir_blue_approx $url_search top left no-repeat;
+    background-position: 2px 2px;
   }
   .content {
     background: $color_kashmir_blue_approx;
@@ -668,8 +679,11 @@ td {
   width: 100%;
   th {
     &.header {
-      padding: 0 0 2px 22px;
-      background: no-repeat 2px 2px;
+      padding: 0;
+      padding-left: 22px;
+      padding-bottom: 2px;
+      background: $color_kashmir_blue_approx $url_8 top left no-repeat;
+      background-position: 2px 2px;
       text-align: left;
     }
     &:nth-child(2) {
@@ -687,8 +701,11 @@ td {
   width: 100%;
   th {
     &.header {
-      padding: 0 0 2px 22px;
-      background: $color_kashmir_blue_approx 2px 2px;
+      padding: 0;
+      padding-left: 22px;
+      padding-bottom: 2px;
+      background-color: $color_kashmir_blue_approx;
+      background-position: 2px 2px;
       text-align: left;
     }
     &:nth-child(2) {
@@ -707,7 +724,8 @@ td {
   h2 {
     padding-left: 22px;
     padding-bottom: 2px;
-    background: no-repeat 2px 2px;
+    background: $color_san_juan_approx $url_10 top left no-repeat;
+    background-position: 2px 2px;
   }
   ul {
     @extend %extend_9;
@@ -725,10 +743,13 @@ td {
 }
 .rmarchivbox_newsbox {
   h3 {
+    padding: 3px;
     border: 0;
     margin: 1px;
-    padding: 3px 3px 2px 22px;
-    background: no-repeat 3px 3px;
+    padding-left: 22px;
+    padding-bottom: 2px;
+    background: $color_kashmir_blue_approx $url_11 top left no-repeat;
+    background-position: 3px 3px;
     color: $color_text;
     font-size: 100%;
   }
@@ -865,6 +886,7 @@ td {
   }
   img {
     max-width: 95%;
+    max-width: 95%;
   }
   div:target .content {
     border: 3px solid $color_polo_blue_approx;
@@ -961,6 +983,7 @@ td {
     border-collapse: collapse;
     text-align: left;
     td {
+      padding: 1px;
       border: 1px solid $black;
       padding: 2px;
     }
@@ -1240,12 +1263,13 @@ td {
 }
 .vote {
   float: left;
+  margin: 0;
   padding: 0;
   width: 16px;
   height: 16px;
   overflow: hidden;
   line-height: 100px;
-  margin: 0 3px 0 0;
+  margin-right: 3px;
   &.up {
     background: $rate_up top left no-repeat;
   }
@@ -1738,7 +1762,8 @@ input[type="url"] {
   width: 75%;
   dd {
     background: $color_kashmir_blue_approx;
-    padding: 5px 5px 5px 30px;
+    padding: 5px;
+    padding-left: 30px;
     margin: 1px;
     p {
       margin-top: 5px;
@@ -1869,6 +1894,7 @@ input[type="url"] {
     overflow: hidden;
     text-indent: -90px;
     border: 0;
+    cursor: hand;
     cursor: pointer;
     color: transparent;
     &.add {
@@ -1903,7 +1929,8 @@ input[type="url"] {
   h2 {
     padding-left: 22px;
     padding-bottom: 2px;
-    background: no-repeat 2px 2px;
+    background: $color_burnt_umber_approx $url_31 top left no-repeat;
+    background-position: 2px 2px;
   }
 }
 #rmarchivbox_admineditfaq {
@@ -1994,22 +2021,26 @@ optgroup option {
 #rmarchivbox_feedpoundsoff h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: no-repeat 2px 2px;
+  background: $color_kashmir_blue_approx $url_5 top left no-repeat;
+  background-position: 2px 2px;
 }
 #rmarchivbox_feedrmarchivtwitter h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: no-repeat 2px 2px;
+  background: $color_kashmir_blue_approx $url_6 top left no-repeat;
+  background-position: 2px 2px;
 }
 #rmarchivbox_feedwanted h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: no-repeat 2px 2px;
+  background: $color_kashmir_blue_approx $url_7 top left no-repeat;
+  background-position: 2px 2px;
 }
 #rmarchivbox_cdc h2 {
   padding-left: 22px;
   padding-bottom: 2px;
-  background: no-repeat 2px 2px;
+  background: $color_kashmir_blue_approx $url_9 top left no-repeat;
+  background-position: 2px 2px;
 }
 #rmarchivbox_prodnfo.asciiviewer {
   display: table;
@@ -2024,7 +2055,8 @@ tr.sortable th {
     float: right;
   }
   a {
-    background: no-repeat 0 2px;
+    background: $url_23 no-repeat;
+    background-position: 0 2px;
     padding-left: 16px;
     &.selected {
       background-image: $url_24;
@@ -2145,7 +2177,7 @@ select#language option[value="de"] {background-image:$url_lang_16_de;}
 .style-tabs .ui-tabs-nav {
   padding: 0 6px;
   color: $color_link;
-  border: 0 solid $color_background;
+  border: 0px solid $color_background;
 }
 .style-tabs .ui-tabs-panel {
   padding: 5px;
@@ -2267,7 +2299,7 @@ select#language option[value="de"] {background-image:$url_lang_16_de;}
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
 /* Links inside the dropdown */

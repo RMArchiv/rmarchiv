@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7d23c3f8947d1ce7fc0592372d521c77",
+    "content-hash": "d44476ccc57c413851ba1dfc27f18252",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -2811,6 +2811,44 @@
                 "MIT"
             ],
             "time": "2017-02-19T13:57:25+00:00"
+        },
+        {
+            "name": "optimus/fineuploader-server-thumbnail-creator",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/esbenp/fineuploader-server-thumbnail-creator.git",
+                "reference": "0754329b37825de6fd4cac10c98fd0747edf8cbe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/esbenp/fineuploader-server-thumbnail-creator/zipball/0754329b37825de6fd4cac10c98fd0747edf8cbe",
+                "reference": "0754329b37825de6fd4cac10c98fd0747edf8cbe",
+                "shasum": ""
+            },
+            "require": {
+                "intervention/image": "~2.3",
+                "laravel/framework": "~5.1",
+                "optimus/fineuploader-server": "0.2.*",
+                "optimus/onion": "0.1.*"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "orchestra/testbench": "~3.1",
+                "phpunit/phpunit": "~4.7",
+                "satooshi/php-coveralls": "dev-master@dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Optimus\\FineuploaderServer\\Middleware\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2015-11-26T16:24:53+00:00"
         },
         {
             "name": "optimus/onion",

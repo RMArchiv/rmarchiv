@@ -34,7 +34,8 @@
         "xethron/migrations-generator": "^2.0",
         "spatie/laravel-activitylog": "^1.11",
         "intervention/imagecache": "^2.3",
-        "laravel-notification-channels/telegram": "^0.0.1"
+        "laravel-notification-channels/telegram": "^0.0.1",
+        "optimus/fineuploader-server-thumbnail-creator": "0.1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
