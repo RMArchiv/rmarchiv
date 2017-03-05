@@ -1,7 +1,7 @@
 <footer>
     <ul>
         <li>
-            <a href="/">{{ config('app.name') }}</a> {{ config('app.version') }} &copy; 2016-{{ date('Y', time()) }} by rmarchiv.de Team
+            <a href="/">{{ config('app.name') }}</a> {{ config('app.version') }}.{{ \App\Helpers\MiscHelper::get_current_git_commit() }} &copy; 2016-{{ date('Y', time()) }} by rmarchiv.de Team
         </li>
         <li>
             feedback und bugs an <a href="mailto:webmaster@rmarchiv.de">webmaster@rmarchiv.de</a>
