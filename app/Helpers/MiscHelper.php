@@ -12,11 +12,12 @@ use NotificationChannels\Discord\Discord;
 class MiscHelper
 {
     /**
-     * Get the hash of the current git HEAD
-     * @param str $branch The git branch to check
+     * Get the hash of the current git HEAD.
+     * @param string $branch The git branch to check
      * @return mixed Either the hash or a boolean false
      */
-    public static function get_current_git_commit( $branch='master' ) {
+    public static function get_current_git_commit($branch = 'master')
+    {
         $rev = exec('git rev-parse --short HEAD');
 
         return $rev;
