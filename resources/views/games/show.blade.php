@@ -144,7 +144,9 @@
                                 <tr>
                                     <td>maker :</td>
                                     <td>
+                                        <a href="{{ route('maker.show', $game->maker->id) }}">
                                         <span class="type type_{{ $game->maker->short }}">{{ $game->maker->title }}</span> {{ $game->maker->title }}
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr>

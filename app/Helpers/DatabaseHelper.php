@@ -31,6 +31,10 @@ class DatabaseHelper
 
     public static function setReleaseInfos($gameid)
     {
+        $game = Game::find($gameid);
+
+        $reltype = 99;
+        $reldate = Carbon::create();
 
         //prüfen ob Techdemo existiert
         $gamefiles = GamesFile::whereGameId($gameid)
@@ -39,9 +43,6 @@ class DatabaseHelper
             ->orderBy('release_month', 'ASC')
             ->orderBy('release_day', 'ASC')
             ->first();
-
-        $reltype = 99;
-        $reldate = Carbon::create();
 
         if ($gamefiles) {
             $reltype = $gamefiles->release_type;
@@ -74,11 +75,20 @@ class DatabaseHelper
             $reldate = Carbon::parse($gamefiles->release_year.'-'.$gamefiles->release_month.'-'.$gamefiles->release_day);
         }
 
-        Game::whereId($gameid)
-            ->update([
-                'release_type' => $reltype,
-                'release_date' => $reldate,
-            ]);
+        if ($game->release_type == $reltype) {
+            if (Carbon::parse($game->release_date) > $reldate) {
+                Game::whereId($gameid)
+                    ->update([
+                        'release_date' => $reldate,
+                    ]);
+            }
+        } else {
+            Game::whereId($gameid)
+                ->update([
+                    'release_date' => $reldate,
+                    'release_type' => $reltype,
+                ]);
+        }
     }
 
     public static function getOnlineUserCount()
