@@ -4978,7 +4978,7 @@
             "support": {
                 "source": "https://github.com/jamisonvalenta/Laravel-4-Generators/tree/feature/laravel-five-stable"
             },
-            "time": "2015-02-17 06:26:25"
+            "time": "2015-02-17T06:26:25+00:00"
         },
         {
             "name": "webmozart/assert",

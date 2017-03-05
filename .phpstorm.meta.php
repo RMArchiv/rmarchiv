@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-03-01.
+    * Generated on 2017-03-05.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -43,7 +43,6 @@ namespace PHPSTORM_META {
             'markdown.environment' instanceof \League\CommonMark\Environment,
             'markdown' instanceof \League\CommonMark\Converter,
             'markdown.compiler' instanceof \GrahamCampbell\Markdown\Compilers\MarkdownCompiler,
-            'uploader' instanceof \Optimus\FineuploaderServer\Uploader,
             'tntsearch' instanceof \TeamTNT\TNTSearch\TNTSearch,
             'image' instanceof \Intervention\Image\ImageManager,
             'entrust' instanceof \Zizaco\Entrust\Entrust,
@@ -90,6 +89,7 @@ namespace PHPSTORM_META {
             'migration.generate' instanceof \Xethron\MigrationsGenerator\MigrateGenerateCommand,
             'Illuminate\Database\Migrations\MigrationRepositoryInterface' instanceof \Illuminate\Database\Migrations\DatabaseMigrationRepository,
             'command.activitylog:clean' instanceof \Spatie\Activitylog\CleanActivitylogCommand,
+            'command.discord:setup' instanceof \NotificationChannels\Discord\Commands\SetupCommand,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -214,7 +214,6 @@ namespace PHPSTORM_META {
             'markdown.environment' instanceof \League\CommonMark\Environment,
             'markdown' instanceof \League\CommonMark\Converter,
             'markdown.compiler' instanceof \GrahamCampbell\Markdown\Compilers\MarkdownCompiler,
-            'uploader' instanceof \Optimus\FineuploaderServer\Uploader,
             'tntsearch' instanceof \TeamTNT\TNTSearch\TNTSearch,
             'image' instanceof \Intervention\Image\ImageManager,
             'entrust' instanceof \Zizaco\Entrust\Entrust,
@@ -261,6 +260,7 @@ namespace PHPSTORM_META {
             'migration.generate' instanceof \Xethron\MigrationsGenerator\MigrateGenerateCommand,
             'Illuminate\Database\Migrations\MigrationRepositoryInterface' instanceof \Illuminate\Database\Migrations\DatabaseMigrationRepository,
             'command.activitylog:clean' instanceof \Spatie\Activitylog\CleanActivitylogCommand,
+            'command.discord:setup' instanceof \NotificationChannels\Discord\Commands\SetupCommand,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -385,7 +385,6 @@ namespace PHPSTORM_META {
             'markdown.environment' instanceof \League\CommonMark\Environment,
             'markdown' instanceof \League\CommonMark\Converter,
             'markdown.compiler' instanceof \GrahamCampbell\Markdown\Compilers\MarkdownCompiler,
-            'uploader' instanceof \Optimus\FineuploaderServer\Uploader,
             'tntsearch' instanceof \TeamTNT\TNTSearch\TNTSearch,
             'image' instanceof \Intervention\Image\ImageManager,
             'entrust' instanceof \Zizaco\Entrust\Entrust,
@@ -432,6 +431,7 @@ namespace PHPSTORM_META {
             'migration.generate' instanceof \Xethron\MigrationsGenerator\MigrateGenerateCommand,
             'Illuminate\Database\Migrations\MigrationRepositoryInterface' instanceof \Illuminate\Database\Migrations\DatabaseMigrationRepository,
             'command.activitylog:clean' instanceof \Spatie\Activitylog\CleanActivitylogCommand,
+            'command.discord:setup' instanceof \NotificationChannels\Discord\Commands\SetupCommand,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -556,7 +556,6 @@ namespace PHPSTORM_META {
             'markdown.environment' instanceof \League\CommonMark\Environment,
             'markdown' instanceof \League\CommonMark\Converter,
             'markdown.compiler' instanceof \GrahamCampbell\Markdown\Compilers\MarkdownCompiler,
-            'uploader' instanceof \Optimus\FineuploaderServer\Uploader,
             'tntsearch' instanceof \TeamTNT\TNTSearch\TNTSearch,
             'image' instanceof \Intervention\Image\ImageManager,
             'entrust' instanceof \Zizaco\Entrust\Entrust,
@@ -603,6 +602,7 @@ namespace PHPSTORM_META {
             'migration.generate' instanceof \Xethron\MigrationsGenerator\MigrateGenerateCommand,
             'Illuminate\Database\Migrations\MigrationRepositoryInterface' instanceof \Illuminate\Database\Migrations\DatabaseMigrationRepository,
             'command.activitylog:clean' instanceof \Spatie\Activitylog\CleanActivitylogCommand,
+            'command.discord:setup' instanceof \NotificationChannels\Discord\Commands\SetupCommand,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
