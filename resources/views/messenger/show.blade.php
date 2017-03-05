@@ -6,7 +6,7 @@
             <h2>{{ $thread->subject }} :: {{ $thread->participantsString(Auth::id()) }}</h2>
 
             @foreach($thread->messages as $post)
-                <div class='content cite-{{ $post->id  }}' id='c{{ $post->id }}'>{{ $post->body }}</div>
+                <div class='content cite-{{ $post->id  }}' id='c{{ $post->id }}'>{!! Markdown::convertToHtml($post->body) !!}</div>
                 <div class='foot'>
                     <span class='tools' data-cid='{{ $post->id }}'></span>
                     gepostet am
