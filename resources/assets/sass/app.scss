@@ -612,6 +612,45 @@ td {
   font-weight: bold;
   text-transform: lowercase;
 }
+#rmarchivbox_latestoneliner {
+  h2 {
+    padding-left: 22px;
+    padding-bottom: 2px;
+    background: $color_kashmir_blue_approx $url_talk top left no-repeat;
+    background-position: 2px 2px;
+  }
+  .loggedin {
+    text-align: center;
+    span {
+      float: right;
+      margin-top: 3px;
+    }
+  }
+  #onelinermsg {
+    width: 290px;
+    max-width: 90%;
+  }
+  time {
+    color: $color_celeste_approx;
+  }
+  li {
+    overflow: hidden;
+    a {
+      &.youtube {
+        background: $url_31 top left no-repeat;
+        padding-left: 18px;
+      }
+      &.rmarchiv {
+        background: $url_32 top left no-repeat;
+        padding-left: 18px;
+      }
+      &.demozoo {
+        background: $url_33 top left no-repeat;
+        padding-left: 18px;
+      }
+    }
+  }
+}
 #rmarchivbox_search {
   h2 {
     padding-left: 22px;
