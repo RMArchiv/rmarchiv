@@ -23,5 +23,6 @@ class CheckRateableHelper
         } else {
             return true;
         }
+
     }
 }
