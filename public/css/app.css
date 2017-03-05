@@ -1339,50 +1339,6 @@ td.date {
   text-transform: lowercase;
 }
 
-#rmarchivbox_latestoneliner h2 {
-  padding-left: 22px;
-  padding-bottom: 2px;
-  background: #4e6f90 url(/assets/talk.gif) top left no-repeat;
-  background-position: 2px 2px;
-}
-
-#rmarchivbox_latestoneliner .loggedin {
-  text-align: center;
-}
-
-#rmarchivbox_latestoneliner .loggedin span {
-  float: right;
-  margin-top: 3px;
-}
-
-#rmarchivbox_latestoneliner #onelinermsg {
-  width: 290px;
-  max-width: 90%;
-}
-
-#rmarchivbox_latestoneliner time {
-  color: #cccccc;
-}
-
-#rmarchivbox_latestoneliner li {
-  overflow: hidden;
-}
-
-#rmarchivbox_latestoneliner li a.youtube {
-  background: url(/assets/icon_youtube.png) top left no-repeat;
-  padding-left: 18px;
-}
-
-#rmarchivbox_latestoneliner li a.rmarchiv {
-  background: url(/assets/icon_rmarchiv.png) top left no-repeat;
-  padding-left: 18px;
-}
-
-#rmarchivbox_latestoneliner li a.demozoo {
-  background: url(/assets/icon_demozoo.png) top left no-repeat;
-  padding-left: 18px;
-}
-
 #rmarchivbox_search h2 {
   padding-left: 22px;
   padding-bottom: 2px;
