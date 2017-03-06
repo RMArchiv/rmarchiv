@@ -411,7 +411,7 @@
                     {!! Form::hidden('content_id', $game->id) !!}
                     {!! Form::hidden('content_type', 'game') !!}
                     <div class='content'>
-                        @if(CheckRateable::checkRateable('game', $game->gameid, Auth::id()) === true)
+                        @if(\App\Helpers\CheckRateableHelper::checkRateable('game', $game->gameid, Auth::id()) === true)
                             <div id='prodvote'>
                                 hier wird diese news bewertet:<br>
                                 diese news<br>
