@@ -273,17 +273,18 @@ $api->version('v1', function ($api) {
     $api->get('tako/filelist', 'App\Http\Controllers\Api\v1\TakoController@filelist');
 });
 
-Route::get('logo/{filename}', function ($filename)
-{
+Route::get('logo/{filename}', function ($filename) {
     $path = Storage::get('public/logos/'.$filename);
 
-    if(!File::exists($path)) abort(404);
+    if (! File::exists($path)) {
+        abort(404);
+    }
 
     $file = File::get($path);
     $type = File::mimeType($path);
 
     $response = Response::make($file, 200);
-    $response->header("Content-Type", $type);
+    $response->header('Content-Type', $type);
 
     return $response;
 });
