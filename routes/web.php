@@ -277,6 +277,7 @@ Route::get('logo/{filename}', function ($filename)
 {
     $path = Storage::get('app/public/logos/'.$filename);
 
+
     if(!File::exists($path)) abort(404);
 
     $file = File::get($path);
