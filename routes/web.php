@@ -272,3 +272,18 @@ $api->version('v1', function ($api) {
     $api->get('games_app', 'App\Http\Controllers\Api\v1\GameController@show_app');
     $api->get('tako/filelist', 'App\Http\Controllers\Api\v1\TakoController@filelist');
 });
+
+Route::get('logo/{filename}', function ($filename)
+{
+    $path = Storage::get('public/logos/'.$filename);
+
+    if(!File::exists($path)) abort(404);
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
