@@ -275,7 +275,7 @@ $api->version('v1', function ($api) {
 
 Route::get('logo/{filename}', function ($filename)
 {
-    $path = Storage::get('public/logos/'.$filename);
+    $path = Storage::get('app/public/logos/'.$filename);
 
     if(!File::exists($path)) abort(404);
 
