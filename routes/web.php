@@ -277,13 +277,6 @@ Route::get('logo/{filename}', function ($filename) {
     $filename = 'logos/'.$filename;
     $path = Storage::get($filename);
 
-    if (! File::exists($path)) {
-        abort(404);
-    }
-
-    $file = File::get($path);
-    $type = File::mimeType($path);
-
     $img = \Image::make($path);
         $response = \Response::make($img->encode('png'));
         $response->header('Content-Type', 'image/png');
