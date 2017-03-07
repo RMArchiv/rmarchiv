@@ -278,8 +278,8 @@ Route::get('logo/{filename}', function ($filename) {
     $path = Storage::get($filename);
 
     $img = \Image::make($path);
-        $response = \Response::make($img->encode('png'));
-        $response->header('Content-Type', 'image/png');
+    $response = \Response::make($img->encode('png'));
+    $response->header('Content-Type', 'image/png');
     //$response->setMaxAge(604800);
     $response->setPublic();
 
