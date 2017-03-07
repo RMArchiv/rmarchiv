@@ -274,7 +274,7 @@ $api->version('v1', function ($api) {
 });
 
 Route::get('logo/{filename}', function ($filename) {
-    $filename = str_replace('storage/', '', $filename);
+    $filename =  'logos/'.$filename;
     dd($filename);
     $path = Storage::get($filename);
 
