@@ -278,7 +278,6 @@ Route::get('logo/{filename}', function ($filename) {
     dd($filename);
     $path = Storage::get($filename);
 
-
     if (! File::exists($path)) {
         abort(404);
     }
