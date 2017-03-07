@@ -284,8 +284,11 @@ Route::get('logo/{filename}', function ($filename) {
     $file = File::get($path);
     $type = File::mimeType($path);
 
-    $response = Response::make($file, 200);
-    $response->header('Content-Type', $type);
+    $img = \Image::make($path);
+        $response = \Response::make($img->encode('png'));
+        $response->header('Content-Type', 'image/png');
+    //$response->setMaxAge(604800);
+    $response->setPublic();
 
     return $response;
 });
