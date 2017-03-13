@@ -129,7 +129,7 @@ class IndexController extends Controller
             ->orderByRaw('(voteup - votedown) / (voteup + votedown) DESC')
             ->groupBy('games.id')
             ->limit(5)->get();
-        
+
         $topalltime = Game::orderBy('avg', 'desc')->limit(5)->get();
         $latestcomments = Comment::with('game')->whereContentType('game')->orderBy('created_at', 'desc')->limit(5)->get();
 
