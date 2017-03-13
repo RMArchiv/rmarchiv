@@ -13,6 +13,7 @@ elixir(function(mix) {
         'fineuploader': './bower_components/fine-uploader/dist/',
         'jqcloud2':     './bower_components/jqcloud2/dist/',
         'inlineattachment': './bower_components/inline-attachment/dist/',
+        'editormd':     './bower_components/editor.md/',
     };
 
     mix.sass(
@@ -33,6 +34,7 @@ elixir(function(mix) {
             paths.inlineattachment + 'inline-attachment.js',
             paths.inlineattachment + 'jquery.inline-attachment.js',
             paths.js               + 'commonmark.js',
+            paths.editormd         + 'editormd.js'
             //paths.js            + 'app.js'
         ])
 
