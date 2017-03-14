@@ -80,9 +80,9 @@
                             info             : "Info"
                         },
                         buttons : {
-                            enter  : "Enter",
-                            cancel : "Cancel",
-                            close  : "Close"
+                            enter  : "Senden",
+                            cancel : "Abbrechen",
+                            close  : "Schließen"
                         },
                         dialog : {
                             link : {
@@ -103,9 +103,9 @@
                             },
                             image : {
                                 title    : "Image",
-                                url      : "Address",
-                                link     : "Link",
-                                alt      : "Title",
+                                url      : "Bild URL:",
+                                link     : "Link zu:",
+                                alt      : "Titel:",
                                 uploadButton     : "Upload",
                                 imageURLEmpty    : "Error: picture url address can't be empty.",
                                 uploadFileEmpty  : "Error: upload pictures cannot be empty!",
