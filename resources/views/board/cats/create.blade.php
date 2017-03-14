@@ -17,7 +17,7 @@
 
             @if($cats->count() <> 0)
                 <h2>vorhandene kategorien</h2>
-                <table id='pouetbox_prodlist' class='boxtable pagedtable'>
+                <table id='rmarchivbox_prodlist' class='boxtable pagedtable'>
                     <thead>
                     <tr class='sortable'>
                         <th>titel</th>

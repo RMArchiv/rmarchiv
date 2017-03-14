@@ -5084,7 +5084,7 @@ td.date {
     background: url(/assets/previewdxm.gif) top left no-repeat; }
 
 #rmarchivbox_bbsopen {
-  width: 450px;
+  width: 56%;
   margin: 0 auto; }
   #rmarchivbox_bbsopen .content {
     padding: 5px; }
@@ -5128,6 +5128,9 @@ td.date {
 .bbs_code code {
   white-space: pre;
   overflow: auto; }
+
+#rmarchivbox_prodlist {
+  width: 56%; }
 
 #rmarchivbox_prodpost {
   width: 100%;
@@ -5177,16 +5180,16 @@ td.date {
   #rmarchivbox_modalmessage .content h3 {
     margin: 15px; }
 
-#rmarchivbox_bbslist .topic {
-  font-weight: bold;
-  overflow: hidden; }
-
-#rmarchivbox_bbslist h2 {
-  text-align: center; }
-
-#rmarchivbox_bbslist #categoryFilter {
-  font-size: 80%;
-  margin-left: 5px; }
+#rmarchivbox_bbslist {
+  width: 56%; }
+  #rmarchivbox_bbslist .topic {
+    font-weight: bold;
+    overflow: hidden; }
+  #rmarchivbox_bbslist h2 {
+    text-align: center; }
+  #rmarchivbox_bbslist #categoryFilter {
+    font-size: 80%;
+    margin-left: 5px; }
 
 #rmarchivbox_partyheader {
   display: table;
