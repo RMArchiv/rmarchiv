@@ -74,7 +74,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://v2.rmarchiv.de'),
+    'url' => env('APP_URL', 'http://rmarchiv.de'),
 
     /*
     |--------------------------------------------------------------------------

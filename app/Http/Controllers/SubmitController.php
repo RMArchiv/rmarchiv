@@ -55,11 +55,7 @@ class SubmitController extends Controller
     {
         \Debugbar::disable();
 
-        $this->validate($request, [
-            'file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
-        $file = $request->file('file');
+        $file = $request->file('editormd-image-file');
 
         $imageName = \Storage::putFile('attachments', new UploadedFile($file->path(), $file->getClientOriginalName()));
 
