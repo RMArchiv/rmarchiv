@@ -4717,7 +4717,7 @@ td.date {
     border: 1px solid #aa88cc; }
 
 #rmarchivbox_bbsview {
-  width: 75%;
+  width: 56%;
   display: block; }
   #rmarchivbox_bbsview .content {
     overflow: hidden;
@@ -5070,7 +5070,7 @@ td.date {
     font-weight: bold; }
 
 #rmarchivbox_bbspost {
-  width: 450px;
+  width: 56%;
   margin: 0 auto; }
   #rmarchivbox_bbspost .foot {
     font-weight: normal;

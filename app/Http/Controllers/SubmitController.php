@@ -63,7 +63,10 @@ class SubmitController extends Controller
 
         $imageName = \Storage::putFile('attachments', new UploadedFile($file->path(), $file->getClientOriginalName()));
 
-        $response['filename'] = 'http://rmarchiv.de/storage/'.$imageName;
+        $response['url'] = url().'/storage/'.$imageName;
+        $response['success'] = 1;
+        $response['message'] = 'Bild wurde erfolgreich hochgeladen.';
+        $response['filename'] = url().'/storage/'.$imageName;
 
         return json_encode($response);
     }
