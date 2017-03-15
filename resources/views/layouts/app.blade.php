@@ -44,20 +44,4 @@
 
 <!--[if lt IE 9]><script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script><![endif]-->
 <!--[if IE]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<script type="text/javascript">
-    var _paq = _paq || [];
-    @if(Auth::check())
-        _paq.push(['setUserId', "{{ Auth::user()->name }}"]);
-    @endif
-    _paq.push(['setDownloadClasses', "down_l"]);
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function() {
-        var u="//stats.rmarchiv.de/";
-        _paq.push(['setTrackerUrl', u+'/js']);
-        _paq.push(['setSiteId', '1']);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'js/'; s.parentNode.insertBefore(g,s);
-    })();
-</script>
 </html>
