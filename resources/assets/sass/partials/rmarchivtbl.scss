@@ -1,0 +1,128 @@
+.rmarchivtbl {
+  background: $color_background;
+  border: 0;
+  margin: 0 auto 20px;
+  padding: 1px;
+  display: table;
+  text-align: left;
+  .boxtable {
+    border: 0;
+    width: 100%;
+    margin-top: -1px;
+    margin-bottom: 0;
+    &.foot {
+      margin-top: 0;
+    }
+    &.letterselect {
+      margin-top: 0;
+    }
+  }
+  h2 {
+    background: $color_box_header_background;
+    color: $color_text;
+    padding: 3px;
+    border: 0;
+    margin: 1px;
+    text-align: left;
+    font-size: 100%;
+  }
+  .boxlist {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    list-style: none;
+    li {
+      margin: 1px;
+      padding: 2px;
+    }
+  }
+  .content {
+    background: $color_border;
+    color: $color_text;
+    padding: 2px;
+    border: 0;
+    margin: 1px;
+    vertical-align: middle;
+  }
+  .foot {
+    clear: both;
+    text-align: right;
+  }
+  .boxlisttable {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 1px;
+    margin: 0;
+    margin-top: -1px;
+    &.foot {
+      margin-top: 0;
+    }
+    &.letterselect {
+      margin-top: 0;
+    }
+    li {
+      display: table-row;
+      > span {
+        display: table-cell;
+        padding: 2px;
+        word-wrap: break-word;
+        vertical-align: top;
+        &.rowuser {
+          text-align: right;
+          width: 16px;
+        }
+        &.rowvote {
+          text-align: right;
+          width: 16px;
+        }
+      }
+      &.r1 > span {
+        background: $color_border !important;
+      }
+      &.r2 > span {
+        background: $color_san_juan_approx !important;
+      }
+    }
+  }
+  &.errorbox {
+    h2 {
+      background: $color_burnt_umber_approx;
+    }
+    .content {
+      background: $color_tosca_approx;
+      text-align: center;
+      ul {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        list-style: none;
+        li {
+          margin: 1px;
+          padding: 2px;
+        }
+      }
+    }
+    a {
+      color: $color_geraldine_approx;
+    }
+    .foot {
+      background: $color_matrix_approx;
+    }
+  }
+  &.successbox {
+    h2 {
+      background: $color_forest_green_approx;
+    }
+    .content {
+      background: $color_hippie_green_approx;
+      text-align: center;
+    }
+    a {
+      color: $color_mint_green_approx;
+    }
+    .foot {
+      background: $color_forest_green_approx;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+div.jqcloud {
+  overflow: hidden;
+  position: relative;
+}
+
+div.jqcloud span {
+  padding: 0;
+}
+
+/* fonts */
+div.jqcloud {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 10px;
+  line-height: normal;
+}
+
+div.jqcloud a {
+  font-size: inherit;
+  text-decoration: none;
+}
+
+div.jqcloud span.w10 { font-size: 550%; }
+div.jqcloud span.w9 { font-size: 500%; }
+div.jqcloud span.w8 { font-size: 450%; }
+div.jqcloud span.w7 { font-size: 400%; }
+div.jqcloud span.w6 { font-size: 350%; }
+div.jqcloud span.w5 { font-size: 300%; }
+div.jqcloud span.w4 { font-size: 250%; }
+div.jqcloud span.w3 { font-size: 200%; }
+div.jqcloud span.w2 { font-size: 150%; }
+div.jqcloud span.w1 { font-size: 100%; }
+
+/* colors */
+span.jqcloud { color: #ffbf00; }
+span.jqcloud a { color: inherit; }
+span.jqcloud a:hover { color: #ffdf00; }
+span.jqcloud a:hover { color: #ffdf00; }
+span.jqcloud a.w10 { color: #ffbf00; font-size:4.2em; }
+span.jqcloud a.w9 { color: #ffbf00; font-size:3.9em; }
+span.jqcloud a.w8 { color: #ffbf00; font-size:3.6em; }
+span.jqcloud a.w7 { color: #ffbf00; font-size:3.3em; }
+span.jqcloud a.w6 { color: #ffbf00; font-size:3.0em; }
+span.jqcloud a.w5 { color: #ffbf00; font-size:2.6em; }
+span.jqcloud a.w4 { color: #ffbf00; font-size:2.2em; }
+span.jqcloud a.w3 { color: #ffbf00; font-size:1.8em; }
+span.jqcloud a.w2 { color: #ffbf00; font-size:1.4em; }
+span.jqcloud a.w1 { color: #ffbf00; font-size:1.0em; }
