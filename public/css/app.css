@@ -1352,7 +1352,7 @@ span.jqcloud a.w1 {
   padding: 0;
   list-style: none; }
   .editormd-menu > li {
-    margin: 0;
+    margin: 0 !important;
     padding: 5px 1px;
     display: inline-block;
     position: relative; }
