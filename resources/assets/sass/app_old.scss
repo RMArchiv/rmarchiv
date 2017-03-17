@@ -86,90 +86,6 @@ $url_32: url(/assets/icon_rmarchiv.png);
 $url_33: url(/assets/icon_demozoo.png);
 $url_lang_16_de: url(/assets/lng/16/de.png);
 
-//@extend-elements
-//original selectors
-//input, select, option
-%extend_1 {
-  font-size: 9pt;
-  font-family: $font_0, $font_1, $font_2, $font_3, $font_4;
-  font-weight: normal;
-}
-
-//original selectors
-//input[type="submit"][value="Submit"], input[type="submit"][value="submit"]
-%extend_2 {
-  background: $url_submit top left no-repeat;
-  width: 45px;
-  height: 18px;
-  overflow: hidden;
-  text-indent: -90px;
-  border: 0;
-  cursor: hand;
-  cursor: pointer;
-  color: transparent;
-}
-
-//original selectors
-//input[type="submit"][value="preview"], input[type="submit"][value="Preview"], #submitPreview
-%extend_3 {
-  background: $url_preview top left no-repeat;
-  margin-right: 3px;
-  width: 45px;
-  height: 18px;
-  overflow: hidden;
-  text-indent: -90px;
-  border: 0;
-  cursor: hand;
-  cursor: pointer;
-  color: transparent;
-}
-
-//original selectors
-//.platform, .platformi
-%extend_5 {
-  width: 16px;
-  height: 16px;
-  background-repeat: no-repeat;
-  display: inline-block;
-  vertical-align: middle;
-  overflow: hidden;
-  line-height: 100px;
-  background-image: $url_12;
-}
-
-//original selectors
-//.type, .typei
-%extend_6 {
-  width: 16px;
-  height: 16px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-  overflow: hidden;
-  line-height: 100px;
-  background-image: $url_12;
-}
-
-//original selectors
-//.bbs_code, .bbs_quote
-%extend_7 {
-  margin-left: 2em;
-  margin-right: 2em;
-  margin-top: .5em;
-  margin-bottom: .5em;
-  display: block;
-}
-
-//original selectors
-//.bbs_quote blockquote, .bbs_code code
-%extend_8 {
-  border: 1px solid $color_polo_blue_approx;
-  background-color: $color_kashmir_blue_approx;
-  padding: .5em;
-  margin-top: .5em;
-  display: block;
-}
-
 //original selectors
 //#rmarchivbox_latestparties ul, #rmarchivbox_upcomingparties ul
 %extend_9 {
@@ -207,100 +123,11 @@ $url_lang_16_de: url(/assets/lng/16/de.png);
   font-weight: bold;
 }
 
-input {
-  @extend %extend_1;
-  padding: 2px;
-  &.autocompleteSearch {
-    width: 200px !important;
-    background: $color_white $url_27 center right no-repeat;
-  }
-}
-select {
-  @extend %extend_1;
-}
-option {
-  @extend %extend_1;
-}
-textarea {
-  font-family: $font_0, $font_1, $font_2, $font_3, $font_4;
-  font-size: 9pt;
-  padding: 2px;
-}
-select[multiple="multiple"] {
-  display: block;
-  padding: 1px;
-  option {
-    display: block;
-    padding: 1px;
-  }
-}
-input[type="submit"][value="Submit"] {
-  @extend %extend_2;
-}
-input[type="submit"][value="submit"] {
-  @extend %extend_2;
-}
-input[type="submit"][value="preview"] {
-  @extend %extend_3;
-}
-input[type="submit"][value="Preview"] {
-  @extend %extend_3;
-}
 #submitPreview {
   @extend %extend_3;
 }
 
-.center {
-  text-align: center;
-}
 
-#rmarchivbox_search {
-  h2 {
-    padding-left: 22px;
-    padding-bottom: 2px;
-    background: $color_kashmir_blue_approx $url_search top left no-repeat;
-    background-position: 2px 2px;
-  }
-  .content {
-    background: $color_kashmir_blue_approx;
-    &.buttons {
-      background: $color_bismark_approx;
-    }
-  }
-  input[type="text"] {
-    width: 80%;
-  }
-  #searchType {
-    list-style: none;
-    li {
-      display: inline-block;
-      margin: 1px;
-    }
-  }
-}
-
-#rmarchivbox_pm {
-  width: 100%;
-  th {
-    &.header {
-      padding: 0;
-      padding-left: 22px;
-      padding-bottom: 2px;
-      background-color: $color_kashmir_blue_approx;
-      background-position: 2px 2px;
-      text-align: left;
-    }
-    &:nth-child(2) {
-      text-align: right;
-    }
-  }
-  .stat {
-    text-align: right;
-  }
-  td:nth-child(2) {
-    text-align: right;
-  }
-}
 #rmarchivbox_upcomingparties {
   text-transform: lowercase;
   h2 {
@@ -323,6 +150,7 @@ input[type="submit"][value="Preview"] {
     text-align: right;
   }
 }
+
 .rmarchivbox_newsbox {
   h3 {
     padding: 3px;
@@ -343,65 +171,7 @@ input[type="submit"][value="Preview"] {
     margin-bottom: 10px;
   }
 }
-.typeiconlist {
-  display: inline-block;
-  margin-right: 4px;
-  vertical-align: middle;
-}
-.platformiconlist {
-  display: inline-block;
-  float: right;
-  margin-left: 4px;
-  vertical-align: middle;
-}
-.platform {
-  @extend %extend_5;
-  span {
-    display: none;
-  }
-}
-.platformi {
-  @extend %extend_5;
-  float: right;
-  span {
-    display: none;
-  }
-}
-.type {
-  @extend %extend_6;
-  span {
-    display: none;
-  }
-}
-.typei {
-  @extend %extend_6;
-  float: left;
-}
-.user {
-  &.online {
-    background: $url_13 no-repeat scroll left 4px transparent;
-    padding-left: 10px;
-  }
-  &.banned {
-    color: $color_sunset_orange_approx;
-    text-decoration: line-through;
-  }
-}
-.avatar {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  vertical-align: -25%;
-  width: 16px;
-  height: 16px;
-  image-rendering: pixelated;
-}
 
-#prodpagecontainer {
-  margin: 0 auto;
-  max-width: 900px;
-  display: table;
-}
 #rmarchivbox_onelinerview {
   width: 75%;
   time {
@@ -429,53 +199,7 @@ input[type="submit"][value="Preview"] {
     }
   }
 }
-#rmarchivbox_prodcomments {
-  display: block;
-  width: 100%;
-  max-width: 900px;
-  .content {
-    overflow: hidden;
-  }
-  .foot {
-    font-weight: normal;
-    .tools {
-      display: none;
-    }
-    &:hover .tools {
-      display: inline;
-    }
-  }
-  img {
-    max-width: 95%;
-    max-width: 95%;
-  }
-  div:target .content {
-    border: 3px solid $color_polo_blue_approx;
-    padding: 5px;
-  }
-  .comment.author {
-    .content {
-      background: $color_victoria_approx;
-    }
-    .foot {
-      background: $color_kimberly_approx;
-    }
-    a {
-      color: $color_prelude_approx;
-    }
-    &:target .content {
-      border: 3px solid $color_fog_approx;
-    }
-    .bbs_quote blockquote {
-      background-color: $color_affair_approx;
-      border: 1px solid $color_east_side_approx;
-    }
-    .bbs_code code {
-      background-color: $color_affair_approx;
-      border: 1px solid $color_east_side_approx;
-    }
-  }
-}
+
 #rmarchivbox_bbsview {
   width: 56%;
   display: block;
@@ -525,199 +249,11 @@ input[type="submit"][value="Preview"] {
     margin-bottom: 15px;
   }
 }
-#rmarchivbox_prodmain {
-  width: 100%;
-  margin: 10px auto;
-  background: $black;
-  border: 1px solid $black;
-  border-collapse: separate;
-  border-spacing: 1px;
-  #alltimerank {
-    font-size: 80%;
-    margin: 5px;
-  }
-  #nfo {
-    float: right;
-    margin-top: 6px;
-  }
-  #partytable {
-    border-collapse: collapse;
-    text-align: left;
-    td {
-      padding: 1px;
-      border: 1px solid $black;
-      padding: 2px;
-    }
-    th {
-      border: 1px solid $black;
-      padding: 2px;
-    }
-  }
-  ul {
-    list-style: none;
-  }
-  th {
-    background: $color_bay_of_many_approx;
-    padding: 3px;
-  }
-  td {
-    background: $color_bismark_approx;
-    padding: 2px;
-    &.r2 {
-      background: $color_kashmir_blue_approx;
-    }
-  }
-  big {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  #title {
-    float: left;
-  }
-  #otherlinks {
-    float: right;
-    margin-top: 4px;
-  }
-  #popularity {
-    text-align: center;
-    vertical-align: middle;
-  }
-  .cenmid {
-    text-align: center;
-    vertical-align: middle;
-  }
-  #links {
-    text-align: right;
-    vertical-align: bottom;
-    #mainDownloadLink {
-      font-weight: bold;
-    }
-    li {
-      text-transform: lowercase;
-    }
-  }
-  #screenshot {
-    text-align: center;
-    vertical-align: middle;
-  }
-  .foot {
-    text-align: right;
-    background: $color_bermuda_gray_approx;
-    font-weight: normal;
-  }
-  #stattable td {
-    border: 0;
-    text-align: left;
-    padding: 1px;
-    vertical-align: top;
-  }
-}
+
 #rmarchivbox_prodsneakycdcs {
   width: 100%;
 }
-.na {
-  color: $color_santas_gray_approx;
-}
-.ordinal {
-  color: $color_celeste_approx;
-}
-.asciiviewer {
-  .content {
-    padding: 5px;
-  }
-  #fontlist {
-    background: $color_bermuda_gray_approx;
-    text-align: center;
-    font-weight: bold;
-    padding: 2px;
-  }
-  .foot {
-    background: $color_bay_of_many_approx;
-  }
-  pre {
-    //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-    text-shadow: 4px 4px $color_rhino_approx;
-    white-space: pre-wrap;
-  }
-  pre::-moz-selection {
-    //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-    text-shadow: none;
-    background: $color_white;
-    color: $color_rhino_approx;
-  }
-  pre::-webkit-selection {
-    //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-    text-shadow: none;
-    background: $color_white;
-    color: $color_rhino_approx;
-  }
-  pre::selection {
-    //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-    text-shadow: none;
-    background: $color_white;
-    color: $color_rhino_approx;
-  }
-}
-.outerbar {
-  width: 100px;
-  height: 16px;
-  background: $black;
-  padding: 1px;
-  margin: 5px auto;
-  text-align: left;
-}
-.innerbar_solo {
-  background: $url_14 repeat-x;
-  padding: 0;
-  margin: 0;
-  height: 16px;
-  border: 1px solid $black;
-  span {
-    display: none;
-  }
-}
-.innerbar {
-  background: $url_14 repeat-x;
-  padding: 0;
-  margin: 0;
-  height: 16px;
-  span {
-    display: none;
-  }
-}
-#rmarchivbox_prodpopularityhelper {
-  width: 100%;
-  text-align: center;
-  input {
-    text-align: center;
-  }
-}
-#rmarchivbox_prodsubmitchanges {
-  width: 100%;
-  text-align: center;
-}
-.navbar {
-  background: $color_bay_of_many_approx;
-  font-weight: bold;
-  text-align: center;
-  margin: 1px;
-  color: $color_anakiwa_approx;
-  height: 22px;
-  clear: both;
-  padding: 4px;
-}
-.prevpage {
-  float: left;
-  margin: 4px;
-  padding-left: 16px;
-  background: $color_bay_of_many_approx $url_15 top left no-repeat;
-}
-.nextpage {
-  float: right;
-  margin: 4px;
-  padding-right: 16px;
-  background: $color_bay_of_many_approx $url_16 top right no-repeat;
-}
+
 #rmarchivbox_affilbutton {
   .content {
     text-align: center;
@@ -822,6 +358,7 @@ input[type="submit"][value="Preview"] {
     }
   }
 }
+
 .vote {
   float: left;
   margin: 0;
@@ -967,56 +504,11 @@ input[type="submit"][value="Preview"] {
     }
   }
 }
-.bbs_code {
-  @extend %extend_7;
-  code {
-    @extend %extend_8;
-    white-space: pre;
-    overflow: auto;
-  }
-}
-.bbs_quote {
-  @extend %extend_7;
-  blockquote {
-    @extend %extend_8;
-  }
-}
+
 #rmarchivbox_prodlist{
   width: 56%;
 }
 
-#rmarchivbox_prodpost {
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  textarea {
-    width: 435px;
-    height: 200px;
-  }
-  #prodvote {
-    margin: 3px;
-    vertical-align: middle;
-    label {
-      margin-right: 10px;
-      padding-left: 20px;
-      vertical-align: middle;
-      display: inline-block;
-      height: 16px;
-    }
-    input {
-      vertical-align: middle;
-    }
-    label[for="ratingrulez"] {
-      background: $rate_up top left no-repeat;
-    }
-    label[for="ratingpig"] {
-      background: $rate_neut top left no-repeat;
-    }
-    label[for="ratingsucks"] {
-      background: $rate_down top left no-repeat;
-    }
-  }
-}
 #rmarchivbox_grouplist {
   ul {
     list-style: none;
@@ -1028,16 +520,7 @@ input[type="submit"][value="Preview"] {
     }
   }
 }
-.letterselect {
-  text-align: center;
-  background: $color_bay_of_many_approx;
-  color: $color_white;
-  padding: 3px;
-  border: 0;
-  margin: 1px;
-  font-size: 100%;
-  font-weight: bold;
-}
+
 #rmarchivbox_modalmessage {
   width: 400px;
   .content h3 {
@@ -1116,19 +599,7 @@ input[type="submit"][value="Preview"] {
     }
   }
 }
-.votes {
-  text-align: right;
-}
-.cdcstack {
-  display: inline;
-  vertical-align: middle;
-  white-space: nowrap;
-}
-.awards {
-  display: inline;
-  vertical-align: middle;
-  margin-left: 5px;
-}
+
 #rmarchivbox_latestparties {
   text-transform: lowercase;
   ul {
@@ -1145,107 +616,14 @@ input[type="submit"][value="Preview"] {
     text-align: right;
   }
 }
-.formifier {
-  .row {
-    display: table-row;
-    > * {
-      display: table-cell;
-      margin: 3px;
-      vertical-align: middle;
-    }
-    .static {
-      font-weight: bold;
-    }
-    > label {
-      text-align: right;
-      padding: 5px;
-      width: 150px;
-    }
-    > span {
-      font-style: italic;
-      padding: 5px;
-      span.req {
-        color: $color_geraldine_approx;
-        font-weight: bold;
-      }
-    }
-    > input {
-      width: 250px;
-    }
-    > textarea {
-      width: 250px;
-      height: 150px;
-    }
-    > input[type="checkbox"] {
-      width: auto;
-      vertical-align: middle;
-    }
-    > input[type="url"] {
-      width: 400px;
-    }
-    .formdate {
-      text-transform: lowercase;
-      padding: 3px;
-    }
-  }
-  .infoAfter {
-    font-style: italic;
-    margin-left: 160px;
-    padding: 5px 5px 10px;
-    width: 400px;
-  }
-  #row_login div {
-    font-weight: bold;
-    padding: 5px;
-  }
-  #row_avatar select {
-    margin: 3px;
-    width: 250px;
-  }
-}
-input[type="url"] {
-  width: 400px;
-}
+
 #rmarchivbox_mirrors {
   width: 50%;
   ul {
     margin-left: 20px;
   }
 }
-.autocompleteList {
-  border: 1px solid $color_white;
-  position: absolute;
-  list-style: none;
-  z-index: 20;
-  background: $color_bismark_approx;
-  li {
-    padding: 3px;
-    margin: 0;
-    overflow: hidden;
-    white-space: pre;
-    &.selected {
-      font-weight: bold;
-      background: $color_kashmir_blue_approx;
-    }
-    &:hover {
-      background: $color_bermuda_gray_approx;
-      cursor: pointer;
-    }
-    .glops {
-      color: $color_santas_gray_approx;
-    }
-    .group {
-      color: $color_santas_gray_approx;
-      display: inline;
-    }
-  }
-}
-.submitWarning {
-  color: $color_geraldine_approx;
-  font-weight: bold;
-  margin-left: 170px;
-  padding: 5px;
-}
+
 #rmarchivbox_avatargallery {
   width: 610px;
 }
@@ -1486,26 +864,7 @@ input[type="url"] {
     width: 600px;
   }
 }
-.customizerBox {
-  border: 1px solid $black;
-  background: $black;
-  margin-bottom: 5px;
-  min-width: 250px;
-  .controls {
-    float: right;
-    input {
-      border: 0;
-      font-size: 9px;
-      padding: 0;
-      width: 14px;
-      height: 14px;
-      vertical-align: top;
-    }
-  }
-  .content input[type='number'] {
-    width: 50px;
-  }
-}
+
 #rmarchivbox_customizer {
   .column {
     min-width: 340px;
@@ -1538,20 +897,7 @@ input[type="url"] {
     width: 240px;
   }
 }
-optgroup option {
-  padding-left: 15px;
-}
-.frontpage .rmarchivtbl {
-  display: block;
-}
-.boxlist > * {
-  &:nth-child(odd) {
-    background: $color_border;
-  }
-  &:nth-child(even) {
-    background: $color_san_juan_approx;
-  }
-}
+
 #partytable tr {
   &:nth-child(odd) td {
     background: $color_border;
@@ -1592,38 +938,7 @@ optgroup option {
 #rmarchivbox_partylist td.partyname {
   font-weight: bold;
 }
-tr.sortable th {
-  text-align: left;
-  #sort_platform {
-    float: right;
-  }
-  a {
-    background: $url_23 no-repeat;
-    background-position: 0 2px;
-    padding-left: 16px;
-    &.selected {
-      background-image: $url_24;
-    }
-    &.reverse {
-      background-image: $url_25;
-      &.selected {
-        background-image: $url_26;
-      }
-    }
-  }
-  #sort_thumbup {
-    background: none;
-    padding-left: 0;
-  }
-  #sort_thumbpig {
-    background: none;
-    padding-left: 0;
-  }
-  #sort_thumbdown {
-    background: none;
-    padding-left: 0;
-  }
-}
+
 #rmarchivbox_partyview td.prod {
   font-weight: normal;
   * {
@@ -1633,9 +948,7 @@ tr.sortable th {
     display: inline;
   }
 }
-.pagedtable .name {
-  font-weight: bold;
-}
+
 #rmarchivbox_searchbbs .searchhighlight {
   background: $yellow;
   color: $black;
@@ -1690,19 +1003,10 @@ tr.sortable th {
     margin: 2px 8px;
   }
 }
-.loggedout a {
-  width: 200px;
-  height: 32px;
-  line-height: 32px;
-  display: block;
-  margin: 5px auto 5px;
-}
+
 #rmarchivbox_admin ul {
   list-style: none;
 }
-.brokenLink.error {
-  color: $color_bittersweet_approx;
-  font-weight: bold;
-}
+
 
 select#language option[value="de"] {background-image:$url_lang_16_de;}
