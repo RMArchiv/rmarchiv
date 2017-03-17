@@ -23,6 +23,8 @@
 .editormd {
     
     .CodeMirror {
+        background-color: #17395c;
+        color: $color_text;
         z-index: 10;
         float: left;
         border-right: 1px solid $borderColor;
@@ -36,17 +38,26 @@
             padding: 0 12px;
 		}
     }
+
+    .CodeMirror-gutters {
+        background-color: #17395c;
+        border-right-color: #00001a;
+    }
     
     .CodeMirror-linenumbers {
         padding: 0 5px;
     }
 
     .CodeMirror-selected {
-        background: #70B7FF;
+        background: #4e6f90;
     }
 
-    .CodeMirror-focused .CodeMirror-selected { 
-        background: #70B7FF; 
+    .CodeMirror-activeline-background{
+        background: #4e6f90;
+    }
+
+    .CodeMirror-focused .CodeMirror-selected {
+        background: #4e6f90;
     }
 
     .CodeMirror, .CodeMirror-scroll, #{$prefix}preview {

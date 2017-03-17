@@ -790,6 +790,9 @@
   #rmarchivbox_pm td:nth-child(2) {
     text-align: right; }
 
+#rmarchivbox_submitnews {
+  width: 56%; }
+
 .tt-input,
 .tt-hint {
   top: -5px;
@@ -1273,7 +1276,7 @@ span.jqcloud a.w1 {
   overflow: hidden;
   position: relative;
   margin-bottom: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid #00001a;
   font-family: "Meiryo UI", "Microsoft YaHei", "Malgun Gothic", "Segoe UI", "Trebuchet MS", Helvetica, "Monaco", monospace, Tahoma, STXihei, "华文细黑", STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, "宋体", Heiti, "黑体", sans-serif; }
   .editormd *, .editormd *:before, .editormd *:after {
     box-sizing: border-box; }
@@ -1330,13 +1333,13 @@ span.jqcloud a.w1 {
 .editormd-toolbar {
   width: 100%;
   min-height: 37px;
-  background: #fff;
+  background: #17395c;
   display: none;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 10;
-  border-bottom: 1px solid #ddd; }
+  border-bottom: 1px solid #00001a; }
 
 .editormd-toolbar-container {
   padding: 0 8px;
@@ -1361,25 +1364,26 @@ span.jqcloud a.w1 {
       text-indent: -9999px;
       margin: 0 5px;
       height: 65%;
-      border-right: 1px solid #ddd; }
+      border-right: 1px solid #00001a; }
     .editormd-menu > li > a {
       outline: 0;
-      color: #666;
+      color: #ffbf00;
       display: inline-block;
       min-width: 24px;
       font-size: 16px;
       text-decoration: none;
       text-align: center;
       border-radius: 2px;
-      border: 1px solid #fff;
+      border: 1px solid #17395c;
       -webkit-transition: all 300ms ease-out;
       /* Safari, Chrome */
       /* Firefox 4.0~16.0 */
       transition: all 300ms ease-out;
       /* IE >9, FF >15, Opera >12.0 */ }
       .editormd-menu > li > a:hover, .editormd-menu > li > a.active {
-        border: 1px solid #ddd;
-        background: #eee; }
+        border: 1px solid #ffdf00;
+        color: #ffdf00;
+        background: #4e6f90; }
       .editormd-menu > li > a > .fa {
         text-align: center;
         display: block;
@@ -1794,6 +1798,8 @@ span.jqcloud a.w1 {
   background: #fff; }
 
 .editormd .CodeMirror {
+  background-color: #17395c;
+  color: #ffffe0;
   z-index: 10;
   float: left;
   border-right: 1px solid #ddd;
@@ -1805,14 +1811,21 @@ span.jqcloud a.w1 {
     font-size: 14px;
     padding: 0 12px; }
 
+.editormd .CodeMirror-gutters {
+  background-color: #17395c;
+  border-right-color: #00001a; }
+
 .editormd .CodeMirror-linenumbers {
   padding: 0 5px; }
 
 .editormd .CodeMirror-selected {
-  background: #70B7FF; }
+  background: #4e6f90; }
+
+.editormd .CodeMirror-activeline-background {
+  background: #4e6f90; }
 
 .editormd .CodeMirror-focused .CodeMirror-selected {
-  background: #70B7FF; }
+  background: #4e6f90; }
 
 .editormd .CodeMirror, .editormd .CodeMirror-scroll, .editormd .editormd-preview {
   -webkit-overflow-scrolling: touch; }
