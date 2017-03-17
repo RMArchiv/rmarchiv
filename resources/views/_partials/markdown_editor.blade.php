@@ -37,9 +37,6 @@
                     "watch", "preview", "fullscreen", "clear", "search"
                 ]
             },
-            onresize : function(){
-                this.resize("99%", 320);
-            },
             lang : {
                 name : "en",
                 description : "Open source online Markdown editor.",
