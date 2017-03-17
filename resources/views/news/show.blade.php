@@ -8,7 +8,7 @@
                     <h2>
                         {{ $news->title }}
                     </h2>
-                    <div class="content">
+                    <div class="content markdown">
                         {!! $news->news_html !!}
                     </div>
                     <div class="foot">

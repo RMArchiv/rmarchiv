@@ -736,6 +736,9 @@
 .typei {
   float: left; }
 
+#rmarchivbox_submitprod {
+  width: 57%; }
+
 .bbs_code, .bbs_quote {
   margin-left: 2em;
   margin-right: 2em;
@@ -753,6 +756,70 @@
 .bbs_code code {
   white-space: pre;
   overflow: auto; }
+
+#rmarchivbox_bbsview {
+  width: 56%;
+  display: block; }
+  #rmarchivbox_bbsview .content {
+    overflow: hidden;
+    margin-bottom: -15px; }
+  #rmarchivbox_bbsview .blank {
+    background: #224488;
+    height: 16px; }
+  #rmarchivbox_bbsview .threadcategory {
+    background: #446688;
+    text-align: center;
+    padding: 2px;
+    border: 0;
+    margin: 1px; }
+  #rmarchivbox_bbsview .foot {
+    font-weight: normal; }
+    #rmarchivbox_bbsview .foot .tools {
+      display: none; }
+    #rmarchivbox_bbsview .foot:hover .tools {
+      display: inline; }
+  #rmarchivbox_bbsview .selector {
+    width: 320px;
+    margin: 0 auto; }
+  #rmarchivbox_bbsview p {
+    margin-bottom: 15px; }
+  #rmarchivbox_bbsview h2 {
+    text-align: center;
+    overflow: hidden; }
+  #rmarchivbox_bbsview img {
+    max-width: 95%; }
+  #rmarchivbox_bbsview div:target {
+    border: 3px solid #88aacc;
+    padding: 5px; }
+  #rmarchivbox_bbsview li:last-child {
+    margin-bottom: 15px; }
+
+#rmarchivbox_bbspost {
+  width: 56%;
+  margin: 0 auto; }
+  #rmarchivbox_bbspost .foot {
+    font-weight: normal;
+    background: #224488; }
+  #rmarchivbox_bbspost .content {
+    padding: 5px; }
+  #rmarchivbox_bbspost textarea {
+    width: 500px;
+    height: 200px; }
+  #rmarchivbox_bbspost #submitPreview {
+    background: url(/assets/previewdxm.gif) top left no-repeat; }
+
+#rmarchivbox_bbsopen {
+  width: 56%;
+  margin: 0 auto; }
+  #rmarchivbox_bbsopen .content {
+    padding: 5px; }
+  #rmarchivbox_bbsopen textarea {
+    width: 500px;
+    height: 200px; }
+  #rmarchivbox_bbsopen #topic {
+    width: 300px; }
+  #rmarchivbox_bbsopen label {
+    display: block; }
 
 #rmarchivbox_search h2 {
   padding-left: 22px;
@@ -792,6 +859,47 @@
 
 #rmarchivbox_submitnews {
   width: 56%; }
+
+.markdown ul li {
+  list-style-type: disc; }
+
+.markdown p {
+  margin: 10px; }
+
+.markdown blockquote {
+  margin-left: 16px;
+  background-color: #4e6f90; }
+
+.markdown blockquote:before {
+  content: "Zitat"; }
+
+.markdown h1 {
+  display: block;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold; }
+
+.markdown h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  background-color: transparent; }
+
+.markdown h3 {
+  display: block;
+  font-size: 1.17em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold; }
 
 .tt-input,
 .tt-hint {
