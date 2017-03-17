@@ -97,8 +97,8 @@
                     {!! Form::hidden('content_id', $news->id) !!}
                     {!! Form::hidden('content_type', 'news') !!}
                         <div class='content'>
-                            {{ CheckRateable::checkRateable('news', $news->id, Auth::id()) }}
-                            @if(CheckRateable::checkRateable('news', $news->id, Auth::id()) === true)
+                            {{ \App\Helpers\CheckRateableHelper::checkRateable('news', $news->id, Auth::id()) }}
+                            @if(\App\Helpers\CheckRateableHelper::checkRateable('news', $news->id, Auth::id()) === true)
                             <div id='prodvote'>
                                 hier wird diese news bewertet:<br>
                                 diese news<br>
