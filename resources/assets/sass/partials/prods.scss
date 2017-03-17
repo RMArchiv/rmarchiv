@@ -1,0 +1,237 @@
+#prodpagecontainer {
+  margin: 0 auto;
+  max-width: 900px;
+  display: table;
+}
+
+#rmarchivbox_prodmain {
+  width: 100%;
+  margin: 10px auto;
+  background: $black;
+  border: 1px solid $black;
+  border-collapse: separate;
+  border-spacing: 1px;
+  #alltimerank {
+    font-size: 80%;
+    margin: 5px;
+  }
+  #nfo {
+    float: right;
+    margin-top: 6px;
+  }
+  #partytable {
+    border-collapse: collapse;
+    text-align: left;
+    td {
+      padding: 1px;
+      border: 1px solid $black;
+      padding: 2px;
+    }
+    th {
+      border: 1px solid $black;
+      padding: 2px;
+    }
+  }
+  ul {
+    list-style: none;
+  }
+  th {
+    background: $color_bay_of_many_approx;
+    padding: 3px;
+  }
+  td {
+    background: $color_bismark_approx;
+    padding: 2px;
+    &.r2 {
+      background: $color_kashmir_blue_approx;
+    }
+  }
+  big {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  #title {
+    float: left;
+  }
+  #otherlinks {
+    float: right;
+    margin-top: 4px;
+  }
+  #popularity {
+    text-align: center;
+    vertical-align: middle;
+  }
+  .cenmid {
+    text-align: center;
+    vertical-align: middle;
+  }
+  #links {
+    text-align: right;
+    vertical-align: bottom;
+    #mainDownloadLink {
+      font-weight: bold;
+    }
+    li {
+      text-transform: lowercase;
+    }
+  }
+  #screenshot {
+    text-align: center;
+    vertical-align: middle;
+  }
+  .foot {
+    text-align: right;
+    background: $color_bermuda_gray_approx;
+    font-weight: normal;
+  }
+  #stattable td {
+    border: 0;
+    text-align: left;
+    padding: 1px;
+    vertical-align: top;
+  }
+}
+
+#rmarchivbox_prodpopularityhelper {
+  width: 100%;
+  text-align: center;
+  input {
+    text-align: center;
+  }
+}
+
+#rmarchivbox_prodcomments {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  .content {
+    overflow: hidden;
+  }
+  .foot {
+    font-weight: normal;
+    .tools {
+      display: none;
+    }
+    &:hover .tools {
+      display: inline;
+    }
+  }
+  img {
+    max-width: 95%;
+    max-width: 95%;
+  }
+  div:target .content {
+    border: 3px solid $color_polo_blue_approx;
+    padding: 5px;
+  }
+  .comment.author {
+    .content {
+      background: $color_victoria_approx;
+    }
+    .foot {
+      background: $color_kimberly_approx;
+    }
+    a {
+      color: $color_prelude_approx;
+    }
+    &:target .content {
+      border: 3px solid $color_fog_approx;
+    }
+    .bbs_quote blockquote {
+      background-color: $color_affair_approx;
+      border: 1px solid $color_east_side_approx;
+    }
+    .bbs_code code {
+      background-color: $color_affair_approx;
+      border: 1px solid $color_east_side_approx;
+    }
+  }
+}
+
+#rmarchivbox_prodsubmitchanges {
+  width: 100%;
+  text-align: center;
+}
+
+#rmarchivbox_prodpost {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  textarea {
+    width: 435px;
+    height: 200px;
+  }
+  #prodvote {
+    margin: 3px;
+    vertical-align: middle;
+    label {
+      margin-right: 10px;
+      padding-left: 20px;
+      vertical-align: middle;
+      display: inline-block;
+      height: 16px;
+    }
+    input {
+      vertical-align: middle;
+    }
+    label[for="ratingrulez"] {
+      background: $rate_up top left no-repeat;
+    }
+    label[for="ratingpig"] {
+      background: $rate_neut top left no-repeat;
+    }
+    label[for="ratingsucks"] {
+      background: $rate_down top left no-repeat;
+    }
+  }
+}
+
+.prodentry .prod {
+  vertical-align: middle;
+}
+
+.group {
+  display: block;
+  text-transform: lowercase;
+  clear: both;
+}
+.prod {
+  font-weight: bold;
+  text-transform: lowercase;
+}
+
+.typeiconlist {
+  display: inline-block;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+.platformiconlist {
+  display: inline-block;
+  float: right;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.platform {
+  @extend %extend_5;
+  span {
+    display: none;
+  }
+}
+.platformi {
+  @extend %extend_5;
+  float: right;
+  span {
+    display: none;
+  }
+}
+.type {
+  @extend %extend_6;
+  span {
+    display: none;
+  }
+}
+.typei {
+  @extend %extend_6;
+  float: left;
+}

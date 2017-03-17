@@ -1,37 +1,84 @@
+//colors
+$color_background: #00001a;
+$color_text: #ffffe0;
+$color_link: #ffbf00;
+$color_link_hover: #ffdf00;
+$color_san_juan_approx: #2d4f74;
+$color_nav_border: #2d4f74;
+$color_border: #17395c;
+$color_anakiwa_approx: #9fcfff;
+$color_flesh_approx: #ffcf9f;
+$color_white: white;
+$color_kashmir_blue_approx: #4e6f90;
+$color_box_header_background: #4e6f90;
+$black: #000000;
+$color_bismark_approx: #446688;
+$color_bay_of_many_approx: #224488;
+$color_my_sin_approx: #ffaf1f;
+$color_sunset_orange_approx: #ff4f4f;
+$color_celeste_approx: #cccccc;
+$color_bermuda_gray_approx: #6688aa;
+$color_santas_gray_approx: #9999aa;
+$color_rhino_approx: #224466;
+$color_polo_blue_approx: #88aacc;
+$color_fog_approx: #e8d1ff;
+$color_victoria_approx: #5c5288;
+$color_kimberly_approx: #7a76a8;
+$color_prelude_approx: #d0bbe4;
+$color_affair_approx: #775599;
+$color_east_side_approx: #aa88cc;
+$color_san_marino_approx: #3a6ea5;
+$yellow: yellow;
+$color_geraldine_approx: #ff8888;
+$color_burnt_umber_approx: #883022;
+$color_tosca_approx: #884446;
+$color_matrix_approx: #aa5555;
+$color_forest_green_approx: #228830;
+$color_hippie_green_approx: #468844;
+$color_mint_green_approx: #88ff88;
+$color_claret_approx: #882230;
+$color_bittersweet_approx: #f66;
 
-// Body
-$body-bg: #f5f8fa;
+//fonts
+$font_0: Tahoma;
+$font_1: Verdana;
+$font_2: Arial;
+$font_3: Helvetica;
+$font_4: sans-serif;
 
-// Borders
-$laravel-border-color: darken($body-bg, 10%);
-$list-group-border: $laravel-border-color;
-$navbar-default-border: $laravel-border-color;
-$panel-default-border: $laravel-border-color;
-$panel-inner-border: $laravel-border-color;
-
-// Brands
-$brand-primary: #3097D1;
-$brand-info: #8eb4cb;
-$brand-success: #2ab27b;
-$brand-warning: #cbb956;
-$brand-danger: #bf5329;
-
-// Typography
-$font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 14px;
-$line-height-base: 1.6;
-$text-color: #636b6f;
-
-// Navbar
-$navbar-default-bg: #fff;
-
-// Buttons
-$btn-default-color: $text-color;
-
-// Inputs
-$input-border: lighten($text-color, 40%);
-$input-border-focus: lighten($brand-primary, 25%);
-$input-color-placeholder: lighten($text-color, 30%);
-
-// Panels
-$panel-default-heading-bg: #fff;
+//urls
+$url_submit: url(/assets/submit.gif);
+$url_preview: url(/assets/preview.png);
+$url_white_box: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAQMAAACTPww9AAAAA1BMVEX8/vwlkMVqAAAACklEQVR4XmOAAgAACAABnWENdQAAAABJRU5ErkJggg==);
+$url_talk: url(/assets/talk.gif);
+$url_search: url(/assets/search.gif);
+$url_5: url(/assets/poundsoff.gif);
+$url_6: url(/assets/twitter.png);
+$url_7: url(/assets/wanted.png);
+$url_8: url(/assets/stats.gif);
+$url_9: url(/assets/cdc.png);
+$url_10: url(/assets/dpnet.gif);
+$url_11: url(/assets/bitfellas.gif);
+$url_12: url(/assets/types.png);
+$url_13: url(/assets/online.png);
+$url_14: url(/assets/bar.png);
+$url_15: url(/assets/flecheg.png);
+$url_16: url(/assets/fleched.png);
+$url_17: url(/assets/trumpet.png);
+$rate_up: url(/assets/rate_up.gif);
+$rate_down: url(/assets/rate_down.gif);
+$rate_neut: url(/assets/rate_neut.gif);
+$url_21: url(/assets/coupdecoeur.gif);
+$url_22: url(/assets/previewdxm.gif);
+$url_23: url(/assets/sort_up.png);
+$url_24: url(/assets/sort_up_active.png);
+$url_25: url(/assets/sort_down.png);
+$url_26: url(/assets/sort_down_active.png);
+$url_27: url(/assets/autocomplete.png);
+$url_28: url(/assets/avatar-example.png);
+$url_29: url(/assets/watchlist-on.png);
+$url_30: url(/assets/watchlist-off.png);
+$url_31: url(/assets/icon_youtube.png);
+$url_32: url(/assets/icon_rmarchiv.png);
+$url_33: url(/assets/icon_demozoo.png);
+$url_lang_16_de: url(/assets/lng/16/de.png);

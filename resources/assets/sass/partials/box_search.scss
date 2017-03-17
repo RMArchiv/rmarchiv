@@ -1,0 +1,24 @@
+#rmarchivbox_search {
+  h2 {
+    padding-left: 22px;
+    padding-bottom: 2px;
+    background: $color_kashmir_blue_approx $url_search top left no-repeat;
+    background-position: 2px 2px;
+  }
+  .content {
+    background: $color_kashmir_blue_approx;
+    &.buttons {
+      background: $color_bismark_approx;
+    }
+  }
+  input[type="text"] {
+    width: 80%;
+  }
+  #searchType {
+    list-style: none;
+    li {
+      display: inline-block;
+      margin: 1px;
+    }
+  }
+}

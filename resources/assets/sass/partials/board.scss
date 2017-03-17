@@ -1,0 +1,35 @@
+//original selectors
+//.bbs_code, .bbs_quote
+%extend_7 {
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  display: block;
+}
+
+//original selectors
+//.bbs_quote blockquote, .bbs_code code
+%extend_8 {
+  border: 1px solid $color_polo_blue_approx;
+  background-color: $color_kashmir_blue_approx;
+  padding: .5em;
+  margin-top: .5em;
+  display: block;
+}
+
+
+.bbs_code {
+  @extend %extend_7;
+  code {
+    @extend %extend_8;
+    white-space: pre;
+    overflow: auto;
+  }
+}
+.bbs_quote {
+  @extend %extend_7;
+  blockquote {
+    @extend %extend_8;
+  }
+}
