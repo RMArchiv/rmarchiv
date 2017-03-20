@@ -860,6 +860,50 @@
 #rmarchivbox_submitnews {
   width: 56%; }
 
+.rmarchivbox_newsbox h3 {
+  padding: 3px;
+  border: 0;
+  margin: 1px;
+  padding-left: 22px;
+  padding-bottom: 2px;
+  background: #4e6f90 url(/assets/bitfellas.gif) top left no-repeat;
+  background-position: 3px 3px;
+  color: #ffffe0;
+  font-size: 100%; }
+
+.rmarchivbox_newsbox .foot {
+  font-weight: normal; }
+
+.rmarchivbox_newsbox .content p {
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
+#rmarchivbox_faq {
+  width: 75%; }
+  #rmarchivbox_faq dd {
+    background: #4e6f90;
+    padding: 5px;
+    padding-left: 30px;
+    margin: 1px; }
+    #rmarchivbox_faq dd p {
+      margin-top: 5px;
+      margin-bottom: 5px; }
+    #rmarchivbox_faq dd ul {
+      padding-left: 30px; }
+  #rmarchivbox_faq .content ul {
+    margin-bottom: 20px;
+    list-style: none; }
+  #rmarchivbox_faq .content li {
+    margin-left: 5px; }
+    #rmarchivbox_faq .content li:before {
+      content: "-- >"; }
+  #rmarchivbox_faq dt {
+    background: #446688;
+    font-weight: bold;
+    margin: 0 1px;
+    padding: 3px;
+    text-transform: lowercase; }
+
 .markdown ul li {
   list-style-type: disc; }
 

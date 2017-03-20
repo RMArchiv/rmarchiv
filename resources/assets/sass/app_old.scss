@@ -151,27 +151,6 @@ $url_lang_16_de: url(/assets/lng/16/de.png);
   }
 }
 
-.rmarchivbox_newsbox {
-  h3 {
-    padding: 3px;
-    border: 0;
-    margin: 1px;
-    padding-left: 22px;
-    padding-bottom: 2px;
-    background: $color_kashmir_blue_approx $url_11 top left no-repeat;
-    background-position: 3px 3px;
-    color: $color_text;
-    font-size: 100%;
-  }
-  .foot {
-    font-weight: normal;
-  }
-  .content p {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-}
-
 #rmarchivbox_onelinerview {
   width: 75%;
   time {
@@ -618,41 +597,7 @@ $url_lang_16_de: url(/assets/lng/16/de.png);
     display: block;
   }
 }
-#rmarchivbox_faq {
-  width: 75%;
-  dd {
-    background: $color_kashmir_blue_approx;
-    padding: 5px;
-    padding-left: 30px;
-    margin: 1px;
-    p {
-      margin-top: 5px;
-      margin-bottom: 5px;
-    }
-    ul {
-      padding-left: 30px;
-    }
-  }
-  .content {
-    ul {
-      margin-bottom: 20px;
-      list-style: none;
-    }
-    li {
-      margin-left: 5px;
-      &:before {
-        content: "-- >";
-      }
-    }
-  }
-  dt {
-    background: $color_bismark_approx;
-    font-weight: bold;
-    margin: 0 1px;
-    padding: 3px;
-    text-transform: lowercase;
-  }
-}
+
 #demoblog {
   .blogprod {
     background: $color_bay_of_many_approx;

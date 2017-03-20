@@ -52,7 +52,7 @@
                         <h2>kommentare</h2>
                         @foreach($comments as $comment)
                         <div class='comment cite-{{ $comment->user_id }}' id='c{{ $comment->id }}'>
-                            <div class='content'>
+                            <div class='content markdown'>
                                 {!! $comment->comment_html !!}
                             </div>
                             <div class='foot'>

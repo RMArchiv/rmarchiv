@@ -6,7 +6,7 @@
             <h2>{{ $thread->subject }} :: {{ $thread->participantsString(Auth::id()) }}</h2>
 
             @foreach($thread->messages as $post)
-                <div class='content cite-{{ $post->id  }}' id='c{{ $post->id }}'>{!! Markdown::convertToHtml($post->body) !!}</div>
+                <div class='content cite-{{ $post->id  }} markdown' id='c{{ $post->id }}'>{!! Markdown::convertToHtml($post->body) !!}</div>
                 <div class='foot'>
                     <span class='tools' data-cid='{{ $post->id }}'></span>
                     gepostet am
@@ -26,14 +26,7 @@
                 {!! Form::open(['route' => ['messages.update', $thread->id], 'method' => 'PUT']) !!}
                 <div class='content'>
                     nachricht:
-                    <textarea name='message' id='message'></textarea>
-                    <script type="text/javascript">
-                        $(function() {
-                            $('textarea').inlineattachment({
-                                uploadUrl: 'http://rmarchiv.de/attachment/upload',
-                            });
-                        });
-                    </script>
+                    @include('_partials.markdown_editor')
                     <br>
                     <br>
                     weitere user hinzufügen:

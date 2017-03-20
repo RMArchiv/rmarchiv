@@ -16,7 +16,7 @@
             </div>
             {{ $posts->links('vendor/pagination/board_thread') }}
             @foreach($posts as $post)
-                <div class='content cite-{{ $post->thread->id  }}' id='c{{ $post->id }}'>
+                <div class='content cite-{{ $post->thread->id  }} markdown' id='c{{ $post->id }}'>
                     {!! $post->content_html !!}
                 </div>
                 <div class='foot'>

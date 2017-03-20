@@ -25,7 +25,9 @@
                 <dt id='chg{{ $f['id'] }}'>:: {{ $f['title'] }}</dt>
                 <dd>
                     <p>
-                        {!! $f['desc_html'] !!}
+                        <div class="markdown">
+                            {!! $f['desc_html'] !!}
+                        </div>
                     </p>
                 </dd>
                 @endforeach

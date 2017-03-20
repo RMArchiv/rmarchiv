@@ -9,15 +9,7 @@
                     {!! Form::label('subject', 'betreff:', ['class' => 'control-label']) !!}
                     {!! Form::text('subject', null, ['class' => 'form-control']) !!}
 
-                    {!! Form::label('message', 'nachricht:', ['class' => 'control-label']) !!}
-                    {!! Form::textarea('message', null, ['class' => 'form-control']) !!}
-                    <script type="text/javascript">
-                        $(function() {
-                            $('textarea').inlineattachment({
-                                uploadUrl: 'http://rmarchiv.de/attachment/upload',
-                            });
-                        });
-                    </script>
+                    @include('_partials/markdown_editor')
 
                     <div>
                         empfänger: (mehrfachauswahl möglich)
