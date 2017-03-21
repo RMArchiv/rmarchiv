@@ -1,3 +1,4 @@
 #rmarchivbox_submitnews {
-  width: 56%;
+  min-width: $page_with_min;
+  max-width: $page_with_max;
 }

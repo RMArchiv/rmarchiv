@@ -1,5 +1,6 @@
 #rmarchivbox_faq {
-  width: 75%;
+  min-width: $page_with_min;
+  max-width: $page_with_max;
   dd {
     background: $color_kashmir_blue_approx;
     padding: 5px;

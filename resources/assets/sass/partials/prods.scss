@@ -1,6 +1,7 @@
 #prodpagecontainer {
   margin: 0 auto;
-  max-width: 900px;
+  min-width: $page_with_min;
+  max-width: $page_with_max;
   display: table;
 }
 
@@ -237,5 +238,6 @@
 }
 
 #rmarchivbox_submitprod {
-  width: 57%;
+  min-width: $page_with_min;
+  max-width: $page_with_max;
 }
