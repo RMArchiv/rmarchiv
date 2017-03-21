@@ -9,7 +9,6 @@ namespace App\Http\Controllers;
 
 use App\Events\Obyx;
 use App\Models\Logo;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 
