@@ -14,7 +14,7 @@
                         <div class="row" id="row_file">
                             <label for="file">datei wählen:</label>
                             <input name="file" id="file" type="file" value=""/>
-                            <span> [<span class="req">req</span>] 16*16px MAX! (gif,png,jpg)</span>
+                            <span> [<span class="req">req</span>] 160*160px MAX! (gif,png,jpg)</span>
                         </div>
                     </div>
                 </div>

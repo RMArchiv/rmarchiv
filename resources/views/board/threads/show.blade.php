@@ -17,7 +17,22 @@
             {{ $posts->links('vendor/pagination/board_thread') }}
             @foreach($posts as $post)
                 <div class='content cite-{{ $post->thread->id  }} markdown' id='c{{ $post->id }}'>
-                    {!! $post->content_html !!}
+                    <div class="userinfo">
+                        <b><a href='{{ url('users', $post->user->id) }}' class='user'>{{ $post->user->name }}</a></b>
+                        <br>
+                        <small>{{ $post->user->roles[0]->display_name}}</small>
+                        <br>
+                        <br>
+                        <a href='{{ url('users', $post->user->id) }}' class='usera' title="{{ $post->user->name }}">
+                            <img src='http://ava.rmarchiv.de/?size=160&gender=male&id={{ $post->user->id }}' alt="{{ $post->user->name }}" class='avatar_board'/>
+                        </a>
+                        <br>
+                        <br>
+                        Posts: {{ $post->user->boardposts->count() }}
+                    </div>
+                    <div class="post markdown">
+                        {!! $post->content_html !!}
+                    </div>
                 </div>
                 <div class='foot'>
                     @if(Auth::check())
@@ -32,11 +47,6 @@
                     @if($post->updated_at)
                         - editiert {{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}
                     @endif
-                    von
-                    <a href='{{ url('users', $post->user->id) }}' class='user'>{{ $post->user->name }}</a>
-                    <a href='{{ url('users', $post->user->id) }}' class='usera' title="{{ $post->user->name }}">
-                        <img src='http://ava.rmarchiv.de/?gender=male&id={{ $post->user->id }}' alt="{{ $post->user->name }}" class='avatar'/>
-                    </a>
                 </div>
             @endforeach
             {{ $posts->links('vendor/pagination/board_thread') }}

@@ -152,4 +152,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\UserList', 'user_id', 'id');
     }
+
+    public function boardposts()
+    {
+        return $this->hasMany('App\Models\BoardPost', 'user_id', 'id');
+    }
 }

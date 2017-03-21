@@ -762,7 +762,8 @@
   display: block; }
   #rmarchivbox_bbsview .content {
     overflow: hidden;
-    margin-bottom: -15px; }
+    display: -webkit-box;
+    display: flex; }
   #rmarchivbox_bbsview .blank {
     background: #224488;
     height: 16px; }
@@ -793,6 +794,21 @@
     padding: 5px; }
   #rmarchivbox_bbsview li:last-child {
     margin-bottom: 15px; }
+  #rmarchivbox_bbsview .userinfo {
+    float: left;
+    width: 200px;
+    min-width: 200px;
+    background: #2d4f74;
+    margin-bottom: -2px;
+    margin-left: -2px;
+    margin-top: -3px;
+    border-right: #00001a solid 1px;
+    border-top: #00001a solid 1px;
+    padding-left: 10px; }
+    #rmarchivbox_bbsview .userinfo .avatar_board {
+      max-width: 160px; }
+  #rmarchivbox_bbsview .post {
+    float: left; }
 
 #rmarchivbox_bbspost {
   width: 56%;
@@ -820,6 +836,31 @@
     width: 300px; }
   #rmarchivbox_bbsopen label {
     display: block; }
+
+#rmarchivbox_bbslist {
+  width: 56%; }
+  #rmarchivbox_bbslist .topic {
+    font-weight: bold;
+    overflow: hidden; }
+  #rmarchivbox_bbslist h2 {
+    text-align: center; }
+  #rmarchivbox_bbslist #categoryFilter {
+    font-size: 80%;
+    margin-left: 5px; }
+  #rmarchivbox_bbslist #th_firstpost {
+    width: 10%; }
+  #rmarchivbox_bbslist #th_userfirstpost {
+    width: 12.5%; }
+  #rmarchivbox_bbslist #th_category {
+    width: 20%; }
+  #rmarchivbox_bbslist #th_topic {
+    width: 25%; }
+  #rmarchivbox_bbslist #th_count {
+    width: 10%; }
+  #rmarchivbox_bbslist #th_lastpost {
+    width: 10%; }
+  #rmarchivbox_bbslist #th_userlastpost {
+    width: 12.5%; }
 
 #rmarchivbox_search h2 {
   padding-left: 22px;
