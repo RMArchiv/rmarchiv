@@ -1,0 +1,96 @@
+#rmarchivbox_usermain {
+  max-width: 900px;
+  img {
+    max-width: 800px;
+  }
+  .content {
+    min-height: 170px;
+    min-width: 400px;
+  }
+  .bigavatar {
+    float: right;
+    padding: 5px;
+    image-rendering: pixelated;
+    img {
+      width: 160px;
+      height: 160px;
+    }
+  }
+  #userdata {
+    list-style: none;
+    margin-bottom: 15px;
+    margin-right: 170px;
+    li {
+      white-space: nowrap;
+      span.field {
+        width: 100px;
+        text-align: right;
+        font-weight: bold;
+        display: inline-block;
+      }
+    }
+  }
+  .header {
+    border: 0 none;
+    color: $color_white;
+    font-style: italic;
+    margin-top: 10px;
+    padding: 3px;
+    text-align: center;
+    width: 200px;
+    span {
+      font-weight: bold;
+    }
+  }
+  .foot {
+    font-weight: normal;
+  }
+  .contribheader {
+    background: $color_bay_of_many_approx;
+    margin: 1px;
+    padding: 2px;
+    span {
+      color: $color_santas_gray_approx;
+    }
+  }
+  h2 {
+    font-weight: normal;
+    * {
+      vertical-align: text-bottom;
+    }
+    span {
+      font-weight: bold;
+    }
+    #glops span {
+      font-weight: bold;
+      color: $color_white;
+    }
+  }
+  #glops {
+    font-weight: normal;
+    float: right;
+    margin-top: 2px;
+    color: $color_santas_gray_approx;
+  }
+  #logolist li {
+    background: $color_san_marino_approx $url_17;
+    text-align: center;
+    .logo {
+      display: table;
+      margin: 0 auto;
+      position: relative;
+      .logovotes {
+        display: none;
+        background: $color_bay_of_many_approx;
+        border: 1px solid $black;
+        bottom: 0;
+        left: 0;
+        padding: 2px;
+        position: absolute;
+      }
+      &:hover .logovotes {
+        display: block;
+      }
+    }
+  }
+}

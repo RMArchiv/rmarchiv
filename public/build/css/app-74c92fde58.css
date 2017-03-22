@@ -561,8 +561,7 @@
 
 #prodpagecontainer {
   margin: 0 auto;
-  min-width: 56%;
-  max-width: 920px;
+  max-width: 900px;
   display: table; }
 
 #rmarchivbox_prodmain {
@@ -738,8 +737,7 @@
   float: left; }
 
 #rmarchivbox_submitprod {
-  min-width: 56%;
-  max-width: 920px; }
+  width: 57%; }
 
 .bbs_code, .bbs_quote {
   margin-left: 2em;
@@ -760,13 +758,11 @@
   overflow: auto; }
 
 #rmarchivbox_bbsview {
-  min-width: 56%;
-  max-width: 920px;
+  width: 56%;
   display: block; }
   #rmarchivbox_bbsview .content {
     overflow: hidden;
-    display: -webkit-box;
-    display: flex; }
+    margin-bottom: -15px; }
   #rmarchivbox_bbsview .blank {
     background: #224488;
     height: 16px; }
@@ -797,25 +793,9 @@
     padding: 5px; }
   #rmarchivbox_bbsview li:last-child {
     margin-bottom: 15px; }
-  #rmarchivbox_bbsview .userinfo {
-    float: left;
-    width: 200px;
-    min-width: 200px;
-    background: #2d4f74;
-    margin-bottom: -2px;
-    margin-left: -2px;
-    margin-top: -3px;
-    border-right: #00001a solid 1px;
-    border-top: #00001a solid 1px;
-    padding-left: 10px; }
-    #rmarchivbox_bbsview .userinfo .avatar_board {
-      max-width: 160px; }
-  #rmarchivbox_bbsview .post {
-    float: left; }
 
 #rmarchivbox_bbspost {
-  min-width: 56%;
-  max-width: 920px;
+  width: 56%;
   margin: 0 auto; }
   #rmarchivbox_bbspost .foot {
     font-weight: normal;
@@ -829,8 +809,7 @@
     background: url(/assets/previewdxm.gif) top left no-repeat; }
 
 #rmarchivbox_bbsopen {
-  min-width: 56%;
-  max-width: 920px;
+  width: 56%;
   margin: 0 auto; }
   #rmarchivbox_bbsopen .content {
     padding: 5px; }
@@ -841,32 +820,6 @@
     width: 300px; }
   #rmarchivbox_bbsopen label {
     display: block; }
-
-#rmarchivbox_bbslist {
-  min-width: 56%;
-  max-width: 920px; }
-  #rmarchivbox_bbslist .topic {
-    font-weight: bold;
-    overflow: hidden; }
-  #rmarchivbox_bbslist h2 {
-    text-align: center; }
-  #rmarchivbox_bbslist #categoryFilter {
-    font-size: 80%;
-    margin-left: 5px; }
-  #rmarchivbox_bbslist #th_firstpost {
-    width: 10%; }
-  #rmarchivbox_bbslist #th_userfirstpost {
-    width: 12.5%; }
-  #rmarchivbox_bbslist #th_category {
-    width: 20%; }
-  #rmarchivbox_bbslist #th_topic {
-    width: 25%; }
-  #rmarchivbox_bbslist #th_count {
-    width: 10%; }
-  #rmarchivbox_bbslist #th_lastpost {
-    width: 10%; }
-  #rmarchivbox_bbslist #th_userlastpost {
-    width: 12.5%; }
 
 #rmarchivbox_search h2 {
   padding-left: 22px;
@@ -905,8 +858,7 @@
     text-align: right; }
 
 #rmarchivbox_submitnews {
-  min-width: 56%;
-  max-width: 920px; }
+  width: 56%; }
 
 .rmarchivbox_newsbox h3 {
   padding: 3px;
@@ -925,111 +877,6 @@
 .rmarchivbox_newsbox .content p {
   margin-top: 10px;
   margin-bottom: 10px; }
-
-#rmarchivbox_faq {
-  min-width: 56%;
-  max-width: 920px; }
-  #rmarchivbox_faq dd {
-    background: #4e6f90;
-    padding: 5px;
-    padding-left: 30px;
-    margin: 1px; }
-    #rmarchivbox_faq dd p {
-      margin-top: 5px;
-      margin-bottom: 5px; }
-    #rmarchivbox_faq dd ul {
-      padding-left: 30px; }
-  #rmarchivbox_faq .content ul {
-    margin-bottom: 20px;
-    list-style: none; }
-  #rmarchivbox_faq .content li {
-    margin-left: 5px; }
-    #rmarchivbox_faq .content li:before {
-      content: "-- >"; }
-  #rmarchivbox_faq dt {
-    background: #446688;
-    font-weight: bold;
-    margin: 0 1px;
-    padding: 3px;
-    text-transform: lowercase; }
-
-#rmarchivbox_usermain {
-  max-width: 900px; }
-  #rmarchivbox_usermain img {
-    max-width: 800px; }
-  #rmarchivbox_usermain .content {
-    min-height: 170px;
-    min-width: 400px; }
-  #rmarchivbox_usermain .bigavatar {
-    float: right;
-    padding: 5px;
-    -ms-interpolation-mode: nearest-neighbor;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: pixelated; }
-    #rmarchivbox_usermain .bigavatar img {
-      width: 160px;
-      height: 160px; }
-  #rmarchivbox_usermain #userdata {
-    list-style: none;
-    margin-bottom: 15px;
-    margin-right: 170px; }
-    #rmarchivbox_usermain #userdata li {
-      white-space: nowrap; }
-      #rmarchivbox_usermain #userdata li span.field {
-        width: 100px;
-        text-align: right;
-        font-weight: bold;
-        display: inline-block; }
-  #rmarchivbox_usermain .header {
-    border: 0 none;
-    color: white;
-    font-style: italic;
-    margin-top: 10px;
-    padding: 3px;
-    text-align: center;
-    width: 200px; }
-    #rmarchivbox_usermain .header span {
-      font-weight: bold; }
-  #rmarchivbox_usermain .foot {
-    font-weight: normal; }
-  #rmarchivbox_usermain .contribheader {
-    background: #224488;
-    margin: 1px;
-    padding: 2px; }
-    #rmarchivbox_usermain .contribheader span {
-      color: #9999aa; }
-  #rmarchivbox_usermain h2 {
-    font-weight: normal; }
-    #rmarchivbox_usermain h2 * {
-      vertical-align: text-bottom; }
-    #rmarchivbox_usermain h2 span {
-      font-weight: bold; }
-    #rmarchivbox_usermain h2 #glops span {
-      font-weight: bold;
-      color: white; }
-  #rmarchivbox_usermain #glops {
-    font-weight: normal;
-    float: right;
-    margin-top: 2px;
-    color: #9999aa; }
-  #rmarchivbox_usermain #logolist li {
-    background: #3a6ea5 url(/assets/trumpet.png);
-    text-align: center; }
-    #rmarchivbox_usermain #logolist li .logo {
-      display: table;
-      margin: 0 auto;
-      position: relative; }
-      #rmarchivbox_usermain #logolist li .logo .logovotes {
-        display: none;
-        background: #224488;
-        border: 1px solid #000000;
-        bottom: 0;
-        left: 0;
-        padding: 2px;
-        position: absolute; }
-      #rmarchivbox_usermain #logolist li .logo:hover .logovotes {
-        display: block; }
 
 .markdown ul li {
   list-style-type: disc; }
