@@ -15,7 +15,7 @@
             @endforeach
         </div>
         <div class="game_desc">
-            zusammenfassung (die ersten zeichen)
+            {!! substr($game->desc_md, 0, 240).'...' !!}
         </div>
     </div>
 </div>

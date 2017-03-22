@@ -1034,14 +1034,18 @@
 .inlinebox_game {
   border: #00001a solid 1px;
   width: 512px;
+  height: 125px;
   display: block; }
   .inlinebox_game .game_screen {
-    border: #00001a solid 1px;
-    float: left; }
+    border-right: #00001a solid 1px;
+    float: left;
+    height: 125px; }
     .inlinebox_game .game_screen img {
       width: 160px; }
   .inlinebox_game .game_info {
     border: #00001a solid 1px; }
+    .inlinebox_game .game_info .game_desc {
+      overflow: hidden; }
 
 .markdown ul li {
   list-style-type: disc; }

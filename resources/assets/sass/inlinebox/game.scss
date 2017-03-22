@@ -1,11 +1,12 @@
 .inlinebox_game {
   border: #00001a solid 1px;
   width: 512px;
-  height: 200px;
+  height: 125px;
   display: block;
   .game_screen {
-    border: #00001a solid 1px;
+    border-right: #00001a solid 1px;
     float: left;
+    height: 125px;
     img{
       width: 160px;
     }
@@ -19,7 +20,7 @@
 
     }
     .game_desc {
-
+      overflow: hidden;
     }
   }
 }
