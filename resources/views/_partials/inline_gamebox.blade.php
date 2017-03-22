@@ -6,7 +6,7 @@
     </tr>
     <tr>
         <td>
-            <img src='{{ route('screenshot.show', [$game->id, 1]) }}' alt='Titelbild' title='Titelbild'/>
+            <img src='{{ route('screenshot.show', [$game->id, 1]) }}' alt='Titelbild' title='Titelbild' style="width: 160px;"/>
         </td>
         <td>
             Entwickler:
