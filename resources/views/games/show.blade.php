@@ -362,7 +362,7 @@
                         @foreach($game->comments()->get() as $comment)
                             <div class='comment cite-{{ $comment->user_id }}' id='c{{ $comment->id }}'>
                                 <div class='content'>
-                                    {!! $comment->comment_html !!}
+                                    {!! \App\Helpers\InlineBoxHelper::GameBox($comment->comment_html) !!}
                                 </div>
                                 <div class='foot'>
                                     @if($comment->vote_up == 1 and $comment->vote_down == 0)

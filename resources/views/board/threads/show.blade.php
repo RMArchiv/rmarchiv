@@ -31,7 +31,7 @@
                         Posts: {{ $post->user->boardposts->count() }}
                     </div>
                     <div class="post markdown">
-                        {!! $post->content_html !!}
+                        {!! \App\Helpers\InlineBoxHelper::GameBox($post->content_html) !!}
                     </div>
                 </div>
                 <div class='foot'>

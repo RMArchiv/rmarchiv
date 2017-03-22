@@ -26,7 +26,7 @@
                 <dd>
                     <p>
                         <div class="markdown">
-                            {!! $f['desc_html'] !!}
+                            {!! \App\Helpers\InlineBoxHelper::GameBox($f['desc_html']) !!}
                         </div>
                     </p>
                 </dd>
