@@ -17,7 +17,7 @@
                 @endif
             @endforeach
             <br>
-            {!! substr($game->desc_md, 0, 300).'...' !!}
+            {!! substr($game->desc_md, 0, 400).'...' !!}
         </td>
     </tr>
 </table>
