@@ -9,7 +9,7 @@
                         {{ $news->title }}
                     </h2>
                     <div class="content markdown">
-                        {!! $news->news_html !!}
+                        {!! \App\Helpers\InlineBoxHelper::GameBox($news->news_html) !!}
                     </div>
                     <div class="foot">
                         {{ trans('app.news.show.submit_by') }} <a href='{{ url('users', $news->user_id) }}'>{{ $news->name }}</a> :: <time datetime='{{ $news->created_at }}' title='{{ $news->created_at }}'>{{ \Carbon\Carbon::parse($news->created_at)->diffForHumans() }}</time>

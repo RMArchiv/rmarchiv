@@ -1,0 +1,24 @@
+.inlinebox_game {
+  border: #00001a solid 1px;
+  width: 512px;
+  display: block;
+  .game_screen {
+    border: #00001a solid 1px;
+    float: left;
+    img{
+      width: 160px;
+    }
+  }
+  .game_info {
+    border: #00001a solid 1px;
+    .game_title {
+
+    }
+    .game_dev {
+
+    }
+    .game_desc {
+
+    }
+  }
+}

@@ -1031,6 +1031,18 @@
       #rmarchivbox_usermain #logolist li .logo:hover .logovotes {
         display: block; }
 
+.inlinebox_game {
+  border: #00001a solid 1px;
+  width: 512px;
+  display: block; }
+  .inlinebox_game .game_screen {
+    border: #00001a solid 1px;
+    float: left; }
+    .inlinebox_game .game_screen img {
+      width: 160px; }
+  .inlinebox_game .game_info {
+    border: #00001a solid 1px; }
+
 .markdown ul li {
   list-style-type: disc; }
 
