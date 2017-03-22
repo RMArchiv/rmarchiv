@@ -1,4 +1,4 @@
-<table width="520px">
+<table class="inline_game_box">
     <tr>
         <td colspan="2">
             <a href="{{ route('games.show', $game->id) }}"><big>{{ $game->title }}</big>@if($game->subtitle) :: {{ $game->subtitle }}@endif</a>
@@ -17,7 +17,7 @@
                 @endif
             @endforeach
             <br>
-            {!! substr($game->desc_md, 0, 400).'...' !!}
+            {!! substr($game->desc_md, 0, 320).'...' !!}
         </td>
     </tr>
 </table>

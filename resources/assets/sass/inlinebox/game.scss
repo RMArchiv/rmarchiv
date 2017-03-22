@@ -1,25 +1,12 @@
-.inlinebox_game {
+.inline_game_box{
   width: 520px;
-  .game_screen {
-    border-right: #00001a solid 1px;
-    width: 160px;
-    float: left;
-    img{
+
+  td {
+    background: #446688;
+    padding: 2px;
+    img {
       width: 160px;
-    }
-  }
-  .game_info {
-    border: #00001a solid 1px;
-    float: left;
-    width: 360px;
-    .game_title {
-
-    }
-    .game_dev {
-
-    }
-    .game_desc {
-      overflow: hidden;
+      min-width: 160px;
     }
   }
 }
