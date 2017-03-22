@@ -11,7 +11,8 @@ use App\Models\Game;
 
 class InlineBoxHelper
 {
-    public static function GameBox($htmlcontent){
+    public static function GameBox($htmlcontent)
+    {
         preg_match_all('/\:([0-9]+)\:/', $htmlcontent, $match);
 
         foreach ($match[1] as $item) {
@@ -21,7 +22,7 @@ class InlineBoxHelper
                 'game' => $game,
             ]);
 
-            if($game){
+            if ($game) {
                 $htmlcontent = str_replace(':'.$item.':', $html, $htmlcontent);
             }
         }
