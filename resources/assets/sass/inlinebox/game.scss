@@ -1,18 +1,17 @@
 .inlinebox_game {
-  border: #00001a solid 1px;
-  width: 512px;
-  height: 125px;
-  display: block;
+  width: 520px;
   .game_screen {
     border-right: #00001a solid 1px;
+    width: 160px;
     float: left;
-    height: 125px;
     img{
       width: 160px;
     }
   }
   .game_info {
     border: #00001a solid 1px;
+    float: left;
+    width: 360px;
     .game_title {
 
     }
