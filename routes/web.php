@@ -284,4 +284,4 @@ Route::get('logo/{filename}', function ($filename) {
     $response->setPublic();
 
     return $response;
-});
+})->name('logo.get');

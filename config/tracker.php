@@ -34,6 +34,8 @@ return [
      */
     'do_not_track_routes' => [
         'tracker.stats.*',
+        'logo.get',
+        'screenshot.show',
     ],
 
     /*
