@@ -1,6 +1,12 @@
-<?php return array (
-  'providers' => 
-  array (
+<?php
+
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
+return  [
+  'providers' => [
     0 => 'Illuminate\\Auth\\AuthServiceProvider',
     1 => 'Illuminate\\Broadcasting\\BroadcastServiceProvider',
     2 => 'Illuminate\\Bus\\BusServiceProvider',
@@ -53,9 +59,8 @@
     49 => 'App\\Providers\\RouteServiceProvider',
     50 => 'App\\Providers\\ComposerServiceProvider',
     51 => 'App\\Providers\\HelperServiceProvider',
-  ),
-  'eager' => 
-  array (
+  ],
+  'eager' => [
     0 => 'Illuminate\\Auth\\AuthServiceProvider',
     1 => 'Illuminate\\Cookie\\CookieServiceProvider',
     2 => 'Illuminate\\Database\\DatabaseServiceProvider',
@@ -92,9 +97,8 @@
     33 => 'App\\Providers\\RouteServiceProvider',
     34 => 'App\\Providers\\ComposerServiceProvider',
     35 => 'App\\Providers\\HelperServiceProvider',
-  ),
-  'deferred' => 
-  array (
+  ],
+  'deferred' => [
     'Illuminate\\Broadcasting\\BroadcastManager' => 'Illuminate\\Broadcasting\\BroadcastServiceProvider',
     'Illuminate\\Contracts\\Broadcasting\\Factory' => 'Illuminate\\Broadcasting\\BroadcastServiceProvider',
     'Illuminate\\Contracts\\Broadcasting\\Broadcaster' => 'Illuminate\\Broadcasting\\BroadcastServiceProvider',
@@ -191,56 +195,39 @@
     'lavacharts' => 'Khill\\Lavacharts\\Laravel\\LavachartsServiceProvider',
     'telegram' => 'Telegram\\Bot\\Laravel\\TelegramServiceProvider',
     'Telegram\\Bot\\Api' => 'Telegram\\Bot\\Laravel\\TelegramServiceProvider',
-  ),
-  'when' => 
-  array (
-    'Illuminate\\Broadcasting\\BroadcastServiceProvider' => 
-    array (
-    ),
-    'Illuminate\\Bus\\BusServiceProvider' => 
-    array (
-    ),
-    'Illuminate\\Cache\\CacheServiceProvider' => 
-    array (
-    ),
-    'Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider' => 
-    array (
-    ),
-    'Illuminate\\Hashing\\HashServiceProvider' => 
-    array (
-    ),
-    'Illuminate\\Mail\\MailServiceProvider' => 
-    array (
-    ),
-    'Illuminate\\Pipeline\\PipelineServiceProvider' => 
-    array (
-    ),
-    'Illuminate\\Queue\\QueueServiceProvider' => 
-    array (
-    ),
-    'Illuminate\\Redis\\RedisServiceProvider' => 
-    array (
-    ),
-    'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider' => 
-    array (
-    ),
-    'Illuminate\\Translation\\TranslationServiceProvider' => 
-    array (
-    ),
-    'Illuminate\\Validation\\ValidationServiceProvider' => 
-    array (
-    ),
-    'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider' => 
-    array (
-    ),
-    'Collective\\Html\\HtmlServiceProvider' => 
-    array (
-    ),
-    'Khill\\Lavacharts\\Laravel\\LavachartsServiceProvider' => 
-    array (
-    ),
-    'Telegram\\Bot\\Laravel\\TelegramServiceProvider' => 
-    array (
-    ),
-  ),
-);
+  ],
+  'when' => [
+    'Illuminate\\Broadcasting\\BroadcastServiceProvider' => [
+    ],
+    'Illuminate\\Bus\\BusServiceProvider' => [
+    ],
+    'Illuminate\\Cache\\CacheServiceProvider' => [
+    ],
+    'Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider' => [
+    ],
+    'Illuminate\\Hashing\\HashServiceProvider' => [
+    ],
+    'Illuminate\\Mail\\MailServiceProvider' => [
+    ],
+    'Illuminate\\Pipeline\\PipelineServiceProvider' => [
+    ],
+    'Illuminate\\Queue\\QueueServiceProvider' => [
+    ],
+    'Illuminate\\Redis\\RedisServiceProvider' => [
+    ],
+    'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider' => [
+    ],
+    'Illuminate\\Translation\\TranslationServiceProvider' => [
+    ],
+    'Illuminate\\Validation\\ValidationServiceProvider' => [
+    ],
+    'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider' => [
+    ],
+    'Collective\\Html\\HtmlServiceProvider' => [
+    ],
+    'Khill\\Lavacharts\\Laravel\\LavachartsServiceProvider' => [
+    ],
+    'Telegram\\Bot\\Laravel\\TelegramServiceProvider' => [
+    ],
+  ],
+];
