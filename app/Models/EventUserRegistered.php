@@ -32,6 +32,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class EventUserRegistered extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'event_user_registered';
 
     public $timestamps = true;

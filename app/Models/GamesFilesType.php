@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class GamesFilesType extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'games_files_types';
 
     public $timestamps = true;

@@ -31,6 +31,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Shoutbox extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'shoutbox';
 
     public $timestamps = true;

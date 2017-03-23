@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserPermissionRole extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'user_permission_role';
 
     public $timestamps = false;

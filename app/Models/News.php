@@ -38,6 +38,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class News extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'news';
 
     public $timestamps = true;

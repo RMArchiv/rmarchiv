@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Migration extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'migrations';
 
     public $timestamps = false;

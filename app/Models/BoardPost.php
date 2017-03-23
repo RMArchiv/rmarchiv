@@ -35,6 +35,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class BoardPost extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'board_posts';
 
     public $timestamps = true;

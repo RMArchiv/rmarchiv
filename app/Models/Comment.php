@@ -42,6 +42,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Comment extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     use SoftDeletes;
 
     protected $table = 'comments';

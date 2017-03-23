@@ -53,6 +53,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class GamesFile extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     use SoftDeletes;
 
     protected $table = 'games_files';

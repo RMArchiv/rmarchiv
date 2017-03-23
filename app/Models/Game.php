@@ -72,6 +72,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  */
 class Game extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     use LogsActivity;
 
     protected $table = 'games';

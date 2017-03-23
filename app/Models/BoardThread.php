@@ -40,6 +40,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class BoardThread extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'board_threads';
 
     public $timestamps = true;

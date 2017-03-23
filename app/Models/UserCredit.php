@@ -30,6 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserCredit extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'user_credits';
 
     public $timestamps = true;

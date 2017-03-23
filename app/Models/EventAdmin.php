@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class EventAdmin extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'event_admins';
 
     public $timestamps = true;

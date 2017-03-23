@@ -44,6 +44,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class GamesAward extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'games_awards';
 
     public $timestamps = true;

@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class BoardThreadsTracker extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'board_threads_tracker';
 
     public $timestamps = true;

@@ -34,6 +34,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class EventPicture extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'event_pictures';
 
     public $timestamps = true;

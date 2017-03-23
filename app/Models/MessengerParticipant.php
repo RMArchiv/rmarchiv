@@ -30,6 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class MessengerParticipant extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'messenger_participants';
 
     public $timestamps = true;

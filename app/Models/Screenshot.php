@@ -30,6 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Screenshot extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'screenshots';
 
     public $timestamps = true;

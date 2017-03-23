@@ -30,6 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserListItem extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'user_list_items';
 
     public $timestamps = true;

@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class EventMeetingUserRegistered extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'event_meeting_user_registered';
 
     public $timestamps = true;

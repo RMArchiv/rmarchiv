@@ -35,6 +35,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class EventSetting extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'event_settings';
 
     public $timestamps = true;

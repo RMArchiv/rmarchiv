@@ -32,6 +32,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Faq extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'faq';
 
     public $timestamps = true;

@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Obyx extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'obyx';
 
     public $timestamps = true;

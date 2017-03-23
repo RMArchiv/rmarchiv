@@ -35,6 +35,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Logo extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'logos';
 
     public $timestamps = true;

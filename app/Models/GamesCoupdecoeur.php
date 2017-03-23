@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class GamesCoupdecoeur extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'games_coupdecoeur';
 
     public $timestamps = true;

@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Language extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'languages';
 
     public $timestamps = true;

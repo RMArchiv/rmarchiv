@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Tag extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'tags';
 
     public $timestamps = true;

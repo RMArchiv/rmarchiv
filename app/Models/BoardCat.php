@@ -34,6 +34,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class BoardCat extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'board_cats';
 
     public $timestamps = true;

@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class MessengerMessage extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'messenger_messages';
 
     public $timestamps = true;

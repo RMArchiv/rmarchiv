@@ -33,6 +33,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Maker extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'makers';
 
     public $timestamps = true;

@@ -32,6 +32,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class AwardSubcat extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'award_subcats';
 
     public $timestamps = true;

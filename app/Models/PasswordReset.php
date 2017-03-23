@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class PasswordReset extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'password_resets';
 
     public $timestamps = true;

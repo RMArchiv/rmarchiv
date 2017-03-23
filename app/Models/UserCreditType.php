@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserCreditType extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'user_credit_types';
 
     public $timestamps = true;

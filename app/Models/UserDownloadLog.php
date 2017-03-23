@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserDownloadLog extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'user_download_log';
 
     public $timestamps = true;

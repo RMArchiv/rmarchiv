@@ -38,6 +38,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Resource extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'resources';
 
     public $timestamps = true;

@@ -67,6 +67,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserSetting extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'user_settings';
 
     public $timestamps = true;

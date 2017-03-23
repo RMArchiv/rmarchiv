@@ -32,6 +32,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class AwardPage extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'award_pages';
 
     public $timestamps = true;

@@ -32,6 +32,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class GamesDeveloper extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'games_developer';
 
     public $timestamps = true;

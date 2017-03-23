@@ -31,6 +31,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TagRelation extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'tag_relations';
 
     public $timestamps = true;
