@@ -85,6 +85,12 @@ use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNo
 class User extends Authenticatable
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
+
+    public static function boot()
+    {
+        parent::boot();
+    }
+
     use Notifiable;
     use EntrustUserTrait;
     use Messagable;
