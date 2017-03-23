@@ -7,11 +7,11 @@
 
 namespace App\Helpers;
 
-use App\Models\UserOnline;
 use Carbon\Carbon;
 use App\Models\Game;
 use App\Models\Developer;
 use App\Models\GamesFile;
+use App\Models\UserOnline;
 use App\Models\BoardThread;
 use App\Models\BoardThreadsTracker;
 
@@ -104,7 +104,7 @@ class DatabaseHelper
 
     public static function setOnline($where)
     {
-        if (\Auth::check()){
+        if (\Auth::check()) {
             UserOnline::updateOrInsert([
                 'user_id' => \Auth::id(),
             ], [
