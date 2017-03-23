@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 use PragmaRX\Tracker\Support\Migration;
 
 class CreateTrackerDevicesTable extends Migration
