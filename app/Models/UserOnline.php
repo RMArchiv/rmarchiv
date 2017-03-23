@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserOnline extends Model
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
+
     protected $table = 'user_online';
 
     public $timestamps = true;

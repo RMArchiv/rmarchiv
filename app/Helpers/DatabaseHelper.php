@@ -7,6 +7,7 @@
 
 namespace App\Helpers;
 
+use App\Models\UserOnline;
 use Carbon\Carbon;
 use App\Models\Game;
 use App\Models\Developer;
@@ -103,8 +104,8 @@ class DatabaseHelper
 
     public static function setOnline($where)
     {
-        if (\Auth::check()) {
-            \DB::table('user_online')->updateOrInsert([
+        if (\Auth::check()){
+            UserOnline::updateOrInsert([
                 'user_id' => \Auth::id(),
             ], [
                     'last_place' => $where,
