@@ -299,7 +299,7 @@ return [
     /*
      * Enable the Stats Panel?
      */
-    'stats_panel_enabled' => false,
+    'stats_panel_enabled' => true,
 
     /*
      * Stats Panel routes before filter
@@ -332,7 +332,7 @@ return [
      *    http://wwww.mysite.com/stats
      *
      */
-    'stats_base_uri' => 'stats',
+    'stats_base_uri' => 'hiddenstats',
 
     /*
      * Stats Panel layout view
