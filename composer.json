@@ -36,7 +36,8 @@
         "intervention/imagecache": "^2.3",
         "laravel-notification-channels/telegram": "^0.0.1",
         "laravel-notification-channels/discord": "^0.0.1",
-        "venturecraft/revisionable": "1.*"
+        "venturecraft/revisionable": "1.*",
+        "pragmarx/tracker": "^3.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
