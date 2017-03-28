@@ -22,7 +22,7 @@ class AutocompleteController extends Controller
             $result[] = [
                 'id' => $g->id,
                 'title' => $g->title,
-                'value' => '<div class="searchresult">'.\View::make('_partials.inline_gamebox', ['game' => $g])->render().'</div>'
+                'value' => '<div class="searchresult">'.\View::make('_partials.inline_gamebox', ['game' => $g])->render().'</div>',
             ];
         }
 
