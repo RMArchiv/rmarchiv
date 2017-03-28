@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
@@ -74,6 +75,7 @@ class Game extends Model
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
     use LogsActivity;
+    use Searchable;
 
     protected $table = 'games';
 
@@ -187,5 +189,19 @@ class Game extends Model
     public function cdcs()
     {
         return $this->hasMany('App\Models\GamesCoupdecoeur', 'game_id', 'id');
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'subtitle' => $this->subtitle,
+        ];
     }
 }
