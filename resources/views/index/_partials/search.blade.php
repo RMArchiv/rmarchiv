@@ -2,10 +2,42 @@
     <h2>suche</h2>
     {{ Form::open(['action' => ['SearchController@search']]) }}
         <div class='content center'>
-            <input type='text' name='term' size='64' />
+            <input id="term" type='text' name='term' size='64' />
         </div>
         <div class='foot'>
-            <input type='submit' value='Submit' />
+            <input id="term" type='submit' value='Submit' />
         </div>
+    <script type="text/javascript">
+        var sourcepath = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            //prefetch: '../data/films/post_1960.json',
+            remote: {
+                url: '/ac_search/%QUERY',
+                wildcard: '%QUERY'
+            }
+        });
+
+        $('#term').typeahead(null, {
+            name: 'term',
+            display: 'title',
+            source: sourcepath,
+            limit: 5,
+            templates: {
+                empty: [
+                    '<div class="empty-message">',
+                    'Noch wurde nichts gefunden.',
+                    '</div>'
+                ].join('\n'),
+                suggestion: function(data) {
+                    console.log(data);
+                    return data.value;
+                }
+            },
+            classNames: {
+                menu: 'search_menu',
+            }
+        });
+    </script>
     {{ Form::close() }}
 </div>

@@ -187,6 +187,7 @@ Route::get('ac_award_page/{term}', 'AutocompleteController@awardpage');
 Route::get('ac_award_cat/{term}', 'AutocompleteController@awardcat');
 Route::get('ac_award_subcat/{term}', 'AutocompleteController@awardsubcat');
 Route::get('ac_user/{term}', 'AutocompleteController@user');
+Route::get('ac_search/{term}', 'AutocompleteController@search');
 
 //Routen für Messageboxen
 Route::get('submit/logo/success', 'MsgBoxController@submit_logo')->name('submit.logo.success');

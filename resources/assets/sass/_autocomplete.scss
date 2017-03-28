@@ -1,7 +1,5 @@
 .tt-input,
 .tt-hint {
-  top: -5px;
-  left: -5px;
   padding: 2px;
 }
 
@@ -14,21 +12,16 @@
 }
 
 .tt-menu {
-  width: 422px;
+  width: 524px;
   margin-top: 0;
   padding: 8px 0;
-  background-color: #fff;
+  background-color: #17395c;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  left: -100px !important;
 }
 
 .tt-suggestion {
   padding: 3px 5px;
-  font-size: 18px;
-  line-height: 24px;
-  color: #000000;
-  background-color: #ffffff;
 }
 
 .tt-suggestion.tt-cursor { /* UPDATE: newer versions use .tt-suggestion.tt-cursor */

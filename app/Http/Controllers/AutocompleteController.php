@@ -7,10 +7,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
 use App\Models\User;
 
 class AutocompleteController extends Controller
 {
+    public function search($term)
+    {
+        $result = [];
+
+        $games = Game::search($term)->get();
+
+        foreach ($games as $g) {
+            $result[] = [
+                'id' => $g->id,
+                'title' => $g->title,
+                'value' => '<div class="searchresult">'.\View::make('_partials.inline_gamebox', ['game' => $g])->render().'</div>'
+            ];
+        }
+
+        return \Response::json($result);
+    }
+
     public function developer($term)
     {
         $result = [];
