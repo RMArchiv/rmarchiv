@@ -35,7 +35,7 @@ class SearchController extends Controller
     public function search(Request $request, $orderby = 'title', $direction = 'asc')
     {
         return redirect()->action('SearchController@index', [
-            $orderby, $direction, $request->get('term')
+            $orderby, $direction, $request->get('term'),
         ]);
     }
 }
