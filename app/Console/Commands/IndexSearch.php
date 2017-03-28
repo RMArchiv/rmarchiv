@@ -40,6 +40,5 @@ class IndexSearch extends Command
      */
     public function handle()
     {
-
     }
 }
