@@ -28,7 +28,7 @@ return [
     'tntsearch' => [
         'driver' => 'sqlite',
         'database' => base_path('/storage/database/searchdb.sqlite'),
-        'storage' => storage_path()
+        'storage' => storage_path(),
     ],
 
     /*
