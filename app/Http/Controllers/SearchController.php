@@ -24,7 +24,7 @@ class SearchController extends Controller
 
         $games = Game::search($request->get('term'))->get();
 
-        return view('games.index', [
+        return view('search.index', [
             'games'     => $games,
             'maxviews'  => DatabaseHelper::getGameViewsMax(),
             'term' => $request->get('term'),
