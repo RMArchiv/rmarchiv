@@ -22,7 +22,9 @@ class SearchController extends Controller
     {
         $rows = (\Auth::check()) ? \Auth::user()->settings->rows_per_page_games : config('app.rows_per_page_games');
 
-        $games = Game::orderBy('title', 'asc')->orderBy('title')->orderBy('subtitle')->get($rows);
+        $games = Game::search($request->get('term'))->orderBy('title', 'asc')->orderBy('title')->orderBy('subtitle')->get($rows);
+
+
 
         return view('games.index', [
             'games'     => $games,
