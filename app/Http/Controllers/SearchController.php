@@ -18,16 +18,18 @@ class SearchController extends Controller
         return view('search.index');
     }
 
-    public function search(Request $request)
+    public function search(Request $request, $orderby = 'title', $direction = 'asc')
     {
         $rows = (\Auth::check()) ? \Auth::user()->settings->rows_per_page_games : config('app.rows_per_page_games');
 
-        $games = Game::search($request->get('term'))->get();
+        $games = Game::search($request->get('term'))->paginate($rows);
 
         return view('search.index', [
             'games'     => $games,
             'maxviews'  => DatabaseHelper::getGameViewsMax(),
             'term' => $request->get('term'),
+            'orderby' => $orderby,
+            'direction' => $direction,
         ]);
     }
 }
