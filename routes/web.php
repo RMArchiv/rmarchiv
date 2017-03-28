@@ -77,7 +77,7 @@ Route::get('games/{id}/credit/{credit_id}/delete', 'UserCreditsController@destro
 
 //Suchrouten
 Route::get('search', 'SearchController@index');
-Route::get('search/{orderby?}/{direction?}/{term?}', 'SearchController@index');
+Route::get('search/{orderby?}/{direction?}/{query?}', 'SearchController@index');
 Route::post('search', 'SearchController@search');
 
 //Entwickler Routen

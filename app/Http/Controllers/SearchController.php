@@ -13,19 +13,19 @@ use App\Helpers\DatabaseHelper;
 
 class SearchController extends Controller
 {
-    public function index($orderby = 'title', $direction = 'asc', $term = '')
+    public function index($orderby = 'title', $direction = 'asc', $query = '')
     {
-        if ($term == '') {
+        if ($query == '') {
             return view('search.index');
         } else {
             $rows = (\Auth::check()) ? \Auth::user()->settings->rows_per_page_games : config('app.rows_per_page_games');
 
-            $games = Game::search($term)->paginate($rows);
+            $games = Game::search($query)->paginate($rows);
 
             return view('search.index', [
                 'games'     => $games,
                 'maxviews'  => DatabaseHelper::getGameViewsMax(),
-                'term' => $term,
+                'term' => $query,
                 'orderby' => $orderby,
                 'direction' => $direction,
             ]);
@@ -34,16 +34,8 @@ class SearchController extends Controller
 
     public function search(Request $request, $orderby = 'title', $direction = 'asc')
     {
-        $rows = (\Auth::check()) ? \Auth::user()->settings->rows_per_page_games : config('app.rows_per_page_games');
-
-        $games = Game::search($request->get('term'))->paginate($rows);
-
-        return view('search.index', [
-            'games'     => $games,
-            'maxviews'  => DatabaseHelper::getGameViewsMax(),
-            'term' => $request->get('term'),
-            'orderby' => $orderby,
-            'direction' => $direction,
+        return redirect()->action('SearchController@index', [
+            $orderby, $direction, $request->get('term')
         ]);
     }
 }
