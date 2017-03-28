@@ -29,6 +29,5 @@ class SearchController extends Controller
             'maxviews'  => DatabaseHelper::getGameViewsMax(),
             'term' => $request->get('term'),
         ]);
-
     }
 }
