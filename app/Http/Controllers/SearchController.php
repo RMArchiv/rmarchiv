@@ -26,8 +26,6 @@ class SearchController extends Controller
 
         $games = Game::search($request->get('term'))->orderBy('title', 'asc')->orderBy('title')->orderBy('subtitle')->get($rows);
 
-
-
         return view('games.index', [
             'games'     => $games,
             'maxviews'  => DatabaseHelper::getGameViewsMax(),
