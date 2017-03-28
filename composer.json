@@ -6,10 +6,9 @@
     "type": "project",
     "require": {
         "php": "^7.0",
-        "laravel/framework": "5.3.*",
-        "barryvdh/laravel-ide-helper": "^2.2",
+        "laravel/framework": "5.4.*",
+        "barryvdh/laravel-ide-helper": "^2.3",
         "barryvdh/laravel-debugbar": "^2.3",
-        "rcrowe/twigbridge": "^0.9.3",
         "doctrine/dbal": "^2.5",
         "laravelcollective/html": "^5.3",
         "graham-campbell/markdown": "^7.0",
@@ -29,20 +28,20 @@
         "irazasyed/telegram-bot-sdk": "^2.2",
         "backpack/base": "^0.7.14",
         "RobBrazier/Piwik": "^2.1",
-        "way/generators": "dev-feature/laravel-five-stable",
         "xethron/migrations-generator": "^2.0",
         "spatie/laravel-activitylog": "^1.11",
         "intervention/imagecache": "^2.3",
         "laravel-notification-channels/telegram": "^0.0.1",
         "laravel-notification-channels/discord": "^0.0.1",
         "venturecraft/revisionable": "1.*",
-        "pragmarx/tracker": "^3.1",
-        "geoip/geoip": "^1.17"
+        "geoip/geoip": "^1.17",
+        "laravel/scout": "^3.0",
+        "teamtnt/laravel-scout-tntsearch-driver": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.0",
+        "phpunit/phpunit": "~5.7",
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*",
         "ignasbernotas/laravel-model-generator": "^1.1"

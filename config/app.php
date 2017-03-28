@@ -218,7 +218,8 @@ return [
         Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
         Spatie\Activitylog\ActivitylogServiceProvider::class,
         NotificationChannels\Discord\DiscordServiceProvider::class,
-        PragmaRX\Tracker\Vendor\Laravel\ServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
+        TeamTNT\Scout\TNTSearchScoutServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -285,7 +286,6 @@ return [
         'Sitemap'       => Watson\Sitemap\Facades\Sitemap::class,
         'Storage'       => Illuminate\Support\Facades\Storage::class,
         'Telegram'      => Telegram\Bot\Laravel\Facades\Telegram::class,
-        'Tracker'       => PragmaRX\Tracker\Vendor\Laravel\Facade::class,
         'URL'           => Illuminate\Support\Facades\URL::class,
         'Validator'     => Illuminate\Support\Facades\Validator::class,
         'View'          => Illuminate\Support\Facades\View::class,
