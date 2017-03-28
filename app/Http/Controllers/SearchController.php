@@ -20,7 +20,7 @@ class SearchController extends Controller
         } else {
             $rows = (\Auth::check()) ? \Auth::user()->settings->rows_per_page_games : config('app.rows_per_page_games');
 
-            $games = Game::search($query)->paginate($rows);
+            $games = Game::search($query)->orderBy($orderby, $direction)->paginate($rows);
 
             return view('search.index', [
                 'games'     => $games,
