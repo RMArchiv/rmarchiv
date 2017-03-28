@@ -25,6 +25,12 @@ return [
 
     'version' => '0.2.22-preAlpha1337',
 
+    'tntsearch' => [
+        'driver' => 'sqlite',
+        'database' => base_path('/storage/database/searchdb.sqlite'),
+        'storage' => storage_path()
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -194,7 +200,6 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
         Optimus\FineuploaderServer\Provider\LaravelServiceProvider::class,
-        TeamTNT\TNTSearch\TNTSearchServiceProvider::class,
         Intervention\Image\ImageServiceProviderLaravel5::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Cmgmyr\Messenger\MessengerServiceProvider::class,
@@ -280,7 +285,6 @@ return [
         'Sitemap'       => Watson\Sitemap\Facades\Sitemap::class,
         'Storage'       => Illuminate\Support\Facades\Storage::class,
         'Telegram'      => Telegram\Bot\Laravel\Facades\Telegram::class,
-        'TNTSearch'     => \TeamTNT\TNTSearch\Facades\TNTSearch::class,
         'Tracker'       => PragmaRX\Tracker\Vendor\Laravel\Facade::class,
         'URL'           => Illuminate\Support\Facades\URL::class,
         'Validator'     => Illuminate\Support\Facades\Validator::class,

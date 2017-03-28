@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.30 on 2017-03-23.
+ * Generated for Laravel 5.3.31 on 2017-03-28.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -13940,18 +13940,18 @@ namespace Telegram\Bot\Laravel\Facades {
     }         
 }
     
-namespace TeamTNT\TNTSearch\Facades {
+namespace PragmaRX\Tracker\Vendor\Laravel {
 
-    class TNTSearch {
+    class Facade {
         
         /**
          * 
          *
          * @static 
          */
-        public static function loadConfig($config)
+        public static function allSessions()
         {
-            return \TeamTNT\TNTSearch\TNTSearch::loadConfig($config);
+            return \PragmaRX\Tracker\Tracker::allSessions();
         }
         
         /**
@@ -13959,9 +13959,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function setDatabaseHandle($dbh)
+        public static function boot()
         {
-            return \TeamTNT\TNTSearch\TNTSearch::setDatabaseHandle($dbh);
+            return \PragmaRX\Tracker\Tracker::boot();
         }
         
         /**
@@ -13969,9 +13969,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function setTokenizer($tokenizer)
+        public static function checkCurrentUser()
         {
-            return \TeamTNT\TNTSearch\TNTSearch::setTokenizer($tokenizer);
+            return \PragmaRX\Tracker\Tracker::checkCurrentUser();
         }
         
         /**
@@ -13979,9 +13979,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function createIndex($indexName)
+        public static function currentSession()
         {
-            return \TeamTNT\TNTSearch\TNTSearch::createIndex($indexName);
+            return \PragmaRX\Tracker\Tracker::currentSession();
         }
         
         /**
@@ -13989,9 +13989,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function selectIndex($indexName)
+        public static function errors($minutes, $results = true)
         {
-            return \TeamTNT\TNTSearch\TNTSearch::selectIndex($indexName);
+            return \PragmaRX\Tracker\Tracker::errors($minutes, $results);
         }
         
         /**
@@ -13999,9 +13999,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function search($phrase, $numOfResults = 100)
+        public static function events($minutes, $results = true)
         {
-            return \TeamTNT\TNTSearch\TNTSearch::search($phrase, $numOfResults);
+            return \PragmaRX\Tracker\Tracker::events($minutes, $results);
         }
         
         /**
@@ -14009,9 +14009,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function searchBoolean($phrase, $numOfResults = 100)
+        public static function getConfig($key)
         {
-            return \TeamTNT\TNTSearch\TNTSearch::searchBoolean($phrase, $numOfResults);
+            return \PragmaRX\Tracker\Tracker::getConfig($key);
         }
         
         /**
@@ -14019,9 +14019,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function getAllDocumentsForKeyword($keyword, $noLimit = false, $isLastKeyword = false)
+        public static function getCookieId()
         {
-            return \TeamTNT\TNTSearch\TNTSearch::getAllDocumentsForKeyword($keyword, $noLimit, $isLastKeyword);
+            return \PragmaRX\Tracker\Tracker::getCookieId();
         }
         
         /**
@@ -14029,9 +14029,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function getAllDocumentsForWhereKeywordNot($keyword, $noLimit = false)
+        public static function getDeviceId()
         {
-            return \TeamTNT\TNTSearch\TNTSearch::getAllDocumentsForWhereKeywordNot($keyword, $noLimit);
+            return \PragmaRX\Tracker\Tracker::getDeviceId();
         }
         
         /**
@@ -14039,9 +14039,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function totalMatchingDocuments($keyword, $isLastWord = false)
+        public static function getLanguageId()
         {
-            return \TeamTNT\TNTSearch\TNTSearch::totalMatchingDocuments($keyword, $isLastWord);
+            return \PragmaRX\Tracker\Tracker::getLanguageId();
         }
         
         /**
@@ -14049,9 +14049,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function getWordlistByKeyword($keyword, $isLastWord = false)
+        public static function getDomainId($domain)
         {
-            return \TeamTNT\TNTSearch\TNTSearch::getWordlistByKeyword($keyword, $isLastWord);
+            return \PragmaRX\Tracker\Tracker::getDomainId($domain);
         }
         
         /**
@@ -14059,9 +14059,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function fuzzySearch($keyword)
+        public static function getPathId()
         {
-            return \TeamTNT\TNTSearch\TNTSearch::fuzzySearch($keyword);
+            return \PragmaRX\Tracker\Tracker::getPathId();
         }
         
         /**
@@ -14069,9 +14069,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function totalDocumentsInCollection()
+        public static function getQueryId()
         {
-            return \TeamTNT\TNTSearch\TNTSearch::totalDocumentsInCollection();
+            return \PragmaRX\Tracker\Tracker::getQueryId();
         }
         
         /**
@@ -14079,9 +14079,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function getStemmer()
+        public static function getSessionId($updateLastActivity = false)
         {
-            return \TeamTNT\TNTSearch\TNTSearch::getStemmer();
+            return \PragmaRX\Tracker\Tracker::getSessionId($updateLastActivity);
         }
         
         /**
@@ -14089,9 +14089,20 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function setStemmer()
+        public static function getUserId()
         {
-            return \TeamTNT\TNTSearch\TNTSearch::setStemmer();
+            return \PragmaRX\Tracker\Tracker::getUserId();
+        }
+        
+        /**
+         * 
+         *
+         * @param \Exception $exception
+         * @static 
+         */
+        public static function handleException($exception)
+        {
+            return \PragmaRX\Tracker\Tracker::handleException($exception);
         }
         
         /**
@@ -14099,9 +14110,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function isFileSystemIndex()
+        public static function isEnabled()
         {
-            return \TeamTNT\TNTSearch\TNTSearch::isFileSystemIndex();
+            return \PragmaRX\Tracker\Tracker::isEnabled();
         }
         
         /**
@@ -14109,9 +14120,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function filesystemMapIdsToPaths($docs)
+        public static function isRobot()
         {
-            return \TeamTNT\TNTSearch\TNTSearch::filesystemMapIdsToPaths($docs);
+            return \PragmaRX\Tracker\Tracker::isRobot();
         }
         
         /**
@@ -14119,9 +14130,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function info($str)
+        public static function logByRouteName($name, $minutes = null)
         {
-            return \TeamTNT\TNTSearch\TNTSearch::info($str);
+            return \PragmaRX\Tracker\Tracker::logByRouteName($name, $minutes);
         }
         
         /**
@@ -14129,9 +14140,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function breakIntoTokens($text)
+        public static function logEvents()
         {
-            return \TeamTNT\TNTSearch\TNTSearch::breakIntoTokens($text);
+            return \PragmaRX\Tracker\Tracker::logEvents();
         }
         
         /**
@@ -14139,9 +14150,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function highlight($text, $needle, $tag = 'em', $options = array())
+        public static function logSqlQuery($query, $bindings, $time, $name)
         {
-            return \TeamTNT\TNTSearch\TNTSearch::highlight($text, $needle, $tag, $options);
+            return \PragmaRX\Tracker\Tracker::logSqlQuery($query, $bindings, $time, $name);
         }
         
         /**
@@ -14149,9 +14160,9 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function snippet($words, $fulltext, $rellength = 300, $prevcount = 50, $indicator = '...')
+        public static function pageViews($minutes, $results = true)
         {
-            return \TeamTNT\TNTSearch\TNTSearch::snippet($words, $fulltext, $rellength, $prevcount, $indicator);
+            return \PragmaRX\Tracker\Tracker::pageViews($minutes, $results);
         }
         
         /**
@@ -14159,9 +14170,109 @@ namespace TeamTNT\TNTSearch\Facades {
          *
          * @static 
          */
-        public static function getIndex()
+        public static function pageViewsByCountry($minutes, $results = true)
         {
-            return \TeamTNT\TNTSearch\TNTSearch::getIndex();
+            return \PragmaRX\Tracker\Tracker::pageViewsByCountry($minutes, $results);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function parserIsAvailable()
+        {
+            return \PragmaRX\Tracker\Tracker::parserIsAvailable();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function routerMatched($log)
+        {
+            return \PragmaRX\Tracker\Tracker::routerMatched($log);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function sessionLog($uuid, $results = true)
+        {
+            return \PragmaRX\Tracker\Tracker::sessionLog($uuid, $results);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function sessions($minutes = 1440, $results = true)
+        {
+            return \PragmaRX\Tracker\Tracker::sessions($minutes, $results);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function onlineUsers($minutes = 3, $results = true)
+        {
+            return \PragmaRX\Tracker\Tracker::onlineUsers($minutes, $results);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function track()
+        {
+            return \PragmaRX\Tracker\Tracker::track();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function trackEvent($event)
+        {
+            return \PragmaRX\Tracker\Tracker::trackEvent($event);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function trackVisit($route, $request)
+        {
+            return \PragmaRX\Tracker\Tracker::trackVisit($route, $request);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function userDevices($minutes, $user_id = null, $results = true)
+        {
+            return \PragmaRX\Tracker\Tracker::userDevices($minutes, $user_id, $results);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function users($minutes, $results = true)
+        {
+            return \PragmaRX\Tracker\Tracker::users($minutes, $results);
         }
         
     }         
@@ -14474,6 +14585,211 @@ namespace Prologue\Alerts\Facades {
 namespace Jenssegers\Date {
 
     class Date {
+        
+    }         
+}
+    
+namespace Bllim\Datatables\Facade {
+
+    class Datatables {
+        
+        /**
+         * Will take an input array and return the formatted dataTables data as an array
+         *
+         * @param array $input
+         * @return array 
+         * @static 
+         */
+        public static function processData($input = array())
+        {
+            return \Bllim\Datatables\Datatables::processData($input);
+        }
+        
+        /**
+         * 
+         *
+         * @return array $this->input
+         * @static 
+         */
+        public static function getData()
+        {
+            return \Bllim\Datatables\Datatables::getData();
+        }
+        
+        /**
+         * Sets input data.
+         * 
+         * Can be used when not wanting to use default Input data.
+         *
+         * @param array $data
+         * @static 
+         */
+        public static function setData($data)
+        {
+            return \Bllim\Datatables\Datatables::setData($data);
+        }
+        
+        /**
+         * Gets query and returns instance of class
+         *
+         * @param \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder $query
+         * @param null $dataFullSupport
+         * @return \Bllim\Datatables\Datatables 
+         * @static 
+         */
+        public static function of($query, $dataFullSupport = null)
+        {
+            return \Bllim\Datatables\Datatables::of($query, $dataFullSupport);
+        }
+        
+        /**
+         * Organizes works
+         *
+         * @param bool $mDataSupport
+         * @param bool $raw
+         * @return array|\Bllim\Datatables\json 
+         * @static 
+         */
+        public static function make($mDataSupport = false, $raw = false)
+        {
+            return \Bllim\Datatables\Datatables::make($mDataSupport, $raw);
+        }
+        
+        /**
+         * Adds additional columns to added_columns
+         *
+         * @param string $name
+         * @param string|callable $content
+         * @param bool $order
+         * @return $this 
+         * @static 
+         */
+        public static function addColumn($name, $content, $order = false)
+        {
+            return \Bllim\Datatables\Datatables::addColumn($name, $content, $order);
+        }
+        
+        /**
+         * Adds column names to edit_columns
+         *
+         * @param string $name
+         * @param string|callable $content
+         * @return $this 
+         * @static 
+         */
+        public static function editColumn($name, $content)
+        {
+            return \Bllim\Datatables\Datatables::editColumn($name, $content);
+        }
+        
+        /**
+         * This will remove the columns from the returned data.  It will also cause it to skip any filters for those removed columns.
+         * 
+         * Adds a list of columns to removed_columns
+         *
+         * @params strings ...,... As many individual string parameters matching column names
+         * @return $this 
+         * @static 
+         */
+        public static function removeColumn()
+        {
+            return \Bllim\Datatables\Datatables::removeColumn();
+        }
+        
+        /**
+         * The filtered columns will add query sql options for the specified columns
+         * Adds column filter to filter_columns
+         *
+         * @param string $column
+         * @param string $method
+         * @param mixed  ...,... All the individual parameters required for specified $method
+         * @return $this 
+         * @static 
+         */
+        public static function filterColumn($column, $method)
+        {
+            return \Bllim\Datatables\Datatables::filterColumn($column, $method);
+        }
+        
+        /**
+         * Sets the DT_RowID for the DataTables index column (as used to set, e.g., id of the <tr> tags) to the named column
+         * If the index matches a column, then that column value will be set as the id of th <tr>.
+         * 
+         * If the index doesn't, it will be parsed as either a callback or blade template and that returned value will be the
+         * id of the <tr>
+         *
+         * @param string $name
+         * @return $this 
+         * @static 
+         */
+        public static function setIndexColumn($name)
+        {
+            return \Bllim\Datatables\Datatables::setIndexColumn($name);
+        }
+        
+        /**
+         * Sets DT_RowClass template
+         * result: <tr class="output_from_your_template">
+         *
+         * @param string|callable $content
+         * @return $this 
+         * @static 
+         */
+        public static function setRowClass($content)
+        {
+            return \Bllim\Datatables\Datatables::setRowClass($content);
+        }
+        
+        /**
+         * Sets DT_RowData template for given attribute name
+         * result: Datatables invoking $(row).data(name, output_from_your_template)
+         *
+         * @param string $name
+         * @param string|callable $content
+         * @return $this 
+         * @static 
+         */
+        public static function setRowData($name, $content)
+        {
+            return \Bllim\Datatables\Datatables::setRowData($name, $content);
+        }
+        
+        /**
+         * This will format the keyword as needed for "LIKE" based on config settings
+         * If $value already has %, it doesn't motify and just returns the value.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */
+        public static function formatKeyword($value)
+        {
+            return \Bllim\Datatables\Datatables::formatKeyword($value);
+        }
+        
+        /**
+         * Adds % wildcards to the given string
+         *
+         * @param $str
+         * @param bool $lowercase
+         * @return string 
+         * @static 
+         */
+        public static function formatWildcard($str, $lowercase = true)
+        {
+            return \Bllim\Datatables\Datatables::formatWildcard($str, $lowercase);
+        }
+        
+        /**
+         * Returns current database prefix
+         *
+         * @return string 
+         * @static 
+         */
+        public static function databasePrefix()
+        {
+            return \Bllim\Datatables\Datatables::databasePrefix();
+        }
         
     }         
 }
@@ -16653,11 +16969,13 @@ namespace {
     
     class Telegram extends \Telegram\Bot\Laravel\Facades\Telegram {}
     
-    class TNTSearch extends \TeamTNT\TNTSearch\Facades\TNTSearch {}
+    class Tracker extends \PragmaRX\Tracker\Vendor\Laravel\Facade {}
     
     class Alert extends \Prologue\Alerts\Facades\Alert {}
     
     class Date extends \Jenssegers\Date\Date {}
+    
+    class Datatable extends \Bllim\Datatables\Facade\Datatables {}
     
     class TagCloud extends \LithiumDev\TagCloud\Facade\TagCloud {}
     
