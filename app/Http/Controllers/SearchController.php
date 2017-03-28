@@ -13,10 +13,11 @@ use App\Helpers\DatabaseHelper;
 
 class SearchController extends Controller
 {
-    public function index($orderby = 'title', $direction = 'asc', $term = ''){
-        if($term == ''){
+    public function index($orderby = 'title', $direction = 'asc', $term = '')
+    {
+        if ($term == '') {
             return view('search.index');
-        }else{
+        } else {
             $rows = (\Auth::check()) ? \Auth::user()->settings->rows_per_page_games : config('app.rows_per_page_games');
 
             $games = Game::search($term)->paginate($rows);
@@ -29,7 +30,6 @@ class SearchController extends Controller
                 'direction' => $direction,
             ]);
         }
-
     }
 
     public function search(Request $request, $orderby = 'title', $direction = 'asc')
