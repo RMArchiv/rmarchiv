@@ -10,12 +10,16 @@
                 @if($direction == 'asc')
                     @if(isset($id))
                         <a class="activated" href="{{ action($action, [$id, 'title', 'desc']) }}">spielname</a>
+                    @elseif(isset($term))
+                        <a class="activated" href="{{ action($action, ['title', 'desc', $term]) }}">spielname</a>
                     @else
                         <a class="activated" href="{{ action($action, ['title', 'desc']) }}">spielname</a>
                     @endif
                 @else
                     @if(isset($id))
                         <a class="activated reverse" href="{{ action($action, [$id, 'title', 'asc']) }}">spielname</a>
+                    @elseif(isset($term))
+                        <a class="activated" href="{{ action($action, ['title', 'asc', $term]) }}">spielname</a>
                     @else
                         <a class="activated reverse" href="{{ action($action, ['title', 'asc']) }}">spielname</a>
                     @endif
@@ -23,6 +27,8 @@
             @else
                 @if(isset($id))
                     <a class="" href="{{ action($action, [$id, 'title', 'asc']) }}">spielname</a>
+                @elseif(isset($term))
+                    <a class="" href="{{ action($action, ['title', 'asc', $term]) }}">spielname</a>
                 @else
                     <a class="" href="{{ action($action, ['title', 'asc']) }}">spielname</a>
                 @endif
