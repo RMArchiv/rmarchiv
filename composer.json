@@ -36,7 +36,8 @@
         "venturecraft/revisionable": "1.*",
         "geoip/geoip": "^1.17",
         "laravel/scout": "^3.0",
-        "teamtnt/laravel-scout-tntsearch-driver": "^2.0"
+        "teamtnt/laravel-scout-tntsearch-driver": "^2.0",
+        "eusonlito/laravel-meta": "^3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

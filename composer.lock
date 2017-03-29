@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2aab21293763b8b26d2c9b7c9971cdfb",
+    "content-hash": "111f1828860f853474b67dde4e1972a6",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -1079,6 +1079,51 @@
                 "parser"
             ],
             "time": "2016-11-02T15:56:58+00:00"
+        },
+        {
+            "name": "eusonlito/laravel-meta",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eusonlito/laravel-Meta.git",
+                "reference": "dd43eaebbcbebc9fefb6e4622f611db2e0eb3f1a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eusonlito/laravel-Meta/zipball/dd43eaebbcbebc9fefb6e4622f611db2e0eb3f1a",
+                "reference": "dd43eaebbcbebc9fefb6e4622f611db2e0eb3f1a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eusonlito\\LaravelMeta\\": "src/Eusonlito/LaravelMeta/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lito",
+                    "email": "lito@eordes.com"
+                }
+            ],
+            "description": "A package to manage Header Meta Tags",
+            "keywords": [
+                "head",
+                "laravel",
+                "meta",
+                "tags"
+            ],
+            "time": "2016-05-26T06:56:54+00:00"
         },
         {
             "name": "gabrielelana/byte-units",
