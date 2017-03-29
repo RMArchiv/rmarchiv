@@ -12,7 +12,7 @@
     }
   }
   input[type="text"] {
-    width: 80%;
+    width: 98%;
   }
   #searchType {
     list-style: none;
@@ -20,5 +20,11 @@
       display: inline-block;
       margin: 1px;
     }
+  }
+}
+
+#rmarchivbox_searchpage {
+  input[type="text"] {
+
   }
 }
