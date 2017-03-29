@@ -50,7 +50,6 @@ namespace PHPSTORM_META {
             'sitemap' instanceof \Watson\Sitemap\Sitemap,
             'api.router' instanceof \Dingo\Api\Routing\Router,
             'Dingo\Api\Routing\ResourceRegistrar' instanceof \Dingo\Api\Routing\ResourceRegistrar,
-            'api.url' instanceof \Dingo\Api\Routing\UrlGenerator,
             'api.limiting' instanceof \Dingo\Api\Http\RateLimit\Handler,
             'api.http.validator' instanceof \Dingo\Api\Http\RequestValidator,
             'Dingo\Api\Http\Validation\Domain' instanceof \Dingo\Api\Http\Validation\Domain,
@@ -184,6 +183,7 @@ namespace PHPSTORM_META {
             'form' instanceof \Collective\Html\FormBuilder,
             'lavacharts' instanceof \Khill\Lavacharts\Lavacharts,
             'Telegram\Bot\Api' instanceof \Telegram\Bot\Api,
+            'meta' instanceof \Eusonlito\LaravelMeta\Meta,
         ],
         \Illuminate\Contracts\Container\Container::make('') => [
             '' == '@',
@@ -226,7 +226,6 @@ namespace PHPSTORM_META {
             'sitemap' instanceof \Watson\Sitemap\Sitemap,
             'api.router' instanceof \Dingo\Api\Routing\Router,
             'Dingo\Api\Routing\ResourceRegistrar' instanceof \Dingo\Api\Routing\ResourceRegistrar,
-            'api.url' instanceof \Dingo\Api\Routing\UrlGenerator,
             'api.limiting' instanceof \Dingo\Api\Http\RateLimit\Handler,
             'api.http.validator' instanceof \Dingo\Api\Http\RequestValidator,
             'Dingo\Api\Http\Validation\Domain' instanceof \Dingo\Api\Http\Validation\Domain,
@@ -360,6 +359,7 @@ namespace PHPSTORM_META {
             'form' instanceof \Collective\Html\FormBuilder,
             'lavacharts' instanceof \Khill\Lavacharts\Lavacharts,
             'Telegram\Bot\Api' instanceof \Telegram\Bot\Api,
+            'meta' instanceof \Eusonlito\LaravelMeta\Meta,
         ],
         \App::make('') => [
             '' == '@',
@@ -402,7 +402,6 @@ namespace PHPSTORM_META {
             'sitemap' instanceof \Watson\Sitemap\Sitemap,
             'api.router' instanceof \Dingo\Api\Routing\Router,
             'Dingo\Api\Routing\ResourceRegistrar' instanceof \Dingo\Api\Routing\ResourceRegistrar,
-            'api.url' instanceof \Dingo\Api\Routing\UrlGenerator,
             'api.limiting' instanceof \Dingo\Api\Http\RateLimit\Handler,
             'api.http.validator' instanceof \Dingo\Api\Http\RequestValidator,
             'Dingo\Api\Http\Validation\Domain' instanceof \Dingo\Api\Http\Validation\Domain,
@@ -536,6 +535,7 @@ namespace PHPSTORM_META {
             'form' instanceof \Collective\Html\FormBuilder,
             'lavacharts' instanceof \Khill\Lavacharts\Lavacharts,
             'Telegram\Bot\Api' instanceof \Telegram\Bot\Api,
+            'meta' instanceof \Eusonlito\LaravelMeta\Meta,
         ],
         \app('') => [
             '' == '@',
@@ -578,7 +578,6 @@ namespace PHPSTORM_META {
             'sitemap' instanceof \Watson\Sitemap\Sitemap,
             'api.router' instanceof \Dingo\Api\Routing\Router,
             'Dingo\Api\Routing\ResourceRegistrar' instanceof \Dingo\Api\Routing\ResourceRegistrar,
-            'api.url' instanceof \Dingo\Api\Routing\UrlGenerator,
             'api.limiting' instanceof \Dingo\Api\Http\RateLimit\Handler,
             'api.http.validator' instanceof \Dingo\Api\Http\RequestValidator,
             'Dingo\Api\Http\Validation\Domain' instanceof \Dingo\Api\Http\Validation\Domain,
@@ -712,6 +711,7 @@ namespace PHPSTORM_META {
             'form' instanceof \Collective\Html\FormBuilder,
             'lavacharts' instanceof \Khill\Lavacharts\Lavacharts,
             'Telegram\Bot\Api' instanceof \Telegram\Bot\Api,
+            'meta' instanceof \Eusonlito\LaravelMeta\Meta,
         ],
     ];
 }

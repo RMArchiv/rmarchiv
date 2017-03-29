@@ -13013,6 +13013,100 @@ namespace GrahamCampbell\Markdown\Facades {
     }         
 }
     
+namespace Eusonlito\LaravelMeta {
+
+    class Facade {
+        
+        /**
+         * 
+         *
+         * @param array $config
+         * @return object 
+         * @static 
+         */
+        public static function getInstance($config = array())
+        {
+            return \Eusonlito\LaravelMeta\Meta::getInstance($config);
+        }
+        
+        /**
+         * 
+         *
+         * @param array $config
+         * @return \Eusonlito\LaravelMeta\this 
+         * @static 
+         */
+        public static function setConfig($config = array())
+        {
+            return \Eusonlito\LaravelMeta\Meta::setConfig($config);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $key
+         * @param null|string $default
+         * @return string 
+         * @static 
+         */
+        public static function get($key, $default = null)
+        {
+            return \Eusonlito\LaravelMeta\Meta::get($key, $default);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $key
+         * @param string $value
+         * @return string 
+         * @static 
+         */
+        public static function set($key, $value)
+        {
+            return \Eusonlito\LaravelMeta\Meta::set($key, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $title
+         * @return string 
+         * @static 
+         */
+        public static function title($title = null)
+        {
+            return \Eusonlito\LaravelMeta\Meta::title($title);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $key
+         * @param string $default
+         * @return string 
+         * @static 
+         */
+        public static function tag($key, $default = null)
+        {
+            return \Eusonlito\LaravelMeta\Meta::tag($key, $default);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $key
+         * @return string 
+         * @static 
+         */
+        public static function tags($keys = array())
+        {
+            return \Eusonlito\LaravelMeta\Meta::tags($keys);
+        }
+        
+    }         
+}
+    
 namespace RobBrazier\Piwik\Facades {
 
     class Piwik {
@@ -16764,6 +16858,8 @@ namespace {
     class Image extends \Intervention\Image\Facades\Image {}
     
     class Markdown extends \GrahamCampbell\Markdown\Facades\Markdown {}
+    
+    class Meta extends \Eusonlito\LaravelMeta\Facade {}
     
     class Piwik extends \RobBrazier\Piwik\Facades\Piwik {}
     

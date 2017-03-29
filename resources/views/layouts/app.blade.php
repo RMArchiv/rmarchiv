@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de">
 <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Marcel 'ryg' Hering" />
+
+    <title><?= Meta::get('title'); ?></title>
+
+    <?= Meta::tag('robots'); ?>
+
+    <?= Meta::tag('site_name', 'My site'); ?>
+    <?= Meta::tag('url', Request::url()); ?>
+    <?= Meta::tag('locale', 'de_DE'); ?>
+
+    <?= Meta::tag('title'); ?>
+    <?= Meta::tag('description'); ?>
+    <?= Meta::tag('image'); ?>
+
+    <?= Meta::set('image', asset('images/default-logo.png')); ?>
+
+    <?= Meta::tag('image'); ?>
     <title>
         @yield('pagetitle') :: rmarchiv.de :: your online rpgmaker resource
     </title>
@@ -20,11 +41,6 @@
         rmarchiv.isMobile = false;
         //-->
     </script>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="description" content="rmarchiv.de - your online rpgmaker resource"/>
-    <meta name="keywords" content="quartier,rpg maker,rpgmaker,rmvx,rm2k,rm2k3"/>
-    <meta charset="utf-8"/>
 </head>
 <body>
 @php
