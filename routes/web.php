@@ -40,7 +40,7 @@ Route::post('games/{id}/developer/delete', 'GameController@destroy_developer')->
 //Gamefiles routen
 Route::get('games/{id}/gamefiles', 'GameFileController@create')->name('gamefiles.index');
 Route::post('games/{id}/gamefiles', 'GameFileController@store')->name('gamefiles.store');
-Route::post('games/{id}/gamefiles/upload', 'FineUploaderController@endpoint@upload')->name('gamefiles.upload');
+Route::post('games/{id}/gamefiles/upload', 'FineUploaderController@endpoint')->name('gamefiles.upload');
 Route::get('games/{id}/gamefiles/delete/{fileid}', 'GameFileController@destroy')->name('gamefiles.delete');
 Route::get('games/{id}/gamefiles/edit/{gamefileid}', 'GameFileController@edit')->name('gamefiles.edit');
 Route::post('games/{id}/gamefiles/edit/{gamefileid}/update', 'GameFileController@update')->name('gamefiles.update');
