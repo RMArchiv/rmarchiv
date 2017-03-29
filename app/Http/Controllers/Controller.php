@@ -25,5 +25,6 @@ class Controller extends BaseController
 
         # Default Robots
         \Meta::set('robots', 'index,follow');
+        \Meta::set('image', 'http://rmarchiv.de/logo/def7cdf80a1dd01ea3ee297ed019a500.png');
     }
 }

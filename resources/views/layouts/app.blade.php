@@ -17,9 +17,6 @@
 
     <?= Meta::tag('title'); ?>
     <?= Meta::tag('description'); ?>
-    <?= Meta::tag('image'); ?>
-
-    <?= Meta::set('image', asset('images/default-logo.png')); ?>
 
     <?= Meta::tag('image'); ?>
     <title>
