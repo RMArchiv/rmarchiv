@@ -65,6 +65,11 @@ return [
     ],
 
     'tntsearch' => [
+        'driver' => 'mysql',
+        'host'      => 'localhost',
+        'database'  => env('DB_DATABASE', '').'_search',
+        'username'  => env('DB_USERNAME', '')-'_search',
+        'password'  => env('DB_PASSWORD', ''),
         'storage' => storage_path(),
         'fuzziness' => env('TNTSEARCH_FUZZINESS', true),
         'fuzzy' => [
