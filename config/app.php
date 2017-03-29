@@ -220,6 +220,7 @@ return [
         NotificationChannels\Discord\DiscordServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
         TeamTNT\Scout\TNTSearchScoutServiceProvider::class,
+        Eusonlito\LaravelMeta\MetaServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -272,6 +273,7 @@ return [
         'Log'           => Illuminate\Support\Facades\Log::class,
         'Mail'          => Illuminate\Support\Facades\Mail::class,
         'Markdown'      => GrahamCampbell\Markdown\Facades\Markdown::class,
+        'Meta'          => Eusonlito\LaravelMeta\Facade::class,
         'Notification'  => Illuminate\Support\Facades\Notification::class,
         'Password'      => Illuminate\Support\Facades\Password::class,
         'Piwik'         => RobBrazier\Piwik\Facades\Piwik::class,
