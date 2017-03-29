@@ -11,7 +11,7 @@
 
     <?= Meta::tag('robots'); ?>
 
-    <?= Meta::tag('site_name', 'My site'); ?>
+    <?= Meta::tag('site_name', 'rmarchiv.de'); ?>
     <?= Meta::tag('url', Request::url()); ?>
     <?= Meta::tag('locale', 'de_DE'); ?>
 

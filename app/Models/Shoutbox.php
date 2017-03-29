@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * Class Shoutbox.
@@ -31,6 +32,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Shoutbox extends Model
 {
+    use Notifiable;
     use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'shoutbox';
 
@@ -47,5 +49,10 @@ class Shoutbox extends Model
     public function user()
     {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
+
+    public function routeNotificationForDiscord()
+    {
+        return $this->shout_md;
     }
 }
