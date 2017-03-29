@@ -8,8 +8,6 @@
 namespace App\Http\Controllers;
 
 use NotificationChannels\Discord\Discord;
-use NotificationChannels\Discord\DiscordChannel;
-use NotificationChannels\Discord\DiscordMessage;
 
 class TestController extends Controller
 {
