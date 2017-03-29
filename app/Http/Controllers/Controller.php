@@ -19,10 +19,10 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        #default title Meta Plugin
+        //default title Meta Plugin
         Meta::title('rmarchiv.de :: your online rpgmaker resource');
 
-        # Default Robots
+        // Default Robots
         Meta::set('robots', 'index,follow');
     }
 }
