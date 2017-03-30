@@ -7,18 +7,16 @@
 
 namespace App\Http\Controllers;
 
-use NotificationChannels\Discord\Discord;
-use NotificationChannels\Discord\DiscordChannel;
-use NotificationChannels\Discord\DiscordMessage;
+use App\Models\Shoutbox;
+use App\Notifications\ShoutBoxNotification;
+use Illuminate\Support\Facades\Auth;
 
 class TestController extends Controller
 {
     public function index()
     {
-        $user = 'ryg#3553';
-        $channel = app(Discord::class)->getPrivateChannel($user);
+        //'token' => 'MjgzOTU3MzExMDYyNTQwMjg4.C48pjA._BS4vqj6a-DFIFOntDAkSx1A-GM',
 
-        dd($channel);
     }
 
     public function webhook()

@@ -267,10 +267,12 @@ Route::get('test', 'TestController@index');
 Route::post('tlg/webhook', 'TestController@webhook');
 
 //Routen für API
+Route::get('api/games/{id}', 'Api\v1\GameController@show');
+
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {
     $api->get('games', 'App\Http\Controllers\Api\v1\GameController@index');
-    $api->get('games/{id}', 'App\Http\Controllers\Api\v1\GameController@show');
+    //$api->get('games/{id}', 'App\Http\Controllers\Api\v1\GameController@show');
     $api->get('games_app', 'App\Http\Controllers\Api\v1\GameController@show_app');
     $api->get('tako/filelist', 'App\Http\Controllers\Api\v1\TakoController@filelist');
 });

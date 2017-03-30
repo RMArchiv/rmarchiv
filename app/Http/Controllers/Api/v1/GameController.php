@@ -28,9 +28,9 @@ class GameController extends Controller
 
     public function show($id)
     {
-        $game = Game::with('developers', 'user', 'maker', 'screenshots', 'comments')->whereId($id)->first();
+        $game = Game::with('developers', 'maker', 'screenshots', 'comments')->whereId($id)->first();
 
-        return $game;
+        return $game->toArray();
     }
 
     public function show_app()

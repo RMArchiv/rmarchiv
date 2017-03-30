@@ -35,7 +35,7 @@ return [
     ],
 
     'stripe' => [
-        'model'  => App\User::class,
+        'model'  => App\Models\User::class,
         'key'    => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
@@ -45,7 +45,7 @@ return [
     ],
 
     'discord' => [
-        'token' => 'MjgzOTU3MzExMDYyNTQwMjg4.C48pjA._BS4vqj6a-DFIFOntDAkSx1A-GM',
+        'token' => '',
     ],
 
 ];
