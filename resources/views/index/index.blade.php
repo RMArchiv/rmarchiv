@@ -36,6 +36,8 @@
             @if(!Auth::check() || Auth::user()->settings->disable_widget_alltimetop != 1)
                 @include('index._partials.topalltime')
             @endif
+
+            @include('index._partials.randomgame')
         </div>
         <div id='middlebar' class='column'>
             @if(!Auth::check() || Auth::user()->settings->disable_widget_shoutbox != 1)

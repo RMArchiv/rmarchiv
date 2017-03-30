@@ -132,6 +132,7 @@ class IndexController extends Controller
 
         $topalltime = Game::orderBy('avg', 'desc')->limit(5)->get();
         $latestcomments = Comment::with('game')->whereContentType('game')->orderBy('created_at', 'desc')->limit(5)->get();
+        $randomgame = Game::inRandomOrder()->first();
 
         return view('index.index', [
             'news' => $news,
@@ -149,6 +150,7 @@ class IndexController extends Controller
             'topalltime' => $topalltime,
             'latestcomments' => $latestcomments,
             'size' => $size,
+            'randomgame' => $randomgame,
         ]);
     }
 }
