@@ -199,6 +199,22 @@ class StatsticController extends Controller
         $filesize['sum']['size'] += $filesize['resources']['size'];
         $filesize['sum']['count'] += $filesize['resources']['count'];
 
+
+        // Augeteilt nach Maker
+        $gamespermonth = \DB::table('games_files')
+            ->select('release_month as year')
+            ->selectRaw('COUNT(release_month) as count')
+            ->groupBy('release_month')
+            ->orderBy('release_month')
+            ->get();
+        $com = $lava->DataTable();
+        $com->addStringColumn('Datum')
+            ->addNumberColumn('Releases pro Monat');
+        foreach ($gamespermonth as $game) {
+            $com->addRow([$game->year, $game->count]);
+        }
+        $lava->AreaChart('ReleasesMon', $com, $lava_config);
+
         return view('statistics.index', [
             'lava' => $lava,
             'files' => $filesize,

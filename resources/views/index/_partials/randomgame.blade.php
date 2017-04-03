@@ -1,5 +1,5 @@
 <div class='rmarchivtbl' id='rmarchivbox_cdc'>
-    <h2>coup de coeur</h2>
+    <h2>zufallsspiel</h2>
     <ul class='boxlist boxlisttable'>
         <li>
                 <span class="rowprod">
