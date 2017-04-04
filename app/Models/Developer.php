@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 /**
  * Class Developer.
@@ -34,6 +35,8 @@ use Illuminate\Database\Eloquent\Model;
 class Developer extends Model
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
+    use Searchable;
+
     protected $table = 'developer';
 
     public $timestamps = true;
@@ -50,5 +53,18 @@ class Developer extends Model
     public function user()
     {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+        ];
     }
 }
