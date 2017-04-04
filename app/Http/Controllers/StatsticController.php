@@ -7,6 +7,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
+use App\Models\Maker;
 use Khill\Lavacharts\Lavacharts;
 
 class StatsticController extends Controller
@@ -15,7 +17,7 @@ class StatsticController extends Controller
     {
         $lava_config = [
             'legend' => [
-                'position'  => 'in',
+                'position' => 'in',
                 'textStyle' => [
                     'color' => '#ffffe0',
                 ],
@@ -33,17 +35,17 @@ class StatsticController extends Controller
                     'color' => '#ffffe0',
                 ],
             ],
-            'pointSize'  => 5,
+            'pointSize' => 5,
             'pointShape' => [
-                'type'     => 'circle',
+                'type' => 'circle',
                 'rotation' => 180,
             ],
             'trendlines' => [
                 0 => [
-                    'type'         => 'line',
-                    'color'        => 'red',
-                    'pointsVisible'=> true,
-                    'pointSize'    => 1,
+                    'type' => 'line',
+                    'color' => 'red',
+                    'pointsVisible' => true,
+                    'pointSize' => 1,
                 ],
             ],
         ];
@@ -63,7 +65,7 @@ class StatsticController extends Controller
         $reg->addStringColumn('Datum')
             ->addNumberColumn('Registrierungen pro Monat');
         foreach ($users as $user) {
-            $reg->addRow([$user->year.'-'.$user->month, $user->count]);
+            $reg->addRow([$user->year . '-' . $user->month, $user->count]);
         }
         $lava->AreaChart('Registrierungen', $reg, $lava_config);
 
@@ -80,7 +82,7 @@ class StatsticController extends Controller
         $com->addStringColumn('Datum')
             ->addNumberColumn('Kommentare pro Monat');
         foreach ($comments as $comment) {
-            $com->addRow([$comment->year.'-'.$comment->month, $comment->count]);
+            $com->addRow([$comment->year . '-' . $comment->month, $comment->count]);
         }
         $lava->AreaChart('Kommentare', $com, $lava_config);
 
@@ -128,7 +130,7 @@ class StatsticController extends Controller
         $com->addStringColumn('Datum')
             ->addNumberColumn('Forenposts pro Monat');
         foreach ($postspermonth as $p) {
-            $com->addRow([$p->year.'-'.$p->month, $p->count]);
+            $com->addRow([$p->year . '-' . $p->month, $p->count]);
         }
         $lava->AreaChart('ForumPosts', $com, $lava_config);
 
@@ -137,7 +139,7 @@ class StatsticController extends Controller
                 'size' => 0,
                 'count' => 0,
             ],
-            'screens' =>[
+            'screens' => [
                 'size' => 0,
                 'count' => 0,
             ],
@@ -200,19 +202,14 @@ class StatsticController extends Controller
         $filesize['sum']['count'] += $filesize['resources']['count'];
 
         // Augeteilt nach Maker
-        $gamespermonth = \DB::table('games_files')
-            ->select('release_month as year')
-            ->selectRaw('COUNT(release_month) as count')
-            ->groupBy('release_month')
-            ->orderBy('release_month')
-            ->get();
+        $makerchart = Maker::all();
         $com = $lava->DataTable();
-        $com->addStringColumn('Datum')
-            ->addNumberColumn('Releases pro Monat');
-        foreach ($gamespermonth as $game) {
-            $com->addRow([$game->year, $game->count]);
+        $com->addStringColumn('Maker')
+            ->addNumberColumn('Spieleanzahl');
+        foreach ($makerchart as $maker) {
+            $com->addRow([$maker->title, $maker->games->count()]);
         }
-        $lava->AreaChart('ReleasesMon', $com, $lava_config);
+        $lava->PieChart('MakerChart', $com, $lava_config);
 
         return view('statistics.index', [
             'lava' => $lava,
