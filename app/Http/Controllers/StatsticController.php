@@ -7,7 +7,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Game;
 use App\Models\Maker;
 use Khill\Lavacharts\Lavacharts;
 
@@ -65,7 +64,7 @@ class StatsticController extends Controller
         $reg->addStringColumn('Datum')
             ->addNumberColumn('Registrierungen pro Monat');
         foreach ($users as $user) {
-            $reg->addRow([$user->year . '-' . $user->month, $user->count]);
+            $reg->addRow([$user->year.'-'.$user->month, $user->count]);
         }
         $lava->AreaChart('Registrierungen', $reg, $lava_config);
 
@@ -82,7 +81,7 @@ class StatsticController extends Controller
         $com->addStringColumn('Datum')
             ->addNumberColumn('Kommentare pro Monat');
         foreach ($comments as $comment) {
-            $com->addRow([$comment->year . '-' . $comment->month, $comment->count]);
+            $com->addRow([$comment->year.'-'.$comment->month, $comment->count]);
         }
         $lava->AreaChart('Kommentare', $com, $lava_config);
 
@@ -130,7 +129,7 @@ class StatsticController extends Controller
         $com->addStringColumn('Datum')
             ->addNumberColumn('Forenposts pro Monat');
         foreach ($postspermonth as $p) {
-            $com->addRow([$p->year . '-' . $p->month, $p->count]);
+            $com->addRow([$p->year.'-'.$p->month, $p->count]);
         }
         $lava->AreaChart('ForumPosts', $com, $lava_config);
 
