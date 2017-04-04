@@ -199,7 +199,6 @@ class StatsticController extends Controller
         $filesize['sum']['size'] += $filesize['resources']['size'];
         $filesize['sum']['count'] += $filesize['resources']['count'];
 
-
         // Augeteilt nach Maker
         $gamespermonth = \DB::table('games_files')
             ->select('release_month as year')
