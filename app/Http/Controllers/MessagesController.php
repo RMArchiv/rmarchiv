@@ -77,55 +77,65 @@ class MessagesController extends Controller
 
     public function show($id)
     {
-        try {
-            $thread = Thread::findOrFail($id);
-        } catch (ModelNotFoundException $e) {
-            Session::flash('error_message', 'The thread with ID: '.$id.' was not found.');
+        if(\Auth::check()){
+            try {
+                $thread = Thread::findOrFail($id);
+            } catch (ModelNotFoundException $e) {
+                Session::flash('error_message', 'Thema mit der ID: '.$id.' konnte nicht gefunden werden.');
 
-            return redirect('messages');
+                return redirect('messages');
+            }
+            // show current user in list if not a current participant
+            // $users = User::whereNotIn('id', $thread->participantsUserIds())->get();
+            // don't show the current user in list
+            $userId = \Auth::user()->id;
+            if($thread->hasParticipant($userId)){
+                $users = User::whereNotIn('id', $thread->participantsUserIds($userId))->get();
+                $thread->markAsRead($userId);
+
+                return view('messenger.show', compact('thread', 'users'));
+            }
+            //Todo:View für Keine Berechtigung.
         }
-        // show current user in list if not a current participant
-        // $users = User::whereNotIn('id', $thread->participantsUserIds())->get();
-        // don't show the current user in list
-        $userId = Auth::user()->id;
-        $users = User::whereNotIn('id', $thread->participantsUserIds($userId))->get();
-        $thread->markAsRead($userId);
 
-        return view('messenger.show', compact('thread', 'users'));
     }
 
     public function update($id)
     {
-        try {
-            $thread = Thread::findOrFail($id);
-        } catch (ModelNotFoundException $e) {
-            Session::flash('error_message', 'The thread with ID: '.$id.' was not found.');
+        if(\Auth::check()){
+            try {
+                $thread = Thread::findOrFail($id);
+            } catch (ModelNotFoundException $e) {
+                Session::flash('error_message', 'Thema mit der ID: '.$id.' konnte nicht gefunden werden.');
 
-            return redirect('messages');
-        }
-        $thread->activateAllParticipants();
-        // Message
-        Message::create(
-            [
-                'thread_id' => $thread->id,
-                'user_id'   => Auth::id(),
-                'body'      => Input::get('msg'),
-            ]
-        );
-        // Add replier as a participant
-        $participant = Participant::firstOrCreate(
-            [
-                'thread_id' => $thread->id,
-                'user_id'   => Auth::user()->id,
-            ]
-        );
-        $participant->last_read = new Carbon;
-        $participant->save();
-        // Recipients
-        if (Input::has('recipients')) {
-            $thread->addParticipant(Input::get('recipients'));
+                return redirect('messages');
+            }
+            $thread->activateAllParticipants();
+            // Message
+            Message::create(
+                [
+                    'thread_id' => $thread->id,
+                    'user_id'   => \Auth::id(),
+                    'body'      => Input::get('msg'),
+                ]
+            );
+            // Add replier as a participant
+            $participant = Participant::firstOrCreate(
+                [
+                    'thread_id' => $thread->id,
+                    'user_id'   => \Auth::user()->id,
+                ]
+            );
+            $participant->last_read = new Carbon;
+            $participant->save();
+            // Recipients
+            if (Input::has('recipients')) {
+                $thread->addParticipant(Input::get('recipients'));
+            }
+
+            return redirect('messages/'.$id);
         }
 
-        return redirect('messages/'.$id);
+        //Todo:View für Keine Berechtigung
     }
 }

@@ -98,16 +98,16 @@
         },
         {
             "name": "backpack/backupmanager",
-            "version": "1.1.15",
+            "version": "1.1.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Backpack/BackupManager.git",
-                "reference": "16114d2b8e51e3fa4682cc6d09f126a715d0afea"
+                "reference": "154b1a26020ef810b7ae801dee952bed479567a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Backpack/BackupManager/zipball/16114d2b8e51e3fa4682cc6d09f126a715d0afea",
-                "reference": "16114d2b8e51e3fa4682cc6d09f126a715d0afea",
+                "url": "https://api.github.com/repos/Laravel-Backpack/BackupManager/zipball/154b1a26020ef810b7ae801dee952bed479567a0",
+                "reference": "154b1a26020ef810b7ae801dee952bed479567a0",
                 "shasum": ""
             },
             "require": {
@@ -153,7 +153,7 @@
                 "tabacitu",
                 "updivision"
             ],
-            "time": "2017-01-21T12:13:44+00:00"
+            "time": "2017-04-05T04:42:11+00:00"
         },
         {
             "name": "backpack/base",
@@ -4629,16 +4629,16 @@
         },
         {
             "name": "teamtnt/laravel-scout-tntsearch-driver",
-            "version": "v2.0.3",
+            "version": "v2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamtnt/laravel-scout-tntsearch-driver.git",
-                "reference": "1e2906e84e1b3beadb938859b5692013f75cb14a"
+                "reference": "34fc1b72ff0ec1a3b0637bff0baaf46213544bd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamtnt/laravel-scout-tntsearch-driver/zipball/1e2906e84e1b3beadb938859b5692013f75cb14a",
-                "reference": "1e2906e84e1b3beadb938859b5692013f75cb14a",
+                "url": "https://api.github.com/repos/teamtnt/laravel-scout-tntsearch-driver/zipball/34fc1b72ff0ec1a3b0637bff0baaf46213544bd4",
+                "reference": "34fc1b72ff0ec1a3b0637bff0baaf46213544bd4",
                 "shasum": ""
             },
             "require": {
@@ -4683,7 +4683,7 @@
                 "search",
                 "tntsearch"
             ],
-            "time": "2017-03-09T20:33:03+00:00"
+            "time": "2017-03-31T14:50:20+00:00"
         },
         {
             "name": "teamtnt/tntsearch",
