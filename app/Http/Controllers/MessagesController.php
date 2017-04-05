@@ -11,7 +11,6 @@ use Carbon\Carbon;
 use App\Models\User;
 use Cmgmyr\Messenger\Models\Thread;
 use Cmgmyr\Messenger\Models\Message;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Cmgmyr\Messenger\Models\Participant;
@@ -77,7 +76,7 @@ class MessagesController extends Controller
 
     public function show($id)
     {
-        if(\Auth::check()){
+        if (\Auth::check()) {
             try {
                 $thread = Thread::findOrFail($id);
             } catch (ModelNotFoundException $e) {
@@ -89,7 +88,7 @@ class MessagesController extends Controller
             // $users = User::whereNotIn('id', $thread->participantsUserIds())->get();
             // don't show the current user in list
             $userId = \Auth::user()->id;
-            if($thread->hasParticipant($userId)){
+            if ($thread->hasParticipant($userId)) {
                 $users = User::whereNotIn('id', $thread->participantsUserIds($userId))->get();
                 $thread->markAsRead($userId);
 
@@ -97,12 +96,11 @@ class MessagesController extends Controller
             }
             //Todo:View für Keine Berechtigung.
         }
-
     }
 
     public function update($id)
     {
-        if(\Auth::check()){
+        if (\Auth::check()) {
             try {
                 $thread = Thread::findOrFail($id);
             } catch (ModelNotFoundException $e) {
