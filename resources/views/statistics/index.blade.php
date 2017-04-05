@@ -14,7 +14,7 @@
             </div>
             <div class="rmarchivtbl" style="width: 95%">
                 <h2>Spiele pro Maker</h2>
-                <div id="makerchart_div"></div>
+                <div id="makerchart_div" style="height: 488px"></div>
                 <div class='foot'>=D</div>
             </div>
             <div class="rmarchivtbl" style="width: 95%">
