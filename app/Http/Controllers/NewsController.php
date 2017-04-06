@@ -44,7 +44,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        if(\Auth::check()){
+        if (\Auth::check()) {
             return view('news.create');
         }
     }
@@ -57,27 +57,26 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        if(\Auth::check()){
-            if(\Auth::user()->hasRole('admin')){
-            $n = new News;
-            $n->news_category = $request->get('cat');
-            $n->user_id = \Auth::id();
-            $n->news_md = $request->get('msg');
-            $n->news_html = \Markdown::convertToHtml($request->get('msg'));
-            $n->title = $request->get('title');
-            $n->approved = 0;
+        if (\Auth::check()) {
+            if (\Auth::user()->hasRole('admin')) {
+                $n = new News;
+                $n->news_category = $request->get('cat');
+                $n->user_id = \Auth::id();
+                $n->news_md = $request->get('msg');
+                $n->news_html = \Markdown::convertToHtml($request->get('msg'));
+                $n->title = $request->get('title');
+                $n->approved = 0;
 
-            $n->save();
+                $n->save();
 
-            return redirect()->action('NewsController@show', $n->id);
-            }else{
+                return redirect()->action('NewsController@show', $n->id);
+            } else {
                 return redirect()->action('IndexController@index');
             }
-        }else{
+        } else {
             return redirect()->action('IndexController@index');
         }
     }
-
 
     /**
      * Display the specified resource.
@@ -135,17 +134,17 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        if(\Auth::check()){
-            if(\Auth::user()->hasRole('admin')){
+        if (\Auth::check()) {
+            if (\Auth::user()->hasRole('admin')) {
                 $news = News::whereId($id)->first();
 
                 return view('news.edit', [
                     'news' => $news,
                 ]);
-            }else{
+            } else {
                 return redirect()->action('IndexController@index');
             }
-        }else{
+        } else {
             return redirect()->action('IndexController@index');
         }
     }
@@ -159,7 +158,7 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(\Auth::user()->hasRole('admin')){
+        if (\Auth::user()->hasRole('admin')) {
             $this->validate($request, [
                 'title' => 'required',
                 'msg' => 'required',
@@ -186,7 +185,7 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        if(\Auth::user()->hasRole('admin')){
+        if (\Auth::user()->hasRole('admin')) {
             $news = News::whereId($id)->first();
             $news->delete();
         }
@@ -196,10 +195,10 @@ class NewsController extends Controller
 
     public function approve($id, $approve)
     {
-        if(\Auth::user()->hasRole('admin')){
-        $news = News::whereId($id)->first();
-        $news->approved = $approve;
-        $news->save();
+        if (\Auth::user()->hasRole('admin')) {
+            $news = News::whereId($id)->first();
+            $news->approved = $approve;
+            $news->save();
         }
 
         return redirect()->action('NewsController@show', $id);
