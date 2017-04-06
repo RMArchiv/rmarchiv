@@ -6,16 +6,26 @@
             <h2>{{ $thread->subject }} :: {{ $thread->participantsString(Auth::id()) }}</h2>
 
             @foreach($thread->messages as $post)
-                <div class='content cite-{{ $post->id  }} markdown' id='c{{ $post->id }}'>{!! Markdown::convertToHtml($post->body) !!}</div>
+                <div class='content cite-{{ $post->id  }} markdown' id='c{{ $post->id }}'>
+                    <div class="userinfo">
+                        <b><a href='{{ url('users', $post->user->id) }}' class='user'>{{ $post->user->name }}</a></b>
+                        <br>
+                        <small>{{ $post->user->roles[0]->display_name}}</small>
+                        <br>
+                        <br>
+                        <a href='{{ url('users', $post->user->id) }}' class='usera' title="{{ $post->user->name }}">
+                            <img src='http://ava.rmarchiv.de/?size=160&gender=male&id={{ $post->user->id }}' alt="{{ $post->user->name }}" class='avatar_board'/>
+                        </a>
+                        <br>
+                        <br>
+                    </div>
+                    <div class="post markdown">
+                        {!! \App\Helpers\InlineBoxHelper::GameBox(Markdown::convertToHtml($post->body)) !!}
+                    </div>
+                </div>
                 <div class='foot'>
-                    <span class='tools' data-cid='{{ $post->id }}'></span>
-                    gepostet am
+                    gepostet
                     <a href='{{ route('messages.show', [$post->id]) }}#c{{ $post->id }}'>{{ $post->created_at }}</a>
-                    von
-                    <a href='{{ url('users', $post->user->id) }}' class='user'>{{ $post->user->name }}</a>
-                    <a href='{{ url('users', $post->user->id) }}' class='usera' title="{{ $post->user->name }}">
-                        <img src='http://ava.rmarchiv.de/?gender=male&id={{ $post->user->id }}' alt="{{ $post->user->name }}" class='avatar'/>
-                    </a>
                 </div>
             @endforeach
         </div>
