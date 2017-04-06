@@ -44,7 +44,9 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('news.create');
+        if(\Auth::check()){
+            return view('news.create');
+        }
     }
 
     /**
@@ -55,18 +57,27 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        $n = new News;
-        $n->news_category = $request->get('cat');
-        $n->user_id = \Auth::id();
-        $n->news_md = $request->get('msg');
-        $n->news_html = \Markdown::convertToHtml($request->get('msg'));
-        $n->title = $request->get('title');
-        $n->approved = 0;
+        if(\Auth::check()){
+            if(\Auth::user()->hasRole('admin')){
+            $n = new News;
+            $n->news_category = $request->get('cat');
+            $n->user_id = \Auth::id();
+            $n->news_md = $request->get('msg');
+            $n->news_html = \Markdown::convertToHtml($request->get('msg'));
+            $n->title = $request->get('title');
+            $n->approved = 0;
 
-        $n->save();
+            $n->save();
 
-        return redirect()->action('NewsController@show', $n->id);
+            return redirect()->action('NewsController@show', $n->id);
+            }else{
+                return redirect()->action('IndexController@index');
+            }
+        }else{
+            return redirect()->action('IndexController@index');
+        }
     }
+
 
     /**
      * Display the specified resource.
@@ -124,11 +135,19 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        $news = News::whereId($id)->first();
+        if(\Auth::check()){
+            if(\Auth::user()->hasRole('admin')){
+                $news = News::whereId($id)->first();
 
-        return view('news.edit', [
-            'news' => $news,
-        ]);
+                return view('news.edit', [
+                    'news' => $news,
+                ]);
+            }else{
+                return redirect()->action('IndexController@index');
+            }
+        }else{
+            return redirect()->action('IndexController@index');
+        }
     }
 
     /**
@@ -140,19 +159,21 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'msg' => 'required',
-            'cat' => 'required',
-        ]);
+        if(\Auth::user()->hasRole('admin')){
+            $this->validate($request, [
+                'title' => 'required',
+                'msg' => 'required',
+                'cat' => 'required',
+            ]);
 
-        $news = News::whereId($id)->first();
+            $news = News::whereId($id)->first();
 
-        $news->title = $request->get('title');
-        $news->news_md = $request->get('msg');
-        $news->news_html = \Markdown::convertToHtml($request->get('msg'));
-        $news->news_category = $request->get('cat');
-        $news->save();
+            $news->title = $request->get('title');
+            $news->news_md = $request->get('msg');
+            $news->news_html = \Markdown::convertToHtml($request->get('msg'));
+            $news->news_category = $request->get('cat');
+            $news->save();
+        }
 
         return redirect()->action('NewsController@show', $id);
     }
@@ -165,17 +186,21 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        $news = News::whereId($id)->first();
-        $news->delete();
+        if(\Auth::user()->hasRole('admin')){
+            $news = News::whereId($id)->first();
+            $news->delete();
+        }
 
         return redirect()->action('NewsController@index');
     }
 
     public function approve($id, $approve)
     {
+        if(\Auth::user()->hasRole('admin')){
         $news = News::whereId($id)->first();
         $news->approved = $approve;
         $news->save();
+        }
 
         return redirect()->action('NewsController@show', $id);
     }
