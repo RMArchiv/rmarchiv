@@ -33,7 +33,7 @@
                                     <div class="row" id="row_answer{{ $i }}">
                                         <label for="answer{{ $i }}">Antwort</label>
                                         <input name="answer{{ $i }}" id="answer{{ $i }}" value=""/>
-                                        @if($i <= 2)
+                                        @if($i <= 1)
                                             <span> [<span class="req">req</span>]</span>
                                         @endif
                                     </div>

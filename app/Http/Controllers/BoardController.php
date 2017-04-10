@@ -256,9 +256,17 @@ class BoardController extends Controller
 
     public function store_vote(Request $request, $threadid)
     {
+        dd($request);
+
+        $this->validate($request, [
+            'thread_id' => 'required',
+            'question'   => 'required',
+            'answer'       => 'required',
+        ]);
     }
 
     public function update_vote(Request $request, $threadid)
     {
+
     }
 }
