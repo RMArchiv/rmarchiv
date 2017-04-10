@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     @if(Auth::check())
-        @if(Auth::user()->id == $post->user_id or Auth::user()->hasRole('moderator'))
+        @if(Auth::user()->id == $post->user_id or Auth::user()->can('mod-threads'))
             <div id="content">
                 <form action="{{ route('board.post.update', [$post->thread_id, $post->id]) }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}

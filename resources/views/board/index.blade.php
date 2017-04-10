@@ -34,6 +34,9 @@
                             @if($thread->closed == 1)
                                 <img src="/assets/lock.png">
                             @endif
+                            @if($thread->votes->count() != 0)
+                                <img src="/assets/stats.gif">
+                            @endif
                             {{ $thread->title }}</a>
                     </td>
                     <td>{{ $thread->posts->count() }}</td>

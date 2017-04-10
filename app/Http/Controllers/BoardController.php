@@ -12,6 +12,7 @@ use App\Events\Obyx;
 use App\Models\BoardCat;
 use App\Models\BoardPost;
 use App\Models\BoardThread;
+use Cmgmyr\Messenger\Models\Thread;
 use Illuminate\Http\Request;
 use App\Helpers\DatabaseHelper;
 use Illuminate\Support\Facades\Input;
@@ -151,34 +152,39 @@ class BoardController extends Controller
             'msg' => 'required',
         ]);
 
-        $date = Carbon::now();
+        $check = BoardThread::whereId($threadid)->first();
+        if($check->closed == 0){
+            $date = Carbon::now();
 
-        $pid = \DB::table('board_posts')->insertGetId([
-            'user_id'      => \Auth::id(),
-            'cat_id'       => $request->get('catid'),
-            'thread_id'    => $threadid,
-            'content_md'   => $request->get('msg'),
-            'content_html' => \Markdown::convertToHtml($request->get('msg')),
-            'created_at'   => $date,
-        ]);
-
-        \DB::table('board_threads')
-            ->where('id', '=', $threadid)
-            ->update([
-                'last_created_at' => $date,
-                'last_user_id'    => \Auth::id(),
+            $pid = \DB::table('board_posts')->insertGetId([
+                'user_id'      => \Auth::id(),
+                'cat_id'       => $request->get('catid'),
+                'thread_id'    => $threadid,
+                'content_md'   => $request->get('msg'),
+                'content_html' => \Markdown::convertToHtml($request->get('msg')),
+                'created_at'   => $date,
             ]);
 
-        \DB::table('board_cats')
-            ->where('id', '=', $request->get('catid'))
-            ->update([
-                'last_created_at' => $date,
-                'last_user_id'    => \Auth::id(),
-            ]);
+            \DB::table('board_threads')
+                ->where('id', '=', $threadid)
+                ->update([
+                    'last_created_at' => $date,
+                    'last_user_id'    => \Auth::id(),
+                ]);
 
-        $url = \URL::route('board.thread.show', [$threadid]).'#c'.$pid;
+            \DB::table('board_cats')
+                ->where('id', '=', $request->get('catid'))
+                ->update([
+                    'last_created_at' => $date,
+                    'last_user_id'    => \Auth::id(),
+                ]);
 
-        event(new Obyx('post-add', \Auth::id()));
+            event(new Obyx('post-add', \Auth::id()));
+
+            $url = \URL::route('board.thread.show', [$threadid]).'#c'.$pid;
+        }else{
+            $url = \URL::route('board.thread.show', [$threadid]);
+        }
 
         return redirect()->to($url);
     }
