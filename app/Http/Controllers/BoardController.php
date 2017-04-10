@@ -267,6 +267,5 @@ class BoardController extends Controller
 
     public function update_vote(Request $request, $threadid)
     {
-
     }
 }
