@@ -1,11 +1,16 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class BoardPollVote
+ * Class BoardPollVote.
  *
  * @property int $id
  * @property int $poll_id
@@ -30,10 +35,8 @@ class BoardPollVote extends Model
     protected $fillable = [
         'poll_id',
         'answer_id',
-        'user_id'
+        'user_id',
     ];
 
     protected $guarded = [];
-
-        
 }
