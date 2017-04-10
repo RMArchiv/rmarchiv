@@ -58,7 +58,8 @@ class BoardThread extends Model
 
     protected $guarded = [];
 
-    public function votes(){
+    public function votes()
+    {
         return $this->hasOne('App\Models\BoardPoll', 'id', 'thread_id');
     }
 
