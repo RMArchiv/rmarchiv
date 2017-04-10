@@ -248,6 +248,8 @@ class BoardController extends Controller
 
         return view('board.threads.vote', [
             'edit' => $edit,
+            'thread_id' => $threadid,
+            'thread' => $check,
         ]);
     }
 
