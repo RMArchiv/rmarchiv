@@ -221,6 +221,7 @@ return [
         Laravel\Scout\ScoutServiceProvider::class,
         TeamTNT\Scout\TNTSearchScoutServiceProvider::class,
         Eusonlito\LaravelMeta\MetaServiceProvider::class,
+        Msurguy\Honeypot\HoneypotServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -267,6 +268,7 @@ return [
         'Form'          => Collective\Html\FormFacade::class,
         'Gate'          => Illuminate\Support\Facades\Gate::class,
         'Hash'          => Illuminate\Support\Facades\Hash::class,
+        'Honeypot'      => Msurguy\Honeypot\HoneypotFacade::class,
         'Html'          => Collective\Html\HtmlFacade::class,
         'Image'         => Intervention\Image\Facades\Image::class,
         'Lang'          => Illuminate\Support\Facades\Lang::class,

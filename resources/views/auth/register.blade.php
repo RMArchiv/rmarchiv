@@ -44,6 +44,7 @@
 
                 <div class="content">
                     <div class="formifier">
+                        {!! Honeypot::generate('my_name', 'my_time') !!}
                         <div class="row" id="row_name">
                             <label for="name" class="col-md-4 control-label">{{ trans('app.auth.username') }}</label>
                             <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
