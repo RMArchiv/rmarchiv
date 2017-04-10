@@ -58,7 +58,7 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         if (\Auth::check()) {
-            if (\Auth::user()->hasRole('admin')) {
+            if (\Auth::user()->hasRole(['admin','owner', 'moderator'])) {
                 $n = new News;
                 $n->news_category = $request->get('cat');
                 $n->user_id = \Auth::id();
