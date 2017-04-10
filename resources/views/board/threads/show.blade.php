@@ -14,6 +14,13 @@
             </h2>
             <div class='threadcategory'><b>kategorie:</b> <a href="{{ url('board/cat', $posts->first()->cat->id) }}">{{ $posts->first()->cat->title }}</a>
             </div>
+            <div class="navbar">
+                @if(Auth::check())
+                    @if(Auth::id() == $posts->first()->thread->user_id or Auth::user()->can('mod-threads'))
+                        :: <a href="{{ route('board.vote.create'), [$posts->first()->thread->id]}}">umfrage erstellen/bearbeiten</a>
+                    @endif
+                @endif
+            </div>
             {{ $posts->links('vendor/pagination/board_thread') }}
             @foreach($posts as $post)
                 <div class='content cite-{{ $post->thread->id  }} markdown' id='c{{ $post->id }}'>

@@ -154,6 +154,9 @@ Route::post('board/thread/{threadid}/edit/{postid}', 'BoardController@post_updat
 Route::get('board/thread/{threadid}', 'BoardController@show_thread')->name('board.thread.show');
 Route::post('board/thread/{threadid}', 'BoardController@store_post')->name('board.post.store');
 Route::get('board/thread/{id}/switchclosestate/{state}', 'BoardController@thread_close_switch')->name('board.thread.switch.close');
+Route::get('board/thread/{threadid}/vote/create', 'BoardController@create_vote')->name('board.vote.create');
+Route::post('board/thread/{threadid}/vote/store', 'BoardController@store_vote')->name('board.vote.store');
+Route::post('board/thread/{threadid}/vote/update', 'BoardController@update_vote')->name('board.vote.update');
 
 //Routen für FAQ
 Route::get('faq', 'FaqController@index');
