@@ -21,7 +21,7 @@
                         @endif
 
                         <div class="content">
-                            <input type="hidden" name="thread_id" id="thread_id" value="{{ $thread->thread_id }}">
+                            <input type="hidden" name="thread_id" id="thread_id" value="{{ $thread->id }}">
 
                             <div class="formifier">
                                 <div class="row" id="row_question">
