@@ -12,9 +12,9 @@ use App\Events\Obyx;
 use App\Models\BoardCat;
 use App\Models\BoardPost;
 use App\Models\BoardThread;
-use Cmgmyr\Messenger\Models\Thread;
 use Illuminate\Http\Request;
 use App\Helpers\DatabaseHelper;
+use Cmgmyr\Messenger\Models\Thread;
 use Illuminate\Support\Facades\Input;
 
 class BoardController extends Controller
@@ -153,7 +153,7 @@ class BoardController extends Controller
         ]);
 
         $check = BoardThread::whereId($threadid)->first();
-        if($check->closed == 0){
+        if ($check->closed == 0) {
             $date = Carbon::now();
 
             $pid = \DB::table('board_posts')->insertGetId([
@@ -182,7 +182,7 @@ class BoardController extends Controller
             event(new Obyx('post-add', \Auth::id()));
 
             $url = \URL::route('board.thread.show', [$threadid]).'#c'.$pid;
-        }else{
+        } else {
             $url = \URL::route('board.thread.show', [$threadid]);
         }
 
