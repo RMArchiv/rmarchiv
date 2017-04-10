@@ -239,6 +239,7 @@ class BoardController extends Controller
     public function create_vote($threadid)
     {
         $check = BoardPoll::whereThreadId($threadid)->get();
+        $thread = BoardThread::whereId($threadid)->first();
 
         $edit = 0;
 
@@ -249,7 +250,7 @@ class BoardController extends Controller
         return view('board.threads.vote', [
             'edit' => $edit,
             'thread_id' => $threadid,
-            'thread' => $check,
+            'thread' => $thread,
         ]);
     }
 
