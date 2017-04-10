@@ -7,7 +7,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BoardPollAnswer;
 use Carbon\Carbon;
 use App\Events\Obyx;
 use App\Models\BoardCat;
@@ -16,6 +15,7 @@ use App\Models\BoardPost;
 use App\Models\BoardThread;
 use Illuminate\Http\Request;
 use App\Helpers\DatabaseHelper;
+use App\Models\BoardPollAnswer;
 use Cmgmyr\Messenger\Models\Thread;
 use Illuminate\Support\Facades\Input;
 
@@ -269,7 +269,7 @@ class BoardController extends Controller
         $poll->title = $request->get('question');
         $poll->save();
 
-        for($i = 0; $i < 10; $i++){
+        for ($i = 0; $i < 10; $i++) {
             $pollAnswers = new BoardPollAnswer;
             $pollAnswers->title = $request->get('answer'.$i);
             $pollAnswers->user_id = \Auth::id();
@@ -280,8 +280,8 @@ class BoardController extends Controller
         return redirect()->action('BoardController@show_thread', $threadid);
     }
 
-    public function add_vote(Request $request){
-
+    public function add_vote(Request $request)
+    {
     }
 
     public function update_vote(Request $request, $threadid)
