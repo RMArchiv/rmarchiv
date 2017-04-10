@@ -15,7 +15,7 @@
                     @if($t->closed == 1)
                         <img src="/assets/lock.png">
                     @endif
-                    @if($t->votes->count() != 0)
+                    @if($t->votes)
                         <img src="/assets/stats.gif">
                     @endif
                     {{ $t->title }}</a>
