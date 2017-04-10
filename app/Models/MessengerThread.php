@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerThread whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerThread whereDeletedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class MessengerThread extends Model
 {

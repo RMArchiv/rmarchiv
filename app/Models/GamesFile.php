@@ -50,6 +50,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $reason
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereForbidden($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereReason($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class GamesFile extends Model
 {

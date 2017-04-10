@@ -41,6 +41,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\AwardCat $cat
  * @property-read \App\Models\AwardPage $page
  * @property-read \App\Models\AwardSubcat $subcat
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class GamesAward extends Model
 {

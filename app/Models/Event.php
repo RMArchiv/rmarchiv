@@ -43,6 +43,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EventUserRegistered[] $users_registered
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EventPicture[] $pictures
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class Event extends Model
 {

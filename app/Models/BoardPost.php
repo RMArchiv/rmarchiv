@@ -32,6 +32,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\BoardCat $cat
  * @property-read \App\Models\BoardThread $thread
  * @property-read \App\Models\User $user
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class BoardPost extends Model
 {

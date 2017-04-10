@@ -38,6 +38,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereClosedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereClosedRemarks($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserReport whereClosedUserId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class UserReport extends Model
 {

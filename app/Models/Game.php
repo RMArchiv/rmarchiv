@@ -70,6 +70,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereComments($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereVotedown($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereVoteup($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class Game extends Model
 {

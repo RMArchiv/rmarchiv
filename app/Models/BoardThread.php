@@ -37,6 +37,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BoardPost[] $posts
  * @property-read \App\Models\User $user
  * @property-read \App\Models\User $last_user
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class BoardThread extends Model
 {

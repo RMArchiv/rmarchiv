@@ -64,6 +64,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $rows_per_page_games
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereRowsPerPageDeveloper($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereRowsPerPageGames($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class UserSetting extends Model
 {

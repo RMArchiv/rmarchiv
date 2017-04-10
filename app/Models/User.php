@@ -81,6 +81,12 @@ use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNo
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereRememberToken($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $discord_user
+ * @property string $discord_channel
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BoardPost[] $boardposts
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereDiscordChannel($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereDiscordUser($value)
  */
 class User extends Authenticatable
 {

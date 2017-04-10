@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardThreadsTracker whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardThreadsTracker whereUserId($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class BoardThreadsTracker extends Model
 {
