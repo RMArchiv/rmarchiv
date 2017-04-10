@@ -1,11 +1,16 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class BoardPoll
+ * Class BoardPoll.
  *
  * @property int $id
  * @property string $title
@@ -33,21 +38,23 @@ class BoardPoll extends Model
     protected $fillable = [
         'title',
         'thread_id',
-        'user_id'
+        'user_id',
     ];
 
     protected $guarded = [];
 
-    public function answers(){
+    public function answers()
+    {
         return $this->hasMany('App\Models\BoardPollAnswer', 'id', 'poll_id');
     }
 
-    public function thread(){
+    public function thread()
+    {
         return $this->hasOne('App\Models\BoardThread', 'id', 'thread_id');
     }
 
-    public function user(){
+    public function user()
+    {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
-        
 }
