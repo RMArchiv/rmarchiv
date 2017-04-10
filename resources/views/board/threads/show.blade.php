@@ -17,7 +17,7 @@
             <div class="navbar">
                 @if(Auth::check())
                     @if(Auth::id() == $posts->first()->thread->user_id or Auth::user()->can('mod-threads'))
-                        :: <a href="{{ route('board.vote.create'), [$posts->first()->thread->id]}}">umfrage erstellen/bearbeiten</a>
+                        :: <a href="{{ route('board.vote.create'), ['threadid' => $posts->first()->thread->id]}}">umfrage erstellen/bearbeiten</a>
                     @endif
                 @endif
             </div>
