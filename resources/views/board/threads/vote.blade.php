@@ -6,7 +6,7 @@
                 <form action="{{ route('board.vote.store', [$thread->thread_id]) }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
-                    <div class="rmarchivtbl" id="rmarchivbox_submitnews" style="width: 60%">
+                    <div class="rmarchivtbl" id="rmarchivbox_submitprod" style="width: 60%">
                         <h2>umfrage erstellen</h2>
 
                         @if (count($errors) > 0))
@@ -22,6 +22,23 @@
 
                         <div class="content">
                             <input type="hidden" name="thread_id" id="thread_id" value="{{ $thread->thread_id }}">
+
+                            <div class="formifier">
+                                <div class="row" id="row_question">
+                                    <label for="question">Frage</label>
+                                    <input name="question" id="question" value=""/>
+                                    <span> [<span class="req">req</span>]</span>
+                                </div>
+                                @for($i = 0; $i < 10; $i++)
+                                    <div class="row" id="row_answer{{ $i }}">
+                                        <label for="answer{{ $i }}">Antwort</label>
+                                        <input name="answer{{ $i }}" id="answer{{ $i }}" value=""/>
+                                        @if($i <= 2)
+                                            <span> [<span class="req">req</span>]</span>
+                                        @endif
+                                    </div>
+                                @endfor
+                            </div>
 
                         </div>
                         <div class="foot">
