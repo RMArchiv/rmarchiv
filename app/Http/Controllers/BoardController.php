@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BoardPollAnswer;
 use Carbon\Carbon;
 use App\Events\Obyx;
 use App\Models\BoardCat;
@@ -256,13 +257,31 @@ class BoardController extends Controller
 
     public function store_vote(Request $request, $threadid)
     {
-        dd($request);
-
         $this->validate($request, [
             'thread_id' => 'required',
-            'question'   => 'required',
-            'answer'       => 'required',
+            'question'  => 'required',
+            'answer0'   => 'required',
+            'answer1'   => 'required',
         ]);
+
+        $poll = new BoardPoll;
+        $poll->user_id = \Auth::id();
+        $poll->title = $request->get('question');
+        $poll->save();
+
+        for($i = 0; $i < 10; $i++){
+            $pollAnswers = new BoardPollAnswer;
+            $pollAnswers->title = $request->get('answer'.$i);
+            $pollAnswers->user_id = \Auth::id();
+            $pollAnswers->poll_id = $poll->id;
+            $pollAnswers->save();
+        }
+
+        return redirect()->action('BoardController@show_thread', $threadid);
+    }
+
+    public function add_vote(Request $request){
+
     }
 
     public function update_vote(Request $request, $threadid)
