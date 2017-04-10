@@ -8,7 +8,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
-use App\Models\UserSetting;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -87,7 +86,7 @@ class NewsController extends Controller
     public function show($id)
     {
         if (\Auth::check()) {
-            if (\Auth::user()->hasRole(['admin','owner', 'moderator'])) {
+            if (\Auth::user()->hasRole(['admin', 'owner', 'moderator'])) {
                 $news = \DB::table('news')
                     ->leftJoin('users', 'news.user_id', '=', 'users.id')
                     ->select(['news.id', 'news.title', 'news.news_html', 'news_category', 'users.name', 'news.user_id', 'news.created_at', 'news.approved'])
@@ -135,7 +134,7 @@ class NewsController extends Controller
     public function edit($id)
     {
         if (\Auth::check()) {
-            if (\Auth::user()->hasRole(['admin','owner', 'moderator'])) {
+            if (\Auth::user()->hasRole(['admin', 'owner', 'moderator'])) {
                 $news = News::whereId($id)->first();
 
                 return view('news.edit', [
@@ -158,7 +157,7 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (\Auth::user()->hasRole(['admin','owner', 'moderator'])) {
+        if (\Auth::user()->hasRole(['admin', 'owner', 'moderator'])) {
             $this->validate($request, [
                 'title' => 'required',
                 'msg' => 'required',
@@ -185,7 +184,7 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        if (\Auth::user()->hasRole(['admin','owner', 'moderator'])) {
+        if (\Auth::user()->hasRole(['admin', 'owner', 'moderator'])) {
             $news = News::whereId($id)->first();
             $news->delete();
         }
@@ -195,7 +194,7 @@ class NewsController extends Controller
 
     public function approve($id, $approve)
     {
-        if (\Auth::user()->hasRole(['admin','owner', 'moderator'])) {
+        if (\Auth::user()->hasRole(['admin', 'owner', 'moderator'])) {
             $news = News::whereId($id)->first();
             $news->approved = $approve;
             $news->save();
