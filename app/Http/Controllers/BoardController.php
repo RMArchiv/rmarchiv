@@ -7,10 +7,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BoardPoll;
 use Carbon\Carbon;
 use App\Events\Obyx;
 use App\Models\BoardCat;
+use App\Models\BoardPoll;
 use App\Models\BoardPost;
 use App\Models\BoardThread;
 use Illuminate\Http\Request;
@@ -236,12 +236,13 @@ class BoardController extends Controller
         return redirect()->action('BoardController@show_thread', $threadid);
     }
 
-    public function create_vote($threadid){
+    public function create_vote($threadid)
+    {
         $check = BoardPoll::whereThreadId($threadid)->get();
 
         $edit = 0;
 
-        if($check){
+        if ($check) {
             $edit = 1;
         }
 
@@ -250,11 +251,11 @@ class BoardController extends Controller
         ]);
     }
 
-    public function store_vote(Request $request, $threadid){
-
+    public function store_vote(Request $request, $threadid)
+    {
     }
 
-    public function update_vote(Request $request, $threadid){
-
+    public function update_vote(Request $request, $threadid)
+    {
     }
 }
