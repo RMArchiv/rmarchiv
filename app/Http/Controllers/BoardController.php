@@ -44,7 +44,7 @@ class BoardController extends Controller
 
     public function create_cat()
     {
-        if(\Auth::user()->hasRole(['admin', 'owner', 'moderator'])){
+        if (\Auth::user()->hasRole(['admin', 'owner', 'moderator'])) {
             $cats = \DB::table('board_cats')
                 ->select([
                     'id as catid',
@@ -65,7 +65,7 @@ class BoardController extends Controller
 
     public function order_cat($catid, $direction)
     {
-        if(\Auth::user()->hasRole(['admin', 'owner', 'moderator'])){
+        if (\Auth::user()->hasRole(['admin', 'owner', 'moderator'])) {
             if ($direction == 'up') {
                 \DB::table('board_cats')
                     ->where('id', '=', $catid)
@@ -87,7 +87,7 @@ class BoardController extends Controller
             'desc' => 'required',
         ]);
 
-        if(\Auth::user()->hasRole(['admin', 'owner', 'moderator'])){
+        if (\Auth::user()->hasRole(['admin', 'owner', 'moderator'])) {
             \DB::table('board_cats')->insert([
                 'order'      => 0,
                 'title'      => $request->get('name'),
