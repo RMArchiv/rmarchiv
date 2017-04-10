@@ -3,7 +3,7 @@
     @if(Auth::check())
         @if(Auth::user()->id == $thread->user_id or Auth::user()->can('mod-threads'))
             <div id="content">
-                <form action="{{ route('board.vote.store', [$thread->thread_id]) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('board.vote.store', [$thread->id]) }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
                     <div class="rmarchivtbl" id="rmarchivbox_submitprod" style="width: 60%">
