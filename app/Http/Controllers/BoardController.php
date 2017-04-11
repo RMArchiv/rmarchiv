@@ -135,7 +135,7 @@ class BoardController extends Controller
                 'answers' => $pollanswers,
                 'votecount' => $votecount,
                 'canvote' => $canvote,
-                'votes' => $votes->first(),
+                'votes' => $votes,
             ]);
         }
     }
