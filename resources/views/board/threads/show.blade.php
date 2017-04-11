@@ -87,7 +87,7 @@
                 </div>
                 <div class='foot'>
                     @if(Auth::check())
-                        @if(Auth::id() == $post->user->id or Auth::user()->hasRole('owner'))
+                        @if(Auth::id() == $post->user->id or Auth::user()->can('mod-threads'))
                         <span data-cid='{{ $post->id }}'>
                             [<a href="{{ route('board.post.edit', [$post->thread->id, $post->id]) }}" data-rel="popup">bearbeiten</a>]
                         </span>
