@@ -7,7 +7,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BoardPollVote;
 use Carbon\Carbon;
 use App\Events\Obyx;
 use App\Models\BoardCat;
@@ -15,6 +14,7 @@ use App\Models\BoardPoll;
 use App\Models\BoardPost;
 use App\Models\BoardThread;
 use Illuminate\Http\Request;
+use App\Models\BoardPollVote;
 use App\Helpers\DatabaseHelper;
 use App\Models\BoardPollAnswer;
 use Cmgmyr\Messenger\Models\Thread;
@@ -112,14 +112,14 @@ class BoardController extends Controller
         $votecount = 0;
         $votes = null;
 
-        if($poll){
+        if ($poll) {
             $pollanswers = BoardPollAnswer::with('votes')->wherePollId($poll->id)->get();
             $polls = BoardPollVote::wherePollId($poll->id)->get();
             $votecount = $polls->count();
 
             $votes = $polls->where('user_id', '=', \Auth::id());
 
-            if($votes->count() != 0){
+            if ($votes->count() != 0) {
                 $canvote = 0;
             }
         }
@@ -306,7 +306,6 @@ class BoardController extends Controller
 
     public function add_vote(Request $request)
     {
-
     }
 
     public function update_vote(Request $request, $threadid)
