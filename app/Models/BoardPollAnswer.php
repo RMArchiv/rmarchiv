@@ -49,6 +49,6 @@ class BoardPollAnswer extends Model
 
     public function votes()
     {
-        return $this->hasMany('App\Models\BoardPollVote', 'id', 'answer_id');
+        return $this->hasMany('App\Models\BoardPollVote', 'answer_id', 'id');
     }
 }
