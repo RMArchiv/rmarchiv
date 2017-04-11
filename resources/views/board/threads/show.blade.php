@@ -14,11 +14,55 @@
             </h2>
             <div class='threadcategory'><b>kategorie:</b> <a href="{{ url('board/cat', $posts->first()->cat->id) }}">{{ $posts->first()->cat->title }}</a>
             </div>
-            <div class="navbar">
+            <div class="threadcategory">
                 @if(Auth::check())
                     @if(Auth::id() == $posts->first()->thread->user_id or Auth::user()->can('mod-threads'))
                         <a href="{{ route('board.vote.create', ['threadid' => $posts->first()->thread->id])}}">umfrage erstellen/bearbeiten</a>
                     @endif
+                @endif
+
+                @if($poll)
+                        <h2>{{ $poll->title }}</h2>
+                    <div class="content" style="text-align: center">
+                        <table id='rmarchiv_prodlist' class='boxtable pagedtable'>
+                            <thead>
+                                <th width="50%">antwort</th>
+                                <th width="10%">votes</th>
+                                <th width="30%"> </th>
+                                <th width="">aktion</th>
+                            </thead>
+                            @foreach($answers as $ans)
+                                @if($ans->title != '')
+                                    <tr>
+                                        <td>
+                                            @if($votes and $votes->answer_id == $ans->id)
+                                                <b>{{ $ans->title }}</b>
+                                            @else
+                                                {{ $ans->title }}
+                                            @endif
+                                        </td>
+                                        <td>{{ $ans->votes->count() }}</td>
+                                        <td><div class="innerbar_solo" style="width: {{ \App\Helpers\MiscHelper::getPopularity($ans->votes->count(), $votecount) }}%;"></div></td>
+                                        <td>
+                                        @if(Auth::check())
+                                            @if($canvote == 1)
+                                                    {!! Form::open(['action' => ['BoardController@add_vote']]) !!}
+                                                    {!! Form::hidden('poll_id', $poll->id) !!}
+                                                    {!! Form::hidden('answer_id', $ans->id) !!}
+                                                        <input type='submit' value='Submit' id='submit'>
+                                                    {!! Form::close() !!}
+                                            @endif
+                                        @else
+                                            <a href="{{ action('Auth\LoginController@showLoginForm') }}">
+                                                login für vote
+                                            </a>
+                                        @endif
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </table>
+                    </div>
                 @endif
             </div>
             {{ $posts->links('vendor/pagination/board_thread') }}

@@ -38,6 +38,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\User $user
  * @property-read \App\Models\User $last_user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @property-read \App\Models\BoardPoll $votes
  */
 class BoardThread extends Model
 {

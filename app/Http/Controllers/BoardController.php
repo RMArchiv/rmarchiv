@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BoardPollVote;
 use Carbon\Carbon;
 use App\Events\Obyx;
 use App\Models\BoardCat;
@@ -104,6 +105,24 @@ class BoardController extends Controller
     public function show_thread($threadid)
     {
         $posts = BoardPost::with('user', 'thread', 'cat')->whereThreadId($threadid)->orderBy('id')->paginate(25);
+        $poll = BoardPoll::whereThreadId($threadid)->first();
+
+        $pollanswers = null;
+        $canvote = 1;
+        $votecount = 0;
+        $votes = null;
+
+        if($poll){
+            $pollanswers = BoardPollAnswer::with('votes')->wherePollId($poll->id)->get();
+            $polls = BoardPollVote::wherePollId($poll->id)->get();
+            $votecount = $polls->count();
+
+            $votes = $polls->where('user_id', '=', \Auth::id());
+
+            if($votes->count() != 0){
+                $canvote = 0;
+            }
+        }
 
         DatabaseHelper::setThreadViewDate($threadid);
 
@@ -112,6 +131,11 @@ class BoardController extends Controller
         } else {
             return view('board.threads.show', [
                 'posts' => $posts,
+                'poll' => $poll,
+                'answers' => $pollanswers,
+                'votecount' => $votecount,
+                'canvote' => $canvote,
+                'votes' => $votes->first(),
             ]);
         }
     }
@@ -277,11 +301,12 @@ class BoardController extends Controller
             $pollAnswers->save();
         }
 
-        return redirect()->action('BoardController@show_thread', $threadid);
+        return redirect()->action('BoardController@show_thread', $request->get('thread_id'));
     }
 
     public function add_vote(Request $request)
     {
+
     }
 
     public function update_vote(Request $request, $threadid)
