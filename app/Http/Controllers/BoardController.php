@@ -306,16 +306,16 @@ class BoardController extends Controller
 
     public function add_vote(Request $request, $threadid)
     {
-        if(\Auth::check()){
+        if (\Auth::check()) {
             $c = BoardPollVote::where('poll_id', '=', $request->get('poll_id'))
                 ->where('user_id', '=', \Auth::id())->first();
 
-            if($c){
+            if ($c) {
                 $c->poll_id = $request->get('poll_id');
                 $c->user_id = \Auth::id();
                 $c->answer_id = $request->get('answer_id');
                 $c->save();
-            }else{
+            } else {
                 $vote = new BoardPollVote;
                 $vote->poll_id = $request->get('poll_id');
                 $vote->user_id = \Auth::id();
@@ -323,7 +323,6 @@ class BoardController extends Controller
                 $vote->save();
             }
         }
-
 
         return redirect()->action('BoardController@show_thread', $threadid);
     }
