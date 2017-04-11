@@ -50,9 +50,10 @@
                                         <td>
                                         @if(Auth::check())
                                             @if($canvote == 1)
-                                                    {!! Form::open(['action' => ['BoardController@add_vote']]) !!}
+                                                    {!! Form::open(['action' => ['BoardController@add_vote'], 'method' => 'POST']) !!}
                                                     {!! Form::hidden('poll_id', $poll->id) !!}
                                                     {!! Form::hidden('answer_id', $ans->id) !!}
+                                                    {!! Form::hidden('thread_id', $posts->first()->thread_id) !!}
                                                         <input type='submit' value='Submit' id='submit'>
                                                     {!! Form::close() !!}
                                             @endif

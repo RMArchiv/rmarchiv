@@ -304,7 +304,7 @@ class BoardController extends Controller
         return redirect()->action('BoardController@show_thread', $request->get('thread_id'));
     }
 
-    public function add_vote(Request $request, $threadid)
+    public function add_vote(Request $request)
     {
         if(\Auth::check()){
             $c = BoardPollVote::where('poll_id', '=', $request->get('poll_id'))
@@ -325,7 +325,7 @@ class BoardController extends Controller
         }
 
 
-        return redirect()->action('BoardController@show_thread', $threadid);
+        return redirect()->action('BoardController@show_thread', $request->get('thread_id'));
     }
 
     public function update_vote(Request $request, $threadid)
