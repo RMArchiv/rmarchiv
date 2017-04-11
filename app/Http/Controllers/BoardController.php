@@ -304,8 +304,28 @@ class BoardController extends Controller
         return redirect()->action('BoardController@show_thread', $request->get('thread_id'));
     }
 
-    public function add_vote(Request $request)
+    public function add_vote(Request $request, $threadid)
     {
+        if(\Auth::check()){
+            $c = BoardPollVote::where('poll_id', '=', $request->get('poll_id'))
+                ->where('user_id', '=', \Auth::id())->first();
+
+            if($c){
+                $c->poll_id = $request->get('poll_id');
+                $c->user_id = \Auth::id();
+                $c->answer_id = $request->get('answer_id');
+                $c->save();
+            }else{
+                $vote = new BoardPollVote;
+                $vote->poll_id = $request->get('poll_id');
+                $vote->user_id = \Auth::id();
+                $vote->answer_id = $request->get('answer_id');
+                $vote->save();
+            }
+        }
+
+
+        return redirect()->action('BoardController@show_thread', $threadid);
     }
 
     public function update_vote(Request $request, $threadid)
