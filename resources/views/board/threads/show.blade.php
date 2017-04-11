@@ -35,8 +35,12 @@
                                 @if($ans->title != '')
                                     <tr>
                                         <td>
-                                            @if($votes and $votes->first()->answer_id == $ans->id)
-                                                <b>{{ $ans->title }}</b>
+                                            @if($votes)
+                                                @if($votes->count() != 0 and $votes->first()->answer_id == $ans->id)
+                                                    <b>{{ $ans->title }}</b>
+                                                @else
+                                                    {{ $ans->title }}
+                                                @endif
                                             @else
                                                 {{ $ans->title }}
                                             @endif

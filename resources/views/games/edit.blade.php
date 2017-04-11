@@ -292,7 +292,7 @@
             {!! Form::close() !!}
         </div>
 
-        @permission(("delete-games"))
+        @permission(('delete-games'))
         <div class="rmarchivtbl errorbox" id="rmarchivbox_submitprod">
             <h2>löschen des spiels</h2>
             <div class="content">
