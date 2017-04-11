@@ -15,7 +15,7 @@
                     @if($t->closed == 1)
                         <img src="/assets/lock.png">
                     @endif
-                    @if($t->votes)
+                    @if(\App\Models\BoardPoll::whereThreadId($t->id)->count() != 0)
                         <img src="/assets/stats.gif">
                     @endif
                     {{ $t->title }}</a>

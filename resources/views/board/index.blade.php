@@ -34,7 +34,7 @@
                             @if($thread->closed == 1)
                                 <img src="/assets/lock.png">
                             @endif
-                            @if($thread->votes)
+                            @if(\App\Models\BoardPoll::whereThreadId($thread->id)->count() != 0)
                                 <img src="/assets/stats.gif">
                             @endif
                             {{ $thread->title }}</a>
