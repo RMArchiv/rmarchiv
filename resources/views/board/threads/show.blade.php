@@ -17,7 +17,9 @@
             <div class="threadcategory">
                 @if(Auth::check())
                     @if(Auth::id() == $posts->first()->thread->user_id or Auth::user()->can('mod-threads'))
-                        <a href="{{ route('board.vote.create', ['threadid' => $posts->first()->thread_id])}}">umfrage erstellen/bearbeiten</a>
+                        @if(!$poll)
+                            <a href="{{ route('board.vote.create', ['threadid' => $posts->first()->thread_id])}}">umfrage erstellen/bearbeiten</a>
+                        @endif
                     @endif
                 @endif
 
