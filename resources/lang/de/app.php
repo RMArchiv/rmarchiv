@@ -128,8 +128,8 @@ return [
             'title' => 'du bist nicht angemeldet',
             'msg' => '
             du bist nicht angemeldet.<br>
-            um einen thread erstellen zu können, <a href="'. url('login') .'">logge</a> dich ein.<br>
-            wenn du keinen account hast, <a href="'. url('register') .'">registriere</a> dich doch einfach.
+            um einen thread erstellen zu können, <a href="'.url('login').'">logge</a> dich ein.<br>
+            wenn du keinen account hast, <a href="'.url('register').'">registriere</a> dich doch einfach.
             ',
         ],
     ],
@@ -162,7 +162,7 @@ return [
     'access_denied' => [
         'title'      => 'zugriff verweigert!',
         'body'       => 'du hast nicht die erforderlichen berechtigungen um diese seite zu sehen.',
-        'backtohome' => 'zurück zur <a href="' . url('/') . '">hauptseite</a>',
+        'backtohome' => 'zurück zur <a href="'.url('/').'">hauptseite</a>',
     ],
 
     'footer' => [
