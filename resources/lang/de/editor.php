@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 return [
     'description' => 'Open source online Markdown editor.',
     'markdown_possible' => '<a href"/markdown"><b>markdown</b></a> kann hier genutzt werden.',
