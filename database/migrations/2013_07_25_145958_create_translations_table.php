@@ -1,10 +1,14 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 use Illuminate\Database\Migrations\Migration;
 
 class CreateTranslationsTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -36,5 +40,4 @@ class CreateTranslationsTable extends Migration
     {
         Schema::drop('translator_translations');
     }
-
 }
