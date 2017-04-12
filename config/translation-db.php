@@ -16,7 +16,7 @@ return [
      * This is the prefix for on which URI the Translations Manager will
      * be available. You can leave it just as is in most cases.
      */
-    'route_prefix' => '_translations',
+    'route_prefix' => '_trans',
 
     /**
      * If your using the Laravel Debugbar provided by Barryvdh\Debugbar
