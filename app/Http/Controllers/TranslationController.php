@@ -1,9 +1,12 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Waavi\Translation\Models\Language;
 use Waavi\Translation\Repositories\LanguageRepository;
 
 class TranslationController extends Controller
@@ -15,12 +18,13 @@ class TranslationController extends Controller
         $this->repository = $repository;
     }
 
-    public function index(){
+    public function index()
+    {
         $locales = $this->repository->availableLocales();
 
-        $list = array();
+        $list = [];
 
-        foreach ($locales as $loc){
+        foreach ($locales as $loc) {
             $temp['loc'] = $loc;
             $temp['perc'] = $this->repository->percentTranslated($loc);
             $list[] = $temp;
@@ -31,7 +35,7 @@ class TranslationController extends Controller
         ]);
     }
 
-    public function edit($loc, $loc2 = 'de'){
-
+    public function edit($loc, $loc2 = 'de')
+    {
     }
 }

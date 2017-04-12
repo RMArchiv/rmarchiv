@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 return [
     'title'        => 'spiele',
     'title_single' => 'spiel',
@@ -139,6 +144,6 @@ return [
         'markdown' => 'hier ist markdown dein freund.',
         'no_permissions' => 'keine berechtigung',
         'no_permissions_body' => 'die fehlen leider die berechtigungen hier zu kommentieren.',
-        'no_id' => 'wenn du dir diese seite genau anschaust, dann wirst du merken das dein gesuchtes spiel nicht existiert... ... =O'
+        'no_id' => 'wenn du dir diese seite genau anschaust, dann wirst du merken das dein gesuchtes spiel nicht existiert... ... =O',
     ],
 ];

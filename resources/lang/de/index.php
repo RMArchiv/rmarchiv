@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 return [
     'board'               => [
         'title' => 'die 10 neuesten und fluffigsten threads',
@@ -74,10 +79,10 @@ return [
         'gamefiles' => 'spieledateien',
         'gamefiles_size' => 'gesamtgröße',
         'gamefiles_download' => 'downloads',
-        'gamefiles_downloadtraffic' => 'download traffic'
+        'gamefiles_downloadtraffic' => 'download traffic',
     ],
     'tagcloud' => [
-        'title' => 'tag cloud'
+        'title' => 'tag cloud',
     ],
     'topalltime' => [
         'title' => 'die besten aller zeiten',
