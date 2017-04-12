@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.17 on 2017-04-10.
+ * Generated for Laravel 5.4.17 on 2017-04-12.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -12940,6 +12940,97 @@ namespace Collective\Html {
     }         
 }
     
+namespace Msurguy\Honeypot {
+
+    class HoneypotFacade {
+        
+        /**
+         * Enable the Honeypot validation
+         *
+         * @static 
+         */
+        public static function enable()
+        {
+            return \Msurguy\Honeypot\Honeypot::enable();
+        }
+        
+        /**
+         * Disable the Honeypot validation
+         *
+         * @static 
+         */
+        public static function disable()
+        {
+            return \Msurguy\Honeypot\Honeypot::disable();
+        }
+        
+        /**
+         * Generate a new honeypot and return the form HTML
+         *
+         * @param string $honey_name
+         * @param string $honey_time
+         * @return string 
+         * @static 
+         */
+        public static function generate($honey_name, $honey_time)
+        {
+            return \Msurguy\Honeypot\Honeypot::generate($honey_name, $honey_time);
+        }
+        
+        /**
+         * Validate honeypot is empty
+         *
+         * @param string $attribute
+         * @param mixed $value
+         * @param array $parameters
+         * @return boolean 
+         * @static 
+         */
+        public static function validateHoneypot($attribute, $value, $parameters)
+        {
+            return \Msurguy\Honeypot\Honeypot::validateHoneypot($attribute, $value, $parameters);
+        }
+        
+        /**
+         * Validate honey time was within the time limit
+         *
+         * @param string $attribute
+         * @param mixed $value
+         * @param array $parameters
+         * @return boolean 
+         * @static 
+         */
+        public static function validateHoneytime($attribute, $value, $parameters)
+        {
+            return \Msurguy\Honeypot\Honeypot::validateHoneytime($attribute, $value, $parameters);
+        }
+        
+        /**
+         * Get encrypted time
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getEncryptedTime()
+        {
+            return \Msurguy\Honeypot\Honeypot::getEncryptedTime();
+        }
+        
+        /**
+         * Decrypt the given time
+         *
+         * @param mixed $time
+         * @return string|null 
+         * @static 
+         */
+        public static function decryptTime($time)
+        {
+            return \Msurguy\Honeypot\Honeypot::decryptTime($time);
+        }
+        
+    }         
+}
+    
 namespace Intervention\Image\Facades {
 
     class Image {
@@ -16860,6 +16951,8 @@ namespace {
     class Form extends \Collective\Html\FormFacade {}
     
     class Html extends \Collective\Html\HtmlFacade {}
+    
+    class Honeypot extends \Msurguy\Honeypot\HoneypotFacade {}
     
     class Image extends \Intervention\Image\Facades\Image {}
     

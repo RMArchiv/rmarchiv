@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-04-10.
+    * Generated on 2017-04-12.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -91,6 +91,7 @@ namespace PHPSTORM_META {
             'command.activitylog:clean' instanceof \Spatie\Activitylog\CleanActivitylogCommand,
             'command.discord:setup' instanceof \NotificationChannels\Discord\Commands\SetupCommand,
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
+            'honeypot' instanceof \Msurguy\Honeypot\Honeypot,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -268,6 +269,7 @@ namespace PHPSTORM_META {
             'command.activitylog:clean' instanceof \Spatie\Activitylog\CleanActivitylogCommand,
             'command.discord:setup' instanceof \NotificationChannels\Discord\Commands\SetupCommand,
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
+            'honeypot' instanceof \Msurguy\Honeypot\Honeypot,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -445,6 +447,7 @@ namespace PHPSTORM_META {
             'command.activitylog:clean' instanceof \Spatie\Activitylog\CleanActivitylogCommand,
             'command.discord:setup' instanceof \NotificationChannels\Discord\Commands\SetupCommand,
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
+            'honeypot' instanceof \Msurguy\Honeypot\Honeypot,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -622,6 +625,7 @@ namespace PHPSTORM_META {
             'command.activitylog:clean' instanceof \Spatie\Activitylog\CleanActivitylogCommand,
             'command.discord:setup' instanceof \NotificationChannels\Discord\Commands\SetupCommand,
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
+            'honeypot' instanceof \Msurguy\Honeypot\Honeypot,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,

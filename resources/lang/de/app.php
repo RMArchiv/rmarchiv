@@ -12,94 +12,26 @@ return [
 
     'news' => [
         'title' => 'news',
-        'show'  => [
-            'submit_by'  => 'Eingesendet von',
-            'at'         => 'at',
-            'delete'     => 'löschen',
-            'approve'    => 'erlauben',
-            'disapprove' => 'sperren',
-        ],
-        'popularity_helper' => [
-            'title' => 'popularitäts helfer',
-            'msg'   => 'erhöhe den bekanntheitsgrad dieser news und verteile folgenden link:',
-        ],
-        'comments' => [
-            'title'             => 'kommentare',
-            'title_add'         => 'kommentar hinzufügen',
-            'no_comments_title' => 'es sind noch keine kommentare vorhanden.',
-            'no_comments_msg'   => 'wip',
-            'vote_title'        => 'hier kannst du diese news bewerten:',
-            'vote_sub'          => 'diese news',
-            'vote_down'         => 'ist scheiße',
-            'vote_neut'         => 'ist ok',
-            'vote_up'           => 'ist super',
-            'success'           => [
-                'title'    => 'kommentar erfolgreich hinzugefügt',
-                'msg'      => 'dein kommentar wurde erfolgreich hinzugefügt.',
-                'redirect' => 'zurück zum inhalt...',
-            ],
-        ],
-        'add' => [
-            'title' => 'news hinzufügen',
-            'error' => [
-                'title' => 'news konnte nicht hinzugefügt werden.',
-            ],
-        ],
     ],
 
     'games' => [
-        'title' => 'spiele',
-
-        'index' => [
+        'title'          => 'spiele',
+        'title_single'   => 'spiel',
+        'table'          => [
+            'title'        => 'spielname',
+            'developer'    => 'entwickler',
+            'release_date' => 'release datum',
+            'created_at'   => 'hinzugefügt',
+            'rate_up'      => 'super',
+            'rate_down'    => 'scheiße',
+            'rate_neut'    => 'neutral',
+            'avg'          => 'avg', //average rating
+            'popularity'   => 'popularität',
+            'comments'     => 'kommentare',
         ],
-
-        'gamefiles' => [
-            'title'           => 'dateien zum spiel',
-            'type'            => 'typ',
-            'version'         => 'version',
-            'release_date'    => 'veröffentlicht',
-            'filesize'        => 'dateigröße',
-            'downloads'       => 'downloads',
-            'uploaded_by'     => 'hochgeladen von',
-            'uploaded_at'     => 'hochgeladen am',
-            'actions'         => 'aktionen',
-            'no_files'        => 'es sind noch keine dateien zu diesem spiel verfügbar.',
-            'add_file'        => 'hinzufügen einer spieledatei',
-            'filetype'        => 'dateityp:',
-            'filetype_choose' => 'bitte wähle einen dateityp',
-            'version2'        => 'version:',
-            'release_date2'   => 'veröffentlicht am:',
-            'month'           => 'monat',
-            'year'            => 'jahr',
-            'day'             => 'tag',
-        ],
-        'add' => [
-            'title'             => 'anlegen eines neuen spiels',
-            'gametitle'         => 'spieltitel:',
-            'subtitle'          => 'untertitel:',
-            'maker'             => 'erstellt mit:',
-            'maker_choose'      => 'bitte verwendeten maker wählen',
-            'language'          => 'spielsprache:',
-            'langauge_choose'   => 'bitte spielsprache wählen',
-            'description_title' => 'beschreibungstext ändern/hinzufügen',
-            'description_help'  => 'beschreibung des spiels (max. 2000 zeichen)',
-            'description'       => 'beschreibung:',
-            'links'             => 'links',
-            'website'           => 'website:',
-            'connections'       => 'verbindungen',
-            'developer'         => 'entwickler name:',
-            'developer_help'    => 'hier bitte nur den Hauptentwickler angeben. weitere entwickler können später hinzugefügt werden.',
-            'success'           => [
-                'title'    => 'spiel hinzugefügt',
-                'msg'      => 'das spiel wurde erfolgreich hinzugefügt. du kannst dir das profil auf der folgenden seite anschauen und erweitern.',
-                'redirect' => 'weiter zum spiel...',
-            ],
-        ],
-        'edit' => [
-            'title'          => 'bearbeiten eines spiels',
-            'developer'      => 'verbundene entwickler',
-            'developer_add'  => 'entwickler zum spiel hinzufügen',
-            'developer_help' => 'einfach entwicklernamen eintippen',
+        'inline_gamebox' => [
+            'titlescreen' => 'titelbild',
+            'developer'   => 'entwickler',
         ],
     ],
 
@@ -108,37 +40,65 @@ return [
     ],
 
     'developer' => [
-        'title' => 'entwickler',
+        'title'        => 'entwickler',
+        'title_single' => 'entwickler',
+    ],
+
+    'maker' => [
+        'title' => 'maker',
     ],
 
     'awards' => [
-        'title' => 'auszeichnungen',
+        'title'        => 'auszeichnungen',
+        'title_single' => 'auszeichnung',
+        'nav'          => [
+            'overview' => 'übersicht',
+            'add'      => 'award hinzufügen',
+        ],
+        'create'       => [
+            'website'  => [
+                'title'            => 'auszeichnungswebsite hinzufügen',
+                'website'          => 'website:',
+                'website_info'     => 'wenn gefunden, dann existiert sie schon.',
+                'website_notfound' => 'gut, die website wurde nicht gefunden.',
+                'url'              => 'url (mit http/s)',
+                'send'             => 'senden',
+            ],
+            'award'    => [
+                'title'         => 'auszeichnung hinzufügen',
+                'website'       => 'auszeichnungswebsite',
+                'please_choose' => 'bitte website auswählen',
+                'name'          => 'name:',
+                'not_found'     => 'keine auszeichnung gefunden',
+                'date'          => 'auszeichnungsdatum',
+                'month_info'    => 'monat optional',
+                'send'          => 'senden',
+            ],
+            'category' => [
+                'title'         => 'auszeichnungskategorie hinzufügen',
+                'award'         => 'auszeichnung',
+                'please_choose' => 'bitte award auswählen',
+                'name'          => 'kategorie name:',
+                'send'          => 'senden',
+            ],
+        ],
+        'add_game'     => [
+            'title'       => 'spiel zu auszeichnung hinzufügen',
+            'gametitle'   => 'spieltitel:',
+            'not_found'   => 'das spiel wurde nicht gefunden.',
+            'place'       => 'platzierung:',
+            'description' => 'beschreibung:',
+            'send'        => 'senden',
+        ],
+        'show'         => [
+            'add_game' => 'spiel hinzufügen',
+            'place'    => 'platz',
+        ],
     ],
 
     'user' => [
-        'title'    => 'user',
-        'settings' => [
-            'title' => 'einstellungen',
-            'disable_widget_msg' => 'nachrichten',
-            'disable_widget_cdc' => 'coup de coeur',
-            'disable_widget_gamesreleased' => 'letzte neuerscheinungen',
-            'disable_widget_gamesadded' => 'letzte spiele hinzugefügt',
-            'disable_widget_topmonth' => 'top of the month',
-            'disable_widget_alltimetop' => 'alltime top',
-            'disable_widget_news' => 'news',
-            'disable_widget_board' => 'board',
-            'disable_widget_shoutbox' => 'shoutbox',
-            'disable_widget_search' => 'suche',
-            'disable_widget_tags' => 'tag cloud',
-            'disable_widget_stats' => 'statistiken',
-            'disable_widget_obyx' => 'obyx',
-            'disable_widget_comments' => 'kommentare',
-        ],
-        'user_level' => [
-            'admin'     => 'obyxstrator',
-            'moderator' => 'moderobyx',
-            'user'      => 'ungläubiger',
-        ],
+        'title'        => 'benutzer',
+        'title_single' => 'benutzer',
     ],
 
     'search' => [
@@ -147,6 +107,31 @@ return [
 
     'board' => [
         'title' => 'forum',
+        'index' => [
+            'title'           => 'das rmarchiv forum',
+            'create'          => 'erstelle einen neuen thread',
+            'create_title'    => 'threadtitel:',
+            'create_category' => 'forenkategorie:',
+            'message'         => 'nachricht:',
+            'send'            => 'senden',
+        ],
+        'table' => [
+            'create_date'   => 'geöffnet',
+            'firstpostuser' => 'von',
+            'category'      => 'kategorie',
+            'topic'         => 'thema',
+            'postcount'     => 'antworten',
+            'lastpostdate'  => 'letzter post',
+            'lastpostuser'  => 'von',
+        ],
+        'no_login' => [
+            'title' => 'du bist nicht angemeldet',
+            'msg' => '
+            du bist nicht angemeldet.<br>
+            um einen thread erstellen zu können, <a href="'. url('login') .'">logge</a> dich ein.<br>
+            wenn du keinen account hast, <a href="'. url('register') .'">registriere</a> dich doch einfach.
+            ',
+        ],
     ],
 
     'faq' => [
@@ -155,78 +140,74 @@ return [
 
     'submit' => [
         'title' => 'einsenden',
-        'logo'  => [
-            'title'  => 'upload eines neuen website logos',
-            'name'   => 'name des logos:',
-            'file'   => 'wähle logo datei:',
-            'submit' => 'logo hochladen',
-            'error'  => [
-                'title' => 'logo upload fehlgeschlagen',
-            ],
-            'success' => [
-                'title'    => 'logo upload erfolgreich abgeschlossen',
-                'msg'      => 'dein logo wurde erfolgreich hochgeladen. <br> nun kannst du auf folgender seite dafür abstimmen.',
-                'redirect' => 'weiter zum logo voting...',
-            ],
-        ],
     ],
 
-    'auth' => [
-        'login'            => 'login',
-        'register'         => 'registrieren',
-        'password_reset'   => 'passwort vergessen?',
-        'remember_me'      => 'login merken',
-        'email'            => 'e-mail adresse:',
-        'password'         => 'passwort:',
-        'login_failed'     => 'login fehlgeschlagen',
-        'register_failed'  => 'registrierung fehlgeschlagen',
-        'username'         => 'benutzername:',
-        'password_confirm' => 'passwort wiederholen:',
-        'loggedin_as'      => 'du bist eingeloggt als',
-        'logout'           => 'logout',
-        'register_title'   => 'registrierung / anmeldedaten',
+    'cdc' => [
+        'title' => 'coup de coeur',
     ],
 
-    'errors' => [
-        'submit' => [
-            'no_login' => [
-                'title'   => 'du bist nicht angemeldet.',
-                'message' => '
-<ul>
-    <li>um inhalte auf :websitetitle hinzufügen zu können, musst du dich <a href=":loginurl">anmelden</a>.</li>
-    <li>wenn du noch keinen accounts besitzt, <a href=":registerurl">registriere</a> dir einen neuen.</li>
-</ul>',
-            ],
+    'messages' => [
+        'new_msg' => 'neue nachricht(en)',
+        'widget'  => [
 
         ],
     ],
 
-    'comments' => [
-        'tip1' => 'Der erste Kommentar bei dem du eine Bewertung auswählst, ist auch gleichzeitig die letzte Bewertung für dieses Spiel/News/Ressource. Also wähle mit bedacht.',
-        'tip2' => 'Kommentieren kann man auch ohne Bewertung. Dafür wählte einfach "ist ok". ',
-        'tip3' => 'Sei nett. Nur weil das Spiel/News/Ressource scheiße ist, sollte man es trotzdem nicht schreiben. Es sei denn man begründet es vernünftig.',
-        'tip4' => 'Kommentiert ihr wie Ärsche, dann werdet ihr so behandelt. Also abgewischt und ab in die Banntoilette.',
+    'languages' => [
+        'de'        => 'deutsch',
+        'de_boring' => 'Deutsch',
+        'en'        => 'english',
+    ],
+
+    'access_denied' => [
+        'title'      => 'zugriff verweigert!',
+        'body'       => 'du hast nicht die erforderlichen berechtigungen um diese seite zu sehen.',
+        'backtohome' => 'zurück zur <a href="' . url('/') . '">hauptseite</a>',
+    ],
+
+    'footer' => [
+        'feedback'     => 'feedback und bugs an:',
+        'impressum'    => 'impressum',
+        'users_online' => 'benutzer online:',
     ],
 
     'misc' => [
-        'send'          => 'senden',
-        'delete'        => 'löschen',
-        'download'      => 'download',
-        'nothing_found' => 'es wurde nichts gefunden',
-        'upload_file'   => 'datei hochladen',
-        'month'         => [
-            1  => 'januar',
-            2  => 'februar',
-            3  => 'märz',
-            4  => 'april',
-            5  => 'mai',
-            6  => 'juni',
-            7  => 'juli',
-            8  => 'august',
-            9  => 'september',
-            10 => 'oktober',
-            11 => 'november',
-            12 => 'dezember',
+        'send'  => 'senden',
+        'dates' => [
+            'month' => [
+                'title' => 'monat',
+                'long'  => [
+                    1  => 'januar',
+                    2  => 'februar',
+                    3  => 'märz',
+                    4  => 'april',
+                    5  => 'mai',
+                    6  => 'juni',
+                    7  => 'juli',
+                    8  => 'august',
+                    9  => 'september',
+                    10 => 'oktober',
+                    11 => 'november',
+                    12 => 'dezember',
+                ],
+                'short' => [
+                    1  => 'jan',
+                    2  => 'feb',
+                    3  => 'mär',
+                    4  => 'apr',
+                    5  => 'mai',
+                    6  => 'jun',
+                    7  => 'jul',
+                    8  => 'aug',
+                    9  => 'sep',
+                    10 => 'okt',
+                    11 => 'nov',
+                    12 => 'dez',
+                ],
+            ],
+            'year'  => [
+                'title' => 'jahr',
+            ],
         ],
     ],
 ];

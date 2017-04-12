@@ -20,5 +20,7 @@ return [
 
     'failed'   => 'logindaten falsch.',
     'throttle' => 'Zu viele Loginversuche. Probiere es in :seconds Sekunden erneut.',
+    'login'    => 'einloggen',
+    'logout'   => 'abmelden',
 
 ];

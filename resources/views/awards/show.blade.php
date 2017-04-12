@@ -6,7 +6,7 @@
             <h1>
                 {{ $award->pagetitle }}: {{ $award->cattitle }} - {{ $award->catyear }}
                 @if($award->catmonth <> 0)
-                     - {{ trans('app.misc.month.'.$award->catmonth) }}
+                     - {{ trans('app.misc.dates.month.long.'.$award->catmonth) }}
                 @endif
             </h1>
 
@@ -14,7 +14,7 @@
             <h2>
                 {{ $subcat->subtitle }}
                 @permission(('create-awards'))
-                :: <small>[<a href="{{ action('AwardController@gameadd', $subcat->subid) }}">add game</a>]</small>
+                :: <small>[<a href="{{ action('AwardController@gameadd', $subcat->subid) }}">{{ trans('app.awards.show.add_game') }}</a>]</small>
                 @endpermission
             </h2>
             <table class="boxtable">
@@ -34,9 +34,9 @@
                         }
                         ?>
                         @if($icon != 'no')
-                        Platz {{ $game->place }}<img src="/assets/{{ $icon }}" alt="{{ $game->place }}" title="{{ $game->place }}">
+                                {{ trans('app.awards.show.place') }} {{ $game->place }}<img src="/assets/{{ $icon }}" alt="{{ $game->place }}" title="{{ $game->place }}">
                         @else
-                        Platz {{ $game->place  }}
+                                {{ trans('app.awards.show.place') }} {{ $game->place  }}
                         @endif
                     </td>
                     <td width="60%">

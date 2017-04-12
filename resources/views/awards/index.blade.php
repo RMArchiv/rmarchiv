@@ -23,11 +23,11 @@
                     <td>
                         <a href="{{ url('awards', $aw->id) }}">{{ $aw->title }}</a>
                         @if($aw->month <> 0)
-                            :: ({{ trans('app.misc.month.'.$aw->month) }})
+                            :: ({{ trans('app.misc.dates.month.long.'.$aw->month) }})
                         @endif
                     </td>
                 </tr>
-                @endforeach
+            @endforeach
             </table>
         </div>
     </div>

@@ -17,12 +17,12 @@
         {!! Form::open(['action' => ['AwardController@gameadd_store']]) !!}
         <input name="subcatid" type="hidden" value="{{ $subcatid }}">
         <div class="rmarchivtbl" id="rmarchivbox_submitprod">
-            <h2>spiel zu auszeichnung hinzufügen</h2>
+            <h2>{{ trans('app.awards.add_game.title') }}</h2>
             <div class="content">
                 <div class="formifier">
                     <div class="row" id="row_game">
-                        <label for="game">spielname:</label>
-                        <input autocomplete="off" class="auto" name="game" id="game" placeholder="game" value=""/>
+                        <label for="game">{{ trans('app.awards.add_game.gametitle') }}</label>
+                        <input autocomplete="off" class="auto" name="game" id="game" placeholder="{{ trans('app.awards.add_game.gametitle') }}" value=""/>
                         <span> [<span class="req">req</span>]</span>
                     </div>
                     <script type="text/javascript">
@@ -44,7 +44,7 @@
                             templates: {
                                 empty: [
                                     '<div style="color: #00001a;">',
-                                    '{{trans('app.misc.nothing_found')}}',
+                                    '{{trans('app.awards.add_game.not_found')}}',
                                     '</div>'
                                 ].join('\n'),
                                 suggestion: function(data) {
@@ -55,18 +55,18 @@
                         });
                     </script>
                     <div class="row" id="row_place">
-                        <label for="place">platz:</label>
-                        <input autocomplete="off" class="auto" name="place" id="place" placeholder="place" value=""/>
+                        <label for="place">{{ trans('app.awards.add_game.place') }}</label>
+                        <input autocomplete="off" class="auto" name="place" id="place" placeholder="1" value=""/>
                         <span> [<span class="req">req</span>]</span>
                     </div>
                     <div class="row" id="row_desc">
-                        <label for="desc">beschreibung:</label>
-                        <input autocomplete="off" class="auto" name="desc" id="desc" placeholder="desc" value=""/>
+                        <label for="desc">{{ trans('app.awards.add_game.description') }}</label>
+                        <input autocomplete="off" class="auto" name="desc" id="desc" placeholder="123 points" value=""/>
                     </div>
                 </div>
             </div>
             <div class="foot">
-                <input type="submit" value="{{trans('app.misc.send')}}">
+                <input type="submit" value="{{trans('app.awards.add_game.send')}}">
             </div>
         </div>
         {!! Form::close() !!}

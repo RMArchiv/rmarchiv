@@ -4,13 +4,13 @@
             <a href="/">{{ config('app.name') }}</a> {{ config('app.version') }}.{{ \App\Helpers\MiscHelper::get_current_git_commit() }} &copy; 2016-{{ date('Y', time()) }} by rmarchiv.de Team
         </li>
         <li>
-            feedback und bugs an <a href="mailto:webmaster@rmarchiv.de">webmaster@rmarchiv.de</a>
+            {{ trans('app.footer.feedback') }} <a href="mailto:webmaster@rmarchiv.de">webmaster@rmarchiv.de</a>
         </li>
         <li>
-            <a href="{{ url('/impressum') }}">impressum</a>
+            <a href="{{ url('/impressum') }}">{{ trans('app.footer.impressum') }}</a>
         </li>
         <li>
-            users online: {{ \App\Helpers\DatabaseHelper::getOnlineUserCount()->online }}
+            {{ trans('app.footer.users_online') }} {{ \App\Helpers\DatabaseHelper::getOnlineUserCount()->online }}
         </li>
         @permission(('debug-data'))
         <li>
