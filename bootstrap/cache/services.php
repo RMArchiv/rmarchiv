@@ -1,12 +1,6 @@
-<?php
-
-/*
- * rmarchiv.de
- * (c) 2016-2017 by Marcel 'ryg' Hering
- */
-
-return  [
-  'providers' => [
+<?php return array (
+  'providers' => 
+  array (
     0 => 'Illuminate\\Auth\\AuthServiceProvider',
     1 => 'Illuminate\\Broadcasting\\BroadcastServiceProvider',
     2 => 'Illuminate\\Bus\\BusServiceProvider',
@@ -26,7 +20,7 @@ return  [
     16 => 'Illuminate\\Redis\\RedisServiceProvider',
     17 => 'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider',
     18 => 'Illuminate\\Session\\SessionServiceProvider',
-    19 => 'Hpolthof\\Translation\\ServiceProvider',
+    19 => 'Waavi\\Translation\\TranslationServiceProvider',
     20 => 'Illuminate\\Validation\\ValidationServiceProvider',
     21 => 'Illuminate\\View\\ViewServiceProvider',
     22 => 'Barryvdh\\Debugbar\\ServiceProvider',
@@ -62,8 +56,9 @@ return  [
     52 => 'App\\Providers\\RouteServiceProvider',
     53 => 'App\\Providers\\ComposerServiceProvider',
     54 => 'App\\Providers\\HelperServiceProvider',
-  ],
-  'eager' => [
+  ),
+  'eager' => 
+  array (
     0 => 'Illuminate\\Auth\\AuthServiceProvider',
     1 => 'Illuminate\\Cookie\\CookieServiceProvider',
     2 => 'Illuminate\\Database\\DatabaseServiceProvider',
@@ -73,38 +68,38 @@ return  [
     6 => 'Illuminate\\Notifications\\NotificationServiceProvider',
     7 => 'Illuminate\\Pagination\\PaginationServiceProvider',
     8 => 'Illuminate\\Session\\SessionServiceProvider',
-    9 => 'Hpolthof\\Translation\\ServiceProvider',
-    10 => 'Illuminate\\View\\ViewServiceProvider',
-    11 => 'Barryvdh\\Debugbar\\ServiceProvider',
-    12 => 'GrahamCampbell\\Markdown\\MarkdownServiceProvider',
-    13 => 'Optimus\\FineuploaderServer\\Provider\\LaravelServiceProvider',
-    14 => 'Intervention\\Image\\ImageServiceProviderLaravel5',
-    15 => 'Zizaco\\Entrust\\EntrustServiceProvider',
-    16 => 'Cmgmyr\\Messenger\\MessengerServiceProvider',
-    17 => 'Watson\\Sitemap\\SitemapServiceProvider',
-    18 => 'Dingo\\Api\\Provider\\LaravelServiceProvider',
-    19 => 'Kyslik\\ColumnSortable\\ColumnSortableServiceProvider',
-    20 => 'LithiumDev\\TagCloud\\ServiceProvider',
-    21 => 'Mews\\Captcha\\CaptchaServiceProvider',
-    22 => 'Spatie\\Backup\\BackupServiceProvider',
-    23 => 'Backpack\\BackupManager\\BackupManagerServiceProvider',
-    24 => 'Backpack\\Base\\BaseServiceProvider',
-    25 => 'RobBrazier\\Piwik\\PiwikServiceProvider',
-    26 => 'Way\\Generators\\GeneratorsServiceProvider',
-    27 => 'Xethron\\MigrationsGenerator\\MigrationsGeneratorServiceProvider',
-    28 => 'Spatie\\Activitylog\\ActivitylogServiceProvider',
-    29 => 'NotificationChannels\\Discord\\DiscordServiceProvider',
-    30 => 'Laravel\\Scout\\ScoutServiceProvider',
-    31 => 'TeamTNT\\Scout\\TNTSearchScoutServiceProvider',
-    32 => 'Msurguy\\Honeypot\\HoneypotServiceProvider',
-    33 => 'App\\Providers\\AppServiceProvider',
-    34 => 'App\\Providers\\AuthServiceProvider',
-    35 => 'App\\Providers\\EventServiceProvider',
-    36 => 'App\\Providers\\RouteServiceProvider',
-    37 => 'App\\Providers\\ComposerServiceProvider',
-    38 => 'App\\Providers\\HelperServiceProvider',
-  ],
-  'deferred' => [
+    9 => 'Illuminate\\View\\ViewServiceProvider',
+    10 => 'Barryvdh\\Debugbar\\ServiceProvider',
+    11 => 'GrahamCampbell\\Markdown\\MarkdownServiceProvider',
+    12 => 'Optimus\\FineuploaderServer\\Provider\\LaravelServiceProvider',
+    13 => 'Intervention\\Image\\ImageServiceProviderLaravel5',
+    14 => 'Zizaco\\Entrust\\EntrustServiceProvider',
+    15 => 'Cmgmyr\\Messenger\\MessengerServiceProvider',
+    16 => 'Watson\\Sitemap\\SitemapServiceProvider',
+    17 => 'Dingo\\Api\\Provider\\LaravelServiceProvider',
+    18 => 'Kyslik\\ColumnSortable\\ColumnSortableServiceProvider',
+    19 => 'LithiumDev\\TagCloud\\ServiceProvider',
+    20 => 'Mews\\Captcha\\CaptchaServiceProvider',
+    21 => 'Spatie\\Backup\\BackupServiceProvider',
+    22 => 'Backpack\\BackupManager\\BackupManagerServiceProvider',
+    23 => 'Backpack\\Base\\BaseServiceProvider',
+    24 => 'RobBrazier\\Piwik\\PiwikServiceProvider',
+    25 => 'Way\\Generators\\GeneratorsServiceProvider',
+    26 => 'Xethron\\MigrationsGenerator\\MigrationsGeneratorServiceProvider',
+    27 => 'Spatie\\Activitylog\\ActivitylogServiceProvider',
+    28 => 'NotificationChannels\\Discord\\DiscordServiceProvider',
+    29 => 'Laravel\\Scout\\ScoutServiceProvider',
+    30 => 'TeamTNT\\Scout\\TNTSearchScoutServiceProvider',
+    31 => 'Msurguy\\Honeypot\\HoneypotServiceProvider',
+    32 => 'App\\Providers\\AppServiceProvider',
+    33 => 'App\\Providers\\AuthServiceProvider',
+    34 => 'App\\Providers\\EventServiceProvider',
+    35 => 'App\\Providers\\RouteServiceProvider',
+    36 => 'App\\Providers\\ComposerServiceProvider',
+    37 => 'App\\Providers\\HelperServiceProvider',
+  ),
+  'deferred' => 
+  array (
     'Illuminate\\Broadcasting\\BroadcastManager' => 'Illuminate\\Broadcasting\\BroadcastServiceProvider',
     'Illuminate\\Contracts\\Broadcasting\\Factory' => 'Illuminate\\Broadcasting\\BroadcastServiceProvider',
     'Illuminate\\Contracts\\Broadcasting\\Broadcaster' => 'Illuminate\\Broadcasting\\BroadcastServiceProvider',
@@ -190,6 +185,10 @@ return  [
     'redis.connection' => 'Illuminate\\Redis\\RedisServiceProvider',
     'auth.password' => 'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider',
     'auth.password.broker' => 'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider',
+    'translator' => 'Waavi\\Translation\\TranslationServiceProvider',
+    'translation.loader' => 'Waavi\\Translation\\TranslationServiceProvider',
+    'translation.cache.repository' => 'Waavi\\Translation\\TranslationServiceProvider',
+    'translation.uri.localizer' => 'Waavi\\Translation\\TranslationServiceProvider',
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'command.ide-helper.generate' => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
@@ -202,39 +201,59 @@ return  [
     'telegram' => 'Telegram\\Bot\\Laravel\\TelegramServiceProvider',
     'Telegram\\Bot\\Api' => 'Telegram\\Bot\\Laravel\\TelegramServiceProvider',
     'meta' => 'Eusonlito\\LaravelMeta\\MetaServiceProvider',
-  ],
-  'when' => [
-    'Illuminate\\Broadcasting\\BroadcastServiceProvider' => [
-    ],
-    'Illuminate\\Bus\\BusServiceProvider' => [
-    ],
-    'Illuminate\\Cache\\CacheServiceProvider' => [
-    ],
-    'Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider' => [
-    ],
-    'Illuminate\\Hashing\\HashServiceProvider' => [
-    ],
-    'Illuminate\\Mail\\MailServiceProvider' => [
-    ],
-    'Illuminate\\Pipeline\\PipelineServiceProvider' => [
-    ],
-    'Illuminate\\Queue\\QueueServiceProvider' => [
-    ],
-    'Illuminate\\Redis\\RedisServiceProvider' => [
-    ],
-    'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider' => [
-    ],
-    'Illuminate\\Validation\\ValidationServiceProvider' => [
-    ],
-    'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider' => [
-    ],
-    'Collective\\Html\\HtmlServiceProvider' => [
-    ],
-    'Khill\\Lavacharts\\Laravel\\LavachartsServiceProvider' => [
-    ],
-    'Telegram\\Bot\\Laravel\\TelegramServiceProvider' => [
-    ],
-    'Eusonlito\\LaravelMeta\\MetaServiceProvider' => [
-    ],
-  ],
-];
+  ),
+  'when' => 
+  array (
+    'Illuminate\\Broadcasting\\BroadcastServiceProvider' => 
+    array (
+    ),
+    'Illuminate\\Bus\\BusServiceProvider' => 
+    array (
+    ),
+    'Illuminate\\Cache\\CacheServiceProvider' => 
+    array (
+    ),
+    'Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider' => 
+    array (
+    ),
+    'Illuminate\\Hashing\\HashServiceProvider' => 
+    array (
+    ),
+    'Illuminate\\Mail\\MailServiceProvider' => 
+    array (
+    ),
+    'Illuminate\\Pipeline\\PipelineServiceProvider' => 
+    array (
+    ),
+    'Illuminate\\Queue\\QueueServiceProvider' => 
+    array (
+    ),
+    'Illuminate\\Redis\\RedisServiceProvider' => 
+    array (
+    ),
+    'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider' => 
+    array (
+    ),
+    'Waavi\\Translation\\TranslationServiceProvider' => 
+    array (
+    ),
+    'Illuminate\\Validation\\ValidationServiceProvider' => 
+    array (
+    ),
+    'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider' => 
+    array (
+    ),
+    'Collective\\Html\\HtmlServiceProvider' => 
+    array (
+    ),
+    'Khill\\Lavacharts\\Laravel\\LavachartsServiceProvider' => 
+    array (
+    ),
+    'Telegram\\Bot\\Laravel\\TelegramServiceProvider' => 
+    array (
+    ),
+    'Eusonlito\\LaravelMeta\\MetaServiceProvider' => 
+    array (
+    ),
+  ),
+);

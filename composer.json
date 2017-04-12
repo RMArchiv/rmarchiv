@@ -39,7 +39,7 @@
         "teamtnt/laravel-scout-tntsearch-driver": "^2.0",
         "eusonlito/laravel-meta": "^3.0",
         "msurguy/honeypot": "^1.0",
-        "hpolthof/laravel-translations-db": "^0.5.0"
+        "waavi/translation": "^2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

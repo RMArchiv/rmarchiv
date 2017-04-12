@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e9766c18b3ce9fa2b5985b1b19b2236d",
+    "content-hash": "e5cc53ca63b7db8c919a12c43c2fab00",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -1464,57 +1464,6 @@
                 "url"
             ],
             "time": "2017-03-20T17:10:46+00:00"
-        },
-        {
-            "name": "hpolthof/laravel-translations-db",
-            "version": "0.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/hpolthof/laravel-translations-db.git",
-                "reference": "4f7a7136687f64321a392b1d610a2b8f7a18383e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/hpolthof/laravel-translations-db/zipball/4f7a7136687f64321a392b1d610a2b8f7a18383e",
-                "reference": "4f7a7136687f64321a392b1d610a2b8f7a18383e",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/cache": "5.*",
-                "illuminate/database": "5.*",
-                "illuminate/translation": "5.*",
-                "php": ">=5.4.0",
-                "stichoza/google-translate-php": "~3.1"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.4.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Hpolthof\\Translation\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL2"
-            ],
-            "authors": [
-                {
-                    "name": "Paul Olthof",
-                    "email": "hpolthof@gmail.com"
-                }
-            ],
-            "description": "A database translations implementation for Laravel 5.",
-            "keywords": [
-                "database",
-                "laravel",
-                "localization",
-                "translation"
-            ],
-            "time": "2016-11-15T20:08:37+00:00"
         },
         {
             "name": "intervention/image",
@@ -3780,55 +3729,6 @@
             "time": "2016-12-01T13:46:28+00:00"
         },
         {
-            "name": "stichoza/google-translate-php",
-            "version": "v3.2.12",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Stichoza/google-translate-php.git",
-                "reference": "a029d8b93b201ddfeba60375837d27c6fcb00376"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Stichoza/google-translate-php/zipball/a029d8b93b201ddfeba60375837d27c6fcb00376",
-                "reference": "a029d8b93b201ddfeba60375837d27c6fcb00376",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "~6.0",
-                "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Stichoza\\GoogleTranslate\\": "src/"
-                },
-                "psr-4": {
-                    "Stichoza\\GoogleTranslate\\": "src/Stichoza/GoogleTranslate/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Levan Velijanashvili",
-                    "email": "me@stichoza.com"
-                }
-            ],
-            "description": "Free Google Translate API PHP Package",
-            "homepage": "http://github.com/Stichoza/google-translate-php",
-            "keywords": [
-                "google",
-                "php",
-                "translate"
-            ],
-            "time": "2016-09-14T11:42:35+00:00"
-        },
-        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.6",
             "source": {
@@ -5072,6 +4972,57 @@
                 "environment"
             ],
             "time": "2016-09-01T10:05:43+00:00"
+        },
+        {
+            "name": "waavi/translation",
+            "version": "2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Waavi/translation.git",
+                "reference": "b4cef3f1be2fc2aef4c08b6e33fda5165cd9b1d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Waavi/translation/zipball/b4cef3f1be2fc2aef4c08b6e33fda5165cd9b1d2",
+                "reference": "b4cef3f1be2fc2aef4c08b6e33fda5165cd9b1d2",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "^2.5",
+                "laravel/framework": "~5.4"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "orchestra/testbench": "~3.4",
+                "phpunit/phpunit": "~5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Waavi\\Translation\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Waavi",
+                    "email": "info@waavi.com",
+                    "homepage": "http://waavi.com"
+                }
+            ],
+            "description": "A Translation package for Laravel 5 with database and cache support",
+            "keywords": [
+                "laravel",
+                "laravel-translator",
+                "localization",
+                "translation",
+                "translator",
+                "waavi"
+            ],
+            "time": "2017-03-31T11:08:16+00:00"
         },
         {
             "name": "watson/sitemap",
