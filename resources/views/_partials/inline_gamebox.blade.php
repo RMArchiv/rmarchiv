@@ -6,10 +6,10 @@
     </tr>
     <tr>
         <td>
-            <img src='{{ route('screenshot.show', [$game->id, 1]) }}' alt='{{ trans('app.games.inline_gamebox.titlescreen') }}' title='{{ trans('app.games.inline_gamebox.titlescreen') }}' style="width: 160px;"/>
+            <img src='{{ route('screenshot.show', [$game->id, 1]) }}' alt='{{ trans('_partials.inline_gamebox.titlescreen') }}' title='{{ trans('_partials.inline_gamebox.titlescreen') }}' style="width: 160px;"/>
         </td>
         <td>
-            {{ trans('app.games.inline_gamebox.developer') }}:
+            {{ trans('_partials.inline_gamebox.developer') }}:
             @foreach($game->developers as $dev)
                 <a href="{{ url('developer',$dev->developer_id) }}">{{ $dev->developer->name }}</a>
                 @if($dev != $game->developers->last())

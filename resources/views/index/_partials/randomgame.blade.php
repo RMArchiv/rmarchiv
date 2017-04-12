@@ -1,9 +1,9 @@
 <div class='rmarchivtbl' id='rmarchivbox_cdc'>
-    <h2>zufallsspiel</h2>
+    <h2>{{ trans('index.randomgame.title') }}</h2>
     <ul class='boxlist boxlisttable'>
         <li>
                 <span class="rowprod">
-                    <img width="100%" src="{{ route('screenshot.show', [$randomgame->id, 1]) }}" />
+                    <img width="100%" src="{{ route('screenshot.show', [$randomgame->id, 1]) }}"/>
                 </span>
         </li>
         <li>
@@ -28,7 +28,8 @@
                                 <small> - {{ $randomgame->subtitle }}</small>
                             @endif
                         </a>
-                        <span><img src="/assets/lng/16/{{ strtoupper($randomgame->language->short) }}.png" title="{{ $randomgame->language->name }}"></span>
+                        <span><img src="/assets/lng/16/{{ strtoupper($randomgame->language->short) }}.png"
+                                   title="{{ $randomgame->language->name }}"></span>
 
                     </span>
                     <span class='group'>:: {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($randomgame->id) !!}

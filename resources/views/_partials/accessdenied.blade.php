@@ -1,9 +1,9 @@
 @section('pagetitle', 'zugriff verweigert')
 <div class="rmarchivtbl errorbox">
-    <h2>{{ trans('app.access_denied.title') }}</h2>
+    <h2>{{ trans('_partials.accessdenied.title') }}</h2>
     <div class="content">
-        <p>{{ trans('app.access_denied.body') }}</p>
+        <p>{{ trans('_partials.accessdenied.body') }}</p>
         <br>
-        <p>{!! trans('app.access_denied.backtohome') !!}</p>
+        <p>{!! trans('_partials.accessdenied.backtohome') !!}</p>
     </div>
 </div>

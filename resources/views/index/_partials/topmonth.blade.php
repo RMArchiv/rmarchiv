@@ -1,5 +1,5 @@
 <div class='rmarchivtbl' id='rmarchivbox_latestadded'>
-    <h2>top of the month</h2>
+    <h2>{{ trans('index.topmonth.title') }}</h2>
     <ul class='boxlist boxlisttable'>
         @foreach($topmonth as $g)
             <li>
@@ -30,5 +30,5 @@
             </li>
         @endforeach
     </ul>
-    <div class='foot'><a href='{{ url('games') }}'>more</a>...</div>
+    <div class='foot'><a href='{{ url('games') }}'>{{ trans('index.topmonth.more') }}</a>...</div>
 </div>

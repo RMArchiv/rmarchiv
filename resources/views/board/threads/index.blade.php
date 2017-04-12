@@ -6,19 +6,19 @@
                 @if($threads->count() != 0)
                     {{ $threads->first()->cat->title }}
                 @else
-                    Neuer Thread
+                    {{ trans('board.threads.index.no_threads_head') }}
                 @endif
             </h2>
             <table id="rmarchivbox_bbslist" class="boxtable pagedtable">
                 <thead>
                 <tr>
-                    <th id='th_firstpost'>geöffnet</th>
-                    <th id='th_userfirstpost'>von</th>
-                    <th id='th_category'>kategorie</th>
-                    <th id='th_topic'>thema</th>
-                    <th id='th_count'>antworten</th>
-                    <th id='th_lastpost'>letzter post</th>
-                    <th id='th_userlastpost'>von</th>
+                    <th id='th_firstpost'>{{ trans('board.threads.index.created_at') }}</th>
+                    <th id='th_userfirstpost'>{{ trans('board.threads.index.created_by') }}</th>
+                    <th id='th_category'>{{ trans('board.threads.index.category') }}</th>
+                    <th id='th_topic'>{{ trans('board.threads.index.topic') }}</th>
+                    <th id='th_count'>{{ trans('board.index.postcount') }}</th>
+                    <th id='th_lastpost'>{{ trans('board.threads.index.lastpost_at') }}</th>
+                    <th id='th_userlastpost'>{{ trans('board.threads.index.lastpost_by') }}</th>
                 </tr>
                 </thead>
 
@@ -54,21 +54,21 @@
                 @endforeach
             </table>
         @else
-            <h2>diese kategorie hat keine threads</h2>
+            <h2>{{ trans('board.threads.index.no_threads_head') }}</h2>
         @endif
 
         @if(Auth::check())
             <div class='rmarchivtbl' id='rmarchivbox_bbsopen'>
-                <h2>erstelle einen neuen thread</h2>
+                <h2>{{ trans('board.threads.index.create_thread') }}</h2>
                 {!! Form::open(['route' => ['board.thread.store']]) !!}
                 <input name="category" value="{{ app('request')->input('cat_id') }}" type="hidden" />
                 <div class='content'>
-                    <label for='topic'>titel:</label>
+                    <label for='topic'>{{ trans('board.threads.index.topic_title') }}:</label>
                     <input name='topic' id='topic'/>
 
-                    <label for='message'>nachricht:</label>
+                    <label for='message'>{{ trans('board.threads.index.message') }}:</label>
                     @include('_partials.markdown_editor')
-                    <div><a href='#'><b>markdown</b></a> ist hier möglich.</div>
+                    <div><a href='#'>{{ trans('board.threads.index.markdown') }}</a></div>
                 </div>
                 <div class='foot'>
                     <input type='submit' value='Submit' id='submit'></div>
@@ -76,11 +76,9 @@
             </div>
         @else
             <div class="rmarchivtbl" id="rmarchivbox_bbsopen">
-                <h2>du bist nicht angemeldet.</h2>
+                <h2>{{ trans('board.threads.index.no_login_title') }}</h2>
                 <div class="content">
-                    du bist nicht angemeldet.<br>
-                    um einen thread erstellen zu können, <a href="{{ url('login') }}">logge</a> dich ein.<br>
-                    wenn du keinen account hast, <a href="{{ url('register') }}">registriere</a> dich doch einfach.
+                    {{ trans('board.threads.index.no_login_msg') }}
                 </div>
             </div>
         @endif

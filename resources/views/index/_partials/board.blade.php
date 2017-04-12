@@ -1,5 +1,5 @@
 <div class='rmarchivtbl' id='rmarchivbox_latestbbs'>
-    <h2>die 10 neuesten und fluffigsten threads</h2>
+    <h2>{{ trans('index.board.title') }}</h2>
     <table class='boxtable'>
         @foreach($threads as $t)
         <tr class='' @if(\App\Helpers\DatabaseHelper::isThreadUnread($t->id) === true) style="font-weight: bold;" @endif>
@@ -30,5 +30,5 @@
         </tr>
         @endforeach
     </table>
-    <div class='foot'><a href='{{ route('board.show') }}'>more</a>...</div>
+    <div class='foot'><a href='{{ route('board.show') }}'>{{ trans('index.board.more') }}</a>...</div>
 </div>

@@ -4,15 +4,15 @@
 <div id='content'>
     <table id='pouetbox_userlist' class='boxtable pagedtable'>
         <thead class='sortable'>
-        <th>nickname</th>
-        <th>mitglied seit</th>
-        <th>level</th>
-        <th>obyx</th>
-        @if(Auth::check())
-            @if(Auth::user()->settings->is_admin)
-                <th>actions</th>
+            <th>nickname</th>
+            <th>mitglied seit</th>
+            <th>level</th>
+            <th>obyx</th>
+            @if(Auth::check())
+                @if(Auth::user()->settings->is_admin)
+                    <th>actions</th>
+                @endif
             @endif
-        @endif
         </thead>
         @foreach($users as $user)
         <tr>

@@ -1,5 +1,5 @@
 <div class='rmarchivtbl' id='rmarchivbox_topglops'>
-    <h2>top 5 obeynators</h2>
+    <h2>{{ trans('index.topusers.title') }}</h2>
     <ul class='boxlist'>
         @foreach($topusers as $topuser)
         <li>
@@ -11,5 +11,5 @@
         </li>
         @endforeach
     </ul>
-    <div class='foot'><a href='{{ url('users') }}'>more</a>...</div>
+    <div class='foot'><a href='{{ url('users') }}'>{{ trans('index.topusers.more') }}</a>...</div>
 </div>

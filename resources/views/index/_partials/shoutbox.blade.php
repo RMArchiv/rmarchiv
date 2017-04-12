@@ -1,5 +1,5 @@
 <div class='rmarchivtbl' id='rmarchivbox_latestoneliner'>
-    <h2>echte oldschool shoutbox</h2>
+    <h2>{{ trans('index.shoutbox.title') }}</h2>
     <ul class='boxlist'>
         @foreach($shoutbox as $shout)
         <li>
@@ -12,13 +12,13 @@
     </ul>
     @permission(('create-shoutbox'))
     <div class='foot loggedin'>
-        <span><a href='{{ url('shoutbox') }}'>more</a>...</span>
+        <span><a href='{{ url('shoutbox') }}'>{{ trans('index.shoutbox.more') }}</a>...</span>
         {!! Form::open(['action' => ['ShoutboxController@store']]) !!}
-            <input type='text' name='shout' placeholder='sags mit worten. in einem satz. (300 zeichen max.)' id='onelinermsg' maxlength='300'/>
+            <input type='text' name='shout' placeholder='{{ trans('index.shoutbox.placeholder') }}' id='onelinermsg' maxlength='300'/>
             <input type='submit' value='Submit'/>
         {!! Form::close() !!}
     </div>
     @else
-    <div class='foot'><a href='{{ url('shoutbox') }}'>more</a>...</div>
+    <div class='foot'><a href='{{ url('shoutbox') }}'>{{ trans('index.shoutbox.more') }}</a>...</div>
     @endpermission
 </div>

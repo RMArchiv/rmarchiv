@@ -1,16 +1,17 @@
 @role(('banned'))
 <div class="rmarchivtbl errorbox">
-    <h2>Du wurdest gebannt!</h2>
+    <h2>{{ trans('_partials.banned.title') }}</h2>
     <div class="content">
-        <p>Du bist einer der wenigen User die es geschafft haben sich bannen zu lassen.</p>
-        <p>Welch eine herausragende Leistung.</p>
+        <p>{{ trans('_partials.banned.line1') }}</p>
         <br>
-        <p>Nun wurdest du zu einem Zuschauer degradiert, der nicht mehr mit unserer Community interagieren darf.</p>
+        <p>{{ trans('_partials.banned.line2') }}</p>
         <br>
-        <p>Solltest du dich ungerecht behandelt fühlen, schreibe einem Moderator oder Administrator eine PN.</p>
+        <p>{{ trans('_partials.banned.line3') }}</p>
         <br>
-        <p>Hochachtungsvoll,</p>
-        <p>dein rmarchiv.de Team</p>
+        <p>{{ trans('_partials.banned.line4') }}</p>
+        <br>
+        <p>{{ trans('_partials.banned.greet') }}</p>
+        <p>{{ trans('_partials.banned.team') }}</p>
     </div>
 </div>
 @endrole

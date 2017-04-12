@@ -25,7 +25,7 @@ return [
 
     // In case the files source is selected, please enter here the supported locales for your app.
     // Ex: ['en', 'es', 'fr']
-    'available_locales' => ['de'],
+    'available_locales' => ['de', 'de-uc', 'en', 'fr', 'ru', 'pl', 'ja'],
 
     /*
     |--------------------------------------------------------------------------

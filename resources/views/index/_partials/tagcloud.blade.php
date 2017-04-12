@@ -1,5 +1,5 @@
 <div class='rmarchivtbl' id='rmarchivbox_tagcloud'>
-    <h2><a href="{{ url('tags') }}">tag cloud</a></h2>
+    <h2><a href="{{ url('tags') }}">{{ trans('index.tagcloud.title') }}</a></h2>
     <div class='content center'>
         @php
             $cloud = new \LithiumDev\TagCloud\TagCloud();

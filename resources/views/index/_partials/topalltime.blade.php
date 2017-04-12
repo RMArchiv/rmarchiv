@@ -1,5 +1,5 @@
 <div class='rmarchivtbl' id='rmarchivbox_latestadded'>
-    <h2>alltime top</h2>
+    <h2>{{ trans('index.topalltime.title') }}</h2>
     <ul class='boxlist boxlisttable'>
         @foreach($topalltime as $g)
             <li>
@@ -33,5 +33,5 @@
             </li>
         @endforeach
     </ul>
-    <div class='foot'><a href='{{ url('games') }}'>more</a>...</div>
+    <div class='foot'><a href='{{ url('games') }}'>{{ trans('index.topalltime.more') }}</a>...</div>
 </div>

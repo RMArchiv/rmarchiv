@@ -4,6 +4,6 @@
     <div class='content markdown'>
         {!! $new->news_html !!}
     </div>
-    <div class='foot'>Eingesendet von <a href='{{ url('users', $new->user->id) }}'>{{ $new->user->name }}</a> :: <time datetime='{{ $new->created_at }}' title='{{ $new->created_at }}'>{{ \Carbon\Carbon::parse($new->created_at)->diffForHumans() }}</time> - Kommentare: {{ $new->comments->count() }}</div>
+    <div class='foot'>{{ trans('index.news.submit_by') }} <a href='{{ url('users', $new->user->id) }}'>{{ $new->user->name }}</a> :: <time datetime='{{ $new->created_at }}' title='{{ $new->created_at }}'>{{ \Carbon\Carbon::parse($new->created_at)->diffForHumans() }}</time> - {{ trans('index.news.comments') }}: {{ $new->comments->count() }}</div>
 </div>
 @endforeach

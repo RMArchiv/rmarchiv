@@ -1,5 +1,5 @@
 <div class='rmarchivtbl' id='rmarchivbox_search'>
-    <h2>suche</h2>
+    <h2>{{ trans('index.search.title') }}</h2>
     {{ Form::open(['action' => ['SearchController@search']]) }}
         <div class='content center'>
             <input id="term" type='text' name='term' size='64' />
@@ -26,7 +26,7 @@
             templates: {
                 empty: [
                     '<div class="empty-message">',
-                    'Noch wurde nichts gefunden.',
+                    '{{ trans('index.search.not_found') }}',
                     '</div>'
                 ].join('\n'),
                 suggestion: function(data) {

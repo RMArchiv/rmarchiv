@@ -2,19 +2,19 @@
 @section('pagetitle', 'forum übersicht')
 @section('content')
     <div id='content'>
-        <h1>{{ trans('app.board.index.title') }}</h1>
+        <h1>{{ trans('board.index.title') }}</h1>
         @foreach($cats as $cat)
             <h2><a href="{{ url('board/cat', $cat->id) }}">{{ $cat->title }}</a></h2>
             <table id="rmarchivbox_bbslist" class="boxtable pagedtable" width="80%">
                 <thead>
                     <tr>
-                        <th id='th_firstpost'>{{ trans('app.board.table.create_date') }}</th>
-                        <th id='th_userfirstpost'>{{ trans('app.board.table.firstpostuser') }}</th>
-                        <th id='th_category'>{{ trans('app.board.table.category') }}</th>
-                        <th id='th_topic'>{{ trans('app.board.table.topic') }}</th>
-                        <th id='th_count'>{{ trans('app.board.table.postcount') }}</th>
-                        <th id='th_lastpost'>{{ trans('app.board.table.lastpostdate') }}</th>
-                        <th id='th_userlastpost'>{{ trans('app.board.table.lastpostuser') }}</th>
+                        <th id='th_firstpost'>{{ trans('board.index.created_at') }}</th>
+                        <th id='th_userfirstpost'>{{ trans('board.index.created_by') }}</th>
+                        <th id='th_category'>{{ trans('board.index.category') }}</th>
+                        <th id='th_topic'>{{ trans('board.index.topic') }}</th>
+                        <th id='th_count'>{{ trans('board.index.postcount') }}</th>
+                        <th id='th_lastpost'>{{ trans('board.index.lastpost_at') }}</th>
+                        <th id='th_userlastpost'>{{ trans('board.index.lastpost_by') }}</th>
                     </tr>
                 </thead>
 
@@ -55,30 +55,30 @@
 
     @if(Auth::check())
     <div class='rmarchivtbl' id='rmarchivbox_bbsopen'>
-        <h2>{{ trans('app.board.index.create') }}</h2>
+        <h2>{{ trans('board.index.create_thread') }}</h2>
         {!! Form::open(['route' => ['board.thread.store']]) !!}
             <div class='content'>
-                <label for='topic'>{{ trans('app.board.index.create_title') }}</label>
+                <label for='topic'>{{ trans('board.index.topic_title') }}</label>
                 <input name='topic' id='topic'/>
-                <label for='category'>{{ trans('app.board.index.create_category') }}</label>
+                <label for='category'>{{ trans('board.index.category') }}</label>
                 <select name='category' id='category'>
                     @foreach($cats as $cat)
                     <option value='{{ $cat->id }}'>{{ $cat->title }}</option>
                     @endforeach
                 </select>
-                <label for='message'>{{ trans('app.board.index.message') }}</label>
+                <label for='message'>{{ trans('board.index.message') }}</label>
                 @include('_partials.markdown_editor')
-                <div>{!! trans('editor.markdown_possible') !!}</div>
+                <div>{!! trans('board.index.markdown') !!}</div>
             </div>
             <div class='foot'>
-                <input type='submit' value='{{ trans('app.board.index.send') }}' id='submit'></div>
+                <input type='submit' value='{{ trans('board.index.send') }}' id='submit'></div>
         {!! Form::close() !!}
     </div>
     @else
     <div class="rmarchivtbl" id="rmarchivbox_bbsopen">
-        <h2>{{ trans('app.board.no_login.title') }}</h2>
+        <h2>{{ trans('board.index.no_login_title') }}</h2>
         <div class="content">
-            {!! trans('app.board.no_login.msg') !!}
+            {!! trans('board.index.no_login_msg') !!}
         </div>
     </div>
     @endif

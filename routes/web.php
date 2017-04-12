@@ -293,3 +293,6 @@ Route::get('logo/{filename}', function ($filename) {
 
     return $response;
 })->name('logo.get');
+
+Route::get('translation', 'TranslationController@index')->name('trans.index');
+Route::get('translation/{loc}/{loc?}', 'TranslationController@edit')->name('trans.edit');

@@ -1,15 +1,15 @@
 <table class='boxtable' id='rmarchivbox_pm'>
     <tr>
-        <th class='header'>nachrichten</th>
+        <th class='header'>{{ trans('index.pm.title') }}</th>
     </tr>
     <tr>
         <td class='r1'>
-            <a href='{{ url('messages') }}'>ungelesen: {{$pm or 0}}</a>
+            <a href='{{ url('messages') }}'>{{trans('index.pm.unreaded')}}: {{$pm or 0}}</a>
         </td>
     </tr>
     <tr>
         <td class='r1'>
-            <a href="{{ url('messages/create') }}">neue nachricht</a>
+            <a href="{{ url('messages/create') }}">{{ trans('index.pm.new_pm') }}</a>
         </td>
     </tr>
 </table>

@@ -14,7 +14,7 @@
             </div>
         @endif
         @if($gamefiles->count() <> 0)
-            <h2>Spieledateien von: <a href="{{ url('games', $gamefiles->first()->gameid) }}">{{ $gamefiles->first()->gametitle }}<small> {{ $gamefiles->first()->gamesubtitle }}</small></a></h2>
+            <h2>{{trans('games.gamefiles.gamefiles_from')}}: <a href="{{ url('games', $gamefiles->first()->gameid) }}">{{ $gamefiles->first()->gametitle }}<small> {{ $gamefiles->first()->gamesubtitle }}</small></a></h2>
             <table id='pouetbox_prodlist' class='boxtable pagedtable'>
                 <thead>
                 <tr class='sortable'>
@@ -52,13 +52,13 @@
                     @if(Auth::check() and !$gf->deleted_at)
                         <td>
                             @if($gf->forbidden == 1)
-                                [<span title="{{ $gf->reason }}">download entfernt</span>]
+                                [<span title="{{ $gf->reason }}">{{trans('games.gamefiles.download_deleted')}}</span>]
                             @else
-                                [<a href="{{ url('games/download', $gf->fileid) }} " class="down_l">{{trans('app.misc.download')}}</a>]
+                                [<a href="{{ url('games/download', $gf->fileid) }} " class="down_l">{{trans('games.gamefiles.download')}}</a>]
                             @endif
-                            :: [<a href="{{ route('gamefiles.edit', [$gf->gameid, $gf->fileid]) }}">edit</a>]
+                            :: [<a href="{{ route('gamefiles.edit', [$gf->gameid, $gf->fileid]) }}">{{trans('games.gamefiles.edit')}}</a>]
                         @if(Auth::user()->settings->is_admin)
-                            :: [<a href="{{ route("gamefiles.delete", [$gameid, $gf->fileid]) }}">{{trans('app.misc.delete')}}</a>]
+                            :: [<a href="{{ route("gamefiles.delete", [$gameid, $gf->fileid]) }}">{{trans('games.gamefiles.delete')}}</a>]
                         @endif
                         </td>
                     @endif
@@ -66,20 +66,20 @@
                 @endforeach
             </table>
         @else
-            <h2>{{trans('app.games.gamefiles.no_files')}}</h2>
+            <h2>{{trans('games.gamefiles.no_files')}}</h2>
         @endif
 
         @if(Auth::check())
         {!! Form::open(['route' => ['gamefiles.store', $gameid]]) !!}
         <div class="rmarchivtbl" id="rmarchivbox_submitprod">
-            <h2>{{trans('app.games.gamefiles.add_file')}}</h2>
+            <h2>{{trans('games.gamefiles.gamefile_add')}}</h2>
 
             <div class="content">
                 <div class="formifier">
                     <div class='row' id='row_filetype'>
-                        <label for='filetype'>{{trans('app.games.gamefiles.filetype')}}</label>
+                        <label for='filetype'>{{trans('games.gamefiles.type')}}</label>
                         <select name='filetype' id='filetype'>
-                            <option value="0">{{trans('app.games.gamefiles.filetype_choose')}}</option>
+                            <option value="0">{{trans('games.gamefiles.type_choose')}}</option>
                             @foreach($filetypes as $types)
                                 <option value="{{ $types->id }}">{{ $types->title }}</option>
                             @endforeach
@@ -87,27 +87,27 @@
                         <span>[<span class="req">req</span>]</span>
                     </div>
                     <div class="row" id="row_version">
-                        <label for="version">{{trans('app.games.gamefiles.version2')}}</label>
+                        <label for="version">{{trans('games.gamefiles.fileversion')}}</label>
                         <input name="version" id="version" value="" placeholder="1.0"/>
                         <span> [<span class="req">req</span>]</span>
                     </div>
                     <div class="row" id="row_releasedate">
-                        <label for="releasedate">{{trans('app.games.gamefiles.release_date2')}}</label>
+                        <label for="releasedate">{{trans('games.gamefiles.release_date')}}</label>
                         <div class="formdate" id="releasedate">
                             <select name="releasedate_day" id="releasedate_day">
-                                <option value="0">{{trans('app.games.gamefiles.day')}}</option>
+                                <option value="0">{{trans('games.gamefiles.release_day')}}</option>
                                 @for($i = 1; $i < 32; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                 @endfor
                             </select>
                             <select name="releasedate_month" id="releasedate_month">
-                                <option value="0">{{trans('app.games.gamefiles.month')}}</option>
+                                <option value="0">{{trans('games.gamefiles.release_month')}}</option>
                                 @for($i = 1; $i < 13; $i++)
-                                    <option value="{{ $i }}">{{ trans('app.misc.month.'.$i) }}</option>
+                                    <option value="{{ $i }}">{{ trans('misc.month.'.$i) }}</option>
                                 @endfor
                             </select>
                             <select name="releasedate_year" id="releasedate_year">
-                                <option value="0">{{trans('app.games.gamefiles.year')}}</option>
+                                <option value="0">{{trans('games.gamefiles.release_year')}}</option>
                                 @for($i = 1990; $i < date("Y") + 1; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                 @endfor
@@ -116,7 +116,7 @@
                         <span>[<span class="req">req</span>]</span>
                     </div>
                         <div class="row" id="row_file">
-                            <label for="fine-uploader">{{trans('app.misc.upload_file')}}:</label>
+                            <label for="fine-uploader">{{trans('games.gamefiles.upload_file')}}:</label>
                             <div id="fine-uploader"></div>
                             <span>[<span class="req">req</span>]</span>
                         </div>
@@ -124,7 +124,7 @@
             </div>
 
             <div class="foot">
-                <input type="submit" value="senden">
+                <input type="submit" value="{{ trans('gamefiles.send') }}">
             </div>
         </div>
         {!! Form::close() !!}
@@ -140,7 +140,7 @@
                 <span class="qq-upload-drop-area-text-selector"></span>
             </div>
             <div class="qq-upload-button-selector qq-upload-button">
-                <div>Datei hochladen</div>
+                <div>{{ trans('games.gamefiles.upload_file') }}</div>
             </div>
             <span class="qq-drop-processing-selector qq-drop-processing">
                     <span>Processing dropped files...</span>
