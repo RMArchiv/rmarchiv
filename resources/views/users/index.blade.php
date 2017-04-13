@@ -4,13 +4,13 @@
 <div id='content'>
     <table id='pouetbox_userlist' class='boxtable pagedtable'>
         <thead class='sortable'>
-            <th>nickname</th>
-            <th>mitglied seit</th>
-            <th>level</th>
-            <th>obyx</th>
+            <th>{{ trans('user.index.nickname') }}</th>
+            <th>{{ trans('user.index.member_since') }}</th>
+            <th>{{ trans('user.index.level') }}</th>
+            <th>{{ trans('user.index.obyx') }}</th>
             @if(Auth::check())
                 @if(Auth::user()->settings->is_admin)
-                    <th>actions</th>
+                    <th>{{ trans('user.index.actions') }}</th>
                 @endif
             @endif
         </thead>
@@ -31,7 +31,7 @@
             </td>
             @if(Auth::check())
                 @if(Auth::user()->settings->is_admin)
-                    <td><a href="{{ route('user.admin', $user->userid) }}">[edit]</a></td>
+                    <td>[<a href="{{ route('user.admin', $user->userid) }}">{{ trans('user.index.edit') }}</a>]</td>
                 @endif
             @endif
         </tr>

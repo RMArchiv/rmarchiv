@@ -6,7 +6,7 @@
             <h1>
                 {{ $award->pagetitle }}: {{ $award->cattitle }} - {{ $award->catyear }}
                 @if($award->catmonth <> 0)
-                     - {{ trans('app.misc.dates.month.long.'.$award->catmonth) }}
+                     - {{ trans('misc.month.'.$award->catmonth) }}
                 @endif
             </h1>
 
@@ -34,9 +34,9 @@
                         }
                         ?>
                         @if($icon != 'no')
-                                {{ trans('app.awards.show.place') }} {{ $game->place }}<img src="/assets/{{ $icon }}" alt="{{ $game->place }}" title="{{ $game->place }}">
+                                {{ trans('awards.show.place') }} {{ $game->place }}<img src="/assets/{{ $icon }}" alt="{{ $game->place }}" title="{{ $game->place }}">
                         @else
-                                {{ trans('app.awards.show.place') }} {{ $game->place  }}
+                                {{ trans('awards.show.place') }} {{ $game->place  }}
                         @endif
                     </td>
                     <td width="60%">

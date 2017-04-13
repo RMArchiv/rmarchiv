@@ -9,7 +9,7 @@ return [
     'accessdenied' => [
         'title'      => 'zugriff verweigert!',
         'body'       => 'du hast nicht die erforderlichen berechtigungen um diese seite zu sehen.',
-        'backtohome' => 'zurück zur <a href="'.url('/').'">hauptseite</a>',
+        'backtohome' => 'zurück zur <a href="' . url('/') . '">hauptseite</a>',
     ],
     'banned'       => [
         'title' => 'du wurdest gebannt!',
@@ -30,5 +30,25 @@ return [
     'inline_gamebox' => [
         'titlescreen' => 'titelbild',
         'developer'   => 'entwickler',
+    ],
+
+    'tables' => [
+        'game_table'      => [
+
+        ],
+        'game_table_head' => [
+            'title' => 'titel',
+            'developer' => 'entwickler',
+            'release_date' => 'erschienen am',
+            'created_at' => 'erstellt am',
+            'rate_up' => 'super',
+            'rate_down' => 'scheiße',
+            'avg' => 'avg',
+            'popularity' => 'popularität',
+            'comments' => 'kommentare'
+        ],
+        'game_table_row'  => [
+
+        ],
     ],
 ];

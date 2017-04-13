@@ -8,11 +8,11 @@
 return [
     'title' => 'entwickler',
     'index' => [
-        'title' => 'entwicklerliste',
+        'title'     => 'entwicklerliste',
         'developer' => 'entwickler',
-        'games' => 'spiele',
+        'games'     => 'spiele',
     ],
-    'show' => [
+    'show'  => [
         'title' => 'entwicklerprofil',
     ],
 ];

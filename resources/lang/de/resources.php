@@ -71,18 +71,18 @@ return [
         'comments'     => 'kommentare',
     ],
     'show'      => [
-        'type' => 'typ',
-        'category' => 'kategorie',
-        'voteup' => 'ist super',
-        'votedown' => 'ist scheiße',
-        'voteneut' => 'ost ok...',
-        'popularity' => 'popularität',
-        'alltimetop' => 'alltime top',
-        'linktoppage' => 'link zur seite',
-        'download' => 'download',
-        'description' => 'beschreibung',
-        'added' => 'hinzugefügt',
-        'by' => 'von',
+        'type'                    => 'typ',
+        'category'                => 'kategorie',
+        'voteup'                  => 'ist super',
+        'votedown'                => 'ist scheiße',
+        'voteneut'                => 'ost ok...',
+        'popularity'              => 'popularität',
+        'alltimetop'              => 'alltime top',
+        'linktoppage'             => 'link zur seite',
+        'download'                => 'download',
+        'description'             => 'beschreibung',
+        'added'                   => 'hinzugefügt',
+        'by'                      => 'von',
         'popularity_helper_title' => 'popularitätshelfer',
         'popularity_helper_msg'   => 'höret, höret! oh großer ressourcenersteller oder leecher. verbreite die nachricht mit hilfe dieses links.',
         'no_comments'             => 'es sind noch keine kommentare vorhanden.',
@@ -96,21 +96,21 @@ return [
         'vote_neut'               => 'wer weiß...',
         'markdown'                => 'hier kann markdown genutzt werden.',
         'no_id'                   => 'nein. diese ressource existiert nicht. sorry.',
-        'comments' => 'kommentare',
-        'no_permission' => 'keine berechtigung',
-        'no_permission_msg' => 'du hast keine berechtigung hier zu kommentieren',
+        'comments'                => 'kommentare',
+        'no_permission'           => 'keine berechtigung',
+        'no_permission_msg'       => 'du hast keine berechtigung hier zu kommentieren',
 
     ],
     '_partials' => [
         'nav' => [
-            'gfx' => 'grafik',
-            'sfx' => 'audio',
+            'gfx'     => 'grafik',
+            'sfx'     => 'audio',
             'scripts' => 'scripte',
-            'tools' => 'tools',
+            'tools'   => 'tools',
         ],
     ],
     'gfx'       => [
-        'index' => [
+        'index'     => [
             'title'        => 'grafikübersicht (die neuesten 20)',
             'type'         => 'typ',
             'category'     => 'kategorie',
@@ -130,7 +130,7 @@ return [
         ],
     ],
     'scripts'   => [
-        'index' => [
+        'index'     => [
             'title'        => 'scriptübersicht (die neuesten 20)',
             'type'         => 'typ',
             'category'     => 'kategorie',
@@ -150,7 +150,7 @@ return [
         ],
     ],
     'sfx'       => [
-        'index' => [
+        'index'     => [
             'title'        => 'audioübersicht (die neuesten 20)',
             'type'         => 'typ',
             'category'     => 'kategorie',
@@ -170,7 +170,7 @@ return [
         ],
     ],
     'tools'     => [
-        'index' => [
+        'index'     => [
             'title'        => 'toolübersicht (die neuesten 20)',
             'type'         => 'typ',
             'category'     => 'kategorie',

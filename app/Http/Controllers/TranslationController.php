@@ -40,7 +40,13 @@ class TranslationController extends Controller
 
     public function edit($loc1, $loc2 = 'de', $viewtype = 'untranslated', $searchterm = '')
     {
-        $list = $this->translationRepository->untranslated($loc2);
+        $list = null;
+
+        if($viewtype == 'untranslated'){
+            $list = $this->translationRepository->untranslated($loc2);
+        }elseif($viewtype == 'all'){
+            $list = $this->translationRepository->allByLocale($loc2);
+        }
 
         return view('translate.show', [
             'list' => $list,

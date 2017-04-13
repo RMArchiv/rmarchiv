@@ -6,7 +6,7 @@
  */
 
 return [
-    'title' => 'home',
+    'title'               => 'home',
     'board'               => [
         'title' => 'die 10 neuesten und fluffigsten threads',
         'more'  => 'mehr',

@@ -5,7 +5,7 @@
 
         {{ $ayear = null }}
         <div style="width: 80%" class="rmarchivtbl" id="rmarchivbox_awards">
-            <h1>Awards</h1>
+            <h1>{{ trans('awards.title') }}</h1>
             @foreach($awards as $aw)
                 @if($ayear != $aw->year)
                     @if($ayear != null)

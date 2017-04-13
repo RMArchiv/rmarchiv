@@ -7,10 +7,10 @@
                 <thead>
                 <tr class='sortable'>
                     <th>
-                        maker
+                        {{ trans('maker.index.maker') }}
                     </th>
                     <th>
-                        spiele
+                        {{ trans('maker.index.games') }}
                     </th>
                 </tr>
                 </thead>

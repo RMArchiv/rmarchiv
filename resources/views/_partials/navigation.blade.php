@@ -5,9 +5,9 @@
         <li><a href="{{ url('games') }}">{{ trans('games.title') }}</a></li>
         <li><a href="{{ url('resources') }}">{{ trans('resources.title') }}</a></li>
         <li><a href="{{ url('developer') }}">{{ trans('developer.title') }}</a></li>
-        <li><a href="{{ url('makers') }}">{{ trans('app.maker.title') }}</a></li>
-        <li><a href="{{ url('awards') }}">{{ trans('app.awards.title') }}</a></li>
-        <li><a href="{{ url('users') }}">{{ trans('app.user.title') }}</a></li>
+        <li><a href="{{ url('makers') }}">{{ trans('maker.title') }}</a></li>
+        <li><a href="{{ url('awards') }}">{{ trans('awards.title') }}</a></li>
+        <li><a href="{{ url('users') }}">{{ trans('user.title') }}</a></li>
         <li><a href="{{ url('search') }}">{{ trans('app.search.title') }}</a></li>
         <li><a href="{{ url('board') }}">{{ trans('board.title') }}</a></li>
         <li><a href="{{ url('faq') }}">{{ trans('app.faq.title') }}</a></li>
