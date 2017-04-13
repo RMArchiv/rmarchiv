@@ -12,24 +12,24 @@ use Waavi\Translation\Repositories\TranslationRepository;
 
 class TranslationController extends Controller
 {
-    protected $lng;
-    protected $trans;
+    protected $languageRepository;
+    protected $translationRepository;
 
-    public function __construct(LanguageRepository $lng, TranslationRepository $trans)
+    public function __construct(LanguageRepository $languageRepository, TranslationRepository $translationRepository)
     {
-        $this->$lng = $lng;
-        $this->$trans = $trans;
+        $this->languageRepository = $languageRepository;
+        $this->translationRepository = $translationRepository;
     }
 
     public function index()
     {
-        $locales = $this->$lng->availableLocales();
+        $locales = $this->languageRepository->availableLocales();
 
         $list = [];
 
         foreach ($locales as $loc) {
             $temp['loc'] = $loc;
-            $temp['perc'] = $this->$lng->percentTranslated($loc);
+            $temp['perc'] = $this->languageRepository->percentTranslated($loc);
             $list[] = $temp;
         }
 
@@ -40,7 +40,7 @@ class TranslationController extends Controller
 
     public function edit($loc1, $loc2 = 'de', $viewtype = 'untranslated', $searchterm = '')
     {
-        $list = $this->trans->untranslated($loc2);
+        $list = $this->translationRepository->untranslated($loc2);
 
         dd($list);
 
