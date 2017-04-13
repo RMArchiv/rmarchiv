@@ -104,7 +104,7 @@ return [
         'edit'                    => 'bearbeiten',
         'history'                 => 'historie',
         'titlescreen'             => 'titelbild',
-        'screenshot'              => 'screenshot',
+        'screenshot'              => 'screen',
         'trailer'                 => 'trailer',
         'show_origsize'           => 'originalgröße zeigen',
         'upload_titlescreen'      => 'titelbild hochladen',

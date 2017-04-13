@@ -19,15 +19,15 @@
                 <thead>
                 <tr class='sortable'>
                     <th></th>
-                    <th>{{trans('app.games.gamefiles.type')}}</th>
-                    <th>{{trans('app.games.gamefiles.version')}}</th>
-                    <th>{{trans('app.games.gamefiles.release_date')}}</th>
-                    <th>{{trans('app.games.gamefiles.filesize')}}</th>
-                    <th>{{trans('app.games.gamefiles.downloads')}}</th>
-                    <th>{{trans('app.games.gamefiles.uploaded_by')}}</th>
-                    <th>{{trans('app.games.gamefiles.uploaded_at')}}</th>
+                    <th>{{trans('games.gamefiles.type')}}</th>
+                    <th>{{trans('games.gamefiles.version')}}</th>
+                    <th>{{trans('games.gamefiles.release_date')}}</th>
+                    <th>{{trans('games.gamefiles.filesize')}}</th>
+                    <th>{{trans('games.gamefiles.downloads')}}</th>
+                    <th>{{trans('games.gamefiles.uploaded_by')}}</th>
+                    <th>{{trans('games.gamefiles.uploaded_at')}}</th>
                     @if(Auth::check())
-                        <th>{{trans('app.games.gamefiles.actions')}}</th>
+                        <th>{{trans('games.gamefiles.actions')}}</th>
                     @endif
                 </tr>
                 </thead>

@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.17 on 2017-04-12.
+ * Generated for Laravel 5.4.18 on 2017-04-13.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -10456,6 +10456,20 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+         * Register a custom implicit validator extension.
+         *
+         * @param string $rule
+         * @param \Closure|string $extension
+         * @param string $message
+         * @return void 
+         * @static 
+         */
+        public static function extendDependent($rule, $extension, $message = null)
+        {
+            \Illuminate\Validation\Factory::extendDependent($rule, $extension, $message);
+        }
+        
+        /**
          * Register a custom implicit validator message replacer.
          *
          * @param string $rule
@@ -13141,14 +13155,13 @@ namespace Eusonlito\LaravelMeta {
         /**
          * 
          *
-         * @param string $key
-         * @param null|string $default
+         * @param string $title
          * @return string 
          * @static 
          */
-        public static function get($key, $default = null)
+        public static function title($title = null)
         {
-            return \Eusonlito\LaravelMeta\Meta::get($key, $default);
+            return \Eusonlito\LaravelMeta\Meta::title($title);
         }
         
         /**
@@ -13167,20 +13180,33 @@ namespace Eusonlito\LaravelMeta {
         /**
          * 
          *
-         * @param string $title
+         * @param string $key
+         * @param string|array $default
          * @return string 
          * @static 
          */
-        public static function title($title = null)
+        public static function get($key, $default = null)
         {
-            return \Eusonlito\LaravelMeta\Meta::title($title);
+            return \Eusonlito\LaravelMeta\Meta::get($key, $default);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|array $default
+         * @return string 
+         * @static 
+         */
+        public static function getImage($default)
+        {
+            return \Eusonlito\LaravelMeta\Meta::getImage($default);
         }
         
         /**
          * 
          *
          * @param string $key
-         * @param string $default
+         * @param string|array $default
          * @return string 
          * @static 
          */

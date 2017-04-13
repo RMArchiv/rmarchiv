@@ -1081,16 +1081,16 @@
         },
         {
             "name": "eusonlito/laravel-meta",
-            "version": "v3.0.0",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eusonlito/laravel-Meta.git",
-                "reference": "dd43eaebbcbebc9fefb6e4622f611db2e0eb3f1a"
+                "reference": "0911be231967125611b962b171728997122b55a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eusonlito/laravel-Meta/zipball/dd43eaebbcbebc9fefb6e4622f611db2e0eb3f1a",
-                "reference": "dd43eaebbcbebc9fefb6e4622f611db2e0eb3f1a",
+                "url": "https://api.github.com/repos/eusonlito/laravel-Meta/zipball/0911be231967125611b962b171728997122b55a3",
+                "reference": "0911be231967125611b962b171728997122b55a3",
                 "shasum": ""
             },
             "require": {
@@ -1122,7 +1122,7 @@
                 "meta",
                 "tags"
             ],
-            "time": "2016-05-26T06:56:54+00:00"
+            "time": "2017-04-10T19:47:09+00:00"
         },
         {
             "name": "gabrielelana/byte-units",
@@ -2009,16 +2009,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.4.17",
+            "version": "v5.4.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "f7675d59e3863a58ecdff1a5ee1dcd0cff788f4b"
+                "reference": "d15ded55b5e690199393ea93a57edcbae20d1ffc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/f7675d59e3863a58ecdff1a5ee1dcd0cff788f4b",
-                "reference": "f7675d59e3863a58ecdff1a5ee1dcd0cff788f4b",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/d15ded55b5e690199393ea93a57edcbae20d1ffc",
+                "reference": "d15ded55b5e690199393ea93a57edcbae20d1ffc",
                 "shasum": ""
             },
             "require": {
@@ -2134,20 +2134,20 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-04-03T13:07:39+00:00"
+            "time": "2017-04-10T19:27:41+00:00"
         },
         {
             "name": "laravel/scout",
-            "version": "v3.0.2",
+            "version": "v3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "1ddb0fa6f165bf6a69864960102062e7cf3f989d"
+                "reference": "64d28db58a054174eadf1d4df38dad81ff7e68dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/1ddb0fa6f165bf6a69864960102062e7cf3f989d",
-                "reference": "1ddb0fa6f165bf6a69864960102062e7cf3f989d",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/64d28db58a054174eadf1d4df38dad81ff7e68dd",
+                "reference": "64d28db58a054174eadf1d4df38dad81ff7e68dd",
                 "shasum": ""
             },
             "require": {
@@ -2194,7 +2194,7 @@
                 "laravel",
                 "search"
             ],
-            "time": "2017-03-01T14:37:40+00:00"
+            "time": "2017-04-09T00:54:26+00:00"
         },
         {
             "name": "laravelcollective/html",
@@ -4736,16 +4736,16 @@
         },
         {
             "name": "teamtnt/tntsearch",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamtnt/tntsearch.git",
-                "reference": "412d38bef3656734d4eb2435deb62f3cdf9edc4f"
+                "reference": "22b94f432f24ce1c11afd0b4e02485759ae00dd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamtnt/tntsearch/zipball/412d38bef3656734d4eb2435deb62f3cdf9edc4f",
-                "reference": "412d38bef3656734d4eb2435deb62f3cdf9edc4f",
+                "url": "https://api.github.com/repos/teamtnt/tntsearch/zipball/22b94f432f24ce1c11afd0b4e02485759ae00dd0",
+                "reference": "22b94f432f24ce1c11afd0b4e02485759ae00dd0",
                 "shasum": ""
             },
             "require": {
@@ -4788,7 +4788,7 @@
                 "teamtnt",
                 "tntsearch"
             ],
-            "time": "2017-03-09T20:26:08+00:00"
+            "time": "2017-04-10T12:47:20+00:00"
         },
         {
             "name": "textalk/websocket",
@@ -5279,16 +5279,16 @@
         },
         {
             "name": "zizaco/entrust",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Zizaco/entrust.git",
-                "reference": "1fa77fadfbc8840ee1e9a6ce483b39ba985f81d2"
+                "reference": "992e484f90a4d00b8ec0f42e8a59ba0b07ba1e09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/1fa77fadfbc8840ee1e9a6ce483b39ba985f81d2",
-                "reference": "1fa77fadfbc8840ee1e9a6ce483b39ba985f81d2",
+                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/992e484f90a4d00b8ec0f42e8a59ba0b07ba1e09",
+                "reference": "992e484f90a4d00b8ec0f42e8a59ba0b07ba1e09",
                 "shasum": ""
             },
             "require": {
@@ -5343,7 +5343,7 @@
                 "permission",
                 "roles"
             ],
-            "time": "2016-03-09T17:05:35+00:00"
+            "time": "2016-12-29T06:24:46+00:00"
         }
     ],
     "packages-dev": [
@@ -5604,16 +5604,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "5a5a9fc8025a08d8919be87d6884d5a92520cefe"
+                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/5a5a9fc8025a08d8919be87d6884d5a92520cefe",
-                "reference": "5a5a9fc8025a08d8919be87d6884d5a92520cefe",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/8e6e04167378abf1ddb4d3522d8755c5fd90d102",
+                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102",
                 "shasum": ""
             },
             "require": {
@@ -5642,7 +5642,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2017-01-26T22:05:40+00:00"
+            "time": "2017-04-12T18:52:22+00:00"
         },
         {
             "name": "phpspec/prophecy",
