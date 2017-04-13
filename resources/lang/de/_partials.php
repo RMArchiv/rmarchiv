@@ -1,10 +1,15 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 return [
     'accessdenied' => [
         'title'      => 'zugriff verweigert!',
         'body'       => 'du hast nicht die erforderlichen berechtigungen um diese seite zu sehen.',
-        'backtohome' => 'zurück zur <a href="' . url('/') . '">hauptseite</a>',
+        'backtohome' => 'zurück zur <a href="'.url('/').'">hauptseite</a>',
     ],
     'banned'       => [
         'title' => 'du wurdest gebannt!',
