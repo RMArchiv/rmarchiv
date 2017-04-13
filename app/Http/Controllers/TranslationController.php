@@ -42,8 +42,6 @@ class TranslationController extends Controller
     {
         $list = $this->translationRepository->untranslated($loc2);
 
-        dd($list);
-
         return view('translate.show', [
             'list' => $list,
             'loc1' => $loc1,

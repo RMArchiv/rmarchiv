@@ -7,10 +7,11 @@
             <th>basis ({{$loc1}})</th>
             <th>ziel ({{$loc2}})</th>
             </thead>
-            @foreach($list as $lng)
+            @foreach($list as $l)
                 <tr>
-                    <td><a href="{{ action('TranslationController@edit', ['de', $lng['loc']]) }}">{{ $lng['loc'] }}</a></td>
-                    <td>{{ $lng['perc'] }}%</td>
+                    <td>{{ dd($l) }}</td>
+                    <td></td>
+                    <td></td>
                 </tr>
             @endforeach
         </table>
