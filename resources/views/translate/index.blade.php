@@ -8,8 +8,8 @@
             </thead>
             @foreach($list as $lng)
                 <tr>
-                    <td>{{ $lng['loc'] }}</td>
-                    <td>{{ $lng['perc'] }}</td>
+                    <td><a href="{{ action('TranslationController@edit', ['de', $lng['loc']]) }}">{{ $lng['loc'] }}</a></td>
+                    <td>{{ $lng['perc'] }}%</td>
                 </tr>
             @endforeach
         </table>
