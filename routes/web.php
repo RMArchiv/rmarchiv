@@ -8,16 +8,18 @@
 Route::get('/', 'IndexController@index')->name('home');
 
 //Administration
-Route::get('users/admin/{userid}', 'UserController@admin')->name('user.admin');
-Route::post('users/admin/{userid}', 'UserController@admin_store');
-Route::get('users/perm/role', 'UserPermissionController@createRole');
-Route::post('users/perm/role', 'UserPermissionController@storeRole')->name('user.perm.role.store');
-Route::get('users/perm/permissions', 'UserPermissionController@createPermission');
-Route::post('users/perm/permission', 'UserPermissionController@storePermission')->name('user.perm.perm.store');
-Route::get('users/perm/role/{id}', 'UserPermissionController@showRole');
-Route::get('users/perm/permissions/{id}', 'UserPermissionController@showPermission');
-Route::post('users/perm/role/{roleid}', 'UserPermissionController@addPermToRole')->name('user.perm.permtorole');
-Route::get('users/perm/role/{roleid}/remove/{permid}', 'UserPermissionController@removePermFromRole')->name('user.perm.removefromrole');
+Route::group(['middelware' => ['permission:admin-user']], function(){
+    Route::get('users/admin/{userid}', 'UserController@admin')->name('user.admin');
+    Route::post('users/admin/{userid}', 'UserController@admin_store');
+    Route::get('users/perm/role', 'UserPermissionController@createRole');
+    Route::post('users/perm/role', 'UserPermissionController@storeRole')->name('user.perm.role.store');
+    Route::get('users/perm/permissions', 'UserPermissionController@createPermission');
+    Route::post('users/perm/permission', 'UserPermissionController@storePermission')->name('user.perm.perm.store');
+    Route::get('users/perm/role/{id}', 'UserPermissionController@showRole');
+    Route::get('users/perm/permissions/{id}', 'UserPermissionController@showPermission');
+    Route::post('users/perm/role/{roleid}', 'UserPermissionController@addPermToRole')->name('user.perm.permtorole');
+    Route::get('users/perm/role/{roleid}/remove/{permid}', 'UserPermissionController@removePermFromRole')->name('user.perm.removefromrole');
+});
 
 //Benutzer und Authentifizierung
 Auth::routes();
@@ -30,7 +32,9 @@ Route::post('user_settings/rowsperpage', 'UserSettingsController@store_rowsPerPa
 
 //News Routen
 Route::resource('news', 'NewsController');
-Route::get('news/{id}/approve/{approve}', 'NewsController@approve');
+Route::group(['middelware' => ['permission:approve-news']], function(){
+    Route::get('news/{id}/approve/{approve}', 'NewsController@approve');
+});
 
 //Games Routen
 Route::resource('games', 'GameController');
@@ -294,5 +298,7 @@ Route::get('logo/{filename}', function ($filename) {
     return $response;
 })->name('logo.get');
 
-Route::get('translation', 'TranslationController@index')->name('trans.index');
-Route::get('translation/{loc1}/{loc2?}', 'TranslationController@edit')->name('trans.edit');
+Route::group(['middleware' => 'permission:translate-page'], function(){
+    Route::get('translation', 'TranslationController@index')->name('trans.index');
+    Route::get('translation/{loc1}/{loc2?}', 'TranslationController@edit')->name('trans.edit');
+});
