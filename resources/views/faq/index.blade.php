@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('pagetitle', 'faq')
+@section('pagetitle', trans('faq.index.title'))
 @section('content')
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.1.0/prototype.js"></script>
 
     <div id='content'>
         @if(count($faq) <> 0)
         <div class='rmarchivtbl' id='rmarchivbox_faq'>
-            <h2>das ewig unvollständige faq</h2>
+            <h2>{{ trans('faq.index.title') }}</h2>
             <div class='content' id='faq_toc'>
                 @foreach($faq as $cats)
                 <h3>{{ $cats[0]['cat'] }}</h3>
@@ -36,7 +36,7 @@
 
         </div>
         @else
-            <h2>es wurden keine faqs gefunden</h2>
+            <h2>{{ trans('faq.index.not_found') }}</h2>
         @endif
     </div>
 
