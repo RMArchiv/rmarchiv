@@ -35,7 +35,7 @@ class TranslationController extends Controller
         ]);
     }
 
-    public function edit($loc, $loc2 = 'de')
+    public function edit($loc1, $loc2 = 'de')
     {
     }
 }

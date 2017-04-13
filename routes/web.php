@@ -295,4 +295,4 @@ Route::get('logo/{filename}', function ($filename) {
 })->name('logo.get');
 
 Route::get('translation', 'TranslationController@index')->name('trans.index');
-Route::get('translation/{loc}/{loc?}', 'TranslationController@edit')->name('trans.edit');
+Route::get('translation/{loc1}/{loc2?}', 'TranslationController@edit')->name('trans.edit');
