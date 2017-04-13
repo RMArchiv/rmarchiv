@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 return [
     'title'     => 'ressourcen',
     'create'    => [
@@ -102,7 +107,7 @@ return [
             'sfx' => 'audio',
             'scripts' => 'scripte',
             'tools' => 'tools',
-        ]
+        ],
     ],
     'gfx'       => [
         'index' => [
