@@ -1,19 +1,19 @@
 <nav id="asd">
     <ul>
-        <li><a href="{{ url('/resources/gfx/autotiles') }}">autotiles</a></li>
-        <li><a href="{{ url('/resources/gfx/backdrop') }}">backdrops</a></li>
-        <li><a href="{{ url('/resources/gfx/battle') }}">battle anims</a></li>
-        <li><a href="{{ url('/resources/gfx/battlecharset') }}">battle chars</a></li>
-        <li><a href="{{ url('/resources/gfx/battleweapon') }}">battle weapons</a></li>
-        <li><a href="{{ url('/resources/gfx/charset') }}">charsets</a></li>
-        <li><a href="{{ url('/resources/gfx/chipset') }}">chipsets</a></li>
-        <li><a href="{{ url('/resources/gfx/faceset') }}">facesets</a></li>
-        <li><a href="{{ url('/resources/gfx/gameover') }}">gameovers</a></li>
-        <li><a href="{{ url('/resources/gfx/monster') }}">monster</a></li>
-        <li><a href="{{ url('/resources/gfx/panorama') }}">panoramas</a></li>
-        <li><a href="{{ url('/resources/gfx/pictures') }}">pictures</a></li>
-        <li><a href="{{ url('/resources/gfx/title') }}">titles</a></li>
-        <li><a href="{{ url('/resources/gfx/transitions') }}">transitions</a></li>
-        <li><a href="{{ url('/resources/gfx/system') }}">windowskins</a></li>
+        <li><a href="{{ url('/resources/gfx/autotiles') }}">{{ trans('resources.create.autotiles') }}</a></li>
+        <li><a href="{{ url('/resources/gfx/backdrop') }}">{{ trans('resources.create.autotiles') }}</a></li>
+        <li><a href="{{ url('/resources/gfx/battle') }}">{{ trans('resources.create.battle') }}</a></li>
+        <li><a href="{{ url('/resources/gfx/battlecharset') }}">{{ trans('resources.create.battlecharset') }}</a></li>
+        <li><a href="{{ url('/resources/gfx/battleweapon') }}">{{ trans('resources.create.battleweapon') }}</a></li>
+        <li><a href="{{ url('/resources/gfx/charset') }}">{{ trans('resources.create.charset') }}</a></li>
+        <li><a href="{{ url('/resources/gfx/chipset') }}">{{ trans('resources.create.chipset') }}</a></li>
+        <li><a href="{{ url('/resources/gfx/faceset') }}">{{ trans('resources.create.faceset') }}</a></li>
+        <li><a href="{{ url('/resources/gfx/gameover') }}">{{ trans('resources.create.gameovers') }}</a></li>
+        <li><a href="{{ url('/resources/gfx/monster') }}">{{ trans('resources.create.monster') }}</a></li>
+        <li><a href="{{ url('/resources/gfx/panorama') }}">{{ trans('resources.create.panorama') }}</a></li>
+        <li><a href="{{ url('/resources/gfx/pictures') }}">{{ trans('resources.create.pictures') }}</a></li>
+        <li><a href="{{ url('/resources/gfx/title') }}">{{ trans('resources.create.titles') }}</a></li>
+        <li><a href="{{ url('/resources/gfx/transitions') }}">{{ trans('resources.create.transition') }}</a></li>
+        <li><a href="{{ url('/resources/gfx/system') }}">{{ trans('resources.create.system') }}</a></li>
     </ul>
 </nav>

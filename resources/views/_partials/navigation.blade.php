@@ -1,10 +1,10 @@
 <nav id="{{ $part }}">
     <ul>
-        <li><a href="{{ url('/') }}">{{ trans('app.home.title') }}</a></li>
-        <li><a href="{{ url('news') }}">{{ trans('app.news.title') }}</a></li>
+        <li><a href="{{ url('/') }}">{{ trans('index.title') }}</a></li>
+        <li><a href="{{ url('news') }}">{{ trans('news.title') }}</a></li>
         <li><a href="{{ url('games') }}">{{ trans('games.title') }}</a></li>
-        <li><a href="{{ url('resources') }}">{{ trans('app.resources.title') }}</a></li>
-        <li><a href="{{ url('developer') }}">{{ trans('app.developer.title') }}</a></li>
+        <li><a href="{{ url('resources') }}">{{ trans('resources.title') }}</a></li>
+        <li><a href="{{ url('developer') }}">{{ trans('developer.title') }}</a></li>
         <li><a href="{{ url('makers') }}">{{ trans('app.maker.title') }}</a></li>
         <li><a href="{{ url('awards') }}">{{ trans('app.awards.title') }}</a></li>
         <li><a href="{{ url('users') }}">{{ trans('app.user.title') }}</a></li>

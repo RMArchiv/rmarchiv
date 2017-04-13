@@ -23,13 +23,13 @@
                         <td colspan='2'>
                             <table id='stattable'>
                                 <tr>
-                                    <td>typ :</td>
+                                    <td>{{ trans('resources.show.type') }} :</td>
                                     <td>
                                         {{ $resource->type }}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>kategorie :</td>
+                                    <td>{{ trans('resources.show.category') }} :</td>
                                     <td>
                                         {{ $resource->cat }}
                                     </td>
@@ -40,8 +40,8 @@
                     <tr>
                         <td class='r2'>
                             <ul>
-                                <li><img src='/assets/rate_up.gif' alt='super'/>&nbsp;{{ $resource->voteup or 0 }}</li>
-                                <li><img src='/assets/rate_down.gif' alt='scheiße'/>&nbsp;{{ $resource->votedown or 0 }}
+                                <li><img src='/assets/rate_up.gif' alt='{{ trans('resources.show.voteup') }}'/>&nbsp;{{ $resource->voteup or 0 }}</li>
+                                <li><img src='/assets/rate_down.gif' alt='{{ trans('resources.show.votedown') }}'/>&nbsp;{{ $resource->votedown or 0 }}
                                 </li>
                             </ul>
                         </td>
@@ -49,7 +49,7 @@
                             @php
                                 $perc = \App\Helpers\MiscHelper::getPopularity($resource->commentcount, \App\Helpers\DatabaseHelper::getCommentsMax('resource'));
                             @endphp
-                            popularität: {{ round($perc, 2) }}%
+                            {{ trans('resources.show.popularity') }}: {{ round($perc, 2) }}%
                             <br/>
                             <div class='outerbar' title='{{ round($perc, 2) }}%'>
                                 <div class='innerbar' style='width: {{ $perc }}%'>&nbsp;<span>{{ $perc }}%</span>
@@ -62,28 +62,28 @@
                         <td class='r2'>
                             <ul id='avgstats'>
                                 @if($resource->voteup > $resource->votedown)
-                                    <li><img src='/assets/rate_up.gif' alt='ok'/>&nbsp;{{ $resource->voteavg or 0 }}</li>
+                                    <li><img src='/assets/rate_up.gif' alt='{{ trans('resources.show.voteup') }}'/>&nbsp;{{ $resource->voteavg or 0 }}</li>
                                 @elseif($resource->voteup < $resource->votedown)
-                                    <li><img src='/assets/rate_down.gif' alt='ok'/>&nbsp;{{ $resource->voteavg or 0 }}</li>
+                                    <li><img src='/assets/rate_down.gif' alt='{{ trans('resources.show.votedown') }}'/>&nbsp;{{ $resource->voteavg or 0 }}</li>
                                 @elseif($resource->voteup = $resource->votedown)
-                                    <li><img src='/assets/rate_neut.gif' alt='ok'/>&nbsp;{{ $resource->voteavg or 0 }}</li>
+                                    <li><img src='/assets/rate_neut.gif' alt='{{ trans('resources.show.voteneut') }}'/>&nbsp;{{ $resource->voteavg or 0 }}</li>
                                 @else
-                                    <li><img src='/assets/rate_neut.gif' alt='ok'/>&nbsp;{{ $resource->voteavg or 0 }}</li>
+                                    <li><img src='/assets/rate_neut.gif' alt='{{ trans('resources.show.voteneut') }}'/>&nbsp;{{ $resource->voteavg or 0 }}</li>
                                 @endif
                                 {{-- data.cdc > 0
                             <li><img src="/assets/cdc.png" alt="cdcs">cdc's</li>
                              endif
                              --}}
                             </ul>
-                            <div id='alltimerank'>alltime top: #0</div>
+                            <div id='alltimerank'>{{ trans('resources.show.alltimetop') }}: #0</div>
                         </td>
                         <td id='links'>
                             <ul>
                                     <li>
                                         @if($resource->content_type == 'url')
-                                            <h1><a href="{{ $resource->content_path }}">Link zur Seite</a></h1>
+                                            <h1><a href="{{ $resource->content_path }}">{{ trans('resources.show.linktoppage') }}</a></h1>
                                         @else
-                                            <a href="{{ asset('storage/'.$resource->content_path) }}" download target="_blank">download</a>
+                                            <a href="{{ asset('storage/'.$resource->content_path) }}" download target="_blank">{{ trans('resources.show.download') }}</a>
                                         @endif
                                     </li>
                                 </li>
@@ -92,12 +92,12 @@
                     </tr>
                     <tr>
                         <td id='credits' colspan='3' class='r2'>
-                            <h2>beschreibung</h2>
+                            <h2>{{ trans('resources.show.description') }}</h2>
                             {!! $resource->desc_html !!}
                         </td>
                     </tr>
                     <tr>
-                        <td class='foot' colspan='3'>hinzugefügt <time datetime='{{ $resource->created_at }}' title='{{ $resource->created_at }}'>{{ \Carbon\Carbon::parse($resource->created_at)->diffForHumans() }}</time> von <a
+                        <td class='foot' colspan='3'>{{ trans('resources.show.added') }} <time datetime='{{ $resource->created_at }}' title='{{ $resource->created_at }}'>{{ \Carbon\Carbon::parse($resource->created_at)->diffForHumans() }}</time> {{ trans('resources.show.by') }} <a
                                     href='{{ url('users', $resource->userid) }}' class='user'>{{ $resource->username }}</a>
                             <a href='{{ url('users', $resource->userid) }}' class='usera' title="{{ $resource->username }}"><img
                                         src='http://ava.rmarchiv.de/?gender=male&id={{ $resource->userid }}'
@@ -108,16 +108,16 @@
                 </table>
 
                 <div class='rmarchivtbl' id='rmarchivbox_prodpopularityhelper'>
-                    <h2>{{ trans('app.news.popularity_helper.title') }}</h2>
+                    <h2>{{ trans('resources.show.popularity_helper_title') }}</h2>
                     <div class='content'>
-                        <p>{{ trans('app.news.popularity_helper.msg') }}</p>
+                        <p>{{ trans('resources.show.popularity_helper_msg') }}</p>
                         <input type='text' value='{{ Request::fullUrl() }}' size='50' readonly='readonly'/>
                     </div>
                 </div>
 
                 @if($comments->count() > 0)
                     <div class='rmarchivtbl' id='rmarchivbox_prodcomments'>
-                        <h2>kommentare</h2>
+                        <h2>{{ trans('resources.show.comments') }}</h2>
                         @foreach($comments as $comment)
                             <div class='comment cite-{{ $comment->user_id }}' id='c{{ $comment->id }}'>
                                 <div class='content'>
@@ -125,13 +125,13 @@
                                 </div>
                                 <div class='foot'>
                                     @if($comment->vote_up == 1 and $comment->vote_down == 0)
-                                        <span class='vote up'>up</span>
+                                        <span class='vote up'>{{ trans('resources.show.voteup') }}</span>
                                     @elseif($comment->vote_up == 0 and $comment->vote_down == 1)
-                                        <span class='vote down'>down</span>
+                                        <span class='vote down'>{{ trans('resources.show.votedown') }}</span>
                                     @endif
 
-                                    <span class='tools' data-cid='{{ $resource->id }}'></span> hinzugefügt
-                                    am {{ $comment->created_at }} von <a href='{{ url('user', $comment->user_id) }}'
+                                    <span class='tools' data-cid='{{ $resource->id }}'></span> {{ trans('resources.show.added') }}
+                                    {{ $comment->created_at }} von <a href='{{ url('user', $comment->user_id) }}'
                                                                          class='user'>{{ $comment->name }}</a>
                                     <a href='{{ url('users', $comment->user_id) }}' class='usera'
                                        title="{{ $comment->name }}"><img
@@ -144,46 +144,45 @@
                     </div>
                 @else
                     <div class='rmarchivtbl' id='rmarchivbox_prodcomments'>
-                        <h2>kommentare</h2>
+                        <h2>{{ trans('resources.show.comments') }}</h2>
                         <div class="comment">
                             <div class="content">
-                                Es sind noch keine Kommentare vorhanden.
+                                {{ trans('resources.show.no_comments') }}
                             </div>
                         </div>
                     </div>
                 @endif
 
                 <div class='rmarchivtbl' id='rmarchivbox_prodsubmitchanges'>
-                    <h2>kommentarhinweise</h2>
+                    <h2>{{ trans('resources.show.comment_rules') }}</h2>
                     <div class='content'>
-                        <p>{{ trans('app.comments.tip1') }}</p>
-                        <p>{{ trans('app.comments.tip2') }}</p>
-                        <p>{{ trans('app.comments.tip3') }}</p>
-                        <p>{{ trans('app.comments.tip4') }}</p>
+                        <p>{{ trans('resources.show.comment_tip1') }}</p>
+                        <p>{{ trans('resources.show.comment_tip2') }}</p>
+                        <p>{{ trans('resources.show.comment_tip3') }}</p>
+                        <p>{{ trans('resources.show.comment_tip4') }}</p>
                     </div>
                 </div>
 
                 @permission(('create-game-comments'))
                 <div class='rmarchivtbl' id='rmarchivbox_prodpost'>
-                    <h2>kommentar hinzufügen</h2>
+                    <h2>{{ trans('resources.show.add_comment') }}</h2>
                     {!! Form::open(['action' => ['CommentController@add']]) !!}
                     {!! Form::hidden('content_id', $resource->id) !!}
                     {!! Form::hidden('content_type', 'resource') !!}
                     <div class='content'>
                         @if(CheckRateable::checkRateable('resource', $resource->id, Auth::id()) === true)
                             <div id='prodvote'>
-                                hier wird diese news bewertet:<br>
-                                diese news<br>
+                                {{ trans('resources.show.rate') }}<br>
                                 <input type='radio' name='rating' id='ratingrulez' value='up'/>
-                                <label for='ratingrulez'>ist super</label>
+                                <label for='ratingrulez'>{{ trans('resources.show.voteup') }}</label>
                                 <input type='radio' name='rating' id='ratingpig' value='neut' checked='checked'/>
-                                <label for='ratingpig'>ist ok</label>
+                                <label for='ratingpig'>{{ trans('resources.show.voteneut') }}</label>
                                 <input type='radio' name='rating' id='ratingsucks' value='down'/>
-                                <label for='ratingsucks'>ist scheiße</label>
+                                <label for='ratingsucks'>{{ trans('resources.show.votedown') }}</label>
                             </div>
                         @endif
                         @include('_partials.markdown_editor')
-                        <div><a href='/?page=faq#markdown'><b>markown</b></a> kann benutzt werden</div>
+                        <div><a href='/?page=faq#markdown'>{{ trans('resources.show.markdown') }}</a></div>
                     </div>
                     <div class='foot'>
                         <input type='submit' value='Submit' id='submit'>
@@ -192,15 +191,15 @@
                 </div>
                 @else
                     <div class="rmarchivtbl" id="rmarchivbox_prodpost">
-                        <h2>Keine Berechtigung</h2>
+                        <h2>{{ trans('resources.show.no_permission') }}</h2>
                         <div class="content">
-                            Dir fehlen die Berechtigung Kommentare zu posten.
+                            {{ trans('resources.show.no_permission_msg) }}
                         </div>
                     </div>
                     @endpermission
             </div>
         @else
-            <h2>zu dieser id existiert keine ressource</h2>
+            <h2>{{ trans('resources.show.no_id') }}</h2>
         @endif
     </div>
 @endsection

@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'title' => 'home',
     'board'               => [
         'title' => 'die 10 neuesten und fluffigsten threads',
         'more'  => 'mehr',
@@ -55,40 +56,40 @@ return [
         'not_found' => 'es konnte nichts gefunden werden.',
     ],
     'shoutbox'            => [
-        'title' => 'echte oldschool shoutbox',
+        'title'       => 'echte oldschool shoutbox',
         'placeholder' => 'sags mit worten. in einem satz. (300 zeichen max.)',
-        'more' => 'mehr',
+        'more'        => 'mehr',
     ],
-    'stats' => [
-        'title' => 'statistiken',
-        'games' => 'spiele',
-        'maker' => 'unterstützte maker',
-        'developer' => 'entwickler',
-        'user' => 'benutzer',
-        'activity' => 'aktivitäten',
-        'logos' => 'logos',
-        'board_threads' => 'forenthemen',
-        'board_posts' => 'forenposts',
-        'shouts' => 'shouts',
-        'comments' => 'kommentare',
-        'gamefiles' => 'spieledateien',
-        'gamefiles_size' => 'gesamtgröße',
-        'gamefiles_download' => 'downloads',
-        'gamefiles_downloadtraffic' => 'download traffic'
+    'stats'               => [
+        'title'                     => 'statistiken',
+        'games'                     => 'spiele',
+        'maker'                     => 'unterstützte maker',
+        'developer'                 => 'entwickler',
+        'user'                      => 'benutzer',
+        'activity'                  => 'aktivitäten',
+        'logos'                     => 'logos',
+        'board_threads'             => 'forenthemen',
+        'board_posts'               => 'forenposts',
+        'shouts'                    => 'shouts',
+        'comments'                  => 'kommentare',
+        'gamefiles'                 => 'spieledateien',
+        'gamefiles_size'            => 'gesamtgröße',
+        'gamefiles_download'        => 'downloads',
+        'gamefiles_downloadtraffic' => 'download traffic',
     ],
-    'tagcloud' => [
-        'title' => 'tag cloud'
+    'tagcloud'            => [
+        'title' => 'tag cloud',
     ],
-    'topalltime' => [
+    'topalltime'          => [
         'title' => 'die besten aller zeiten',
-        'more' => 'mehr',
+        'more'  => 'mehr',
     ],
-    'topmonth' => [
+    'topmonth'            => [
         'title' => 'die besten des monats',
-        'more' => '',
+        'more'  => '',
     ],
-    'topusers' => [
+    'topusers'            => [
         'title' => 'top 5 obyxer',
-        'more' => 'mehr',
+        'more'  => 'mehr',
     ],
 ];

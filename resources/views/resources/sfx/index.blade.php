@@ -3,21 +3,21 @@
     @include('resources._partials.nav')
     <div id="content">
         @include('resources.sfx._partials.nav')
-        <h1>audio (die neuesten 20)</h1>
+        <h1>{{ trans('resources.sfx.index.title') }}</h1>
         <table id='rmarchiv_prodlist' class='boxtable pagedtable'>
             <thead>
             <tr class='sortable'>
-                <th>typ</th>
-                <th>kategorie</th>
-                <th>von</th>
-                <th>am</th>
-                <th>titel</th>
-                <th>content typ</th>
-                <th><img src='/assets/rate_up.gif' alt='super' /></th>
-                <th><img src='/assets/rate_down.gif' alt='scheiße' /></th>
-                <th>avg</th>
-                <th>popularität</th>
-                <th>kommentare</th>
+                <th>{{ trans('resources.sfx.index.type') }}</th>
+                <th>{{ trans('resources.sfx.index.category') }}</th>
+                <th>{{ trans('resources.sfx.index.by') }}</th>
+                <th>{{ trans('resources.sfx.index.created_at') }}</th>
+                <th>{{ trans('resources.sfx.index.res_title') }}</th>
+                <th>{{ trans('resources.sfx.index.content_type') }}</th>
+                <th><img src='/assets/rate_up.gif' alt='{{ trans('resources.sfx.index.voteup') }}' /></th>
+                <th><img src='/assets/rate_down.gif' alt='{{ trans('resources.sfx.index.votedown') }}' /></th>
+                <th>{{ trans('resources.sfx.index.avg') }}</th>
+                <th>{{ trans('resources.sfx.index.popularity') }}</th>
+                <th>{{ trans('resources.sfx.index.comments') }}</th>
             </tr>
             </thead>
 

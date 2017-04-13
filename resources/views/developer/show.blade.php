@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('pagetitle', 'entwicklerprofil: '. @$games->first()->developer->name)
+@section('pagetitle', trans('developer.show.title').': '. @$games->first()->developer->name)
 @section('content')
     <div id='content'>
         <h1>{{ @$games->first()->developer->name }}</h1>

@@ -2,21 +2,21 @@
 @section('content')
     @include('resources._partials.nav')
     <div id="content">
-        <h1>ressourcen übersicht (die neuesten 20)</h1>
+        <h1>{{ trans('resources.index.title') }}</h1>
         <table id='rmarchiv_prodlist' class='boxtable pagedtable'>
             <thead>
             <tr class='sortable'>
-                <th>typ</th>
-                <th>kategorie</th>
-                <th>von</th>
-                <th>am</th>
-                <th>titel</th>
-                <th>content typ</th>
-                <th><img src='/assets/rate_up.gif' alt='super' /></th>
-                <th><img src='/assets/rate_down.gif' alt='scheiße' /></th>
-                <th>avg</th>
-                <th>popularität</th>
-                <th>kommentare</th>
+                <th>{{ trans('resources.index.type') }}</th>
+                <th>{{ trans('resources.index.category') }}</th>
+                <th>{{ trans('resources.index.by') }}</th>
+                <th>{{ trans('resources.index.created_at') }}</th>
+                <th>{{ trans('resources.index.res_title') }}</th>
+                <th>{{ trans('resources.index.content_type') }}</th>
+                <th><img src='/assets/rate_up.gif' alt='{{ trans('resources.index.voteup') }}' /></th>
+                <th><img src='/assets/rate_down.gif' alt='{{ trans('resources.index.votedown') }}' /></th>
+                <th>{{ trans('resources.index.avg') }}</th>
+                <th>{{ trans('resources.index.popularity') }}</th>
+                <th>{{ trans('resources.index.comments') }}</th>
             </tr>
             </thead>
 
@@ -33,11 +33,11 @@
                     @php $avg = @(($res->voteup - $res->votedown) / ($res->voteup + $res->votedown)) @endphp
                     <td class='votes'>{{ number_format($avg, 2) }}&nbsp;
                         @if($avg > 0)
-                            <img src='/assets/rate_up.gif' alt='up' />
+                            <img src='/assets/rate_up.gif' alt='{{ trans('resources.index.voteup') }}' />
                         @elseif($avg == 0)
-                            <img src='/assets/rate_neut.gif' alt='neut' />
+                            <img src='/assets/rate_neut.gif' alt='{{ trans('resources.index.voteneut') }}' />
                         @elseif($avg < 0)
-                            <img src='/assets/rate_down.gif' alt='down' />
+                            <img src='/assets/rate_down.gif' alt='{{ trans('resources.index.votedown') }}' />
                         @endif
                     </td>
                     @php

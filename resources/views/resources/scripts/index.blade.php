@@ -7,17 +7,17 @@
         <table id='rmarchiv_prodlist' class='boxtable pagedtable'>
             <thead>
             <tr class='sortable'>
-                <th>typ</th>
-                <th>kategorie</th>
-                <th>von</th>
-                <th>am</th>
-                <th>titel</th>
-                <th>content typ</th>
-                <th><img src='/assets/rate_up.gif' alt='super' /></th>
-                <th><img src='/assets/rate_down.gif' alt='scheiße' /></th>
-                <th>avg</th>
-                <th>popularität</th>
-                <th>kommentare</th>
+                <th>{{ trans('resources.scripts.index.type') }}</th>
+                <th>{{ trans('resources.scripts.index.category') }}</th>
+                <th>{{ trans('resources.scripts.index.by') }}</th>
+                <th>{{ trans('resources.scripts.index.created_at') }}</th>
+                <th>{{ trans('resources.scripts.index.res_title') }}</th>
+                <th>{{ trans('resources.scripts.index.content_type') }}</th>
+                <th><img src='/assets/rate_up.gif' alt='{{ trans('resources.scripts.index.voteup') }}' /></th>
+                <th><img src='/assets/rate_down.gif' alt='{{ trans('resources.scripts.index.votedown') }}' /></th>
+                <th>{{ trans('resources.scripts.index.avg') }}</th>
+                <th>{{ trans('resources.scripts.index.popularity') }}</th>
+                <th>{{ trans('resources.scripts.index.comments') }}</th>
             </tr>
             </thead>
 

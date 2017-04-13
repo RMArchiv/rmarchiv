@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('pagetitle', 'news: '.$news->title)
+@section('pagetitle', trans('news.show.title').': '.$news->title)
 @section('content')
     <div id="content">
         @if(count($news) > 0)
@@ -12,7 +12,7 @@
                         {!! \App\Helpers\InlineBoxHelper::GameBox($news->news_html) !!}
                     </div>
                     <div class="foot">
-                        {{ trans('app.news.show.submit_by') }} <a href='{{ url('users', $news->user_id) }}'>{{ $news->name }}</a> :: <time datetime='{{ $news->created_at }}' title='{{ $news->created_at }}'>{{ \Carbon\Carbon::parse($news->created_at)->diffForHumans() }}</time>
+                        {{ trans('news.show.submit_by') }} <a href='{{ url('users', $news->user_id) }}'>{{ $news->name }}</a> :: <time datetime='{{ $news->created_at }}' title='{{ $news->created_at }}'>{{ \Carbon\Carbon::parse($news->created_at)->diffForHumans() }}</time>
                     </div>
                     @if(Auth::check())
                             <div class="foot">
@@ -22,34 +22,34 @@
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="DELETE">
                                         </form>
-                                        [{{ trans('app.news.show.delete') }}]
+                                        [{{ trans('news.show.delete') }}]
                                     </a> ::
                                 @endif
                                 @permission(('edit-news'))
                                     @if($news->approved == 1)
-                                        <a href="{{ url('news/'.$news->id.'/approve/0') }}">[{{ trans('app.news.show.disapprove') }}]</a>
+                                        <a href="{{ url('news/'.$news->id.'/approve/0') }}">[{{ trans('news.show.disapprove') }}]</a>
                                     @else
-                                        <a href="{{ url('news/'.$news->id.'/approve/1') }}">[{{ trans('app.news.show.approve') }}]</a>
+                                        <a href="{{ url('news/'.$news->id.'/approve/1') }}">[{{ trans('news.show.approve') }}]</a>
                                     @endif
                                 @endpermission
                                 @permission(('edit-news'))
-                                :: <a href="{{ action('NewsController@edit', $news->id) }}">[edit]</a>
+                                :: [<a href="{{ action('NewsController@edit', $news->id) }}">{{ trans('news.show.edit') }}</a>]
                                 @endpermission
                             </div>
                     @endif
                 </div>
 
                 <div class='rmarchivtbl' id='rmarchivbox_prodpopularityhelper'>
-                    <h2>{{ trans('app.news.popularity_helper.title') }}</h2>
+                    <h2>{{ trans('news.show.popularity_helper_title') }}</h2>
                     <div class='content'>
-                        <p>{{ trans('app.news.popularity_helper.msg') }}</p>
+                        <p>{{ trans('news.show.popularity_helper_msg') }}</p>
                         <input type='text' value='{{ Request::fullUrl() }}' size='50' readonly='readonly' />
                     </div>
                 </div>
 
                 @if($comments->count() > 0)
                     <div class='rmarchivtbl' id='rmarchivbox_prodcomments'>
-                        <h2>kommentare</h2>
+                        <h2>{{ trans('news.show.comments') }}</h2>
                         @foreach($comments as $comment)
                         <div class='comment cite-{{ $comment->user_id }}' id='c{{ $comment->id }}'>
                             <div class='content markdown'>
@@ -57,12 +57,12 @@
                             </div>
                             <div class='foot'>
                                     @if($comment->vote_up == 1 and $comment->vote_down == 0)
-                                        <span class='vote up'>up</span>
+                                        <span class='vote up'>{{ trans('news.show.voteup') }}</span>
                                     @elseif($comment->vote_up == 0 and $comment->vote_down == 1)
-                                        <span class='vote down'>down</span>
+                                        <span class='vote down'>{{ trans('news.show.votedown') }}</span>
                                     @endif
 
-                                <span class='tools' data-cid='{{ $news->id }}'></span> hinzugefügt am {{ $comment->created_at }} von <a href='{{ url('user', $comment->user_id) }}' class='user'>{{ $comment->name }}</a>
+                                <span class='tools' data-cid='{{ $news->id }}'></span> {{ trans('news.show.created_at') }} {{ $comment->created_at }} {{ trans('news.show.by') }} <a href='{{ url('user', $comment->user_id) }}' class='user'>{{ $comment->name }}</a>
                                 <a href='{{ url('users', $comment->user_id) }}' class='usera' title="{{ $comment->name }}"><img src='http://ava.rmarchiv.de/?gender=male&id={{ $comment->user_id }}' alt="{{ $comment->name }}" class='avatar' />
                                 </a>
                             </div>
@@ -71,28 +71,28 @@
                     </div>
                 @else
                     <div class='rmarchivtbl' id='rmarchivbox_prodcomments'>
-                        <h2>kommentare</h2>
+                        <h2>{{ trans('news.show.comments') }}</h2>
                         <div class="comment">
                             <div class="content">
-                                Es sind noch keine Kommentare vorhanden.
+                                {{ trans('news.show.no_comments') }}
                             </div>
                         </div>
                     </div>
                 @endif
 
                 <div class='rmarchivtbl' id='rmarchivbox_prodsubmitchanges'>
-                    <h2>kommentarhinweise</h2>
+                    <h2>{{ trans('news.show.comment_rules') }}</h2>
                     <div class='content'>
-                        <p>{{ trans('app.comments.tip1') }}</p>
-                        <p>{{ trans('app.comments.tip2') }}</p>
-                        <p>{{ trans('app.comments.tip3') }}</p>
-                        <p>{{ trans('app.comments.tip4') }}</p>
+                        <p>{{ trans('news.show.comment_tip1') }}</p>
+                        <p>{{ trans('news.show.comment_tip2') }}</p>
+                        <p>{{ trans('news.show.comment_tip3') }}</p>
+                        <p>{{ trans('news.show.comment_tip4') }}</p>
                     </div>
                 </div>
 
                 @if(Auth::check())
                 <div class='rmarchivtbl' id='rmarchivbox_prodpost'>
-                    <h2>kommentar hinzufügen</h2>
+                    <h2>{{ trans('news.show.add_comment') }}</h2>
                     {!! Form::open(['action' => ['CommentController@add']]) !!}
                     {!! Form::hidden('content_id', $news->id) !!}
                     {!! Form::hidden('content_type', 'news') !!}
@@ -100,18 +100,17 @@
                             {{ \App\Helpers\CheckRateableHelper::checkRateable('news', $news->id, Auth::id()) }}
                             @if(\App\Helpers\CheckRateableHelper::checkRateable('news', $news->id, Auth::id()) === true)
                             <div id='prodvote'>
-                                hier wird diese news bewertet:<br>
-                                diese news<br>
+                                {{ trans('news.show.rate') }}:<br>
                                 <input type='radio' name='rating' id='ratingrulez' value='up' />
-                                <label for='ratingrulez'>ist super</label>
+                                <label for='ratingrulez'>{{ trans('news.show.voteup') }}</label>
                                 <input type='radio' name='rating' id='ratingpig' value='neut' checked='checked' />
-                                <label for='ratingpig'>ist ok</label>
+                                <label for='ratingpig'>{{ trans('news.show.vote_neut') }}</label>
                                 <input type='radio' name='rating' id='ratingsucks' value='down' />
-                                <label for='ratingsucks'>ist scheiße</label>
+                                <label for='ratingsucks'>{{ trans('news.show.votedown') }}</label>
                             </div>
                             @endif
                             @include('_partials.markdown_editor')
-    <div><a href='/?page=faq#markdown'><b>markown</b></a> kann benutzt werden</div>
+    <div><a href='/?page=faq#markdown'>{{ trans('news.show.markdown') }}</a></div>
 </div>
 <div class='foot'>
     <input type='submit' value='Submit' id='submit'>
@@ -121,7 +120,7 @@
 @endif
 </div>
 @else
-<h2>zu dieser id existiert keine news</h2>
+<h2>{{ trans('news.show.no_id') }}</h2>
 @endif
 </div>
 @endsection

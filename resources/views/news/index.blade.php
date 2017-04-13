@@ -1,17 +1,17 @@
 @extends('layouts.app')
-@section('pagetitle', 'news')
+@section('pagetitle', trans('news.title'))
 @section('content')
     <div id="content">
         @if(count($news) > 0)
         <div id="prodpagecontainer">
-            <h2>News</h2>
+            <h2>{{ trans('news.title') }}</h2>
             <table id="rmarchivbox_newslist" class="boxtable pagedtable">
                 <thead>
                 <tr class="sortable">
-                    <th>user</th>
-                    <th>datum</th>
-                    <th>titel</th>
-                    <th>kommentare</th>
+                    <th>{{ trans('news.index.user') }}</th>
+                    <th>{{ trans('news.index.created_at') }}</th>
+                    <th>{{ trans('news.index.news_title') }}</th>
+                    <th>{{ trans('news.index.comments') }}</th>
                 </tr>
                 </thead>
                 @foreach($news as $new)
@@ -45,7 +45,7 @@
         </div>
 
         @else
-            <h2>es sind noch keine news vorhanden. bitte sende doch welche ein.</h2>
+            <h2>{{ trans('news.index.no_news') }}</h2>
         @endif
     </div>
 @endsection

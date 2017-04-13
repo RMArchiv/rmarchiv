@@ -6,19 +6,19 @@
             <h2>{{ $posts->first()->thread->title }}
                 @permission(('mod-threads'))
                     @if($posts->first()->thread->closed == 0)
-                        :: <a href="{{ route('board.thread.switch.close', [$posts->first()->thread->id, 1]) }}">schließen</a>
+                        :: <a href="{{ route('board.thread.switch.close', [$posts->first()->thread->id, 1]) }}">{{ trans('board.threads.show.close') }}</a>
                     @else
-                        :: <a href="{{ route('board.thread.switch.close', [$posts->first()->thread->id, 0]) }}">öffnen</a>
+                        :: <a href="{{ route('board.thread.switch.close', [$posts->first()->thread->id, 0]) }}">{{ trans('board.threads.show.open') }}</a>
                     @endif
                 @endpermission
             </h2>
-            <div class='threadcategory'><b>kategorie:</b> <a href="{{ url('board/cat', $posts->first()->cat->id) }}">{{ $posts->first()->cat->title }}</a>
+            <div class='threadcategory'><b>{{ trans('board.threads.show.category') }}:</b> <a href="{{ url('board/cat', $posts->first()->cat->id) }}">{{ $posts->first()->cat->title }}</a>
             </div>
             <div class="threadcategory">
                 @if(Auth::check())
                     @if(Auth::id() == $posts->first()->thread->user_id or Auth::user()->can('mod-threads'))
                         @if(!$poll)
-                            <a href="{{ route('board.vote.create', ['threadid' => $posts->first()->thread_id])}}">umfrage erstellen/bearbeiten</a>
+                            <a href="{{ route('board.vote.create', ['threadid' => $posts->first()->thread_id])}}">{{ trans('board.threads.show.create_poll') }}</a>
                         @endif
                     @endif
                 @endif
@@ -28,10 +28,10 @@
                     <div class="content" style="text-align: center">
                         <table id='rmarchiv_prodlist' class='boxtable pagedtable'>
                             <thead>
-                                <th width="50%">antwort</th>
-                                <th width="10%">votes</th>
+                                <th width="50%">{{ trans('board.threads.show.answer') }}</th>
+                                <th width="10%">{{ trans('board.threads.show.votes') }}</th>
                                 <th width="30%"> </th>
-                                <th width="">aktion</th>
+                                <th width="">{{ trans('board.threads.show.action') }}</th>
                             </thead>
                             @foreach($answers as $ans)
                                 @if($ans->title != '')
@@ -59,7 +59,7 @@
                                             {!! Form::close() !!}
                                         @else
                                             <a href="{{ action('Auth\LoginController@showLoginForm') }}">
-                                                login für vote
+                                                {{ trans('board.threads.show.loginto_vote') }}
                                             </a>
                                         @endif
                                         </td>
@@ -84,7 +84,7 @@
                         </a>
                         <br>
                         <br>
-                        Posts: {{ $post->user->boardposts->count() }}
+                        {{ trans('board.threads.show.posts') }}: {{ $post->user->boardposts->count() }}
                     </div>
                     <div class="post markdown">
                         {!! \App\Helpers\InlineBoxHelper::GameBox($post->content_html) !!}
@@ -94,14 +94,14 @@
                     @if(Auth::check())
                         @if(Auth::id() == $post->user->id or Auth::user()->can('mod-threads'))
                         <span data-cid='{{ $post->id }}'>
-                            [<a href="{{ route('board.post.edit', [$post->thread->id, $post->id]) }}" data-rel="popup">bearbeiten</a>]
+                            [<a href="{{ route('board.post.edit', [$post->thread->id, $post->id]) }}" data-rel="popup">{{ trans('board.threads.show.edit') }}</a>]
                         </span>
                         @endif
                     @endif
-                    gepostet
+                        {{ trans('board.threads.show.posted') }}
                     <a href='{{ route('board.thread.show', [$post->thread->id]) }}#c{{ $post->id }}'><time datetime='{{ $post->created_at }}' title='{{ $post->created_at }}'>{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</time></a>
                     @if($post->updated_at)
-                        - editiert {{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}
+                        - {{ trans('board.threads.show.edited') }} {{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}
                     @endif
                 </div>
             @endforeach
@@ -111,31 +111,28 @@
         @if(Auth::check())
         <div class='rmarchivtbl' id='rmarchivbox_bbspost'>
             @if($post->thread->closed == 0)
-                <h2>poste eine antwort</h2>
+                <h2>{{ trans('board.threads.show.create_post') }}</h2>
                 {!! Form::open(['action' => ['BoardController@store_post', $posts->first()->thread->id], 'id' => 'frmBBSPost']) !!}
                     <input type='hidden' name='catid' value='{{ $posts->first()->cat->id }}'>
                     <div class='content'>
                         @include('_partials.markdown_editor')
-                        <div><a href='#'><b>markdown</b></a> kann hier genutzt werden</div>
+                        <div><a href='#'>{{ trans('board.threads.show.markdown') }}</a></div>
                     </div>
                     <div class='foot'>
                         <input type='submit' value='Submit' id='submit'></div>
                 {!! Form::close() !!}
             @else
-                <h2>Thread geschlossen</h2>
+                <h2>{{ trans('board.threads.show.thread_closed') }}</h2>
                 <div class="content">
-                    der thread wurde geschlossen.<br>
-                    du kannst hier also nichts posten.
+                    {{ trans('board.threads.show.thread_closed_msg') }}
                 </div>
             @endif
         </div>
         @else
         <div class="rmarchivtbl">
-            <h2>leider bist du nicht angemeldet.</h2>
+            <h2>{{ trans('board.threads.show.no_login_title') }}</h2>
             <div class="content">
-                du bist nicht angemeldet.<br>
-                um einen post erstellen zu können, <a href="{{ url('login') }}">logge</a> dich ein.<br>
-                wenn du keinen account hast, <a href="{{ url('register') }}">registriere</a> dich doch einfach.
+                {{ trans('board.threads.show.no_login_msg') }}
             </div>
         </div>
         @endif

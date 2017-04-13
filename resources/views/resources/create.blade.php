@@ -6,17 +6,17 @@
                 {!! Form::open(['url' => 'resources/create', 'method' => 'post']) !!}
                 <div class="rmarchivtbl" id="rmarchivbox_submitprod">
                     {!! Form::hidden('step', 2) !!}
-                    <h2>hinzufügen einer ressource</h2>
+                    <h2>{{ trans('resources.create.title') }}</h2>
                     <div class="content">
                         <div class="formifier">
                             <div class='row' id='row_type'>
-                                <label for='type'>resourcen typ:</label>
+                                <label for='type'>{{ trans('resources.create.type') }}</label>
                                 <select name='type' id='type'>
-                                    <option value="0">bitte ressourcentyp auswählen</option>
-                                    <option value="gfx">grafik</option>
-                                    <option value="sfx">audio</option>
-                                    <option value="scripts">scripts</option>
-                                    <option value="tools">tools</option>
+                                    <option value="0">{{ trans('resources.create.type_choose') }}</option>
+                                    <option value="gfx">{{ trans('resources.create.gfx') }}</option>
+                                    <option value="sfx">{{ trans('resources.create.sfx') }}</option>
+                                    <option value="scripts">{{ trans('resources.create.scripts') }}</option>
+                                    <option value="tools">{{ trans('resources.create.tools') }}</option>
                                 </select>
                                 <span>[<span class="req">req</span>]</span>
                             </div>
@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="foot">
-                        <input type="submit" value="weiter">
+                        <input type="submit" value="{{ trans('resources.create.next') }}">
                     </div>
                 </div>
                 {!! Form::close() !!}
@@ -34,45 +34,45 @@
                     <div class="rmarchivtbl" id="rmarchivbox_submitprod">
                         {!! Form::hidden('step', 3) !!}
                         {!! Form::hidden('type', $request->get('type')) !!}
-                        <h2>hinzufügen einer ressource -> {{ $request->get('type') }}</h2>
+                        <h2>{{ trans('resources.create.step') }} -> {{ $request->get('type') }}</h2>
                         <div class="content">
                             <div class="formifier">
                                 <div class='row' id='row_cat'>
-                                    <label for='cat'>resourcen kategorie:</label>
+                                    <label for='cat'>{{ trans('resources.create.category') }}:</label>
                                     <select name='cat' id='cat'>
-                                        <option value="0">bitte resourcenkategorie auswählen</option>
+                                        <option value="0">{{ trans('resources.create.category_choose') }}</option>
                                         @if($request->get('type') == 'gfx')
-                                            <option value="autotiles">autotiles</option>
-                                            <option value="backdrop">backdrops</option>
-                                            <option value="battle">battle animations</option>
-                                            <option value="battlecharset">battle charsets</option>
-                                            <option value="battleweapon">battleweapons</option>
-                                            <option value="charset">charsets</option>
-                                            <option value="chipset">chipsets</option>
-                                            <option value="faceset">facesets</option>
-                                            <option value="gameover">gameovers</option>
-                                            <option value="monster">monster</option>
-                                            <option value="panorama">panoramas</option>
-                                            <option value="pictures">pictures</option>
-                                            <option value="title">titles</option>
-                                            <option value="transition">transitions</option>
-                                            <option value="system">windowskins</option>
+                                            <option value="autotiles">{{ trans('resources.create.autotiles') }}</option>
+                                            <option value="backdrop">{{ trans('resources.create.backdrops') }}</option>
+                                            <option value="battle">{{ trans('resources.create.battle') }}</option>
+                                            <option value="battlecharset">{{ trans('resources.create.battlecharset') }}</option>
+                                            <option value="battleweapon">{{ trans('resources.create.battleweapon') }}</option>
+                                            <option value="charset">{{ trans('resources.create.charset') }}</option>
+                                            <option value="chipset">{{ trans('resources.create.chipset') }}</option>
+                                            <option value="faceset">{{ trans('resources.create.faceset') }}</option>
+                                            <option value="gameover">{{ trans('resources.create.gameovers') }}</option>
+                                            <option value="monster">{{ trans('resources.create.monster') }}</option>
+                                            <option value="panorama">{{ trans('resources.create.panorama') }}</option>
+                                            <option value="pictures">{{ trans('resources.create.pictures') }}</option>
+                                            <option value="title">{{ trans('resources.create.titles') }}</option>
+                                            <option value="transition">{{ trans('resources.create.transition') }}</option>
+                                            <option value="system">{{ trans('resources.create.system') }}</option>
                                         @elseif($request->get('type') == 'gfx')
-                                            <option value="music">music</option>
-                                            <option value="sounds">sounds</option>
+                                            <option value="music">{{ trans('resources.create.music') }}</option>
+                                            <option value="sounds">{{ trans('resources.create.sounds') }}</option>
                                         @elseif($request->get('type') == 'scripts')
-                                            <option value="rm2k">rm2k scripts</option>
-                                            <option value="rm2k3">rm2k3 scripts</option>
-                                            <option value="rmxp">rmxp scripts</option>
-                                            <option value="rmvx">rmvx scripts</option>
-                                            <option value="rmmv">rmmv scripts</option>
+                                            <option value="rm2k">{{ trans('resources.create.rm2k') }}</option>
+                                            <option value="rm2k3">{{ trans('resources.create.rm2k3') }}</option>
+                                            <option value="rmxp">{{ trans('resources.create.rmxp') }}</option>
+                                            <option value="rmvx">{{ trans('resources.create.rmvx') }}</option>
+                                            <option value="rmmv">{{ trans('resources.create.rmmv') }}</option>
                                         @elseif($request->get('type') == 'tools')
-                                            <option value="rtp">runtime packages</option>
-                                            <option value="audio">audio</option>
-                                            <option value="video">video</option>
-                                            <option value="gfx">grafik</option>
-                                            <option value="text">text</option>
-                                            <option value="misc">sonstiges</option>
+                                            <option value="rtp">{{ trans('resources.create.rtp') }}</option>
+                                            <option value="audio">{{ trans('resources.create.audio') }}</option>
+                                            <option value="video">{{ trans('resources.create.video') }}</option>
+                                            <option value="gfx">{{ trans('resources.create.gfx') }}</option>
+                                            <option value="text">{{ trans('resources.create.text') }}</option>
+                                            <option value="misc">{{ trans('resources.create.misc') }}</option>
                                         @endif
                                     </select>
                                     <span>[<span class="req">req</span>]</span>
@@ -81,7 +81,7 @@
                         </div>
 
                         <div class="foot">
-                            <input type="submit" value="weiter">
+                            <input type="submit" value="{{ trans('resources.create.next') }}">
                         </div>
                     </div>
                     {!! Form::close() !!}
@@ -91,17 +91,17 @@
                         {!! Form::hidden('step', 4) !!}
                         {!! Form::hidden('type', $request->get('type')) !!}
                         {!! Form::hidden('cat', $request->get('cat')) !!}
-                        <h2>hinzufügen einer ressource -> {{ $request->get('type') }} -> {{ $request->get('cat') }}</h2>
+                        <h2>{{ trans('resources.create.step') }} -> {{ $request->get('type') }} -> {{ $request->get('cat') }}</h2>
                         <div class="content">
                             <div class="formifier">
                                 <div class='row' id='row_title'>
-                                    <label for='title'>titel:</label>
+                                    <label for='title'>{{ trans('resources.create.res_title') }}:</label>
                                     <input type="text" name="title" id="title">
                                     <span>[<span class="req">req</span>]</span>
                                 </div>
                                 <div class="row" id="row_desc">
-                                    <label for="desc">beschreibung::</label>
-                                    <textarea name="desc" id="desc" maxlength="4000" rows="10" placeholder="hier kommt die ressourcenbeschreibung rein"></textarea>
+                                    <label for="desc">{{ trans('resources.create.desc') }}:</label>
+                                    <textarea name="desc" id="desc" maxlength="4000" rows="10" placeholder="{{ trans('resources.create.desc') }}"></textarea>
                                 </div>
                                 <script type="text/javascript">
                                     $(function() {
@@ -111,21 +111,21 @@
                                     });
                                 </script>
                                 <div class='row' id='row_type'>
-                                    <label for='content_type'>content typ:</label>
+                                    <label for='content_type'>{{ trans('resources.create.content_type') }}</label>
                                     <select name='content_type' id='content_type'>
-                                        <option value="0">bitte content typ auswählen</option>
-                                        <option value="url">url</option>
-                                        <option value="audio">audio</option>
-                                        <option value="video">video</option>
-                                        <option value="image">image</option>
-                                        <option value="archive">archiv (zip/rar)</option>
+                                        <option value="0">{{ trans('resources.create.content_type_choose') }}</option>
+                                        <option value="url">{{ trans('resources.create.url') }}</option>
+                                        <option value="audio">{{ trans('resources.create.audio') }}</option>
+                                        <option value="video">{{ trans('resources.create.video') }}</option>
+                                        <option value="image">{{ trans('resources.create.image') }}</option>
+                                        <option value="archive">{{ trans('resources.create.archive') }}</option>
                                     </select>
                                     <span>[<span class="req">req</span>]</span>
                                 </div>
                             </div>
                         </div>
                         <div class="foot">
-                            <input type="submit" value="weiter">
+                            <input type="submit" value="{{ trans('resources.create.next') }}">
                         </div>
                     </div>
                     {!! Form::close() !!}
@@ -139,12 +139,12 @@
                         {!! Form::hidden('title', $request->get('title')) !!}
                         {!! Form::hidden('desc', $request->get('desc')) !!}
                         {!! Form::hidden('content_type', $request->get('content_type')) !!}
-                        <h2>hinzufügen einer ressource -> {{ $request->get('type') }} -> {{ $request->get('cat') }}</h2>
+                        <h2>{{ trans('resources.create.step') }} -> {{ $request->get('type') }} -> {{ $request->get('cat') }}</h2>
                         <div class="content">
                             <div class="formifier">
                                 @if($request->get('content_type') == 'url')
                                     <div class='row' id='row_url'>
-                                        <label for='url'>url:</label>
+                                        <label for='url'>{{ trans('resources.create.url') }}:</label>
                                         <input type="text" name="url" id="url" placeholder="http://www.blablubb.de">
                                         <span>[<span class="req">req</span>]</span>
                                     </div>
@@ -158,7 +158,7 @@
                             </div>
                         </div>
                         <div class="foot">
-                            <input type="submit" value="senden">
+                            <input type="submit" value="{{ trans('resources.create.send') }}">
                         </div>
                     </div>
                     {!! Form::close() !!}
