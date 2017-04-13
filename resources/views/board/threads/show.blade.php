@@ -12,6 +12,7 @@
                     @endif
                 @endpermission
             </h2>
+            {{ dd($posts->first()) }}
             <div class='threadcategory'><b>{{ trans('board.threads.show.category') }}:</b> <a href="{{ url('board/cat', $posts->first()->cat->id) }}">{{ $posts->first()->cat->title }}</a>
             </div>
             <div class="threadcategory">
