@@ -124,7 +124,7 @@
             </div>
 
             <div class="foot">
-                <input type="submit" value="{{ trans('gamefiles.send') }}">
+                <input type="submit" value="{{ trans('games.gamefiles.send') }}">
             </div>
         </div>
         {!! Form::close() !!}
