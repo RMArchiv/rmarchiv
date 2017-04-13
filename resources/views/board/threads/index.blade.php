@@ -1,14 +1,10 @@
 @extends('layouts.app')
 @section('content')
     <div id="content">
+        <h2>
+            {{ $cat->title }}
+        </h2>
         @if($threads)
-            <h2>
-                @if($threads->count() != 0)
-                    {{ $threads->first()->cat->title }}
-                @else
-                    {{ trans('board.threads.index.no_threads_head') }}
-                @endif
-            </h2>
             <table id="rmarchivbox_bbslist" class="boxtable pagedtable">
                 <thead>
                 <tr>
@@ -61,7 +57,7 @@
             <div class='rmarchivtbl' id='rmarchivbox_bbsopen'>
                 <h2>{{ trans('board.threads.index.create_thread') }}</h2>
                 {!! Form::open(['route' => ['board.thread.store']]) !!}
-                <input name="category" value="{{ app('request')->input('catid') }}" type="hidden" />
+                <input name="category" value="{{ $cat->id }}" type="hidden" />
                 <div class='content'>
                     <label for='topic'>{{ trans('board.threads.index.topic_title') }}:</label>
                     <input name='topic' id='topic'/>

@@ -40,8 +40,11 @@ class BoardController extends Controller
             ->orderBy('board_threads.id', 'desc')
             ->get();
 
+        $cat = BoardCat::whereId($catid)->first();
+
         return view('board.threads.index', [
             'threads' => $thr,
+            'cat' => $cat,
         ]);
     }
 
