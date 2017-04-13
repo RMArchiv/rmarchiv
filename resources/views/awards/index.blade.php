@@ -23,7 +23,7 @@
                     <td>
                         <a href="{{ url('awards', $aw->id) }}">{{ $aw->title }}</a>
                         @if($aw->month <> 0)
-                            :: ({{ trans('misc.month.'.$aw->month) }})
+                            :: ({{ trans('_misc.month.'.$aw->month) }})
                         @endif
                     </td>
                 </tr>
