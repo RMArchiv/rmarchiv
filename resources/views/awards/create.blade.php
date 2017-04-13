@@ -120,7 +120,7 @@
                             <select name="awarddate_month" id="awarddate_month">
                                 <option value="0">{{trans('awards.create.month')}}</option>
                                 @for($i = 1; $i < 13; $i++)
-                                    <option value="{{ $i }}">{{ trans('misc.month.'.$i) }}</option>
+                                    <option value="{{ $i }}">{{ trans('_misc.month.'.$i) }}</option>
                                 @endfor
                             </select>
                             <select name="awarddate_year" id="awarddate_year">
@@ -153,7 +153,7 @@
                                 <option value="{{ $aw->pageid }}-{{ $aw->catid }}">
                                     {{ $aw->year }} - {{ $aw->pagetitle }} - {{ $aw->cattitle }}
                                     @if($aw->month <> 0)
-                                        - {{ trans('misc.month.'.$aw->month) }}
+                                        - {{ trans('_misc.month.'.$aw->month) }}
                                     @endif
                                 </option>
                             @endforeach

@@ -103,7 +103,7 @@
                             <select name="releasedate_month" id="releasedate_month">
                                 <option value="0">{{trans('games.gamefiles.release_month')}}</option>
                                 @for($i = 1; $i < 13; $i++)
-                                    <option value="{{ $i }}">{{ trans('misc.month.'.$i) }}</option>
+                                    <option value="{{ $i }}">{{ trans('_misc.month.'.$i) }}</option>
                                 @endfor
                             </select>
                             <select name="releasedate_year" id="releasedate_year">

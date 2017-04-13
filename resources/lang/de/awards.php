@@ -37,6 +37,7 @@ return [
     ],
     'show'      => [
         'place' => 'platz',
+        'addgame' => 'spiel zu award hinzufügen'
     ],
     '_partials' => [
         'nav' => [
