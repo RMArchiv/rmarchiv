@@ -61,7 +61,7 @@
             <div class='rmarchivtbl' id='rmarchivbox_bbsopen'>
                 <h2>{{ trans('board.threads.index.create_thread') }}</h2>
                 {!! Form::open(['route' => ['board.thread.store']]) !!}
-                <input name="category" value="{{ app('request')->input('cat_id') }}" type="hidden" />
+                <input name="category" value="{{ app('request')->input('catid') }}" type="hidden" />
                 <div class='content'>
                     <label for='topic'>{{ trans('board.threads.index.topic_title') }}:</label>
                     <input name='topic' id='topic'/>
