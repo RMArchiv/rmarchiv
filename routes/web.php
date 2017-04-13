@@ -300,5 +300,5 @@ Route::get('logo/{filename}', function ($filename) {
 
 Route::group(['middleware' => 'permission:translate-page'], function(){
     Route::get('translation', 'TranslationController@index')->name('trans.index');
-    Route::get('translation/{loc1}/{loc2?}', 'TranslationController@edit')->name('trans.edit');
+    Route::get('translation/{loc1}/{loc2?}/{viewtype?}/{searchterm?}', 'TranslationController@edit')->name('trans.edit');
 });

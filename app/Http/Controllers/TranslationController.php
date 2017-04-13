@@ -8,25 +8,28 @@
 namespace App\Http\Controllers;
 
 use Waavi\Translation\Repositories\LanguageRepository;
+use Waavi\Translation\Repositories\TranslationRepository;
 
 class TranslationController extends Controller
 {
-    protected $repository;
+    protected $lng;
+    protected $trans;
 
-    public function __construct(LanguageRepository $repository)
+    public function __construct(LanguageRepository $lng, TranslationRepository $trans)
     {
-        $this->repository = $repository;
+        $this->$lng = $lng;
+        $this->$trans = $trans;
     }
 
     public function index()
     {
-        $locales = $this->repository->availableLocales();
+        $locales = $this->$lng->availableLocales();
 
         $list = [];
 
         foreach ($locales as $loc) {
             $temp['loc'] = $loc;
-            $temp['perc'] = $this->repository->percentTranslated($loc);
+            $temp['perc'] = $this->$lng->percentTranslated($loc);
             $list[] = $temp;
         }
 
@@ -35,7 +38,16 @@ class TranslationController extends Controller
         ]);
     }
 
-    public function edit($loc1, $loc2 = 'de')
+    public function edit($loc1, $loc2 = 'de', $viewtype = 'untranslated', $searchterm = '')
     {
+        $list = $this->trans->untranslated($loc2);
+
+        dd($list);
+
+        return view('translate.show', [
+            'list' => $list,
+            'loc1' => $loc1,
+            'loc2' => $loc2,
+        ]);
     }
 }
