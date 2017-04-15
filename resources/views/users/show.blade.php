@@ -21,7 +21,7 @@
             <div class='contribheader'>{{ trans('user.show.shoutbox') }}: {{ $user->shoutboxcount }} <span>:: {{ ($user->shoutboxcount * \App\Helpers\DatabaseHelper::getObyxPoints('shoutbox')) }} obyx</span> [<a href='#'>{{ trans('user.show.show') }}</a>]</div>
             <div class='contribheader'>{{ trans('user.show.topics') }}: {{ $user->threadcount }} <span>:: {{ ($user->shoutboxcount * \App\Helpers\DatabaseHelper::getObyxPoints('thread-add')) }} obyx</span> [<a href='#'>{{ trans('user.show.show') }}</a>]</div>
             <div class='contribheader'>{{ trans('user.show.posts') }}: {{ $user->postcount }} <span>:: {{ ($user->shoutboxcount * \App\Helpers\DatabaseHelper::getObyxPoints('post-add')) }} obyx</span> [<a href='#'>{{ trans('user.show.show') }}</a>]</div>
-            <div class="contribheader">{{ trans('user.lists') }}: {{$user->listcount}} <span>:: </span>[<a href='{{ action('UserListController@index', $user->userid) }}'>{{ trans('user.show.show') }}</a>]</div>
+            <div class="contribheader">{{ trans('user.show.lists') }}: {{$user->listcount}} <span>:: </span>[<a href='{{ action('UserListController@index', $user->userid) }}'>{{ trans('user.show.show') }}</a>]</div>
             <div class='foot'>{{ trans('user.show.created_at') }} {{ $user->usercreated_at }}</div>
         </div>
     </div>
