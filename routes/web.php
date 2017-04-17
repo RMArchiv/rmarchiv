@@ -302,3 +302,5 @@ Route::group(['middleware' => 'permission:translate-page'], function(){
     Route::get('translation', 'TranslationController@index')->name('trans.index');
     Route::get('translation/{loc1}/{loc2?}/{viewtype?}/{searchterm?}', 'TranslationController@edit')->name('trans.edit');
 });
+
+Route::get('player/{gameid}', 'PlayerController@index')->name('player.run');
