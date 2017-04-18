@@ -16,7 +16,7 @@ class PlayerController extends Controller
         $playerpath = storage_path('app/public/player/'.$gameid.'/');
 
         if($gf->extension == '7z'){
-
+            \Zipper::make($gfpath)->extractTo($playerpath);
         }elseif($gf->extension == 'zip'){
 
         }

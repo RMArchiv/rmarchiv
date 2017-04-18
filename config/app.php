@@ -223,6 +223,7 @@ return [
         TeamTNT\Scout\TNTSearchScoutServiceProvider::class,
         Eusonlito\LaravelMeta\MetaServiceProvider::class,
         Msurguy\Honeypot\HoneypotServiceProvider::class,
+        Chumper\Zipper\ZipperServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -294,6 +295,7 @@ return [
         'URL'           => Illuminate\Support\Facades\URL::class,
         'Validator'     => Illuminate\Support\Facades\Validator::class,
         'View'          => Illuminate\Support\Facades\View::class,
+        'Zipper'        => Chumper\Zipper\Zipper::class,
     ],
 
 ];
