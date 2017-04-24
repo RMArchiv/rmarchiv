@@ -63,7 +63,7 @@ class PlayerCreateInfo extends Command
             $path = storage_path('app/public/'.$toindex->filename);
             $extractto = storage_path('app/public/playertmp/'.$toindex->id);
             if($toindex->extension == 'rar'){
-                $rar = new \RarArchiver($path);
+                $rar = new \RarArchiver($path, \RarArchiver::CREATE);
                 if($rar->extractTo($extractto)){
                     $dirlist = scandir($extractto);
                     foreach ($dirlist as $item) {
