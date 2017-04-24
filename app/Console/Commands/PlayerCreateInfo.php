@@ -65,20 +65,22 @@ class PlayerCreateInfo extends Command
             $files = array();
             if($toindex->extension == 'rar'){
                 continue;
-                $rar = new \RarArchiver($path, \RarArchiver::CREATE);
-                $files = $rar->getFileList();
-
             }elseif($toindex->extension == 'zip'){
-                continue;
+                $zip = new \ZipArchive;
+                $zip->open($path);
+                for($i = 0; $i < $zip->numFiles; $i++){
+                    $filename = $zip->getNameIndex($i);
+                    echo $filename.PHP_EOL;
+                }
+                $zip->close();
             }elseif($toindex->extension == '7z'){
                 continue;
             }else{
                 continue;
             }
             $this->info('Indiziere...');
-            foreach ($files as $file) {
-                $tmp = explode("\\",$file);
-            }
+
+            return;
         }
 
         $this->info('Fertig.');
