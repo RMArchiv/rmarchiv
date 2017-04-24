@@ -85,4 +85,8 @@ class GamesFile extends Model
     {
         return $this->belongsTo('App\Models\Game', 'game_id', 'id')->with('maker', 'developers');
     }
+
+    public function playerIndex(){
+        return $this->hasMany('App\Models\PlayerIndexjson', 'gamefile_id', 'id');
+    }
 }

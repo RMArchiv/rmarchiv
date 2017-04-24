@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.19 on 2017-04-18.
+ * Generated for Laravel 5.4.19 on 2017-04-24.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -13289,7 +13289,7 @@ namespace RobBrazier\Piwik\Facades {
          * Get actions (hits) for the specific time period
          *
          * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
+         * @param $format string      Override string for the format of the API Query to be returned as
          * @return object 
          * @static 
          */
@@ -13303,7 +13303,7 @@ namespace RobBrazier\Piwik\Facades {
          * Get file downloads for the specific time period
          *
          * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
+         * @param $format string           Override string for the format of the API Query to be returned as
          * @return array 
          * @static 
          */
@@ -13317,7 +13317,7 @@ namespace RobBrazier\Piwik\Facades {
          * Get search keywords for the specific time period
          *
          * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
+         * @param $format string           Override string for the format of the API Query to be returned as
          * @return array 
          * @static 
          */
@@ -13331,8 +13331,8 @@ namespace RobBrazier\Piwik\Facades {
          * Get information about last 10 visits (ip, time, country, pages, etc.)
          *
          * @access public
-         * @param int $count Limit the number of visits returned by $count
-         * @param string $format Override string for the format of the API Query to be returned as
+         * @param $count int          Limit the number of visits returned by $count
+         * @param $format string      Override string for the format of the API Query to be returned as
          * @return array 
          * @static 
          */
@@ -13346,8 +13346,8 @@ namespace RobBrazier\Piwik\Facades {
          * Get information about last 10 visits (ip, time, country, pages, etc.) in a formatted array with GeoIP information if enabled
          *
          * @access public
-         * @param int $count Limit the number of visits returned by $count
-         * @param string $format Override string for the format of the API Query to be returned as
+         * @param $count int          Limit the number of visits returned by $count
+         * @param $format string      Override string for the format of the API Query to be returned as
          * @return array 
          * @static 
          */
@@ -13361,7 +13361,7 @@ namespace RobBrazier\Piwik\Facades {
          * Get outlinks for the specific time period
          *
          * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
+         * @param $format string      Override string for the format of the API Query to be returned as
          * @return array 
          * @static 
          */
@@ -13375,7 +13375,7 @@ namespace RobBrazier\Piwik\Facades {
          * Get page visit information for the specific time period
          *
          * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
+         * @param $format string      Override string for the format of the API Query to be returned as
          * @return array 
          * @static 
          */
@@ -13389,7 +13389,7 @@ namespace RobBrazier\Piwik\Facades {
          * Get search engine referer information for the specific time period
          *
          * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
+         * @param $format string         Override string for the format of the API Query to be returned as
          * @return array 
          * @static 
          */
@@ -13403,7 +13403,7 @@ namespace RobBrazier\Piwik\Facades {
          * Get unique visitors for the specific time period
          *
          * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
+         * @param $format string      Override string for the format of the API Query to be returned as
          * @return array 
          * @static 
          */
@@ -13417,7 +13417,7 @@ namespace RobBrazier\Piwik\Facades {
          * Get all visits for the specific time period
          *
          * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
+         * @param $format string      Override string for the format of the API Query to be returned as
          * @return array 
          * @static 
          */
@@ -13431,7 +13431,7 @@ namespace RobBrazier\Piwik\Facades {
          * Get refering websites (traffic sources) for the specific time period
          *
          * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
+         * @param $format string      Override string for the format of the API Query to be returned as
          * @return array 
          * @static 
          */
@@ -13460,8 +13460,8 @@ namespace RobBrazier\Piwik\Facades {
          * Get SEO Rank for the website
          *
          * @access public
-         * @param $id
-         * @param string $format Override string for the format of the API Query to be returned as
+         * @param $id string          Override for ID, so you can specify one rather than fetching it from config
+         * @param $format string      Override string for the format of the API Query to be returned as
          * @return array 
          * @static 
          */
@@ -13475,8 +13475,8 @@ namespace RobBrazier\Piwik\Facades {
          * Get Version of the Piwik Server
          *
          * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
-         * @return array 
+         * @param $format string      Override string for the format of the API Query to be returned as
+         * @return mixed 
          * @static 
          */
         public static function version($format = null)
@@ -13487,12 +13487,12 @@ namespace RobBrazier\Piwik\Facades {
         /**
          * 
          *
-         * @param $method
-         * @param array $arguments
-         * @param mixed $id values can be true/false to add the default site id, or you can specify the id here
-         * @param bool $period
-         * @param string $format
-         * @return array 
+         * @param $method string        The API method, as found in the Piwik API documentation
+         * @param $arguments array|null A multidimensional map of key => value for custom data to be added onto the url, e.g. ["test" => "foo"] ===> &test=foo
+         * @param $id mixed             values can be true/false to add the default site id, or you can specify the id here
+         * @param $period bool          boolean value to determine whether the time period is appended to the API url
+         * @param $format string        Override string for the format of the API Query to be returned as
+         * @return mixed 
          * @static 
          */
         public static function custom($method, $arguments, $id = false, $period = false, $format = null)
@@ -14423,6 +14423,319 @@ namespace Telegram\Bot\Laravel\Facades {
         public static function setConnectTimeOut($connectTimeOut)
         {
             return \Telegram\Bot\Api::setConnectTimeOut($connectTimeOut);
+        }
+        
+    }         
+}
+    
+namespace Chumper\Zipper\Facades {
+
+    class Zipper {
+        
+        /**
+         * Create a new zip Archive if the file does not exists
+         * opens a zip archive if the file exists
+         *
+         * @param $pathToFile string The file to open
+         * @param \Chumper\Zipper\RepositoryInterface|string $type The type of the archive, defaults to zip, possible are zip, phar
+         * @return $this Zipper instance
+         * @throws \RuntimeException
+         * @throws \Exception
+         * @throws \InvalidArgumentException
+         * @static 
+         */
+        public static function make($pathToFile, $type = 'zip')
+        {
+            return \Chumper\Zipper\Zipper::make($pathToFile, $type);
+        }
+        
+        /**
+         * Create a new zip archive or open an existing one
+         *
+         * @param $pathToFile
+         * @return $this 
+         * @throws \Exception
+         * @static 
+         */
+        public static function zip($pathToFile)
+        {
+            return \Chumper\Zipper\Zipper::zip($pathToFile);
+        }
+        
+        /**
+         * Create a new phar file or open one
+         *
+         * @param $pathToFile
+         * @return $this 
+         * @throws \Exception
+         * @static 
+         */
+        public static function phar($pathToFile)
+        {
+            return \Chumper\Zipper\Zipper::phar($pathToFile);
+        }
+        
+        /**
+         * Create a new rar file or open one
+         *
+         * @param $pathToFile
+         * @return $this 
+         * @throws \Exception
+         * @static 
+         */
+        public static function rar($pathToFile)
+        {
+            return \Chumper\Zipper\Zipper::rar($pathToFile);
+        }
+        
+        /**
+         * Extracts the opened zip archive to the specified location <br/>
+         * you can provide an array of files and folders and define if they should be a white list
+         * or a black list to extract. By default this method compares file names using "string starts with" logic
+         *
+         * @param $path string The path to extract to
+         * @param array $files An array of files
+         * @param int $methodFlags The Method the files should be treated
+         * @throws \Exception
+         * @static 
+         */
+        public static function extractTo($path, $files = array(), $methodFlags = 2)
+        {
+            return \Chumper\Zipper\Zipper::extractTo($path, $files, $methodFlags);
+        }
+        
+        /**
+         * Extracts matching files/folders from the opened zip archive to the specified location.
+         *
+         * @param string $extractToPath The path to extract to
+         * @param string $regex regular expression used to match files. See @link http://php.net/manual/en/reference.pcre.pattern.syntax.php
+         * @throws \InvalidArgumentException
+         * @throws \RuntimeException
+         * @static 
+         */
+        public static function extractMatchingRegex($extractToPath, $regex)
+        {
+            return \Chumper\Zipper\Zipper::extractMatchingRegex($extractToPath, $regex);
+        }
+        
+        /**
+         * Gets the content of a single file if available
+         *
+         * @param $filePath string The full path (including all folders) of the file in the zip
+         * @throws \Exception
+         * @return mixed returns the content or throws an exception
+         * @static 
+         */
+        public static function getFileContent($filePath)
+        {
+            return \Chumper\Zipper\Zipper::getFileContent($filePath);
+        }
+        
+        /**
+         * Add one or multiple files to the zip.
+         *
+         * @param $pathToAdd array|string An array or string of files and folders to add
+         * @return $this Zipper instance
+         * @static 
+         */
+        public static function add($pathToAdd, $fileName = null)
+        {
+            return \Chumper\Zipper\Zipper::add($pathToAdd, $fileName);
+        }
+        
+        /**
+         * Add an empty directory
+         *
+         * @param $dirName
+         * @return \Zipper 
+         * @static 
+         */
+        public static function addEmptyDir($dirName)
+        {
+            return \Chumper\Zipper\Zipper::addEmptyDir($dirName);
+        }
+        
+        /**
+         * Add a file to the zip using its contents
+         *
+         * @param $filename string The name of the file to create
+         * @param $content string The file contents
+         * @return $this Zipper instance
+         * @static 
+         */
+        public static function addString($filename, $content)
+        {
+            return \Chumper\Zipper\Zipper::addString($filename, $content);
+        }
+        
+        /**
+         * Gets the status of the zip.
+         *
+         * @return integer The status of the internal zip file
+         * @static 
+         */
+        public static function getStatus()
+        {
+            return \Chumper\Zipper\Zipper::getStatus();
+        }
+        
+        /**
+         * Remove a file or array of files and folders from the zip archive
+         *
+         * @param $fileToRemove array|string The path/array to the files in the zip
+         * @return $this Zipper instance
+         * @static 
+         */
+        public static function remove($fileToRemove)
+        {
+            return \Chumper\Zipper\Zipper::remove($fileToRemove);
+        }
+        
+        /**
+         * Returns the path of the current zip file if there is one.
+         *
+         * @return string The path to the file
+         * @static 
+         */
+        public static function getFilePath()
+        {
+            return \Chumper\Zipper\Zipper::getFilePath();
+        }
+        
+        /**
+         * Sets the password to be used for decompressing
+         *
+         * @param $password
+         * @return boolean 
+         * @static 
+         */
+        public static function usePassword($password)
+        {
+            return \Chumper\Zipper\Zipper::usePassword($password);
+        }
+        
+        /**
+         * Closes the zip file and frees all handles
+         *
+         * @static 
+         */
+        public static function close()
+        {
+            return \Chumper\Zipper\Zipper::close();
+        }
+        
+        /**
+         * Sets the internal folder to the given path.<br/>
+         * Useful for extracting only a segment of a zip file.
+         *
+         * @param $path
+         * @return $this 
+         * @static 
+         */
+        public static function folder($path)
+        {
+            return \Chumper\Zipper\Zipper::folder($path);
+        }
+        
+        /**
+         * Resets the internal folder to the root of the zip file.
+         *
+         * @return $this 
+         * @static 
+         */
+        public static function home()
+        {
+            return \Chumper\Zipper\Zipper::home();
+        }
+        
+        /**
+         * Deletes the archive file
+         *
+         * @static 
+         */
+        public static function delete()
+        {
+            return \Chumper\Zipper\Zipper::delete();
+        }
+        
+        /**
+         * Get the type of the Archive
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getArchiveType()
+        {
+            return \Chumper\Zipper\Zipper::getArchiveType();
+        }
+        
+        /**
+         * Get the current internal folder pointer
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getCurrentFolderPath()
+        {
+            return \Chumper\Zipper\Zipper::getCurrentFolderPath();
+        }
+        
+        /**
+         * Checks if a file is present in the archive
+         *
+         * @param $fileInArchive
+         * @return bool 
+         * @static 
+         */
+        public static function contains($fileInArchive)
+        {
+            return \Chumper\Zipper\Zipper::contains($fileInArchive);
+        }
+        
+        /**
+         * 
+         *
+         * @return \Chumper\Zipper\RepositoryInterface 
+         * @static 
+         */
+        public static function getRepository()
+        {
+            return \Chumper\Zipper\Zipper::getRepository();
+        }
+        
+        /**
+         * 
+         *
+         * @return \Chumper\Zipper\Filesystem 
+         * @static 
+         */
+        public static function getFileHandler()
+        {
+            return \Chumper\Zipper\Zipper::getFileHandler();
+        }
+        
+        /**
+         * Gets the path to the internal folder
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getInternalPath()
+        {
+            return \Chumper\Zipper\Zipper::getInternalPath();
+        }
+        
+        /**
+         * List all files that are within the archive
+         *
+         * @param string|null $regexFilter regular expression to filter returned files/folders. See @link http://php.net/manual/en/reference.pcre.pattern.syntax.php
+         * @return array 
+         * @throws \RuntimeException
+         * @static 
+         */
+        public static function listFiles($regexFilter = null)
+        {
+            return \Chumper\Zipper\Zipper::listFiles($regexFilter);
         }
         
     }         
@@ -17053,6 +17366,8 @@ namespace {
     class Sitemap extends \Watson\Sitemap\Facades\Sitemap {}
     
     class Telegram extends \Telegram\Bot\Laravel\Facades\Telegram {}
+    
+    class Zipper extends \Chumper\Zipper\Facades\Zipper {}
     
     class Alert extends \Prologue\Alerts\Facades\Alert {}
     

@@ -22,6 +22,7 @@ class Kernel extends ConsoleKernel
         Commands\IndexSearch::class,
         Commands\setReldate::class,
         Commands\setVotes::class,
+        Commands\PlayerCreateInfo::class,
     ];
 
     /**
