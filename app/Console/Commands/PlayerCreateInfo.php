@@ -59,9 +59,26 @@ class PlayerCreateInfo extends Command
         $this->info('Es wurden '.$counter.' Gamefiles gefunden.');
         $this->info('Starte Indizierung der Gamefiles.');
         foreach ($toindexed as $toindex){
-            //$this->info('Entpacken von: '.$toindex->game()->name);
+            $this->info('Entpacken von: '.$toindex->game()->name);
             $path = storage_path('app/public/'.$toindex->filename);
-            //$this->info($path);
+            $extractto = storage_path('app/public/'.$toindex->id.'/');
+            if($toindex->extension == 'rar'){
+                $rar = new \RarArchiver($path);
+                if($rar->extractTo($extractto)){
+
+                }else{
+                    $this->error('Datei konnte nicht entpackt werden!');
+                    return;
+                }
+            }elseif($toindex->extension == 'zip'){
+
+            }elseif($toindex->extension == '7z'){
+
+            }else{
+                continue;
+            }
+            $archive = $path;
+            $this->info('Indiziere...');
         }
 
         $this->info('Fertig.');
