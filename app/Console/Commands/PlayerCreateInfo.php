@@ -43,15 +43,22 @@ class PlayerCreateInfo extends Command
         $gamefiles = GamesFile::all();
 
         $counter = 0;
+        $toindexed = array();
 
         foreach ($gamefiles as $gamefile) {
             if($gamefile->playerIndex()->count() == 0){
+                $toindexed[] = $gamefile;
                 $counter += 1;
             }
         }
 
         $this->info('Es wurden '.$counter.' Gamefiles gefunden.');
         $this->info('Starte Indizierung der Gamefiles.');
+        foreach ($toindexed as $toindex){
+            $path = storage_path('app/public/'.$toindex->filename);
+            $this->warn($path);
+        }
+
 
 
         $this->info('Fertig.');
