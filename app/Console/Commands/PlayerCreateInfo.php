@@ -61,11 +61,15 @@ class PlayerCreateInfo extends Command
         foreach ($toindexed as $toindex){
             $this->info('Entpacken von: '.$toindex->game()->first()->name);
             $path = storage_path('app/public/'.$toindex->filename);
-            $extractto = storage_path('app/public/'.$toindex->id.'/');
+            $extractto = storage_path('app/public/playertmp/'.$toindex->id);
             if($toindex->extension == 'rar'){
                 $rar = new \RarArchiver($path);
                 if($rar->extractTo($extractto)){
-
+                    $dirlist = scandir($extractto);
+                    foreach ($dirlist as $item) {
+                        echo $item.PHP_EOL;
+                    }
+                    return;
                 }else{
                     $this->error('Datei konnte nicht entpackt werden!');
                     return;
