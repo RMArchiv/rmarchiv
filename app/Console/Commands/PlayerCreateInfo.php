@@ -46,20 +46,23 @@ class PlayerCreateInfo extends Command
         $toindexed = array();
 
         foreach ($gamefiles as $gamefile) {
-            if($gamefile->playerIndex()->count() == 0){
-                $toindexed[] = $gamefile;
-                $counter += 1;
+            $makerid = $gamefile->game()->maker_id;
+
+            if($makerid == 2 or $makerid == 3 or $makerid == 9){
+                if($gamefile->playerIndex()->count() == 0){
+                    $toindexed[] = $gamefile;
+                    $counter += 1;
+                }
             }
         }
 
         $this->info('Es wurden '.$counter.' Gamefiles gefunden.');
         $this->info('Starte Indizierung der Gamefiles.');
         foreach ($toindexed as $toindex){
+            //$this->info('Entpacken von: '.$toindex->game()->name);
             $path = storage_path('app/public/'.$toindex->filename);
-            $this->warn($path);
+            //$this->info($path);
         }
-
-
 
         $this->info('Fertig.');
     }
