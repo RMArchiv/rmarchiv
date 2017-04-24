@@ -64,15 +64,9 @@ class PlayerCreateInfo extends Command
             $extractto = storage_path('app/public/playertmp/'.$toindex->id);
             if($toindex->extension == 'rar'){
                 $rar = new \RarArchiver($path, \RarArchiver::CREATE);
-                if($rar->extractTo($extractto)){
-                    $dirlist = scandir($extractto);
-                    foreach ($dirlist as $item) {
-                        echo $item.PHP_EOL;
-                    }
-                    return;
-                }else{
-                    $this->error('Datei konnte nicht entpackt werden!');
-                    return;
+                $items = $rar->getFileList();
+                foreach ($items as $item){
+                    echo $item.PHP_EOL;
                 }
             }elseif($toindex->extension == 'zip'){
 
