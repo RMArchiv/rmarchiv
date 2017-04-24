@@ -83,7 +83,7 @@ class GamesFile extends Model
 
     public function game()
     {
-        return $this->belongsTo('App\Models\Game', 'game_id', 'id')->with('maker', 'developers');
+        return $this->hasOne('App\Models\Game', 'game_id', 'id')->with('maker', 'developers');
     }
 
     public function playerIndex(){
