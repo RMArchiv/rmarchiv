@@ -157,16 +157,16 @@
         },
         {
             "name": "backpack/base",
-            "version": "0.7.18",
+            "version": "0.7.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Backpack/Base.git",
-                "reference": "7ab47bdae08598ea34ed46dd10841137b0002286"
+                "reference": "1e81a3130a927b643bab1e2e0eb8cbeeef603039"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Backpack/Base/zipball/7ab47bdae08598ea34ed46dd10841137b0002286",
-                "reference": "7ab47bdae08598ea34ed46dd10841137b0002286",
+                "url": "https://api.github.com/repos/Laravel-Backpack/Base/zipball/1e81a3130a927b643bab1e2e0eb8cbeeef603039",
+                "reference": "1e81a3130a927b643bab1e2e0eb8cbeeef603039",
                 "shasum": ""
             },
             "require": {
@@ -212,7 +212,7 @@
                 "backpack",
                 "base"
             ],
-            "time": "2017-04-21T16:10:26+00:00"
+            "time": "2017-04-25T13:55:39+00:00"
         },
         {
             "name": "barryvdh/laravel-debugbar",
