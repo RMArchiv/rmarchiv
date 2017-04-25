@@ -25,7 +25,7 @@ class PlayerController extends Controller
         return $fp;
     }
 
-    public function deliver_rtp($gamefileid, $fileid, $filename){
+    public function deliver_rtp($gamefileid, $filename){
         $path = storage_path('app/public/rtp/'.$filename);
         return response()->download($path);
     }
