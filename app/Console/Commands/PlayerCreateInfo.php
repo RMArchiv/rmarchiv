@@ -78,6 +78,7 @@ class PlayerCreateInfo extends Command
                     $filename = $zip->getNameIndex($i);
 
                     $bar->setMessage($filename, 'filename');
+                    $bar->display();
 
                     if(!ends_with($filename, "/") and !starts_with($filename, '_MACOSX')){
                         $imp = $this->search_for_base_path($filename);
@@ -153,12 +154,11 @@ class PlayerCreateInfo extends Command
                 $imp = implode('/', $exp);
                 $imp = $this->search_for_base_path($imp);
             }else{
-                echo $filepath.PHP_EOL;
                 $imp = '';
             }
         }
 
-        if(starts_with($imp, $filearray)){
+        if(array_search($imp, $filearray)){
             $imp = '.\\/'.$imp;
         }
 
