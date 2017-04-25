@@ -72,12 +72,14 @@ class PlayerCreateInfo extends Command
                     if(!ends_with($filename, "/")){
                         $imp = $this->search_for_base_path($filename);
 
-                        $pl = new PlayerIndexjson;
-                        $pl->gamefile_id = $toindex->id;
-                        $pl->key = preg_replace('/(\.\w+$)/','',strtolower($imp));
-                        $pl->value = $imp;
-                        $pl->filename = $filename;
-                        $pl->save();
+                        if(!$imp == ''){
+                            $pl = new PlayerIndexjson;
+                            $pl->gamefile_id = $toindex->id;
+                            $pl->key = preg_replace('/(\.\w+$)/','',strtolower($imp));
+                            $pl->value = $imp;
+                            $pl->filename = $filename;
+                            $pl->save();
+                        }
                     }
                 }
                 $zip->close();
@@ -134,13 +136,17 @@ class PlayerCreateInfo extends Command
         if(starts_with(strtolower($filepath), $searcharray)){
             $imp = str_replace('/','\\/',$filepath);
         }else{
-            $exp = explode('/', $filepath);
-            $res = array_shift($exp);
-            $imp = implode('/', $exp);
-            $imp = $this->search_for_base_path($imp);
+            if(str_contains($filepath, $searcharray)){
+                $exp = explode('/', $filepath);
+                $res = array_shift($exp);
+                $imp = implode('/', $exp);
+                $imp = $this->search_for_base_path($imp);
+            }else{
+                $imp = '';
+            }
         }
 
-        if(starts_with($imp, $filearray)){
+        if(str_contains($imp, $filearray)){
             $imp = '.\\/'.$imp;
         }
 
