@@ -60,7 +60,7 @@ class PlayerCreateInfo extends Command
         $this->info('Es wurden '.$counter.' Gamefiles gefunden.');
 
         $bar = $this->output->createProgressBar(count($toindexed));
-        $bar->setFormat(" \033[44;37m %title:-37s% \033[0m\n %current%/%max% %bar% %percent:3s%%\n 🏁  %remaining:-10s% %memory:37s%");
+        $bar->setFormat(" \033[44;37m %title:-37s% \033[0m\n %current%/%max% %bar% %percent:3s%%\n %remaining:-10s% %memory:37s%");
         $bar->setBarCharacter($done = "\033[32m●\033[0m");
         $bar->setEmptyBarCharacter($empty = "\033[31m●\033[0m");
         $bar->setProgressCharacter($progress = "\033[32m➤ \033[0m");

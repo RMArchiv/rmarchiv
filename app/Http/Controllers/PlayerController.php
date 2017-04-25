@@ -8,20 +8,10 @@ use Illuminate\Http\Request;
 class PlayerController extends Controller
 {
     public function index($gameid, $gamefileid){
-        $gf = GamesFile::whereGameId($gameid)
-            ->where('id', '=', $gamefileid)
-            ->first();
-
-        $gfpath = storage_path('app/public/'.$gf->filename);
-        $playerpath = storage_path('app/public/player/'.$gameid.'/');
-
-        if($gf->extension == '7z'){
-            \Zipper::make($gfpath)->extractTo($playerpath);
-        }elseif($gf->extension == 'zip'){
-
-        }
-
-        dd($gf);
         return view('player.index');
+    }
+
+    public function deliver_files($gameid, $gamefileid, $filename){
+
     }
 }
