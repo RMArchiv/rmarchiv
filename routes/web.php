@@ -304,3 +304,5 @@ Route::group(['middleware' => 'permission:translate-page'], function(){
 });
 
 Route::get('player/{gameid}/{gamefileid}', 'PlayerController@index')->name('player.run');
+Route::get('player/{gameid}/{gamefileid}/games/default/index.json', 'PlayerController@deliver_indexjson')->name('player.deliverindex');
+Route::get('player/{gameid}/{gamefileid}/games/default/{}', 'PlayerController@index')->name('player.run');
