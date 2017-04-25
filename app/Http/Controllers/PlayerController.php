@@ -47,6 +47,7 @@ class PlayerController extends Controller
         $res['title\/title2'] = 'rtp\/2000_title_title2.png';
         $res['title\/title3'] = 'rtp\/2000_title_title3.png';
         $res['title\/title4'] = 'rtp\/2000_title_title4.png';
+        
 
         // $res[''] = '';
 

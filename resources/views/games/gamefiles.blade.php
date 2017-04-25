@@ -55,6 +55,12 @@
                                 [<span title="{{ $gf->reason }}">{{trans('games.gamefiles.download_deleted')}}</span>]
                             @else
                                 [<a href="{{ url('games/download', $gf->fileid) }} " class="down_l">{{trans('games.gamefiles.download')}}</a>]
+                                @php
+                                    $playable = \App\Models\PlayerIndexjson::whereGamefileId($gf->fileid)->get();
+                                @endphp
+                                @if(count($playable) > 0 )
+                                    :: [<a href="{{ route('player.run', [$gf->fileid]) }}">play</a>]
+                                @endif
                             @endif
                             :: [<a href="{{ route('gamefiles.edit', [$gf->gameid, $gf->fileid]) }}">{{trans('games.gamefiles.edit')}}</a>]
                         @if(Auth::user()->settings->is_admin)
