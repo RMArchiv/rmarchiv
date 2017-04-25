@@ -158,7 +158,7 @@ class PlayerCreateInfo extends Command
             }
         }
 
-        if(str_contains($imp, $filearray)){
+        if(starts_with($imp, $filearray)){
             $imp = '.\\/'.$imp;
         }
 
