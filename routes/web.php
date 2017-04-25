@@ -303,6 +303,7 @@ Route::group(['middleware' => 'permission:translate-page'], function(){
     Route::get('translation/{loc1}/{loc2?}/{viewtype?}/{searchterm?}', 'TranslationController@edit')->name('trans.edit');
 });
 
-Route::get('player/{gamefileid}/play', 'PlayerController@index')->name('player.run');
+
 Route::get('player/{gamefileid}/games/default/index.json', 'PlayerController@deliver_indexjson')->name('player.deliverindex');
 Route::get('player/{gamefileid}/games/default/{fileid}', 'PlayerController@index')->name('player.run');
+Route::get('player/{gamefileid}/play', 'PlayerController@index')->name('player.run');
