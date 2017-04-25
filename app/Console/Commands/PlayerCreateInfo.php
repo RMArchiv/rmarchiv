@@ -67,6 +67,7 @@ class PlayerCreateInfo extends Command
                 $zip->open($path);
                 for($i = 0; $i < $zip->numFiles; $i++){
                     $filename = $zip->getNameIndex($i);
+                    echo $filename.PHP_EOL;
 
                     $imp = $this->search_for_base_path($filename);
 
@@ -77,7 +78,7 @@ class PlayerCreateInfo extends Command
                     $pl->filename = $filename;
                     $pl->save();
 
-                    echo $filename.PHP_EOL;
+
                 }
                 $zip->close();
             }else{
