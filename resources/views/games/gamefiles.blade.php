@@ -58,7 +58,7 @@
                                 @php
                                     $playable = \App\Models\PlayerIndexjson::whereGamefileId($gf->fileid)->get();
                                 @endphp
-                                @if(count($playable) > 0 )
+                                @if($playable->count() > 0 )
                                     :: [<a href="{{ route('player.run', [$gf->fileid]) }}">play</a>]
                                 @endif
                             @endif
