@@ -62,28 +62,17 @@ class PlayerCreateInfo extends Command
         foreach ($toindexed as $toindex){
             $this->info('Entpacken von: '.$toindex->game_id.'/'.$toindex->id);
             $path = storage_path('app/public/'.$toindex->filename);
-            $extractto = storage_path('app/public/playertmp/'.$toindex->id);
-            $files = array();
             if($toindex->extension == 'zip'){
                 $zip = new \ZipArchive;
                 $zip->open($path);
                 for($i = 0; $i < $zip->numFiles; $i++){
                     $filename = $zip->getNameIndex($i);
-                    $exp = explode('/', $filename);
-                    $expcount = count($exp);
-                    $imp = '';
-                    if($expcount >= 3){
-                        $exp = array_slice($exp, $expcount - 2);
-                        $imp = implode("\\/", $exp);
-                    }elseif($expcount == 1){
-                        $imp = '.\\/'.$exp[0];
-                    }else{
-                        $imp = implode("\\/", $exp);
-                    }
+
+                    $imp = $this->search_for_base_path($filename);
 
                     $pl = new PlayerIndexjson;
                     $pl->gamefile_id = $toindex->id;
-                    $pl->key = strtolower($imp);
+                    $pl->key = preg_replace('/(\.\w+$)/','',strtolower($imp));
                     $pl->value = $imp;
                     $pl->filename = $filename;
                     $pl->save();
@@ -99,5 +88,61 @@ class PlayerCreateInfo extends Command
         }
 
         $this->info('Fertig.');
+    }
+
+    function search_for_base_path($filepath){
+        $dirarray = [
+            'backdrop',
+            'battle',
+            'battle2',
+            'battlecharset',
+            'battleweapon',
+            'charset',
+            'chipset',
+            'faceset',
+            'frame',
+            'gameover',
+            'monster',
+            'panorama',
+            'picture',
+            'system',
+            'system2',
+            'title',
+            'music',
+            'sound',
+        ];
+
+        $rootarray = [
+            'harmony.dll',
+            'rpg_rt.exe',
+            'rpg_rt.ini',
+            'rpg_rt.ldb',
+            'rpg_rt.lmt',
+            'rpg_rt.dat',
+        ];
+
+        $mapparray = array();
+        for($i = 0; $i < 2000; $i++){
+            $mapparray[] = 'map'.sprintf('%04d', $i).'.lmu';
+        }
+
+        $filearray = array_merge($rootarray, $mapparray);
+
+        $searcharray = array_merge($dirarray, $filearray);
+
+        if(starts_with(strtolower($filepath), $searcharray)){
+            $imp = str_replace('/','\\/',$filepath);
+        }else{
+            $exp = explode('/', $filepath);
+            $res = array_shift($exp);
+            $imp = implode('/', $exp);
+            $imp = search_for_base_path($imp);
+        }
+
+        if(starts_with($imp, $filearray)){
+            $imp = '.\\/'.$imp;
+        }
+
+        return $imp;
     }
 }
