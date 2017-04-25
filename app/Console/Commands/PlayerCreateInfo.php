@@ -83,6 +83,7 @@ class PlayerCreateInfo extends Command
                     $pl->gamefile_id = $toindex->id;
                     $pl->key = strtolower($imp);
                     $pl->value = $imp;
+                    $pl->filename = $filename;
                     $pl->save();
 
                     echo $filename.PHP_EOL;

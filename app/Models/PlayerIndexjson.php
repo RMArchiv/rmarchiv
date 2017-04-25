@@ -20,6 +20,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PlayerIndexjson whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PlayerIndexjson whereValue($value)
  * @mixin \Eloquent
+ * @property string $filename
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\PlayerIndexjson whereFilename($value)
  */
 class PlayerIndexjson extends Model
 {

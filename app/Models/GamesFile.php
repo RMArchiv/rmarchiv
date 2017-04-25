@@ -51,6 +51,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereForbidden($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereReason($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\PlayerIndexjson[] $playerIndex
  */
 class GamesFile extends Model
 {
