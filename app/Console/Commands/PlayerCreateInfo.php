@@ -58,16 +58,26 @@ class PlayerCreateInfo extends Command
         }
 
         $this->info('Es wurden '.$counter.' Gamefiles gefunden.');
-        $this->info('Starte Indizierung der Gamefiles.');
+
+        $bar = $this->output->createProgressBar(count($toindexed));
+        $bar->setFormat(" \033[44;37m %title:-37s% \033[0m\n %current%/%max% %bar% %percent:3s%%\n 🏁  %remaining:-10s% %memory:37s%");
+        $bar->setBarCharacter($done = "\033[32m●\033[0m");
+        $bar->setEmptyBarCharacter($empty = "\033[31m●\033[0m");
+        $bar->setProgressCharacter($progress = "\033[32m➤ \033[0m");
+        $bar->setMessage('Starte indizierung der Gamefiles', 'title');
+        $bar->start();
+
+        $i = 0;
         foreach ($toindexed as $toindex){
-            $this->info('Entpacken von: '.$toindex->game_id.'/'.$toindex->id);
+            $bar->setMessage('Entpacken von: '.$toindex->game_id.'/'.$toindex->id, 'title');
             $path = storage_path('app/public/'.$toindex->filename);
             if($toindex->extension == 'zip'){
                 $zip = new \ZipArchive;
                 $zip->open($path);
                 for($i = 0; $i < $zip->numFiles; $i++){
                     $filename = $zip->getNameIndex($i);
-                    echo $filename.PHP_EOL;
+
+                    $bar->setMessage($filename, 'memory');
 
                     if(!ends_with($filename, "/")){
                         $imp = $this->search_for_base_path($filename);
@@ -88,6 +98,7 @@ class PlayerCreateInfo extends Command
             }
 
             //return;
+            $bar->advance();
         }
 
         $this->info('Fertig.');
