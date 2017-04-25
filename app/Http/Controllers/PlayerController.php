@@ -25,6 +25,11 @@ class PlayerController extends Controller
         return $fp;
     }
 
+    public function deliver_rtp($gamefileid, $fileid, $filename){
+        $path = storage_path('app/public/rtp/'.$filename);
+        return response()->download($path);
+    }
+
     public function deliver_indexjson($gamefileid){
         $index = PlayerIndexjson::whereGamefileId($gamefileid)->get();
 
@@ -32,6 +37,11 @@ class PlayerController extends Controller
         foreach ($index as $ind) {
             $res[$ind->key] = $ind->id;
         }
+
+        $res['system\/system'] = 'rtp\/2000_system_system.png';
+        $res['sound\/decision1'] = 'rtp\/2000_sound_decision1.wav';
+        // $res[''] = '';
+
         $return = str_replace('\/', '/' ,\GuzzleHttp\json_encode($res, JSON_UNESCAPED_SLASHES));
 
         return  $return;

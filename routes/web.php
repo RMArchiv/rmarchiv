@@ -305,5 +305,6 @@ Route::group(['middleware' => 'permission:translate-page'], function(){
 
 
 Route::get('player/{gamefileid}/games/default/index.json', 'PlayerController@deliver_indexjson')->name('player.deliverindex');
-Route::get('player/{gamefileid}/games/default/{fileid}', 'PlayerController@deliver_files')->name('player.run');
+Route::get('player/{gamefileid}/games/default/{fileid}', 'PlayerController@deliver_files')->name('player.files');
+Route::get('player/{gamefileid}/games/default/{fileid}/rtp/{filename}', 'PlayerController@deliver_rtp')->name('player.rtp');
 Route::get('player/{gamefileid}/play', 'PlayerController@index')->name('player.run');
