@@ -23,7 +23,8 @@ class PlayerController extends Controller
         foreach ($index as $ind) {
             $res[$ind->key] = $ind->value;
         }
+        $return = str_replace('\/', '/' ,\GuzzleHttp\json_encode($res, JSON_UNESCAPED_SLASHES));
 
-        return \GuzzleHttp\json_encode($res);
+        return  $return;
     }
 }
