@@ -79,7 +79,7 @@ class PlayerCreateInfo extends Command
 
                     $bar->setMessage($filename, 'filename');
 
-                    if(!ends_with($filename, "/")){
+                    if(!ends_with($filename, "/") and !starts_with($filename, '_MACOSX')){
                         $imp = $this->search_for_base_path($filename);
 
                         if(!$imp == ''){
@@ -153,6 +153,7 @@ class PlayerCreateInfo extends Command
                 $imp = implode('/', $exp);
                 $imp = $this->search_for_base_path($imp);
             }else{
+                echo $filepath.PHP_EOL;
                 $imp = '';
             }
         }
