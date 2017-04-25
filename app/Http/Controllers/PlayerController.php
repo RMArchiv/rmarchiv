@@ -40,6 +40,7 @@ class PlayerController extends Controller
 
         $res['system\/system'] = 'rtp\/2000_system_system.png';
         $res['sound\/decision1'] = 'rtp\/2000_sound_decision1.wav';
+        $res['sound\/decision2'] = 'rtp\/2000_sound_decision2.wav';
         // $res[''] = '';
 
         $return = str_replace('\/', '/' ,\GuzzleHttp\json_encode($res, JSON_UNESCAPED_SLASHES));
