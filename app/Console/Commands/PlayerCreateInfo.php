@@ -69,16 +69,16 @@ class PlayerCreateInfo extends Command
                     $filename = $zip->getNameIndex($i);
                     echo $filename.PHP_EOL;
 
-                    $imp = $this->search_for_base_path($filename);
+                    if(!ends_with($filename, "/")){
+                        $imp = $this->search_for_base_path($filename);
 
-                    $pl = new PlayerIndexjson;
-                    $pl->gamefile_id = $toindex->id;
-                    $pl->key = preg_replace('/(\.\w+$)/','',strtolower($imp));
-                    $pl->value = $imp;
-                    $pl->filename = $filename;
-                    $pl->save();
-
-
+                        $pl = new PlayerIndexjson;
+                        $pl->gamefile_id = $toindex->id;
+                        $pl->key = preg_replace('/(\.\w+$)/','',strtolower($imp));
+                        $pl->value = $imp;
+                        $pl->filename = $filename;
+                        $pl->save();
+                    }
                 }
                 $zip->close();
             }else{
