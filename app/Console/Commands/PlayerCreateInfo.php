@@ -60,7 +60,7 @@ class PlayerCreateInfo extends Command
         $this->info('Es wurden '.$counter.' Gamefiles gefunden.');
 
         $bar = $this->output->createProgressBar(count($toindexed));
-        $bar->setFormat(" \033[44;37m %title:-37s% \033[0m\n %current%/%max% %bar% %percent:3s%%\n 🏁  %remaining:-10s% %filename:37s%");
+        $bar->setFormat(" \033[44;37m %title:-37s% \033[0m\n %current%/%max% %bar% %percent:3s%%\n 🏁  %remaining:-10s% %memory:37s%");
         $bar->setBarCharacter($done = "\033[32m●\033[0m");
         $bar->setEmptyBarCharacter($empty = "\033[31m●\033[0m");
         $bar->setProgressCharacter($progress = "\033[32m➤ \033[0m");
@@ -77,16 +77,17 @@ class PlayerCreateInfo extends Command
                 for($i = 0; $i < $zip->numFiles; $i++){
                     $filename = $zip->getNameIndex($i);
 
-                    $bar->setMessage($filename, 'filename');
-                    $bar->display();
-
                     if(!ends_with($filename, "/") and !starts_with($filename, '_MACOSX')){
                         $imp = $this->search_for_base_path($filename);
 
                         if(!$imp == ''){
                             $pl = new PlayerIndexjson;
                             $pl->gamefile_id = $toindex->id;
-                            $pl->key = preg_replace('/(\.\w+$)/','',strtolower($imp));
+                            if(!ends_with(strtolower($imp), ['.exe', '.lmu', '.ldb', 'ini', '.dll', 'lmt', 'lsd'])){
+                                $pl->key = preg_replace('/(\.\w+$)/','',strtolower($imp));
+                            }else{
+                                $pl->key = strtolower($imp);
+                            }
                             $pl->value = $imp;
                             $pl->filename = $filename;
                             $pl->save();
@@ -102,7 +103,10 @@ class PlayerCreateInfo extends Command
             $bar->advance();
         }
 
+        $bar->finish();
+
         $this->info('Fertig.');
+
     }
 
     function search_for_base_path($filepath){
@@ -158,9 +162,12 @@ class PlayerCreateInfo extends Command
             }
         }
 
-        if(array_search($imp, $filearray)){
-            $imp = '.\\/'.$imp;
+        if($imp != ''){
+            if(array_search(strtolower($imp), $filearray)){
+                $imp = '.\\/'.$imp;
+            }
         }
+
 
         return $imp;
     }
