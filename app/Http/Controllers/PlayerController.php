@@ -37,10 +37,17 @@ class PlayerController extends Controller
         foreach ($index as $ind) {
             $res[$ind->key] = $ind->id;
         }
-
-        $res['system\/system'] = 'rtp\/2000_system_system.png';
+        $res['music\/opening1'] = 'rtp\/2000_music_opening1.mid';
+        $res['music\/opening2'] = 'rtp\/2000_music_opening2.mid';
+        $res['music\/opening3'] = 'rtp\/2000_music_opening3.mid';
         $res['sound\/decision1'] = 'rtp\/2000_sound_decision1.wav';
         $res['sound\/decision2'] = 'rtp\/2000_sound_decision2.wav';
+        $res['system\/system'] = 'rtp\/2000_system_system.png';
+        $res['title\/title1'] = 'rtp\/2000_title_title1.png';
+        $res['title\/title2'] = 'rtp\/2000_title_title2.png';
+        $res['title\/title3'] = 'rtp\/2000_title_title3.png';
+        $res['title\/title4'] = 'rtp\/2000_title_title4.png';
+
         // $res[''] = '';
 
         $return = str_replace('\/', '/' ,\GuzzleHttp\json_encode($res, JSON_UNESCAPED_SLASHES));
