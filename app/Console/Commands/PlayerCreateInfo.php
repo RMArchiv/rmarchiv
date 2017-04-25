@@ -147,7 +147,7 @@ class PlayerCreateInfo extends Command
         if(starts_with(strtolower($filepath), $searcharray)){
             $imp = str_replace('/','\\/',$filepath);
         }else{
-            if(str_contains($filepath, $searcharray)){
+            if(str_contains(strtolower($filepath), $searcharray)){
                 $exp = explode('/', $filepath);
                 $res = array_shift($exp);
                 $imp = implode('/', $exp);
