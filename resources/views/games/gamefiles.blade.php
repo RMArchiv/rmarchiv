@@ -65,7 +65,6 @@
                             :: [<a href="{{ route('gamefiles.edit', [$gf->gameid, $gf->fileid]) }}">{{trans('games.gamefiles.edit')}}</a>]
                         @if(Auth::user()->settings->is_admin)
                             :: [<a href="{{ route("gamefiles.delete", [$gameid, $gf->fileid]) }}">{{trans('games.gamefiles.delete')}}</a>]
-                            :: [<a href="{{ route('player.run', [$gf->fileid]) }}">play</a>]
                         @endif
                         </td>
                     @endif
