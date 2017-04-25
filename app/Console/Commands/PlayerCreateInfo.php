@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\GamesFile;
+use App\Models\PlayerIndexjson;
 use Illuminate\Console\Command;
 
 class PlayerCreateInfo extends Command
@@ -59,28 +60,39 @@ class PlayerCreateInfo extends Command
         $this->info('Es wurden '.$counter.' Gamefiles gefunden.');
         $this->info('Starte Indizierung der Gamefiles.');
         foreach ($toindexed as $toindex){
-            $this->info('Entpacken von: '.$toindex->game()->first()->name);
+            $this->info('Entpacken von: '.$toindex->game_id.'/'.$toindex->id);
             $path = storage_path('app/public/'.$toindex->filename);
             $extractto = storage_path('app/public/playertmp/'.$toindex->id);
             $files = array();
-            if($toindex->extension == 'rar'){
-                continue;
-            }elseif($toindex->extension == 'zip'){
+            if($toindex->extension == 'zip'){
                 $zip = new \ZipArchive;
                 $zip->open($path);
                 for($i = 0; $i < $zip->numFiles; $i++){
                     $filename = $zip->getNameIndex($i);
+                    $exp = explode('/', $filename);
+                    $expcount = count($exp);
+                    $imp = '';
+                    if($expcount >= 3){
+                        $exp = array_slice($exp, $expcount - 2);
+                        $imp = implode("\\/", $exp);
+                    }elseif($expcount == 1){
+                        $imp = '.\\/'.$exp[0];
+                    }
+
+                    $pl = new PlayerIndexjson;
+                    $pl->gamefile_id = $toindex->id;
+                    $pl->key = strtolower($imp);
+                    $pl->value = $imp;
+                    $pl->save();
+
                     echo $filename.PHP_EOL;
                 }
                 $zip->close();
-            }elseif($toindex->extension == '7z'){
-                continue;
             }else{
                 continue;
             }
-            $this->info('Indiziere...');
 
-            return;
+            //return;
         }
 
         $this->info('Fertig.');
