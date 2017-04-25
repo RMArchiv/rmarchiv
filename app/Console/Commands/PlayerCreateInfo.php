@@ -136,7 +136,7 @@ class PlayerCreateInfo extends Command
             $exp = explode('/', $filepath);
             $res = array_shift($exp);
             $imp = implode('/', $exp);
-            $imp = search_for_base_path($imp);
+            $imp = $this->search_for_base_path($imp);
         }
 
         if(starts_with($imp, $filearray)){
