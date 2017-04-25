@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\GamesFile;
 use App\Models\PlayerIndexjson;
+use Composer\Package\Archiver\ZipArchiver;
 use Illuminate\Http\Request;
 
 class PlayerController extends Controller
@@ -12,8 +13,16 @@ class PlayerController extends Controller
         return view('player.index');
     }
 
-    public function deliver_files($gamefileid, $filename){
+    public function deliver_files($gamefileid, $fileid){
+        $gf = GamesFile::whereId($gamefileid)->first();
+        $file = PlayerIndexjson::whereId($fileid)->first();
 
+        $path = storage_path('app/public/'.$gf->filename);
+        $zip = new \ZipArchive;
+        $zip->open($path);
+        $fp = $zip->getFromName($file->filename);
+
+        return $fp;
     }
 
     public function deliver_indexjson($gamefileid){
@@ -21,7 +30,7 @@ class PlayerController extends Controller
 
         $res = array();
         foreach ($index as $ind) {
-            $res[$ind->key] = $ind->value;
+            $res[$ind->key] = $ind->id;
         }
         $return = str_replace('\/', '/' ,\GuzzleHttp\json_encode($res, JSON_UNESCAPED_SLASHES));
 

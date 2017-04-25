@@ -36,6 +36,4 @@ class PlayerIndexjson extends Model
     ];
 
     protected $guarded = [];
-
-        
 }
