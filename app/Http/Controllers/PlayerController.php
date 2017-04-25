@@ -8,15 +8,15 @@ use Illuminate\Http\Request;
 
 class PlayerController extends Controller
 {
-    public function index($gameid, $gamefileid){
+    public function index($gamefileid){
         return view('player.index');
     }
 
-    public function deliver_files($gameid, $gamefileid, $filename){
+    public function deliver_files($gamefileid, $filename){
 
     }
 
-    public function deliver_indexjson($gameid, $gamefileid){
+    public function deliver_indexjson($gamefileid){
         $index = PlayerIndexjson::whereGamefileId($gamefileid)->get();
 
         $res = array();
