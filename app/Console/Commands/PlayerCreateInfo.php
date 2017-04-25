@@ -81,16 +81,14 @@ class PlayerCreateInfo extends Command
                         $imp = implode("\\/", $exp);
                     }
 
-                    if($exp[$expcount - 1] != ''){
-                        $pl = new PlayerIndexjson;
-                        $pl->gamefile_id = $toindex->id;
-                        $pl->key = strtolower($imp);
-                        $pl->value = $imp;
-                        $pl->filename = $filename;
-                        $pl->save();
+                    $pl = new PlayerIndexjson;
+                    $pl->gamefile_id = $toindex->id;
+                    $pl->key = strtolower($imp);
+                    $pl->value = $imp;
+                    $pl->filename = $filename;
+                    $pl->save();
 
-                        echo $filename.PHP_EOL;
-                    }
+                    echo $filename.PHP_EOL;
                 }
                 $zip->close();
             }else{
