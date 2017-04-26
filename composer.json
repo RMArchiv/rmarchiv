@@ -41,7 +41,8 @@
         "msurguy/honeypot": "^1.0",
         "waavi/translation": "^2.2",
         "chumper/zipper": "^1.0",
-        "dmamontov/rararchiver": "^1.0"
+        "dmamontov/rararchiver": "^1.0",
+        "wapmorgan/unified-archive": "^0.0.8"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
