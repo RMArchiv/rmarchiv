@@ -59,6 +59,7 @@ class PlayerRar2Zip extends Command
             }
             closedir($handle);
             $zip->close();
+            echo $f->filename.PHP_EOL;
             echo "fertig";
 
             return;
