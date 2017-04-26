@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3c67f567a4e5c13cb349ec2563c9a37",
+    "content-hash": "4dedae121adc56df233763eb598406ab",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -5125,6 +5125,72 @@
                 "waavi"
             ],
             "time": "2017-03-31T11:08:16+00:00"
+        },
+        {
+            "name": "wapmorgan/unified-archive",
+            "version": "0.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wapmorgan/UnifiedArchive.git",
+                "reference": "753377589cfd660a37d1a84869e2fb1958af378c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wapmorgan/UnifiedArchive/zipball/753377589cfd660a37d1a84869e2fb1958af378c",
+                "reference": "753377589cfd660a37d1a84869e2fb1958af378c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "suggest": {
+                "ext-bz2": "Allows unpack BZ2 files and TAR archives with bzip2 compression.",
+                "ext-rar": "Allows unpack RAR archives.",
+                "ext-xz": "Allows unpack XZ files and TAR archives with lzma2 compression.",
+                "ext-zip": "Allows unpack ZIP archives.",
+                "ext-zlib": "Allows unpack GZ files and TAR archives with gzip compression.",
+                "gemorroj/archive7z": "Allows unpack 7-ZIP archives.",
+                "ncompress": "Allows unpack TAR archives with LZW compression.",
+                "pear/archive_tar": "Allows unpack TAR archives (strongly recommended).",
+                "phpclasses/php-iso-file": "Allows unpack iso-9660 images.",
+                "wapmorgan/cab-archive": "Allows unpack CAB archives."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "wapmorgan\\UnifiedArchive\\": "src/"
+                },
+                "files": [
+                    "src/function.gzip_stat.php",
+                    "src/REGISTER_LZW_STREAM_WRAPPER.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "wapmorgan",
+                    "email": "wapmorgan@gmail.com",
+                    "role": "developer"
+                }
+            ],
+            "description": "UnifiedArchive - unified interface to archive (zip, 7z, rar, gz, bz2, xz, cab, tar, tar.gz, tar.bz2, tar.x, tar.Z, iso-9660) for listing, reading, extracting and creation + built-in console packer and unpacker + fully implemented PclZip-like interface (create, listContent, extract, properties, add, delete, merge, duplicate).",
+            "keywords": [
+                "7z",
+                "archive",
+                "bzip2",
+                "cab",
+                "gzip",
+                "iso-9660",
+                "lzma2",
+                "ncompress",
+                "rar",
+                "tar",
+                "zip"
+            ],
+            "time": "2017-01-24T16:40:13+00:00"
         },
         {
             "name": "watson/sitemap",
