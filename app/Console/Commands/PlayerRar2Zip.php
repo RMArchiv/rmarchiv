@@ -42,6 +42,7 @@ class PlayerRar2Zip extends Command
 
         foreach ($files as $f){
             //entpacken
+            echo "Gamefile: $f->filename\n";
             $pathrar = storage_path('app/public/'.$f->filename);
             $pathzip = str_replace('.rar', '.zip', $f->filename );
             $pathdest = storage_path('app/public/games/'.$f->id.'/');
@@ -55,7 +56,7 @@ class PlayerRar2Zip extends Command
             while (false !== ($file = readdir($handle)))
             {
                 $zip->addFile($pathdest.'/'.$file);
-                echo "$file\n";
+                echo "File: $file\n";
             }
             closedir($handle);
             $zip->close();
