@@ -42,7 +42,7 @@ class PlayerRar2Zip extends Command
 
         foreach ($files as $f){
             //entpacken
-            echo "Gamefile: $f->filename\n";
+            echo "Gamefile: $f->filename";
             $pathrar = storage_path('app/public/'.$f->filename);
             $pathzip = storage_path('app/public/'.str_replace('.rar', '.zip', $f->filename ));
             $pathdest = storage_path('app/public/games/'.$f->id.'/');
@@ -56,13 +56,18 @@ class PlayerRar2Zip extends Command
 
             $handle = opendir($pathdest);
 
-            echo "Ziel: $pathzip\n";
             $this->Zip($pathdest, $pathzip);
             $this->Delete($pathdest);
-            echo $f->filename.PHP_EOL;
-            echo "fertig";
 
-            return;
+            $upd = GamesFile::whereId($f->id)->first();
+            $upd->extension = "zip";
+            $upd->filename = str_replace('.rar', '.zip', $f->filename );
+            $upd->filesize = \Storage::size($pathzip);
+            $upd->save();
+
+            unlink($pathrar);
+
+            echo " - done\n";
         }
     }
 
