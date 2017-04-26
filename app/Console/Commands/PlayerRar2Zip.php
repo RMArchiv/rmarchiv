@@ -56,17 +56,8 @@ class PlayerRar2Zip extends Command
 
             $handle = opendir($pathdest);
 
-            $zip = new \ZipArchive();
             echo "Ziel: $pathzip\n";
-            $zip->open($pathzip, \ZIPARCHIVE::CREATE);
-            while (false !== ($file = readdir($handle)))
-            {
-                echo "Add File: $file";
-                $zip->addFile($pathdest.'/'.$file);
-                echo " - done\n";
-            }
-            closedir($handle);
-            $zip->close();
+            $this->Zip($pathdest, $pathzip);
             $this->Delete($pathdest);
             echo $f->filename.PHP_EOL;
             echo "fertig";
@@ -106,5 +97,50 @@ class PlayerRar2Zip extends Command
         }
 
         return false;
+    }
+
+    function Zip($source, $destination)
+    {
+        if (!extension_loaded('zip') || !file_exists($source)) {
+            return false;
+        }
+
+        $zip = new \ZipArchive();
+        if (!$zip->open($destination, \ZIPARCHIVE::CREATE)) {
+            return false;
+        }
+
+        $source = str_replace('\\', '/', realpath($source));
+
+        if (is_dir($source) === true)
+        {
+            $files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($source), \RecursiveIteratorIterator::SELF_FIRST);
+
+            foreach ($files as $file)
+            {
+                $file = str_replace('\\', '/', $file);
+
+                // Ignore "." and ".." folders
+                if( in_array(substr($file, strrpos($file, '/')+1), array('.', '..')) )
+                    continue;
+
+                $file = realpath($file);
+
+                if (is_dir($file) === true)
+                {
+                    $zip->addEmptyDir(str_replace($source . '/', '', $file . '/'));
+                }
+                else if (is_file($file) === true)
+                {
+                    $zip->addFromString(str_replace($source . '/', '', $file), file_get_contents($file));
+                }
+            }
+        }
+        else if (is_file($source) === true)
+        {
+            $zip->addFromString(basename($source), file_get_contents($source));
+        }
+
+        return $zip->close();
     }
 }
