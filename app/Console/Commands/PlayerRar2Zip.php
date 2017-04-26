@@ -44,14 +44,14 @@ class PlayerRar2Zip extends Command
             //entpacken
             $pathrar = storage_path('app/public/'.$f->filename);
             $pathzip = str_replace('.rar', '.zip', $f->filename );
-            $pathdest = storage_path('app/public/'.$f->id.'/');
+            $pathdest = storage_path('app/public/games/'.$f->id.'/');
             $command = 'unrar x \''.$pathrar.'\' '.$pathdest;
             exec($command);
 
             $handle = opendir($pathdest);
 
             $zip = new \ZipArchive();
-            $zip->open($pathzip);
+            $zip->open($pathzip, \ZIPARCHIVE::CREATE);
             while (false !== ($file = readdir($handle)))
             {
                 $zip->addFile($pathdest.'/'.$file);
