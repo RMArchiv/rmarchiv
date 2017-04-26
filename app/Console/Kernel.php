@@ -23,6 +23,7 @@ class Kernel extends ConsoleKernel
         Commands\setReldate::class,
         Commands\setVotes::class,
         Commands\PlayerCreateInfo::class,
+        Commands\PlayerRar2Zip::class,
     ];
 
     /**
