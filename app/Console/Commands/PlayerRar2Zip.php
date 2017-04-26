@@ -46,12 +46,18 @@ class PlayerRar2Zip extends Command
             $pathrar = storage_path('app/public/'.$f->filename);
             $pathzip = storage_path('app/public/'.str_replace('.rar', '.zip', $f->filename ));
             $pathdest = storage_path('app/public/games/'.$f->id.'/');
+
+            //löschen der eventuell vorhandenen tempdateien
+            $this->Delete($pathdest);
+
+
             $command = 'unrar x \''.$pathrar.'\' '.$pathdest;
             exec($command);
 
             $handle = opendir($pathdest);
 
             $zip = new \ZipArchive();
+            echo "Ziel: $pathzip\n";
             $zip->open($pathzip, \ZIPARCHIVE::CREATE);
             while (false !== ($file = readdir($handle)))
             {
