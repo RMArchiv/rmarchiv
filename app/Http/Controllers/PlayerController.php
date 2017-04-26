@@ -70,6 +70,8 @@ class PlayerController extends Controller
         $res['music\/town4'] = 'rtp\/music_town4.mid';
         $res['music\/town5'] = 'rtp\/music_town5.mid';
 
+        $res['picture\/cloud'] = 'rtp\/picture_cloud.png';
+
         $res['sound\/cursor1'] = 'rtp\/sound_cursor1.wav';
         $res['sound\/cursor2'] = 'rtp\/sound_cursor2.wav';
         $res['sound\/decision1'] = 'rtp\/sound_decision1.wav';
