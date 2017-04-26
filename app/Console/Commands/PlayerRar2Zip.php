@@ -62,7 +62,6 @@ class PlayerRar2Zip extends Command
             $upd = GamesFile::whereId($f->id)->first();
             $upd->extension = "zip";
             $upd->filename = str_replace('.rar', '.zip', $f->filename );
-            $upd->filesize = \Storage::size($pathzip);
             $upd->save();
 
             unlink($pathrar);
