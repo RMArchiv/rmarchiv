@@ -38,7 +38,7 @@ class PlayerRar2Zip extends Command
      */
     public function handle()
     {
-        $files = GamesFile::whereExtension('rar')->get();
+        $files = GamesFile::whereExtension('rar')->orderBy('filesize', 'asc')->get();
 
         foreach ($files as $f){
             //entpacken
@@ -61,8 +61,9 @@ class PlayerRar2Zip extends Command
             $zip->open($pathzip, \ZIPARCHIVE::CREATE);
             while (false !== ($file = readdir($handle)))
             {
+                echo "Add File: $file";
                 $zip->addFile($pathdest.'/'.$file);
-                echo "File: $file\n";
+                echo " - done\n";
             }
             closedir($handle);
             $zip->close();
