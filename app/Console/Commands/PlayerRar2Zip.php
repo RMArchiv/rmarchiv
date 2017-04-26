@@ -44,7 +44,7 @@ class PlayerRar2Zip extends Command
             //entpacken
             echo "Gamefile: $f->filename\n";
             $pathrar = storage_path('app/public/'.$f->filename);
-            $pathzip = str_replace('.rar', '.zip', $f->filename );
+            $pathzip = storage_path('app/public/'.str_replace('.rar', '.zip', $f->filename ));
             $pathdest = storage_path('app/public/games/'.$f->id.'/');
             $command = 'unrar x \''.$pathrar.'\' '.$pathdest;
             exec($command);
