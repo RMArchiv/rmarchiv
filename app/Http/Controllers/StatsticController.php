@@ -218,7 +218,7 @@ class StatsticController extends Controller
             ->leftJoin('games_developer', 'games_developer.game_id', '=', 'games_files.game_id')
             ->select('games_files.release_year as year')
             ->selectRaw('COUNT(games_files.release_year) as count')
-            ->where('games_developer.id', '=', 6)
+            ->where('games_developer.developer_id', '=', 6)
             ->groupBy('games_files.release_year')
             ->orderBy('games_files.release_year')
             ->get();
