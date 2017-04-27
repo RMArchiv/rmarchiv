@@ -39,8 +39,6 @@ class PlayerController extends Controller
     }
 
     public function deliver_indexjson($gamefileid){
-        dd($_GET);
-
         $index = PlayerIndexjson::whereGamefileId($gamefileid)->get();
         $res = array();
 
