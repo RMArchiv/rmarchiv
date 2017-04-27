@@ -2,6 +2,9 @@
 [![StyleCI](https://styleci.io/repos/80870043/shield?branch=master)](https://styleci.io/repos/80870043)
 
 ## Quartier 2.5 - Laravel Edition
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/917c606317db4fa5b1c9c2643fc2ea57)](https://www.codacy.com/app/rygos/rmarchiv?utm_source=github.com&utm_medium=referral&utm_content=rygos/rmarchiv&utm_campaign=badger)
+
 Es wird... Echtjetzt.
 
 ## Vorbereitung für Entwicklung
