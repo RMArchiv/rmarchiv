@@ -145,5 +145,6 @@ return [
         'no_permissions'          => 'keine berechtigung',
         'no_permissions_body'     => 'die fehlen leider die berechtigungen hier zu kommentieren.',
         'no_id'                   => 'wenn du dir diese seite genau anschaust, dann wirst du merken das dein gesuchtes spiel nicht existiert... ... =O',
+        'play_in_browser'         => 'Im Browser spielen',
     ],
 ];
