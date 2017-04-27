@@ -116,6 +116,7 @@ Route::post('resources/upload', 'FineUploaderController@endpoint@upload')->name(
 //User Routings
 Route::get('users', 'UserController@index');
 Route::get('users/activity', 'UserController@activity_index');
+Route::get('users/online', 'UserController@users_online');
 Route::get('users/{id}', 'UserController@show')->name('users.show');
 
 //PN Routen

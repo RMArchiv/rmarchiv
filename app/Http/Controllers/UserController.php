@@ -9,6 +9,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserObyx;
+use App\Models\UserOnline;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
 
@@ -113,6 +114,14 @@ class UserController extends Controller
 
         return view('users.activity.index', [
             'obyx' => $data,
+        ]);
+    }
+
+    public function users_online(){
+        $uo = UserOnline::orderBy('created_at', 'desc')->get();
+
+        return view('users.online', [
+            'uo' =>$uo,
         ]);
     }
 }

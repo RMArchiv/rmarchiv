@@ -58,6 +58,11 @@ return [
 
         ],
     ],
+    'online' => [
+        'username' => 'benutzername',
+        'last_page' => 'zuletzt besuchte seite',
+        'last_action_date' => 'letzte aktion am',
+    ],
 ];
 
 // {{ trans('') }}

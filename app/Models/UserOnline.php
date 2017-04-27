@@ -39,4 +39,8 @@ class UserOnline extends Model
     ];
 
     protected $guarded = [];
+
+    public function user(){
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
 }
