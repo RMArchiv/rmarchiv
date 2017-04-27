@@ -46,7 +46,16 @@ class PlayerCreateInfo extends Command
         $counter = 0;
         $toindexed = array();
 
+        $bar = $this->output->createProgressBar($gamefiles->count());
+        $bar->setFormat(" \033[44;37m %title:-37s% \033[0m\n %current%/%max% %bar% %percent:3s%%\n %remaining:-10s% %memory:37s%");
+        $bar->setBarCharacter($done = "\033[32m●\033[0m");
+        $bar->setEmptyBarCharacter($empty = "\033[31m●\033[0m");
+        $bar->setProgressCharacter($progress = "\033[32m➤ \033[0m");
+        $bar->setMessage('prüfe für neue Gamefiles', 'title');
+        $bar->start();
+
         foreach ($gamefiles as $gamefile) {
+            $bar->setMessage('Prüfen von: '.$gamefile->id, 'title');
             $makerid = $gamefile->game()->first()->maker_id;
 
             if($makerid == 2 or $makerid == 3 or $makerid == 9){
@@ -55,7 +64,11 @@ class PlayerCreateInfo extends Command
                     $counter += 1;
                 }
             }
+            $bar->advance();
         }
+
+        $bar->finish();
+
 
         $this->info('Es wurden '.$counter.' Gamefiles gefunden.');
 
