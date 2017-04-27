@@ -187,6 +187,13 @@
                                         <td><a href="http://www.rpg-atelier.net/index.php?site=showgame&gid={{ $game->atelier_id }}" target="_blank">{{ trans('games.show.website_click') }}</a></td>
                                     </tr>
                                 @endif
+                                <tr>
+                                    <td>Im Browser spielen:</td>
+                                    <td><a href="{{ action('PlayerController@index', $game->gamefiles->first()->id) }}"><img src="/assets/play_button.png" alt="play"></a></td>
+                                </tr>
+                                @if(Auth::check())
+
+                                @endif
                             </table>
                         </td>
                     </tr>
