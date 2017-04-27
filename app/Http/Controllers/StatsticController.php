@@ -213,9 +213,9 @@ class StatsticController extends Controller
         }
         $lava->PieChart('MakerChart', $com, $lava_config);
 
-        // Kommentare pro Monat
+        // Kelven Stats...
         $gamesperyear = \DB::table('games_files')
-            ->leftJoin('games_developer', 'games_developer.game_id', '=', 'games_files.id')
+            ->leftJoin('games_developer', 'games_developer.game_id', '=', 'games_files.game_id')
             ->select('games_files.release_year as year')
             ->selectRaw('COUNT(games_files.release_year) as count')
             ->where('games_developer.id', '=', 6)
