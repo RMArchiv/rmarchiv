@@ -7,6 +7,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Developer;
+use App\Models\GamesDeveloper;
+use App\Models\GamesFile;
 use App\Models\Maker;
 use Khill\Lavacharts\Lavacharts;
 
@@ -209,6 +212,23 @@ class StatsticController extends Controller
             $com->addRow([$maker->title, $maker->games->count()]);
         }
         $lava->PieChart('MakerChart', $com, $lava_config);
+
+        // Kommentare pro Monat
+        $gamesperyear = \DB::table('games_files')
+            ->leftJoin('games_developer', 'games_developer.game_id', '=', 'games_files.id')
+            ->select('games_files.release_year as year')
+            ->selectRaw('COUNT(games_files.release_year) as count')
+            ->where('games_developer.id', '=', 6)
+            ->groupBy('games_files.release_year')
+            ->orderBy('games_files.release_year')
+            ->get();
+        $com = $lava->DataTable();
+        $com->addStringColumn('Datum')
+            ->addNumberColumn('Releases pro Jahr');
+        foreach ($gamesperyear as $game) {
+            $com->addRow([$game->year, $game->count]);
+        }
+        $lava->AreaChart('PlayerReleases', $com, $lava_config);
 
         return view('statistics.index', [
             'lava' => $lava,

@@ -73,6 +73,11 @@
         </div>
         <div style="width: 50%; float: left;">
             <div class="rmarchivtbl" style="width: 95%">
+                <h2>Kelven...</h2>
+                <div id="relkelven_div"></div>
+                <div class='foot'>=D</div>
+            </div>
+            <div class="rmarchivtbl" style="width: 95%">
                 <h2>{{ trans('statistics.index.releases_month') }}</h2>
                 <div id="relmon_div"></div>
                 <div class='foot'>=D</div>
@@ -95,5 +100,6 @@
         {!! $lava->render('AreaChart', 'ReleasesMon', 'relmon_div') !!}
         {!! $lava->render('AreaChart', 'ForumPosts', 'boardposts_div') !!}
         {!! $lava->render('PieChart', 'MakerChart', 'makerchart_div') !!}
+        {!! $lava->render('AreaChart', 'PlayerReleases', 'relkelven_div') !!}
     </div>
 @endsection
