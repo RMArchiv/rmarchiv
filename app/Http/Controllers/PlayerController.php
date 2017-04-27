@@ -9,8 +9,16 @@ use Illuminate\Http\Request;
 
 class PlayerController extends Controller
 {
+    public function api_savegames_get($gamefileid){
+
+    }
+
     public function index($gamefileid){
-        return view('player.index');
+        if(\Auth::check()){
+            return view('player.index');
+        }else{
+            return redirect()->action('IndexController@index');
+        }
     }
 
     public function deliver_files($gamefileid, $fileid){
@@ -31,6 +39,8 @@ class PlayerController extends Controller
     }
 
     public function deliver_indexjson($gamefileid){
+        dd($_GET);
+
         $index = PlayerIndexjson::whereGamefileId($gamefileid)->get();
         $res = array();
 
