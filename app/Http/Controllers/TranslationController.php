@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Waavi\Translation\Repositories\LanguageRepository;
 use Waavi\Translation\Repositories\TranslationRepository;
 
@@ -55,7 +56,7 @@ class TranslationController extends Controller
         ]);
     }
 
-    public function savestring(\Request $request){
+    public function savestring(Request $request){
         dd($request);
     }
 }
