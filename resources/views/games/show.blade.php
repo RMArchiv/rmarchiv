@@ -188,13 +188,14 @@
                                     </tr>
                                 @endif
                                 @if(Auth::check())
-                                    @if($game->maker_id == 2 or $game->maker_id == 3 or $game->maker_id == 9)
-                                        <tr>
-                                            <td>{{ trans('games.show.play_in_browser') }}:</td>
-                                            <td><a href="{{ action('PlayerController@index', $game->gamefiles->first()->id) }}"><img src="/assets/play_button.png" alt="play"></a></td>
-                                        </tr>
+                                    @if($game->gamefiles->count() != 0)
+                                        @if($game->maker_id == 2 or $game->maker_id == 3 or $game->maker_id == 9)
+                                            <tr>
+                                                <td>{{ trans('games.show.play_in_browser') }}:</td>
+                                                <td><a href="{{ action('PlayerController@index', $game->gamefiles->first()->id) }}"><img src="/assets/play_button.png" alt="play"></a></td>
+                                            </tr>
+                                        @endif
                                     @endif
-
                                 @endif
                             </table>
                         </td>
