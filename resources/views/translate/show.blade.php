@@ -14,9 +14,10 @@
                     <td>{{ $l->item }}</td>
                     <td>{{ $l->text }}</td>
                     <td>
-                        {!! Form::open(['method' => 'PUT', 'route' => ['trans.save']]) !!}
+                        {!! Form::open(['method' => 'POST', 'route' => ['trans.save']]) !!}
                             {!! Form::hidden('loc1', $loc1) !!}
                             {!! Form::hidden('loc2', $loc2) !!}
+                            {!! Form::hidden('id', $l->id) !!}
                             <input name="transstring" id="transstring" value=""/>
                             <input type="submit" value="!">
                         {!! Form::close() !!}
