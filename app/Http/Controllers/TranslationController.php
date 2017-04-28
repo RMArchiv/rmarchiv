@@ -56,6 +56,6 @@ class TranslationController extends Controller
     }
 
     public function savestring(\Request $request){
-
+        dd($request);
     }
 }
