@@ -194,6 +194,7 @@
                                             <td><a href="{{ action('PlayerController@index', $game->gamefiles->first()->id) }}"><img src="/assets/play_button.png" alt="play"></a></td>
                                         </tr>
                                     @endif
+
                                 @endif
                             </table>
                         </td>
