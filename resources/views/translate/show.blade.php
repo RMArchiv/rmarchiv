@@ -13,7 +13,14 @@
                     <td>{{ $l->group }}</td>
                     <td>{{ $l->item }}</td>
                     <td>{{ $l->text }}</td>
-                    <td></td>
+                    <td>
+                        {!! Form::open(['method' => 'PUT', 'route' => ['trans.save']]) !!}
+                            {!! Form::hidden('loc1', $loc1) !!}
+                            {!! Form::hidden('loc2', $loc2) !!}
+                            <input name="transstring" id="transstring" value=""/>
+                            <input type="submit" value="!">
+                        {!! Form::close() !!}
+                    </td>
                 </tr>
             @endforeach
         </table>
