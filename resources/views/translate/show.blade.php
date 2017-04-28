@@ -17,6 +17,7 @@
                         {!! Form::open(['method' => 'POST', 'route' => ['trans.save']]) !!}
                             {!! Form::hidden('loc1', $loc1) !!}
                             {!! Form::hidden('loc2', $loc2) !!}
+                            {!! Form::hidden('loc1_orig', $l->text) !!}
                             {!! Form::hidden('id', $l->id) !!}
                             <input name="transstring" id="transstring" value=""/>
                             <input type="submit" value="!">
