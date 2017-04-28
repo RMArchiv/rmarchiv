@@ -23,6 +23,11 @@
         </td>
     </tr>
     <tr>
+        <td class="r1">
+            neuester user: <a href="{{ action('UserController@show', $newuser->id) }}">{{ $newuser->name }}</a>
+        </td>
+    </tr>
+    <tr>
         <td class='r1'>
             {{ number_format($stats->logocount, 0, ',', '.') }} <a href='{{ url('logo/vote') }}'>{{ trans('index.stats.logos') }}</a>
         </td>

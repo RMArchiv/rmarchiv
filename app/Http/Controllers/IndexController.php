@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Carbon\Carbon;
 use App\Models\Game;
 use App\Models\News;
@@ -134,6 +135,8 @@ class IndexController extends Controller
         $latestcomments = Comment::with('game')->whereContentType('game')->orderBy('created_at', 'desc')->limit(5)->get();
         $randomgame = Game::inRandomOrder()->first();
 
+        $newuser = User::orderBy('created_at', 'desc')->first();
+
         return view('index.index', [
             'news' => $news,
             'shoutbox' => $shoutbox,
@@ -151,6 +154,7 @@ class IndexController extends Controller
             'latestcomments' => $latestcomments,
             'size' => $size,
             'randomgame' => $randomgame,
+            'newuser' => $newuser,
         ]);
     }
 }
