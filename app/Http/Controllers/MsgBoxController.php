@@ -14,9 +14,9 @@ class MsgBoxController extends Controller
     public function submit_logo()
     {
         $msg = [
-            'title'       => trans('app.submit.logo.success.title'),
-            'msg'         => trans('app.submit.logo.success.msg'),
-            'redirect'    => trans('app.submit.logo.success.redirect'),
+            'title'       => trans('msgbox.logo.title'),
+            'msg'         => trans('msgbox.logo.msg'),
+            'redirect'    => trans('msgbox.logo.redirect'),
             'redirect_to' => url('logo/vote'),
         ];
 
@@ -26,9 +26,9 @@ class MsgBoxController extends Controller
     public function comment_add($type, $id)
     {
         $msg = [
-            'title'    => trans('app.news.comments.success.title'),
-            'msg'      => trans('app.news.comments.success.msg'),
-            'redirect' => trans('app.news.comments.success.redirect'),
+            'title'    => trans('msgbox.comment.title'),
+            'msg'      => trans('msgbox.comment.msg'),
+            'redirect' => trans('msgbox.comment.redirect'),
         ];
 
         if ($type == 'news') {
@@ -47,9 +47,9 @@ class MsgBoxController extends Controller
     public function game_add($id)
     {
         $msg = [
-            'title'       => trans('app.games.add.success.title'),
-            'msg'         => trans('app.games.add.success.msg'),
-            'redirect'    => trans('app.games.add.success.redirect'),
+            'title'       => trans('msgbox.game.title'),
+            'msg'         => trans('msgbox.game.msg'),
+            'redirect'    => trans('msgbox.game.redirect'),
             'redirect_to' => url('games', $id),
         ];
 
@@ -59,9 +59,9 @@ class MsgBoxController extends Controller
     public function screenshot_add($gameid)
     {
         $msg = [
-            'title'       => 'screenshot erfolgreich hinzugefügt',
-            'msg'         => 'der screenshot wurde erfolgreich hinzugefügt',
-            'redirect'    => 'zurück zum spiel...',
+            'title'       => trans('msgbox.screenshot.title'),
+            'msg'         => trans('msgbox.screenshot.msg'),
+            'redirect'    => trans('msgbox.screenshot.redirect'),
             'redirect_to' => url('games', $gameid),
         ];
 
@@ -71,9 +71,9 @@ class MsgBoxController extends Controller
     public function cdc_add()
     {
         $msg = [
-            'title'       => 'coup de coeur erfolgreich hinzugefügt',
-            'msg'         => 'coup de coeur wurde erfolgreich hinzugefügt',
-            'redirect'    => 'zurück zum index...',
+            'title'       => trans('msgbox.cdc.title'),
+            'msg'         => trans('msgbox.cdc.msg'),
+            'redirect'    => trans('msgbox.cdc.redirect'),
             'redirect_to' => url('/'),
         ];
 

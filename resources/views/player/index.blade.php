@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>EasyRPG Player</title>
+    <title>{{ trans('player.title') }}</title>
     <style>
         body {
             font-family: sans-serif;
@@ -72,7 +72,7 @@
     <input type="button" value="Full screen" onclick="if (Module.requestFullScreen) Module.requestFullScreen()">
 </div>
 
-<div id="status">Downloading...</div>
+<div id="status">{{ trans('player.index.downloading') }}</div>
 
 <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
 
@@ -105,7 +105,7 @@
             // application robust, you may want to override this behavior before shipping!
             // See http://www.khronos.org/registry/webgl/specs/latest/1.0/#5.15.2
             canvas.addEventListener("webglcontextlost", function (e) {
-                alert('WebGL context lost. You will need to reload the page.');
+                alert('{{ trans('player.index.webgl_error') }}');
                 e.preventDefault();
             }, false);
 
@@ -119,12 +119,12 @@
         totalDependencies: 0,
         monitorRunDependencies: function (left) {
             this.totalDependencies = Math.max(this.totalDependencies, left);
-            Module.setStatus(left ? 'Preparing... (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')' : 'Downloading game data...');
+            Module.setStatus(left ? '{{ trans('player.index.prep') }} (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')' : '{{ trans('player.index.gamedata_download') }}');
         }
     };
-    Module.setStatus('Downloading...');
+    Module.setStatus('{{ trans('player.index.downloading') }}');
     window.onerror = function (event) {
-        Module.setStatus('Exception thrown, see JavaScript console');
+        Module.setStatus('{{ trans('player.index.exception') }}');
         Module.setStatus = function (text) {
             if (text) Module.printErr('[post-exception status] ' + text);
         };

@@ -57,8 +57,6 @@ class PlayerCreateInfo extends Command
             }
         }
 
-
-
         $this->info('Es wurden '.$counter.' Gamefiles gefunden.');
 
         $bar = $this->output->createProgressBar(count($toindexed));

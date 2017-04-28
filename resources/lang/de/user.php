@@ -36,31 +36,31 @@ return [
     ],
     'activity' => [
         'index' => [
-            'title' => 'aktivitätshistorie',
+            'title'    => 'aktivitätshistorie',
             'obyx_for' => 'obyx für',
-        ]
+        ],
     ],
     'entrust'  => [
 
     ],
     'lists'    => [
         'create' => [
-            'title' => 'benutzerliste erstellen',
-            'error' => 'benutzerliste konnte nicht erstellt werden',
+            'title'      => 'benutzerliste erstellen',
+            'error'      => 'benutzerliste konnte nicht erstellt werden',
             'list_title' => 'listtitel',
-            'desc' => 'listenbeschreibung',
-            'send' => 'liste erstellen',
+            'desc'       => 'listenbeschreibung',
+            'send'       => 'liste erstellen',
         ],
-        'index' => [
+        'index'  => [
 
         ],
-        'show' => [
+        'show'   => [
 
         ],
     ],
-    'online' => [
-        'username' => 'benutzername',
-        'last_page' => 'zuletzt besuchte seite',
+    'online'   => [
+        'username'         => 'benutzername',
+        'last_page'        => 'zuletzt besuchte seite',
         'last_action_date' => 'letzte aktion am',
     ],
 ];
