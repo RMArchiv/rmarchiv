@@ -57,7 +57,7 @@ class TranslationController extends Controller
     }
 
     public function savestring(Request $request){
-        $this->translationRepository->updateAndLock($request->get('id'), $request->get('transstring'));
+        $this->translationRepository->translateText($request->get('transstring'), $request->get('loc2'), $request->get('loc1'));
 
         return redirect()->action('TranslationController@edit', [$request->get('loc1'), $request->get('loc2')]);
     }
