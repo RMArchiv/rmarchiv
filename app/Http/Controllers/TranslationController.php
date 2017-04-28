@@ -54,4 +54,8 @@ class TranslationController extends Controller
             'loc2' => $loc2,
         ]);
     }
+
+    public function savestring(\Request $request){
+
+    }
 }
