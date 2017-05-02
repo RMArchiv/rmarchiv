@@ -9,6 +9,7 @@ elixir(function(mix) {
         'sass':         './resources/assets/sass/',
         'jquery':       './bower_components/jquery/dist/',
         'jquery_ui':    './bower_components/jquery-ui/',
+        'bootstrap':    './node_modules/bootstrap-sass/assets/javascripts/',
         'typeahead':    './bower_components/typeahead.js/dist/',
         'fineuploader': './bower_components/fine-uploader/dist/',
         'jqcloud2':     './bower_components/jqcloud2/dist/',
@@ -28,6 +29,7 @@ elixir(function(mix) {
         .scripts([
             paths.jquery           + 'jquery.js',
             paths.jquery_ui        + 'jquery-ui.js',
+            paths.bootstrap        + 'bootstrap.js',
             paths.typeahead        + 'typeahead.bundle.js',
             paths.fineuploader     + 'fine-uploader.js',
             paths.jqcloud2         + 'jqcloud.js',

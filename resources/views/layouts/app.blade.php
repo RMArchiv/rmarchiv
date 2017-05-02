@@ -44,13 +44,13 @@
     \App\Helpers\DatabaseHelper::setOnline(Request::url());
 @endphp
 
-@include('_partials.header')
+{{--  @include('_partials.header') --}}
 @include('_partials.navigation', ['part' => 'toppart'])
 @include('_partials.banned')
 
 @yield('content')
 
-@include('_partials.navigation', ['part' => 'bottompart'])
+{{-- @include('_partials.navigation', ['part' => 'bottompart']) --}}
 @include('_partials.footer')
 
 </body>

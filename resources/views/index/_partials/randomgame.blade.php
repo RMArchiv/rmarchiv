@@ -1,12 +1,13 @@
-<div class='rmarchivtbl' id='rmarchivbox_cdc'>
-    <h2>{{ trans('index.randomgame.title') }}</h2>
-    <ul class='boxlist boxlisttable'>
-        <li>
+<div class="row">
+    <div class="list-group">
+        <ul class='boxlist boxlisttable'>
+            <li class="list-group-item active">{{ trans('index.randomgame.title') }}</li>
+            <li  class="list-group-item">
                 <span class="rowprod">
                     <img width="100%" src="{{ route('screenshot.show', [$randomgame->id, 1]) }}"/>
                 </span>
-        </li>
-        <li>
+            </li>
+            <li class="list-group-item">
             <span class='rowprod'>
                 <span class='prodentry'>
                     @if($randomgame->gamefiles)
@@ -36,7 +37,7 @@
                     </span>
                 </span>
             </span>
-        </li>
-    </ul>
-    <div class='foot'></div>
+            </li>
+        </ul>
+    </div>
 </div>
