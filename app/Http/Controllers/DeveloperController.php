@@ -49,6 +49,7 @@ class DeveloperController extends Controller
     {
         $games = Game::with('developers')
             ->leftjoin('games_developer as gd', 'gd.game_id', '=', 'games.id')
+            ->Join('developer', 'gd.developer_id', '=', 'developer.id')
             ->where('gd.developer_id', '=', $id)
             ->orderBy($orderby, $direction)
             ->paginate(20, [
