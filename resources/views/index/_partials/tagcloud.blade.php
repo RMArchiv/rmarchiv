@@ -14,13 +14,25 @@
                         $cloud->addTag([
                             'tag' => $tag->tag->title,
                             'url' => action('TaggingController@showGames', $tag->tag->id),
+                            'id' => $tag->tag->id,
                         ])
                     @endphp
                 @endforeach
                 @php
                     $cloud->setHtmlizeTagFunction(function($tag, $size) {
-                        $link = '<a class="w'.$size.'" href="'.$tag['url'].'">'.$tag['tag'].'</a>';
-                        return "<span class='jqcloud'>{$link}</span> ";
+                        $btnsize = '';
+                        if($size <= 3){
+                            $btnsize = 'btn-xs';
+                        }elseif($size <= 5){
+                            $btnsize = 'btn-sm';
+                        }elseif($size <= 7){
+                            $btnsize = '';
+                        }else{
+                            $btnsize = 'btn-lg';
+                        }
+                        $counter = \App\Models\TagRelation::whereTagId($tag['id'])->count();
+                        $link = '<a class="btn btn-default '.$btnsize.'" href="'.$tag['url'].'">'.$tag['tag'].'<span class="badge">'.$counter.'</span></a> ';
+                        return $link;
                         //return "<span  class='tag size{$size}'>{$link}</span> ";
                     });
                     $cloud->setLimit(30);
