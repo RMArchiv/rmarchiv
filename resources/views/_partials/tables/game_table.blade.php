@@ -1,4 +1,7 @@
-<table id='rmarchiv_prodlist' class='boxtable pagedtable'>
+@if($games instanceof \Illuminate\Pagination\LengthAwarePaginator )
+    {{ $games->links('vendor.pagination.bootstrap-4') }}
+@endif
+<table class='table table-striped table-hover'>
     @include('_partials.tables.game_table_head', ['games' => $games, 'orderby' => $orderby, 'direction' => $direction])
 
     @php
@@ -8,7 +11,7 @@
     @foreach($games as $game)
         @include('_partials.tables.game_table_row', ['game' => $game, 'maxviews' => $maxviews])
     @endforeach
-    @if($games instanceof \Illuminate\Pagination\LengthAwarePaginator )
-        {{ $games->links('vendor.pagination.gamelist') }}
-    @endif
 </table>
+@if($games instanceof \Illuminate\Pagination\LengthAwarePaginator )
+    {{ $games->links('vendor.pagination.bootstrap-4') }}
+@endif

@@ -4,7 +4,7 @@
 @endphp
 
 <thead>
-<tr class='sortable'>
+<tr>
     <th>
         @if($orderby == 'title')
             @if($direction == 'asc')

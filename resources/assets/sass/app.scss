@@ -22,3 +22,28 @@ $url_types: url(/assets/types.png);
   @extend %extend_6;
   float: left;
 }
+
+.table-striped {
+  > tbody > tr:nth-of-type(odd) {
+    background-color: $table-bg-accent;
+  },
+  > tbody > tr:nth-of-type(even) {
+    background-color: $gray-darker;
+  }
+}
+.list-group-item {
+  background-color: $gray-darker;
+}
+
+.panel-body {
+  background-color: $gray-darker;
+}
+
+.table-hover {
+  > tbody > tr{
+    background-color: $gray-darker;
+  },
+  > tbody > tr:hover {
+    background-color: $gray-dark;
+  }
+}

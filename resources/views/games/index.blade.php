@@ -1,12 +1,21 @@
 @extends('layouts.app')
-@section('pagetitle', 'games')
+@section('pagetitle', trans('games.title'))
 @section('content')
-    <div id='content'>
-        <h2>{{ trans('games.title') }}</h2>
-        @include('_partials.tables.game_table', [
-            'games' => $games,
-            'orderby' => $orderby,
-            'direction' => $direction,
-        ])
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>{{ trans('games.title') }}</h1>
+                {!! Breadcrumbs::render('games') !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class='col-md-12'>
+                @include('_partials.tables.game_table', [
+                    'games' => $games,
+                    'orderby' => $orderby,
+                    'direction' => $direction,
+                ])
+            </div>
+        </div>
     </div>
 @endsection

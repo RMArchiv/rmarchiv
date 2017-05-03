@@ -1495,7 +1495,7 @@ body {
   font-size: 14px;
   line-height: 1.428571429;
   color: #839496;
-  background-color: #002B36;
+  background-color: #001C27;
 }
 
 input,
@@ -2851,7 +2851,7 @@ th {
 }
 
 .table .table {
-  background-color: #002B36;
+  background-color: #001C27;
 }
 
 .table-condensed > thead > tr > th,
@@ -8323,6 +8323,32 @@ button.close {
 
 .typei {
   float: left;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #073642;
+}
+
+.table-striped,
+.table-striped > tbody > tr:nth-of-type(even) {
+  background-color: #002B36;
+}
+
+.list-group-item {
+  background-color: #002B36;
+}
+
+.panel-body {
+  background-color: #002B36;
+}
+
+.table-hover > tbody > tr {
+  background-color: #002B36;
+}
+
+.table-hover,
+.table-hover > tbody > tr:hover {
+  background-color: #073642;
 }
 
 /*# sourceMappingURL=app.css.map */

@@ -9,6 +9,7 @@ $bootstrap-sass-asset-helper: false !default;
 //## Gray and brand colors for use across Bootstrap.
 
 $gray-base:              #000 !default;
+$gray-darker-base:       #001C27 !default;
 $gray-darker:            #002B36 !default;
 $gray-dark:              #073642 !default;
 $gray:                   #839496 !default;
@@ -27,7 +28,7 @@ $brand-danger:          #D33682 !default;
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-$body-bg:               $gray-darker !default;
+$body-bg:               $gray-darker-base !default;
 //** Global text color on `<body>`.
 $text-color:            $gray !default;
 
@@ -239,14 +240,14 @@ $dropdown-border:                rgba(0,0,0,.15) !default;
 //** Dropdown menu `border-color` **for IE8**.
 $dropdown-fallback-border:       #ccc !default;
 //** Divider color for between dropdown items.
-$dropdown-divider-bg:            $body-bg !default;
+$dropdown-divider-bg:            $gray-darker !default;
 
 //** Dropdown link text color.
 $dropdown-link-color:            $text-color !default;
 //** Hover color for dropdown links.
 $dropdown-link-hover-color:      rgba(255,255,255,.75) !default;
 //** Hover background for dropdown links.
-$dropdown-link-hover-bg:         $body-bg !default;
+$dropdown-link-hover-bg:         $gray-darker !default;
 
 //** Active dropdown menu item text color.
 $dropdown-link-active-color:     $component-active-color !default;
@@ -431,12 +432,12 @@ $nav-tabs-border-color:                     $gray-dark !default;
 
 $nav-tabs-link-hover-border-color:          $nav-tabs-border-color !default;
 
-$nav-tabs-active-link-hover-bg:             $body-bg !default;
+$nav-tabs-active-link-hover-bg:             $gray-darker !default;
 $nav-tabs-active-link-hover-color:          #fff !default;
 $nav-tabs-active-link-hover-border-color:   $nav-tabs-border-color !default;
 
 $nav-tabs-justified-link-border-color:            $nav-tabs-border-color !default;
-$nav-tabs-justified-active-link-border-color:     $body-bg !default;
+$nav-tabs-justified-active-link-border-color:     $gray-darker !default;
 
 //== Pills
 $nav-pills-border-radius:                   $border-radius-base !default;
@@ -541,7 +542,7 @@ $popover-bg:                          $component-active-bg !default;
 //** Popover maximum width
 $popover-max-width:                   276px !default;
 //** Popover border color
-$popover-border-color:                $body-bg !default;
+$popover-border-color:                $gray-darker !default;
 //** Popover fallback border color
 $popover-fallback-border-color:       #ccc !default;
 
@@ -599,7 +600,7 @@ $modal-title-line-height:     $line-height-base !default;
 //** Background color of modal content area
 $modal-content-bg:                             $component-active-bg !default;
 //** Modal content border color
-$modal-content-border-color:                   $body-bg !default;
+$modal-content-border-color:                   $gray-darker !default;
 //** Modal content border color **for IE8**
 $modal-content-fallback-border-color:          #999 !default;
 
@@ -745,7 +746,7 @@ $panel-danger-heading-bg:     $state-danger-bg !default;
 //** Padding around the thumbnail image
 $thumbnail-padding:           4px !default;
 //** Thumbnail background color
-$thumbnail-bg:                $body-bg !default;
+$thumbnail-bg:                $gray-darker !default;
 //** Thumbnail border color
 $thumbnail-border:            #ddd !default;
 //** Thumbnail border radius
