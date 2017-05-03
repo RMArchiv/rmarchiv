@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -25,29 +25,6 @@
                 <li><a href="{{ url('board') }}">{{ trans('board.title') }}</a></li>
                 <li><a href="{{ url('faq') }}">{{ trans('faq.title') }}</a></li>
                 <li><a href="{{ url('submit') }}">{{ trans('submit.title') }}</a></li>
-                @if($part == 'toppart')
-                    @if(Auth::check())
-                        @if(\Auth::user()->newThreadsCount() >= 1)
-                            <li><a class="adminlink" href='{{ url('messages') }}'>{{ trans('messages.new_msg') }}</a></li>
-                        @endif
-                        <li><a class="adminlink" href="{{ url('logout') }}">{{ trans('auth.logout') }}</a></li>
-                    @else
-                        <li><a class="adminlink" href="{{ url('login') }}">{{ trans('auth.login') }}</a></li>
-                    @endif
-                @endif
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
-                       data-vivaldi-spatnav-clickable="1">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#" data-vivaldi-spatnav-clickable="1">Action</a></li>
-                            <li><a href="#" data-vivaldi-spatnav-clickable="1">Another action</a></li>
-                            <li><a href="#" data-vivaldi-spatnav-clickable="1">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#" data-vivaldi-spatnav-clickable="1">Separated link</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#" data-vivaldi-spatnav-clickable="1">One more separated link</a></li>
-                        </ul>
-                </li>
             </ul>
             {{ Form::open(['action' => ['SearchController@search'], 'class' => 'navbar-form navbar-right']) }}
                 <div class="form-group">
@@ -88,15 +65,32 @@
                     });
                 </script>
             {{ Form::close() }}
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" data-vivaldi-spatnav-clickable="1">Knicker</a></li>
-            </ul>
+
+            @if(Auth::check())
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
+                           data-vivaldi-spatnav-clickable="1">
+                            hallo, {{ Auth::user()->name }} <span class="caret"></span>
+                            @if(\Auth::user()->newThreadsCount() >= 1)
+                                <span class="badge">\Auth::user()->newThreadsCount()</span>
+                            @endif
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ action('MessagesController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('index.pm.unreaded') }} <span class="badge">{{\Auth::user()->newThreadsCount()}}</span></a></li>
+                            <li><a href="{{ action('MessagesController@create') }}" data-vivaldi-spatnav-clickable="1">{{ trans('index.pm.new_pm') }}</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{ action('UserSettingsController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('index.logout.settings') }}</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{ action('Auth\LoginController@logout') }}" data-vivaldi-spatnav-clickable="1">{{ trans('index.logout.logout') }}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            @else
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ action('Auth\LoginController@showLoginForm') }}">{{ trans('index.login.login') }}</a></li>
+                </ul>
+            @endif
         </div>
     </div>
-</nav>
-
-<nav id="{{ $part }}">
-    <ul>
-
-    </ul>
 </nav>

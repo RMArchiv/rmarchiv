@@ -2,3 +2,23 @@
 @import "bootswatch";
 
 @import '../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+
+@import 'types';
+
+$url_types: url(/assets/types.png);
+
+%extend_6 {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  overflow: hidden;
+  line-height: 100px;
+  background-image: $url_types;
+}
+
+.typei {
+  @extend %extend_6;
+  float: left;
+}

@@ -4,18 +4,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
-                @if(Auth::check() == true)
-                    @include('index._partials.logout')
-                @else
-                    @include('index._partials.login')
-                @endif
-
-                @if(!Auth::check() || Auth::user()->settings->disable_widget_msg != 1)
-                    @if(Auth::check() == true)
-                        @include('index._partials.pm')
-                    @endif
-                @endif
-
                 @if($cdc)
                     @if(!Auth::check() || Auth::user()->settings->disable_widget_cdc != 1)
                         @include('index._partials.cdc')
