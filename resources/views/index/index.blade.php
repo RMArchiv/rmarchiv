@@ -4,7 +4,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
-                <div class="bs-component">
                 @if(Auth::check() == true)
                     @include('index._partials.logout')
                 @else
@@ -38,10 +37,8 @@
                 @if(!Auth::check() || Auth::user()->settings->disable_widget_alltimetop != 1)
                     @include('index._partials.topalltime')
                 @endif
-                </div>
             </div>
             <div class="col-md-6">
-                <div class="bs-component">
                 @if(!Auth::check() || Auth::user()->settings->disable_widget_shoutbox != 1)
                     @include('index._partials.shoutbox')
                 @endif
@@ -53,10 +50,8 @@
                 @if(!Auth::check() || Auth::user()->settings->disable_widget_news != 1)
                     @include('index._partials.news')
                 @endif
-                </div>
             </div>
             <div class="col-md-3">
-                <div class="bs-component">
                 @include('index._partials.randomgame')
 
                 @if(!Auth::check() || Auth::user()->settings->disable_widget_tags != 1)
@@ -77,7 +72,6 @@
 
                 @include('index._partials.nextparty')
                 @include('index._partials.welike')
-                </div>
             </div>
         </div>
     </div>
