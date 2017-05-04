@@ -10,6 +10,15 @@
                     container: 'body'
                 });
             });
+
+            $(function() {
+                $('.row').matchHeight({
+                    byRow: true,
+                    property: 'height',
+                    target: null,
+                    remove: false
+                });
+            });
         </script>
 
         <div class="container">

@@ -13,7 +13,7 @@ Breadcrumbs::register('games', function($breadcrumbs)
     $breadcrumbs->push(trans('games.title'), url('games'));
 });
 
-// Home > Blog > [game]
+// Home > Games > [game]
 Breadcrumbs::register('game', function($breadcrumbs, $game)
 {
     $breadcrumbs->parent('games');
@@ -21,6 +21,23 @@ Breadcrumbs::register('game', function($breadcrumbs, $game)
         $breadcrumbs->push($game->title.' - '.$game->subtitle, action('GameController@show', $game->id));
     }else{
         $breadcrumbs->push($game->title, action('GameController@show', $game->id));
+    }
+});
+
+// Home > Games > erstellen
+Breadcrumbs::register('game-add', function($breadcrumbs){
+    $breadcrumbs->parent('games');
+    $breadcrumbs->push('erstellen', action('GameController@create'));
+});
+
+// Home > Games > [game] > edit
+Breadcrumbs::register('game-edit', function($breadcrumbs, $game)
+{
+    $breadcrumbs->parent('game', $game);
+    if($game->subtitle){
+        $breadcrumbs->push('bearbeiten', action('GameController@edit', $game->id));
+    }else{
+        $breadcrumbs->push('bearbeiten', action('GameController@edit', $game->id));
     }
 });
 
@@ -45,18 +62,23 @@ Breadcrumbs::register('online', function($breadcrumbs)
     $breadcrumbs->push('online', action('UserController@users_online'));
 });
 
-/*
-// Home > Blog > [Category]
-Breadcrumbs::register('category', function($breadcrumbs, $category)
+// Home > Board
+Breadcrumbs::register('forums', function($breadcrumbs)
 {
-    $breadcrumbs->parent('blog');
-    $breadcrumbs->push($category->title, route('category', $category->id));
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('forum', action('BoardController@index'));
 });
 
-// Home > Blog > [Category] > [Page]
-Breadcrumbs::register('page', function($breadcrumbs, $page)
+// Home > Board > [Forum]
+Breadcrumbs::register('forum', function($breadcrumbs, $boardcat)
 {
-    $breadcrumbs->parent('category', $page->category);
-    $breadcrumbs->push($page->title, route('page', $page->id));
+    $breadcrumbs->parent('forums');
+    $breadcrumbs->push($boardcat->title, action('BoardController@show_cat', $boardcat->id));
 });
-*/
+
+// Home > Board > [Forum] -> [Thread]
+Breadcrumbs::register('thread', function($breadcrumbs, $boardcat, $thread)
+{
+    $breadcrumbs->parent('forum', $boardcat);
+    $breadcrumbs->push($thread->title, action('BoardController@show_thread', $thread->id));
+});

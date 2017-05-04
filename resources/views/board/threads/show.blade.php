@@ -1,6 +1,45 @@
 @extends('layouts.app')
 @section('pagetitle', $posts->first()->thread->title)
 @section('content')
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>{{$posts->first()->thread->title}}</h1>
+                {!! Breadcrumbs::render('thread',$posts->first()->cat, $posts->first()->thread ) !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ $posts->links('vendor.pagination.bootstrap-4') }}</div>
+                <div class="panel-body">
+                    <ul class="media-list">
+                        @foreach($posts as $post)
+                        <li class="media">
+                            <div class="media-body active">
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img width="32px" class="media-object img-rounded" src="http://ava.rmarchiv.de/?size=160&gender=male&id={{ $post->user->id }}">
+                                    </a>
+                                    <div class="media-body">
+                                        {!! \App\Helpers\InlineBoxHelper::GameBox($post->content_html) !!}
+                                        <br>
+                                        <small class="text-muted"><a href='{{ url('users', $post->user->id) }}' class='user'>{{ $post->user->name }}</a> | <a href='{{ route('board.thread.show', [$post->thread->id]) }}#c{{ $post->id }}'><time datetime='{{ $post->created_at }}' title='{{ $post->created_at }}'>{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</time></a>
+                                            @if($post->updated_at)
+                                                - {{ trans('board.threads.show.edited') }} {{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}
+                                            @endif</small>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="panel-footer">{{ $posts->links('vendor.pagination.bootstrap-4') }}</div>
+            </div>
+        </div>
+    </div>
+
     <div id='content'>
         <div class='rmarchivtbl' id='rmarchivbox_bbsview'>
             <h2>{{ $posts->first()->thread->title }}
@@ -12,8 +51,7 @@
                     @endif
                 @endpermission
             </h2>
-            <div class='threadcategory'><b>{{ trans('board.threads.show.category') }}:</b> <a href="{{ url('board/cat', $posts->first()->cat->id) }}">{{ $posts->first()->cat->title }}</a>
-            </div>
+
             <div class="threadcategory">
                 @if(Auth::check())
                     @if(Auth::id() == $posts->first()->thread->user_id or Auth::user()->can('mod-threads'))
@@ -70,11 +108,10 @@
                     </div>
                 @endif
             </div>
-            {{ $posts->links('vendor/pagination/board_thread') }}
             @foreach($posts as $post)
                 <div class='content cite-{{ $post->thread->id  }} markdown' id='c{{ $post->id }}'>
                     <div class="userinfo">
-                        <b><a href='{{ url('users', $post->user->id) }}' class='user'>{{ $post->user->name }}</a></b>
+                        <b></b>
                         <br>
                         <small>{{ $post->user->roles[0]->display_name}}</small>
                         <br>
@@ -87,7 +124,7 @@
                         {{ trans('board.threads.show.posts') }}: {{ $post->user->boardposts->count() }}
                     </div>
                     <div class="post markdown">
-                        {!! \App\Helpers\InlineBoxHelper::GameBox($post->content_html) !!}
+
                     </div>
                 </div>
                 <div class='foot'>
@@ -105,7 +142,7 @@
                     @endif
                 </div>
             @endforeach
-            {{ $posts->links('vendor/pagination/board_thread') }}
+            {{ $posts->links('vendor.pagination.bootstrap-4') }}
         </div>
 
         @if(Auth::check())
