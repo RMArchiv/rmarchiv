@@ -10,7 +10,18 @@ Breadcrumbs::register('home', function($breadcrumbs)
 Breadcrumbs::register('games', function($breadcrumbs)
 {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push(trans('games.title'), action('GameController@index'));
+    $breadcrumbs->push(trans('games.title'), url('games'));
+});
+
+// Home > Blog > [game]
+Breadcrumbs::register('game', function($breadcrumbs, $game)
+{
+    $breadcrumbs->parent('games');
+    if($game->subtitle){
+        $breadcrumbs->push($game->title.' - '.$game->subtitle, action('GameController@show', $game->id));
+    }else{
+        $breadcrumbs->push($game->title, action('GameController@show', $game->id));
+    }
 });
 
 // Home > FAQ
