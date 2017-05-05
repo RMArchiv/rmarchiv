@@ -104,9 +104,9 @@
                                     <div class="media-body">
                                         {!! \App\Helpers\InlineBoxHelper::GameBox($post->content_html) !!}
                                         <br>
-                                        <small class="text-muted"><a href='{{ url('users', $post->user->id) }}' class='user'>{{ $post->user->name }}</a> | <a href='{{ route('board.thread.show', [$post->thread->id]) }}#c{{ $post->id }}'><time datetime='{{ $post->created_at }}' title='{{ $post->created_at }}'>{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</time></a>
+                                        <small class="text-muted"><a href='{{ url('users', $post->user->id) }}' class='user'>{{ $post->user->name }}</a><span> • </span><a href='{{ route('board.thread.show', [$post->thread->id]) }}#c{{ $post->id }}'><time datetime='{{ $post->created_at }}' title='{{ $post->created_at }}'>{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</time></a>
                                             @if($post->updated_at)
-                                                - {{ trans('board.threads.show.edited') }} {{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}
+                                                <span> • </span>{{ trans('board.threads.show.edited') }} {{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}
                                             @endif
                                             @if(Auth::check())
                                                 @if(Auth::id() == $post->user->id or Auth::user()->can('mod-threads'))

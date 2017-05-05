@@ -2,36 +2,58 @@
 @section('pagetitle', 'spiel anlegen')
 @section('content')
     @permission(('create-games'))
-    <div id="content">
-        {!! Form::open(['action' => ['GameController@store']]) !!}
-        @if (count($errors) > 0)
-            <div class="rmarchivtbl errorbox">
-                <h2>{{trans('app.games.add.success.title')}}</h2>
-                <div class="content">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li><strong>{{ $error }}</strong></li>
-                        @endforeach
-                    </ul>
+        <div class="container">
+            <div class="row">
+                <div class="page-header">
+                    <h1>{{trans('games.create.title')}}</h1>
+                    {!! Breadcrumbs::render('game-add') !!}
                 </div>
             </div>
-        @endif
+            @if (count($errors) > 0)
+                <div class="row">
+                    <div class="alert alert-dismissible alert-warning">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <h4>Fehler!</h4>
+                        <p>
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li><strong>{{ $error }}</strong></li>
+                                @endforeach
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            @endif
+            <div class="row">
+                {!! Form::open(['action' => ['GameController@store']]) !!}
+                <div class="well">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <legend>grundinformationen</legend>
+                            <div class="form-group">
+                                <label for="title" class="col-lg-2 control-label">{{trans('games.create.gametitle')}}*</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="title" name="title" placeholder="Anno 1997">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subtitle" class="col-lg-2 control-label">{{trans('games.create.subtitle')}}*</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Erschaffung einer neuen Welt">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                {!! Form::close() !!}
+            </div>
+        </div>
 
+
+    <div id="content">
             <div class="rmarchivtbl" id="rmarchivbox_submitprod">
-                <h2>{{trans('games.create.title')}}</h2>
-
                 <div class="content">
                     <div class="formifier">
-                        <div class="row" id="row_title">
-                            <label for="title">{{trans('games.create.gametitle')}}</label>
-                            <input name="title" id="title" placeholder="Anno 1602" value=""/>
-                            <span> [<span class="req">req</span>]</span>
-                        </div>
-                        <div class="row" id="row_subtitle">
-                            <label for="subtitle">{{trans('games.create.subtitle')}}</label>
-                            <input name="subtitle" id="subtitle" placeholder="Erschaffung einer neuen Welt" value=""/>
-                            <span> [<span class="req">req</span>]</span>
-                        </div>
                         <div class='row' id='row_maker'>
                             <label for='maker'>{{trans('games.create.maker')}}</label>
                             <select name='maker' id='maker'>
