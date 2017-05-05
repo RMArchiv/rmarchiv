@@ -9,13 +9,11 @@
             </div>
         </div>
         <div class="row">
-            <div class='col-md-12'>
-                @include('_partials.tables.game_table', [
-                    'games' => $games,
-                    'orderby' => $orderby,
-                    'direction' => $direction,
-                ])
-            </div>
+            @include('_partials.tables.game_table', [
+                'games' => $games,
+                'orderby' => $orderby,
+                'direction' => $direction,
+            ])
         </div>
     </div>
 @endsection
