@@ -38,7 +38,7 @@ class BoardController extends Controller
             ->orderBy('board_threads.pinned', 'desc')
             ->orderBy('board_threads.last_created_at', 'desc')
             ->orderBy('board_threads.id', 'desc')
-            ->get();
+            ->paginate(25);
 
         $cat = BoardCat::whereId($catid)->first();
 
