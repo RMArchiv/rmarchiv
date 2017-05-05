@@ -31,15 +31,41 @@
                         <fieldset>
                             <legend>grundinformationen</legend>
                             <div class="form-group">
-                                <label for="title" class="col-lg-2 control-label">{{trans('games.create.gametitle')}}*</label>
+                                <label for="title" class="col-lg-2 control-label">{{trans('games.create.gametitle')}} *</label>
                                 <div class="col-lg-10">
                                     <input type="text" class="form-control" id="title" name="title" placeholder="Anno 1997">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="subtitle" class="col-lg-2 control-label">{{trans('games.create.subtitle')}}*</label>
+                                <label for="subtitle" class="col-lg-2 control-label">{{trans('games.create.subtitle')}} *</label>
                                 <div class="col-lg-10">
                                     <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Erschaffung einer neuen Welt">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for='maker' class="col-lg-2 control-label">{{trans('games.create.maker')}} *</label>
+                                <div class="col-lg-10">
+                                    <select name='maker' id='maker' class="form-control">
+                                        <option value="0">{{trans('games.create.maker_choose')}}</option>
+                                        @foreach($makers as $maker)
+                                            <option value="{{ $maker->id }}">{{ $maker->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class='form-group' id='row_language'>
+                                <label class="col-lg-2 control-label" for='language'>{{trans('games.create.language')}} *</label>
+                                <select name='language' id='language' class="form-control">
+                                    <option value="0">{{trans('games.create.language_choose')}}</option>
+                                    @foreach($langs as $lang)
+                                        <option value="{{ $lang->short }}">{{ $lang->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="atelier_id" class="col-lg-2 control-label">{{trans('games.create.atelierid')}}</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="atelier_id" name="atelier_id" placeholder="1337">
                                 </div>
                             </div>
                         </fieldset>
@@ -52,34 +78,6 @@
 
     <div id="content">
             <div class="rmarchivtbl" id="rmarchivbox_submitprod">
-                <div class="content">
-                    <div class="formifier">
-                        <div class='row' id='row_maker'>
-                            <label for='maker'>{{trans('games.create.maker')}}</label>
-                            <select name='maker' id='maker'>
-                                <option value="0">{{trans('games.create.maker_choose')}}</option>
-                                @foreach($makers as $maker)
-                                <option value="{{ $maker->id }}">{{ $maker->title }}</option>
-                                @endforeach
-                            </select>
-                            <span> [<span class="req">req</span>]</span>
-                        </div>
-                        <div class='row' id='row_language'>
-                            <label for='language'>{{trans('games.create.language')}}</label>
-                            <select name='language' id='language'>
-                                <option value="0">{{trans('games.create.language_choose')}}</option>
-                                @foreach($langs as $lang)
-                                    <option value="{{ $lang->short }}">{{ $lang->name }}</option>
-                                @endforeach
-                            </select>
-                            <span> [<span class="req">req</span>]</span>
-                        </div>
-                        <div class="row" id="row_atelier_id">
-                            <label for="atelier_id">{{ trans('games.create.atelierid') }}</label>
-                            <input name="atelier_id" id="atelier_id" placeholder="820" value=""/>
-                        </div>
-                    </div>
-                </div>
 
                 <h2>{{trans('games.create.gamedescription')}}</h2>
                 <div class="content">
