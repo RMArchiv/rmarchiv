@@ -5,6 +5,7 @@ Breadcrumbs::register('home', function ($breadcrumbs) {
     $breadcrumbs->push('home', action('IndexController@index'));
 });
 
+//----------------- Games --------------------------------------------------------------------------------------------//
 // Home > Games
 Breadcrumbs::register('games', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
@@ -37,12 +38,14 @@ Breadcrumbs::register('game-edit', function ($breadcrumbs, $game) {
     }
 });
 
+//----------------- FAQ ----------------------------------------------------------------------------------------------//
 // Home > FAQ
 Breadcrumbs::register('faq', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('faq.title'), action('FaqController@index'));
 });
 
+//----------------- Users --------------------------------------------------------------------------------------------//
 // Home > Users
 Breadcrumbs::register('users', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
@@ -55,6 +58,7 @@ Breadcrumbs::register('online', function ($breadcrumbs) {
     $breadcrumbs->push('online', action('UserController@users_online'));
 });
 
+//----------------- Board --------------------------------------------------------------------------------------------//
 // Home > Board
 Breadcrumbs::register('forums', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
@@ -73,6 +77,7 @@ Breadcrumbs::register('thread', function ($breadcrumbs, $boardcat, $thread) {
     $breadcrumbs->push($thread->title, action('BoardController@show_thread', $thread->id));
 });
 
+//----------------- Developers ---------------------------------------------------------------------------------------//
 // Home > Developers
 Breadcrumbs::register('developers', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
