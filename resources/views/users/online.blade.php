@@ -9,30 +9,28 @@
             </div>
         </div>
         <div class="row">
-            <div class='col-md-12'>
-                <table class="table table-striped">
-                    <thead>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>
+                        {{ trans('user.online.username') }}
+                    </th>
+                    <th>
+                        {{ trans('user.online.last_page') }}
+                    </th>
+                    <th>
+                        {{ trans('user.online.last_action_date') }}
+                    </th>
+                </tr>
+                </thead>
+                @foreach($uo as $u)
                     <tr>
-                        <th>
-                            {{ trans('user.online.username') }}
-                        </th>
-                        <th>
-                            {{ trans('user.online.last_page') }}
-                        </th>
-                        <th>
-                            {{ trans('user.online.last_action_date') }}
-                        </th>
+                        <td><a href="{{ action('UserController@show', $u->user_id) }}">{{ $u->user->name }}</a></td>
+                        <td><a href="{{ $u->last_place }}">{{ $u->last_place }}</a></td>
+                        <td>{{ $u->created_at }}</td>
                     </tr>
-                    </thead>
-                    @foreach($uo as $u)
-                        <tr>
-                            <td><a href="{{ action('UserController@show', $u->user_id) }}">{{ $u->user->name }}</a></td>
-                            <td><a href="{{ $u->last_place }}">{{ $u->last_place }}</a></td>
-                            <td>{{ $u->created_at }}</td>
-                        </tr>
-                    @endforeach
-                </table>
-            </div>
+                @endforeach
+            </table>
         </div>
     </div>
 @endsection
