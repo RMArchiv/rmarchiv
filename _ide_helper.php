@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.20 on 2017-04-28.
+ * Generated for Laravel 5.4.21 on 2017-05-07.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -5809,17 +5809,6 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Get the queue name prefix.
-         *
-         * @return string 
-         * @static 
-         */
-        public static function getQueuePrefix()
-        {
-            return \Illuminate\Queue\QueueManager::getQueuePrefix();
-        }
-        
-        /**
          * Determine if the application is in maintenance mode.
          *
          * @return bool 
@@ -5967,19 +5956,6 @@ namespace Illuminate\Support\Facades {
         {
             //Method inherited from \Illuminate\Queue\Queue            
             return \Illuminate\Queue\SyncQueue::setConnectionName($name);
-        }
-        
-        /**
-         * Set the queue name prefix.
-         *
-         * @param string $prefix
-         * @return $this 
-         * @static 
-         */
-        public static function setQueuePrefix($prefix = null)
-        {
-            //Method inherited from \Illuminate\Queue\Queue            
-            return \Illuminate\Queue\SyncQueue::setQueuePrefix($prefix);
         }
         
         /**
@@ -6939,7 +6915,7 @@ namespace Illuminate\Support\Facades {
          * ("Client-Ip" for instance), configure it via "setTrustedHeaderName()" with
          * the "client-ip" key.
          *
-         * @return string The client IP address
+         * @return string|null The client IP address
          * @see getClientIps()
          * @see http://en.wikipedia.org/wiki/X-Forwarded-For
          * @static 
@@ -7042,7 +7018,7 @@ namespace Illuminate\Support\Facades {
          * If your reverse proxy uses a different header name than "X-Forwarded-Port",
          * configure it via "setTrustedHeaderName()" with the "client-port" key.
          *
-         * @return string 
+         * @return int|string can be a string if fetched from the server bag
          * @static 
          */
         public static function getPort()
