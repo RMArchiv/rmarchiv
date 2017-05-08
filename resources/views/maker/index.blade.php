@@ -1,35 +1,38 @@
 @extends('layouts.app')
-@section('pagetitle', 'entwicklerlsite')
+@section('pagetitle', 'entwickler')
 @section('content')
-    <div id="content">
-        <div class='rmarchivtbl' id='rmarchivbox_grouplist'>
-            <table id="rmarchiv_creatortable" class='boxtable'>
-                <thead>
-                <tr class='sortable'>
-                    <th>
-                        {{ trans('maker.index.maker') }}
-                    </th>
-                    <th>
-                        {{ trans('maker.index.games') }}
-                    </th>
-                </tr>
-                </thead>
-                @foreach($makers as $mk)
-                    @if($mk->games()->count() <> 0 and $mk->title <> '')
-                        <tr>
-                            <td class='groupname'>
-                                <a href='{{ route('maker.show', [$mk->id]) }}'>{{ $mk->title }}</a>
-                            </td>
-                            <td>
-                                {{ $mk->games()->count() }}
-                            </td>
-                        </tr>
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>entwickler</h1>
+                {!! Breadcrumbs::render('developers') !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @if($makers instanceof \Illuminate\Pagination\LengthAwarePaginator )
+                        {{ $makers->links('vendor.pagination.gamelist') }}
                     @endif
-                @endforeach
-                @if($makers instanceof \Illuminate\Pagination\LengthAwarePaginator )
-                    {{ $makers->links('vendor.pagination.gamelist') }}
-                @endif
-            </table>
+                </div>
+                <ul class="list-group">
+                    @foreach($makers as $mk)
+                        @if($mk->games()->count() <> 0 and $mk->title <> '')
+                            <li class="list-group-item">
+                                <a href='{{ route('maker.show', [$mk->id]) }}'>{{ $mk->title }}</a>
+                                <div class="pull-right">
+                                    <span class="badge">{{ $mk->games()->count() }}</span>
+                                </div>
+                            </li>
+                        @endif
+                    @endforeach
+                </ul>
+                <div class="panel-footer">
+                    @if($makers instanceof \Illuminate\Pagination\LengthAwarePaginator )
+                        {{ $makers->links('vendor.pagination.gamelist') }}
+                    @endif
+                </div>
+            </div>
         </div>
     </div>
 @endsection
