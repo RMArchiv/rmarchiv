@@ -104,3 +104,10 @@ Breadcrumbs::register('news', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('news.title'), action('NewsController@index'));
 });
+
+//----------------- Awards -------------------------------------------------------------------------------------------//
+// Home -> Awards
+Breadcrumbs::register('awards', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('awards.title'), action('AwardController@index'));
+});
