@@ -1,9 +1,10 @@
 @import "variables";
-@import "bootswatch";
 
 @import '../../../bower_components/font-awesome/scss/font-awesome';
 @import 'editormd/editormd';
 @import '../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+
+@import "bootswatch";
 @import 'typeahead/typeahead.scss';
 
 @import 'types';

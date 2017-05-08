@@ -19,6 +19,7 @@ class NewsController extends Controller
      */
     public function index()
     {
+/*
         $news = \DB::table('news')
             ->leftJoin('users', 'news.user_id', '=', 'users.id')
             ->leftJoin('comments', function ($join) {
@@ -30,6 +31,9 @@ class NewsController extends Controller
             ->orderBy('news.created_at', 'desc')
             ->groupBy('news.id')
             ->get();
+*/
+
+        $news = News::orderBy('created_at', 'desc')->paginate(25);
 
         return view('news.index', [
             'news' => $news,

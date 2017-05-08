@@ -1,51 +1,56 @@
 @extends('layouts.app')
 @section('pagetitle', trans('news.title'))
 @section('content')
-    <div id="content">
-        @if(count($news) > 0)
-        <div id="prodpagecontainer">
-            <h2>{{ trans('news.title') }}</h2>
-            <table id="rmarchivbox_newslist" class="boxtable pagedtable">
-                <thead>
-                <tr class="sortable">
-                    <th>{{ trans('news.index.user') }}</th>
-                    <th>{{ trans('news.index.created_at') }}</th>
-                    <th>{{ trans('news.index.news_title') }}</th>
-                    <th>{{ trans('news.index.comments') }}</th>
-                </tr>
-                </thead>
-                @foreach($news as $new)
-                    @if($new->approved == 1)
-                        <tr>
-                            <td>
-                                <a href="{{ url('/user', $new->user_id) }}" class="usera" title="{{ $new->name }}">
-                                    <img src="http://ava.rmarchiv.de/?gender=male&amp;id={{ $new->user_id }}" alt="{{ $new->name }}" class="avatar">
-                                </a> <a href="{{ url('/user', $new->user_id) }}" class="user">{{ $new->name }}</a>
-                            </td>
-                            <td><time datetime='{{ $new->created_at }}' title='{{ $new->created_at }}'>{{ \Carbon\Carbon::parse($new->created_at)->diffForHumans() }}</time></td>
-                            <td><a href="{{ url('/news', $new->id) }}">{{ $new->title }}</a></td>
-                            <td>{{ $new->counter or 0 }}</td>
-                        </tr>
-                    @else
-                        @permission(('edit-news'))
-                            <tr style="color: #ff4f4f !important;">
-                                <td>
-                                    <a href="{{ url('/user', $new->user_id) }}" class="usera" title="{{ $new->name }}">
-                                        <img src="http://ava.rmarchiv.de/?gender=male&amp;id={{ $new->user_id }}" alt="{{ $new->name }}" class="avatar">
-                                    </a> <a href="{{ url('/user', $new->user_id) }}" class="user">{{ $new->name }}</a>
-                                </td>
-                                <td>{{ $new->created_at }}</td>
-                                <td><a href="{{ url('/news', $new->id) }}">{{ $new->title }}</a></td>
-                                <td>{{ $new->counter or 0 }}</td>
-                            </tr>
-                        @endpermission
-                    @endif
-                @endforeach
-            </table>
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>{{ trans('news.title') }}</h1>
+                {!! Breadcrumbs::render('news') !!}
+            </div>
         </div>
-
-        @else
-            <h2>{{ trans('news.index.no_news') }}</h2>
-        @endif
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{ $news->links('vendor.pagination.bootstrap-4') }}
+                </div>
+                <ul class="list-group">
+                    @foreach($news as $item)
+                        @if($item->approved == 1)
+                            <li class="list-group-item media" style="margin-top: 0px;">
+                                <a class="pull-right" href="{{ route('news.show', $item->id) }}"><span class="badge">{{ $item->comments->count() }}</span></a>
+                                <a class="pull-left" href="{{ url('users', $item->user->id) }}"><img class="media-object img-rounded" width="42px" src="http://ava.rmarchiv.de/?size=42&gender=male&id={{ $item->user->id }}" alt="{{ $item->user->name }}"></a>
+                                <div class="thread-info">
+                                    <div class="media-heading">
+                                        <a href="{{ route('news.show', $item->id) }}">{{ $item->title }}</a>
+                                    </div>
+                                    <div class="media-body" style="font-size: 12px;">
+                                        erstellt <time datetime='{{ $item->created_at }}' title='{{ $item->created_at }}'>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</time>
+                                    </div>
+                                </div>
+                            </li>
+                        @else
+                            @permission(('edit-news'))
+                            <li class="list-group-item active media" style="margin-top: 0px;">
+                                <a class="pull-right" href="{{ route('news.show', $item->id) }}"><span class="badge">{{ $item->comments->count() }}</span></a>
+                                <a class="pull-left" href="{{ url('users', $item->user->id) }}"><img class="media-object img-rounded" width="42px" src="http://ava.rmarchiv.de/?size=42&gender=male&id={{ $item->user->id }}" alt="{{ $item->user->name }}"></a>
+                                <div class="thread-info">
+                                    <div class="media-heading">
+                                        <a href="{{ route('news.show', $item->id) }}">{{ $item->title }}</a>
+                                        <p class="text-warning">NICHT VERÖFFENTLICHT!</p>
+                                    </div>
+                                    <div class="media-body" style="font-size: 12px;">
+                                        erstellt <time datetime='{{ $item->created_at }}' title='{{ $item->created_at }}'>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</time>
+                                    </div>
+                                </div>
+                            </li>
+                            @endpermission
+                        @endif
+                    @endforeach
+                </ul>
+                <div class="panel-footer">
+                    {{ $news->links('vendor.pagination.bootstrap-4') }}
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

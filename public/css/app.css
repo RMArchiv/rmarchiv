@@ -1,125 +1,11 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700");
-.text-primary,
-.text-primary:hover {
-  color: #B58900;
-}
-
-.text-success,
-.text-success:hover {
-  color: #2AA198;
-}
-
-.text-danger,
-.text-danger:hover {
-  color: #D33682;
-}
-
-.text-warning,
-.text-warning:hover {
-  color: #CB4B16;
-}
-
-.text-info,
-.text-info:hover {
-  color: #268BD2;
-}
-
-.bg-success,
-.bg-info,
-.bg-warning,
-.bg-danger {
-  color: #fff;
-}
-
-table .success td, table .success th,
-table .info td,
-table .info th,
-table .warning td,
-table .warning th,
-table .danger td,
-table .danger th,
-.table .success td,
-.table .success th,
-.table .info td,
-.table .info th,
-.table .warning td,
-.table .warning th,
-.table .danger td,
-.table .danger th {
-  color: #fff;
-}
-
-.has-warning .help-block,
-.has-warning .control-label,
-.has-warning .radio,
-.has-warning .checkbox,
-.has-warning .radio-inline,
-.has-warning .checkbox-inline,
-.has-warning.radio label,
-.has-warning.checkbox label,
-.has-warning.radio-inline label,
-.has-warning.checkbox-inline label,
-.has-warning .form-control-feedback {
-  color: #CB4B16;
-}
-
-.has-warning .form-control,
-.has-warning .form-control:focus,
-.has-warning .input-group-addon {
-  border-color: #CB4B16;
-}
-
-.has-error .help-block,
-.has-error .control-label,
-.has-error .radio,
-.has-error .checkbox,
-.has-error .radio-inline,
-.has-error .checkbox-inline,
-.has-error.radio label,
-.has-error.checkbox label,
-.has-error.radio-inline label,
-.has-error.checkbox-inline label,
-.has-error .form-control-feedback {
-  color: #D33682;
-}
-
-.has-error .form-control,
-.has-error .form-control:focus,
-.has-error .input-group-addon {
-  border-color: #D33682;
-}
-
-.has-success .help-block,
-.has-success .control-label,
-.has-success .radio,
-.has-success .checkbox,
-.has-success .radio-inline,
-.has-success .checkbox-inline,
-.has-success.radio label,
-.has-success.checkbox label,
-.has-success.radio-inline label,
-.has-success.checkbox-inline label,
-.has-success .form-control-feedback {
-  color: #2AA198;
-}
-
-.has-success .form-control,
-.has-success .form-control:focus,
-.has-success .input-group-addon {
-  border-color: #2AA198;
-}
-
-.input-group-addon {
-  color: #839496;
-}
-
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 /* FONT PATH
  * -------------------------- */
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700");
 @font-face {
   font-family: 'FontAwesome';
   src: url("../fonts/fontawesome-webfont.eot?v=4.7.0");
@@ -15329,6 +15215,120 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+
+.text-primary,
+.text-primary:hover {
+  color: #B58900;
+}
+
+.text-success,
+.text-success:hover {
+  color: #2AA198;
+}
+
+.text-danger,
+.text-danger:hover {
+  color: #D33682;
+}
+
+.text-warning,
+.text-warning:hover {
+  color: #CB4B16;
+}
+
+.text-info,
+.text-info:hover {
+  color: #268BD2;
+}
+
+.bg-success,
+.bg-info,
+.bg-warning,
+.bg-danger {
+  color: #fff;
+}
+
+table .success td, table .success th,
+table .info td,
+table .info th,
+table .warning td,
+table .warning th,
+table .danger td,
+table .danger th,
+.table .success td,
+.table .success th,
+.table .info td,
+.table .info th,
+.table .warning td,
+.table .warning th,
+.table .danger td,
+.table .danger th {
+  color: #fff;
+}
+
+.has-warning .help-block,
+.has-warning .control-label,
+.has-warning .radio,
+.has-warning .checkbox,
+.has-warning .radio-inline,
+.has-warning .checkbox-inline,
+.has-warning.radio label,
+.has-warning.checkbox label,
+.has-warning.radio-inline label,
+.has-warning.checkbox-inline label,
+.has-warning .form-control-feedback {
+  color: #CB4B16;
+}
+
+.has-warning .form-control,
+.has-warning .form-control:focus,
+.has-warning .input-group-addon {
+  border-color: #CB4B16;
+}
+
+.has-error .help-block,
+.has-error .control-label,
+.has-error .radio,
+.has-error .checkbox,
+.has-error .radio-inline,
+.has-error .checkbox-inline,
+.has-error.radio label,
+.has-error.checkbox label,
+.has-error.radio-inline label,
+.has-error.checkbox-inline label,
+.has-error .form-control-feedback {
+  color: #D33682;
+}
+
+.has-error .form-control,
+.has-error .form-control:focus,
+.has-error .input-group-addon {
+  border-color: #D33682;
+}
+
+.has-success .help-block,
+.has-success .control-label,
+.has-success .radio,
+.has-success .checkbox,
+.has-success .radio-inline,
+.has-success .checkbox-inline,
+.has-success.radio label,
+.has-success.checkbox label,
+.has-success.radio-inline label,
+.has-success.checkbox-inline label,
+.has-success .form-control-feedback {
+  color: #2AA198;
+}
+
+.has-success .form-control,
+.has-success .form-control:focus,
+.has-success .input-group-addon {
+  border-color: #2AA198;
+}
+
+.input-group-addon {
+  color: #839496;
 }
 
 span.twitter-typeahead .tt-menu,

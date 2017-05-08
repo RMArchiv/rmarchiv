@@ -97,3 +97,10 @@ Breadcrumbs::register('login', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('auth.login'), action('Auth\LoginController@showLoginForm'));
 });
+
+//----------------- News ---------------------------------------------------------------------------------------------//
+// Home -> Login
+Breadcrumbs::register('news', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('news.title'), action('NewsController@index'));
+});
