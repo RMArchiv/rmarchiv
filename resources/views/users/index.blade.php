@@ -56,7 +56,7 @@
                                 <strong><a href='{{ url('users', $user->id) }}' class='usera' title="{{ $user->name }}">{{ $user->name }}</a></strong><br>
                                 <span class="text-muted">{{ trans('user.index.level') }}: <span title="{{ $user->roles[0]->display_name }}">{{ $user->roles[0]->display_name }}</span></span>
                             </div>
-                            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 dropdown-user" data-for=".{{ $user->name }}">
+                            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 dropdown-user" data-for=".{{ str_replace(" ", "",$user->name) }}">
                                 <i class="fa fa-chevron-down text-muted"></i>
                             </div>
                         </div>
