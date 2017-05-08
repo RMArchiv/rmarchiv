@@ -90,10 +90,14 @@ class PT extends Command
                                 $check = PlayerFileHash::whereFilehash($filehash)->first();
                                 if(!$check){
                                     $pfh = new PlayerFileHash;
-                                    $pfh->filehash = $filehash
+                                    $pfh->filehash = $filehash;
+                                    $pfh->save();
+                                    $rel->file_hash_id = $pfh->id;
+                                }else{
+                                    $rel->file_hash_id = $check->id;
                                 }
 
-                                $rel->file_hash_id = $check->id;
+
                                 $rel->save();
                             }
                         }
