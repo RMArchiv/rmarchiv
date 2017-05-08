@@ -82,6 +82,9 @@ class PT extends Command
                                 $filehash = hash('sha1', $filedata);
 
                                 $newfilepath = storage_path('app/public/games_hashed/' . substr($filehash, 0, 2) . '/');
+                                if(!file_exists($newfilepath)){
+                                    mkdir($newfilepath);
+                                }
                                 file_put_contents($newfilepath . $filehash, $filedata);
 
                                 $check = PlayerFileHash::findOrNew([
