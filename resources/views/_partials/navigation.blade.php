@@ -73,7 +73,7 @@
                            data-vivaldi-spatnav-clickable="1">
                             hallo, {{ Auth::user()->name }} <span class="caret"></span>
                             @if(\Auth::user()->newThreadsCount() >= 1)
-                                <span class="badge">\Auth::user()->newThreadsCount()</span>
+                                <span class="badge">{{ \Auth::user()->newThreadsCount() }}</span>
                             @endif
                         </a>
                         <ul class="dropdown-menu" role="menu">
