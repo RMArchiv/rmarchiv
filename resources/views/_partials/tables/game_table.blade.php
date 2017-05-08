@@ -1,5 +1,5 @@
 
-<ul class="panel panel-default">
+<div class="panel panel-default">
     <div class="panel-heading">
         @if($games instanceof \Illuminate\Pagination\LengthAwarePaginator )
             {{ $games->links('vendor.pagination.bootstrap-4') }}
