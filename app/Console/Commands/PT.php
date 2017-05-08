@@ -75,7 +75,8 @@ class PT extends Command
                     $filename = $zip->getNameIndex($i);
 
                     if(!ends_with($filename, "/") and !starts_with($filename, '_MACOSX')){
-                        $imp = PlayerHelper::getZipRootPath($filename);
+                        $phelper = new PlayerHelper();
+                        $imp = $phelper->getZipRootPath($filename);
 
                         if(!$imp == ''){
                             $rel = new PlayerFileGamefileRel();
