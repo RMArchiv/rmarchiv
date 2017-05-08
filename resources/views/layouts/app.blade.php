@@ -50,7 +50,14 @@
 @include('_partials.navigation', ['part' => 'toppart'])
 @include('_partials.banned')
 
-@yield('content')
+@if(Route::current()->getName() == 'home')
+    @yield('content')
+@else
+    <div class="col-md-12">
+        @yield('content')
+    </div>
+@endif
+
 
 {{-- @include('_partials.navigation', ['part' => 'bottompart']) --}}
 @include('_partials.footer')
