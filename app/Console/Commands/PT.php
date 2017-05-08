@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\GamesFile;
 use App\Models\PlayerFileGamefileRel;
 use App\Models\PlayerFileHash;
 use Illuminate\Console\Command;
