@@ -1,60 +1,67 @@
 @extends('layouts.app')
-
-@section('pagetitle', 'login')
+@section('pagetitle', trans('auth.login'))
 @section('content')
-    <div id="content">
-        <div class='rmarchivtbl' id='rmarchivbox_login'>
-            <h2>{{ trans('app.auth.login') }}</h2>
-
-            @if ($errors->has('email'))
-                <div class="rmarchivtbl errorbox">
-                    <h2>{{ trans('app.auth.login_failed') }}</h2>
-                    <div class="content">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </div>
-                </div>
-            @endif
-
-            @if ($errors->has('password'))
-                <div class="rmarchivtbl errorbox">
-                    <h2>{{ trans('app.auth.login_failed') }}</h2>
-                    <div class="content">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </div>
-                </div>
-            @endif
-
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                {{ csrf_field() }}
-
-                <div class="content">
-                    <div class="formifier">
-                        <div class="row" id="row_email">
-                            <label for="email">{{ trans('app.auth.email') }}</label>
-                            <input name="email" id="email" value=""/>
-                            <span> [<span class="req">req</span>]</span>
-                        </div>
-                        <div class="row" id="row_password">
-                            <label for="password">{{ trans('app.auth.password') }}</label>
-                            <input type="password" name="password" id="password" value=""/>
-                            <span> [<span class="req">req</span>]</span>
-                        </div>
-                        <div class="row" id="row_checkbox">
-                            <label for="checkbox">{{ trans('app.auth.remember_me') }}</label>
-                            <input type="checkbox" name="remember">
-                        </div>
-                    </div>
-                </div>
-                <div class="foot">
-                    <button type="submit" class="btn btn-primary">
-                        {{ trans('app.auth.login') }}
-                    </button>
-                    <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                        {{ trans('app.auth.password_reset') }}
-                    </a>
-                </div>
-            </form>
-            <a href='{{ url('register') }}'>{{ trans('app.auth.register') }}</a>
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>{{ trans('auth.login') }}</h1>
+                {!! Breadcrumbs::render('login') !!}
+            </div>
         </div>
+        {!! Form::open(['url' => '/login']) !!}
+        @if (count($errors) > 0)
+            <div class="row">
+                <div class="alert alert-dismissible alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <h4>Fehler!</h4>
+                    <p>
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li><strong>{{ $error }}</strong></li>
+                        @endforeach
+                    </ul>
+                    </p>
+                </div>
+            </div>
+        @endif
+        <div class="row">
+            <div class="well">
+                <div class="form-horizontal">
+                    <fieldset>
+                        <legend>
+                            {{ trans('auth.login') }}
+                        </legend>
+                        <div class="form-group">
+                            <label for="email" class="col-lg-2 control-label">{{trans('auth.email')}}</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="email" name="email" placeholder="e.mail@mail.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-lg-2 control-label">{{trans('auth.password')}}</label>
+                            <div class="col-lg-10">
+                                <input type="password" class="form-control" id="password" name="password">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember"> {{ trans('auth.remember_me') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">{{ trans('auth.login') }}</button>
+                            <div class="pull-right">
+                                <a href="{{ url('/password/reset') }}">
+                                    {{ trans('auth.password_reset') }}
+                                </a>
+                                -
+                                <a href='{{ url('register') }}'>{{ trans('auth.register') }}</a>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        {!! Form::close() !!}
     </div>
 @endsection

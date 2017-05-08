@@ -3,7 +3,11 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
+<<<<<<< HEAD
+    * Generated on 2017-05-05.
+=======
     * Generated on 2017-05-07.
+>>>>>>> master
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -93,6 +97,7 @@ namespace PHPSTORM_META {
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
             'honeypot' instanceof \Msurguy\Honeypot\Honeypot,
             'zipper' instanceof \Chumper\Zipper\Zipper,
+            'breadcrumbs' instanceof \DaveJamesMiller\Breadcrumbs\Manager,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -277,6 +282,7 @@ namespace PHPSTORM_META {
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
             'honeypot' instanceof \Msurguy\Honeypot\Honeypot,
             'zipper' instanceof \Chumper\Zipper\Zipper,
+            'breadcrumbs' instanceof \DaveJamesMiller\Breadcrumbs\Manager,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -461,6 +467,7 @@ namespace PHPSTORM_META {
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
             'honeypot' instanceof \Msurguy\Honeypot\Honeypot,
             'zipper' instanceof \Chumper\Zipper\Zipper,
+            'breadcrumbs' instanceof \DaveJamesMiller\Breadcrumbs\Manager,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -645,6 +652,7 @@ namespace PHPSTORM_META {
             'Laravel\Scout\EngineManager' instanceof \Laravel\Scout\EngineManager,
             'honeypot' instanceof \Msurguy\Honeypot\Honeypot,
             'zipper' instanceof \Chumper\Zipper\Zipper,
+            'breadcrumbs' instanceof \DaveJamesMiller\Breadcrumbs\Manager,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,

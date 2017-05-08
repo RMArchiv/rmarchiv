@@ -1,29 +1,47 @@
-<div class='rmarchivtbl' id='rmarchivbox_tagcloud'>
-    <h2><a href="{{ url('tags') }}">{{ trans('index.tagcloud.title') }}</a></h2>
-    <div class='content center'>
-        @php
-            $cloud = new \LithiumDev\TagCloud\TagCloud();
-        @endphp
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ trans('index.tagcloud.title') }}
+            </div>
+            <div class="panel-body">
+                @php
+                    $cloud = new \LithiumDev\TagCloud\TagCloud();
+                @endphp
 
-        @foreach(\App\Models\TagRelation::with('tag')->get() as $tag)
-            @php
-                $cloud->addTag([
-                    'tag' => $tag->tag->title,
-                    'url' => action('TaggingController@showGames', $tag->tag->id),
-                ])
-            @endphp
-        @endforeach
-        @php
-            $cloud->setHtmlizeTagFunction(function($tag, $size) {
-                $link = '<a class="w'.$size.'" href="'.$tag['url'].'">'.$tag['tag'].'</a>';
-                return "<span class='jqcloud'>{$link}</span> ";
-                //return "<span  class='tag size{$size}'>{$link}</span> ";
-            });
-            $cloud->setLimit(30);
-        @endphp
-        {!!  $cloud->render() !!}
-    </div>
-    <div class='foot'>
-        :)
+                @foreach(\App\Models\TagRelation::with('tag')->get() as $tag)
+                    @php
+                        $cloud->addTag([
+                            'tag' => $tag->tag->title,
+                            'url' => action('TaggingController@showGames', $tag->tag->id),
+                            'id' => $tag->tag->id,
+                        ])
+                    @endphp
+                @endforeach
+                @php
+                    $cloud->setHtmlizeTagFunction(function($tag, $size) {
+                        $btnsize = '';
+                        if($size <= 3){
+                            $btnsize = 'btn-xs';
+                        }elseif($size <= 5){
+                            $btnsize = 'btn-sm';
+                        }elseif($size <= 7){
+                            $btnsize = '';
+                        }else{
+                            $btnsize = 'btn-lg';
+                        }
+                        $counter = \App\Models\TagRelation::whereTagId($tag['id'])->count();
+                        $link = '<a class="btn btn-default '.$btnsize.'" href="'.$tag['url'].'">'.$tag['tag'].'<span class="badge">'.$counter.'</span></a> ';
+                        return $link;
+                        //return "<span  class='tag size{$size}'>{$link}</span> ";
+                    });
+                    $cloud->setLimit(30);
+                @endphp
+                {!!  $cloud->render() !!}
+            </div>
+            <div class="panel-footer">
+                <a href="{{ url('tags') }}">{{ trans('index.shoutbox.more') }}</a>
+            </div>
+        </div>
     </div>
 </div>

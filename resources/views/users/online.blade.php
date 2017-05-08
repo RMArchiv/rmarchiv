@@ -1,11 +1,17 @@
 @extends('layouts.app')
 @section('pagetitle', 'user online')
 @section('content')
-    <div id="content">
-        <div class='rmarchivtbl' id='rmarchivbox_grouplist'>
-            <table id="rmarchiv_creatortable" class='boxtable'>
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>user online</h1>
+                {!! Breadcrumbs::render('online') !!}
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-striped">
                 <thead>
-                <tr class='sortable'>
+                <tr>
                     <th>
                         {{ trans('user.online.username') }}
                     </th>

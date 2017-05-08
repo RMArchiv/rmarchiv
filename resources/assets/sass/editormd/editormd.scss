@@ -11,7 +11,7 @@
     overflow: hidden;  
     position: relative;
     margin-bottom: 15px;
-    border: 1px solid #00001a;
+    border: 1px solid $borderColor;
     font-family: "Meiryo UI", "Microsoft YaHei", "Malgun Gothic", "Segoe UI", "Trebuchet MS", Helvetica, "Monaco", monospace, Tahoma, STXihei, "华文细黑", STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, "宋体", Heiti, "黑体", sans-serif;
 
     *, *:before, *:after {
@@ -76,13 +76,13 @@
 #{$prefix}toolbar {
     width: 100%;
     min-height: 37px;
-    background: #17395c;
+    background: #fff;
     display: none;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 10;
-    border-bottom: 1px solid #00001a;
+    border-bottom: 1px solid $borderColor;
 }
 
 #{$prefix}toolbar-container {

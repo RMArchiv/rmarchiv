@@ -22,6 +22,7 @@
     "jqcloud2": "^2.0.2",
     "jquery": "^3.1.1",
     "typeahead.js": "^0.11.1",
-    "bloodhound": "^1.0.4"
+    "bloodhound": "^1.0.4",
+    "matchHeight": "matchheight#^0.7.2"
   }
 }

@@ -1,13 +1,12 @@
-<div class='rmarchivtbl' id='rmarchivbox_cdc'>
-    <h2>{{ trans('index.randomgame.title') }}</h2>
-    <ul class='boxlist boxlisttable'>
-        <li>
-                <span class="rowprod">
-                    <img width="100%" src="{{ route('screenshot.show', [$randomgame->id, 1]) }}"/>
-                </span>
-        </li>
-        <li>
-            <span class='rowprod'>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">{{ trans('index.randomgame.title') }}</div>
+            <div class="panel-body">
+                <img width="100%" src="{{ route('screenshot.show', [$randomgame->id, 1]) }}"/>
+            </div>
+            <div class="panel-footer">
+                            <span class='rowprod'>
                 <span class='prodentry'>
                     @if($randomgame->gamefiles)
                         <span class='typeiconlist'>
@@ -16,12 +15,12 @@
                     </span>
                     @endif
                     <span class="platformiconlist">
-            <a href="{{ route('maker.show', $randomgame->maker->id) }}">
-                <span class="typei type_{{ $randomgame->maker->short }}" title="{{ $randomgame->maker->title }}">
-                    {{ $randomgame->maker->title }}
-                </span>
-            </a>
-        </span>
+                        <a href="{{ route('maker.show', $randomgame->maker->id) }}">
+                            <span class="typei type_{{ $randomgame->maker->short }}" title="{{ $randomgame->maker->title }}">
+                                {{ $randomgame->maker->title }}
+                            </span>
+                        </a>
+                    </span>
                     <span class='prod'><a
                                 href='{{ url('games', $randomgame->id) }}'>{{ $randomgame->title }}
                             @if($randomgame->subtitle)
@@ -36,7 +35,8 @@
                     </span>
                 </span>
             </span>
-        </li>
-    </ul>
-    <div class='foot'></div>
+            </div>
+        </div>
+    </div>
+
 </div>

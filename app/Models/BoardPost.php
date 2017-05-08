@@ -53,12 +53,12 @@ class BoardPost extends Model
 
     public function cat()
     {
-        return $this->belongsTo('App\Models\BoardCat', 'cat_id', 'id');
+        return $this->hasOne('App\Models\BoardCat', 'id', 'cat_id');
     }
 
     public function thread()
     {
-        return $this->belongsTo('App\Models\BoardThread', 'thread_id', 'id');
+        return $this->hasOne('App\Models\BoardThread', 'id', 'thread_id');
     }
 
     public function user()
