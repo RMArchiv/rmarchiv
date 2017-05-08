@@ -24,6 +24,7 @@ class Kernel extends ConsoleKernel
         Commands\setVotes::class,
         Commands\PlayerCreateInfo::class,
         Commands\PlayerRar2Zip::class,
+        Commands\PT::class,
     ];
 
     /**
