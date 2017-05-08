@@ -52,6 +52,12 @@ Breadcrumbs::register('users', function ($breadcrumbs) {
     $breadcrumbs->push(trans('user.title'), action('UserController@index'));
 });
 
+// Home > Users > [username]
+Breadcrumbs::register('user', function ($breadcrumbs, $user) {
+    $breadcrumbs->parent('users');
+    $breadcrumbs->push($user->name, action('UserController@show', $user->id));
+});
+
 // Home > Users > Online
 Breadcrumbs::register('online', function ($breadcrumbs) {
     $breadcrumbs->parent('users');

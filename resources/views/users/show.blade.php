@@ -1,40 +1,114 @@
 @extends('layouts.app')
+@section('pagetitle', 'benutzer: '.$user->name)
 @section('content')
-    <div id='content'>
-        <div class='rmarchivtbl' id='rmarchivbox_usermain'>
-            <h2> <img src='http://ava.rmarchiv.de/?gender=male&id={{ $user->userid }}' alt="{{ $user->username}}" class='avatar' /> <span>{{ $user->username}}</span> informationen <span id='glops'><span>{{ $user->obyx }}</span> Obyx</span></h2>
-            <div class='content'>
-                <div class='bigavatar'><img src='http://ava.rmarchiv.de/?size=160&gender=male&id={{ $user->userid }}' alt='big avatar'/></div>
-                <ul id='userdata'>
-                    <li class='header'>{{ trans('user.show.informations') }}:</li>
-                    <li>
-                        <span class='field'>{{ trans('user.show.level') }}:</span>
-                        {{ $user->rolename }}
-                    </li>
-                </ul>
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>benutzer: {{ $user->name }}</h1>
+                {!! Breadcrumbs::render('user', $user) !!}
             </div>
-            <div class='contribheader'>{{ trans('user.show.gamecredits') }} <span>0 {{ trans('user.show.games') }} (0 thumbs up, 0 thumbs down)</span> [<a href='#'>show all</a>]</div>
-            <div class='contribheader'>{{ trans('user.show.games_added') }}: {{ $user->gamecount }} <span>:: {{ ($user->gamecount * \App\Helpers\DatabaseHelper::getObyxPoints('game-add') ) }} obyx</span> [<a href='#'>{{ trans('user.show.show') }}</a>]</div>
-            <div class='contribheader'>{{ trans('user.show.developer_added') }}: {{ $user->devcount  }} <span>:: {{ ($user->devcount * \App\Helpers\DatabaseHelper::getObyxPoints('dev-add')) }} obyx</span> [<a href='#'>{{ trans('user.show.show') }}</a>]</div>
-            <div class='contribheader'>{{ trans('user.show.comments') }}: {{ $user->commentcount }} <span>:: {{ ($user->commentcount * \App\Helpers\DatabaseHelper::getObyxPoints('comment')) }} obyx</span></div>
-            <div class='contribheader'>{{ trans('user.show.ratings') }}: {{ $user->ratecount }} <span>:: {{ ($user->ratecount * \App\Helpers\DatabaseHelper::getObyxPoints('rating')) }} obyx</span></div>
-            <div class='contribheader'>{{ trans('user.show.shoutbox') }}: {{ $user->shoutboxcount }} <span>:: {{ ($user->shoutboxcount * \App\Helpers\DatabaseHelper::getObyxPoints('shoutbox')) }} obyx</span> [<a href='#'>{{ trans('user.show.show') }}</a>]</div>
-            <div class='contribheader'>{{ trans('user.show.topics') }}: {{ $user->threadcount }} <span>:: {{ ($user->shoutboxcount * \App\Helpers\DatabaseHelper::getObyxPoints('thread-add')) }} obyx</span> [<a href='#'>{{ trans('user.show.show') }}</a>]</div>
-            <div class='contribheader'>{{ trans('user.show.posts') }}: {{ $user->postcount }} <span>:: {{ ($user->shoutboxcount * \App\Helpers\DatabaseHelper::getObyxPoints('post-add')) }} obyx</span> [<a href='#'>{{ trans('user.show.show') }}</a>]</div>
-            <div class="contribheader">{{ trans('user.show.lists') }}: {{$user->listcount}} <span>:: </span>[<a href='{{ action('UserListController@index', $user->userid) }}'>{{ trans('user.show.show') }}</a>]</div>
-            <div class='foot'>{{ trans('user.show.created_at') }} {{ $user->usercreated_at }}</div>
         </div>
-    </div>
-    <div id="content">
-        <div class="rmarchivtbl" id="rmarchivbox_onelinerview">
-            <h2>{{ trans('user.show.last_activity') }}</h2>
-            <ul class="boxlist">
-                @foreach($obyx as $o)
-                    <li><time datetime='{{ $o->created_at }}' title='{{ $o->created_at }}'>{{ \Carbon\Carbon::parse($o->created_at)->diffForHumans() }}</time>
-                        <br>{!! $o->obyx->value !!} {{ trans('user.show.obyx_for') }}: {{ $o->obyx->reason_visible }}
-                    </li>
-                @endforeach
-            </ul>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        userinformationen
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-4">
+                            <img class="img-responsive img-rounded"
+                                 width="160px"
+                                 src="http://ava.rmarchiv.de/?size=160&gender=male&id={{ $user->id }}"
+                                 alt="User Pic">
+                        </div>
+                        <div class="col-md-8">
+                            <p><span class="text-muted">benutzername: </span>{{ $user->name }}</p>
+                            <p><span class="text-muted">registriert seit: </span>{{ $user->created_at }}</p>
+                            <p><span class="text-muted">level: </span>{{ $user->roles[0]->display_name }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        obyx übersicht
+                        <div class="pull-right">
+                            <span class="badge">OBYX PLATZHALTER</span>
+                        </div>
+                    </div>
+                    <ul class="list-group">
+                        @foreach($user->userobyx()->groupBy('obyx_id')->get() as $ob)
+
+                            <li class="list-group-item">
+                                <span class="badge">
+                                    @php
+                                        $count = $user->userobyx()->where('obyx_id', '=', $ob->obyx_id)->count();
+                                        $sum = $ob->obyx->value * $count;
+                                    @endphp
+                                    {{ $sum }}
+                                    </span>
+                                {{ trans('user.show.obyx.'.$ob->obyx->reason) }}
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        {{ trans('user.show.shoutbox') }}
+                    </div>
+                    <div class="panel-body">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        {{ trans('user.show.comments') }}
+                    </div>
+                    <div class="panel-body">
+                        @foreach($user->comments()->orderBy('created_at', 'desc')->limit(5)->get() as $comment)
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href='{{ url('users', $comment->user_id) }}'
+                                       title="{{ $comment->user->name }}">
+                                        <img
+                                                width="32px"
+                                                src='http://ava.rmarchiv.de/?gender=male&id={{ $comment->user_id }}'
+                                                alt="{{ $comment->user->name }}" class='media img-rounded'/>
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <div class="media-heading">
+                                        <a href='{{ url('users', $comment->user_id) }}' title="{{ $comment->user->name }}">{{ $comment->user->name }}</a> -
+                                        {{ trans('games.show.added') }} {{ $comment->created_at }}<br>
+                                        <span class="text-muted">
+                                            @if($comment->content_type == 'game')
+                                                spiel: <a href="{{ action('GameController@show', $comment->game()->first()->id) }}">{{ $comment->game()->first()->title }}</a>
+                                            @elseif($comment->content_type == 'news')
+                                                news: <a href="{{ action('NewsController@show', $comment->news()->first()->id) }}">{{ $comment->news()->first()->title }}</a>
+                                            @endif
+                                        </span>
+                                        @if($comment->vote_up == 1 and $comment->vote_down == 0)
+                                            <span class='vote up'>up</span>
+                                        @elseif($comment->vote_up == 0 and $comment->vote_down == 1)
+                                            <span class='vote down'>down</span>
+                                        @endif
+                                    </div>
+                                    <a href='{{ url('user', $comment->user_id) }}'
+                                       class='user'>{{ $comment->name }}</a>
+                                    {!! \App\Helpers\InlineBoxHelper::GameBox($comment->comment_html) !!}
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

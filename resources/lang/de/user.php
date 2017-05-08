@@ -33,6 +33,18 @@ return [
         'show'            => 'zeige',
         'last_activity'   => 'die letzten 10 aktivitäten',
         'obyx_for'        => 'obyx für',
+        'obyx' => [
+            'shoutbox' => 'shoutbox posts',
+            'comment' => 'kommentare',
+            'rating' => 'bewertungen',
+            'game-add' => 'spiele hinzugefügt',
+            'dev-add' => 'entwickler hinzugefügt',
+            'thread-add' => 'threads erstellt',
+            'post-add' => 'posts geschrieben',
+            'screenshot-add' => 'schreenshots hinzugefügt',
+            'gamefile-add' => 'spieledateien hochgeladen',
+            'resource-add' => 'ressourcen hinzugefügt'
+        ],
     ],
     'activity' => [
         'index' => [
