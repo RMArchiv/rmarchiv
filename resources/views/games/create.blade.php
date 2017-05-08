@@ -87,74 +87,78 @@
                 </div>
             </div>
             <div class="row">
-                <div class="form-horizontal">
-                    <fieldset>
-                        <legend>
-                            {{trans('games.create.links')}}
-                        </legend>
-                        <div class="form-group">
-                            <label for="websiteurl" class="col-lg-2 control-label">{{trans('games.create.gametitle')}}</label>
-                            <div class="col-lg-10">
-                                <input type="text" class="form-control" id="websiteurl" name="websiteurl" placeholder="http://www.anno.de">
+                <div class="well">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <legend>
+                                {{trans('games.create.links')}}
+                            </legend>
+                            <div class="form-group">
+                                <label for="websiteurl" class="col-lg-2 control-label">{{trans('games.create.game_website')}}</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="websiteurl" name="websiteurl" placeholder="http://www.anno.de">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="youtube" class="col-lg-2 control-label">{{trans('games.create.gametitle')}}</label>
-                            <div class="col-lg-10">
-                                <input type="text" class="form-control" id="youtube" name="youtube" placeholder="https://www.youtube.com/watch?v=V7tKQ4AuOk8">
+                            <div class="form-group">
+                                <label for="youtube" class="col-lg-2 control-label">{{trans('games.create.trailer')}}</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="youtube" name="youtube" placeholder="https://www.youtube.com/watch?v=V7tKQ4AuOk8">
+                                </div>
                             </div>
-                        </div>
-                    </fieldset>
+                        </fieldset>
+                    </div>
                 </div>
-            </div>
+                </div>
             <div class="row">
-                <div class="form-horizontal">
-                    <fieldset>
-                        <legend>
-                            {{trans('games.create.connections')}}
-                        </legend>
-                        <div class="form-group">
-                            <label for="developer" class="col-lg-2 control-label">{{trans('games.create.gametitle')}} *</label>
-                            <div class="col-lg-10" id="row_developer">
-                                <input autocomplete="off" type="text" class="form-control auto" id="developer" name="developer">
+                <div class="well">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <legend>
+                                {{trans('games.create.connections')}}
+                            </legend>
+                            <div class="form-group">
+                                <label for="developer" class="col-lg-2 control-label">{{trans('games.create.developer')}} *</label>
+                                <div class="col-lg-10" id="row_developer">
+                                    <input autocomplete="off" type="text" class="form-control auto" id="developer" name="developer">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-10 col-lg-offset-2">
-                                <button type="reset" class="btn btn-default">Cancel</button>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button type="reset" class="btn btn-default">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                             </div>
-                        </div>
-                    </fieldset>
-                    <script type="text/javascript">
-                        var sourcepath = new Bloodhound({
-                            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                            queryTokenizer: Bloodhound.tokenizers.whitespace,
-                            //prefetch: '../data/films/post_1960.json',
-                            remote: {
-                                url: '/ac_developer/%QUERY',
-                                wildcard: '%QUERY'
-                            }
-                        });
-
-                        $('#row_developer .auto').typeahead(null, {
-                            name: 'developers',
-                            display: 'value',
-                            source: sourcepath,
-                            limit: 5,
-                            templates: {
-                                empty: [
-                                    '<div class="empty-message">',
-                                    '{{trans('games.create.not_found')}}',
-                                    '</div>'
-                                ].join('\n'),
-                                suggestion: function(data) {
-                                    console.log(data);
-                                    return '<p><strong>' + data.value + '</strong></p>';
+                        </fieldset>
+                        <script type="text/javascript">
+                            var sourcepath = new Bloodhound({
+                                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                                //prefetch: '../data/films/post_1960.json',
+                                remote: {
+                                    url: '/ac_developer/%QUERY',
+                                    wildcard: '%QUERY'
                                 }
-                            }
-                        });
-                    </script>
+                            });
+
+                            $('#row_developer .auto').typeahead(null, {
+                                name: 'developers',
+                                display: 'value',
+                                source: sourcepath,
+                                limit: 5,
+                                templates: {
+                                    empty: [
+                                        '<div class="empty-message">',
+                                        '{{trans('games.create.not_found')}}',
+                                        '</div>'
+                                    ].join('\n'),
+                                    suggestion: function(data) {
+                                        console.log(data);
+                                        return '<p><strong>' + data.value + '</strong></p>';
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
                 </div>
             </div>
 
