@@ -3,9 +3,8 @@
     $action = str_replace("App\\Http\\Controllers\\", '', $action);
 @endphp
 
-<thead>
-<tr>
-    <th>
+<li class="list-group-item action">
+    sortieren nach:
         @if($orderby == 'title')
             @if($direction == 'asc')
                 @if(isset($id))
@@ -40,8 +39,7 @@
                 <a class="" href="{{ action($action, ['title', 'asc']) }}">{{ trans('_partials.tables.game_table_head.title') }}</a>
             @endif
         @endif
-    </th>
-    <th>
+            <span> • </span>
         @if($orderby == 'developer.name')
             @if($direction == 'asc')
                 @if(isset($id))
@@ -69,8 +67,7 @@
                    href="{{ action($action, ['developer.name', 'asc']) }}">{{ trans('_partials.tables.game_table_head.developer') }}</a>
             @endif
         @endif
-    </th>
-    <th>
+            <span> • </span>
         @if($orderby == 'release_date')
             @if($direction == 'asc')
                 @if(isset($id))
@@ -98,8 +95,7 @@
                    href="{{ action($action, ['release_date', 'asc']) }}">{{ trans('_partials.tables.game_table_head.release_date') }}</a>
             @endif
         @endif
-    </th>
-    <th>
+            <span> • </span>
         @if($orderby == 'created_at')
             @if($direction == 'asc')
                 @if(isset($id))
@@ -127,8 +123,7 @@
                    href="{{ action($action, ['created_at', 'asc']) }}">{{ trans('_partials.tables.game_table_head.created_at') }}</a>
             @endif
         @endif
-    </th>
-    <th>
+            <span> • </span>
         @if($orderby == 'voteup')
             @if($direction == 'asc')
                 @if(isset($id))
@@ -156,8 +151,7 @@
                                                                                  alt='{{ trans('_partials.tables.game_table_head.rate_up') }}'/></a>
             @endif
         @endif
-    </th>
-    <th>
+            <span> • </span>
         @if($orderby == 'votedown')
             @if($direction == 'asc')
                 @if(isset($id))
@@ -185,8 +179,7 @@
                                                                                    alt='{{ trans('_partials.tables.game_table_head.rate_down') }}'/></a>
             @endif
         @endif
-    </th>
-    <th>
+            <span> • </span>
         @if($orderby == 'avg')
             @if($direction == 'asc')
                 @if(isset($id))
@@ -212,8 +205,7 @@
                 <a class="" href="{{ action($action, ['avg', 'asc']) }}">{{ trans('_partials.tables.game_table_head.avg') }}</a>
             @endif
         @endif
-    </th>
-    <th>
+            <span> • </span>
         @if($orderby == 'views')
             @if($direction == 'asc')
                 @if(isset($id))
@@ -240,8 +232,7 @@
                 <a class="" href="{{ action($action, ['views', 'asc']) }}">{{ trans('_partials.tables.game_table_head.popularity') }}</a>
             @endif
         @endif
-    </th>
-    <th>
+            <span> • </span>
         @if($orderby == 'comments')
             @if($direction == 'asc')
                 @if(isset($id))
@@ -263,6 +254,5 @@
                 <a class="" href="{{ action($action, ['comments', 'asc']) }}">{{ trans('_partials.tables.game_table_head.comments') }}</a>
             @endif
         @endif
-    </th>
-</tr>
-</thead>
+
+</li>

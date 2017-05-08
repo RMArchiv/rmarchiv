@@ -108,7 +108,7 @@
                         </fieldset>
                     </div>
                 </div>
-                </div>
+            </div>
             <div class="row">
                 <div class="well">
                     <div class="form-horizontal">

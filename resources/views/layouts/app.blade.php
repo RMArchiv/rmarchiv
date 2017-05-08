@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Marcel 'ryg' Hering" />
 
-    <title><?= Meta::get('title'); ?></title>
+    <title>
+        @yield('pagetitle')
+        :: rmarchiv.de :: your online rpgmaker resource</title>
 
     <?= Meta::tag('robots'); ?>
 
@@ -20,7 +22,7 @@
 
     <?= Meta::tag('image'); ?>
     <title>
-        @yield('pagetitle') :: rmarchiv.de :: your online rpgmaker resource
+        @yield('pagetitle')
     </title>
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>

@@ -1,11 +1,11 @@
 
-<div class="panel panel-default">
+<ul class="panel panel-default">
     <div class="panel-heading">
         @if($games instanceof \Illuminate\Pagination\LengthAwarePaginator )
             {{ $games->links('vendor.pagination.bootstrap-4') }}
         @endif
     </div>
-    <table class='table table-striped table-hover'>
+    <ul class="list-group">
         @include('_partials.tables.game_table_head', ['games' => $games, 'orderby' => $orderby, 'direction' => $direction])
 
         @php
@@ -15,7 +15,7 @@
         @foreach($games as $game)
             @include('_partials.tables.game_table_row', ['game' => $game, 'maxviews' => $maxviews])
         @endforeach
-    </table>
+    </ul>
     <div class="panel-footer">
         @if($games instanceof \Illuminate\Pagination\LengthAwarePaginator )
             {{ $games->links('vendor.pagination.bootstrap-4') }}

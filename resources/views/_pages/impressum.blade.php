@@ -2,6 +2,12 @@
 @section('pagetitle', 'impressum')
 @section('content')
     <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>{{ trans('_partials.footer.impressum') }}</h1>
+                {!! Breadcrumbs::render('impressum') !!}
+            </div>
+        </div>
         <div class='row'>
             <div class="panel panel-default">
                 <div class="panel-heading">

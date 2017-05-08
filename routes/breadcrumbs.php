@@ -83,3 +83,17 @@ Breadcrumbs::register('developers', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('entwickler', action('DeveloperController@index'));
 });
+
+//----------------- Pages --------------------------------------------------------------------------------------------//
+// Home > Impressum
+Breadcrumbs::register('impressum', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('impressum', url('/impressum'));
+});
+
+//----------------- Auth --------------------------------------------------------------------------------------------//
+// Home -> Login
+Breadcrumbs::register('login', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('auth.login'), action('Auth\LoginController@showLoginForm'));
+});

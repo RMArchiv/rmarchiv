@@ -20,7 +20,13 @@ return [
 
     'failed'   => 'logindaten falsch.',
     'throttle' => 'Zu viele Loginversuche. Probiere es in :seconds Sekunden erneut.',
-    'login'    => 'einloggen',
+    'login'    => 'anmelden',
     'logout'   => 'abmelden',
+    'email' => 'email adresse',
+    'password' => 'passwort',
+    'remember_me' => 'login speichern',
+    'password_reset' => 'passwort vergessen',
+    'register' => 'registrieren',
+
 
 ];
