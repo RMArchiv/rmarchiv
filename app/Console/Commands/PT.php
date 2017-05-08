@@ -52,9 +52,50 @@ class PT extends Command
             $makerid = $gamefile->game()->first()->maker_id;
 
             if($makerid == 2 or $makerid == 3 or $makerid == 9){
-                if($gamefile->playerIndex()->count() == 0){
-                    $toindexed[] = $gamefile;
-                    $counter += 1;
+                //Get Uploaded Filepath
+                $path = storage_path('app/public/' . $gamefile->filename);
+
+                // Filter zip files
+                if ($gamefile->extension == 'zip') {
+                    $zip = new \ZipArchive;
+                    $zip->open($path);
+                    //Run through all files in ZIP
+                    for ($i = 0; $i < $zip->numFiles; $i++) {
+                        $filename = $zip->getNameIndex($i);
+
+                        if (!ends_with($filename, "/") and !starts_with($filename, '_MACOSX')) {
+                            $phelper = new PlayerHelper();
+                            $imp = $phelper->getZipRootPath($filename);
+
+                            if (!$imp == '') {
+                                $rel = new PlayerFileGamefileRel();
+                                $rel->gamefile_id = $gamefile->id;
+
+                                if (!ends_with(strtolower($imp), ['.exe', '.lmu', '.ldb', 'ini', '.dll', 'lmt', 'lsd'])) {
+                                    $rel->orig_filename = preg_replace('/(\.\w+$)/', '', strtolower($imp));
+                                } else {
+                                    $rel->orig_filename = strtolower($imp);
+                                }
+
+                                //Entpacken der Datei und speichern in storage
+                                $filedata = $zip->getFromIndex($i);
+                                $filehash = hash('sha1', $filedata);
+
+                                $newfilepath = storage_path('app/public/games_hashed/' . substr($filehash, 0, 2) . '/');
+                                file_put_contents($newfilepath . $filehash, $filedata);
+
+                                $check = PlayerFileHash::findOrNew([
+                                    'filehash' => $filehash,
+                                ]);
+
+                                $rel->file_hash_id = $check->id;
+                                $rel->save();
+                            }
+                        }
+                    }
+                    $zip->close();
+                } else {
+                    continue;
                 }
             }
         }
@@ -63,51 +104,7 @@ class PT extends Command
 
         $i = 0;
         foreach ($toindexed as $toindex) {
-            //Get Uploaded Filepath
-            $path = storage_path('app/public/' . $toindex->filename);
 
-            // Filter zip files
-            if ($toindex->extension == 'zip') {
-                $zip = new \ZipArchive;
-                $zip->open($path);
-                //Run through all files in ZIP
-                for ($i = 0; $i < $zip->numFiles; $i++) {
-                    $filename = $zip->getNameIndex($i);
-
-                    if (!ends_with($filename, "/") and !starts_with($filename, '_MACOSX')) {
-                        $phelper = new PlayerHelper();
-                        $imp = $phelper->getZipRootPath($filename);
-
-                        if (!$imp == '') {
-                            $rel = new PlayerFileGamefileRel();
-                            $rel->gamefile_id = $toindex->id;
-
-                            if (!ends_with(strtolower($imp), ['.exe', '.lmu', '.ldb', 'ini', '.dll', 'lmt', 'lsd'])) {
-                                $rel->orig_filename = preg_replace('/(\.\w+$)/', '', strtolower($imp));
-                            } else {
-                                $rel->orig_filename = strtolower($imp);
-                            }
-
-                            //Entpacken der Datei und speichern in storage
-                            $filedata = $zip->getFromIndex($i);
-                            $filehash = hash('sha1', $filedata);
-
-                            $newfilepath = storage_path('app/public/games_hashed/' . substr($filehash, 0, 2) . '/');
-                            file_put_contents($newfilepath . $filehash, $filedata);
-
-                            $check = PlayerFileHash::findOrNew([
-                                'filehash' => $filehash,
-                            ]);
-
-                            $rel->file_hash_id = $check->id;
-                            $rel->save();
-                        }
-                    }
-                }
-                $zip->close();
-            } else {
-                continue;
-            }
         }
     }
 }
