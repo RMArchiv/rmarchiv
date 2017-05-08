@@ -87,9 +87,11 @@ class PT extends Command
                                 }
                                 file_put_contents($newfilepath . $filehash, $filedata);
 
-                                $check = PlayerFileHash::firstOrNew([
-                                    'filehash' => $filehash,
-                                ]);
+                                $check = PlayerFileHash::whereFilehash($filehash)->first();
+                                if(!$check){
+                                    $pfh = new PlayerFileHash;
+                                    $pfh->filehash = $filehash
+                                }
 
                                 $rel->file_hash_id = $check->id;
                                 $rel->save();
