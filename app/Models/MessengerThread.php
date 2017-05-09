@@ -37,4 +37,8 @@ class MessengerThread extends Model
     ];
 
     protected $guarded = [];
+
+    public function participants(){
+        return $this->hasMany('App\Models\MessengerParticipant', 'thread_id', 'id');
+    }
 }

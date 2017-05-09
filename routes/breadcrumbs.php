@@ -134,5 +134,5 @@ Breadcrumbs::register('messages.create', function ($breadcrumbs) {
 // Home > Messages > [Msg->Titel]
 Breadcrumbs::register('messages.show', function ($breadcrumbs, $thread) {
     $breadcrumbs->parent('messages');
-    $breadcrumbs->push($thread->title, action('MessagesController@show', $thread->id));
+    $breadcrumbs->push($thread->subject, action('MessagesController@show', $thread->id));
 });

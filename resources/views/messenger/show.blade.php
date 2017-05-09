@@ -1,66 +1,72 @@
 @extends('layouts.app')
-@section('pagetitle', 'nachricht lesen')
+@section('pagetitle', $thread->subject)
 @section('content')
-    <div id='content'>
-        <div class='rmarchivtbl' id='rmarchivbox_bbsview'>
-            <h2>{{ $thread->subject }} :: {{ $thread->participantsString(Auth::id()) }}</h2>
-
-            @foreach($thread->messages as $post)
-                <div class='content cite-{{ $post->id  }} markdown' id='c{{ $post->id }}'>
-                    <div class="userinfo">
-                        <b><a href='{{ url('users', $post->user->id) }}' class='user'>{{ $post->user->name }}</a></b>
-                        <br>
-                        <small>{{ $post->user->roles[0]->display_name}}</small>
-                        <br>
-                        <br>
-                        <a href='{{ url('users', $post->user->id) }}' class='usera' title="{{ $post->user->name }}">
-                            <img src='http://ava.rmarchiv.de/?size=160&gender=male&id={{ $post->user->id }}' alt="{{ $post->user->name }}" class='avatar_board'/>
-                        </a>
-                        <br>
-                        <br>
-                    </div>
-                    <div class="post markdown">
-                        {!! \App\Helpers\InlineBoxHelper::GameBox(Markdown::convertToHtml($post->body)) !!}
-                    </div>
-                </div>
-                <div class='foot'>
-                    gepostet
-                    <a href='{{ route('messages.show', [$post->id]) }}#c{{ $post->id }}'>{{ $post->created_at }}</a>
-                </div>
-            @endforeach
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>{{ $thread->subject }}</h1>
+                {!! Breadcrumbs::render('messages.show', $thread) !!}
+            </div>
         </div>
-
-        @if(Auth::check())
-            <div class='rmarchivtbl' id='rmarchivbox_bbspost'>
-                <h2>poste eine antwort</h2>
-                {!! Form::open(['route' => ['messages.update', $thread->id], 'method' => 'PUT']) !!}
-                <div class='content'>
-                    nachricht:
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ $messages->links('vendor.pagination.bootstrap-4') }}</div>
+                <div class="panel-body">
+                    <ul class="media-list">
+                        @foreach($messages as $post)
+                            <li class="media">
+                                <div class="media-body active">
+                                    <div class="media">
+                                        <a class="pull-left" href="#">
+                                            <img width="32px" class="media-object img-rounded" src="http://ava.rmarchiv.de/?size=160&gender=male&id={{ $post->user->id }}">
+                                        </a>
+                                        <div class="media-body">
+                                            {!! \App\Helpers\InlineBoxHelper::GameBox(Markdown::convertToHtml($post->body)) !!}
+                                            <br>
+                                            <small class="text-muted">
+                                                <a href='{{ url('users', $post->user->id) }}' class='user'>{{ $post->user->name }}</a>
+                                                <span> • </span>
+                                                <a href='{{ route('board.thread.show', [$post->thread->id]) }}#c{{ $post->id }}'><time datetime='{{ $post->created_at }}' title='{{ $post->created_at }}'>{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</time></a>
+                                            </small>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="panel-footer">{{ $messages->links('vendor.pagination.bootstrap-4') }}</div>
+            </div>
+        </div>
+        <div class="row">
+            {!! Form::open(['route' => ['messages.update', $thread->id], 'method' => 'PUT']) !!}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    poste eine antwort
+                </div>
+                <div class="panel-body">
                     @include('_partials.markdown_editor')
-                    <br>
-                    <br>
+                </div>
+                <div class="panel-body">
                     weitere user hinzufügen:
                     @if($users->count() > 0)
                         <div class="checkbox">
                             @foreach($users as $user)
-                                <label title="{{ $user->name }}"><input type="checkbox" name="recipients[]" value="{{ $user->id }}">{{ $user->name }}</label>
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-default">
+                                        <input type="checkbox" autocomplete="off" name="recipients[]"> {{ $user->name }}
+                                    </label>
+                                </div>
                             @endforeach
                         </div>
                     @endif
                 </div>
-                <div class='foot'>
-                    <input type='submit' value='Submit' id='submit'></div>
-                {!! Form::close() !!}
-            </div>
-        @else
-            <div class="rmarchivtbl">
-                <h2>leider bist du nicht angemeldet.</h2>
-                <div class="content">
-                    du bist nicht angemeldet.<br>
-                    um einen thread erstellen zu können, <a href="{{ url('login') }}">logge</a> dich ein.<br>
-                    wenn du keinen account hast, <a href="{{ url('register') }}">registriere</a> dich doch einfach.
+                <div class="panel-footer">
+                    <button type="submit" value="submit" class="btn btn-primary">senden</button>
                 </div>
             </div>
-        @endif
+            {!! Form::close() !!}
+        </div>
     </div>
 @endsection

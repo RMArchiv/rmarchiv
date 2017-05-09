@@ -91,8 +91,9 @@ class MessagesController extends Controller
             if ($thread->hasParticipant($userId)) {
                 $users = User::whereNotIn('id', $thread->participantsUserIds($userId))->get();
                 $thread->markAsRead($userId);
+                $messages = $thread->messages()->paginate(25);
 
-                return view('messenger.show', compact('thread', 'users'));
+                return view('messenger.show', compact('thread', 'users', 'messages'));
             }
             //Todo:View für Keine Berechtigung.
         }
