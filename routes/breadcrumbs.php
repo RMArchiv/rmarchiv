@@ -136,3 +136,10 @@ Breadcrumbs::register('messages.show', function ($breadcrumbs, $thread) {
     $breadcrumbs->parent('messages');
     $breadcrumbs->push($thread->subject, action('MessagesController@show', $thread->id));
 });
+
+//----------------- Suche --------------------------------------------------------------------------------------------//
+// Home -> Suche
+Breadcrumbs::register('search', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('suche', action('SearchController@index'));
+});
