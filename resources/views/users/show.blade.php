@@ -62,7 +62,31 @@
                         {{ trans('user.show.shoutbox') }}
                     </div>
                     <div class="panel-body">
-
+                        <div class="panel-body">
+                            @foreach($user->shoutbox()->orderBy('created_at', 'desc')->limit(5)->get() as $comment)
+                                <div class="media">
+                                    <div class="media-left">
+                                        <a href='{{ url('users', $comment->user_id) }}'
+                                           title="{{ $comment->user->name }}">
+                                            <img
+                                                    width="32px"
+                                                    src='http://ava.rmarchiv.de/?gender=male&id={{ $comment->user_id }}'
+                                                    alt="{{ $comment->user->name }}" class='media img-rounded'/>
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="media-heading">
+                                            <a href='{{ url('users', $comment->user_id) }}' title="{{ $comment->user->name }}">{{ $comment->user->name }}</a> -
+                                            {{ trans('games.show.added') }} {{ $comment->created_at }}<br>
+                                            {!! $comment->shout_html !!}
+                                        </div>
+                                        <a href='{{ url('user', $comment->user_id) }}'
+                                           class='user'>{{ $comment->name }}</a>
+                                        {!! \App\Helpers\InlineBoxHelper::GameBox($comment->comment_html) !!}
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>

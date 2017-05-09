@@ -174,4 +174,8 @@ class User extends Authenticatable
     public function comments(){
         return $this->hasMany('App\Models\Comment', 'user_id', 'id');
     }
+
+    public function shoutbox(){
+        return $this->hasMany('App\Models\Shoutbox', 'user_id', 'id');
+    }
 }
