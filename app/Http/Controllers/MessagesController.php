@@ -45,6 +45,7 @@ class MessagesController extends Controller
     public function store()
     {
         $input = Input::get();
+        dd($input);
         $thread = Thread::create(
             [
                 'subject' => $input['subject'],
