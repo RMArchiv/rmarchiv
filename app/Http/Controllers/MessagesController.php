@@ -67,8 +67,13 @@ class MessagesController extends Controller
             ]
         );
         // Recipients
-        if (Input::get('recipients')) {
-            $thread->addParticipant($input['recipients']);
+        foreach($input['recipients'] as $rec){
+            Participant::create(
+                [
+                    'thread_id' => $thread->id,
+                    'user_id'   => $rec,
+                ]
+            );
         }
 
         return redirect('messages');
