@@ -90,6 +90,12 @@ Breadcrumbs::register('developers', function ($breadcrumbs) {
     $breadcrumbs->push('entwickler', action('DeveloperController@index'));
 });
 
+// Home > Developers > Developer
+Breadcrumbs::register('developer', function ($breadcrumbs, $developer) {
+    $breadcrumbs->parent('developers');
+    $breadcrumbs->push($developer->name, action('DeveloperController@show', $developer->id));
+});
+
 //----------------- Pages --------------------------------------------------------------------------------------------//
 // Home > Impressum
 Breadcrumbs::register('impressum', function ($breadcrumbs) {

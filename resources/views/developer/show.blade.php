@@ -1,16 +1,19 @@
 @extends('layouts.app')
-@section('pagetitle', trans('developer.show.title').': '. @$games->first()->developer->name)
+@section('pagetitle', trans('developer.show.title').': '. \App\Models\Developer::whereId($id)->first()->name)
 @section('content')
-    <div id='content'>
-        <h1>{{ @$games->first()->developer->name }}</h1>
-        {{--
-        hinzugefügt am {{ $games->first()->developer->created_at }} von <a href='{{ url('users', $games->first()->developer->user->id) }}' class='user'>{{ $games->first()->developer->user->name }}</a> <a href='{{ url('users', $games->first()->developer->user->id) }}' class='usera' title="{{ $games->first()->developer->user->name }}"><img src='http://ava.rmarchiv.de/?gender=male&id={{ $games->first()->developer->user->id }}' alt="{{ $games->first()->developer->user->name }}" class='avatar'/></a>
-        --}}
-        <br><br>
-        @include('_partials.tables.game_table', [
-            'games' => $games,
-            'orderby' => $orderby,
-            'direction' => $direction,
-        ])
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>Entwicklerprofil: {{ \App\Models\Developer::whereId($id)->first()->name }}</h1>
+                {!! Breadcrumbs::render('developer', \App\Models\Developer::whereId($id)->first()) !!}
+            </div>
+        </div>
+        <div class="row">
+            @include('_partials.tables.game_table', [
+                'games' => $games,
+                'orderby' => $orderby,
+                'direction' => $direction,
+            ])
+        </div>
     </div>
 @endsection
