@@ -1,80 +1,104 @@
 @extends('layouts.app')
 @section('pagetitle', 'spiel bearbeiten')
 @section('content')
-    <div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>
+                    @if($game->subtitle)
+                        {{ $game->title }}
+                        <small> - {{ $game->subtitle }}</small> bearbeiten
+                    @else
+                        {{ $game->title }} bearbeiten
+                    @endif
+
+                </h1>
+                {!! Breadcrumbs::render('game-edit', $game) !!}
+            </div>
+        </div>
         @if (count($errors) > 0)
-            <div class="rmarchivtbl errorbox">
-                <h2>spiel bearbeiten</h2>
-                <div class="content">
+            <div class="row">
+                <div class="alert alert-dismissible alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <h4>Fehler!</h4>
+                    <p>
                     <ul>
-                        @foreach ($errors->all() as $error)
+                        @foreach($errors->all() as $error)
                             <li><strong>{{ $error }}</strong></li>
                         @endforeach
                     </ul>
+                    </p>
                 </div>
             </div>
         @endif
-
-        <h2>{{ trans('games.edit.edit_of') }}: <a href="{{ url('games', $game->gameid) }}">{{ $game->gametitle }}</a></h2>
-
         {!! Form::open(['method' => 'PUT', 'route' => ['games.update', $game->gameid]]) !!}
-        <div class="rmarchivtbl" id="rmarchivbox_submitprod">
-            <h2>{{trans('games.edit.title')}}</h2>
-
-            <div class="content">
-                <div class="formifier">
-                    <div class="row" id="row_title">
-                        <label for="title">{{trans('games.edit.gametitle')}}</label>
-                        <input name="title" id="title" value="{{ $game->gametitle }}"/>
-                        <span> [<span class="req">req</span>]</span>
+        <div class="row">
+            <div class="panel panel-default form">
+                <div class="panel-heading">
+                    grundinformationen
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="title" class="col-lg-2 control-label">{{trans('games.edit.gametitle')}} *</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="title" name="title" value="{{ $game->title }}">
+                        </div>
                     </div>
-                    <div class="row" id="row_subtitle">
-                        <label for="subtitle">{{trans('games.edit.subtitle')}}</label>
-                        <input name="subtitle" id="subtitle" value="{{ $game->gamesubtitle }}"/>
-                        <span> [<span class="req">req</span>]</span>
+                    <div class="form-group">
+                        <label for="title" class="col-lg-2 control-label">{{trans('games.edit.subtitle')}} *</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="title" name="subtitle" value="{{ $game->subtitle }}">
+                        </div>
                     </div>
-                    <div class='row' id='row_maker'>
-                        <label for='maker'>{{trans('games.edit.maker')}}</label>
-                        <select name='maker' id='maker'>
-                            <option value="0">{{trans('games.edit.maker_choose')}}</option>
-                            @foreach($makers as $maker)
-                                @if($game->gamemakerid == $maker->id)
-                                    <option selected="selected" value="{{ $maker->id }}">{{ $maker->title }}</option>
-                                @else
-                                    <option value="{{ $maker->id }}">{{ $maker->title }}</option>
-                                @endif
-                            @endforeach
-                        </select>
-                        <span> [<span class="req">req</span>]</span>
+                    <div class="form-group">
+                        <label for='maker' class="col-lg-2 control-label">{{trans('games.edit.maker')}} *</label>
+                        <div class="col-lg-10">
+                            <select name='maker' id='maker' class="form-control">
+                                <option value="0">{{trans('games.create.maker_choose')}}</option>
+                                @foreach($makers as $maker)
+                                    @if($game->maker_id == $maker->id)
+                                        <option selected="selected" value="{{ $maker->id }}">{{ $maker->title }}</option>
+                                    @else
+                                        <option value="{{ $maker->id }}">{{ $maker->title }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
-                    <div class='row' id='row_language'>
-                        <label for='language'>{{trans('games.edit.language')}}</label>
-                        <select name='language' id='language'>
-                            <option value="0">{{trans('games.edit.language_choose')}}</option>
-                            @foreach($langs as $lang)
-                                @if($game->gamelangid == $lang->id)
-                                    <option selected="selected" value="{{ $lang->short }}">{{ $lang->name }}</option>
-                                @else
-                                    <option value="{{ $lang->short }}">{{ $lang->name }}</option>
-                                @endif
-                            @endforeach
-                        </select>
-                        <span> [<span class="req">req</span>]</span>
+                    <div class='form-group'>
+                        <label class="col-lg-2 control-label" for='language'>{{trans('games.create.language')}} *</label>
+                        <div class="col-lg-10">
+                            <select name='language' id='language' class="form-control">
+                                <option value="0">{{trans('games.create.language_choose')}}</option>
+                                @foreach($langs as $lang)
+                                    @if($game->lang_id == $lang->id)
+                                        <option selected="selected" value="{{ $lang->short }}">{{ $lang->name }}</option>
+                                    @else
+                                        <option value="{{ $lang->short }}">{{ $lang->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
-                    <div class="row" id="row_releasedate">
-                        <label for="releasedate">{{trans('games.edit.release_date')}}</label>
-                        <div class="formdate" id="releasedate">
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <label class="sr-only">rel.date</label>
+                            <p class="form-control-static">{{trans('games.edit.release_date')}}</p>
+                        </div>
+                        <div class="form-group">
                             @php $reldate = \Carbon\Carbon::parse($game->release_date) @endphp
                             <select name="releasedate_day" id="releasedate_day">
                                 <option value="0">{{trans('games.edit.release_day')}}</option>
                                 @for($i = 1; $i < 32; $i++)
                                     <option value="{{ $i }}"
-                                    @if($reldate->day == $i and $reldate->year != -1)
-                                        selected="selected"
-                                    @endif
+                                            @if($reldate->day == $i and $reldate->year != -1)
+                                            selected="selected"
+                                            @endif
                                     >{{ $i }}</option>
                                 @endfor
                             </select>
+                        </div>
+                        <div class="form-grou">
                             <select name="releasedate_month" id="releasedate_month">
                                 <option value="0">{{trans('games.edit.release_month')}}</option>
                                 @for($i = 1; $i < 13; $i++)
@@ -85,6 +109,8 @@
                                     >{{ trans('_misc.month.'.$i) }}</option>
                                 @endfor
                             </select>
+                        </div>
+                        <div class="form-group">
                             <select name="releasedate_year" id="releasedate_year">
                                 <option value="0">{{trans('games.edit.release_year')}}</option>
                                 @for($i = 1990; $i < date("Y") + 1; $i++)
@@ -97,55 +123,83 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row" id="row_atelier_id">
-                        <label for="atelier_id">{{ trans('games.edit.atelierid') }}</label>
-                        <input name="atelier_id" id="atelier_id" placeholder="820" value="{{ $game->atelier_id }}"/>
+                    <div class="form-group">
+                        <label for="title" class="col-lg-2 control-label">{{trans('games.edit.subtitle')}} *</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="title" name="subtitle" value="{{ $game->subtitle }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="atelier_id" class="col-lg-2 control-label">{{trans('games.edit.atelierid')}} *</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="atelier_id" name="ateilier_id" value="{{ $game->ateilier_id }}">
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <h2>{{trans('games.edit.gamedescription')}}</h2>
-            <div class="content">
+
+                <div class="panel-heading">
+                    {{trans('games.edit.gamedescription')}}
+                </div>
+                <div class="panel-body">
                     @include('_partials.markdown_editor', ['edit_text' => $game->gamedescmd])
-            </div>
+                </div>
 
-            <h2>{{trans('games.edit.links')}}</h2>
-            <div class="content">
-                <div class="formifier">
-                    <div class="row" id="row_websiteurl">
-                        <label for="websiteurl">{{trans('games.edit.game_website')}}</label>
-                        <input name="websiteurl" id="websiteurl" placeholder="https://www.anno1602.de" value="{{ $game->websiteurl }}"/>
+                <div class="panel-heading">
+                    {{trans('games.edit.links')}}
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="websiteurl" class="col-lg-2 control-label">{{trans('games.edit.game_website')}} *</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="websiteurl" name="websiteurl" value="{{ $game->website_url }}">
+                        </div>
                     </div>
-                    <div class="row" id="row_youtube">
-                        <label for="youtube">{{ trans('games.edit.trailer') }}</label>
-                        <input name="youtube" id="youtube" placeholder="https://www.youtube.com/watch?v=V7tKQ4AuOk8" value="{{ $game->youtube }}"/>
+                    <div class="form-group">
+                        <label for="youtube" class="col-lg-2 control-label">{{ trans('games.edit.trailer') }} *</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="youtube" name="youtube"  placeholder="https://www.youtube.com/watch?v=V7tKQ4AuOk8" value="{{ $game->youtube }}">
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="foot">
-                <input type="submit" value="{{trans('games.edit.send')}}">
+                <div class="panel-footer">
+                    <input type="submit" value="{{trans('games.edit.send')}}" class="btn btn-primary">
+                </div>
             </div>
         </div>
-        {!! Form::close() !!}
-
-        <div class="rmarchivtbl" id="rmarchivbox_submitprod">
-            <h2>{{trans('games.edit.developer')}}</h2>
-            <div class="content">
-                <div class="formifier">
-                    @foreach($developers as $dev)
-                    <div class="row" id="row_dev_{{ $dev->devid }}">
-                        {!! Form::open(['method' => 'POST', 'route' => ['games.developer.delete', $game->gameid]]) !!}
-                        {!! Form::hidden('devid', $dev->devid) !!}
-                        {!! Form::label($dev->devid, $dev->devname) !!}
-                        {!! Form::submit(trans('games.edit.delete'),['name' => $dev->devid]) !!}
-                        {!! Form::close() !!}
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{trans('games.edit.developer')}}
+                </div>
+                <div class="panel-body">
+                    <div class="form-horizontal">
+                        @foreach($game->developers as $dev)
+                            <div id="row_dev_{{ $dev->devid }}">
+                                {!! Form::open(['method' => 'POST', 'route' => ['games.developer.delete', $game->gameid]]) !!}
+                                {!! Form::hidden('devid', $dev->devid) !!}
+                                {!! Form::label($dev->devid, $dev->devname) !!}
+                                {!! Form::submit(trans('games.edit.delete'),['name' => $dev->devid]) !!}
+                                {!! Form::close() !!}
+                            </div>
+                        @endforeach
                     </div>
-                    @endforeach
                 </div>
             </div>
+        </div>
+        <div class="row">
 
-        {!! Form::open(['method' => 'POST', 'route' => ['games.developer.store', $game->gameid]]) !!}
+        </div>
+    </div>
+    {!! Form::close() !!}
+
+
+    <div id="content">
+        <div class="rmarchivtbl" id="rmarchivbox_submitprod">
+
+            {!! Form::open(['method' => 'POST', 'route' => ['games.developer.store', $game->id]]) !!}
             <h2>{{trans('games.edit.developer_add')}}</h2>
             <div class="content">
                 <div class="formifier">
@@ -178,7 +232,7 @@
                             '{{trans('games.edit.not_found')}}',
                             '</div>'
                         ].join('\n'),
-                        suggestion: function(data) {
+                        suggestion: function (data) {
                             console.log(data);
                             return '<p><strong>' + data.value + '</strong></p>';
                         }
@@ -188,22 +242,24 @@
             <div class="foot">
                 <input type="submit" value="{{trans('games.edit.send')}}">
             </div>
-        {!! Form::close() !!}
+            {!! Form::close() !!}
         </div>
 
         <div class="rmarchivtbl" id="rmarchivbox_submitprod">
             <h2>{{ trans('games.edit.added_tags') }}</h2>
             <table id="'rmarchivbox_prodlist" class="boxtable pagedtable">
                 <thead>
-                    <tr>
-                        <th>{{trans('games.edit.tag')}}</th>
-                        <th>{{trans('games.edit.action')}}</th>
-                    </tr>
+                <tr>
+                    <th>{{trans('games.edit.tag')}}</th>
+                    <th>{{trans('games.edit.action')}}</th>
+                </tr>
                 </thead>
-                @foreach($tags as $t)
+                @foreach($game->tags as $t)
                     <tr>
                         <td>{{ $t->tag->title }}</td>
-                        <td><a href="{{ action('TaggingController@delete_gametag', [$game->gameid, $t->tag->id]) }}">{{trans('games.edit.delete')}}</a></td>
+                        <td>
+                            <a href="{{ action('TaggingController@delete_gametag', [$game->gameid, $t->tag->id]) }}">{{trans('games.edit.delete')}}</a>
+                        </td>
                     </tr>
                 @endforeach
             </table>
@@ -213,13 +269,13 @@
             <h2>{{trans('games.edit.added_credits')}}</h2>
             <table id='rmarchivbox_prodlist' class='boxtable pagedtable'>
                 <thead>
-                    <tr class='sortable'>
-                        <th>{{trans('games.edit.user')}}</th>
-                        <th>{{trans('games.edit.part')}}</th>
-                        <th>{{trans('games.edit.action')}}</th>
-                    </tr>
+                <tr class='sortable'>
+                    <th>{{trans('games.edit.user')}}</th>
+                    <th>{{trans('games.edit.part')}}</th>
+                    <th>{{trans('games.edit.action')}}</th>
+                </tr>
                 </thead>
-                @foreach($credits as $cr)
+                @foreach($game->credits as $cr)
                     <tr>
                         <td>
                             <a class='usera' href='{{ url('users', $cr->userid) }}' title="{{ $cr->username }}">
@@ -228,7 +284,7 @@
                             <span class='prod'><a href='{{ url('users', $cr->userid) }}' class='user'>{{ $cr->username }}</a></span>
                         </td>
                         <td>
-                            {{ $credittypes[$cr->credit_type_id]['title'] }}
+                            {{--}}{{ $credittypes[$cr->credit_type_id]['title'] }}--}}
                         </td>
                         <td>
                             [<a href="{{ action('UserCreditsController@destroy', [$game->gameid, $cr->id]) }}">{{trans('games.edit.delete')}}</a>]
@@ -250,9 +306,9 @@
                         <label for="credit">{{trans('games.edit.part')}}:</label>
                         <select name='credit' id='credit'>
                             <option value="0">{{trans('games.edit.part_choose')}}</option>
-                        @foreach($credittypes as $ct)
-                            <option value="{{ $ct['id'] }}">{{$ct['title']}}</option>
-                        @endforeach
+                            @foreach(\App\Models\UserCredit::get() as $ct)
+                                <option value="{{ $ct['id'] }}">{{$ct['title']}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -279,7 +335,7 @@
                             '{{trans('games.edit.part_not_found')}}',
                             '</div>'
                         ].join('\n'),
-                        suggestion: function(data) {
+                        suggestion: function (data) {
                             console.log(data);
                             return '<p><strong>' + data.value + '</strong></p>';
                         }

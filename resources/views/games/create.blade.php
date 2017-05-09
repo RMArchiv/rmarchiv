@@ -15,11 +15,11 @@
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <h4>Fehler!</h4>
                         <p>
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                    <li><strong>{{ $error }}</strong></li>
-                                @endforeach
-                            </ul>
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li><strong>{{ $error }}</strong></li>
+                            @endforeach
+                        </ul>
                         </p>
                     </div>
                 </div>

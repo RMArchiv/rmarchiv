@@ -16,7 +16,7 @@ Breadcrumbs::register('games', function ($breadcrumbs) {
 Breadcrumbs::register('game', function ($breadcrumbs, $game) {
     $breadcrumbs->parent('games');
     if ($game->subtitle) {
-        $breadcrumbs->push($game->title . ' - ' . $game->subtitle, action('GameController@show', $game->id));
+        $breadcrumbs->push($game->title . ' - ' . $game->gamesubtitle, action('GameController@show', $game->id));
     } else {
         $breadcrumbs->push($game->title, action('GameController@show', $game->id));
     }
@@ -31,11 +31,7 @@ Breadcrumbs::register('game-add', function ($breadcrumbs) {
 // Home > Games > [game] > edit
 Breadcrumbs::register('game-edit', function ($breadcrumbs, $game) {
     $breadcrumbs->parent('game', $game);
-    if ($game->subtitle) {
-        $breadcrumbs->push('bearbeiten', action('GameController@edit', $game->id));
-    } else {
-        $breadcrumbs->push('bearbeiten', action('GameController@edit', $game->id));
-    }
+    $breadcrumbs->push('bearbeiten', action('GameController@edit', $game->id));
 });
 
 //----------------- FAQ ----------------------------------------------------------------------------------------------//
