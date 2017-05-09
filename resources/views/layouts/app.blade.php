@@ -50,7 +50,7 @@
 @include('_partials.navigation', ['part' => 'toppart'])
 @include('_partials.banned')
 
-@if(Route::current()->getName() == 'home')
+@if(Route::currentRouteName()) == 'home')
     @yield('content')
 @else
     <div class="col-md-12">

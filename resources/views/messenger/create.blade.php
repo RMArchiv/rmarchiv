@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', 'nachricht erstellen')
 @section('content')
     <div class="container">
         <div class="row">
