@@ -55,7 +55,7 @@
                             @foreach($users as $user)
                                 <div class="btn-group" data-toggle="buttons">
                                     <label class="btn btn-default">
-                                        <input type="checkbox" autocomplete="off" name="recipients[]"> {{ $user->name }}
+                                        <input type="checkbox" autocomplete="off" name="recipients[]" value="{{ $user->id }}"> {{ $user->name }}
                                     </label>
                                 </div>
                             @endforeach
