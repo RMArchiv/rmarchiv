@@ -95,7 +95,7 @@
                 <div class="panel-body">
                     <ul class="media-list">
                         @foreach($posts as $post)
-                        <li class="media">
+                        <li class="media" id="c{{$post->id}}">
                             <div class="media-body active">
                                 <div class="media">
                                     <a class="pull-left" href="#">
