@@ -26,7 +26,7 @@ class MessagesController extends Controller
         //$threads = Thread::getAllLatest()->get();
 
         // All threads that user is participating in
-        $threads = Thread::forUser($currentUserId)->latest('updated_at')->get();
+        $threads = Thread::forUser($currentUserId)->latest('updated_at')->paginate(25);
         // All threads that user is participating in, with new messages
         // $threads = Thread::forUserWithNewMessages($currentUserId)->latest('updated_at')->get();
 

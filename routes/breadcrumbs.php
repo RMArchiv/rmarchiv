@@ -117,3 +117,22 @@ Breadcrumbs::register('awards', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('awards.title'), action('AwardController@index'));
 });
+
+//----------------- Messanger / PN -----------------------------------------------------------------------------------//
+// Home -> Messages
+Breadcrumbs::register('messages', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('nachrichten', action('MessagesController@index'));
+});
+
+// Home > Messages > Erstellen
+Breadcrumbs::register('messages.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('messages');
+    $breadcrumbs->push('nachricht erstellen', action('MessagesController@create'));
+});
+
+// Home > Messages > [Msg->Titel]
+Breadcrumbs::register('messages.show', function ($breadcrumbs, $thread) {
+    $breadcrumbs->parent('messages');
+    $breadcrumbs->push($thread->title, action('MessagesController@show', $thread->id));
+});
