@@ -31,16 +31,18 @@
                 @endif
         </div>
         <div class="media-body" style="font-size: 12px;">
-            {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($game->id) !!}
-            <span> • </span> release date:
+            {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($game->id) !!}<br>
+            release date:
             @if(\Carbon\Carbon::parse($game->release_date)->year != -1 )
                 {{ $game->release_date }}
             @else
                 {{ \Carbon\Carbon::parse(\App\Helpers\DatabaseHelper::getReleaseDateFromGameId($game->id))->toDateString() }}
             @endif
             <span> • </span>
-            Voteup: {{ $game->voteup or 0 }} -
-            Votedown: {{ $game->votedown or 0 }}
+            hinzugefügt {{ \Carbon\Carbon::parse($game->created_at)->diffForHumans() }}
+            <span> • </span>
+            <img src='/assets/rate_up.gif' alt='{{ trans('app.games.table.rate_up') }}'/> {{ $game->voteup or 0 }} -
+            <img src='/assets/rate_down.gif' alt='{{ trans('app.games.table.rate_down') }}'/> {{ $game->votedown or 0 }}
             <span> • </span>
             AVG: {{ number_format(floatval($game->avg), 2) }}&nbsp;
             @if($game->avg > 0)
