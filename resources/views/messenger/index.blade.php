@@ -4,7 +4,13 @@
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>persönliche nachrichten</h1>
+                <h1>persönliche nachrichten
+                    <div class='btn-toolbar pull-right'>
+                        <div class='btn-group'>
+                            <a role="button" href="{{ action('MessagesController@create') }}" class="btn btn-primary"><span class="fa fa-plus"></span></a>
+                        </div>
+                    </span>
+                </h1>
                 {!! Breadcrumbs::render('messages') !!}
             </div>
         </div>
@@ -16,7 +22,7 @@
                 <ul class="list-group">
                     @foreach($threads as $thread)
                         <li class="list-group-item media" style="margin-top: 0px;">
-                            <a class="pull-right" href="{{ route('board.thread.show', $thread->id) }}"><span class="badge">{{ App\Models\MessengerMessage::whereThreadId($thread->id)->count() }}</span></a>
+                            <a class="pull-right" href="{{ route('messages.show', $thread->id) }}"><span class="badge">{{ App\Models\MessengerMessage::whereThreadId($thread->id)->count() }}</span></a>
                             <a class="pull-left" href="{{ url('users', $thread->creator()->id) }}"><img class="media-object img-rounded" width="42px" src="http://ava.rmarchiv.de/?size=42&gender=male&id={{ $thread->creator()->id }}" alt="{{ $thread->creator()->name }}"></a>
                             <div class="thread-info">
                                 <div class="media-heading">
@@ -26,7 +32,7 @@
                                     @if(\App\Models\BoardPoll::whereThreadId($thread->id)->count() != 0)
                                         <i class="fa fa-signal fa-rotate-270"></i>
                                     @endif
-                                        <a href="{{ route('board.thread.show', $thread->id) }}">
+                                        <a href="{{ route('messages.show', $thread->id) }}">
                                             <span @if($thread->isUnread($currentUserId) === true) style="font-weight: bold;" @endif>
                                                 @if($thread->subject == '')
                                                     kein betreff
