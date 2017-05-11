@@ -77,13 +77,15 @@
                 {{ Form::close() }}
             </div>
         </div>
-        <div class="row">
-            @include('_partials.tables.game_table', [
-                'games' => $games,
-                'orderby' => $orderby,
-                'direction' => $direction,
-            ])
-        </div>
+        @if(isset($games))
+            <div class="row">
+                @include('_partials.tables.game_table', [
+                    'games' => $games,
+                    'orderby' => $orderby,
+                    'direction' => $direction,
+                ])
+            </div>
+        @endif
     </div>
 
 @endsection

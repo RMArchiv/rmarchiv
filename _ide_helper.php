@@ -1,11 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
-<<<<<<< HEAD
- * Generated for Laravel 5.4.21 on 2017-05-05.
-=======
- * Generated for Laravel 5.4.21 on 2017-05-07.
->>>>>>> master
+ * Generated for Laravel 5.4.22 on 2017-05-11.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -3974,7 +3970,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string|\Closure $listener
          * @param bool $wildcard
-         * @return mixed 
+         * @return \Closure 
          * @static 
          */
         public static function makeListener($listener, $wildcard = false)
@@ -15019,7 +15015,7 @@ namespace Prologue\Alerts\Facades {
         /**
          * Determine if messages exist for any of the given keys.
          *
-         * @param array $keys
+         * @param array|string $keys
          * @return bool 
          * @static 
          */
@@ -15552,6 +15548,18 @@ namespace {
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
     
     class Eloquent extends \Illuminate\Database\Eloquent\Model {    
+        /**
+         * Create and return and un-saved model instance.
+         *
+         * @param array $attributes
+         * @return \Illuminate\Database\Eloquent\Model 
+         * @static 
+         */
+        public static function make($attributes = array())
+        {
+            return \Illuminate\Database\Eloquent\Builder::make($attributes);
+        }
+        
         /**
          * Register a new global scope.
          *
