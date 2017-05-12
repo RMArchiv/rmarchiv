@@ -24,7 +24,45 @@
                 <li><a href="{{ url('search') }}">{{ trans('search.title') }}</a></li>
                 <li><a href="{{ url('board') }}">{{ trans('board.title') }}</a></li>
                 <li><a href="{{ url('faq') }}">{{ trans('faq.title') }}</a></li>
-                <li><a href="{{ url('submit') }}">{{ trans('submit.title') }}</a></li>
+                @if(Auth::check())
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
+                       data-vivaldi-spatnav-clickable="1">
+                        {{ trans('submit.title') }} <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href='{{ url('games/create') }}'>einsenden eines spiels</a></li>
+                        <li><a href='{{ url('resources/create') }}'>einsenden von ressourcen</a></li>
+                        <li><a href='{{ url('news/create') }}'>einsenden von news</a></li>
+                        <li><a href='{{ url('submit/logo') }}'>upload eines logos</a></li>
+                        <li><a href='{{ url('logo/vote') }}'>bewerte logos</a></li>
+                        <li class="divider"></li>
+                        <li><a href='{{ url('missing/gamescreens') }}'>fehlende spielescreenshots</a></li>
+                        <li><a href='{{ url('missing/gamefiles') }}'>fehlende spieledateien</a></li>
+                        <li><a href='{{ url('missing/gamedesc') }}'>fehlende spielebeschreibungen</a></li>
+                        <li><a href='{{ url('missing/notags') }}'>ohne tags</a></li>
+                        <div class="divider"></div>
+                        @permission(('admin-user'))
+                        <li><a href="{{ url('users/perm/role') }}">benutzerberechtigungen</a></li>
+                        @endpermission
+                        @permission(('admin-board'))
+                        <li><a href="{{ url('board/create') }}">board kategorie hinzufügen</a></li>
+                        @endpermission
+                        @permission(('admin-cdc'))
+                        <li><a href="{{ url('cdc/create') }}">'coup de coeur' hinzufügen</a></li>
+                        @endpermission
+                        @permission(('create-faq'))
+                        <li><a href="{{ url('faq/create') }}">faq hinzufügen</a></li>
+                        @endpermission
+                        @permission(('create-awards'))
+                        <li><a href="{{ url('awards/create') }}">award-kategorie hinzufügen</a></li>
+                        @endpermission
+                        @permission(('admin-comments'))
+                        <li><a href="{{ url('reported/comments') }}">gemeldete kommentare</a></li>
+                        @endpermission
+                    </ul>
+                </li>
+                @endif
             </ul>
             {{ Form::open(['action' => ['SearchController@search'], 'class' => 'navbar-form navbar-right']) }}
                 <div class="form-group">
