@@ -7,28 +7,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Faq;
 use Illuminate\Http\Request;
 
 class FaqController extends Controller
 {
     public function index()
     {
-        $faq = \DB::table('faq')
-            ->orderBy('cat')
-            ->get();
-
-        $res = [];
-        foreach ($faq as $f) {
-            $t['id'] = $f->id;
-            $t['cat'] = $f->cat;
-            $t['title'] = $f->title;
-            $t['desc_html'] = $f->desc_html;
-
-            $res[$f->cat][] = $t;
-        }
+        $faq = Faq::groupBy('cat')->orderBy('cat', 'asc')->get();
 
         return view('faq.index', [
-            'faq' => $res,
+            'faq' => $faq,
         ]);
     }
 
