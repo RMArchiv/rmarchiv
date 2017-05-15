@@ -165,3 +165,10 @@ Breadcrumbs::register('maker.show', function ($breadcrumbs, $maker) {
     $breadcrumbs->parent('maker');
     $breadcrumbs->push($maker->title, action('MakerController@show', $maker->id));
 });
+
+//----------------- Shoutbox -----------------------------------------------------------------------------------------//
+// Home -> Shoutbox
+Breadcrumbs::register('shoutbox', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('shoutbox', action('ShoutboxController@index'));
+});
