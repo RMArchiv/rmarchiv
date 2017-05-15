@@ -62,6 +62,8 @@ class News extends Model
 
     public function comments()
     {
-        return $this->hasMany('App\Models\Comment', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'news'"))->with('user');
+        return $this->hasMany('App\Models\Comment', 'content_id', 'id')
+            ->Where('content_type', '=', \DB::raw("'news'"))
+            ->with('user');
     }
 }

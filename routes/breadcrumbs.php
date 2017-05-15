@@ -107,11 +107,18 @@ Breadcrumbs::register('login', function ($breadcrumbs) {
 });
 
 //----------------- News ---------------------------------------------------------------------------------------------//
-// Home -> Login
+// Home -> News
 Breadcrumbs::register('news', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('news.title'), action('NewsController@index'));
 });
+
+// Home -> News -> [News]
+Breadcrumbs::register('news.show', function ($breadcrumbs, $news) {
+    $breadcrumbs->parent('news');
+    $breadcrumbs->push($news->title, action('NewsController@show', $news->id));
+});
+
 
 //----------------- Awards -------------------------------------------------------------------------------------------//
 // Home -> Awards
