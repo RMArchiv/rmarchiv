@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('pagetitle', 'entwickler')
+@section('pagetitle', 'maker')
 @section('content')
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>entwickler</h1>
-                {!! Breadcrumbs::render('developers') !!}
+                <h1>maker</h1>
+                {!! Breadcrumbs::render('maker') !!}
             </div>
         </div>
         <div class="row">

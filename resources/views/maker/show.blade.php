@@ -1,12 +1,19 @@
 @extends('layouts.app')
-@section('pagetitle', trans('maker.title'))
+@section('pagetitle', $maker->title)
 @section('content')
-    <div id='content'>
-        <h2>{{ trans('maker.show.gamesfor') }}: "{{ $games->first()->maker->title }}"</h2>
-        @include('_partials.tables.game_table', [
-            'games' => $games,
-            'orderby' => $orderby,
-            'direction' => $direction,
-        ])
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>{{ $maker->title }}</h1>
+                {!! Breadcrumbs::render('maker.show', $maker) !!}
+            </div>
+        </div>
+        <div class="row">
+            @include('_partials.tables.game_table', [
+                'games' => $games,
+                'orderby' => $orderby,
+                'direction' => $direction,
+            ])
+        </div>
     </div>
 @endsection

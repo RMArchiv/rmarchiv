@@ -30,8 +30,11 @@ class MakerController extends Controller
             ->orderBy($orderby, $direction)
             ->paginate(20);
 
+        $maker = Maker::whereId($makerid)->first();
+
         return view('maker.show', [
             'games' => $games,
+            'maker' => $maker,
             'orderby' => $orderby,
             'direction' => $direction,
             'id' => $makerid,

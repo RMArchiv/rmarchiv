@@ -152,3 +152,16 @@ Breadcrumbs::register('search', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('suche', action('SearchController@index'));
 });
+
+//----------------- Maker --------------------------------------------------------------------------------------------//
+// Home -> Maker
+Breadcrumbs::register('maker', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('maker', action('MakerController@index'));
+});
+
+// Home -> Maker -> [Maker]
+Breadcrumbs::register('maker.show', function ($breadcrumbs, $maker) {
+    $breadcrumbs->parent('maker');
+    $breadcrumbs->push($maker->title, action('MakerController@show', $maker->id));
+});
