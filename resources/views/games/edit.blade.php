@@ -31,7 +31,7 @@
                 </div>
             </div>
         @endif
-        {!! Form::open(['method' => 'PUT', 'route' => ['games.update', $game->gameid]]) !!}
+        {!! Form::open(['method' => 'PUT', 'route' => ['games.update', $game->id]]) !!}
         <div class="row">
             <div class="panel panel-default form">
                 <div class="panel-heading">
@@ -125,7 +125,7 @@
                     <div class="form-group">
                         <label for="atelier_id" class="col-lg-2 control-label">{{trans('games.edit.atelierid')}} *</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="atelier_id" name="ateilier_id" value="{{ $game->ateilier_id }}">
+                            <input type="text" class="form-control" id="atelier_id" name="ateilier_id" value="{{ $game->atelier_id }}">
                         </div>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                     {{trans('games.edit.gamedescription')}}
                 </div>
                 <div class="panel-body">
-                    @include('_partials.markdown_editor', ['edit_text' => $game->gamedescmd])
+                    @include('_partials.markdown_editor', ['edit_text' => $game->desc_md])
                 </div>
 
                 <div class="panel-heading">

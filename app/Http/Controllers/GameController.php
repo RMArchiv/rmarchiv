@@ -173,35 +173,11 @@ class GameController extends Controller
      */
     public function edit($id)
     {
-        $game = \DB::table('games')
-            ->select([
-                'games.id as gameid',
-                'games.title as gametitle',
-                'games.subtitle as gamesubtitle',
-                'games.maker_id as gamemakerid',
-                'games.lang_id as gamelangid',
-                'games.desc_md as gamedescmd',
-                'games.website_url as websiteurl',
-                'games.youtube as youtube',
-                'games.release_date as release_date',
-                'games.atelier_id as atelier_id',
-            ])
-            ->where('games.id', '=', $id)
-            ->first();
 
         $makers = \DB::table('makers')
             ->get();
 
         $langs = \DB::table('languages')
-            ->get();
-
-        $developers = \DB::table('developer')
-            ->select([
-                'developer.name as devname',
-                'developer.id as devid',
-            ])
-            ->leftJoin('games_developer', 'games_developer.developer_id', '=', 'developer.id')
-            ->where('games_developer.game_id', '=', $id)
             ->get();
 
         $creds = \DB::table('user_credit_types')
@@ -213,19 +189,6 @@ class GameController extends Controller
             $credittypes[$cred->id]['title'] = $cred->title;
             $credittypes[$cred->id]['id'] = $cred->id;
         }
-
-        $credits = \DB::table('user_credits')
-            ->leftJoin('users', 'users.id', '=', 'user_credits.user_id')
-            ->select([
-                'user_credits.credit_type_id as credit_type_id',
-                'user_credits.id as id',
-                'users.id as userid',
-                'users.name as username',
-            ])
-            ->where('game_id', '=', $id)
-            ->get();
-
-        $tags = TagRelation::whereContentId($id)->where('content_type', '=', 'game')->get();
 
         $game = Game::whereId($id)->first();
 
