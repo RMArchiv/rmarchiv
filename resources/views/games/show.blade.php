@@ -499,6 +499,8 @@
                                 <div class='content'>
                                     @if(\App\Helpers\CheckRateableHelper::checkRateable('game', $game->gameid, Auth::id()) === true)
                                         <div id='prodvote'>
+                                            <input type="hidden" class="rating"/>
+
                                             {{ trans('games.show.rate') }}<br>
                                             <input type='radio' name='rating' id='ratingrulez' value='up'/>
                                             <label for='ratingrulez'>{{ trans('games.show.voteup') }}</label>

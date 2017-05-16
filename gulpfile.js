@@ -15,7 +15,8 @@ elixir(function(mix) {
         'jqcloud2':     './bower_components/jqcloud2/dist/',
         'inlineattachment': './bower_components/inline-attachment/dist/',
         'editormd':     './bower_components/editor.md/',
-        'matchheight':  './bower_components/matchHeight/dist/'
+        'matchheight':  './bower_components/matchHeight/dist/',
+        'bootstraprating': './bower_components/bootstrap-rating/',
     };
 
     mix.sass(
@@ -38,7 +39,8 @@ elixir(function(mix) {
             paths.inlineattachment + 'jquery.inline-attachment.js',
             paths.js               + 'commonmark.js',
             paths.editormd         + 'editormd.js',
-            paths.matchheight      + 'jquery.matchHeight.js'
+            paths.matchheight      + 'jquery.matchHeight.js',
+            paths.bootstraprating  + 'bootstrap-rating.js',
             //paths.js            + 'app.js'
         ])
 
