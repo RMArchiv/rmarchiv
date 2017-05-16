@@ -7529,6 +7529,59 @@ hr.editormd-page-break {
   border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.editormd {
+  border-color: #073642;
+  border-radius: 4px;
+}
+
+.editormd-toolbar {
+  background: #073642;
+  border-bottom: 1px solid #073642;
+}
+
+.editormd-menu li a {
+  color: #fff;
+  background-color: #B58900;
+  border-color: #B58900;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.editormd-menu li a:focus {
+  color: #fff;
+  background-color: #826200;
+  border-color: #785b00;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.editormd-menu li a:hover {
+  color: #fff;
+  background-color: #826200;
+  border-color: #785b00;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.editormd .CodeMirror {
+  border-right: rgba(0, 0, 0, 0.15);
+  background-color: #A9BDBD;
+  color: #073642;
+}
+
+.CodeMirror-linunumber {
+  color: #839496;
+}
+
+.CodeMirror-gutters {
+  background-color: #073642 !important;
+  border-right: 1px solid #073642 !important;
+}
+
+.editormd-container-mask {
+  background-color: #073642;
+}
+
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
