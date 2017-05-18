@@ -1,32 +1,29 @@
 @extends('layouts.app')
-@section('pagetitle', 'tagliste')
+@section('pagetitle', 'tags')
 @section('content')
-    <div id="content">
-        <div class='rmarchivtbl' id='rmarchivbox_grouplist'>
-            <table id="rmarchiv_creatortable" class='boxtable'>
-                <thead>
-                <tr class='sortable'>
-                    <th>
-                        tags
-                    </th>
-                    <th>
-                        spiele
-                    </th>
-                </tr>
-                </thead>
-                @foreach($tags as $t)
-                    @if($t->tag_relations->count() <> 0 and $t->title <> '')
-                        <tr>
-                            <td class='groupname'>
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>tags</h1>
+                {!! Breadcrumbs::render('tags') !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                </div>
+                <ul class="list-group">
+                    @foreach($tags as $t)
+                        @if($t->tag_relations->count() <> 0 and $t->title <> '')
+                            <li class="list-group-item">
                                 <a href='{{ url('tags/game',$t->id) }}'>{{ $t->title }}</a>
-                            </td>
-                            <td>
-                                {{ $t->tag_relations->count() }}
-                            </td>
-                        </tr>
-                    @endif
-                @endforeach
-            </table>
+                                <span class="badge">{{ $t->tag_relations->count() }}</span>
+                            </li>
+                        @endif
+                    @endforeach
+                </ul>
+            </div>
         </div>
     </div>
 @endsection
