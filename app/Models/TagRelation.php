@@ -50,4 +50,9 @@ class TagRelation extends Model
     {
         return $this->hasOne('App\Models\Tag', 'id', 'tag_id');
     }
+
+    public function games()
+    {
+        return $this->hasMany('App\Models\Game', 'id', 'content_id')->Where('content_type', '=', \DB::raw("'game'"));
+    }
 }

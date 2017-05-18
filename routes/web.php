@@ -232,7 +232,7 @@ Route::get('stats', 'StatsticController@show');
 
 //Routen für Tags
 Route::post('tags/create', 'TaggingController@store');
-Route::get('tags/game/{tagid}', 'TaggingController@showGames');
+Route::get('tags/game/{id}/{orderby?}/{direction?}', 'TaggingController@showGames');
 Route::get('tags', 'TaggingController@index');
 Route::get('tags/{orderby?}/{direction?}', 'TaggingController@index')->name('tags.index.sorted');
 Route::get('tags/delete/game/{gameid}/{tagid}', 'TaggingController@delete_gametag');

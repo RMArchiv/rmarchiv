@@ -172,3 +172,16 @@ Breadcrumbs::register('shoutbox', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('shoutbox', action('ShoutboxController@index'));
 });
+
+//----------------- Tags ---------------------------------------------------------------------------------------------//
+// Home -> Tags
+Breadcrumbs::register('tags', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('tags', action('TaggingController@index'));
+});
+
+// Home -> Tags -> [tag]
+Breadcrumbs::register('tag', function ($breadcrumbs, $tag) {
+    $breadcrumbs->parent('tags');
+    $breadcrumbs->push($tag->title, action('TaggingController@showGames', $tag->id));
+});

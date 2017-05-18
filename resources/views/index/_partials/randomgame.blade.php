@@ -10,7 +10,7 @@
                 <span class='prodentry'>
                     @if($randomgame->gamefiles)
                         <span class='typeiconlist'>
-                        <span class='typei type_{{ $randomgame->gamefiles[0]->gamefiletype->short  }}'
+                        <span class='typei type_{{ $randomgame->gamefiles[0]->gamefiletype->short }}'
                               title='{{ $randomgame->gamefiles[0]->gamefiletype->title }}'>{{ $randomgame->gamefiles[0]->gamefiletype->title }}</span>
                     </span>
                     @endif
