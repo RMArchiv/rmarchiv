@@ -112,6 +112,10 @@ class Game extends Model
         'atelier_id',
     ];
 
+    protected $hidden = [
+        'votes'
+    ];
+
     protected $guarded = [];
     protected $appends = ['votes'];
 

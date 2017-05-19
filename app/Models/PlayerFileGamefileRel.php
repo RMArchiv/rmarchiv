@@ -35,5 +35,7 @@ class PlayerFileGamefileRel extends Model
 
     protected $guarded = [];
 
-        
+    public function filehash(){
+        return $this->hasOne('App\Models\PlayerFileHash', 'id', 'file_hash_id');
+    }
 }

@@ -9,6 +9,8 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Models\Game;
 use App\Http\Controllers\Controller;
+use App\Models\GamesDeveloper;
+use Carbon\Carbon;
 use Dingo\Api\Routing\Helpers;
 use function MongoDB\BSON\toJSON;
 
@@ -30,9 +32,36 @@ class GameController extends Controller
 
     public function show($id)
     {
-        $game = Game::with('developers', 'maker', 'screenshots', 'comments')->whereId($id)->first();
+        //Lade Spielinformationen
+        $game = Game::whereId($id)->first();
 
-        return $game->toArray();
+        //Fülle Array
+        $array = [
+            'type' => 'RpgGame',
+            'version' => 'rmapi_v1',
+            'data_date' => Carbon::now()->toDateTimeString(),
+            'game' => [
+                'title' => $game->title,
+                'subtitle' => $game->subtitle,
+                'release_date' => $game->release_date,
+                'developers' => '',
+                'language' => $game->language->short,
+                'engine' => $game->maker->short,
+            ]
+        ];
+
+        //Lade Entwickler
+        $developer = GamesDeveloper::whereGameId($id)->get();
+        $t = array();
+        foreach($developer as $dev){
+            $t[] = $dev->developer->name;
+        }
+        $array['game']['developer'] = $t;
+
+        //Lade Tags
+
+
+        return $array;
     }
 
     public function show_app()

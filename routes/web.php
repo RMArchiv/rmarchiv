@@ -308,4 +308,8 @@ $api->version('v1', function ($api) {
     $api->get('games/{id}', 'App\Http\Controllers\Api\v1\GameController@show');
     $api->get('games_app', 'App\Http\Controllers\Api\v1\GameController@show_app');
     $api->get('tako/filelist', 'App\Http\Controllers\Api\v1\TakoController@filelist');
+
+    //EasyRPG Hash API
+    $api->get('easyrpg', 'App\Http\Controllers\Api\v1\EasyRPGController@index');
+    $api->get('easyrpg/{ldbhash}', 'App\Http\Controllers\Api\v1\EasyRPGController@show');
 });
