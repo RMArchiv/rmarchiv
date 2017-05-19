@@ -290,7 +290,7 @@ Route::get('logo/{filename}', function ($filename) {
 })->name('logo.get');
 
 Route::get('easyrpg/download/{hash}', function($hash){
-    $filename = 'games_hashed/'.substr($hash, 0, 2).'/'.$hash;
+    $filename = 'app/games_hashed/'.substr($hash, 0, 2).'/'.$hash;
     $path = storage_path($filename);
 
     return response()->download($path, $hash, ['Content-Type' => 'application/octet-stream']);
