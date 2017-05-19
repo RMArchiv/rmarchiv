@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Models\Game;
 use App\Http\Controllers\Controller;
 use Dingo\Api\Routing\Helpers;
+use function MongoDB\BSON\toJSON;
 
 class GameController extends Controller
 {
@@ -24,7 +25,7 @@ class GameController extends Controller
             ])
             ->get();
 
-        return $this->response->array($games->toArray());
+        return $games->toArray();
     }
 
     public function show($id)
