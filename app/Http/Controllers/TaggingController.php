@@ -34,13 +34,19 @@ class TaggingController extends Controller
                 ->Join('developer', 'games_developer.developer_id', '=', 'developer.id')
                 ->Join('tag_relations', 'tag_relations.content_id', '=', 'games.id')
                 ->Where('tag_relations.tag_id', '=', $id)
-                ->orderBy($orderby, $direction)->select('games.*')
+                ->where('tag_relations.content_type', '=', 'game')
+                ->orderBy($orderby, $direction)
+                ->select('games.*')
                 ->paginate(25);
         } else {
             $games = Game::Join('tag_relations', 'tag_relations.content_id', '=', 'games.id')
                 ->Where('tag_relations.tag_id', '=', $id)
+                ->where('tag_relations.content_type', '=', 'game')
                 ->orderBy($orderby, $direction)
-                ->orderBy('title')->orderBy('subtitle')->paginate(25);
+                ->orderBy('title')
+                ->orderBy('subtitle')
+                ->select('games.*')
+                ->paginate(25);
         }
 
         return view('tags.show', [
