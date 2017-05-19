@@ -289,6 +289,13 @@ Route::get('logo/{filename}', function ($filename) {
     return $response;
 })->name('logo.get');
 
+Route::get('easyrpg/download/{hash}', function($hash){
+    $filename = 'games_hashed/'.substr($hash, 0, 2).'/'.$hash;
+    $path = Storage::get($filename);
+
+    return response()->download($path, $hash, ['Content-Type' => 'application/octet-stream']);
+});
+
 Route::group(['middleware' => 'permission:translate-page'], function(){
     Route::get('translation', 'TranslationController@index')->name('trans.index');
     Route::get('translation/{loc1}/{loc2?}/{viewtype?}/{searchterm?}', 'TranslationController@edit')->name('trans.edit');
