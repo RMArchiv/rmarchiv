@@ -9,9 +9,12 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Models\Game;
 use App\Http\Controllers\Controller;
+use Dingo\Api\Routing\Helpers;
 
 class GameController extends Controller
 {
+    use Helpers;
+
     public function index()
     {
         $games = Game::select([
@@ -21,7 +24,7 @@ class GameController extends Controller
             ])
             ->get();
 
-        return $games;
+        return $this->response->array($games->toArray());
     }
 
     public function show($id)
