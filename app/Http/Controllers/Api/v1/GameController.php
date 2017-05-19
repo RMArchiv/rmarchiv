@@ -25,7 +25,7 @@ class GameController extends Controller
             ])
             ->get();
 
-        return $games->toArray();
+        return $games;
     }
 
     public function show($id)
