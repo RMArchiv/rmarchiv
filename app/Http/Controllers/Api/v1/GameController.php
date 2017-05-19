@@ -14,12 +14,10 @@ class GameController extends Controller
 {
     public function index()
     {
-        $games = \DB::table('games')
-            ->select([
-                'id',
-                'atelier_id',
-                'title',
-                'subtitle',
+        $games = Game::select([
+            'id',
+            'title',
+            'subtitle',
             ])
             ->get();
 
@@ -40,16 +38,16 @@ class GameController extends Controller
         $jason = [
             '$jason' => [
                 'head' => [
-                    'title' => 'rmarchiv',
+                    'title'       => 'rmarchiv',
                     'description' => 'description',
-                    'offline' => true,
-                    'body' => [
-                        'type' => 'label',
-                        'text' => 'Dies ist Zeile 1',
+                    'offline'     => true,
+                    'body'        => [
+                        'type'  => 'label',
+                        'text'  => 'Dies ist Zeile 1',
                         'style' => [
-                            'font' => 'HelveticaNeue',
-                            'size' => 20,
-                            'color' => '#ff0000',
+                            'font'    => 'HelveticaNeue',
+                            'size'    => 20,
+                            'color'   => '#ff0000',
                             'padding' => '10',
                         ],
                     ],

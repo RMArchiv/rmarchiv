@@ -275,17 +275,7 @@ Route::post('tako/downlbla', 'GameFileController@download_wo_count');
 Route::get('test', 'TestController@index');
 Route::post('tlg/webhook', 'TestController@webhook');
 
-//Routen für API
-Route::get('api/games/{id}', 'Api\v1\GameController@show');
-
-$api = app('Dingo\Api\Routing\Router');
-$api->version('v1', function ($api) {
-    $api->get('games', 'App\Http\Controllers\Api\v1\GameController@index');
-    //$api->get('games/{id}', 'App\Http\Controllers\Api\v1\GameController@show');
-    $api->get('games_app', 'App\Http\Controllers\Api\v1\GameController@show_app');
-    $api->get('tako/filelist', 'App\Http\Controllers\Api\v1\TakoController@filelist');
-});
-
+//Logo Routen
 Route::get('logo/{filename}', function ($filename) {
     $filename = 'logos/'.$filename;
     $path = Storage::get($filename);
@@ -305,8 +295,17 @@ Route::group(['middleware' => 'permission:translate-page'], function(){
     Route::post('translation/save', 'TranslationController@savestring')->name('trans.save');
 });
 
-
+//Player Routen
 Route::get('player/{gamefileid}/games/default/index.json', 'PlayerController@deliver_indexjson')->name('player.deliverindex');
 Route::get('player/{gamefileid}/games/default/{fileid}', 'PlayerController@deliver_files')->name('player.files');
 Route::get('player/{gamefileid}/games/default/rtp/{filename}', 'PlayerController@deliver_rtp')->name('player.rtp');
 Route::get('player/{gamefileid}/play', 'PlayerController@index')->name('player.run');
+
+//Routen für API
+$api = app('Dingo\Api\Routing\Router');
+$api->version('v1', function ($api) {
+    $api->get('games', 'App\Http\Controllers\Api\v1\GameController@index');
+    $api->get('games/{id}', 'App\Http\Controllers\Api\v1\GameController@show');
+    $api->get('games_app', 'App\Http\Controllers\Api\v1\GameController@show_app');
+    $api->get('tako/filelist', 'App\Http\Controllers\Api\v1\TakoController@filelist');
+});
