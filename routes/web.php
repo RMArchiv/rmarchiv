@@ -319,4 +319,8 @@ $api->version('v1', function ($api) {
     //EasyRPG Hash API
     $api->get('easyrpg', 'App\Http\Controllers\Api\v1\EasyRPGController@index');
     $api->get('easyrpg/{ldbhash}', 'App\Http\Controllers\Api\v1\EasyRPGController@show');
+
+    //EasyRPG Savegame API
+    $api->get('savegames/{gamefileid}', 'App\Http\Controllers\SavegameController@api_load');
+    $api->get('savegames/{gamefileid}', 'App\Http\Controllers\SavegameController@api_load');
 });

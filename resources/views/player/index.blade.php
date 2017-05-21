@@ -129,6 +129,74 @@
             if (text) Module.printErr('[post-exception status] ' + text);
         };
     };
+
+    var RMFS = {
+        mount: function(mount) {
+            // reuse all of the core MEMFS functionality
+            return MEMFS.mount.apply(null, arguments);
+        },
+        to_binary: function(dataURI){
+            var base64 = dataURI.substring(0);
+            var raw = window.atob(base64);
+            var rawLength = raw.length;
+            var array = new Uint8Array(new ArrayBuffer(rawLength));
+
+            for(i = 0; i < rawLength; i++) {
+                array[i] = raw.charCodeAt(i);
+            }
+
+            return array;
+        },
+        syncfs: function(mount, populate, callback) {
+            //if (err) return callback(err); TODO Error handling
+            if (populate) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            var obj = JSON.parse(xhr.responseText);
+
+                            for (var property in obj) {
+                                if (obj.hasOwnProperty(property)) {
+                                    var nal = property.length == 1 ? "0" : "";
+                                    var bin = RMFS.to_binary(obj[property]);
+                                    var stream = FS.open(mount.mountpoint + "/Save" + nal + property + ".lsd", "w");
+                                    FS.write(stream, bin, 0, bin.length, 0);
+                                    FS.close(stream);
+                                }
+                            }
+                        } else {
+                            console.log('Error: ' + xhr.status);
+                        }
+                    }
+                };
+                xhr.open('GET', "{{ url('/') }}" + '/save');
+                xhr.send(null);
+            } else {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status !== 200) {
+                            console.log('Error: ' + xhr.status);
+                        }
+                    }
+                };
+                xhr.open('POST', "{{ url('/') }}" + '/save');
+
+                var obj = {}
+                FS.readdir(mount.mountpoint).forEach(function(x) {
+                    var num = parseInt(x.substr(4,2));
+                    if (!isNaN(num) && num >= 1 && num <= 15) {
+                        obj[num.toString()] = btoa(String.fromCharCode.apply(null, FS.readFile(mount.mountpoint + "/" + x)));
+                    }
+                });
+                xhr.send(JSON.stringify(obj));
+            }
+
+            callback(null);
+        }
+    };
+    Module.EASYRPG_FS=RMFS;
 </script>
 <script>
 
