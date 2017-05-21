@@ -15,7 +15,7 @@ class PlayerController extends Controller
 
     public function index($gamefileid){
         if(\Auth::check()){
-            return view('player.index');
+            return view('player.index', ['gamefileid' => $gamefileid]);
         }else{
             return redirect()->action('IndexController@index');
         }
