@@ -54,7 +54,7 @@
                     </div>
                     <div class="panel-body">
                         {!! Form::open(['route' => ['board.thread.store'], 'id' => 'frmBBSPost']) !!}
-                        {!! Form::hidden('cat_id', $cat->id) !!}
+                        {!! Form::hidden('category', $cat->id) !!}
                         <div class='content'>
                             <label for='topic'>{{ trans('board.threads.index.topic_title') }}:</label>
                             <input name='topic' id='topic'/>
