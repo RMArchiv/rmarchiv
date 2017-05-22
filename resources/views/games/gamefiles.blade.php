@@ -1,8 +1,15 @@
 @extends('layouts.app')
+@section('pagetitle', 'spieldateien: '.$game->title)
 @section('content')
-    <div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>spieldateien</h1>
+                {!! Breadcrumbs::render('gamefiles.add', $game) !!}
+            </div>
+        </div>
         @if (count($errors) > 0)
-            <div class="rmarchivtbl errorbox">
+            <div class="row">
                 <h2>{{trans('app.games.gamefiles.title')}}</h2>
                 <div class="content">
                     <ul>
@@ -13,127 +20,133 @@
                 </div>
             </div>
         @endif
-        @if($gamefiles->count() <> 0)
-            <h2>{{trans('games.gamefiles.gamefiles_from')}}: <a href="{{ url('games', $gamefiles->first()->gameid) }}">{{ $gamefiles->first()->gametitle }}<small> {{ $gamefiles->first()->gamesubtitle }}</small></a></h2>
-            <table id='pouetbox_prodlist' class='boxtable pagedtable'>
-                <thead>
-                <tr class='sortable'>
-                    <th></th>
-                    <th>{{trans('games.gamefiles.type')}}</th>
-                    <th>{{trans('games.gamefiles.version')}}</th>
-                    <th>{{trans('games.gamefiles.release_date')}}</th>
-                    <th>{{trans('games.gamefiles.filesize')}}</th>
-                    <th>{{trans('games.gamefiles.downloads')}}</th>
-                    <th>{{trans('games.gamefiles.uploaded_by')}}</th>
-                    <th>{{trans('games.gamefiles.uploaded_at')}}</th>
-                    @if(Auth::check())
-                        <th>{{trans('games.gamefiles.actions')}}</th>
-                    @endif
-                </tr>
-                </thead>
-                @foreach($gamefiles as $gf)
-                <tr>
-                    <td>
-                        <span class='typeiconlist'>
-                            <span class='typei type_{{ $gf->filetypeshort }}' title='{{ $gf->filetypetitle }}'>{{ $gf->filetypetitle }}</span>
-                        </span>
-                    </td>
-                    <td>{{ $gf->filetypetitle }}</td>
-                    <td>{{ $gf->fileversion }}</td>
-                    <td>{{ str_pad($gf->fileyear, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->filemonth, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->fileday, 2, 0, STR_PAD_LEFT) }}</td>
-                    <td>{{ ByteUnits\Metric::bytes($gf->filesize)->format() }}</td>
-                    <td>{{ $gf->downloadcount or 0 }}</td>
-                    <td>
-                        <a href="{{ url('/user', $gf->userid) }}" class="usera" title="{{ $gf->username }}">
-                            <img src="http://ava.rmarchiv.de/?gender=male&amp;id={{ $gf->userid }}" alt="{{ $gf->username }}" class="avatar">
-                        </a> <a href="{{ url('/user', $gf->userid) }}" class="user">{{ $gf->username }}</a>
-                    </td>
-                    <td>{{ $gf->filecreated_at }}</td>
-                    @if(Auth::check() and !$gf->deleted_at)
-                        <td>
-                            @if($gf->forbidden == 1)
-                                [<span title="{{ $gf->reason }}">{{trans('games.gamefiles.download_deleted')}}</span>]
-                            @else
-                                [<a href="{{ url('games/download', $gf->fileid) }} " class="down_l">{{trans('games.gamefiles.download')}}</a>]
-                                @php
-                                    $playable = \App\Models\PlayerIndexjson::whereGamefileId($gf->fileid)->get();
-                                @endphp
-                                @if($playable->count() != 0 )
-                                    :: [<a href="{{ route('player.run', [$gf->fileid]) }}">play</a>]
-                                @endif
-                            @endif
-                            :: [<a href="{{ route('gamefiles.edit', [$gf->gameid, $gf->fileid]) }}">{{trans('games.gamefiles.edit')}}</a>]
-                        @if(Auth::user()->settings->is_admin)
-                            :: [<a href="{{ route("gamefiles.delete", [$gameid, $gf->fileid]) }}">{{trans('games.gamefiles.delete')}}</a>]
-                        @endif
-                        </td>
-                    @endif
-                </tr>
-                @endforeach
-            </table>
-        @else
-            <h2>{{trans('games.gamefiles.no_files')}}</h2>
-        @endif
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    vorhandene spieldateien: {{ $gamefiles->count() }}
+                </div>
+                    <ul class="list-group">
+                    @foreach($gamefiles as $gf)
+                        <li class="list-group-item clearfix">
+                            <span class='typeiconlist'>
+                                <span class='typei type_{{ $gf->gamefiletype->short }}' title='{{ $gf->gamefiletype->title }}'>{{ $gf->gamefiletype->title }}</span>
+                            </span>
+                            <span> • </span><span>version: {{ $gf->release_version }}</span>
+                            <span> • </span>
+                            <span>release date: {{ str_pad($gf->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_day, 2, 0, STR_PAD_LEFT) }}</span>
+                            <span> • </span>
+                            <span>size: {{ ByteUnits\Metric::bytes($gf->filesize)->format() }}</span>
+                            <span> • </span>
+                            <span>downloads: {{ $gf->downloadcount or 0 }}</span>
+                            <span> • </span>
+                            <span>
+                                <a href="{{ url('/user', $gf->user->id) }}" class="usera" title="{{ $gf->user->name }}">
+                                    <img width="16px" src="http://ava.rmarchiv.de/?gender=male&amp;id={{ $gf->user->id }}" alt="{{ $gf->user->name }}" class="avatar">
+                                </a> <a href="{{ url('/user', $gf->user->id) }}" class="user">{{ $gf->user->name }}</a>
+                            </span>
+                            <span> • </span>
+                            <span>{{ $gf->filecreated_at }}</span>
+                            <div class="pull-right">
+                                <div class="button-group">
+                                    @if(Auth::check() and !$gf->deleted_at)
+                                        @if($gf->forbidden == 1)
+                                            [
+                                            <span class="button" title="{{ $gf->reason }}">{{trans('games.gamefiles.download_deleted')}}</span>]
+                                        @else
+                                            [
+                                            <a href="{{ url('games/download', $gf->id) }} " class="down_l">{{trans('games.gamefiles.download')}}</a>]
+                                            @php
+                                                $playable = \App\Models\PlayerIndexjson::whereGamefileId($gf->id)->get();
+                                            @endphp
+                                            @if($playable->count() != 0 )
+                                                :: [<a href="{{ route('player.run', [$gf->id]) }}">play</a>]
+                                            @endif
+                                        @endif
+                                        :: [
+                                        <a href="{{ route('gamefiles.edit', [$game->id, $gf->id]) }}">{{trans('games.gamefiles.edit')}}</a>]
+                                        @if(Auth::user()->settings->is_admin)
+                                            :: [
+                                            <a href="{{ route("gamefiles.delete", [$game->id, $gf->id]) }}">{{trans('games.gamefiles.delete')}}</a>]
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                    </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
 
+                </div>
+                {{trans('games.gamefiles.gamefile_add')}}
+            </div>
+
+        </div>
+    </div>
+
+    <div id="content">
         @if(Auth::check())
-        {!! Form::open(['route' => ['gamefiles.store', $gameid]]) !!}
-        <div class="rmarchivtbl" id="rmarchivbox_submitprod">
-            <h2>{{trans('games.gamefiles.gamefile_add')}}</h2>
+            {!! Form::open(['route' => ['gamefiles.store', $game->id]]) !!}
+            <div class="rmarchivtbl" id="rmarchivbox_submitprod">
+                <h2></h2>
 
-            <div class="content">
-                <div class="formifier">
-                    <div class='row' id='row_filetype'>
-                        <label for='filetype'>{{trans('games.gamefiles.type')}}</label>
-                        <select name='filetype' id='filetype'>
-                            <option value="0">{{trans('games.gamefiles.type_choose')}}</option>
-                            @foreach($filetypes as $types)
-                                <option value="{{ $types->id }}">{{ $types->title }}</option>
-                            @endforeach
-                        </select>
-                        <span>[<span class="req">req</span>]</span>
-                    </div>
-                    <div class="row" id="row_version">
-                        <label for="version">{{trans('games.gamefiles.fileversion')}}</label>
-                        <input name="version" id="version" value="" placeholder="1.0"/>
-                        <span> [<span class="req">req</span>]</span>
-                    </div>
-                    <div class="row" id="row_releasedate">
-                        <label for="releasedate">{{trans('games.gamefiles.release_date')}}</label>
-                        <div class="formdate" id="releasedate">
-                            <select name="releasedate_day" id="releasedate_day">
-                                <option value="0">{{trans('games.gamefiles.release_day')}}</option>
-                                @for($i = 1; $i < 32; $i++)
-                                    <option value="{{ $i }}">{{ $i }}</option>
-                                @endfor
+                <div class="content">
+                    <div class="formifier">
+                        <div class='row' id='row_filetype'>
+                            <label for='filetype'>{{trans('games.gamefiles.type')}}</label>
+                            <select name='filetype' id='filetype'>
+                                <option value="0">{{trans('games.gamefiles.type_choose')}}</option>
+                                @foreach($filetypes as $types)
+                                    <option value="{{ $types->id }}">{{ $types->title }}</option>
+                                @endforeach
                             </select>
-                            <select name="releasedate_month" id="releasedate_month">
-                                <option value="0">{{trans('games.gamefiles.release_month')}}</option>
-                                @for($i = 1; $i < 13; $i++)
-                                    <option value="{{ $i }}">{{ trans('_misc.month.'.$i) }}</option>
-                                @endfor
-                            </select>
-                            <select name="releasedate_year" id="releasedate_year">
-                                <option value="0">{{trans('games.gamefiles.release_year')}}</option>
-                                @for($i = 1990; $i < date("Y") + 1; $i++)
-                                    <option value="{{ $i }}">{{ $i }}</option>
-                                @endfor
-                            </select>
+                            <span>[<span class="req">req</span>]</span>
                         </div>
-                        <span>[<span class="req">req</span>]</span>
-                    </div>
+                        <div class="row" id="row_version">
+                            <label for="version">{{trans('games.gamefiles.fileversion')}}</label>
+                            <input name="version" id="version" value="" placeholder="1.0"/>
+                            <span> [<span class="req">req</span>]</span>
+                        </div>
+                        <div class="row" id="row_releasedate">
+                            <label for="releasedate">{{trans('games.gamefiles.release_date')}}</label>
+                            <div class="formdate" id="releasedate">
+                                <select name="releasedate_day" id="releasedate_day">
+                                    <option value="0">{{trans('games.gamefiles.release_day')}}</option>
+                                    @for($i = 1; $i < 32; $i++)
+                                        <option value="{{ $i }}">{{ $i }}</option>
+                                    @endfor
+                                </select>
+                                <select name="releasedate_month" id="releasedate_month">
+                                    <option value="0">{{trans('games.gamefiles.release_month')}}</option>
+                                    @for($i = 1; $i < 13; $i++)
+                                        <option value="{{ $i }}">{{ trans('_misc.month.'.$i) }}</option>
+                                    @endfor
+                                </select>
+                                <select name="releasedate_year" id="releasedate_year">
+                                    <option value="0">{{trans('games.gamefiles.release_year')}}</option>
+                                    @for($i = 1990; $i < date("Y") + 1; $i++)
+                                        <option value="{{ $i }}">{{ $i }}</option>
+                                    @endfor
+                                </select>
+                            </div>
+                            <span>[<span class="req">req</span>]</span>
+                        </div>
                         <div class="row" id="row_file">
                             <label for="fine-uploader">{{trans('games.gamefiles.upload_file')}}:</label>
                             <div id="fine-uploader"></div>
                             <span>[<span class="req">req</span>]</span>
                         </div>
+                    </div>
+                </div>
+
+                <div class="foot">
+                    <input type="submit" value="{{ trans('games.gamefiles.send') }}">
                 </div>
             </div>
-
-            <div class="foot">
-                <input type="submit" value="{{ trans('games.gamefiles.send') }}">
-            </div>
-        </div>
-        {!! Form::close() !!}
+            {!! Form::close() !!}
         @endif
     </div>
     <script type="text/template" id="qq-template">
@@ -227,14 +240,14 @@
                     enabled: true
                 },
                 success: {
-                    endpoint: "/games/"+ {{ $gameid }}+"/gamefiles/upload"
+                    endpoint: "/games/" + {{ $game->id }}+"/gamefiles/upload"
                 }
             },
             resume: {
                 enabled: true
             },
             request: {
-                endpoint: "/games/"+ {{ $gameid }}+"/gamefiles/upload",
+                endpoint: "/games/" + {{ $game->id }}+"/gamefiles/upload",
                 customHeaders: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 }
@@ -242,7 +255,7 @@
             multiple: false,
             deleteFile: {
                 enabled: true,
-                endpoint: "/games/"+ {{ $gameid }}+"/gamefiles/upload"
+                endpoint: "/games/" + {{ $game->id }}+"/gamefiles/upload"
             },
             retry: {
                 enableAuto: true

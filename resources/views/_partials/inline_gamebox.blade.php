@@ -13,10 +13,13 @@
                             {{ $game->maker->title }}
                         </span>
                     </a>
-            {{ $game->title }}
-            @if($game->subtitle)
-                <small> - {{ $game->subtitle }}</small>
-            @endif
+            </span>
+                <a href="{{ action('GameController@show', $game->id) }}">
+                    {{ $game->title }}
+                    @if($game->subtitle)
+                        <small> - {{ $game->subtitle }}</small>
+                    @endif
+                </a>
             <span><img src="/assets/lng/16/{{ strtoupper($game->language->short) }}.png"
                        title="{{ $game->language->name }}"></span>
         </a>
@@ -28,8 +31,6 @@
             <div class="thread-info">
                 <div class="media-heading">
                     {!! substr($game->desc_md, 0, 320).'...' !!}
-
-                </span>
                     @if($game->cdcs->count() > 0)
                         <div class="cdcstack">
                             <img src="/assets/cdc.png" title="{{ trans('app.cdc.title') }}" alt="{{ trans('app.cdc.title') }}">

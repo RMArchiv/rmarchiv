@@ -204,3 +204,10 @@ Breadcrumbs::register('cdc.create', function ($breadcrumbs) {
     $breadcrumbs->parent('cdc.index');
     $breadcrumbs->push('coup de coeur hinzufügen', action('CDCController@create'));
 });
+
+//----------------- Gamefiles ----------------------------------------------------------------------------------------//
+// Home -> spieledatei
+Breadcrumbs::register('gamefiles.add', function ($breadcrumbs, $game) {
+    $breadcrumbs->parent('game', $game);
+    $breadcrumbs->push('spiel dateien', action('GameFileController@create', $game->id));
+});

@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
 use Carbon\Carbon;
 use App\Events\Obyx;
 use App\Models\GamesFile;
@@ -66,46 +67,18 @@ class GameFileController extends Controller
 
     public function create($id)
     {
-        $gamefiles = \DB::table('games_files')
-            ->select([
-                'games_files.id as fileid',
-                'games_files_types.title as filetypetitle',
-                'games_files_types.short as filetypeshort',
-                'games_files.release_version as fileversion',
-                'games_files.filename as filename',
-                'games_files.extension as fileextension',
-                'games_files.filesize as filesize',
-                'games_files.release_year as fileyear',
-                'games_files.release_month as filemonth',
-                'games_files.release_day as fileday',
-                'users.id as userid',
-                'users.name as username',
-                'games_files.created_at as filecreated_at',
-                'games_files.downloadcount as downloadcount',
-                'games.title as gametitle',
-                'games.subtitle as gamesubtitle',
-                'games.id as gameid',
-                'games_files.deleted_at as deleted_at',
-                'games_files.forbidden as forbidden',
-                'games_files.reason as reason',
-            ])
-            ->leftJoin('games_files_types', 'games_files.release_type', '=', 'games_files_types.id')
-            ->leftJoin('users', 'games_files.user_id', '=', 'users.id')
-            ->leftJoin('games', 'games.id', '=', 'games_files.game_id')
-            ->where('games_files.game_id', '=', $id)
-            ->orderBy('games_files_types.id', 'desc')
-            ->orderBy('fileyear', 'desc')
-            ->orderBy('filemonth', 'desc')
-            ->orderBy('fileday', 'desc')
+        $gamefiles = GamesFile::whereGameId($id)
+            ->orderBy('release_year', 'desc')
+            ->orderBy('release_month', 'desc')
+            ->orderBy('release_day', 'desc')
             ->get();
-
-        $filetypes = \DB::table('games_files_types')
-            ->get();
+        $game = Game::whereId($id)->first();
+        $filetypes = GamesFilesType::get();
 
         return view('games.gamefiles', [
             'gamefiles' => $gamefiles,
+            'game' => $game,
             'filetypes' => $filetypes,
-            'gameid'    => $id,
         ]);
     }
 
