@@ -32,7 +32,7 @@ class SavegameController extends Controller
     }
 
     public function api_save(Request $request ,$gamefileid){
-        $data = Input::all();
+        $data = $request->json()->all();
 
         dd($data);
 
