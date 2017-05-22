@@ -40,7 +40,7 @@ class SavegameController extends Controller
             \Log::info('slot: '.$key);
             \Log::info('data: '.$value);
             $save = GamesSavegame::where([
-                'user_id' => \Auth::id(),
+                'user_id' => $user = app('Dingo\Api\Auth\Auth')->user()->id,
                 'gamefile_id' => $gamefileid,
                 'slot_id' => $key,
                 ])
@@ -51,7 +51,7 @@ class SavegameController extends Controller
                 $s->save_data = $value;
                 $s->slot_id = $key;
                 $s->gamefile_id = $gamefileid;
-                $s->user_id = \Auth::id();
+                $s->user_id = app('Dingo\Api\Auth\Auth')->user()->id;
                 $s->save();
                 \Log::info('created');
             }else{
