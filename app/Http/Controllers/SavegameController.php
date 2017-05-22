@@ -34,12 +34,16 @@ class SavegameController extends Controller
     public function api_save(Request $request ,$gamefileid){
         $data = Input::all();
 
+        \Log::info('savegamecount: '. count($data));
+
         foreach($data as $key=>$value){
+            \Log::info('slot: '.$key);
+            \Log::info('data: '.$value);
             $save = GamesSavegame::where([
                 'user_id' => \Auth::id(),
                 'gamefile_id' => $gamefileid,
                 'slot_id' => $key,
-            ])
+                ])
                 ->first();
 
             if(isnull($save)){
@@ -49,14 +53,12 @@ class SavegameController extends Controller
                 $s->gamefile_id = $gamefileid;
                 $s->user_id = \Auth::id();
                 $s->save();
+                \Log::info('created');
             }else{
                 $save->save_data = $value;
                 $save->save();
+                \Log::info('updated');
             }
-
-
         }
-
     }
-
 }
