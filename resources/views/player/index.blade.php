@@ -151,6 +151,7 @@
             //if (err) return callback(err); TODO Error handling
             if (populate) {
                 var xhr = new XMLHttpRequest();
+                xhr.withCredentials = true;
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4) {
                         if (xhr.status === 200) {
@@ -174,6 +175,7 @@
                 xhr.send(null);
             } else {
                 var xhr = new XMLHttpRequest();
+                xhr.withCredentials = true;
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4) {
                         if (xhr.status !== 200) {
