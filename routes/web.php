@@ -308,6 +308,10 @@ Route::get('player/{gamefileid}/games/default/{fileid}', 'PlayerController@deliv
 Route::get('player/{gamefileid}/games/default/rtp/{filename}', 'PlayerController@deliver_rtp')->name('player.rtp');
 Route::get('player/{gamefileid}/play', 'PlayerController@index')->name('player.run');
 
+//EasyRPG Savegame API
+Route::get('savegames/{gamefileid}', 'App\Http\Controllers\SavegameController@api_load');
+Route::post('savegames/{gamefileid}', 'App\Http\Controllers\SavegameController@api_save');
+
 //Routen für API
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {
@@ -319,8 +323,4 @@ $api->version('v1', function ($api) {
     //EasyRPG Hash API
     $api->get('easyrpg', 'App\Http\Controllers\Api\v1\EasyRPGController@index');
     $api->get('easyrpg/{ldbhash}', 'App\Http\Controllers\Api\v1\EasyRPGController@show');
-
-    //EasyRPG Savegame API
-    $api->get('savegames/{gamefileid}', 'App\Http\Controllers\SavegameController@api_load');
-    $api->post('savegames/{gamefileid}', 'App\Http\Controllers\SavegameController@api_save');
 });

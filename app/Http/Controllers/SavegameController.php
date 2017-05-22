@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GamesSavegame;
+use Dingo\Api\Facade\API;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -28,7 +29,7 @@ class SavegameController extends Controller
             $ret[$s->slot_id] = $s->save_data;
         }
 
-        return $ret;
+        return \GuzzleHttp\json_encode($ret);
     }
 
     public function api_save(Request $request ,$gamefileid){
