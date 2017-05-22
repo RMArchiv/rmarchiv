@@ -34,8 +34,6 @@ class SavegameController extends Controller
     public function api_save(Request $request ,$gamefileid){
         $payLoad = json_decode(request()->getContent(), true);
 
-        dd($payLoad);
-
         \Log::info('savegamecount: '. count($payLoad));
 
         foreach($payLoad as $key=>$value){
