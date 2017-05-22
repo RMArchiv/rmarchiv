@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Models\GamesFile;
 use App\Models\PlayerIndexjson;
 use Illuminate\Console\Command;
@@ -92,6 +93,8 @@ class PlayerCreateInfo extends Command
                             $pl->value = $imp;
                             $pl->filename = $filename;
                             $pl->save();
+                        }else{
+                            \Log::info('Empty basepath: '. $filename);
                         }
                     }
                 }
