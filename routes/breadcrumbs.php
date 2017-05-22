@@ -79,6 +79,12 @@ Breadcrumbs::register('thread', function ($breadcrumbs, $boardcat, $thread) {
     $breadcrumbs->push($thread->title, action('BoardController@show_thread', $thread->id));
 });
 
+// Home > Board > [Forum] -> [Thread] -> edit
+Breadcrumbs::register('post.edit', function ($breadcrumbs, $boardcat, $post) {
+    $breadcrumbs->parent('forum', $boardcat);
+    $breadcrumbs->push('bearbeiten', action('BoardController@post_edit', [$post->thread_id, $post->id]));
+});
+
 //----------------- Developers ---------------------------------------------------------------------------------------//
 // Home > Developers
 Breadcrumbs::register('developers', function ($breadcrumbs) {
