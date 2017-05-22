@@ -211,3 +211,10 @@ Breadcrumbs::register('gamefiles.add', function ($breadcrumbs, $game) {
     $breadcrumbs->parent('game', $game);
     $breadcrumbs->push('spiel dateien', action('GameFileController@create', $game->id));
 });
+
+//----------------- Registrieren -------------------------------------------------------------------------------------//
+// Home -> account erstellen
+Breadcrumbs::register('register', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('account registrieren', action('Auth\RegisterController@showRegistrationForm'));
+});

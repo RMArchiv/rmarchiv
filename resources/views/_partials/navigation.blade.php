@@ -127,6 +127,7 @@
             @else
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ action('Auth\LoginController@showLoginForm') }}">{{ trans('index.login.login') }}</a></li>
+                    <li><a href="{{ action('Auth\RegisterController@showRegistrationForm') }}">{{ trans('index.login.register') }}</a></li>
                 </ul>
             @endif
         </div>
