@@ -70,6 +70,7 @@ class PlayerCreateInfo extends Command
         $i = 0;
         foreach ($toindexed as $toindex){
             $bar->setMessage('Entpacken von: '.$toindex->game_id.'/'.$toindex->id, 'title');
+            \Log::info('Entapcken von '.$toindex->game_id.'/'.$toindex->id);
             $path = storage_path('app/public/'.$toindex->filename);
             if($toindex->extension == 'zip'){
                 $zip = new \ZipArchive;
