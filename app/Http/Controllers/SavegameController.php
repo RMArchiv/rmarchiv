@@ -46,7 +46,7 @@ class SavegameController extends Controller
                 ])
                 ->first();
 
-            if(isnull($save)){
+            if(isNull($save)){
                 $s = new GamesSavegame;
                 $s->save_data = $value;
                 $s->slot_id = $key;
