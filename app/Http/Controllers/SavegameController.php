@@ -32,7 +32,9 @@ class SavegameController extends Controller
     }
 
     public function api_save(Request $request ,$gamefileid){
-        $data = \GuzzleHttp\json_decode(Input::all(), true);
+        $data = Input::all();
+
+        print_r($data);
 
         \Log::info('savegamecount: '. count($data));
 
