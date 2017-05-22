@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\GamesSavegame;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class SavegameController extends Controller
 {
@@ -31,7 +32,7 @@ class SavegameController extends Controller
     }
 
     public function api_save(Request $request ,$gamefileid){
-        $data = json_decode($request->json(), true);
+        $data = Input::all();
 
         foreach($data as $name => $value){
             $save = GamesSavegame::where([
