@@ -34,18 +34,18 @@ class SavegameController extends Controller
     public function api_save(Request $request ,$gamefileid){
         $data = Input::all();
 
-        foreach($data as $name => $value){
+        foreach($data as $key=>$value){
             $save = GamesSavegame::where([
                 'user_id' => \Auth::id(),
                 'gamefile_id' => $gamefileid,
-                'slot_id' => $name,
+                'slot_id' => $key,
             ])
                 ->first();
 
             if(!$save){
                 $s = new GamesSavegame;
                 $s->save_data = $value;
-                $s->slot_id = $name;
+                $s->slot_id = $key;
                 $s->gamefile_id = $gamefileid;
                 $s->user_id = \Auth::id();
                 $s->save();
