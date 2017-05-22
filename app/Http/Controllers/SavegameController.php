@@ -42,8 +42,6 @@ class SavegameController extends Controller
             ])
                 ->first();
 
-            dd($save);
-
             if(isnull($save)){
                 $s = new GamesSavegame;
                 $s->save_data = $value;
