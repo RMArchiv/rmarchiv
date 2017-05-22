@@ -171,7 +171,7 @@
                         }
                     }
                 };
-                xhr.open('GET', "{{ url('/') }}" + '/api/savegames/{{ $gamefileid }}');
+                xhr.open('GET', "{{ url('/') }}" + '/savegames/{{ $gamefileid }}');
                 xhr.send(null);
             } else {
                 var xhr = new XMLHttpRequest();
@@ -183,7 +183,7 @@
                         }
                     }
                 };
-                xhr.open('POST', "{{ url('/') }}" + '/api/savegames/{{ $gamefileid }}');
+                xhr.open('POST', "{{ url('/') }}" + '/savegames/{{ $gamefileid }}');
 
                 var obj = {}
                 FS.readdir(mount.mountpoint).forEach(function(x) {
