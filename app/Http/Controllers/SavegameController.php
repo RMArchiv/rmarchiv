@@ -34,8 +34,6 @@ class SavegameController extends Controller
     public function api_save(Request $request ,$gamefileid){
         $data = Input::all();
 
-        dd($data);
-
         \Log::info('savegamecount: '. count($data));
 
         foreach($data as $key=>$value){
