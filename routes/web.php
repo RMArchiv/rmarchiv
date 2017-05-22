@@ -322,5 +322,5 @@ $api->version('v1', function ($api) {
 
     //EasyRPG Savegame API
     $api->get('savegames/{gamefileid}', 'App\Http\Controllers\SavegameController@api_load');
-    $api->get('savegames/{gamefileid}', 'App\Http\Controllers\SavegameController@api_load');
+    $api->post('savegames/{gamefileid}', 'App\Http\Controllers\SavegameController@api_save');
 });
