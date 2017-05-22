@@ -191,3 +191,16 @@ Breadcrumbs::register('tag', function ($breadcrumbs, $tag) {
     $breadcrumbs->parent('tags');
     $breadcrumbs->push($tag->title, action('TaggingController@showGames', $tag->id));
 });
+
+//----------------- CDC ----------------------------------------------------------------------------------------------//
+// Home -> coup de coeur
+Breadcrumbs::register('cdc.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('coup de coeur', action('CDCController@index'));
+});
+
+// Home -> coup de coeur -> add
+Breadcrumbs::register('cdc.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('cdc.index');
+    $breadcrumbs->push('coup de coeur hinzufügen', action('CDCController@create'));
+});
