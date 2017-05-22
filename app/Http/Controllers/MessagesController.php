@@ -98,7 +98,11 @@ class MessagesController extends Controller
                 $thread->markAsRead($userId);
                 $messages = $thread->messages()->paginate(25);
 
-                return view('messenger.show', compact('thread', 'users', 'messages'));
+                if (! Input::get('page')) {
+                    return redirect('messages/'.$id.'?page='.$messages->lastPage());
+                } else {
+                    return view('messenger.show', compact('thread', 'users', 'messages'));
+                }
             }
             //Todo:View für Keine Berechtigung.
         }
