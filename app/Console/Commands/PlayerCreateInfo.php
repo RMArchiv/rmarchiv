@@ -93,6 +93,8 @@ class PlayerCreateInfo extends Command
                             $pl->value = $imp;
                             $pl->filename = $filename;
                             $pl->save();
+
+                            \Log::info('Saved basepath: '. $filename);
                         }else{
                             \Log::info('Empty basepath: '. $filename);
                         }
