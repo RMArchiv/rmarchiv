@@ -203,7 +203,7 @@ class PlayerController extends Controller
         $res['charset\/alien3'] = 'rtp\/charset_alien3.png';
         $res['charset\/alien4'] = 'rtp\/charset_alien4.png';
         $res['charset\/angel'] = 'rtp\/charset_angel.png';
-        $res['charset\/animal'] = 'rtp\/charset_animal.png';
+        $res['charset\/animal'] = 'rtp\/charset_animal'.$maker.'.png';
         $res['charset\/arquivo-x'] = 'rtp\/charset_arquivo-x.png';
         $res['charset\/bahamut_lagoon'] = 'rtp\/charset_bahamut_lagoon.png';
         $res['charset\/bartender'] = 'rtp\/charset_bartender.png';
@@ -211,6 +211,11 @@ class PlayerController extends Controller
         $res['charset\/brats01'] = 'rtp\/charset_brats01.png';
         $res['charset\/breathoffire4'] = 'rtp\/charset_breathoffire4.png';
         $res['charset\/brian'] = 'rtp\/charset_brian.png';
+        $res['charset\/char1'] = 'rtp\/charset_char1.png';
+        $res['charset\/char2'] = 'rtp\/charset_char2.png';
+        $res['charset\/char3'] = 'rtp\/charset_char3.png';
+        $res['charset\/char4'] = 'rtp\/charset_char4.png';
+        $res['charset\/char5'] = 'rtp\/charset_char5.png';
         $res['charset\/chara_c1'] = 'rtp\/charset_chara_c1.png';
         $res['charset\/chara_c2'] = 'rtp\/charset_chara_c2.png';
         $res['charset\/chara_h_9'] = 'rtp\/charset_chara_h_9.png';
@@ -285,8 +290,6 @@ class PlayerController extends Controller
         $res['charset\/don_collection_8'] = 'rtp\/charset_don_collection_8.png';
         $res['charset\/don_collection_9'] = 'rtp\/charset_don_collection_9.png';
         $res['charset\/don_collection_mm'] = 'rtp\/charset_don_collection_mm.png';
-
-        //RM2k RTP
         $res['charset\/don_fish'] = 'rtp\/charset_don_fish.png';
         $res['charset\/don_pikatchuu'] = 'rtp\/charset_don_pikatchuu.png';
         $res['charset\/pokeballz'] = 'rtp\/charset_pokeballz.png';
@@ -319,6 +322,10 @@ class PlayerController extends Controller
         $res['charset\/gohanssj1-2'] = 'rtp\/charset_gohanssj1-2.png';
         $res['charset\/goldendoors'] = 'rtp\/charset_goldendoors.png';
         $res['charset\/greece'] = 'rtp\/charset_greece.png';
+        $res['charset\/hero1'] = 'rtp\/charset_hero1.png';
+        $res['charset\/hero2'] = 'rtp\/charset_hero2.png';
+        $res['charset\/hero3'] = 'rtp\/charset_hero3.png';
+        $res['charset\/hero4'] = 'rtp\/charset_hero4.png';
         $res['charset\/houshin5'] = 'rtp\/charset_houshin5.png';
         $res['charset\/illustset1'] = 'rtp\/charset_illustset1.png';
         $res['charset\/islander'] = 'rtp\/charset_islander.png';
@@ -333,11 +340,11 @@ class PlayerController extends Controller
         $res['charset\/minato_c'] = 'rtp\/charset_minato_c.png';
         $res['charset\/mk'] = 'rtp\/charset_mk.png';
         $res['charset\/mohawk'] = 'rtp\/charset_mohawk.png';
-        $res['charset\/monster1'] = 'rtp\/charset_monster1.png';
-        $res['charset\/monster2'] = 'rtp\/charset_monster2.png';
+        $res['charset\/monster1'] = 'rtp\/charset_monster1'.$maker.'.png';
+        $res['charset\/monster2'] = 'rtp\/charset_monster2'.$maker.'.png';
         $res['charset\/newaya'] = 'rtp\/charset_newaya.png';
-        $res['charset\/object1'] = 'rtp\/charset_object1.png';
-        $res['charset\/object2'] = 'rtp\/charset_object2.png';
+        $res['charset\/object1'] = 'rtp\/charset_object1'.$maker.'.png';
+        $res['charset\/object2'] = 'rtp\/charset_object2'.$maker.'.png';
         $res['charset\/object3'] = 'rtp\/charset_object3.png';
         $res['charset\/object6'] = 'rtp\/charset_object6.png';
         $res['charset\/object9'] = 'rtp\/charset_object9.png';
@@ -401,7 +408,7 @@ class PlayerController extends Controller
         $res['charset\/torch_1'] = 'rtp\/charset_torch_1.png';
         $res['charset\/treasure'] = 'rtp\/charset_treasure.png';
         $res['charset\/vegetable'] = 'rtp\/charset_vegetable.png';
-        $res['charset\/vehicle'] = 'rtp\/charset_vehicle.png';
+        $res['charset\/vehicle'] = 'rtp\/charset_vehicle'.$maker.'.png';
         $res['charset\/vehicle3'] = 'rtp\/charset_vehicle3.png';
         $res['charset\/window'] = 'rtp\/charset_window.png';
         $res['charset\/wizard'] = 'rtp\/charset_wizard.png';
@@ -412,6 +419,7 @@ class PlayerController extends Controller
         $res['charset\/xmas_chara1'] = 'rtp\/charset_xmas_chara1.png';
         $res['charset\/x-men-movie'] = 'rtp\/charset_x-men-movie.png';
         $res['charset\/zlightup'] = 'rtp\/charset_zlightup.png';
+        $res['charset\/'] = 'rtp\/charset_.png';
 
         //RM2k RTP
         $res['chipset\/2ktownset'] = 'rtp\/chipset_2ktownset.png';
