@@ -196,6 +196,76 @@ class PlayerController extends Controller
         $res['battle\/zip'] = 'rtp\/backdrop_zip.png';
         $res['battle\/'] = 'rtp\/backdrop_.png';
 
+        //battlecharset
+        $res['battlecharset\/armor1'] = 'rtp\/battlecharset_armor1.png';
+        $res['battlecharset\/armor2'] = 'rtp\/battlecharset_armor2.png';
+        $res['battlecharset\/chinese-f-1'] = 'rtp\/battlecharset_chinese-f-1.png';
+        $res['battlecharset\/chinese-f-2'] = 'rtp\/battlecharset_chinese-f-2.png';
+        $res['battlecharset\/chinese-m-1'] = 'rtp\/battlecharset_chinese-m-1.png';
+        $res['battlecharset\/chinese-m-2'] = 'rtp\/battlecharset_chinese-m-2.png';
+        $res['battlecharset\/elf-f-1'] = 'rtp\/battlecharset_elf-f-1.png';
+        $res['battlecharset\/elf-f-2'] = 'rtp\/battlecharset_elf-f-2.png';
+        $res['battlecharset\/elf-m-1'] = 'rtp\/battlecharset_elf-m-1.png';
+        $res['battlecharset\/elf-m-2'] = 'rtp\/battlecharset_elf-m-2.png';
+        $res['battlecharset\/hero-f-1'] = 'rtp\/battlecharset_hero-f-1.png';
+        $res['battlecharset\/hero-f-2'] = 'rtp\/battlecharset_hero-f-2.png';
+        $res['battlecharset\/hero-m-1'] = 'rtp\/battlecharset_hero-m-1.png';
+        $res['battlecharset\/hero-m-2'] = 'rtp\/battlecharset_hero-m-2.png';
+        $res['battlecharset\/mage-f-1'] = 'rtp\/battlecharset_mage-f-1.png';
+        $res['battlecharset\/mage-f-2'] = 'rtp\/battlecharset_mage-f-2.png';
+        $res['battlecharset\/mage-m-1'] = 'rtp\/battlecharset_mage-m-1.png';
+        $res['battlecharset\/mage-m-2'] = 'rtp\/battlecharset_mage-m-2.png';
+        $res['battlecharset\/man1-1'] = 'rtp\/battlecharset_man1-1.png';
+        $res['battlecharset\/man1-2'] = 'rtp\/battlecharset_man1-2.png';
+        $res['battlecharset\/man2-1'] = 'rtp\/battlecharset_man2-1.png';
+        $res['battlecharset\/man2-2'] = 'rtp\/battlecharset_man2-2.png';
+        $res['battlecharset\/man3-1'] = 'rtp\/battlecharset_man3-1.png';
+        $res['battlecharset\/man3-2'] = 'rtp\/battlecharset_man3-2.png';
+        $res['battlecharset\/man4-1'] = 'rtp\/battlecharset_man4-1.png';
+        $res['battlecharset\/man4-2'] = 'rtp\/battlecharset_man4-2.png';
+        $res['battlecharset\/man5-1'] = 'rtp\/battlecharset_man5-1.png';
+        $res['battlecharset\/man5-2'] = 'rtp\/battlecharset_man5-2.png';
+        $res['battlecharset\/monk-f-1'] = 'rtp\/battlecharset_monk-f-1.png';
+        $res['battlecharset\/monk-f-2'] = 'rtp\/battlecharset_monk-f-2.png';
+        $res['battlecharset\/monk-m-1'] = 'rtp\/battlecharset_monk-m-1.png';
+        $res['battlecharset\/monk-m-2'] = 'rtp\/battlecharset_monk-m-2.png';
+        $res['battlecharset\/ninja-f-1'] = 'rtp\/battlecharset_ninja-f-1.png';
+        $res['battlecharset\/ninja-f-2'] = 'rtp\/battlecharset_ninja-f-2.png';
+        $res['battlecharset\/ninja-m-1'] = 'rtp\/battlecharset_ninja-m-1.png';
+        $res['battlecharset\/ninja-m-2'] = 'rtp\/battlecharset_ninja-m-2.png';
+        $res['battlecharset\/pirate-f-1'] = 'rtp\/battlecharset_pirate-f-1.png';
+        $res['battlecharset\/pirate-f-2'] = 'rtp\/battlecharset_pirate-f-2.png';
+        $res['battlecharset\/pirate-m-1'] = 'rtp\/battlecharset_pirate-m-1.png';
+        $res['battlecharset\/pirate-m-2'] = 'rtp\/battlecharset_pirate-m-2.png';
+        $res['battlecharset\/priest1'] = 'rtp\/battlecharset_priest1.png';
+        $res['battlecharset\/priest2'] = 'rtp\/battlecharset_priest2.png';
+        $res['battlecharset\/priestess1'] = 'rtp\/battlecharset_priestess1.png';
+        $res['battlecharset\/priestess2'] = 'rtp\/battlecharset_priestess2.png';
+        $res['battlecharset\/samurai1'] = 'rtp\/battlecharset_samurai1.png';
+        $res['battlecharset\/samurai2'] = 'rtp\/battlecharset_samurai2.png';
+        $res['battlecharset\/soldier-f-1'] = 'rtp\/battlecharset_soldier-f-1.png';
+        $res['battlecharset\/soldier-f-2'] = 'rtp\/battlecharset_soldier-f-2.png';
+        $res['battlecharset\/soldier-m-1'] = 'rtp\/battlecharset_soldier-m-1.png';
+        $res['battlecharset\/soldier-m-2'] = 'rtp\/battlecharset_soldier-m-2.png';
+        $res['battlecharset\/thief-f-1'] = 'rtp\/battlecharset_thief-f-1.png';
+        $res['battlecharset\/thief-f-2'] = 'rtp\/battlecharset_thief-f-2.png';
+        $res['battlecharset\/thief-m-1'] = 'rtp\/battlecharset_thief-m-1.png';
+        $res['battlecharset\/thief-m-2'] = 'rtp\/battlecharset_thief-m-2.png';
+        $res['battlecharset\/woman1-1'] = 'rtp\/battlecharset_woman1-1.png';
+        $res['battlecharset\/woman1-2'] = 'rtp\/battlecharset_woman1-2.png';
+        $res['battlecharset\/woman2-1'] = 'rtp\/battlecharset_woman2-1.png';
+        $res['battlecharset\/woman2-2'] = 'rtp\/battlecharset_woman2-2.png';
+        $res['battlecharset\/woman3-1'] = 'rtp\/battlecharset_woman3-1.png';
+        $res['battlecharset\/woman3-2'] = 'rtp\/battlecharset_woman3-2.png';
+        $res['battlecharset\/woman4-1'] = 'rtp\/battlecharset_woman4-1.png';
+        $res['battlecharset\/woman4-2'] = 'rtp\/battlecharset_woman4-2.png';
+        $res['battlecharset\/woman5-1'] = 'rtp\/battlecharset_woman5-1.png';
+        $res['battlecharset\/woman5-2'] = 'rtp\/battlecharset_woman5-2.png';
+        $res['battlecharset\/'] = 'rtp\/battlecharset_.png';
+
+        //BattleWeapon
+        $res['battleweapon\/'] = 'rtp\/battleweapon_.png';
+
         //Charsets
         $res['charset\/actraiser3.1'] = 'rtp\/charset_actraiser3.1.png';
         $res['charset\/african'] = 'rtp\/charset_african.png';
