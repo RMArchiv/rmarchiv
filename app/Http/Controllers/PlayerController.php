@@ -1095,8 +1095,13 @@ class PlayerController extends Controller
         $res['system\/system01'] = 'rtp\/system_system01.png';
         $res['system\/system02'] = 'rtp\/system_system02.png';
         $res['system\/system03'] = 'rtp\/system_system03.png';
+        $res['system\/system1'] = 'rtp\/system_system1.png';
+        $res['system\/system2'] = 'rtp\/system_system2.png';
+        $res['system\/system3'] = 'rtp\/system_system3.png';
+        $res['system\/system4'] = 'rtp\/system_system4.png';
         $res['system\/windows01'] = 'rtp\/system_windows01.png';
         $res['system\/windows02'] = 'rtp\/system_windows02.png';
+        $res['system\/'] = 'rtp\/system_.png';
 
         //System2
         $res['system2\/system2a'] = 'rtp\/system2_system2a.png';
