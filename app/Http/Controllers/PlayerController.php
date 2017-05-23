@@ -594,6 +594,8 @@ class PlayerController extends Controller
         $res['faceset\/face2'] = 'rtp\/faceset_face2.png';
         $res['faceset\/face3'] = 'rtp\/faceset_face3.png';
         $res['faceset\/face4'] = 'rtp\/faceset_face4.png';
+        $res['faceset\/faces1'] = 'rtp\/backdrop_faces1.png';
+        $res['faceset\/faces2'] = 'rtp\/backdrop_faces2.png';
         $res['faceset\/ff4'] = 'rtp\/faceset_ff4.png';
         $res['faceset\/ff6_b'] = 'rtp\/faceset_ff6_b.png';
         $res['faceset\/ff7'] = 'rtp\/faceset_ff7.png';
@@ -606,6 +608,8 @@ class PlayerController extends Controller
         $res['faceset\/fire_emblem'] = 'rtp\/faceset_fire_emblem.png';
         $res['faceset\/fire_emblem_b'] = 'rtp\/faceset_fire_emblem_b.png';
         $res['faceset\/fire_emblem_c'] = 'rtp\/faceset_fire_emblem_c.png';
+        $res['faceset\/hero1'] = 'rtp\/backdrop_hero1.png';
+        $res['faceset\/hero2'] = 'rtp\/backdrop_hero2.png';
         $res['faceset\/hourai'] = 'rtp\/faceset_hourai.png';
         $res['faceset\/image1'] = 'rtp\/faceset_image1.png';
         $res['faceset\/item'] = 'rtp\/faceset_item.png';
@@ -623,6 +627,7 @@ class PlayerController extends Controller
         $res['faceset\/medieval2'] = 'rtp\/faceset_medieval2.png';
         $res['faceset\/megaman(face)'] = 'rtp\/faceset_megaman(face).png';
         $res['faceset\/mm2'] = 'rtp\/faceset_mm2.png';
+        $res['faceset\/monster'] = 'rtp\/backdrop_monster.png';
         $res['faceset\/monster2'] = 'rtp\/faceset_monster2.png';
         $res['faceset\/monsters'] = 'rtp\/faceset_monsters.png';
         $res['faceset\/people1'] = 'rtp\/faceset_people1.png';
