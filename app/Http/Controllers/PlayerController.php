@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
 use App\Models\GamesFile;
+use App\Models\Maker;
 use App\Models\PlayerIndexjson;
 use Composer\Package\Archiver\ZipArchiver;
 use Illuminate\Http\Request;
@@ -40,48 +42,78 @@ class PlayerController extends Controller
 
     public function deliver_indexjson($gamefileid){
         $index = PlayerIndexjson::whereGamefileId($gamefileid)->get();
+        $gamefile = GamesFile::whereId($gamefileid)->first();
+        $game = Game::whereId($gamefile->game_id)->first();
+        $maker = '_'.$game->maker->short;
+
         $res = array();
 
+        //Backdrops
+        $res['backdrop\/arena'] = 'rtp\/backdrop_arena.png';
+        $res['backdrop\/barren'] = 'rtp\/backdrop_barren.png';
+        $res['backdrop\/bath'] = 'rtp\/backdrop_bath.png';
+        $res['backdrop\/beach'] = 'rtp\/backdrop_beach.png';
         $res['backdrop\/brickcave5'] = 'rtp\/backdrop_brickcave5.png';
-        $res['backdrop\/bridge'] = 'rtp\/backdrop_bridge.png';
+        $res['backdrop\/bridge'] = 'rtp\/backdrop_bridge'.$maker.'.png';
+        $res['backdrop\/building'] = 'rtp\/backdrop_building.png';
         $res['backdrop\/canyon'] = 'rtp\/backdrop_canyon.png';
-        $res['backdrop\/castle'] = 'rtp\/backdrop_castle.png';
+        $res['backdrop\/castle'] = 'rtp\/backdrop_castle'.$maker.'.png';
         $res['backdrop\/cave1'] = 'rtp\/backdrop_cave1.png';
         $res['backdrop\/cave4'] = 'rtp\/backdrop_cave4.png';
         $res['backdrop\/cave9'] = 'rtp\/backdrop_cave9.png';
         $res['backdrop\/dark3'] = 'rtp\/backdrop_dark3.png';
-        $res['backdrop\/desert'] = 'rtp\/backdrop_desert.png';
+        $res['backdrop\/desert'] = 'rtp\/backdrop_desert'.$maker.'.png';
         $res['backdrop\/desert5'] = 'rtp\/backdrop_desert5.png';
-        $res['backdrop\/dungeon1'] = 'rtp\/backdrop_dungeon1.png';
-        $res['backdrop\/dungeon2'] = 'rtp\/backdrop_dungeon2.png';
+        $res['backdrop\/dungeon1'] = 'rtp\/backdrop_dungeon1'.$maker.'.png';
+        $res['backdrop\/dungeon2'] = 'rtp\/backdrop_dungeon2'.$maker.'.png';
+        $res['backdrop\/dungeon3'] = 'rtp\/backdrop_dungeon3.png';
+        $res['backdrop\/dungeon4'] = 'rtp\/backdrop_dungeon4.png';
+        $res['backdrop\/dungeon5'] = 'rtp\/backdrop_dungeon5.png';
+        $res['backdrop\/dungeon6'] = 'rtp\/backdrop_dungeon6.png';
         $res['backdrop\/falls2'] = 'rtp\/backdrop_falls2.png';
-        $res['backdrop\/forest1'] = 'rtp\/backdrop_forest1.png';
-        $res['backdrop\/forest2'] = 'rtp\/backdrop_forest2.png';
+        $res['backdrop\/forest1'] = 'rtp\/backdrop_forest1'.$maker.'.png';
+        $res['backdrop\/forest2'] = 'rtp\/backdrop_forest2'.$maker.'.png';
         $res['backdrop\/forest4'] = 'rtp\/backdrop_forest4.png';
         $res['backdrop\/future1'] = 'rtp\/backdrop_future1.png';
         $res['backdrop\/future3'] = 'rtp\/backdrop_future3.png';
         $res['backdrop\/galaxy'] = 'rtp\/backdrop_galaxy.png';
+        $res['backdrop\/ghost_town'] = 'rtp\/backdrop_ghost_town.png';
         $res['backdrop\/grass'] = 'rtp\/backdrop_grass.png';
+        $res['backdrop\/graveyard'] = 'rtp\/backdrop_graveyard.png';
         $res['backdrop\/greece'] = 'rtp\/backdrop_greece.png';
         $res['backdrop\/icecave3'] = 'rtp\/backdrop_icecave3.png';
         $res['backdrop\/lavacave2'] = 'rtp\/backdrop_lavacave2.png';
         $res['backdrop\/lightspeed'] = 'rtp\/backdrop_lightspeed.png';
+        $res['backdrop\/mountain'] = 'rtp\/backdrop_mountain.png';
         $res['backdrop\/mtn4'] = 'rtp\/backdrop_mtn4.png';
         $res['backdrop\/nbridge'] = 'rtp\/backdrop_nbridge.png';
+        $res['backdrop\/ocean'] = 'rtp\/backdrop_ocean.png';
+        $res['backdrop\/plains'] = 'rtp\/backdrop_plains.png';
         $res['backdrop\/plainsg'] = 'rtp\/backdrop_plainsg.png';
+        $res['backdrop\/road'] = 'rtp\/backdrop_road.png';
+        $res['backdrop\/rockbed'] = 'rtp\/backdrop_rockbed.png';
+        $res['backdrop\/ruins1'] = 'rtp\/backdrop_ruins1.png';
+        $res['backdrop\/ruins2'] = 'rtp\/backdrop_ruins2.png';
         $res['backdrop\/sea'] = 'rtp\/backdrop_sea.png';
         $res['backdrop\/seabeach'] = 'rtp\/backdrop_seabeach.png';
         $res['backdrop\/ship'] = 'rtp\/backdrop_ship.png';
         $res['backdrop\/ship1'] = 'rtp\/backdrop_ship1.png';
-        $res['backdrop\/sky'] = 'rtp\/backdrop_sky.png';
+        $res['backdrop\/shipdeck'] = 'rtp\/backdrop_shipdeck.png';
+        $res['backdrop\/shrine'] = 'rtp\/backdrop_shrine.png';
+        $res['backdrop\/sky'] = 'rtp\/backdrop_sky'.$maker.'.png';
         $res['backdrop\/snow'] = 'rtp\/backdrop_snow.png';
         $res['backdrop\/snowcanyon'] = 'rtp\/backdrop_snowcanyon.png';
-        $res['backdrop\/swamp'] = 'rtp\/backdrop_swamp.png';
-        $res['backdrop\/town'] = 'rtp\/backdrop_town.png';
+        $res['backdrop\/snowfield'] = 'rtp\/backdrop_snowfield.png';
+        $res['backdrop\/space'] = 'rtp\/backdrop_space.png';
+        $res['backdrop\/strange'] = 'rtp\/backdrop_strange.png';
+        $res['backdrop\/swamp'] = 'rtp\/backdrop_swamp'.$maker.'.png';
+        $res['backdrop\/town'] = 'rtp\/backdrop_town'.$maker.'.png';
         $res['backdrop\/underw1'] = 'rtp\/backdrop_underw1.png';
-        $res['backdrop\/wasteland'] = 'rtp\/backdrop_wasteland.png';
+        $res['backdrop\/wasteland'] = 'rtp\/backdrop_wasteland'.$maker.'.png';
         $res['backdrop\/wasteruins'] = 'rtp\/backdrop_wasteruins.png';
+        $res['backdrop\/'] = 'rtp\/backdrop_.png';
 
+        //RM2k RTP
         $res['battle\/absorption'] = 'rtp\/backdrop_.png';
         $res['battle\/arrow'] = 'rtp\/backdrop_.png';
         $res['battle\/axe'] = 'rtp\/backdrop_.png';
@@ -113,6 +145,7 @@ class PlayerController extends Controller
         $res['battle\/wind'] = 'rtp\/backdrop_.png';
         $res['battle\/zip'] = 'rtp\/backdrop_.png';
 
+        //RM2k RTP
         $res['charset\/actraiser3.1'] = 'rtp\/charset_actraiser3.1.png';
         $res['charset\/african'] = 'rtp\/charset_african.png';
         $res['charset\/alex'] = 'rtp\/charset_alex.png';
@@ -202,6 +235,7 @@ class PlayerController extends Controller
         $res['charset\/don_collection_9'] = 'rtp\/charset_don_collection_9.png';
         $res['charset\/don_collection_mm'] = 'rtp\/charset_don_collection_mm.png';
 
+        //RM2k RTP
         $res['charset\/don_fish'] = 'rtp\/charset_don_fish.png';
         $res['charset\/don_pikatchuu'] = 'rtp\/charset_don_pikatchuu.png';
         $res['charset\/pokeballz'] = 'rtp\/charset_pokeballz.png';
@@ -328,6 +362,7 @@ class PlayerController extends Controller
         $res['charset\/x-men-movie'] = 'rtp\/charset_x-men-movie.png';
         $res['charset\/zlightup'] = 'rtp\/charset_zlightup.png';
 
+        //RM2k RTP
         $res['chipset\/2ktownset'] = 'rtp\/chipset_2ktownset.png';
         $res['chipset\/3d_castle'] = 'rtp\/chipset_3d_castle.png';
         $res['chipset\/3d_inner'] = 'rtp\/chipset_3d_inner.png';
@@ -424,6 +459,7 @@ class PlayerController extends Controller
         $res['chipset\/outcastle'] = 'rtp\/chipset_outcastle.png';
         $res['chipset\/outline'] = 'rtp\/chipset_outline.png';
 
+        //RM2k RTP
         $res['chipset\/phantasystar'] = 'rtp\/chipset_phantasystar.png';
         $res['chipset\/pocket_m'] = 'rtp\/chipset_pocket_m.png';
         $res['chipset\/pokemontiles'] = 'rtp\/chipset_pokemontiles.png';
@@ -466,6 +502,7 @@ class PlayerController extends Controller
         $res['chipset\/zelda3_d'] = 'rtp\/chipset_zelda3_d.png';
         $res['chipset\/zeldaw'] = 'rtp\/chipset_zeldaw.png';
 
+        //RM2k RTP
         $res['faceset\/anime3'] = 'rtp\/faceset_anime3.png';
         $res['faceset\/atelier'] = 'rtp\/faceset_atelier.png';
         $res['faceset\/atelier_b'] = 'rtp\/faceset_atelier_b.png';
@@ -568,8 +605,10 @@ class PlayerController extends Controller
         $res['faceset\/xenogears_d'] = 'rtp\/faceset_xenogears_d.png';
         $res['faceset\/zelda64'] = 'rtp\/faceset_zelda64.png';
 
+        //RM2k RTP
         $res['gameover\/gameover'] = 'rtop\/gameover_gameover.png';
 
+        //RM2k RTP
         $res['monster\/2souls'] = 'rtp\/monster_2souls.png';
         $res['monster\/angel'] = 'rtp\/monster_angel.png';
         $res['monster\/aquamen'] = 'rtp\/monster_aquamen.png';
@@ -662,6 +701,7 @@ class PlayerController extends Controller
         $res['monster\/zombie'] = 'rtp\/monster_zombie.png';
         $res['monster\/zombie2'] = 'rtp\/monster_zombie2.png';
 
+        //RM2k RTP
         $res['music\/anger'] = 'rtp\/music_anger.mid';
         $res['music\/animal'] = 'rtp\/music_animal.mid';
         $res['music\/battle1'] = 'rtp\/music_battle1.mid';
@@ -789,6 +829,7 @@ class PlayerController extends Controller
         $res['music\/village4'] = 'rtp\/music_village4.mid';
         $res['music\/village5'] = 'rtp\/music_village5.mid';
 
+        //RM2k RTP
         $res['panorama\/beach1'] = 'rtp\/panorama_beach1.png';
         $res['panorama\/dawn1'] = 'rtp\/panorama_dawn1.png';
         $res['panorama\/dawn2'] = 'rtp\/panorama_dawn2.png';
@@ -804,8 +845,10 @@ class PlayerController extends Controller
         $res['panorama\/planet3'] = 'rtp\/panorama_planet3.png';
         $res['panorama\/weird'] = 'rtp\/panorama_weird.png';
 
+        //RM2k RTP
         $res['picture\/cloud'] = 'rtp\/picture_cloud.png';
 
+        //RM2k RTP
         $res['sound\/absorption1'] = 'rtp\/sound_absorption1.wav';
         $res['sound\/absorption2'] = 'rtp\/sound_absorption2.wav';
         $res['sound\/annihilation1'] = 'rtp\/sound_annihilation1.wav';
@@ -1024,8 +1067,10 @@ class PlayerController extends Controller
         $res['sound\/wind8'] = 'rtp\/sound_wind8.wav';
         $res['sound\/wind9'] = 'rtp\/sound_wind9.wav';
 
+        //RM2k RTP
         $res['sound\/'] = 'rtp\/sound_.wav';
 
+        //RM2k RTP
         $res['system\/blue'] = 'rtp\/system_blue.png';
         $res['system\/bof2sys'] = 'rtp\/system_bof2sys.png';
         $res['system\/bubbles'] = 'rtp\/system_bubbles.png';
@@ -1051,6 +1096,7 @@ class PlayerController extends Controller
         $res['system\/windows01'] = 'rtp\/system_windows01.png';
         $res['system\/windows02'] = 'rtp\/system_windows02.png';
 
+        //RM2k RTP
         $res['title\/title1'] = 'rtp\/title_title1.png';
         $res['title\/title2'] = 'rtp\/title_title2.png';
         $res['title\/title3'] = 'rtp\/title_title3.png';
