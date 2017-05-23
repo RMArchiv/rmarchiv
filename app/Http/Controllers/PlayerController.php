@@ -379,6 +379,7 @@ class PlayerController extends Controller
         $res['chipset\/bof22'] = 'rtp\/chipset_bof22.png';
         $res['chipset\/bof22_b'] = 'rtp\/chipset_bof22_b.png';
         $res['chipset\/boxing_r'] = 'rtp\/chipset_boxing_r.png';
+        $res['chipset\/building'] = 'rtp\/chipset_building.png';
         $res['chipset\/casino'] = 'rtp\/chipset_casino.png';
         $res['chipset\/castle'] = 'rtp\/chipset_castle.png';
         $res['chipset\/castle_2_'] = 'rtp\/chipset_castle_2_.png';
@@ -416,7 +417,7 @@ class PlayerController extends Controller
         $res['chipset\/darktown'] = 'rtp\/chipset_darktown.png';
         $res['chipset\/darkworld'] = 'rtp\/chipset_darkworld.png';
         $res['chipset\/dumalchipset01'] = 'rtp\/chipset_dumalchipset01.png';
-        $res['chipset\/dungeon'] = 'rtp\/chipset_dungeon.png';
+        $res['chipset\/dungeon'] = 'rtp\/chipset_dungeon'.$maker.'.png';
         $res['chipset\/dungeon2'] = 'rtp\/chipset_dungeon2.png';
         $res['chipset\/dw3'] = 'rtp\/chipset_dw3.png';
         $res['chipset\/earthboundchips'] = 'rtp\/chipset_earthboundchips.png';
@@ -447,6 +448,7 @@ class PlayerController extends Controller
         $res['chipset\/lufia2_d'] = 'rtp\/chipset_lufia2_d.png';
         $res['chipset\/lufia2_house'] = 'rtp\/chipset_lufia2_house.png';
         $res['chipset\/lufia2_t'] = 'rtp\/chipset_lufia2_t.png';
+        $res['chipset\/main'] = 'rtp\/chipset_main.png';
         $res['chipset\/map_town01'] = 'rtp\/chipset_map_town01.png';
         $res['chipset\/minato1'] = 'rtp\/chipset_minato1.png';
         $res['chipset\/modern'] = 'rtp\/chipset_modern.png';
@@ -458,8 +460,6 @@ class PlayerController extends Controller
         $res['chipset\/modified'] = 'rtp\/chipset_modified.png';
         $res['chipset\/outcastle'] = 'rtp\/chipset_outcastle.png';
         $res['chipset\/outline'] = 'rtp\/chipset_outline.png';
-
-        //RM2k RTP
         $res['chipset\/phantasystar'] = 'rtp\/chipset_phantasystar.png';
         $res['chipset\/pocket_m'] = 'rtp\/chipset_pocket_m.png';
         $res['chipset\/pokemontiles'] = 'rtp\/chipset_pokemontiles.png';
@@ -471,7 +471,7 @@ class PlayerController extends Controller
         $res['chipset\/sd3_b'] = 'rtp\/chipset_sd3_b.png';
         $res['chipset\/sd3_c'] = 'rtp\/chipset_sd3_c.png';
         $res['chipset\/sd3_d'] = 'rtp\/chipset_sd3_d.png';
-        $res['chipset\/ship'] = 'rtp\/chipset_ship.png';
+        $res['chipset\/ship'] = 'rtp\/chipset_ship'.$maker.'.png';
         $res['chipset\/som'] = 'rtp\/chipset_som.png';
         $res['chipset\/sompalace'] = 'rtp\/chipset_sompalace.png';
         $res['chipset\/sompalace2'] = 'rtp\/chipset_sompalace2.png';
@@ -484,6 +484,7 @@ class PlayerController extends Controller
         $res['chipset\/terranig'] = 'rtp\/chipset_terranig.png';
         $res['chipset\/topcity'] = 'rtp\/chipset_topcity.png';
         $res['chipset\/top-totus'] = 'rtp\/chipset_top-totus.png';
+        $res['chipset\/town'] = 'rtp\/chipset_town.png';
         $res['chipset\/town_21'] = 'rtp\/chipset_town_21.png';
         $res['chipset\/town2'] = 'rtp\/chipset_town2.png';
         $res['chipset\/town3'] = 'rtp\/chipset_town3.png';
@@ -501,6 +502,7 @@ class PlayerController extends Controller
         $res['chipset\/zelda3_b'] = 'rtp\/chipset_zelda3_b.png';
         $res['chipset\/zelda3_d'] = 'rtp\/chipset_zelda3_d.png';
         $res['chipset\/zeldaw'] = 'rtp\/chipset_zeldaw.png';
+        $res['chipset\/'] = 'rtp\/chipset_.png';
 
         //RM2k RTP
         $res['faceset\/anime3'] = 'rtp\/faceset_anime3.png';
