@@ -99,6 +99,10 @@
                             alert('{{ trans('player.index.webgl_error') }}');
                             e.preventDefault();
                         }, false);
+                        canvas.addEventListener("keydown", function (e) {
+                            e.stopPropagation();
+                            e.preventDefault();
+                        }, false);
 
                         return canvas;
                     })(),
