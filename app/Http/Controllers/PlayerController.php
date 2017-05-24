@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 use App\Models\GamesFile;
-use App\Models\Maker;
 use App\Models\PlayerIndexjson;
-use Composer\Package\Archiver\ZipArchiver;
-use Illuminate\Http\Request;
 
 class PlayerController extends Controller
 {
@@ -264,6 +261,7 @@ class PlayerController extends Controller
         $res['battlecharset\/'] = 'rtp\/battlecharset_.png';
 
         //BattleWeapon
+        $res['battleweapon\/weapons'] = 'rtp\/battleweapon_weapons.png';
         $res['battleweapon\/'] = 'rtp\/battleweapon_.png';
 
         //Charsets
@@ -746,19 +744,40 @@ class PlayerController extends Controller
 
         //RM2k RTP
         $res['monster\/2souls'] = 'rtp\/monster_2souls.png';
+        $res['monster\/alligator'] = 'rtp\/monster_alligator.png';
+        $res['monster\/anaconda'] = 'rtp\/monster_anaconda.png';
         $res['monster\/angel'] = 'rtp\/monster_angel.png';
         $res['monster\/aquamen'] = 'rtp\/monster_aquamen.png';
-        $res['monster\/bat'] = 'rtp\/monster_bat.png';
+        $res['monster\/ariman'] = 'rtp\/monster_ariman.png';
+        $res['monster\/asura'] = 'rtp\/monster_asura.png';
+        $res['monster\/bahamut'] = 'rtp\/monster_bahamut.png';
+        $res['monster\/basilisk'] = 'rtp\/monster_basilisk.png';
+        $res['monster\/bat'] = 'rtp\/monster_bat'.$maker.'.png';
         $res['monster\/bee'] = 'rtp\/monster_bee.png';
+        $res['monster\/behemoth'] = 'rtp\/monster_behemoth.png';
+        $res['monster\/berserker'] = 'rtp\/monster_berserker.png';
+        $res['monster\/bigfoot'] = 'rtp\/monster_bigfoot.png';
+        $res['monster\/blackturtle'] = 'rtp\/monster_blackturtle.png';
         $res['monster\/bloody_orb'] = 'rtp\/monster_bloody_orb.png';
-        $res['monster\/bluedragon'] = 'rtp\/monster_bluedragon.png';
+        $res['monster\/bluedragon'] = 'rtp\/monster_bluedragon'.$maker.'.png';
         $res['monster\/boy1'] = 'rtp\/monster_boy1.png';
         $res['monster\/boy2'] = 'rtp\/monster_boy2.png';
-        $res['monster\/chimera'] = 'rtp\/monster_chimera.png';
+        $res['monster\/caitsith'] = 'rtp\/monster_caitsith.png';
+        $res['monster\/cancer'] = 'rtp\/monster_cancer.png';
+        $res['monster\/carbuncle'] = 'rtp\/monster_carbuncle.png';
+        $res['monster\/catoblepas'] = 'rtp\/monster_catoblepas.png';
+        $res['monster\/centaur'] = 'rtp\/monster_centaur.png';
+        $res['monster\/centipede'] = 'rtp\/monster_centipede.png';
+        $res['monster\/cerberus'] = 'rtp\/monster_cerberus.png';
+        $res['monster\/chimera'] = 'rtp\/monster_chimera'.$maker.'.png';
         $res['monster\/cloakdemon'] = 'rtp\/monster_cloakdemon.png';
+        $res['monster\/cockatrice'] = 'rtp\/monster_cockatrice.png';
+        $res['monster\/cojurer'] = 'rtp\/monster_cojurer.png';
+        $res['monster\/crawler'] = 'rtp\/monster_crawler.png';
+        $res['monster\/cyclops'] = 'rtp\/monster_cyclops.png';
         $res['monster\/damn_monkey'] = 'rtp\/monster_damn_monkey.png';
-        $res['monster\/darkelf'] = 'rtp\/monster_darkelf.png';
-        $res['monster\/darkknight'] = 'rtp\/monster_darkknight.png';
+        $res['monster\/darkelf'] = 'rtp\/monster_darkelf'.$maker.'.png';
+        $res['monster\/darkknight'] = 'rtp\/monster_darkknight'.$maker.'.png';
         $res['monster\/darkrider'] = 'rtp\/monster_darkrider.png';
         $res['monster\/darkspirit'] = 'rtp\/monster_darkspirit.png';
         $res['monster\/death'] = 'rtp\/monster_death.png';
@@ -836,6 +855,7 @@ class PlayerController extends Controller
         $res['monster\/wolfman'] = 'rtp\/monster_wolfman.png';
         $res['monster\/zombie'] = 'rtp\/monster_zombie.png';
         $res['monster\/zombie2'] = 'rtp\/monster_zombie2.png';
+        $res['monster\/'] = 'rtp\/monster_.png';
 
         //RM2k RTP
         $res['music\/anger'] = 'rtp\/music_anger.mid';
@@ -965,36 +985,46 @@ class PlayerController extends Controller
         $res['music\/village4'] = 'rtp\/music_village4.mid';
         $res['music\/village5'] = 'rtp\/music_village5.mid';
 
-        //RM2k RTP
+        //Panorama
         $res['panorama\/beach1'] = 'rtp\/panorama_beach1.png';
-        $res['panorama\/dawn1'] = 'rtp\/panorama_dawn1.png';
-        $res['panorama\/dawn2'] = 'rtp\/panorama_dawn2.png';
+        $res['panorama\/dawn1'] = 'rtp\/panorama_dawn1'.$maker.'.png';
+        $res['panorama\/dawn2'] = 'rtp\/panorama_dawn2'.$maker.'.png';
+        $res['panorama\/dusk1'] = 'rtp\/panorama_dusk1.png';
+        $res['panorama\/dusk2'] = 'rtp\/panorama_dusk2.png';
         $res['panorama\/evening1'] = 'rtp\/panorama_evening1.png';
         $res['panorama\/evening2'] = 'rtp\/panorama_evening2.png';
         $res['panorama\/galaxy'] = 'rtp\/panorama_galaxy.png';
         $res['panorama\/morning1'] = 'rtp\/panorama_morning1.png';
         $res['panorama\/morning2'] = 'rtp\/panorama_morning2.png';
-        $res['panorama\/night1'] = 'rtp\/panorama_night1.png';
-        $res['panorama\/night2'] = 'rtp\/panorama_night2.png';
-        $res['panorama\/planet1'] = 'rtp\/panorama_planet1.png';
-        $res['panorama\/planet2'] = 'rtp\/panorama_planet2.png';
-        $res['panorama\/planet3'] = 'rtp\/panorama_planet3.png';
+        $res['panorama\/night1'] = 'rtp\/panorama_night1'.$maker.'.png';
+        $res['panorama\/night2'] = 'rtp\/panorama_night2'.$maker.'.png';
+        $res['panorama\/planet1'] = 'rtp\/panorama_planet1'.$maker.'.png';
+        $res['panorama\/planet2'] = 'rtp\/panorama_planet2'.$maker.'.png';
+        $res['panorama\/planet3'] = 'rtp\/panorama_planet3'.$maker.'.png';
+        $res['panorama\/sky1'] = 'rtp\/panorama_sky1.png';
+        $res['panorama\/sky2'] = 'rtp\/panorama_sky2.png';
+        $res['panorama\/space'] = 'rtp\/panorama_space.png';
+        $res['panorama\/strange'] = 'rtp\/panorama_strange.png';
         $res['panorama\/weird'] = 'rtp\/panorama_weird.png';
+        $res['panorama\/'] = 'rtp\/panorama_.png';
 
-        //RM2k RTP
+        //Pictures
         $res['picture\/cloud'] = 'rtp\/picture_cloud.png';
 
-        //RM2k RTP
+        //Sounds
+        $res['sound\/absorb1'] = 'rtp\/sound_absorb1.wav';
+        $res['sound\/absorb2'] = 'rtp\/sound_absorb2.wav';
         $res['sound\/absorption1'] = 'rtp\/sound_absorption1.wav';
         $res['sound\/absorption2'] = 'rtp\/sound_absorption2.wav';
         $res['sound\/annihilation1'] = 'rtp\/sound_annihilation1.wav';
         $res['sound\/annihilation2'] = 'rtp\/sound_annihilation2.wav';
         $res['sound\/anvil'] = 'rtp\/sound_anvil.wav';
-        $res['sound\/attack1'] = 'rtp\/sound_attack1.wav';
-        $res['sound\/attack2'] = 'rtp\/sound_attack2.wav';
-        $res['sound\/barrier'] = 'rtp\/sound_.wav';
+        $res['sound\/attack1'] = 'rtp\/sound_attack1'.$maker.'.wav';
+        $res['sound\/attack2'] = 'rtp\/sound_attack2'.$maker.'.wav';
+        $res['sound\/barrier'] = 'rtp\/sound_barrier'.$maker.'.wav';
         $res['sound\/bell'] = 'rtp\/sound_bell.wav';
         $res['sound\/bite'] = 'rtp\/sound_bite.wav';
+        $res['sound\/bloodsuck'] = 'rtp\/sound_bloodsuck.wav';
         $res['sound\/blow1'] = 'rtp\/sound_blow1.wav';
         $res['sound\/blow2'] = 'rtp\/sound_blow2.wav';
         $res['sound\/blow3'] = 'rtp\/sound_blow3.wav';
@@ -1002,19 +1032,38 @@ class PlayerController extends Controller
         $res['sound\/blow5'] = 'rtp\/sound_blow5.wav';
         $res['sound\/blow6'] = 'rtp\/sound_blow6.wav';
         $res['sound\/blow7'] = 'rtp\/sound_blow7.wav';
+        $res['sound\/bolt01'] = 'rtp\/sound_bolt01.wav';
+        $res['sound\/bolt02'] = 'rtp\/sound_bolt02.wav';
+        $res['sound\/bolt03'] = 'rtp\/sound_bolt03.wav';
+        $res['sound\/bolt04'] = 'rtp\/sound_bolt04.wav';
+        $res['sound\/bolt05'] = 'rtp\/sound_bolt05.wav';
+        $res['sound\/bolt06'] = 'rtp\/sound_bolt06.wav';
+        $res['sound\/bolt07'] = 'rtp\/sound_bolt07.wav';
+        $res['sound\/bolt08'] = 'rtp\/sound_bolt08.wav';
+        $res['sound\/bolt09'] = 'rtp\/sound_bolt09.wav';
+        $res['sound\/bolt10'] = 'rtp\/sound_bolt10.wav';
+        $res['sound\/bow1'] = 'rtp\/sound_bow1'.$maker.'.wav';
+        $res['sound\/bow2'] = 'rtp\/sound_bow2'.$maker.'.wav';
         $res['sound\/breast'] = 'rtp\/sound_breast.wav';
-        $res['sound\/buzzer1'] = 'rtp\/sound_buzzer1.wav';
-        $res['sound\/buzzer2'] = 'rtp\/sound_buzzer2.wav';
+        $res['sound\/breath'] = 'rtp\/sound_breath.wav';
+        $res['sound\/bump1'] = 'rtp\/sound_bump1.wav';
+        $res['sound\/bump2'] = 'rtp\/sound_bump2.wav';
+        $res['sound\/buzzer1'] = 'rtp\/sound_buzzer1'.$maker.'.wav';
+        $res['sound\/buzzer2'] = 'rtp\/sound_buzzer2'.$maker.'.wav';
         $res['sound\/camera'] = 'rtp\/sound_camera.wav';
+        $res['sound\/cancel1'] = 'rtp\/sound_cancel1.wav';
+        $res['sound\/cancel2'] = 'rtp\/sound_cancel2.wav';
         $res['sound\/cansel1'] = 'rtp\/sound_cansel1.wav';
         $res['sound\/cansel2'] = 'rtp\/sound_cansel2.wav';
-        $res['sound\/cat'] = 'rtp\/sound_cat.wav';
+        $res['sound\/cat'] = 'rtp\/sound_cat'.$maker.'.wav';
         $res['sound\/chaos'] = 'rtp\/sound_chaos.wav';
-        $res['sound\/chicken'] = 'rtp\/sound_chicken.wav';
+        $res['sound\/chicken'] = 'rtp\/sound_chicken'.$maker.'.wav';
+        $res['sound\/choice1'] = 'rtp\/sound_choice1.wav';
+        $res['sound\/choice2'] = 'rtp\/sound_choice2.wav';
         $res['sound\/clap'] = 'rtp\/sound_clap.wav';
-        $res['sound\/clock'] = 'rtp\/sound_clock.wav';
-        $res['sound\/close1'] = 'rtp\/sound_close1.wav';
-        $res['sound\/close2'] = 'rtp\/sound_close2.wav';
+        $res['sound\/clock'] = 'rtp\/sound_clock'.$maker.'.wav';
+        $res['sound\/close1'] = 'rtp\/sound_close1'.$maker.'.wav';
+        $res['sound\/close2'] = 'rtp\/sound_close2'.$maker.'.wav';
         $res['sound\/cold1'] = 'rtp\/sound_cold1.wav';
         $res['sound\/cold10'] = 'rtp\/sound_cold10.wav';
         $res['sound\/cold11'] = 'rtp\/sound_cold11.wav';
@@ -1027,19 +1076,22 @@ class PlayerController extends Controller
         $res['sound\/cold8'] = 'rtp\/sound_cold8.wav';
         $res['sound\/cold9'] = 'rtp\/sound_cold9.wav';
         $res['sound\/comp'] = 'rtp\/sound_comp.wav';
-        $res['sound\/cow'] = 'rtp\/sound_cow.wav';
-        $res['sound\/cursor1'] = 'rtp\/sound_cursor1.wav';
-        $res['sound\/cursor2'] = 'rtp\/sound_cursor2.wav';
-        $res['sound\/damage1'] = 'rtp\/sound_damage1.wav';
-        $res['sound\/damage2'] = 'rtp\/sound_damage2.wav';
-        $res['sound\/dark1'] = 'rtp\/sound_dark1.wav';
-        $res['sound\/dark2'] = 'rtp\/sound_dark2.wav';
-        $res['sound\/dark3'] = 'rtp\/sound_dark3.wav';
-        $res['sound\/dark4'] = 'rtp\/sound_dark4.wav';
-        $res['sound\/dark5'] = 'rtp\/sound_dark5.wav';
+        $res['sound\/confuse'] = 'rtp\/sound_confuse.wav';
+        $res['sound\/cow'] = 'rtp\/sound_cow'.$maker.'.wav';
+        $res['sound\/cursor1'] = 'rtp\/sound_cursor1'.$maker.'.wav';
+        $res['sound\/cursor2'] = 'rtp\/sound_cursor2'.$maker.'.wav';
+        $res['sound\/damage1'] = 'rtp\/sound_damage1'.$maker.'.wav';
+        $res['sound\/damage2'] = 'rtp\/sound_damage2'.$maker.'.wav';
+        $res['sound\/dark1'] = 'rtp\/sound_dark1'.$maker.'.wav';
+        $res['sound\/dark2'] = 'rtp\/sound_dark2'.$maker.'.wav';
+        $res['sound\/dark3'] = 'rtp\/sound_dark3'.$maker.'.wav';
+        $res['sound\/dark4'] = 'rtp\/sound_dark4'.$maker.'.wav';
+        $res['sound\/dark5'] = 'rtp\/sound_dark5'.$maker.'.wav';
+        $res['sound\/dark6'] = 'rtp\/sound_dark6.wav';
         $res['sound\/decision1'] = 'rtp\/sound_decision1.wav';
         $res['sound\/decision2'] = 'rtp\/sound_decision2.wav';
-        $res['sound\/dog'] = 'rtp\/sound_dog.wav';
+        $res['sound\/decrease'] = 'rtp\/sound_decrease.wav';
+        $res['sound\/dog'] = 'rtp\/sound_dog'.$maker.'.wav';
         $res['sound\/doorbell'] = 'rtp\/sound_doorbell.wav';
         $res['sound\/down'] = 'rtp\/sound_down.wav';
         $res['sound\/drip'] = 'rtp\/sound_drip.wav';
