@@ -212,6 +212,14 @@ Breadcrumbs::register('gamefiles.add', function ($breadcrumbs, $game) {
     $breadcrumbs->push('spiel dateien', action('GameFileController@create', $game->id));
 });
 
+//----------------- Player -------------------------------------------------------------------------------------------//
+// Home -> spieledatei
+Breadcrumbs::register('webplayer', function ($breadcrumbs, $game, $gamefileid) {
+    $breadcrumbs->parent('game', $game);
+    $breadcrumbs->push('webplayer', action('PlayerController@index', $game->id));
+});
+
+
 //----------------- Registrieren -------------------------------------------------------------------------------------//
 // Home -> account erstellen
 Breadcrumbs::register('register', function ($breadcrumbs) {

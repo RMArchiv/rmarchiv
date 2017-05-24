@@ -13,8 +13,14 @@ class PlayerController extends Controller
     }
 
     public function index($gamefileid){
+        $gamefile = GamesFile::whereId($gamefileid)->first();
+        $game = Game::whereId($gamefile->game_id)->first();
+
         if(\Auth::check()){
-            return view('player.index', ['gamefileid' => $gamefileid]);
+            return view('player.index', [
+                'gamefileid' => $gamefileid,
+                'game' => $game
+            ]);
         }else{
             return redirect()->action('IndexController@index');
         }
