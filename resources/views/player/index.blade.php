@@ -99,10 +99,6 @@
                             alert('{{ trans('player.index.webgl_error') }}');
                             e.preventDefault();
                         }, false);
-                        canvas.addEventListener("keydown", function (e) {
-                            e.stopPropagation();
-                            e.preventDefault();
-                        }, false);
 
                         return canvas;
                     })(),
@@ -214,6 +210,12 @@
                 script.src = "{{ url('/') }}" + "/index.js";
                 document.body.appendChild(script);
 
+                window.addEventListener("keydown", function(e) {
+                    // space and arrow keys
+                    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+                        e.preventDefault();
+                    }
+                }, false);
             </script>
         </div>
     </div>
