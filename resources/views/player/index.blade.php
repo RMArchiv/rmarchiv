@@ -66,6 +66,9 @@
                 <div class="panel-body text-center">
                     <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
                 </div>
+                <div class="panel-footer">
+
+                </div>
             </div>
             <script type='text/javascript'>
                 var statusElement = document.getElementById('status');
@@ -176,7 +179,7 @@
                             };
                             xhr.open('POST', "{{ url('/') }}" + '/savegames/{{ $gamefileid }}');
 
-                            var obj = {}
+                            var obj = {};
                             FS.readdir(mount.mountpoint).forEach(function(x) {
                                 var num = parseInt(x.substr(4,2));
                                 if (!isNaN(num) && num >= 1 && num <= 15) {
