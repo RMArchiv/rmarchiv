@@ -294,6 +294,7 @@ class BoardController extends Controller
         $poll = new BoardPoll;
         $poll->user_id = \Auth::id();
         $poll->title = $request->get('question');
+        $poll->thread_id = $request->get('thread_id');
         $poll->save();
 
         for ($i = 0; $i < 10; $i++) {
