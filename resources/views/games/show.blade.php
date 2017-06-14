@@ -555,8 +555,7 @@
                     $(this).find('a.read_more').click(function (event) { /* find the a.read_more element within the new html and bind the following code to it */
 
                         event.preventDefault();
-                        /* prevent the a from changing the url */
-                        $(this).hide();
+
                         /* hide the read more button */
                         $(this).parents('.readmore').find('.more_text').show();
                         /* show the .more_text span */
@@ -566,9 +565,6 @@
                     $(this).find('a.read_less').click(function (event) { /* find the a.read_more element within the new html and bind the following code to it */
 
                         event.preventDefault();
-                        /* prevent the a from changing the url */
-                        $(this).hide();
-                        $(this).find('a.read_more').show();
                         /* hide the read more button */
                         $(this).parents('.readmore').find('.short_text').show();
                         /* show the .more_text span */
