@@ -544,7 +544,7 @@
 
                     var short_content = $(this).html().substr(0, max_length);
                     /* split the content in two parts */
-                    var long_content = $(this).html().substr(max_length);
+                    var long_content = $(this).html();
 
                     $(this).html(
                         '<div class="short_text"' + short_content + '</div>' +
