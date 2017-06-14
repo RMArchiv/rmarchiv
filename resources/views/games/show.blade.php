@@ -568,6 +568,7 @@
                         event.preventDefault();
                         /* prevent the a from changing the url */
                         $(this).hide();
+                        $(this).find('a.read_more').show();
                         /* hide the read more button */
                         $(this).parents('.readmore').find('.short_text').show();
                         /* show the .more_text span */
