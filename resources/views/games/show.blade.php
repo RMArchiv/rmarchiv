@@ -547,8 +547,8 @@
                     var long_content = $(this).html();
 
                     $(this).html(
-                        '<div class="short_text"' + short_content + '</div>' +
-                        '<a href="#" class="read_more"><br/>mehr lesen...</a>' +
+                        '<div class="short_text"' + short_content + '<a href="#" class="read_more"><br/>mehr lesen...</a></div>' +
+                        '' +
                         '<div class="more_text" style="display:none;">' + long_content + '<a href="#" class="read_less"><br/>weniger lesen...</a></div>');
                     /* Alter the html to allow the read more functionality */
 
