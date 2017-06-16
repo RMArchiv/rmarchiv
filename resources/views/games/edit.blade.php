@@ -250,13 +250,13 @@
                 <ul class="list-group">
                     @foreach($game->credits as $credit)
                         <li class="list-group-item">
-                            <a class='usera' href='{{ url('users', $cr->userid) }}' title="{{ $cr->username }}">
-                                <img alt="{{ $cr->username }}" class='avatar' src='http://ava.rmarchiv.de/?gender=male&id={{ $cr->userid }}'>
+                            <a class='usera' href='{{ url('users', $credit->user_id) }}' title="{{ $credit->user->name }}">
+                                <img alt="{{ $credit->user->name }}" class='avatar' src='http://ava.rmarchiv.de/?gender=male&id={{ $credit->user_id }}'>
                             </a>
-                            <span class='prod'><a href='{{ url('users', $cr->userid) }}' class='user'>{{ $cr->username }}</a></span>
-                            - {{ $credit->type->name }}
+                            <span class='prod'><a href='{{ url('users', $credit->user_id) }}' class='user'>{{ $credit->user->name }}</a></span>
+                            - {{ $credit->type->title }}
                             <div class="badge">
-                                <a class="btn btn-default btn-xs" href="{{ action('UserCreditsController@destroy', [$game->gameid, $cr->id]) }}">{{trans('games.edit.delete')}}</a>
+                                <a class="btn btn-default btn-xs" href="{{ action('UserCreditsController@destroy', [$game->id, $credit->id]) }}">{{trans('games.edit.delete')}}</a>
                             </div>
                         </li>
                     @endforeach
@@ -265,7 +265,7 @@
                     {{trans('games.edit.add_credits')}}
                 </div>
                 <div class="panel-body">
-                    {!! Form::open(['method' => 'POST', 'route' => ['gamecredits.store', $game->gameid], 'class' => 'form-horizontal']) !!}
+                    {!! Form::open(['method' => 'POST', 'route' => ['gamecredits.store', $game->id], 'class' => 'form-horizontal']) !!}
                     <div class="form-group" id="row_user">
                         <label for="user" class="col-lg-2 control-label">{{trans('games.edit.username')}}:</label>
                         <div class="col-lg-10">
