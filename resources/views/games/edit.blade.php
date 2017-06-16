@@ -235,7 +235,7 @@
                         <li class="list-group-item">
                             {{ $t->tag->title }}
                             <div class="badge">
-                                <a class="btn btn-default btn-xs" href="{{ action('TaggingController@delete_gametag', [$game->gameid, $t->tag->id]) }}">{{trans('games.edit.delete')}}</a>
+                                <a class="btn btn-default btn-xs" href="{{ action('TaggingController@delete_gametag', [$game->id, $t->tag->id]) }}">{{trans('games.edit.delete')}}</a>
                             </div>
                         </li>
                     @endforeach
