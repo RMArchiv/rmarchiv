@@ -37,10 +37,8 @@ use Illuminate\Database\Eloquent\Model;
 class BoardPost extends Model
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
-    protected $table = 'board_posts';
-
     public $timestamps = true;
-
+    protected $table = 'board_posts';
     protected $fillable = [
         'user_id',
         'cat_id',

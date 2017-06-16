@@ -308,6 +308,10 @@ Route::get('player/{gamefileid}/games/default/{fileid}', 'PlayerController@deliv
 Route::get('player/{gamefileid}/games/default/rtp/{filename}', 'PlayerController@deliver_rtp')->name('player.rtp');
 Route::get('player/{gamefileid}/play', 'PlayerController@index')->name('player.run');
 
+//Savegame Management
+Route::get('savegames/manager', 'SavegameManagerController@index');
+Route::get('savegames/manager/game/{gamefile_id}', 'SavegameManagerController@show');
+Route::post('savegames/manager/game/{game_id}/save/{savegame_id}/delete', 'SavegameManagerController@delete');
 //EasyRPG Savegame API
 Route::get('savegames/{gamefileid}', 'SavegameController@api_load');
 Route::post('savegames/{gamefileid}', 'SavegameController@api_save');

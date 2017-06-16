@@ -118,6 +118,10 @@
                             <li><a href="{{ action('MessagesController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('index.pm.unreaded') }} <span class="badge">{{\Auth::user()->newThreadsCount()}}</span></a></li>
                             <li><a href="{{ action('MessagesController@create') }}" data-vivaldi-spatnav-clickable="1">{{ trans('index.pm.new_pm') }}</a></li>
                             <li class="divider"></li>
+                            <li>
+                                <a href="{{ action('SavegameManagerController@index') }}" data-vivaldi-spatnav-clickable="1">Savegame Manager</a>
+                            </li>
+                            <li class="divider"></li>
                             <li><a href="{{ action('UserSettingsController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('index.logout.settings') }}</a></li>
                             <li class="divider"></li>
                             <li><a href="{{ action('Auth\LoginController@logout') }}" data-vivaldi-spatnav-clickable="1">{{ trans('index.logout.logout') }}</a></li>

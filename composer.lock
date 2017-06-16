@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb1543314cf88bc6a6dfe935a779248f",
+    "content-hash": "2c9fb750048a0e5c5042843a63dd7153",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -2727,6 +2727,54 @@
                 "debugbar"
             ],
             "time": "2017-01-05T08:46:19+00:00"
+        },
+        {
+            "name": "mdurrant/php-binary-reader",
+            "version": "1.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mdurrant/php-binary-reader.git",
+                "reference": "9abf18d7b361d0ae1cd80fc6782e59b313586db6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mdurrant/php-binary-reader/zipball/9abf18d7b361d0ae1cd80fc6782e59b313586db6",
+                "reference": "9abf18d7b361d0ae1cd80fc6782e59b313586db6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpBinaryReader\\": [
+                        "src/",
+                        "test/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matt Durrant",
+                    "email": "mdurrant@gmail.com"
+                }
+            ],
+            "description": "Lightweight binary reader for PHP",
+            "time": "2016-12-08T01:24:19+00:00"
         },
         {
             "name": "mews/captcha",

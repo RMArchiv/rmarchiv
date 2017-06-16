@@ -52,16 +52,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereReason($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\PlayerIndexjson[] $playerIndex
+ * @property-read \App\Models\User $user
  */
 class GamesFile extends Model
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
     use SoftDeletes;
 
-    protected $table = 'games_files';
-
     public $timestamps = true;
-
+    protected $table = 'games_files';
     protected $fillable = [
         'game_id',
         'filesize',
@@ -84,7 +83,7 @@ class GamesFile extends Model
 
     public function game()
     {
-        return $this->belongsTo('App\Models\Game', 'game_id', 'id')->with('maker', 'developers');
+        return $this->hasOne('App\Models\Game', 'id', 'game_id');
     }
 
     public function playerIndex(){

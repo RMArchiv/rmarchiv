@@ -29,14 +29,13 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property-read \App\Models\Tag $tag
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Game[] $games
  */
 class TagRelation extends Model
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
-    protected $table = 'tag_relations';
-
     public $timestamps = true;
-
+    protected $table = 'tag_relations';
     protected $fillable = [
         'tag_id',
         'user_id',

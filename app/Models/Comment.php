@@ -40,16 +40,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Game $game
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @property-read \App\Models\News $news
  */
 class Comment extends Model
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
     use SoftDeletes;
 
-    protected $table = 'comments';
-
     public $timestamps = true;
-
+    protected $table = 'comments';
     protected $fillable = [
         'user_id',
         'content_id',

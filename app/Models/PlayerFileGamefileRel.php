@@ -20,13 +20,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PlayerFileGamefileRel whereOrigFilename($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PlayerFileGamefileRel whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\PlayerFileHash $filehash
  */
 class PlayerFileGamefileRel extends Model
 {
-    protected $table = 'player_file_gamefile_rel';
-
     public $timestamps = true;
-
+    protected $table = 'player_file_gamefile_rel';
     protected $fillable = [
         'gamefile_id',
         'file_hash_id',

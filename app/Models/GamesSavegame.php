@@ -22,13 +22,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesSavegame whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesSavegame whereUserId($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\GamesFile $gamefile
  */
 class GamesSavegame extends Model
 {
-    protected $table = 'games_savegames';
-
     public $timestamps = true;
-
+    protected $table = 'games_savegames';
     protected $fillable = [
         'user_id',
         'gamefile_id',
@@ -37,6 +36,11 @@ class GamesSavegame extends Model
     ];
 
     protected $guarded = [];
+
+    public function gamefile()
+    {
+        return $this->hasOne('App\Models\GamesFile', 'id', 'gamefile_id');
+    }
 
         
 }

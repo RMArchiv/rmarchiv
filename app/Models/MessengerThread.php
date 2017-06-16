@@ -24,14 +24,13 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerThread whereDeletedAt($value)
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MessengerParticipant[] $participants
  */
 class MessengerThread extends Model
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
-    protected $table = 'messenger_threads';
-
     public $timestamps = true;
-
+    protected $table = 'messenger_threads';
     protected $fillable = [
         'subject',
     ];

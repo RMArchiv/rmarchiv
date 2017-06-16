@@ -226,3 +226,10 @@ Breadcrumbs::register('register', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('account registrieren', action('Auth\RegisterController@showRegistrationForm'));
 });
+
+//----------------- Savegame Manager ---------------------------------------------------------------------------------//
+// Home -> Savegame Manager
+Breadcrumbs::register('savegamemanager.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('savegame manager', action('SavegameManagerController@index'));
+});

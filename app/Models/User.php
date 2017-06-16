@@ -87,19 +87,38 @@ use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNo
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereDiscordChannel($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereDiscordUser($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Shoutbox[] $shoutbox
  */
 class User extends Authenticatable
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
 
-    public static function boot()
-    {
-        parent::boot();
-    }
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'email', 'password', 'is_admin',
+    ];
 
     use Notifiable;
     use EntrustUserTrait;
     use Messagable;
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    public static function boot()
+    {
+        parent::boot();
+    }
 
     /**
      * Send the password reset notification.
@@ -112,24 +131,6 @@ class User extends Authenticatable
     {
         $this->notify(new ResetPasswordNotification($token));
     }
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password', 'is_admin',
-    ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
 
     public function games()
     {

@@ -23,10 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class PlayerFileHash extends Model
 {
-    protected $table = 'player_file_hashes';
-
     public $timestamps = true;
-
+    protected $table = 'player_file_hashes';
     protected $fillable = [
         'filehash',
         'supported',

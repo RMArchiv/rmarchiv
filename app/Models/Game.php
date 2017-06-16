@@ -78,10 +78,18 @@ class Game extends Model
     use LogsActivity;
     use Searchable;
 
-    protected $table = 'games';
-
+    protected static $logAttributes = [
+        'title',
+        'subtitle',
+        'desc_md',
+        'website_url',
+        'user_id',
+        'maker_id',
+        'lang_id',
+        'atelier_id',
+    ];
     public $timestamps = true;
-
+    protected $table = 'games';
     protected $fillable = [
         'title',
         'subtitle',
@@ -100,18 +108,6 @@ class Game extends Model
         'avg',
         'comments',
     ];
-
-    protected static $logAttributes = [
-        'title',
-        'subtitle',
-        'desc_md',
-        'website_url',
-        'user_id',
-        'maker_id',
-        'lang_id',
-        'atelier_id',
-    ];
-
     protected $hidden = [
         'votes'
     ];
@@ -139,11 +135,6 @@ class Game extends Model
         return $this->hasMany('App\Models\Screenshot');
     }
 
-    public function comments()
-    {
-        return $this->hasMany('App\Models\Comment', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'game'"))->with('user');
-    }
-
     public function getVotesAttribute()
     {
         $vote['up'] = intval($this->comments()->sum('vote_up'));
@@ -151,6 +142,11 @@ class Game extends Model
         $vote['avg'] = @round(($vote['up'] - $vote['down']) / ($vote['up'] + $vote['down']), 2);
         //(voteup - votedown) / (voteup + votedown)
         return $vote;
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'game'"))->with('user');
     }
 
     public function language()
@@ -169,16 +165,16 @@ class Game extends Model
             ->withTrashed();
     }
 
-    public function tags()
-    {
-        return $this->hasMany('App\Models\TagRelation', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'game'"))->with('tag');
-    }
-
     public function tagCount()
     {
         return $this->tags()
             ->selectRaw('id, count(*) as tagcount')
             ->groupBy('id');
+    }
+
+    public function tags()
+    {
+        return $this->hasMany('App\Models\TagRelation', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'game'"))->with('tag');
     }
 
     public function credits()
