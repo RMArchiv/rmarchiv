@@ -25,7 +25,7 @@
                 <div class="panel-heading">
                     vorhandene spieldateien: {{ $gamefiles->count() }}
                 </div>
-                    <ul class="list-group">
+                <ul class="list-group">
                     @foreach($gamefiles as $gf)
                         <li class="list-group-item clearfix">
                             <span class='typeiconlist'>
@@ -73,82 +73,71 @@
                             </div>
                         </li>
                     @endforeach
-                    </ul>
+                </ul>
             </div>
         </div>
-        <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-
-                </div>
-                {{trans('games.gamefiles.gamefile_add')}}
-            </div>
-
-        </div>
-    </div>
-
-    <div id="content">
         @if(Auth::check())
-            {!! Form::open(['route' => ['gamefiles.store', $game->id]]) !!}
-            <div class="rmarchivtbl" id="rmarchivbox_submitprod">
-                <h2></h2>
-
-                <div class="content">
-                    <div class="formifier">
-                        <div class='row' id='row_filetype'>
-                            <label for='filetype'>{{trans('games.gamefiles.type')}}</label>
-                            <select name='filetype' id='filetype'>
-                                <option value="0">{{trans('games.gamefiles.type_choose')}}</option>
-                                @foreach($filetypes as $types)
-                                    <option value="{{ $types->id }}">{{ $types->title }}</option>
-                                @endforeach
-                            </select>
-                            <span>[<span class="req">req</span>]</span>
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        {{trans('games.gamefiles.gamefile_add')}}
+                    </div>
+                    <div class="panel-body">
+                        {!! Form::open(['route' => ['gamefiles.store', $game->id], 'class' => 'form-horizontal']) !!}
+                        <div class="form-group">
+                            <label for="filetype" class="col-sm-2 control-label">{{trans('games.gamefiles.type')}}: *</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name='filetype' id='filetype'>
+                                    <option value="0">{{trans('games.gamefiles.type_choose')}}</option>
+                                    @foreach($filetypes as $types)
+                                        <option value="{{ $types->id }}">{{ $types->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                        <div class="row" id="row_version">
-                            <label for="version">{{trans('games.gamefiles.fileversion')}}</label>
-                            <input name="version" id="version" value="" placeholder="1.0"/>
-                            <span> [<span class="req">req</span>]</span>
+                        <div class="form-group">
+                            <label for="version" class="col-sm-2 control-label">{{trans('games.gamefiles.fileversion')}}: *</label>
+                            <div class="col-sm-10">
+                                <input name="version" id="version" value="" placeholder="1.0" class="form-control"/>
+                            </div>
                         </div>
-                        <div class="row" id="row_releasedate">
-                            <label for="releasedate">{{trans('games.gamefiles.release_date')}}</label>
-                            <div class="formdate" id="releasedate">
-                                <select name="releasedate_day" id="releasedate_day">
+                        <div class="form-inline form-group">
+                            <label for="releasedate" class="col-sm-2 control-label">{{trans('games.gamefiles.release_date')}}</label>
+                            <div class="col-sm-10">
+                                <select name="releasedate_day" id="releasedate_day" class="form-control">
                                     <option value="0">{{trans('games.gamefiles.release_day')}}</option>
                                     @for($i = 1; $i < 32; $i++)
                                         <option value="{{ $i }}">{{ $i }}</option>
                                     @endfor
                                 </select>
-                                <select name="releasedate_month" id="releasedate_month">
+                                <select name="releasedate_month" id="releasedate_month" class="form-control">
                                     <option value="0">{{trans('games.gamefiles.release_month')}}</option>
                                     @for($i = 1; $i < 13; $i++)
                                         <option value="{{ $i }}">{{ trans('_misc.month.'.$i) }}</option>
                                     @endfor
                                 </select>
-                                <select name="releasedate_year" id="releasedate_year">
+                                <select name="releasedate_year" id="releasedate_year" class="form-control">
                                     <option value="0">{{trans('games.gamefiles.release_year')}}</option>
                                     @for($i = 1990; $i < date("Y") + 1; $i++)
                                         <option value="{{ $i }}">{{ $i }}</option>
                                     @endfor
                                 </select>
                             </div>
-                            <span>[<span class="req">req</span>]</span>
                         </div>
-                        <div class="row" id="row_file">
-                            <label for="fine-uploader">{{trans('games.gamefiles.upload_file')}}:</label>
-                            <div id="fine-uploader"></div>
-                            <span>[<span class="req">req</span>]</span>
+                        <div class="form-group">
+                            <label for="fine-uploader" class="col-sm-2 control-label">{{trans('games.gamefiles.upload_file')}}:</label>
+                            <div class="col-sm-10">
+                                <div id="fine-uploader"></div>
+                            </div>
                         </div>
+                        <button type="submit" class="btn btn-default">{{ trans('games.gamefiles.send') }}</button>
+                        {!! Form::close() !!}
                     </div>
                 </div>
-
-                <div class="foot">
-                    <input type="submit" value="{{ trans('games.gamefiles.send') }}">
-                </div>
             </div>
-            {!! Form::close() !!}
         @endif
     </div>
+
     <script type="text/template" id="qq-template">
         <div class="qq-uploader-selector qq-uploader qq-gallery" qq-drop-area-text="Drop files here">
             <div class="qq-total-progress-bar-container-selector qq-total-progress-bar-container">
