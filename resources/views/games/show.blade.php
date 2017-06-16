@@ -542,7 +542,7 @@
 
                 if ($(this).html().length > max_length) { /* check for content length */
 
-                    var short_content = $(this).html().substr(0, max_length);
+                    var short_content = '{{ substr($game->desc_md,0,1024) }}';
                     /* split the content in two parts */
                     var long_content = $(this).html();
 
