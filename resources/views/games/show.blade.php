@@ -542,7 +542,8 @@
 
                 if ($(this).html().length > max_length) { /* check for content length */
 
-                    var short_content = $(this).text().substr(0, max_length);
+                    var short_content = $(this).html().substr(0, max_length);
+                    short_content = new DOMParser().parseFromString(short_content, "text/html").body.innerHTML;
                     /* split the content in two parts */
                     var long_content = $(this).html();
 
