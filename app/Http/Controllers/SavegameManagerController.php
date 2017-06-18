@@ -50,9 +50,6 @@ class SavegameManagerController extends Controller
     function get_lsd_headerdata($data, $gamefile_id){
         $data = base64_decode($data);
 
-        dd($data);
-
-
         $br = new BinaryReader($data);
 
         $array = array();
@@ -60,6 +57,8 @@ class SavegameManagerController extends Controller
 
         $array['header']['length'] = $br->readInt8();
         $array['header']['data'] = $br->readString($array['header']['length']);
+
+        dd($array);
 
         $cat = $br->readInt8();
         $br->readInt8();
