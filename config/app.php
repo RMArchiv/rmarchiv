@@ -228,6 +228,7 @@ return [
         Msurguy\Honeypot\HoneypotServiceProvider::class,
         Chumper\Zipper\ZipperServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
+        GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
 
         /*
          * Application Service Providers...

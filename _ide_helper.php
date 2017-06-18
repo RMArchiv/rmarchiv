@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.26 on 2017-06-14.
+ * Generated for Laravel 5.4.27 on 2017-06-18.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -424,16 +424,16 @@ namespace Illuminate\Support\Facades {
         {
             \Illuminate\Foundation\Application::registerDeferredProvider($provider, $service);
         }
-
+        
         /**
          * Resolve the given type from the container.
-         *
+         * 
          * (Overriding Container::makeWith)
          *
          * @param string $abstract
          * @param array $parameters
-         * @return mixed
-         * @static
+         * @return mixed 
+         * @static 
          */
         public static function makeWith($abstract, $parameters)
         {
@@ -1172,13 +1172,13 @@ namespace Illuminate\Support\Facades {
             //Method inherited from \Illuminate\Container\Container            
             return \Illuminate\Foundation\Application::getAlias($abstract);
         }
-
+        
         /**
          * Remove all of the extender callbacks for a given type.
          *
          * @param string $abstract
-         * @return void
-         * @static
+         * @return void 
+         * @static 
          */
         public static function forgetExtenders($abstract)
         {
@@ -4106,13 +4106,13 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Filesystem\Filesystem::requireOnce($file);
         }
-
+        
         /**
          * Get the MD5 hash of the file at the given path.
          *
          * @param string $path
-         * @return string
-         * @static
+         * @return string 
+         * @static 
          */
         public static function hash($path)
         {
@@ -4541,15 +4541,15 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Auth\Access\Gate::define($ability, $callback);
         }
-
+        
         /**
          * Define abilities for a resource.
          *
          * @param string $name
          * @param string $class
          * @param array $abilities
-         * @return $this
-         * @static
+         * @return $this 
+         * @static 
          */
         public static function resource($name, $class, $abilities = null)
         {
@@ -6329,13 +6329,13 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Http\Request::is();
         }
-
+        
         /**
          * Check if the route name matches the given string.
          *
          * @param string $name
-         * @return bool
-         * @static
+         * @return bool 
+         * @static 
          */
         public static function routeIs($name)
         {
@@ -6763,12 +6763,12 @@ namespace Illuminate\Support\Facades {
             //Method inherited from \Symfony\Component\HttpFoundation\Request            
             return \Illuminate\Http\Request::getTrustedProxies();
         }
-
+        
         /**
          * Gets the set of trusted headers from trusted proxies.
          *
          * @return int A bit field of Request::HEADER_* that defines which headers are trusted from your proxies
-         * @static
+         * @static 
          */
         public static function getTrustedHeaderSet()
         {
@@ -7283,7 +7283,7 @@ namespace Illuminate\Support\Facades {
          * configure it via the $trustedHeaderSet argument of the
          * Request::setTrustedProxies() method instead.
          *
-         * @return string
+         * @return string 
          * @throws SuspiciousOperationException when the host name is invalid or not trusted
          * @static 
          */
@@ -8399,15 +8399,15 @@ namespace Illuminate\Support\Facades {
         {
             \Illuminate\Routing\Router::resource($name, $controller, $options);
         }
-
+        
         /**
          * Route an api resource to a controller.
          *
          * @param string $name
          * @param string $controller
          * @param array $options
-         * @return void
-         * @static
+         * @return void 
+         * @static 
          */
         public static function apiResource($name, $controller, $options = array())
         {
@@ -11227,14 +11227,14 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\View\Factory::hasSection($name);
         }
-
+        
         /**
          * Get the contents of a section.
          *
          * @param string $name
          * @param string $default
-         * @return mixed
-         * @static
+         * @return mixed 
+         * @static 
          */
         public static function getSection($name, $default = null)
         {
@@ -11678,7 +11678,7 @@ namespace Barryvdh\Debugbar {
         {
             return \Barryvdh\Debugbar\LaravelDebugbar::shouldCollect($name, $default);
         }
-
+        
         /**
          * Handle silenced errors
          *
@@ -11688,7 +11688,7 @@ namespace Barryvdh\Debugbar {
          * @param int $line
          * @param array $context
          * @throws \ErrorException
-         * @static
+         * @static 
          */
         public static function handleError($level, $message, $file = '', $line = 0, $context = array())
         {
@@ -12437,14 +12437,14 @@ namespace Collective\Html {
         {
             return \Collective\Html\FormBuilder::hidden($name, $value, $options);
         }
-
+        
         /**
          * Create a search input field.
          *
          * @param string $name
          * @param string $value
          * @param array $options
-         * @return \Illuminate\Support\HtmlString
+         * @return \Illuminate\Support\HtmlString 
          * @static 
          */
         public static function search($name, $value = null, $options = array())
