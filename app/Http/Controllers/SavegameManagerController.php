@@ -51,6 +51,7 @@ class SavegameManagerController extends Controller
         $data = base64_decode($data);
 
         dd($data);
+
         $br = new BinaryReader($data);
 
         $array = array();
