@@ -58,8 +58,6 @@ class SavegameManagerController extends Controller
         $array['header']['length'] = $br->readInt8();
         $array['header']['data'] = $br->readString($array['header']['length']);
 
-        dd($array);
-
         $cat = $br->readInt8();
         $br->readInt8();
         $br->readInt8();
