@@ -1,38 +1,38 @@
 <?php
 return [
-    'title'    => 'Benutzer',
+    'title'    => 'User',
     'admin'    => [
-        'administration_of' => 'Benutzeradministration für',
+        'administration_of' => 'Useradministration for',
         'error'             => 'Es ist ein Fehler aufgetreten',
         'linkpermission'    => 'Berechtigung verknüpfen',
         'selectpermission'  => 'Berechtigung auswählen',
         'send'              => 'Speichern',
     ],
     'index'    => [
-        'nickname'     => 'Spitzname',
-        'member_since' => 'Mitglied seit',
+        'nickname'     => 'Nickname',
+        'member_since' => 'member since',
         'level'        => 'Level',
         'obyx'         => 'Obyx',
-        'actions'      => 'Aktionen',
-        'edit'         => 'Bearbeiten',
+        'actions'      => 'Actions',
+        'edit'         => 'Edit',
     ],
     'show'     => [
-        'informations'    => 'Allgemein',
+        'informations'    => 'Informations',
         'level'           => 'Level',
-        'gamecredits'     => 'Beteiligung an Spielen',
-        'games'           => 'Spiele',
-        'games_added'     => 'Spiele hinzugefügt',
-        'developer_added' => 'Entwickler hinzugefügt',
-        'comments'        => 'Kommentare',
-        'ratings'         => 'Bewertungen',
+        'gamecredits'     => 'Credits to games',
+        'games'           => 'Games',
+        'games_added'     => 'Games added',
+        'developer_added' => 'Developer added',
+        'comments'        => 'Comments',
+        'ratings'         => 'Ratings',
         'shoutbox'        => 'Shoutbox Posts',
-        'topics'          => 'Topics eröffnet',
-        'posts'           => 'Posts geschrieben',
-        'lists'           => 'Listen erstellt',
-        'created_at'      => 'Account erstellt am',
-        'show'            => 'Zeige',
-        'last_activity'   => 'Die letzten 10 Aktivitäten',
-        'obyx_for'        => 'Obyx für',
+        'topics'          => 'Topics added',
+        'posts'           => 'Posts added',
+        'lists'           => 'Lists added',
+        'created_at'      => 'Account created at',
+        'show'            => 'Show',
+        'last_activity'   => 'Last 10 activitys',
+        'obyx_for'        => 'Obyx for',
         'obyx'            => [
             'shoutbox'       => 'Shoutbox Posts',
             'comment'        => 'Kommentare',
@@ -48,8 +48,8 @@ return [
     ],
     'activity' => [
         'index' => [
-            'title'    => 'Aktivitätshistorie',
-            'obyx_for' => 'Obyx für',
+            'title'    => 'Activityhistory',
+            'obyx_for' => 'Obyx for',
         ],
     ],
     'entrust'  => [
@@ -57,11 +57,11 @@ return [
     ],
     'lists'    => [
         'create' => [
-            'title'      => 'Benutzerliste erstellen',
+            'title'      => 'Add Userlist',
             'error'      => 'Benutzerliste konnte nicht erstellt werden',
-            'list_title' => 'Listtitel',
-            'desc'       => 'Listenbeschreibung',
-            'send'       => 'Liste erstellen',
+            'list_title' => 'List titel',
+            'desc'       => 'List description',
+            'send'       => 'Submit',
         ],
         'index'  => [
 
@@ -71,9 +71,9 @@ return [
         ],
     ],
     'online'   => [
-        'username'         => 'Benutzername',
-        'last_page'        => 'Zuletzt besuchte Seite',
-        'last_action_date' => 'Letzte Aktion am',
+        'username'         => 'Username',
+        'last_page'        => 'Last visited page',
+        'last_action_date' => 'Last action at',
     ],
 ];
 

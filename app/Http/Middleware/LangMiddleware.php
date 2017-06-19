@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Carbon\Carbon;
 use Closure;
 
 class LangMiddleware
@@ -22,6 +23,7 @@ class LangMiddleware
 
         if (in_array($subdomain, $languages)) {
             \App::setLocale($subdomain);
+            Carbon::setLocale($subdomain);
         }
 
         return $next($request);

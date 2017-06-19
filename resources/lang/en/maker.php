@@ -3,10 +3,10 @@ return [
     'title' => 'Maker',
     'index' => [
         'maker' => 'Maker',
-        'games' => 'Spiele',
+        'games' => 'Games',
     ],
     'show'  => [
-        'gamesfor' => 'Spiele für',
+        'gamesfor' => 'Games for',
     ],
 ];
 

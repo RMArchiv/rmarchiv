@@ -1,5 +1,5 @@
 <?php
 return [
-    'title'    => 'Nachrichten',
-    'news_msg' => 'Neue Nachricht',
+    'title'    => 'Messages',
+    'news_msg' => 'New Message',
 ];

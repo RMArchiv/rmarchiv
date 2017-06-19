@@ -6,8 +6,8 @@
  */
 
 return [
-    'title'     => 'ressourcen',
-    'create'    => [
+    'title'  => 'Ressourcen',
+    'create' => [
         'title'               => 'hinzufügen einer ressource',
         'type'                => 'ressourcentyp',
         'type_choose'         => 'bitte wähle einen ressourcentyp.',
