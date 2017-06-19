@@ -30,6 +30,7 @@ class SavegameManagerController extends Controller
         $array = array();
 
         foreach ($savegames as $savegame) {
+            $t['id'] = $savegame->id;
             $t['slot'] = $savegame->slot_id;
             $t['data'] = $this->get_lsd_headerdata($savegame->save_data, $gamefile_id);
             $t['date'] = $savegame->updated_at;
@@ -38,7 +39,8 @@ class SavegameManagerController extends Controller
         }
 
         return view('savegamemanager.show', [
-            'savegames' => $array
+            'savegames'   => $array,
+            'gamefile_id' => $gamefile_id,
         ]);
     }
 
@@ -91,8 +93,15 @@ class SavegameManagerController extends Controller
         return $array;
     }
 
-    public function delete($game_id, $savegame_id)
+    public function delete($savegame_id)
     {
+        if (\Auth::check()) {
+            $save = GamesSavegame::whereId($savegame_id)->first();
+            if ($save->user_id == \Auth::id()) {
+                $save->forceDelete();
+            }
+        }
 
+        return redirect()->action('SavegameManagerController@show');
     }
 }
