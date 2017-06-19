@@ -22,7 +22,7 @@
                             <div class="panel-body">
                                 <h5><span class="label label-primary">Answer</span></h5>
                                 <p>
-                                    {!! $f->desc_html !!}
+                                    {!! Markdown::convertToHtml($f->desc_md) !!}
                                 </p>
                             </div>
                         </div>

@@ -71,6 +71,7 @@ return [
         ],
     ],
     'online'   => [
+        'title'            => 'Benutzer Online',
         'username'         => 'Benutzername',
         'last_page'        => 'Zuletzt besuchte Seite',
         'last_action_date' => 'Letzte Aktion am',
