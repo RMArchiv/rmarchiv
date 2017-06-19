@@ -6,13 +6,13 @@
  */
 
 return [
-    'title' => 'entwickler',
+    'title' => 'Entwickler',
     'index' => [
-        'title'     => 'entwicklerliste',
-        'developer' => 'entwickler',
-        'games'     => 'spiele',
+        'title'     => 'Alle Entwickler',
+        'developer' => 'Entwickler',
+        'games'     => 'Spiele',
     ],
     'show'  => [
-        'title' => 'entwicklerprofil',
+        'title' => 'Entwicklerprofil',
     ],
 ];

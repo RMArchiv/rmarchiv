@@ -7,29 +7,29 @@
 
 return [
     'accessdenied' => [
-        'title'      => 'zugriff verweigert!',
-        'body'       => 'du hast nicht die erforderlichen berechtigungen um diese seite zu sehen.',
-        'backtohome' => 'zurück zur <a href="' . url('/') . '">hauptseite</a>',
+        'title'      => 'Zugriff verweigert!',
+        'body'       => 'Du hast nicht die erforderlichen Berechtigungen um diese Seite zu sehen.',
+        'backtohome' => 'Zurück zur <a href="' . url('/') . '">Hauptseite</a>',
     ],
     'banned'       => [
-        'title' => 'du wurdest gebannt!',
-        'line1' => 'du bist einer der wenigen user, die es geschafft haben sich bannen zu lassen.',
-        'line2' => 'welch eine herausragende leistung.',
-        'line3' => 'nun wurdest du zu einem zuschauer degradiert, der nicht mehr mit unserer community interagieren darf.',
-        'line4' => 'solltest du dich ungerecht behandelt fühlen, schreibe einem moderator oder administrator eine pn.',
-        'greet' => 'hochachtungsvoll,',
-        'team'  => 'dein rmarchiv.de team',
+        'title' => 'Du wurdest gebannt!',
+        'line1' => 'Du bist einer der wenigen User, die es geschafft haben sich bannen zu lassen.',
+        'line2' => 'Welch eine herausragende Leistung.',
+        'line3' => 'Nun wurdest du zu einem Zuschauer degradiert, der nicht mehr mit unserer Community interagieren darf.',
+        'line4' => 'Solltest du dich ungerecht behandelt fühlen, schreibe einem Moderator oder Aministrator eine PN.',
+        'greet' => 'Hochachtungsvoll,',
+        'team'  => 'dein rmarchiv.de Team',
     ],
 
     'footer' => [
-        'feedback'     => 'feedback und bugs an:',
-        'impressum'    => 'impressum',
-        'users_online' => 'benutzer online:',
+        'feedback'     => 'Feedback und Bugs an:',
+        'impressum'    => 'Impressum',
+        'users_online' => 'Benutzer online:',
     ],
 
     'inline_gamebox' => [
-        'titlescreen' => 'titelbild',
-        'developer'   => 'entwickler',
+        'titlescreen' => 'Titelbild',
+        'developer'   => 'Entwickler',
     ],
 
     'tables' => [
@@ -37,15 +37,15 @@ return [
 
         ],
         'game_table_head' => [
-            'title' => 'titel',
-            'developer' => 'entwickler',
-            'release_date' => 'erschienen am',
-            'created_at' => 'erstellt am',
-            'rate_up' => 'super',
-            'rate_down' => 'scheiße',
-            'avg' => 'avg',
-            'popularity' => 'popularität',
-            'comments' => 'kommentare'
+            'title'        => 'Titel',
+            'developer'    => 'Entwickler',
+            'release_date' => 'Erschienen am',
+            'created_at'   => 'Erstellt am',
+            'rate_up'      => 'Super',
+            'rate_down'    => 'Scheiße',
+            'avg'          => 'AVG',
+            'popularity'   => 'Popularität',
+            'comments'     => 'Kommentare',
         ],
         'game_table_row'  => [
 

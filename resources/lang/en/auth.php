@@ -18,15 +18,15 @@ return [
     |
     */
 
-    'failed'         => 'Logindaten sind falsch.',
-    'throttle'       => 'Zu viele Loginversuche. Probiere es in :seconds Sekunden erneut.',
-    'login'          => 'Anmelden',
-    'logout'         => 'Abmelden',
-    'email'          => 'E-Mail Adresse',
-    'password'       => 'Passwort',
-    'remember_me'    => 'Login speichern',
-    'password_reset' => 'Passwort vergessen',
-    'register'       => 'Registrieren',
+    'failed'         => 'Your login credentials are wrong.',
+    'throttle'       => 'Too many Login attempts. Please wait :seconds seconds and try again.',
+    'login'          => 'Login',
+    'logout'         => 'Logout',
+    'email'          => 'EMail-Address',
+    'password'       => 'Password',
+    'remember_me'    => 'Save login',
+    'password_reset' => 'Forget password?',
+    'register'       => 'Register',
 
 
 ];

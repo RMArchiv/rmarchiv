@@ -8,6 +8,6 @@ return [
         'prep'              => 'Bereite vor...',
         'gamedata_download' => 'Spieledaten werden heruntergeladen',
         'exception'         => 'Ein Fehler ist aufgetreten. Bitte in JS-Konsole prüfen',
-        ''
+        '',
     ],
 ];

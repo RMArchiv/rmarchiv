@@ -6,30 +6,30 @@
  */
 
 return [
-    'title'        => 'Spiele',
-    'title_single' => 'Spiel',
+    'title'        => 'Games',
+    'title_single' => 'Game',
 
     'index' => [
 
     ],
 
     'create' => [
-        'title'           => 'Neues Spiel hinzufügen',
-        'gametitle'       => 'Spieltitel',
-        'subtitle'        => 'Untertitel',
+        'title'           => 'Add Game',
+        'gametitle'       => 'Gametitle',
+        'subtitle'        => 'Gamesubtitle',
         'maker'           => 'Maker',
-        'maker_choose'    => 'Wähle einen Maker',
-        'language'        => 'Spielsprache',
-        'language_choose' => 'Wähle eine Spielsprache',
+        'maker_choose'    => 'Choose a maker engine',
+        'language'        => 'Gamelanguage',
+        'language_choose' => 'Choose a Gamelanguage',
         'atelierid'       => 'Atelier ID',
-        'gamedescription' => 'Spielbeschreibung',
-        'links'           => 'Links zum Spiel',
-        'game_website'    => 'Spielewebsite',
+        'gamedescription' => 'Gamedescription',
+        'links'           => 'Links to Gamewebsite',
+        'game_website'    => 'Gamewebsite',
         'trailer'         => 'Trailer (Youtube)',
-        'connections'     => 'Verknüpfungen',
-        'developer'       => 'Entwickler',
-        'not_found'       => 'Okay. Der Entwickler wurde nicht gefunden.',
-        'send'            => 'Senden',
+        'connections'     => 'Links',
+        'developer'       => 'Developer',
+        'not_found'       => 'Cant found this Developer.',
+        'send'            => 'Submit',
     ],
 
     'edit' => [
