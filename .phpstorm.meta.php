@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-06-18.
+    * Generated on 2017-06-19.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -94,6 +94,10 @@ namespace PHPSTORM_META {
             'honeypot' instanceof \Msurguy\Honeypot\Honeypot,
             'zipper' instanceof \Chumper\Zipper\Zipper,
             'breadcrumbs' instanceof \DaveJamesMiller\Breadcrumbs\Manager,
+            'GrahamCampbell\Exceptions\ExceptionIdentifier' instanceof \GrahamCampbell\Exceptions\ExceptionIdentifier,
+            'GrahamCampbell\Exceptions\ExceptionInfo' instanceof \GrahamCampbell\Exceptions\ExceptionInfo,
+            'GrahamCampbell\Exceptions\Displayers\HtmlDisplayer' instanceof \GrahamCampbell\Exceptions\Displayers\HtmlDisplayer,
+            'GrahamCampbell\Exceptions\Filters\VerboseFilter' instanceof \GrahamCampbell\Exceptions\Filters\VerboseFilter,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -279,6 +283,10 @@ namespace PHPSTORM_META {
             'honeypot' instanceof \Msurguy\Honeypot\Honeypot,
             'zipper' instanceof \Chumper\Zipper\Zipper,
             'breadcrumbs' instanceof \DaveJamesMiller\Breadcrumbs\Manager,
+            'GrahamCampbell\Exceptions\ExceptionIdentifier' instanceof \GrahamCampbell\Exceptions\ExceptionIdentifier,
+            'GrahamCampbell\Exceptions\ExceptionInfo' instanceof \GrahamCampbell\Exceptions\ExceptionInfo,
+            'GrahamCampbell\Exceptions\Displayers\HtmlDisplayer' instanceof \GrahamCampbell\Exceptions\Displayers\HtmlDisplayer,
+            'GrahamCampbell\Exceptions\Filters\VerboseFilter' instanceof \GrahamCampbell\Exceptions\Filters\VerboseFilter,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -464,6 +472,10 @@ namespace PHPSTORM_META {
             'honeypot' instanceof \Msurguy\Honeypot\Honeypot,
             'zipper' instanceof \Chumper\Zipper\Zipper,
             'breadcrumbs' instanceof \DaveJamesMiller\Breadcrumbs\Manager,
+            'GrahamCampbell\Exceptions\ExceptionIdentifier' instanceof \GrahamCampbell\Exceptions\ExceptionIdentifier,
+            'GrahamCampbell\Exceptions\ExceptionInfo' instanceof \GrahamCampbell\Exceptions\ExceptionInfo,
+            'GrahamCampbell\Exceptions\Displayers\HtmlDisplayer' instanceof \GrahamCampbell\Exceptions\Displayers\HtmlDisplayer,
+            'GrahamCampbell\Exceptions\Filters\VerboseFilter' instanceof \GrahamCampbell\Exceptions\Filters\VerboseFilter,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -649,6 +661,10 @@ namespace PHPSTORM_META {
             'honeypot' instanceof \Msurguy\Honeypot\Honeypot,
             'zipper' instanceof \Chumper\Zipper\Zipper,
             'breadcrumbs' instanceof \DaveJamesMiller\Breadcrumbs\Manager,
+            'GrahamCampbell\Exceptions\ExceptionIdentifier' instanceof \GrahamCampbell\Exceptions\ExceptionIdentifier,
+            'GrahamCampbell\Exceptions\ExceptionInfo' instanceof \GrahamCampbell\Exceptions\ExceptionInfo,
+            'GrahamCampbell\Exceptions\Displayers\HtmlDisplayer' instanceof \GrahamCampbell\Exceptions\Displayers\HtmlDisplayer,
+            'GrahamCampbell\Exceptions\Filters\VerboseFilter' instanceof \GrahamCampbell\Exceptions\Filters\VerboseFilter,
             'command.make.models' instanceof \Iber\Generator\Commands\MakeModelsCommand,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,

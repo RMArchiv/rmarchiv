@@ -19,6 +19,7 @@
                             <div class="media-body active">
                                 <div class="media">
                                     <a class="pull-left" href="#">
+                                        <span class="facei face_{{ $s['data'][100]['char1_face']['img_idx']+1 }}">faceset</span>
                                         <img width="32px" class="media-object img-rounded" src="{{ $s['data'][100]['char1_face']['url'] }}">
                                     </a>
                                     <div class="media-body">

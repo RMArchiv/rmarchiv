@@ -14,7 +14,7 @@
 
 $url_types: url(/assets/types.png);
 
-%extend_6 {
+%extend_types {
   width: 16px;
   height: 16px;
   display: inline-block;
@@ -25,8 +25,23 @@ $url_types: url(/assets/types.png);
   background-image: $url_types;
 }
 
+%extend_faces {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  overflow: hidden;
+  line-height: 100px;
+}
+
+.facei {
+  @extend %extend_faces;
+  float: left;
+}
+
 .typei {
-  @extend %extend_6;
+  @extend %extend_types;
   float: left;
 }
 

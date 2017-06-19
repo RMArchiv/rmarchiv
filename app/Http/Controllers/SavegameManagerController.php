@@ -42,11 +42,6 @@ class SavegameManagerController extends Controller
         ]);
     }
 
-    public function delete($game_id, $savegame_id)
-    {
-
-    }
-
     function get_lsd_headerdata($data, $gamefile_id){
         $data = base64_decode($data);
 
@@ -83,6 +78,7 @@ class SavegameManagerController extends Controller
         $array[$cat]['char1_face']['idx'] = $br->readInt8();
         $array[$cat]['char1_face']['length'] = $br->readInt8();
         $array[$cat]['char1_face']['data'] = $br->readString($array[$cat]['char1_face']['length']);
+        $array[$cat]['char1_face']['img_idx'] = $br->readInt8();
 
         $pc = new PlayerController();
         $files = json_decode($pc->deliver_indexjson($gamefile_id), true);
@@ -93,5 +89,10 @@ class SavegameManagerController extends Controller
 
         $array[$cat]['char1_face']['url'] = $file;
         return $array;
+    }
+
+    public function delete($game_id, $savegame_id)
+    {
+
     }
 }
