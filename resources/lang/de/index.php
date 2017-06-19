@@ -1,100 +1,140 @@
 <?php
+/*************************************************************************
+ * Generated via "php artisan localization:missing" at 2017/06/19 16:40:17
+ *************************************************************************/
 
-/*
- * rmarchiv.de
- * (c) 2016-2017 by Marcel 'ryg' Hering
- */
-
-return [
+return array(
+    //==================================== Translations ====================================//
+    'board'               =>
+        array(
+            'more'  => 'mehr',
+            'title' => 'Die 10 neuesten und fluffigsten Threads',
+        ),
+    'cdc'                 =>
+        array(
+            'title' => 'Coup de coeur',
+        ),
+    'latestadded'         =>
+        array(
+            'title' => 'Die neuesten Einträge',
+        ),
+    'latestcomments_game' =>
+        array(
+            'title' => 'Die neuesten Kommentare',
+        ),
+    'latestreleased'      =>
+        array(
+            'title' => 'Die neuesten Veröffentlichungen',
+        ),
+    'login'               =>
+        array(
+            'email'          => 'E-Mail Adresse',
+            'login'          => 'Anmelden',
+            'password_reset' => 'Passwort zurücksetzen',
+            'register'       => 'Registrieren',
+            'remember_me'    => 'Automatische Anmeldung',
+            'title'          => 'Dein Profil',
+        ),
+    'logout'              =>
+        array(
+            'loggedin_as' => 'Eingeloggt als',
+            'logout'      => 'Abmelden',
+            'settings'    => 'Benutzereinstellungen',
+            'title'       => 'Dein Profil',
+        ),
+    'news'                =>
+        array(
+            'comments'  => 'Kommentare',
+            'submit_by' => 'Eingesendet von',
+        ),
+    'pm'                  =>
+        array(
+            'new_pm'   => 'Neue Privatnachricht',
+            'title'    => 'Nachrichten',
+            'unreaded' => 'ungelesen',
+        ),
+    'randomgame'          =>
+        array(
+            'title' => 'Zufallsspiel',
+        ),
+    'search'              =>
+        array(
+            'not_found' => 'Es konnte nichts gefunden werden.',
+            'title'     => 'Suche',
+        ),
+    'shoutbox'            =>
+        array(
+            'more'        => 'mehr',
+            'placeholder' => 'Sags mit Worten. In einem Satz. (300 Zeichen max.)',
+            'title'       => 'Echte oldschool Shoutbox',
+        ),
+    'stats'               =>
+        array(
+            'activity'                  => 'Aktivitäten',
+            'board_posts'               => 'Forenposts',
+            'board_threads'             => 'Forenthemen',
+            'comments'                  => 'Kommentare',
+            'developer'                 => 'Entwickler',
+            'gamefiles'                 => 'Spieledateien',
+            'gamefiles_download'        => 'Downloads',
+            'gamefiles_downloadtraffic' => 'Downloadtraffic',
+            'gamefiles_size'            => 'Gesamtgröße',
+            'games'                     => 'Spiele',
+            'logos'                     => 'Logos',
+            'maker'                     => 'Unterstützte Maker',
+            'shouts'                    => 'Shouts',
+            'title'                     => 'Statistiken',
+            'user'                      => 'Benutzer',
+        ),
+    'tagcloud'            =>
+        array(
+            'title' => 'Tag Cloud',
+        ),
     'title'               => 'Home',
-    'board'               => [
-        'title' => 'Die 10 neuesten und fluffigsten Threads',
-        'more'  => 'mehr',
-    ],
-    'cdc'                 => [
-        'title' => 'Coup de coeur',
-        'more'  => 'mehr',
-    ],
-    'latestadded'         => [
-        'title' => 'Die neuesten Einträge',
-        'more'  => 'mehr',
-    ],
-    'latestcomments_game' => [
-        'title' => 'Die neuesten Kommentare',
-    ],
-    'latestreleased'      => [
-        'title' => 'Die neuesten Veröffentlichungen',
-        'more'  => 'mehr',
-    ],
-    'login'               => [
-        'title'          => 'Dein Profil',
-        'email'          => 'E-Mail Adresse',
-        'password'       => 'Passwort',
-        'remember_me'    => 'Automatische Anmeldung',
-        'login'          => 'Anmelden',
-        'password_reset' => 'Passwort zurücksetzen',
-        'register'       => 'Registrieren',
-    ],
-    'logout'              => [
-        'title'       => 'Dein Profil',
-        'loggedin_as' => 'Eingeloggt als',
-        'settings'    => 'Benutzereinstellungen',
-        'logout'      => 'Abmelden',
-    ],
-    'news'                => [
-        'submit_by' => 'Eingesendet von',
-        'comments'  => 'Kommentare',
-    ],
-    'nextparty'           => [
-
-    ],
-    'pm'                  => [
-        'title'    => 'Nachrichten',
-        'unreaded' => 'ungelesen',
-        'new_pm'   => 'Neue Privatnachricht',
-    ],
-    'randomgame'          => [
-        'title' => 'Zufallsspiel',
-    ],
-    'search'              => [
-        'title'     => 'Suche',
-        'not_found' => 'Es konnte nichts gefunden werden.',
-    ],
-    'shoutbox'            => [
-        'title'       => 'Echte oldschool Shoutbox',
-        'placeholder' => 'Sags mit Worten. In einem Satz. (300 Zeichen max.)',
-        'more'        => 'mehr',
-    ],
-    'stats'               => [
-        'title'                     => 'Statistiken',
-        'games'                     => 'Spiele',
-        'maker'                     => 'Unterstützte Maker',
-        'developer'                 => 'Entwickler',
-        'user'                      => 'Benutzer',
-        'activity'                  => 'Aktivitäten',
-        'logos'                     => 'Logos',
-        'board_threads'             => 'Forenthemen',
-        'board_posts'               => 'Forenposts',
-        'shouts'                    => 'Shouts',
-        'comments'                  => 'Kommentare',
-        'gamefiles'                 => 'Spieledateien',
-        'gamefiles_size'            => 'Gesamtgröße',
-        'gamefiles_download'        => 'Downloads',
-        'gamefiles_downloadtraffic' => 'Downloadtraffic',
-    ],
-    'tagcloud'            => [
-        'title' => 'Tag Cloud',
-    ],
-    'topalltime'          => [
-        'title' => 'Die Besten aller Zeiten',
-        'more'  => 'mehr',
-    ],
-    'topmonth'            => [
-        'title' => 'Die Besten des Monats',
-        'more'  => '',
-    ],
-    'topusers'            => [
-        'title' => 'Top 5 Obyxer',
-        'more'  => 'mehr',
-    ],
-];
+    'topalltime'          =>
+        array(
+            'title' => 'Die Besten aller Zeiten',
+        ),
+    'topmonth'            =>
+        array(
+            'title' => 'Die Besten des Monats',
+        ),
+    'topusers'            =>
+        array(
+            'title' => 'Top 5 Obyxer',
+        ),
+    //================================== Obsolete strings ==================================//
+    'LLH:obsolete'        =>
+        array(
+            'cdc'            =>
+                array(
+                    'more' => 'mehr',
+                ),
+            'latestadded'    =>
+                array(
+                    'more' => 'mehr',
+                ),
+            'latestreleased' =>
+                array(
+                    'more' => 'mehr',
+                ),
+            'login'          =>
+                array(
+                    'password' => 'Passwort',
+                ),
+            'nextparty'      =>
+                array(),
+            'topalltime'     =>
+                array(
+                    'more' => 'mehr',
+                ),
+            'topmonth'       =>
+                array(
+                    'more' => '',
+                ),
+            'topusers'       =>
+                array(
+                    'more' => 'mehr',
+                ),
+        ),
+);

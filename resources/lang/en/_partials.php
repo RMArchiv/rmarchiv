@@ -1,54 +1,64 @@
 <?php
+/*************************************************************************
+ * Generated via "php artisan localization:missing" at 2017/06/19 16:40:17
+ *************************************************************************/
 
-/*
- * rmarchiv.de
- * (c) 2016-2017 by Marcel 'ryg' Hering
- */
-
-return [
-    'accessdenied' => [
-        'title'      => 'Permission denied!',
-        'body'       => 'You do not have sufficient permissions for this page.',
-        'backtohome' => 'Back to <a href="' . url('/') . '">Home</a>',
-    ],
-    'banned'       => [
-        'title' => 'You are banned!',
-        'line1' => 'Du bist einer der wenigen User, die es geschafft haben sich bannen zu lassen.',
-        'line2' => 'Welch eine herausragende Leistung.',
-        'line3' => 'Nun wurdest du zu einem Zuschauer degradiert, der nicht mehr mit unserer Community interagieren darf.',
-        'line4' => 'Solltest du dich ungerecht behandelt fühlen, schreibe einem Moderator oder Aministrator eine PN.',
-        'greet' => 'Hochachtungsvoll,',
-        'team'  => 'dein rmarchiv.de Team',
-    ],
-
-    'footer' => [
-        'feedback'     => 'Feedback and Bugs to:',
-        'impressum'    => 'Imprint',
-        'users_online' => 'User online:',
-    ],
-
-    'inline_gamebox' => [
-        'titlescreen' => 'Titlescreen',
-        'developer'   => 'Developer',
-    ],
-
-    'tables' => [
-        'game_table'      => [
-
-        ],
-        'game_table_head' => [
-            'title'        => 'Title',
-            'developer'    => 'Developer',
-            'release_date' => 'Released at',
-            'created_at'   => 'Added at',
-            'rate_up'      => 'great',
-            'rate_down'    => 'garbage',
-            'avg'          => 'avg',
-            'popularity'   => 'Popularity',
-            'comments'     => 'Comments',
-        ],
-        'game_table_row'  => [
-
-        ],
-    ],
-];
+return array(
+    //==================================== Translations ====================================//
+    'accessdenied' =>
+        array(
+            'backtohome' => 'Back to <a href="http://localhost:8000">Home</a>',
+            'body'       => 'You do not have sufficient permissions for this page.',
+            'title'      => 'Permission denied!',
+        ),
+    'banned'       =>
+        array(
+            'greet' => 'Hochachtungsvoll,',
+            'line1' => 'Du bist einer der wenigen User, die es geschafft haben sich bannen zu lassen.',
+            'line2' => 'Welch eine herausragende Leistung.',
+            'line3' => 'Nun wurdest du zu einem Zuschauer degradiert, der nicht mehr mit unserer Community interagieren darf.',
+            'line4' => 'Solltest du dich ungerecht behandelt fühlen, schreibe einem Moderator oder Aministrator eine PN.',
+            'team'  => 'dein rmarchiv.de Team',
+            'title' => 'You are banned!',
+        ),
+    'footer'       =>
+        array(
+            'feedback'     => 'Feedback and Bugs to:',
+            'impressum'    => 'Imprint',
+            'users_online' => 'User online:',
+        ),
+    'tables'       =>
+        array(
+            'game_table_head' =>
+                array(
+                    'rate_down' => 'garbage',
+                    'rate_up'   => 'great',
+                ),
+        ),
+    //================================== Obsolete strings ==================================//
+    'LLH:obsolete' =>
+        array(
+            'inline_gamebox' =>
+                array(
+                    'developer'   => 'Developer',
+                    'titlescreen' => 'Titlescreen',
+                ),
+            'tables'         =>
+                array(
+                    'game_table'      =>
+                        array(),
+                    'game_table_head' =>
+                        array(
+                            'avg'          => 'avg',
+                            'comments'     => 'Comments',
+                            'created_at'   => 'Added at',
+                            'developer'    => 'Developer',
+                            'popularity'   => 'Popularity',
+                            'release_date' => 'Released at',
+                            'title'        => 'Title',
+                        ),
+                    'game_table_row'  =>
+                        array(),
+                ),
+        ),
+);

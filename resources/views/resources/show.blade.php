@@ -193,7 +193,7 @@
                     <div class="rmarchivtbl" id="rmarchivbox_prodpost">
                         <h2>{{ trans('resources.show.no_permission') }}</h2>
                         <div class="content">
-                            {{ trans('resources.show.no_permission_msg) }}
+                            {{ trans('resources.show.no_permission_msg') }}
                         </div>
                     </div>
                     @endpermission

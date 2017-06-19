@@ -341,6 +341,6 @@ return array(
     | This parameter will change nothing if you use the output-flat option of course
     |
     */
-    'dot_notation_split_regex' => null,
+    'dot_notation_split_regex' => '/\\.(?=[^ .!?])/',
 
 );

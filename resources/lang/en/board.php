@@ -1,74 +1,100 @@
 <?php
+/*************************************************************************
+ * Generated via "php artisan localization:missing" at 2017/06/19 16:40:17
+ *************************************************************************/
 
-/*
- * rmarchiv.de
- * (c) 2016-2017 by Marcel 'ryg' Hering
- */
-
-return [
-    'title'   => 'Board',
-    'index'   => [
-        'title'          => 'Boardoverview',
-        'created_at'     => 'Created at',
-        'created_by'     => 'Created by',
-        'category'       => 'Category',
-        'topic'          => 'Topic',
-        'postcount'      => 'Replies',
-        'lastpost_at'    => 'Last post at',
-        'lastpost_by'    => 'Last post by',
-        'create_thread'  => 'Create new thread',
-        'topic_title'    => 'Thread title',
-        'message'        => 'Message',
-        'markdown'       => 'Markdown are usable.',
-        'send'           => 'Submit',
-        'no_login_title' => 'Not logged in.',
-        'no_login_msg'   => 'You need to login to post some messages',
-    ],
-    'threads' => [
-        'index' => [
-            'no_threads_head' => 'Diese Kategorie hat noch keine Threads.',
-            'created_at'      => 'Erstellt am',
-            'created_by'      => 'Erstellt von',
-            'category'        => 'Kategorie',
-            'topic'           => 'Thema',
-            'postcount'       => 'Antworten',
-            'lastpost_at'     => 'letzter Post am',
-            'lastpost_by'     => 'letzter Post von',
-            'create_thread'   => 'Neuen Thread erstellen',
-            'topic_title'     => 'Thementitel',
-            'message'         => 'Nachricht',
-            'markdown'        => 'Hier kannst du Markdown nutzen.',
-            'send'            => 'Senden',
-            'no_login_title'  => 'Du bist nicht angemeldet',
-            'no_login_msg'    => 'Um hier posten zu können musst du dich anmelden.',
-        ],
-        'show'  => [
-            'open'              => 'Open',
-            'close'             => 'Close',
-            'category'          => 'Category',
-            'create_poll'       => 'Create/Edit poll',
-            'answer'            => 'Reply',
-            'votes'             => 'Polls',
-            'action'            => 'Actions',
-            'loginto_vote'      => 'To use the poll you need to login.',
-            'posts'             => 'Posts',
-            'edit'              => 'Edit',
-            'posted'            => 'Posted',
-            'edited'            => 'Edited',
-            'create_post'       => 'Post a Reply',
-            'markdown'          => 'Markdown is usable.',
-            'thread_closed'     => 'The thread is closed',
-            'thread_closed_msg' => 'The thread is closed. You cant reply.',
-            'no_login_title'    => 'You are not logged in.',
-            'no_login_msg'      => 'To reply you need to login.',
-        ],
-        'vote'  => [
-            'create'        => 'Umfrage erstellen',
-            'question'      => 'Frage',
-            'answer'        => 'Antwort',
-            'send'          => 'Senden',
-            'no_permission' => 'Du hast nicht die Berechtigung um eine Umfrage zu erstellen.',
-            'no_login'      => 'Um Umfragen zu erstellen musst du eingeloggt sein.',
-        ],
-    ],
-];
+return array(
+    //============================== New strings to translate ==============================//
+    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\board\\index.blade.php
+    'index'        =>
+        array(
+            'show'          =>
+                array(
+                    'no_login_title' => 'TODO: no_login_title',
+                ),
+            'category'      => 'Category',
+            'create_thread' => 'Create new thread',
+            'markdown'      => 'Markdown are usable.',
+            'message'       => 'Message',
+            'send'          => 'Submit',
+            'title'         => 'Boardoverview',
+            'topic_title'   => 'Thread title',
+        ),
+    //==================================== Translations ====================================//
+    'threads'      =>
+        array(
+            'index' =>
+                array(
+                    'markdown'       => 'Hier kannst du Markdown nutzen.',
+                    'message'        => 'Nachricht',
+                    'no_login_title' => 'Du bist nicht angemeldet',
+                    'topic_title'    => 'Thementitel',
+                ),
+            'show'  =>
+                array(
+                    'create_post'       => 'Post a Reply',
+                    'edit'              => 'Edit',
+                    'edited'            => 'Edited',
+                    'markdown'          => 'Markdown is usable.',
+                    'no_login_title'    => 'You are not logged in.',
+                    'thread_closed'     => 'The thread is closed',
+                    'thread_closed_msg' => 'The thread is closed. You cant reply.',
+                ),
+            'vote'  =>
+                array(
+                    'answer'        => 'Antwort',
+                    'create'        => 'Umfrage erstellen',
+                    'no_login'      => 'Um Umfragen zu erstellen musst du eingeloggt sein.',
+                    'no_permission' => 'Du hast nicht die Berechtigung um eine Umfrage zu erstellen.',
+                    'question'      => 'Frage',
+                    'send'          => 'Senden',
+                ),
+        ),
+    'title'        => 'Board',
+    //================================== Obsolete strings ==================================//
+    'LLH:obsolete' =>
+        array(
+            'index'   =>
+                array(
+                    'created_at'     => 'Created at',
+                    'created_by'     => 'Created by',
+                    'lastpost_at'    => 'Last post at',
+                    'lastpost_by'    => 'Last post by',
+                    'no_login_msg'   => 'You need to login to post some messages',
+                    'no_login_title' => 'Not logged in.',
+                    'postcount'      => 'Replies',
+                    'topic'          => 'Topic',
+                ),
+            'threads' =>
+                array(
+                    'index' =>
+                        array(
+                            'category'        => 'Kategorie',
+                            'create_thread'   => 'Neuen Thread erstellen',
+                            'created_at'      => 'Erstellt am',
+                            'created_by'      => 'Erstellt von',
+                            'lastpost_at'     => 'letzter Post am',
+                            'lastpost_by'     => 'letzter Post von',
+                            'no_login_msg'    => 'Um hier posten zu können musst du dich anmelden.',
+                            'no_threads_head' => 'Diese Kategorie hat noch keine Threads.',
+                            'postcount'       => 'Antworten',
+                            'send'            => 'Senden',
+                            'topic'           => 'Thema',
+                        ),
+                    'show'  =>
+                        array(
+                            'action'       => 'Actions',
+                            'answer'       => 'Reply',
+                            'category'     => 'Category',
+                            'close'        => 'Close',
+                            'create_poll'  => 'Create/Edit poll',
+                            'loginto_vote' => 'To use the poll you need to login.',
+                            'no_login_msg' => 'To reply you need to login.',
+                            'open'         => 'Open',
+                            'posted'       => 'Posted',
+                            'posts'        => 'Posts',
+                            'votes'        => 'Polls',
+                        ),
+                ),
+        ),
+);

@@ -1,32 +1,21 @@
 <?php
+/*************************************************************************
+ * Generated via "php artisan localization:missing" at 2017/06/19 16:40:17
+ *************************************************************************/
 
-/*
- * rmarchiv.de
- * (c) 2016-2017 by Marcel 'ryg' Hering
- */
-
-return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
-    |
-    */
-
-    'failed'         => 'Logindaten sind falsch.',
-    'throttle'       => 'Zu viele Loginversuche. Probiere es in :seconds Sekunden erneut.',
-    'login'          => 'Anmelden',
-    'logout'         => 'Abmelden',
+return array(
+    //==================================== Translations ====================================//
     'email'          => 'E-Mail Adresse',
+    'login'          => 'Anmelden',
     'password'       => 'Passwort',
-    'remember_me'    => 'Login speichern',
     'password_reset' => 'Passwort vergessen',
     'register'       => 'Registrieren',
-
-
-];
+    'remember_me'    => 'Login speichern',
+    //================================== Obsolete strings ==================================//
+    'LLH:obsolete'   =>
+        array(
+            'failed'   => 'Logindaten sind falsch.',
+            'logout'   => 'Abmelden',
+            'throttle' => 'Zu viele Loginversuche. Probiere es in :seconds Sekunden erneut.',
+        ),
+);

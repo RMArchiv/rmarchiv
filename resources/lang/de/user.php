@@ -1,81 +1,106 @@
 <?php
-return [
-    'title'    => 'Benutzer',
-    'admin'    => [
-        'administration_of' => 'Benutzeradministration für',
-        'error'             => 'Es ist ein Fehler aufgetreten',
-        'linkpermission'    => 'Berechtigung verknüpfen',
-        'selectpermission'  => 'Berechtigung auswählen',
-        'send'              => 'Speichern',
-    ],
-    'index'    => [
-        'nickname'     => 'Spitzname',
-        'member_since' => 'Mitglied seit',
-        'level'        => 'Level',
-        'obyx'         => 'Obyx',
-        'actions'      => 'Aktionen',
-        'edit'         => 'Bearbeiten',
-    ],
-    'show'     => [
-        'informations'    => 'Allgemein',
-        'level'           => 'Level',
-        'gamecredits'     => 'Beteiligung an Spielen',
-        'games'           => 'Spiele',
-        'games_added'     => 'Spiele hinzugefügt',
-        'developer_added' => 'Entwickler hinzugefügt',
-        'comments'        => 'Kommentare',
-        'ratings'         => 'Bewertungen',
-        'shoutbox'        => 'Shoutbox Posts',
-        'topics'          => 'Topics eröffnet',
-        'posts'           => 'Posts geschrieben',
-        'lists'           => 'Listen erstellt',
-        'created_at'      => 'Account erstellt am',
-        'show'            => 'Zeige',
-        'last_activity'   => 'Die letzten 10 Aktivitäten',
-        'obyx_for'        => 'Obyx für',
-        'obyx'            => [
-            'shoutbox'       => 'Shoutbox Posts',
-            'comment'        => 'Kommentare',
-            'rating'         => 'Bewertungen',
-            'game-add'       => 'Spiele hinzugefügt',
-            'dev-add'        => 'Entwickler hinzugefügt',
-            'thread-add'     => 'Threads erstellt',
-            'post-add'       => 'Posts geschrieben',
-            'screenshot-add' => 'Screenshots hinzugefügt',
-            'gamefile-add'   => 'Spieledateien hochgeladen',
-            'resource-add'   => 'Ressourcen hinzugefügt',
-        ],
-    ],
-    'activity' => [
-        'index' => [
-            'title'    => 'Aktivitätshistorie',
-            'obyx_for' => 'Obyx für',
-        ],
-    ],
-    'entrust'  => [
+/*************************************************************************
+ * Generated via "php artisan localization:missing" at 2017/06/19 16:40:17
+ *************************************************************************/
 
-    ],
-    'lists'    => [
-        'create' => [
-            'title'      => 'Benutzerliste erstellen',
-            'error'      => 'Benutzerliste konnte nicht erstellt werden',
-            'list_title' => 'Listtitel',
-            'desc'       => 'Listenbeschreibung',
-            'send'       => 'Liste erstellen',
-        ],
-        'index'  => [
-
-        ],
-        'show'   => [
-
-        ],
-    ],
-    'online'   => [
-        'title'            => 'Benutzer Online',
-        'username'         => 'Benutzername',
-        'last_page'        => 'Zuletzt besuchte Seite',
-        'last_action_date' => 'Letzte Aktion am',
-    ],
-];
-
-// {{ trans('') }}
+return array(
+    //==================================== Translations ====================================//
+    'activity'     =>
+        array(
+            'index' =>
+                array(
+                    'obyx_for' => 'Obyx für',
+                    'title'    => 'Aktivitätshistorie',
+                ),
+        ),
+    'admin'        =>
+        array(
+            'administration_of' => 'Benutzeradministration für',
+            'error'             => 'Es ist ein Fehler aufgetreten',
+            'linkpermission'    => 'Berechtigung verknüpfen',
+            'selectpermission'  => 'Berechtigung auswählen',
+            'send'              => 'Speichern',
+        ),
+    'index'        =>
+        array(
+            'level'        => 'Level',
+            'member_since' => 'Mitglied seit',
+        ),
+    'lists'        =>
+        array(
+            'create' =>
+                array(
+                    'desc'       => 'Listenbeschreibung',
+                    'error'      => 'Benutzerliste konnte nicht erstellt werden',
+                    'list_title' => 'Listtitel',
+                    'send'       => 'Liste erstellen',
+                    'title'      => 'Benutzerliste erstellen',
+                ),
+        ),
+    'online'       =>
+        array(
+            'last_action_date' => 'Letzte Aktion am',
+            'last_page'        => 'Zuletzt besuchte Seite',
+            'username'         => 'Benutzername',
+        ),
+    'show'         =>
+        array(
+            'comments' => 'Kommentare',
+        ),
+    'title'        => 'Benutzer',
+    //================================== Obsolete strings ==================================//
+    'LLH:obsolete' =>
+        array(
+            'entrust' =>
+                array(),
+            'index'   =>
+                array(
+                    'actions'  => 'Aktionen',
+                    'edit'     => 'Bearbeiten',
+                    'nickname' => 'Spitzname',
+                    'obyx'     => 'Obyx',
+                ),
+            'lists'   =>
+                array(
+                    'index' =>
+                        array(),
+                    'show'  =>
+                        array(),
+                ),
+            'online'  =>
+                array(
+                    'title' => 'Benutzer Online',
+                ),
+            'show'    =>
+                array(
+                    'created_at'      => 'Account erstellt am',
+                    'developer_added' => 'Entwickler hinzugefügt',
+                    'gamecredits'     => 'Beteiligung an Spielen',
+                    'games'           => 'Spiele',
+                    'games_added'     => 'Spiele hinzugefügt',
+                    'informations'    => 'Allgemein',
+                    'last_activity'   => 'Die letzten 10 Aktivitäten',
+                    'level'           => 'Level',
+                    'lists'           => 'Listen erstellt',
+                    'obyx'            =>
+                        array(
+                            'comment'        => 'Kommentare',
+                            'dev-add'        => 'Entwickler hinzugefügt',
+                            'game-add'       => 'Spiele hinzugefügt',
+                            'gamefile-add'   => 'Spieledateien hochgeladen',
+                            'post-add'       => 'Posts geschrieben',
+                            'rating'         => 'Bewertungen',
+                            'resource-add'   => 'Ressourcen hinzugefügt',
+                            'screenshot-add' => 'Screenshots hinzugefügt',
+                            'shoutbox'       => 'Shoutbox Posts',
+                            'thread-add'     => 'Threads erstellt',
+                        ),
+                    'obyx_for'        => 'Obyx für',
+                    'posts'           => 'Posts geschrieben',
+                    'ratings'         => 'Bewertungen',
+                    'shoutbox'        => 'Shoutbox Posts',
+                    'show'            => 'Zeige',
+                    'topics'          => 'Topics eröffnet',
+                ),
+        ),
+);
