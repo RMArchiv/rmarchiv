@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GamesFile;
 use App\Models\GamesSavegame;
 use Illuminate\Http\Request;
 use PhpBinaryReader\BinaryReader;
@@ -27,6 +28,8 @@ class SavegameManagerController extends Controller
             ->orderBy('slot_id', 'asc')
             ->get();
 
+        $gamefile = GamesFile::whereId($gamefile_id)->first();
+
         $array = array();
 
         foreach ($savegames as $savegame) {
@@ -41,6 +44,7 @@ class SavegameManagerController extends Controller
         return view('savegamemanager.show', [
             'savegames'   => $array,
             'gamefile_id' => $gamefile_id,
+            'gamefile'    => $gamefile,
         ]);
     }
 

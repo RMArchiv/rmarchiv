@@ -4,8 +4,10 @@
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>{{ trans('_partials.footer.impressum') }}</h1>
-                {!! Breadcrumbs::render('impressum') !!}
+                <h1>Savegames für: {{ $gamefile->game->title }}
+                    <small>{{ $gamefile->game->subtitle }}</small>
+                </h1>
+                {!! Breadcrumbs::render('savegamemanager.show', $gamefile) !!}
             </div>
         </div>
         <div class="row">

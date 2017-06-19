@@ -89,7 +89,7 @@ Breadcrumbs::register('post.edit', function ($breadcrumbs, $boardcat, $post) {
 // Home > Developers
 Breadcrumbs::register('developers', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('entwickler', action('DeveloperController@index'));
+    $breadcrumbs->push('entwickler', url('developers'));
 });
 
 // Home > Developers > Developer
@@ -232,4 +232,10 @@ Breadcrumbs::register('register', function ($breadcrumbs) {
 Breadcrumbs::register('savegamemanager.index', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('savegame manager', action('SavegameManagerController@index'));
+});
+// Home -> Savegame Manager -> Game
+// Home -> Maker -> [Maker]
+Breadcrumbs::register('savegamemanager.show', function ($breadcrumbs, $gamefile) {
+    $breadcrumbs->parent('savegamemanager.index');
+    $breadcrumbs->push($gamefile->game->title, action('SavegameManagerController@show', $gamefile->id));
 });
