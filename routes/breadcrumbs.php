@@ -2,7 +2,7 @@
 
 // Home
 Breadcrumbs::register('home', function ($breadcrumbs) {
-    $breadcrumbs->push('home', action('IndexController@index'));
+    $breadcrumbs->push(trans('index.title'), action('IndexController@index'));
 });
 
 //----------------- Games --------------------------------------------------------------------------------------------//
@@ -16,7 +16,7 @@ Breadcrumbs::register('games', function ($breadcrumbs) {
 Breadcrumbs::register('game', function ($breadcrumbs, $game) {
     $breadcrumbs->parent('games');
     if ($game->subtitle) {
-        $breadcrumbs->push($game->title . ' - ' . $game->gamesubtitle, action('GameController@show', $game->id));
+        $breadcrumbs->push($game->title . ' - ' . $game->subtitle, action('GameController@show', $game->id));
     } else {
         $breadcrumbs->push($game->title, action('GameController@show', $game->id));
     }
@@ -25,13 +25,13 @@ Breadcrumbs::register('game', function ($breadcrumbs, $game) {
 // Home > Games > erstellen
 Breadcrumbs::register('game-add', function ($breadcrumbs) {
     $breadcrumbs->parent('games');
-    $breadcrumbs->push('erstellen', action('GameController@create'));
+    $breadcrumbs->push(trans('games.create.title'), action('GameController@create'));
 });
 
 // Home > Games > [game] > edit
 Breadcrumbs::register('game-edit', function ($breadcrumbs, $game) {
     $breadcrumbs->parent('game', $game);
-    $breadcrumbs->push('bearbeiten', action('GameController@edit', $game->id));
+    $breadcrumbs->push(trans('games.edit.title'), action('GameController@edit', $game->id));
 });
 
 //----------------- FAQ ----------------------------------------------------------------------------------------------//
@@ -57,14 +57,14 @@ Breadcrumbs::register('user', function ($breadcrumbs, $user) {
 // Home > Users > Online
 Breadcrumbs::register('online', function ($breadcrumbs) {
     $breadcrumbs->parent('users');
-    $breadcrumbs->push('online', action('UserController@users_online'));
+    $breadcrumbs->push(trans('user.online.title'), action('UserController@users_online'));
 });
 
 //----------------- Board --------------------------------------------------------------------------------------------//
 // Home > Board
 Breadcrumbs::register('forums', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('forum', action('BoardController@index'));
+    $breadcrumbs->push(trans('board.title'), action('BoardController@index'));
 });
 
 // Home > Board > [Forum]
@@ -82,14 +82,14 @@ Breadcrumbs::register('thread', function ($breadcrumbs, $boardcat, $thread) {
 // Home > Board > [Forum] -> [Thread] -> edit
 Breadcrumbs::register('post.edit', function ($breadcrumbs, $boardcat, $post) {
     $breadcrumbs->parent('forum', $boardcat);
-    $breadcrumbs->push('bearbeiten', action('BoardController@post_edit', [$post->thread_id, $post->id]));
+    $breadcrumbs->push(trans('board.threads.show.edit'), action('BoardController@post_edit', [$post->thread_id, $post->id]));
 });
 
 //----------------- Developers ---------------------------------------------------------------------------------------//
 // Home > Developers
 Breadcrumbs::register('developers', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('entwickler', url('developers'));
+    $breadcrumbs->push(trans('developer.title'), url('developers'));
 });
 
 // Home > Developers > Developer
@@ -102,7 +102,7 @@ Breadcrumbs::register('developer', function ($breadcrumbs, $developer) {
 // Home > Impressum
 Breadcrumbs::register('impressum', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('impressum', url('/impressum'));
+    $breadcrumbs->push(trans('_partials.footer.impressum'), url('/impressum'));
 });
 
 //----------------- Auth --------------------------------------------------------------------------------------------//
@@ -137,7 +137,7 @@ Breadcrumbs::register('awards', function ($breadcrumbs) {
 // Home -> Messages
 Breadcrumbs::register('messages', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('nachrichten', action('MessagesController@index'));
+    $breadcrumbs->push(trans('messages.title'), action('MessagesController@index'));
 });
 
 // Home > Messages > Erstellen
