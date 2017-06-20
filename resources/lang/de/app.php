@@ -1,16 +1,12 @@
 <?php
 /*************************************************************************
- * Generated via "php artisan localization:missing" at 2017/06/20 12:39:05
+ * Generated via "php artisan localization:missing" at 2017/06/20 12:50:37
 *************************************************************************/
 
 return array(
   //============================== New strings to translate ==============================//
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\faq\\create.blade.php
-    'faq_cat_not_found'                   => 'FAQ Kategorie nicht gefunden',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\faq\\create.blade.php
-    'faq_category'                        => 'FAQ Kategorie',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\faq\\create.blade.php
-    'faq_question'                        => 'FAQ Frage',
+    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\messenger\\show.blade.php
+    'post_a_reply'                        => 'Verfasse eine Antwort',
   //==================================== Translations ====================================//
     '10_newest_board_posts'               => 'Die 10 neuesten Forenposts',
   'accessdenied' => 'Zugriff verweigert.',
@@ -107,6 +103,9 @@ return array(
     ),
   ),
   'faq' => 'FAQ',
+    'faq_cat_not_found'                   => 'FAQ Kategorie nicht gefunden',
+    'faq_category'                        => 'FAQ Kategorie',
+    'faq_question'                        => 'FAQ Frage',
   'feedback_for_features_or_bugs' => 'Feedback für Features oder Bugs',
     'file'                                => 'Datei',
     'game_not_found'                      => 'Das Spiel wurde nicht gefunden.',
@@ -151,13 +150,16 @@ return array(
     'missing_screenshots'                 => 'Fehlende Screenshots',
     'more'                                => 'mehr',
     'name'                                => 'Name',
+    'new_message_available'               => 'Neue Nachrichten verfügbar',
     'news'                                => 'News',
     'no'                                  => 'Nein',
     'no_comments_available'               => 'Es sind noch keine Kommentare vorhanden.',
     'no_gamefile_available'               => 'Es sind noch keine Spieledateien vorhanden.',
     'no_rateable_logos_available'         => 'Es sind keine Logos vorhanden, die bewerted werden können.',
+    'no_subject'                          => 'Kein Betreff',
     'no_user_credits_added'               => 'Bisher wurden keine UserCredits hinzugefügt.',
     'ok'                                  => 'OK',
+    'participants'                        => 'Empfänger',
   'password' => 'Passwort',
   'password_reset' => 'Passwort zurücksetzen',
     'permission_show_roles'               => 'Berechtigungsrollen anzeigen',
@@ -168,12 +170,14 @@ return array(
   'popularity' => 'Popularität',
     'popularity_helper'                   => 'Popularitäts Helfer',
     'posted_at'                           => 'gepostet am',
+    'private_massages'                    => 'Private Nachrichten',
     'random_game'                         => 'Zufallsspiel',
   'rate_down' => 'Bewerte runter',
   'rate_logos' => 'Bewerte Logos',
   'rate_neut' => 'Bewerte neutral',
     'rate_this_game'                      => 'Bewerte dieses Spiel',
   'rate_up' => 'Bewerte hoch',
+    'recipients'                          => 'Empfänger',
   'register' => 'Registrieren',
   'register_account' => 'Account Registrieren',
   'registration_failed' => 'Registrierung fehlgeschlagen',
@@ -196,6 +200,7 @@ return array(
     'shoutbox'                            => 'Shoutbox',
     'show_original_size'                  => 'Zeige Originalgröße',
   'sorry_you_are_banned' => 'Sorry, du wurdest gebannt!',
+    'subject'                             => 'Betreff',
     'submit'                              => 'Senden',
   'submit_content' => 'Inhalt einsenden',
   'submit_game' => 'Spiel einsenden',

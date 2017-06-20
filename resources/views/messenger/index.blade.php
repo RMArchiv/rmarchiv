@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('pagetitle', 'persönliche nachrichten')
+@section('pagetitle', trans('app.private_massages'))
 @section('content')
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>persönliche nachrichten
+                <h1>{{ trans('app.private_massages') }}
                     <div class='btn-toolbar pull-right'>
                         <div class='btn-group'>
                             <a role="button" href="{{ action('MessagesController@create') }}" class="btn btn-primary"><span class="fa fa-plus"></span></a>
@@ -35,7 +35,7 @@
                                         <a href="{{ route('messages.show', $thread->id) }}">
                                             <span @if($thread->isUnread($currentUserId) === true) style="font-weight: bold;" @endif>
                                                 @if($thread->subject == '')
-                                                    kein betreff
+                                                    {{ trans('app.no_subject') }}
                                                 @else
                                                     {{ $thread->subject }}
                                                 @endif
@@ -46,15 +46,17 @@
                                     @if($thread->isUnread($currentUserId) === true)
                                     <div class="pull-right">
                                         <span class="label label-danger">
-                                                neue nachricht verfügbar!
+                                                {{ trans('app.new_message_available') }}
                                         </span>
                                     </div>
                                     @endif
-                                    erstellt <time datetime='{{ $thread->created_at }}' title='{{ $thread->created_at }}'>{{ \Carbon\Carbon::parse($thread->created_at)->diffForHumans() }}</time>
+                                    {{ trans('app.created_at') }}
+                                    <time datetime='{{ $thread->created_at }}' title='{{ $thread->created_at }}'>{{ \Carbon\Carbon::parse($thread->created_at)->diffForHumans() }}</time>
                                     <span> • </span>
-                                    letzte antwort <time datetime='{{ $thread->updated_at }}' title='{{ $thread->updated_at  }}'>{{ \Carbon\Carbon::parse($thread->updated_at)->diffForHumans() }}</time>
+                                    {{ trans('app.last_reply_at') }}
+                                    <time datetime='{{ $thread->updated_at }}' title='{{ $thread->updated_at  }}'>{{ \Carbon\Carbon::parse($thread->updated_at)->diffForHumans() }}</time>
                                     <span> • </span>
-                                    beteiligte:
+                                    {{ trans('app.participants') }}:
                                     @foreach(App\Models\MessengerParticipant::whereThreadId($thread->id)->get() as $pp)
                                         @php $user = \App\Models\User::whereId($pp->user_id)->first() @endphp
                                     <a href='{{ url('users', $user->id) }}' class='usera' title="{{ $user->name }}">
