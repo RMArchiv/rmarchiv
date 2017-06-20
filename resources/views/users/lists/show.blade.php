@@ -8,7 +8,9 @@
                     {!! $list->desc_html !!}
                 </div>
                 <div class="foot">
-                    {{ trans('app.news.show.submit_by') }} <a href='{{ url('users', $list->user_id) }}'>{{ $list->name }}</a> :: <time datetime='{{ $list->created_at }}' title='{{ $list->created_at }}'>{{ \Carbon\Carbon::parse($list->created_at)->diffForHumans() }}</time>
+                    {{ trans('app.submitted_by') }}
+                    <a href='{{ url('users', $list->user_id) }}'>{{ $list->name }}</a> ::
+                    <time datetime='{{ $list->created_at }}' title='{{ $list->created_at }}'>{{ \Carbon\Carbon::parse($list->created_at)->diffForHumans() }}</time>
                 </div>
             </div>
         </div>
@@ -16,16 +18,16 @@
         <table id='pouetbox_prodlist' class='boxtable pagedtable'>
             <thead>
             <tr class='sortable'>
-                <th>spielname</th>
-                <th>entwickler</th>
-                <th>release date</th>
-                <th>hinzugefügt</th>
+                <th>{{ trans('app.gametitle') }}</th>
+                <th>{{ trans('app.developers') }}</th>
+                <th>{{ trans('app.release_date') }}</th>
+                <th>{{ trans('app.created_at') }}</th>
                 <th><img src='/assets/rate_up.gif' alt='super' /></th>
                 <th><img src='/assets/rate_down.gif' alt='scheiße' /></th>
-                <th>avg</th>
-                <th>popularität</th>
-                <th>kommentare</th>
-                <th>aktionen</th>
+                <th>{{ trans('app.avg') }}</th>
+                <th>{{ trans('app.popularity') }}</th>
+                <th>{{ trans('app.comments') }}</th>
+                <th>{{ trans('app.actions') }}</th>
             </tr>
             </thead>
 
@@ -79,7 +81,8 @@
                     <td>
                         @if(Auth::check())
                             @if(Auth::id() == $list->user_id or Auth::user()->hasRole('admin'))
-                                [<a href="{{ route('lists.delete_game', [$list->id, $game->gameid])  }}">löschen</a>]
+                                [
+                                <a href="{{ route('lists.delete_game', [$list->id, $game->gameid])  }}">{{ trans('app.delete') }}</a>]
                             @endif
                         @endif
                     </td>

@@ -530,7 +530,7 @@
             </div>
         </div>
     @else
-        <h1>{{ trans('games.show.no_id') }}</h1>
+        <h1>{{ trans('app.game_does_not_exist') }}</h1>
     @endif
 
     <script>

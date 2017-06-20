@@ -7,11 +7,11 @@
                     {{ csrf_field() }}
 
                     <div class="rmarchivtbl" id="rmarchivbox_submitprod" style="width: 60%">
-                        <h2>{{ trans('board.threads.vote.create') }}</h2>
+                        <h2>{{ trans('app.create_vote') }}</h2>
 
                         @if (count($errors) > 0))
                         <div class="rmarchivtbl errorbox">
-                            <h2>{{ trans('app.news.add.error.title') }}</h2>
+                            <h2>{{ trans('app.create_vote_error') }}</h2>
                             <div class="content">
                                 @foreach ($errors->all() as $error)
                                     <strong>{{ $error }}</strong>
@@ -25,13 +25,13 @@
 
                             <div class="formifier">
                                 <div class="row" id="row_question">
-                                    <label for="question">{{ trans('board.threads.vote.question') }}</label>
+                                    <label for="question">{{ trans('app.vote_question') }}</label>
                                     <input name="question" id="question" value=""/>
                                     <span> [<span class="req">req</span>]</span>
                                 </div>
                                 @for($i = 0; $i < 10; $i++)
                                     <div class="row" id="row_answer{{ $i }}">
-                                        <label for="answer{{ $i }}">{{ trans('board.threads.vote.answer') }}</label>
+                                        <label for="answer{{ $i }}">{{ trans('app.vote_answer') }}</label>
                                         <input name="answer{{ $i }}" id="answer{{ $i }}" value=""/>
                                         @if($i <= 1)
                                             <span> [<span class="req">req</span>]</span>
@@ -42,7 +42,7 @@
 
                         </div>
                         <div class="foot">
-                            <input type="submit" value="{{ trans('board.threads.vote.send') }}">
+                            <input type="submit" value="{{ trans('app.submit') }}">
                         </div>
                     </div>
                 </form>
@@ -50,7 +50,7 @@
         @else
             <div id="content">
                 <div class="rmarchivtbl">
-                    {{ trans('board.threads.vote.no_permission') }}
+                    {{ trans('app.login_needed') }}
                 </div>
             </div>
         @endif
@@ -58,7 +58,7 @@
     @else
         <div id="content">
             <div class="rmarchivtbl">
-                {{ trans('board.threads.vote.no_login') }}
+                {{ trans('app.login_needed') }}
             </div>
         </div>
     @endif

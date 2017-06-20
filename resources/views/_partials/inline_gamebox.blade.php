@@ -27,7 +27,7 @@
     <ul class="list-group">
         <li class="list-group-item media" style="margin-top: 0px;">
             <a class="pull-right" href="{{ url('games', $game->id) }}"><span class="badge">{{ $game->comments }}</span></a>
-            <a class="pull-left" href="{{ url('games', $game->id) }}"><img width="100px" class="img-responsive img-rounded" src='{{ route('screenshot.show', [$game->id, 1]) }}' alt='{{ trans('games.show.titlescreen') }}' title='{{ trans('games.show.titlescreen') }}'/></a>
+            <a class="pull-left" href="{{ url('games', $game->id) }}"><img width="100px" class="img-responsive img-rounded" src='{{ route('screenshot.show', [$game->id, 1]) }}' alt='{{ trans('app.titlescreen') }}' title='{{ trans('app.titlescreen') }}'/></a>
             <div class="thread-info">
                 <div class="media-heading">
                     {!! substr($game->desc_md, 0, 320).'...' !!}

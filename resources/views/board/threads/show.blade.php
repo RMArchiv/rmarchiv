@@ -106,12 +106,12 @@
                                         <br>
                                         <small class="text-muted"><a href='{{ url('users', $post->user->id) }}' class='user'>{{ $post->user->name }}</a><span> • </span><a href='{{ route('board.thread.show', [$post->thread->id]) }}#c{{ $post->id }}'><time datetime='{{ $post->created_at }}' title='{{ $post->created_at }}'>{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</time></a>
                                             @if($post->updated_at)
-                                                <span> • </span>{{ trans('board.threads.show.edited') }} {{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}
+                                                <span> • </span>{{ trans('app.edited_at') }} {{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}
                                             @endif
                                             @if(Auth::check())
                                                 @if(Auth::id() == $post->user->id or Auth::user()->can('mod-threads'))
                                                     <div class="pull-right">
-                                                        <a href="{{ route('board.post.edit', [$post->thread->id, $post->id]) }}" data-rel="popup">{{ trans('board.threads.show.edit') }}</a>
+                                                        <a href="{{ route('board.post.edit', [$post->thread->id, $post->id]) }}" data-rel="popup">{{ trans('app.edit') }}</a>
                                                     </div>
                                                 @endif
                                             @endif
@@ -131,7 +131,7 @@
             @if(Auth::check())
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        {{ trans('board.threads.show.create_post') }}
+                        {{ trans('app.create_thread') }}
                     </div>
                     <div class="panel-body">
                         @if($post->thread->closed == 0)
@@ -139,24 +139,24 @@
                             <input type='hidden' name='catid' value='{{ $posts->first()->cat->id }}'>
                             <div class='content'>
                                 @include('_partials.markdown_editor')
-                                <div><a href='#'>{{ trans('board.threads.show.markdown') }}</a></div>
+                                <div><a href='#'>{{ trans('app.markdown_is_usable_here') }}</a></div>
                             </div>
                             <div class='foot'>
                                 <input type='submit' value='Submit' id='submit'></div>
                             {!! Form::close() !!}
                         @else
-                            <h2>{{ trans('board.threads.show.thread_closed') }}</h2>
-                            {{ trans('board.threads.show.thread_closed_msg') }}
+                            <h2>{{ trans('app.thread_is_closed') }}</h2>
+                            {{ trans('app.thread_is_closed_you_cant_post') }}
                         @endif
                     </div>
                 </div>
             @else
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        {{ trans('board.threads.show.no_login_title') }}
+                        {{ trans('app.login_needed_to_post') }}
                     </div>
                     <div class="panel-body">
-                        {{ trans('board.threads.show.no_login_title') }}
+                        {{ trans('app.login_needed_to_post') }}
                     </div>
                 </div>
             @endif

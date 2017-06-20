@@ -49,7 +49,7 @@
                     @include('_partials.markdown_editor')
                 </div>
                 <div class="panel-body">
-                    {{ trans('app_add_additional_users') }}
+                    {{ trans('app.add_additional_users') }}
                     @if($users->count() > 0)
                         <div class="checkbox">
                             @foreach($users as $user)

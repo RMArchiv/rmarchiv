@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('pagetitle', trans('developer.index.title'))
+@section('pagetitle', trans('app.developers'))
 @section('content')
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>{{trans('developer.index.title')}}</h1>
+                <h1>{{trans('app.developers')}}</h1>
             </div>
         </div>
         <div class="row">
@@ -20,23 +20,23 @@
                         <th>
                             @if($orderby == 'devname')
                                 @if($direction == 'asc')
-                                    <a class="activated" href="{{ route('developer.index.sorted', ['devname', 'desc']) }}">{{ trans('developer.index.developer') }}</a>
+                                    <a class="activated" href="{{ route('developer.index.sorted', ['devname', 'desc']) }}">{{ trans('app.developer') }}</a>
                                 @else
-                                    <a class="activated reverse" href="{{ route('developer.index.sorted', ['devname', 'asc']) }}">{{ trans('developer.index.developer') }}</a>
+                                    <a class="activated reverse" href="{{ route('developer.index.sorted', ['devname', 'asc']) }}">{{ trans('app.developer') }}</a>
                                 @endif
                             @else
-                                <a class="" href="{{ route('developer.index.sorted', ['devname', 'asc']) }}">{{ trans('developer.index.developer') }}</a>
+                                <a class="" href="{{ route('developer.index.sorted', ['devname', 'asc']) }}">{{ trans('app.developer') }}</a>
                             @endif
                         </th>
                         <th>
                             @if($orderby == 'gamecount')
                                 @if($direction == 'asc')
-                                    <a class="activated" href="{{ route('developer.index.sorted', ['gamecount', 'desc']) }}">{{ trans('developer.index.games') }}</a>
+                                    <a class="activated" href="{{ route('developer.index.sorted', ['gamecount', 'desc']) }}">{{ trans('app.games') }}</a>
                                 @else
-                                    <a class="activated reverse" href="{{ route('developer.index.sorted', ['gamecount', 'asc']) }}">{{ trans('developer.index.games') }}</a>
+                                    <a class="activated reverse" href="{{ route('developer.index.sorted', ['gamecount', 'asc']) }}">{{ trans('app.games') }}</a>
                                 @endif
                             @else
-                                <a class="" href="{{ route('developer.index.sorted', ['gamecount', 'asc']) }}">{{ trans('developer.index.games') }}</a>
+                                <a class="" href="{{ route('developer.index.sorted', ['gamecount', 'asc']) }}">{{ trans('app.games') }}</a>
                             @endif
                         </th>
                     </tr>

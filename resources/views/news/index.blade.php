@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('pagetitle', trans('news.title'))
+@section('pagetitle', trans('app.news'))
 @section('content')
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>{{ trans('news.title') }}</h1>
+                <h1>{{ trans('app.news') }}</h1>
                 {!! Breadcrumbs::render('news') !!}
             </div>
         </div>
@@ -24,7 +24,8 @@
                                         <a href="{{ route('news.show', $item->id) }}">{{ $item->title }}</a>
                                     </div>
                                     <div class="media-body" style="font-size: 12px;">
-                                        erstellt <time datetime='{{ $item->created_at }}' title='{{ $item->created_at }}'>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</time>
+                                        {{ trans('app.created_at') }}
+                                        <time datetime='{{ $item->created_at }}' title='{{ $item->created_at }}'>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</time>
                                     </div>
                                 </div>
                             </li>
@@ -36,10 +37,11 @@
                                 <div class="thread-info">
                                     <div class="media-heading">
                                         <a href="{{ route('news.show', $item->id) }}">{{ $item->title }}</a>
-                                        <p class="text-warning">NICHT VERÖFFENTLICHT!</p>
+                                        <p class="text-warning">{{ trans('app.news_not_published') }}</p>
                                     </div>
                                     <div class="media-body" style="font-size: 12px;">
-                                        erstellt <time datetime='{{ $item->created_at }}' title='{{ $item->created_at }}'>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</time>
+                                        {{ trans('app.created_at') }}
+                                        <time datetime='{{ $item->created_at }}' title='{{ $item->created_at }}'>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</time>
                                     </div>
                                 </div>
                             </li>
