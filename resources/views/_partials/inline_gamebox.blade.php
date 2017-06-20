@@ -33,7 +33,7 @@
                     {!! substr($game->desc_md, 0, 320).'...' !!}
                     @if($game->cdcs->count() > 0)
                         <div class="cdcstack">
-                            <img src="/assets/cdc.png" title="{{ trans('app.cdc.title') }}" alt="{{ trans('app.cdc.title') }}">
+                            <img src="/assets/cdc.png" title="{{ trans('app.coupdecoeur') }}" alt="{{ trans('app.coupdecoeur') }}">
                         </div>
                     @endif
                 </div>
@@ -48,16 +48,16 @@
                     <span> • </span>
                     hinzugefügt {{ \Carbon\Carbon::parse($game->created_at)->diffForHumans() }}
                     <span> • </span>
-                    <img src='/assets/rate_up.gif' alt='{{ trans('app.games.table.rate_up') }}'/> {{ $game->voteup or 0 }} -
-                    <img src='/assets/rate_down.gif' alt='{{ trans('app.games.table.rate_down') }}'/> {{ $game->votedown or 0 }}
+                    <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/> {{ $game->voteup or 0 }} -
+                    <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/> {{ $game->votedown or 0 }}
                     <span> • </span>
                     AVG: {{ number_format(floatval($game->avg), 2) }}&nbsp;
                     @if($game->avg > 0)
-                        <img src='/assets/rate_up.gif' alt='{{ trans('app.games.table.rate_up') }}'/>
+                        <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/>
                     @elseif($game->avg == 0)
-                        <img src='/assets/rate_neut.gif' alt='{{ trans('app.games.table.rate_neut') }}'/>
+                        <img src='/assets/rate_neut.gif' alt='{{ trans('app.rate_neut') }}'/>
                     @elseif($game->avg < 0)
-                        <img src='/assets/rate_down.gif' alt='{{ trans('app.games.table.rate_down') }}'/>
+                        <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/>
                     @endif
                     <div class="pull-right">
                         @foreach($game->tags as $tag)

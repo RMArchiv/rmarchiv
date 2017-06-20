@@ -1,6 +1,6 @@
 <div class="row">
     <div class="panel panel-default">
-        <div class="panel-heading">{{ trans('index.search.title') }}</div>
+        <div class="panel-heading">{{ trans('app.search') }}</div>
         <div class="panel-body">
             {{ Form::open(['action' => ['SearchController@search']], ['class' => 'form-horizontal']) }}
                 <input id="term" type='text' name='term' />
@@ -24,7 +24,7 @@
                     templates: {
                         empty: [
                             '<div class="empty-message">',
-                            '{{ trans('index.search.not_found') }}',
+                            '{{ trans('app.search_nothing_found') }}',
                             '</div>'
                         ].join('\n'),
                         suggestion: function(data) {

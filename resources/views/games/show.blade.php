@@ -21,7 +21,7 @@
                                 @if(Auth::check())
                                     @if(Auth::user()->userlists)
                                         @php
-                                            $ul_data = "<a href='". url('lists/create') ."'>".trans('games.show.userlist_create') ."</a><br>";
+                                            $ul_data = "<a href='". url('lists/create') ."'>".trans('app.create_userlist') ."</a><br>";
                                             foreach (Auth::user()->userlists as $list){
                                                 $ul_data .= "<a href='". route('lists.add_game', [$list->id, $game->id]). "'>".$list->title."</a><br>";
                                             }
@@ -57,26 +57,26 @@
                                     <div class="panel-heading">
                                         <ul class="nav nav-pills">
                                             <li class="active">
-                                                <a data-toggle="pill" href="#tabs-1">{{ trans('games.show.titlescreen') }}</a>
+                                                <a data-toggle="pill" href="#tabs-1">{{ trans('app.titlescreen') }}</a>
                                             </li>
                                             <li>
-                                                <a data-toggle="pill" href="#tabs-2">{{ trans('games.show.screenshot') }} 1</a>
+                                                <a data-toggle="pill" href="#tabs-2">{{ trans('app.screenshot') }} 1</a>
                                             </li>
                                             <li>
-                                                <a data-toggle="pill" href="#tabs-3">{{ trans('games.show.screenshot') }} 2</a>
+                                                <a data-toggle="pill" href="#tabs-3">{{ trans('app.screenshot') }} 2</a>
                                             </li>
                                             <li>
-                                                <a data-toggle="pill" href="#tabs-4">{{ trans('games.show.screenshot') }} 3</a>
+                                                <a data-toggle="pill" href="#tabs-4">{{ trans('app.screenshot') }} 3</a>
                                             </li>
                                             <li>
-                                                <a data-toggle="pill" href="#tabs-5">{{ trans('games.show.screenshot') }} 4</a>
+                                                <a data-toggle="pill" href="#tabs-5">{{ trans('app.screenshot') }} 4</a>
                                             </li>
                                             <li>
-                                                <a data-toggle="pill" href="#tabs-6">{{ trans('games.show.screenshot') }} 5</a>
+                                                <a data-toggle="pill" href="#tabs-6">{{ trans('app.screenshot') }} 5</a>
                                             </li>
                                             @if($game->youtube)
                                                 <li>
-                                                    <a data-toggle="pill" href="#tabs-7">{{ trans('games.show.trailer') }}</a>
+                                                    <a data-toggle="pill" href="#tabs-7">{{ trans('app.trailer') }}</a>
                                                 </li>
                                             @endif
                                         </ul>
@@ -84,13 +84,13 @@
                                     <div class="tab-content">
                                         <div id="tabs-1" class="tab-pane fade in active">
                                             <div class="panel-body">
-                                                <img class="img-responsive center-block" src='{{ route('screenshot.show', [$game->id, 1]) }}' alt='{{ trans('games.show.titlescreen') }}' title='{{ trans('games.show.titlescreen') }}'/>
+                                                <img class="img-responsive center-block" src='{{ route('screenshot.show', [$game->id, 1]) }}' alt='{{ trans('app.titlescreen') }}' title='{{ trans('app.titlescreen') }}'/>
                                             </div>
                                             <div class="panel-footer">
-                                                <a href="{{ route('screenshot.show', [$game->id, 1, 1]) }}">{{ trans('games.show.show_origsize') }}</a>
+                                                <a href="{{ route('screenshot.show', [$game->id, 1, 1]) }}">{{ trans('app.show_original_size') }}</a>
                                                 @if(Auth::check())
                                                     ::
-                                                    <a href="{{ route('screenshot.create', [$game->id, 1]) }}">{{ trans('games.show.upload_titlescreen') }}</a>
+                                                    <a href="{{ route('screenshot.create', [$game->id, 1]) }}">{{ trans('app.upload_titlescreen') }}</a>
                                                 @endif
                                             </div>
                                         </div>
@@ -98,13 +98,13 @@
                                             <div id="tabs-{{ $i }}" class="tab-pane fade">
                                                 <div class="panel-body">
                                                     <img class="img-responsive center-block" src='{{ route('screenshot.show', [$game->id, $i]) }}'
-                                                         alt='{{ trans('games.show.screenshot') }}' title='{{ trans('games.show.screenshot') }}'/>
+                                                         alt='{{ trans('games.show.screenshot') }}' title='{{ trans('app.screenshot') }}'/>
                                                 </div>
                                                 <div class="panel-footer">
-                                                    <a href="{{ route('screenshot.show', [$game->id, $i, 1]) }}">{{ trans('games.show.show_origsize') }}</a>
+                                                    <a href="{{ route('screenshot.show', [$game->id, $i, 1]) }}">{{ trans('app.show_original_size') }}</a>
                                                     @if(Auth::check())
                                                         ::
-                                                        <a href="{{ route('screenshot.create', [$game->id, $i]) }}">{{ trans('games.show.upload_screenshot') }}</a>
+                                                        <a href="{{ route('screenshot.create', [$game->id, $i]) }}">{{ trans('app.upload_titlescreen') }}</a>
                                                     @endif
                                                 </div>
                                             </div>

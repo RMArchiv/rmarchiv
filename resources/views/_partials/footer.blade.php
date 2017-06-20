@@ -4,13 +4,13 @@
             <a href="/">{{ config('app.name') }}</a> {{ config('app.version') }}.{{ App::getLocale() }} &copy; 2016-{{ date('Y', time()) }} by rmarchiv.de Team
         </li>
         <li>
-            {{ trans('_partials.footer.feedback') }} <a href="mailto:webmaster@rmarchiv.de">webmaster@rmarchiv.de</a>
+            {{ trans('app.feedback_for_features_or_bugs') }} <a href="mailto:webmaster@rmarchiv.de">webmaster@rmarchiv.de</a>
         </li>
         <li>
-            <a href="{{ url('/impressum') }}">{{ trans('_partials.footer.impressum') }}</a>
+            <a href="{{ url('/impressum') }}">{{ trans('app.imprint') }}</a>
         </li>
         <li>
-            <a href="{{ action('UserController@users_online') }}">{{ trans('_partials.footer.users_online') }} {{ \App\Helpers\DatabaseHelper::getOnlineUserCount()->online }}</a>
+            <a href="{{ action('UserController@users_online') }}">{{ trans('app.users_online') }}: {{ \App\Helpers\DatabaseHelper::getOnlineUserCount()->online }}</a>
         </li>
         @permission(('debug-data'))
         <li>

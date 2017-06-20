@@ -13,52 +13,52 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
-                <li><a href="{{ url('/') }}">{{ trans('index.title') }}</a></li>
-                <li><a href="{{ url('news') }}">{{ trans('news.title') }}</a></li>
-                <li><a href="{{ url('games') }}">{{ trans('games.title') }}</a></li>
-                <li><a href="{{ url('resources') }}">{{ trans('resources.title') }}</a></li>
-                <li><a href="{{ url('developer') }}">{{ trans('developer.title') }}</a></li>
-                <li><a href="{{ url('makers') }}">{{ trans('maker.title') }}</a></li>
-                <li><a href="{{ url('awards') }}">{{ trans('awards.title') }}</a></li>
-                <li><a href="{{ url('users') }}">{{ trans('user.title') }}</a></li>
-                <li><a href="{{ url('search') }}">{{ trans('search.title') }}</a></li>
-                <li><a href="{{ url('board') }}">{{ trans('board.title') }}</a></li>
-                <li><a href="{{ url('faq') }}">{{ trans('faq.title') }}</a></li>
+                <li><a href="{{ url('/') }}">{{ trans('app.home') }}</a></li>
+                <li><a href="{{ url('news') }}">{{ trans('app.news') }}</a></li>
+                <li><a href="{{ url('games') }}">{{ trans('app.games') }}</a></li>
+                <li><a href="{{ url('resources') }}">{{ trans('app.resources') }}</a></li>
+                <li><a href="{{ url('developer') }}">{{ trans('app.developers') }}</a></li>
+                <li><a href="{{ url('makers') }}">{{ trans('app.makers') }}</a></li>
+                <li><a href="{{ url('awards') }}">{{ trans('app.awards') }}</a></li>
+                <li><a href="{{ url('users') }}">{{ trans('app.users') }}</a></li>
+                <li><a href="{{ url('search') }}">{{ trans('app.search') }}</a></li>
+                <li><a href="{{ url('board') }}">{{ trans('app.board') }}</a></li>
+                <li><a href="{{ url('faq') }}">{{ trans('app.faq') }}</a></li>
                 @if(Auth::check())
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
                        data-vivaldi-spatnav-clickable="1">
-                        {{ trans('submit.title') }} <span class="caret"></span>
+                        {{ trans('app.submit_content') }} <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href='{{ url('games/create') }}'>einsenden eines spiels</a></li>
-                        <li><a href='{{ url('resources/create') }}'>einsenden von ressourcen</a></li>
-                        <li><a href='{{ url('news/create') }}'>einsenden von news</a></li>
-                        <li><a href='{{ url('submit/logo') }}'>upload eines logos</a></li>
-                        <li><a href='{{ url('logo/vote') }}'>bewerte logos</a></li>
+                        <li><a href='{{ url('games/create') }}'>{{ trans('app.submit_game') }}</a></li>
+                        <li><a href='{{ url('resources/create') }}'>{{ trans('app.submit_resource') }}</a></li>
+                        <li><a href='{{ url('news/create') }}'>{{ trans('app.submit_news') }}</a></li>
+                        <li><a href='{{ url('submit/logo') }}'>{{ trans('app.submit_logo') }}</a></li>
+                        <li><a href='{{ url('logo/vote') }}'>{{ trans('app.rate_logos') }}</a></li>
                         <li class="divider"></li>
-                        <li><a href='{{ url('missing/gamescreens') }}'>fehlende spielescreenshots</a></li>
-                        <li><a href='{{ url('missing/gamefiles') }}'>fehlende spieledateien</a></li>
-                        <li><a href='{{ url('missing/gamedesc') }}'>fehlende spielebeschreibungen</a></li>
-                        <li><a href='{{ url('missing/notags') }}'>ohne tags</a></li>
+                        <li><a href='{{ url('missing/gamescreens') }}'>{{ trans('app.missing_screenshots') }}</a></li>
+                        <li><a href='{{ url('missing/gamefiles') }}'>{{ trans('app.missing_gamefiles') }}</a></li>
+                        <li><a href='{{ url('missing/gamedesc') }}'>{{ trans('app.missing_gamedescriptions') }}</a></li>
+                        <li><a href='{{ url('missing/notags') }}'>{{ trans('app.games_without_tags') }}</a></li>
                         <div class="divider"></div>
                         @permission(('admin-user'))
-                        <li><a href="{{ url('users/perm/role') }}">benutzerberechtigungen</a></li>
+                        <li><a href="{{ url('users/perm/role') }}">{{ trans('app.user_permissions') }}</a></li>
                         @endpermission
                         @permission(('admin-board'))
-                        <li><a href="{{ url('board/create') }}">board kategorie hinzufügen</a></li>
+                        <li><a href="{{ url('board/create') }}">{{ trans('app.add_board_category') }}</a></li>
                         @endpermission
                         @permission(('admin-cdc'))
-                        <li><a href="{{ url('cdc/create') }}">'coup de coeur' hinzufügen</a></li>
+                        <li><a href="{{ url('cdc/create') }}">{{ trans('app.add_coupdecoeur') }}</a></li>
                         @endpermission
                         @permission(('create-faq'))
-                        <li><a href="{{ url('faq/create') }}">faq hinzufügen</a></li>
+                        <li><a href="{{ url('faq/create') }}">{{ trans('app.add_faq') }}</a></li>
                         @endpermission
                         @permission(('create-awards'))
-                        <li><a href="{{ url('awards/create') }}">award-kategorie hinzufügen</a></li>
+                        <li><a href="{{ url('awards/create') }}">{{ trans('app.add_faq_category') }}</a></li>
                         @endpermission
                         @permission(('admin-comments'))
-                        <li><a href="{{ url('reported/comments') }}">gemeldete kommentare</a></li>
+                        <li><a href="{{ url('reported/comments') }}">{{ trans('app.reported_comments') }}</a></li>
                         @endpermission
                     </ul>
                 </li>
@@ -89,7 +89,7 @@
                         templates: {
                             empty: [
                                 '<div class="empty-message">',
-                                '{{ trans('index.search.not_found') }}',
+                                '{{ trans('app.search_nothing_found') }}',
                                 '</div>'
                             ].join('\n'),
                             suggestion: function(data) {
@@ -115,23 +115,23 @@
                             @endif
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ action('MessagesController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('index.pm.unreaded') }} <span class="badge">{{\Auth::user()->newThreadsCount()}}</span></a></li>
-                            <li><a href="{{ action('MessagesController@create') }}" data-vivaldi-spatnav-clickable="1">{{ trans('index.pm.new_pm') }}</a></li>
+                            <li><a href="{{ action('MessagesController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.unreaded_pms') }} <span class="badge">{{\Auth::user()->newThreadsCount()}}</span></a></li>
+                            <li><a href="{{ action('MessagesController@create') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.create_new_pm') }}</a></li>
                             <li class="divider"></li>
                             <li>
-                                <a href="{{ action('SavegameManagerController@index') }}" data-vivaldi-spatnav-clickable="1">Savegame Manager</a>
+                                <a href="{{ action('SavegameManagerController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.savegame_manager') }}</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="{{ action('UserSettingsController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('index.logout.settings') }}</a></li>
+                            <li><a href="{{ action('UserSettingsController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.user_settings') }}</a></li>
                             <li class="divider"></li>
-                            <li><a href="{{ action('Auth\LoginController@logout') }}" data-vivaldi-spatnav-clickable="1">{{ trans('index.logout.logout') }}</a></li>
+                            <li><a href="{{ action('Auth\LoginController@logout') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.logout') }}</a></li>
                         </ul>
                     </li>
                 </ul>
             @else
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ action('Auth\LoginController@showLoginForm') }}">{{ trans('index.login.login') }}</a></li>
-                    <li><a href="{{ action('Auth\RegisterController@showRegistrationForm') }}">{{ trans('index.login.register') }}</a></li>
+                    <li><a href="{{ action('Auth\LoginController@showLoginForm') }}">{{ trans('app.login') }}</a></li>
+                    <li><a href="{{ action('Auth\RegisterController@showRegistrationForm') }}">{{ trans('app.register') }}</a></li>
                 </ul>
             @endif
         </div>

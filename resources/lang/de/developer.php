@@ -1,18 +1,18 @@
 <?php
+/*************************************************************************
+ Generated via "php artisan localization:missing" at 2017/06/19 23:05:03 
+*************************************************************************/
 
-/*
- * rmarchiv.de
- * (c) 2016-2017 by Marcel 'ryg' Hering
- */
-
-return [
-    'title' => 'Entwickler',
-    'index' => [
-        'title'     => 'Alle Entwickler',
-        'developer' => 'Entwickler',
-        'games'     => 'Spiele',
-    ],
-    'show'  => [
-        'title' => 'Entwicklerprofil',
-    ],
-];
+return array (
+  //==================================== Translations ====================================//
+  'index' => 
+  array (
+    'developer' => 'Entwickler',
+    'games' => 'Spiele',
+    'title' => 'Alle Entwickler',
+  ),
+  'show' => 
+  array (
+    'title' => 'Entwicklerprofil',
+  ),
+);

@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('pagetitle', trans('auth.login'))
+@section('pagetitle', trans('app.login'))
 @section('content')
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>{{ trans('auth.login') }}</h1>
+                <h1>{{ trans('app.login') }}</h1>
                 {!! Breadcrumbs::render('login') !!}
             </div>
         </div>
@@ -32,30 +32,30 @@
                             {{ trans('auth.login') }}
                         </legend>
                         <div class="form-group">
-                            <label for="email" class="col-lg-2 control-label">{{trans('auth.email')}}</label>
+                            <label for="email" class="col-lg-2 control-label">{{trans('app.email_address')}}</label>
                             <div class="col-lg-10">
                                 <input type="text" class="form-control" id="email" name="email" placeholder="e.mail@mail.com">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="password" class="col-lg-2 control-label">{{trans('auth.password')}}</label>
+                            <label for="password" class="col-lg-2 control-label">{{trans('app.password')}}</label>
                             <div class="col-lg-10">
                                 <input type="password" class="form-control" id="password" name="password">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="remember"> {{ trans('auth.remember_me') }}
+                                        <input type="checkbox" name="remember"> {{ trans('app.remember_login') }}
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">{{ trans('auth.login') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ trans('app.login') }}</button>
                             <div class="pull-right">
                                 <a href="{{ url('/password/reset') }}">
-                                    {{ trans('auth.password_reset') }}
+                                    {{ trans('app.password_reset') }}
                                 </a>
                                 -
-                                <a href='{{ url('register') }}'>{{ trans('auth.register') }}</a>
+                                <a href='{{ url('register') }}'>{{ trans('app.register') }}</a>
                             </div>
                         </div>
                     </fieldset>

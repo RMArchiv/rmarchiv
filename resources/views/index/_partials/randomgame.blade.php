@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
-            <div class="panel-heading">{{ trans('index.randomgame.title') }}</div>
+            <div class="panel-heading">{{ trans('app.random_game') }}</div>
             <div class="panel-body">
                 <img width="100%" src="{{ route('screenshot.show', [$randomgame->id, 1]) }}"/>
             </div>

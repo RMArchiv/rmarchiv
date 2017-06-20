@@ -6,17 +6,4 @@
 return array(
     //==================================== Translations ====================================//
     'title'        => 'Maker',
-    //================================== Obsolete strings ==================================//
-    'LLH:obsolete' =>
-        array(
-            'index' =>
-                array(
-                    'games' => 'Spiele',
-                    'maker' => 'Maker',
-                ),
-            'show'  =>
-                array(
-                    'gamesfor' => 'Spiele für',
-                ),
-        ),
 );

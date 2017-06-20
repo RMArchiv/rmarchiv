@@ -13453,6 +13453,283 @@ namespace Intervention\Image\Facades {
     }         
 }
     
+namespace Potsky\LaravelLocalizationHelpers\Facade {
+
+    class LocalizationHelpers {
+        
+        /**
+         * Get the current used message bag for facades essentially
+         *
+         * @return \Potsky\LaravelLocalizationHelpers\Factory\MessageBagInterface 
+         * @static 
+         */
+        public static function getMessageBag()
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::getMessageBag();
+        }
+        
+        /**
+         * Get the lang directory path
+         *
+         * @param $lang_folder_path
+         * @return string the path
+         * @throws \Potsky\LaravelLocalizationHelpers\Factory\Exception
+         * @static 
+         */
+        public static function getLangPath($lang_folder_path = null)
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::getLangPath($lang_folder_path);
+        }
+        
+        /**
+         * Return an absolute path without predefined variables
+         *
+         * @param string|array $path the relative path
+         * @return array the absolute path
+         * @static 
+         */
+        public static function getPath($path)
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::getPath($path);
+        }
+        
+        /**
+         * Return an relative path to the laravel directory
+         *
+         * @param string $path the absolute path
+         * @return string the relative path
+         * @static 
+         */
+        public static function getShortPath($path)
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::getShortPath($path);
+        }
+        
+        /**
+         * Return an iterator of files with specific extension in the provided paths and subpaths
+         *
+         * @param string $path a source path
+         * @param string $ext
+         * @return array a list of file paths
+         * @static 
+         */
+        public static function getFilesWithExtension($path, $ext = 'php')
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::getFilesWithExtension($path, $ext);
+        }
+        
+        /**
+         * Extract all translations from the provided file
+         * 
+         * Remove all translations containing :
+         * - $  -> auto-generated translation cannot be supported
+         * - :: -> package translations are not taken in account
+         *
+         * @param string $path the file path
+         * @param array $trans_methods an array of regex to catch
+         * @return array an array dot of found translations
+         * @static 
+         */
+        public static function extractTranslationFromPhpFile($path, $trans_methods)
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::extractTranslationFromPhpFile($path, $trans_methods);
+        }
+        
+        /**
+         * Extract all translations from the provided folders
+         *
+         * @param array $folders a list of folder to search in
+         * @param array $trans_methods an array of regex to catch
+         * @param string $php_file_extension default is php
+         * @return array 
+         * @static 
+         */
+        public static function extractTranslationsFromFolders($folders, $trans_methods, $php_file_extension = 'php')
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::extractTranslationsFromFolders($folders, $trans_methods, $php_file_extension);
+        }
+        
+        /**
+         * 
+         *
+         * @param array $lemmas an array of lemma
+         *                       eg: [ 'message.lemma.child' => string(83)
+         *                       "/Users/potsky/WTF/laravel-localization-helpers/tests/mock/trans.php" , ... ]
+         * @param string $dot_notation_split_regex
+         * @param int $level
+         * @return array a structured array of lemma
+         *               eg: array(1) {
+         *                        'message' =>
+         *                            array(2) {
+         *                            'lemma' =>
+         *                                 array(9) {
+         *                                    'child' => string(83)
+         *                                    "/Users/potsky/Work/Private/GitHub/laravel-localization-helpers/tests/mock/trans.php"
+         *                        ...
+         * @static 
+         */
+        public static function convertLemmaToStructuredArray($lemmas, $dot_notation_split_regex, $level = -1)
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::convertLemmaToStructuredArray($lemmas, $dot_notation_split_regex, $level);
+        }
+        
+        /**
+         * 
+         *
+         * @param array $lemmas an array of lemma
+         *                       eg: [ 'message.lemma.child' => string(83)
+         *                       "/Users/potsky/WTF/laravel-localization-helpers/tests/mock/trans.php" , ... ]
+         * @return array a flat array of lemma
+         *               eg: array(1) {
+         *                        'message' =>
+         *                            array(2) {
+         *                            'lemma.child' => string(83)
+         *                            "/Users/potsky/Work/Private/GitHub/laravel-localization-helpers/tests/mock/trans.php"
+         *                        ...
+         * @static 
+         */
+        public static function convertLemmaToFlatArray($lemmas)
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::convertLemmaToFlatArray($lemmas);
+        }
+        
+        /**
+         * 
+         *
+         * @param int $offsetDay the count of days to subtract to the current time
+         * @return bool|string current date
+         * @static 
+         */
+        public static function getBackupDate($offsetDay = 0)
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::getBackupDate($offsetDay);
+        }
+        
+        /**
+         * Return all lang backup files
+         *
+         * @param string $lang_directory the lang directory
+         * @param string $ext
+         * @return array 
+         * @static 
+         */
+        public static function getBackupFiles($lang_directory, $ext = 'php')
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::getBackupFiles($lang_directory, $ext);
+        }
+        
+        /**
+         * Delete backup files
+         *
+         * @param string $lang_folder_path
+         * @param int $days
+         * @param bool|false $dryRun
+         * @param string $ext
+         * @return bool 
+         * @static 
+         */
+        public static function deleteBackupFiles($lang_folder_path, $days = 0, $dryRun = false, $ext = 'php')
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::deleteBackupFiles($lang_folder_path, $days, $dryRun, $ext);
+        }
+        
+        /**
+         * 
+         *
+         * @param \DateTime $date
+         * @param int $days
+         * @return bool 
+         * @static 
+         */
+        public static function isDateOlderThanDays($date, $days)
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::isDateOlderThanDays($date, $days);
+        }
+        
+        /**
+         * Get the list of PHP code files where a lemma is defined
+         *
+         * @param string $lemma A lemma to search for or a regex to search for
+         * @param array $folders An array of folder to search for lemma in
+         * @param array $trans_methods An array of PHP lang functions
+         * @param bool|false $regex Is lemma a regex ?
+         * @param bool|false $shortOutput Output style for file paths
+         * @param string $ext
+         * @return array|false 
+         * @static 
+         */
+        public static function findLemma($lemma, $folders, $trans_methods, $regex = false, $shortOutput = false, $ext = 'php')
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::findLemma($lemma, $folders, $trans_methods, $regex, $shortOutput, $ext);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $word
+         * @param string $to
+         * @param null $from
+         * @return mixed 
+         * @static 
+         */
+        public static function translate($word, $to, $from = null)
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::translate($word, $to, $from);
+        }
+        
+        /**
+         * Fix Code Style for a file or a directory
+         *
+         * @throws \Exception
+         * @throws \Potsky\LaravelLocalizationHelpers\Factory\Exception
+         * @static 
+         */
+        public static function fixCodeStyle($filePath, $fixers, $level = null)
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::fixCodeStyle($filePath, $fixers, $level);
+        }
+        
+        /**
+         * Tell if the provided fixer is a valid fixer
+         *
+         * @param string $fixer
+         * @return bool 
+         * @static 
+         */
+        public static function isAFixer($fixer)
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::isAFixer($fixer);
+        }
+        
+        /**
+         * Tell if the provided level is a valid level
+         *
+         * @param string $level
+         * @return bool 
+         * @static 
+         */
+        public static function isALevel($level)
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::isALevel($level);
+        }
+        
+        /**
+         * Get the backup file path according to the current file path
+         *
+         * @param string $file_lang_path
+         * @param string $date
+         * @param string $ext
+         * @return mixed 
+         * @static 
+         */
+        public static function getBackupPath($file_lang_path, $date, $ext = 'php')
+        {
+            return \Potsky\LaravelLocalizationHelpers\Factory\Localization::getBackupPath($file_lang_path, $date, $ext);
+        }
+        
+    }         
+}
+    
 namespace GrahamCampbell\Markdown\Facades {
 
     class Markdown {
@@ -17669,6 +17946,8 @@ namespace {
     class Honeypot extends \Msurguy\Honeypot\HoneypotFacade {}
     
     class Image extends \Intervention\Image\Facades\Image {}
+    
+    class LocalizationHelpers extends \Potsky\LaravelLocalizationHelpers\Facade\LocalizationHelpers {}
     
     class Markdown extends \GrahamCampbell\Markdown\Facades\Markdown {}
     
