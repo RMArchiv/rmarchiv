@@ -110,7 +110,7 @@
                         </div>
                         <div class="form-group">
                             <select name="releasedate_year" id="releasedate_year" class="form-control">
-                                <option value="0">{{trans('app.release_date.year')}}</option>
+                                <option value="0">{{trans('app.release_date_year')}}</option>
                                 @for($i = 1990; $i < date("Y") + 1; $i++)
                                     <option value="{{ $i }}"
                                             @if($reldate->year == $i and $reldate->year != -1)

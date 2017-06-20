@@ -1,19 +1,16 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2017/06/19 23:33:56 
+ * Generated via "php artisan localization:missing" at 2017/06/20 09:54:19
 *************************************************************************/
 
-return array (
+return array(
   //==================================== Translations ====================================//
-  '_partials' => 
-  array (
-    'nav' => 
-    array (
+    '_partials' => array(
+        'nav' => array(
       'add' => 'Award hinzufügen',
     ),
   ),
-  'create' => 
-  array (
+    'create'    => array(
     'add_award_cat' => 'Add Awardcategorie',
     'add_website' => 'Create Awardwebsite',
     'addaward' => 'Create Award',
@@ -33,8 +30,7 @@ return array (
     'website_notfound' => 'The website does not exist',
     'website_url' => 'Website URL',
   ),
-  'gameadd' => 
-  array (
+    'gameadd'   => array(
     'desc' => 'Beschreibung',
     'game_notfound' => 'Das Spiel konnte nicht gefunden werden.',
     'gametitle' => 'Spielname',
@@ -42,29 +38,9 @@ return array (
     'send' => 'Senden',
     'title' => 'Spiel zu Award hinzufügen',
   ),
-  'show' => 
-  array (
+    'show'      => array(
     'addgame' => 'Spiel zu Award hinzufügen',
     'place' => 'Platz',
   ),
   'title' => 'Awards',
-  //================================== Obsolete strings ==================================//
-  'LLH:obsolete' => 
-  array (
-    '_partials' => 
-    array (
-      'nav' => 
-      array (
-        'overview' => 'Award Übersicht',
-      ),
-    ),
-    'create' => 
-    array (
-      'website' => 'Website title',
-      'year' => 'Year',
-    ),
-    'index' => 
-    array (
-    ),
-  ),
 );

@@ -7,7 +7,7 @@
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 @if ($errors->has('email'))
                     <div class="rmarchivtbl errorbox">
-                        <h2>{{ trans('app.auth.login_failed') }}</h2>
+                        <h2>{{ trans('app.login_failed') }}</h2>
                         <div class="content">
                             <strong>{{ $errors->first('email') }}</strong>
                         </div>
@@ -16,7 +16,7 @@
 
                 @if ($errors->has('password'))
                     <div class="rmarchivtbl errorbox">
-                        <h2>{{ trans('app.auth.login_failed') }}</h2>
+                        <h2>{{ trans('app.login_failed') }}</h2>
                         <div class="content">
                             <strong>{{ $errors->first('password') }}</strong>
                         </div>

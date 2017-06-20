@@ -1,22 +1,19 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2017/06/19 23:33:56 
+ * Generated via "php artisan localization:missing" at 2017/06/20 09:54:19
 *************************************************************************/
 
-return array (
+return array(
   //==================================== Translations ====================================//
-  '_partials' => 
-  array (
-    'nav' => 
-    array (
+    '_partials' => array(
+        'nav' => array(
       'gfx' => 'grafik',
       'scripts' => 'scripte',
       'sfx' => 'audio',
       'tools' => 'tools',
     ),
   ),
-  'create' => 
-  array (
+    'create'    => array(
     'archive' => 'archiv (zip/rar)',
     'audio' => 'audio',
     'autotiles' => 'autotiles',
@@ -64,10 +61,8 @@ return array (
     'url' => 'link',
     'video' => 'video',
   ),
-  'gfx' => 
-  array (
-    'index' => 
-    array (
+    'gfx'       => array(
+        'index'     => array(
       'avg' => 'avg',
       'by' => 'von',
       'category' => 'kategorie',
@@ -81,13 +76,11 @@ return array (
       'votedown' => 'ist scheiße',
       'voteup' => 'ist super',
     ),
-    'index_cat' => 
-    array (
+        'index_cat' => array(
       'title' => 'grafik',
     ),
   ),
-  'index' => 
-  array (
+    'index'     => array(
     'avg' => 'avg',
     'by' => 'von',
     'category' => 'kategorie',
@@ -102,10 +95,8 @@ return array (
     'voteneut' => 'geht so...',
     'voteup' => 'ist super',
   ),
-  'scripts' => 
-  array (
-    'index' => 
-    array (
+    'scripts'   => array(
+        'index'     => array(
       'avg' => 'avg',
       'by' => 'von',
       'category' => 'kategorie',
@@ -118,15 +109,12 @@ return array (
       'votedown' => 'ist scheiße',
       'voteup' => 'ist super',
     ),
-    'index_cat' => 
-    array (
+        'index_cat' => array(
       'title' => 'scripte',
     ),
   ),
-  'sfx' => 
-  array (
-    'index' => 
-    array (
+    'sfx'       => array(
+        'index'     => array(
       'avg' => 'avg',
       'by' => 'von',
       'category' => 'kategorie',
@@ -140,13 +128,11 @@ return array (
       'votedown' => 'ist scheiße',
       'voteup' => 'ist super',
     ),
-    'index_cat' => 
-    array (
+        'index_cat' => array(
       'title' => 'audio',
     ),
   ),
-  'show' => 
-  array (
+    'show'      => array(
     'add_comment' => 'kommentar hinzufügen',
     'added' => 'hinzugefügt',
     'alltimetop' => 'alltime top',
@@ -175,10 +161,8 @@ return array (
     'voteneut' => 'ost ok...',
     'voteup' => 'ist super',
   ),
-  'tools' => 
-  array (
-    'index' => 
-    array (
+    'tools'     => array(
+        'index' => array(
       'avg' => 'avg',
       'by' => 'von',
       'category' => 'kategorie',
@@ -191,48 +175,6 @@ return array (
       'type' => 'typ',
       'votedown' => 'ist scheiße',
       'voteup' => 'ist super',
-    ),
-  ),
-  //================================== Obsolete strings ==================================//
-  'LLH:obsolete' => 
-  array (
-    'gfx' => 
-    array (
-      'index' => 
-      array (
-        'voteneut' => 'geht so...',
-      ),
-    ),
-    'scripts' => 
-    array (
-      'index' => 
-      array (
-        'title' => 'scriptübersicht (die neuesten 20)',
-        'voteneut' => 'geht so...',
-      ),
-    ),
-    'sfx' => 
-    array (
-      'index' => 
-      array (
-        'voteneut' => 'geht so...',
-      ),
-    ),
-    'show' => 
-    array (
-      'vote_neut' => 'wer weiß...',
-    ),
-    'title' => 'Resources',
-    'tools' => 
-    array (
-      'index' => 
-      array (
-        'voteneut' => 'geht so...',
-      ),
-      'index_cat' => 
-      array (
-        'title' => 'tools',
-      ),
     ),
   ),
 );

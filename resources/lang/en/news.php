@@ -1,28 +1,25 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2017/06/19 23:33:56 
+ * Generated via "php artisan localization:missing" at 2017/06/20 09:54:19
 *************************************************************************/
 
-return array (
+return array(
   //==================================== Translations ====================================//
-  'create' => 
-  array (
+    'create' => array(
     'category' => 'Category',
     'error' => 'News konnte nicht erstellt werden',
     'news_title' => 'Newstitle',
     'send' => 'Submit',
     'title' => 'Add News',
   ),
-  'edit' => 
-  array (
+    'edit'   => array(
     'category' => 'Category',
     'error' => 'News konnte nicht bearbeitet werden.',
     'news_title' => 'Newstitle',
     'send' => 'Submit',
     'title' => 'Edit news',
   ),
-  'show' => 
-  array (
+    'show'   => array(
     'added' => 'TODO: added',
     'comment_rules' => 'Kommentarhinweise',
     'comment_tip1' => 'Poste keinen Spam. Spam ist böse. Spam lässt dich rausfliegen.',
@@ -43,27 +40,4 @@ return array (
     'voteup' => 'Ist Super',
   ),
   'title' => 'News',
-  //================================== Obsolete strings ==================================//
-  'LLH:obsolete' => 
-  array (
-    'index' => 
-    array (
-      'comments' => 'Kommentare',
-      'created_at' => 'erstellt am',
-      'news_title' => 'Newstitel',
-      'no_news' => 'Es sind nicht keine News vorhanden. Bitte sende doch welche ein.',
-      'user' => 'User',
-    ),
-    'show' => 
-    array (
-      'add_comment' => 'Kommentar hinzufügen',
-      'approve' => 'Genehmigen',
-      'by' => 'von',
-      'created_at' => 'Hinzugefügt am',
-      'delete' => 'Löschen',
-      'disapprove' => 'Ablehnen',
-      'edit' => 'Bearbeiten',
-      'no_id' => 'Nein. Diese News existiert nicht. Sorry.',
-    ),
-  ),
 );

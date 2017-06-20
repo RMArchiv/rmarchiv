@@ -19,6 +19,7 @@ return array(
     'folders'                  => array(
         '%BASE/resources/views',
         '%APP/Http/Controllers',
+        '%BASE/routes',
     ),
 
 
@@ -118,6 +119,7 @@ return array(
     'never_obsolete_keys'      => array(
         'dynamic',
         'fields',
+        'month',
     ),
 
 
@@ -269,7 +271,7 @@ return array(
     | If both parameters are empty, no Code Style will be applied
     */
     'code_style'               => array(
-        'level'  => null,
+        'level'  => 'symfony',
         'fixers' => array(),
     ),
 

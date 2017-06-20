@@ -1,18 +1,16 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2017/06/19 23:05:03 
+ * Generated via "php artisan localization:missing" at 2017/06/20 10:00:39
 *************************************************************************/
 
-return array (
+return array(
   //==================================== Translations ====================================//
-  'index' => 
-  array (
+    'index' => array(
     'developer' => 'Entwickler',
     'games' => 'Spiele',
     'title' => 'Alle Entwickler',
   ),
-  'show' => 
-  array (
+    'show'  => array(
     'title' => 'Entwicklerprofil',
   ),
 );

@@ -1,23 +1,16 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2017/06/19 23:33:56 
+ * Generated via "php artisan localization:missing" at 2017/06/20 10:00:39
 *************************************************************************/
 
-return array (
+return array(
   //==================================== Translations ====================================//
-  'index' => 
-  array (
+    'index' => array(
     'developer' => 'Developer',
     'games' => 'Games',
     'title' => 'Developer overview',
   ),
-  'show' => 
-  array (
+    'show'  => array(
     'title' => 'Developerprofile',
-  ),
-  //================================== Obsolete strings ==================================//
-  'LLH:obsolete' => 
-  array (
-    'title' => 'Developer',
   ),
 );

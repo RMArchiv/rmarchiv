@@ -1,12 +1,11 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2017/06/19 23:33:56 
+ * Generated via "php artisan localization:missing" at 2017/06/20 09:54:19
 *************************************************************************/
 
-return array (
+return array(
   //==================================== Translations ====================================//
-  'index' => 
-  array (
+    'index' => array(
     'attachments' => 'Postanhänge',
     'avgsize' => 'Durchschnittsgröße',
     'category' => 'Kategorie',
@@ -24,10 +23,5 @@ return array (
     'screenshots' => 'Screenshots',
     'sum' => 'Summe',
     'sumsize' => 'Gesamtgröße',
-  ),
-  //================================== Obsolete strings ==================================//
-  'LLH:obsolete' => 
-  array (
-    'title' => 'Seitenstatistiken',
   ),
 );

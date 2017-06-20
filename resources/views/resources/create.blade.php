@@ -150,7 +150,7 @@
                                     </div>
                                 @else
                                     <div class="row" id="row_file">
-                                        <label for="fine-uploader">{{trans('app.misc.upload_file')}}:</label>
+                                        <label for="fine-uploader">{{trans('app.upload_file')}}:</label>
                                         <div id="fine-uploader"></div>
                                         <span>[<span class="req">req</span>]</span>
                                     </div>

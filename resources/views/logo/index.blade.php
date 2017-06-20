@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('pagetitle', 'logos bewerten')
+@section('pagetitle', trans('app.rate_logos'))
 @section('content')
     <div id="content">
         <div class="rmarchivtbl">
             @if(count($logo) > 0)
-            <h2>logo bewerten</h2>
+                <h2>{{ trans('app.rate_logos') }}</h2>
             <div class="content">
-                bewerte folgendes logo:<br>
+                {{ trans('app.please_rate_this_logo') }}<br>
                 <br>
                 <img src="{{ asset($logo->filename) }}">
                 <br>
@@ -14,18 +14,18 @@
                 <br>
                 {!! Form::open(['action' => ['LogoController@vote_add', $logo->id]]) !!}
                     {!! Form::hidden('value', '0') !!}
-                    {!! Form::submit('Schlecht') !!}
+                {!! Form::submit(trans('app.rate_down')) !!}
                 {!! Form::close() !!}
 
                 {!! Form::open(['action' => ['LogoController@vote_add', $logo->id]]) !!}
                     {!! Form::hidden('value', '1') !!}
-                    {!! Form::submit('Gut') !!}
+                {!! Form::submit(trans('app.rate_up')) !!}
                 {!! Form::close() !!}
             </div>
             @else
-                <h2>keine bewertbaren logos</h2>
+                <h2>{{ trans('app.no_rateable_logos_available') }}</h2>
                 <div class="content">
-                    du hast schon alle logos bewertet. <br>füge neue hinzu oder warte bis dies ein anderer macht.
+                    {{ trans('app.you_already_rated_all_logos') }}
                 </div>
             @endif
         </div>
