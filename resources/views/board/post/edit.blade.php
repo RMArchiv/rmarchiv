@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('pagetitle', 'post bearbeiten')
+@section('pagetitle', trans('app.edit_post'))
 @section('content')
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>post bearbeiten</h1>
+                <h1>{{ trans('app.edit_post') }}</h1>
                 {!! Breadcrumbs::render('post.edit', \App\Models\BoardCat::whereId($post->cat_id)->first(), $post) !!}
             </div>
         </div>
@@ -18,7 +18,7 @@
 
                                     @if (count($errors) > 0))
                                     <div class="rmarchivtbl errorbox">
-                                        <h2>{{ trans('app.news.add.error.title') }}</h2>
+                                        <h2>{{ trans('app.edit_post_failed') }}</h2>
                                         <div class="content">
                                             @foreach ($errors->all() as $error)
                                                 <strong>{{ $error }}</strong>
@@ -32,7 +32,7 @@
 
                                         @include('_partials.markdown_editor', ['edit_text' => $post->content_md])
                                     <div class="foot">
-                                        <input type="submit" value="speichern">
+                                        <input type="submit" value="{{ trans('app.submit') }}">
                                     </div>
                             </form>
                         </div>
@@ -42,10 +42,10 @@
                 <div class="row">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Fehlende Berechtigung.
+                            {{ trans('app.your_permissions_are_to_low') }}
                         </div>
                         <div class="panel-body">
-                            Du hast keine Berechtigung diesen Post zu bearbeiten.
+                            {{ trans('app.your_permissions_are_to_low_to_post') }}
                         </div>
                     </div>
                 </div>
@@ -55,10 +55,10 @@
             <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Fehlende Berechtigung.
+                        {{ trans('app.your_permissions_are_to_low') }}
                     </div>
                     <div class="panel-body">
-                        Du hast keine Berechtigung diesen Post zu bearbeiten.
+                        {{ trans('app.your_permissions_are_to_low_to_post') }}
                     </div>
                 </div>
             </div>

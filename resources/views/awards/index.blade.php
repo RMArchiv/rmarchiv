@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('pagetitle', trans('awards.title'))
+@section('pagetitle', trans('app.awards'))
 @section('content')
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>{{ trans('awards.title') }}
+                <h1>{{ trans('app.awards') }}
                     <div class="pull-right">
                         <a href="{{ route('awards.create') }}" role="button" class="btn btn-primary"><span class="fa fa-plus"></span></a>
                     </div>
@@ -28,7 +28,7 @@
                                 <a href="{{ action('AwardController@show', $aws->id) }}">{{ $aws->title }}</a>
                                 @if($aws->month <> 0)
                                     <span> • </span>
-                                    ({{ trans('_misc.month.'.$aws->month) }})
+                                    ({{ trans('app.month.'.$aws->month) }})
                                 @endif
                             </li>
                         @endforeach

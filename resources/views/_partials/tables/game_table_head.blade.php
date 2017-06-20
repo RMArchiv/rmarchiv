@@ -128,27 +128,27 @@
             @if($direction == 'asc')
                 @if(isset($id))
                     <a class="activated" href="{{ action($action, [$id, 'voteup', 'desc']) }}"><img
-                                src='/assets/rate_up.gif' alt='{{ trans('_partials.tables.game_table_head.rate_up') }}'/></a>
+                                src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/></a>
                 @else
                     <a class="activated" href="{{ action($action, ['voteup', 'desc']) }}"><img src='/assets/rate_up.gif'
-                                                                                               alt='{{ trans('_partials.tables.game_table_head.rate_up') }}'/></a>
+                                                                                               alt='{{ trans('app.rate_up') }}'/></a>
                 @endif
             @else
                 @if(isset($id))
                     <a class="activated reverse" href="{{ action($action, [$id, 'voteup', 'asc']) }}"><img
-                                src='/assets/rate_up.gif' alt='{{ trans('_partials.tables.game_table_head.rate_up') }}'/></a>
+                                src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/></a>
                 @else
                     <a class="activated reverse" href="{{ action($action, ['voteup', 'asc']) }}"><img
-                                src='/assets/rate_up.gif' alt='{{ trans('_partials.tables.game_table_head.rate_up') }}'/></a>
+                                src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/></a>
                 @endif
             @endif
         @else
             @if(isset($id))
                 <a class="" href="{{ action($action, [$id, 'voteup', 'asc']) }}"><img src='/assets/rate_up.gif'
-                                                                                      alt='{{ trans('_partials.tables.game_table_head.rate_up') }}'/></a>
+                                                                                      alt='{{ trans('app.rate_up') }}'/></a>
             @else
                 <a class="" href="{{ action($action, ['voteup', 'asc']) }}"><img src='/assets/rate_up.gif'
-                                                                                 alt='{{ trans('_partials.tables.game_table_head.rate_up') }}'/></a>
+                                                                                 alt='{{ trans('app.rate_up') }}'/></a>
             @endif
         @endif
             <span> • </span>
@@ -156,27 +156,27 @@
             @if($direction == 'asc')
                 @if(isset($id))
                     <a class="activated" href="{{ action($action, [$id, 'votedown', 'desc']) }}"><img
-                                src='/assets/rate_down.gif' alt='{{ trans('_partials.tables.game_table_head.rate_down') }}'/></a>
+                                src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/></a>
                 @else
                     <a class="activated" href="{{ action($action, ['votedown', 'desc']) }}"><img
-                                src='/assets/rate_down.gif' alt='{{ trans('_partials.tables.game_table_head.rate_down') }}'/></a>
+                                src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/></a>
                 @endif
             @else
                 @if(isset($id))
                     <a class="activated reverse" href="{{ action($action, [$id, 'votedown', 'asc']) }}"><img
-                                src='/assets/rate_down.gif' alt='{{ trans('_partials.tables.game_table_head.rate_down') }}'/></a>
+                                src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/></a>
                 @else
                     <a class="activated reverse" href="{{ action($action, ['votedown', 'asc']) }}"><img
-                                src='/assets/rate_down.gif' alt='{{ trans('_partials.tables.game_table_head.rate_down') }}'/></a>
+                                src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/></a>
                 @endif
             @endif
         @else
             @if(isset($id))
                 <a class="" href="{{ action($action, [$id, 'votedown', 'asc']) }}"><img src='/assets/rate_down.gif'
-                                                                                        alt='{{ trans('_partials.tables.game_table_head.rate_down') }}'/></a>
+                                                                                        alt='{{ trans('app.rate_down') }}'/></a>
             @else
                 <a class="" href="{{ action($action, ['votedown', 'asc']) }}"><img src='/assets/rate_down.gif'
-                                                                                   alt='{{ trans('_partials.tables.game_table_head.rate_down') }}'/></a>
+                                                                                   alt='{{ trans('app.rate_down') }}'/></a>
             @endif
         @endif
             <span> • </span>

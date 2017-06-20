@@ -29,7 +29,7 @@
                 <div class="form-horizontal">
                     <fieldset>
                         <legend>
-                            {{ trans('auth.login') }}
+                            {{ trans('app.login') }}
                         </legend>
                         <div class="form-group">
                             <label for="email" class="col-lg-2 control-label">{{trans('app.email_address')}}</label>
