@@ -1,35 +1,22 @@
 <?php
 /*************************************************************************
- * Generated via "php artisan localization:missing" at 2017/06/20 12:01:35
+ * Generated via "php artisan localization:missing" at 2017/06/20 12:39:05
 *************************************************************************/
 
 return array(
   //============================== New strings to translate ==============================//
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\awards\\create.blade.php
-    'add_award_category'                  => 'TODO: add_award_category',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\awards\\create.blade.php
-    'award_category'                      => 'TODO: award_category',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\awards\\create.blade.php
-    'award_category_title'                => 'TODO: award_category_title',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\awards\\create.blade.php
-    'award_month_optional'                => 'TODO: award_month_optional',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\awards\\create.blade.php
-    'award_not_found'                     => 'TODO: award_not_found',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\awards\\create.blade.php
-    'award_title'                         => 'TODO: award_title',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\awards\\create.blade.php
-    'award_website'                       => 'TODO: award_website',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\awards\\create.blade.php
-    'choose_award_category'               => 'TODO: choose_award_category',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\awards\\create.blade.php
-    'choose_award_website'                => 'TODO: choose_award_website',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\awards\\create.blade.php
-    'created_at_month'                    => 'TODO: created_at_month',
+    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\faq\\create.blade.php
+    'faq_cat_not_found'                   => 'FAQ Kategorie nicht gefunden',
+    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\faq\\create.blade.php
+    'faq_category'                        => 'FAQ Kategorie',
+    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\faq\\create.blade.php
+    'faq_question'                        => 'FAQ Frage',
   //==================================== Translations ====================================//
     '10_newest_board_posts'               => 'Die 10 neuesten Forenposts',
   'accessdenied' => 'Zugriff verweigert.',
-    'add_award'                           => 'TODO: add_award',
-    'add_award_website'                   => 'TODO: add_award_website',
+    'add_award'                           => 'Award hinzufügen',
+    'add_award_category'                  => 'Award Kategorie hinzufügen',
+    'add_award_website'                   => 'Award-Website hinzufügen',
   'add_board_category' => 'Forenkategorie hinzufügen',
     'add_comment'                         => 'Kommentar hinzufügen',
   'add_coupdecoeur' => 'Coup de Coeur hinzufügen',
@@ -38,13 +25,13 @@ return array(
   'add_faq' => 'FAQ hinzufügen',
   'add_faq_category' => 'FAQ Kategorie hinzufügen',
     'add_game'                            => 'Spiel hinzufügen',
-    'add_game_to_award'                   => 'TODO: add_game_to_award',
+    'add_game_to_award'                   => 'Spiel zu Award hinzufügen',
     'add_gamefile'                        => 'Spieledatei hinzufügen',
     'add_gamefiles'                       => 'Spieledateien hinzufügen',
     'add_logo'                            => 'Logo hinzufügen',
     'add_logo_failed'                     => 'Logo konnte nicht hinzugefügt werden',
-    'add_permission_role'                 => 'TODO: add_permission_role',
-    'add_permissions'                     => 'TODO: add_permissions',
+    'add_permission_role'                 => 'Berechtigungsrolle hinzufügen',
+    'add_permissions'                     => 'Berechtigung hinzufügen',
     'add_tag'                             => 'Tag hinzufügen',
     'added_tags'                          => 'Hinzugefügte Tags',
     'alltime_top'                         => 'Alltime Top',
@@ -52,6 +39,12 @@ return array(
     'atelier_id'                          => 'Atelier ID',
     'atelier_link'                        => 'RPG-Atelier Link',
     'avg'                                 => 'Avg.',
+    'award_category'                      => 'Award Kategorie',
+    'award_category_title'                => 'Awardkategorie Titel',
+    'award_month_optional'                => 'Award Monat ist optional',
+    'award_not_found'                     => 'Award nicht gefunden.',
+    'award_title'                         => 'Awardtitel',
+    'award_website'                       => 'Award-Website',
     'award_website_not_found'             => 'TODO: award_website_not_found',
   'awards' => 'Awards',
   'back_to_home' => 'Zurück zur <a href="/">Hauptseite</a>',
@@ -60,6 +53,8 @@ return array(
     'by'                                  => 'von',
     'cancel'                              => 'Abbrechen',
     'category'                            => 'Kategorie',
+    'choose_award_category'               => 'Wähle eine Award Kategorie',
+    'choose_award_website'                => 'Wähle eine Award Website',
     'choose_credits_type'                 => 'Bitte wähle einen Credit-Typ',
     'choose_language'                     => 'Bitte wähle eine Sprache',
     'choose_maker'                        => 'Bitte wähle einen Maker',
@@ -79,6 +74,7 @@ return array(
     'create_thread'                       => 'Thread erstellen',
     'create_userlist'                     => 'Benutzerliste erstellen',
     'created_at'                          => 'Erstellt am',
+    'created_at_month'                    => 'Erstellt im Monat',
     'credits_type'                        => 'Benutzercredit-Typ',
     'date'                                => 'Datum',
     'delete'                              => 'Löschen',
@@ -113,7 +109,7 @@ return array(
   'faq' => 'FAQ',
   'feedback_for_features_or_bugs' => 'Feedback für Features oder Bugs',
     'file'                                => 'Datei',
-    'game_not_found'                      => 'TODO: game_not_found',
+    'game_not_found'                      => 'Das Spiel wurde nicht gefunden.',
     'gamefile_list_and_add'               => 'Spieledateiliste/Hinzufügen',
     'gamefile_version'                    => 'Spieledatei Version',
     'gamefiles'                           => 'Spieledateien',
@@ -164,7 +160,7 @@ return array(
     'ok'                                  => 'OK',
   'password' => 'Passwort',
   'password_reset' => 'Passwort zurücksetzen',
-    'permission_show_roles'               => 'TODO: permission_show_roles',
+    'permission_show_roles'               => 'Berechtigungsrollen anzeigen',
     'place'                               => 'Platz',
     'play'                                => 'Spielen',
     'play_in_browser'                     => 'Im Browser spielen',
@@ -200,7 +196,7 @@ return array(
     'shoutbox'                            => 'Shoutbox',
     'show_original_size'                  => 'Zeige Originalgröße',
   'sorry_you_are_banned' => 'Sorry, du wurdest gebannt!',
-    'submit'                              => 'TODO: submit',
+    'submit'                              => 'Senden',
   'submit_content' => 'Inhalt einsenden',
   'submit_game' => 'Spiel einsenden',
   'submit_logo' => 'Logo einsenden',
@@ -212,7 +208,7 @@ return array(
     'tags'                                => 'Tags',
   'title' => 'Titel',
   'titlescreen' => 'Titelbild',
-    'toggle_navigation'                   => 'TODO: toggle_navigation',
+    'toggle_navigation'                   => 'Navigation umschalten',
     'topic'                               => 'Thema',
     'topic_title'                         => 'Thementitel',
   'trailer' => 'Trailer',

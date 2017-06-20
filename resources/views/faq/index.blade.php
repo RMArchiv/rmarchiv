@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('pagetitle', trans('faq.index.title'))
+@section('pagetitle', trans('app.faq'))
 @section('content')
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>{{ trans('faq.index.title') }}</h1>
+                <h1>{{ trans('app.faq') }}</h1>
                 {!! Breadcrumbs::render('faq') !!}
             </div>
         </div>
