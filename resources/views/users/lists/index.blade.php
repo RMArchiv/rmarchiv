@@ -1,15 +1,15 @@
 @extends('layouts.app')
-@section('pagetitle', 'benutzerlisten')
+@section('pagetitle', trans('app.userlists'))
 @section('content')
     <div id='content'>
-        <h2>Spiele</h2>
+        <h2>{{ trans('app.games') }}</h2>
         <table id='pouetbox_prodlist' class='boxtable pagedtable'>
             <thead>
             <tr class='sortable'>
-                <th>liste</th>
-                <th>spiele</th>
-                <th>erstellt</th>
-                <th>aktionen</th>
+                <th>{{ trans('app.list') }}</th>
+                <th>{{ trans('app.games') }}</th>
+                <th>{{ trans('app.created_at') }}</th>
+                <th>{{ trans('app.actions') }}</th>
             </tr>
             </thead>
 
@@ -27,10 +27,10 @@
                     <td>
                         @if(Auth::check())
                             @if(Auth::id() == $list->user_id)
-                                [<a href="#">löschen</a>]
+                                [<a href="#">{{ trans('app.delete') }}</a>]
                             @else
                                 @role(('admin'))
-                                    [<a href="#">löschen</a>]
+                                [<a href="#">{{ trans('app.delete') }}</a>]
                                 @endrole
                             @endif
                         @endif

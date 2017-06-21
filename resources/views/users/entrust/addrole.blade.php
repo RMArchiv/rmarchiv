@@ -4,7 +4,7 @@
     <div id="content">
         @if (count($errors) > 0)
             <div class="rmarchivtbl errorbox">
-                <h2>{{trans('app.games.gamefiles.title')}}</h2>
+                <h2>{{trans('app.add_permission_role')}}</h2>
                 <div class="content">
                     <ul>
                         @foreach ($errors->all() as $error)

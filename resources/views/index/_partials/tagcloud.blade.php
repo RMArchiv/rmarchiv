@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                {{ trans('index.tagcloud.title') }}
+                {{ trans('app.tag_cloud') }}
             </div>
             <div class="panel-body">
                 @php
@@ -40,7 +40,7 @@
                 {!!  $cloud->render() !!}
             </div>
             <div class="panel-footer">
-                <a href="{{ url('tags') }}">{{ trans('index.shoutbox.more') }}</a>
+                <a href="{{ url('tags') }}">{{ trans('app.more') }}...</a>
             </div>
         </div>
     </div>

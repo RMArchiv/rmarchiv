@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
-            <div class="panel-heading">{{ trans('index.board.title') }}</div>
+            <div class="panel-heading">{{ trans('app.10_newest_board_posts') }}</div>
             <table class='table table-stripped table-hover'>
                 @foreach($threads as $t)
                     <tr
@@ -39,7 +39,7 @@
                     </tr>
                 @endforeach
             </table>
-            <div class='panel-footer'><a href='{{ route('board.show') }}'>{{ trans('index.board.more') }}</a>...</div>
+            <div class='panel-footer'><a href='{{ route('board.show') }}'>{{ trans('app.more') }}</a>...</div>
         </div>
     </div>
 </div>

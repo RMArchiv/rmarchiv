@@ -1,24 +1,24 @@
 @extends('layouts.app')
-@section('pagetitle', 'Savegame Manager')
+@section('pagetitle', trans('app.savegame_manager'))
 @section('content')
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>savegame manager</h1>
+                <h1>{{ trans('app.savegame_manager') }}</h1>
                 {!! Breadcrumbs::render('savegamemanager.index') !!}
             </div>
         </div>
         <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    liste aller spiele mit savegame (neueste savegames zuerst)
+                    {{ trans('app.list_with_savegames_newest_on_top') }}
                 </div>
                 <ul class="list-group">
                     @foreach($games as $g)
                         <li class="list-group-item">
                             <div class="pull-right">
                                 <span class="badge">
-                                    {{ \App\Models\GamesSavegame::whereUserId(Auth::id())->where('gamefile_id', '=', $g->gamefile_id)->get()->count() }} savegames
+                                    {{ \App\Models\GamesSavegame::whereUserId(Auth::id())->where('gamefile_id', '=', $g->gamefile_id)->get()->count() }} {{ trans('app.savegames') }}
                                 </span>
                             </div>
                             <a href="{{ action('SavegameManagerController@show', [$g->gamefile->id]) }}">
@@ -39,7 +39,7 @@
                                 {{ $g->gamefile->release_version }}
                             </a>
 
-                            <span class="text-muted"> :: letzter spielstand {{ \Carbon\Carbon::parse($g->updated_at)->diffForHumans() }}</span>
+                            <span class="text-muted"> :: {{ trans('app.last_savegame') }} {{ \Carbon\Carbon::parse($g->updated_at)->diffForHumans() }}</span>
                         </li>
                     @endforeach
                 </ul>

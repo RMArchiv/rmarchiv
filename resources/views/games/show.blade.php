@@ -21,7 +21,7 @@
                                 @if(Auth::check())
                                     @if(Auth::user()->userlists)
                                         @php
-                                            $ul_data = "<a href='". url('lists/create') ."'>".trans('games.show.userlist_create') ."</a><br>";
+                                            $ul_data = "<a href='". url('lists/create') ."'>".trans('app.create_userlist') ."</a><br>";
                                             foreach (Auth::user()->userlists as $list){
                                                 $ul_data .= "<a href='". route('lists.add_game', [$list->id, $game->id]). "'>".$list->title."</a><br>";
                                             }
@@ -57,26 +57,26 @@
                                     <div class="panel-heading">
                                         <ul class="nav nav-pills">
                                             <li class="active">
-                                                <a data-toggle="pill" href="#tabs-1">{{ trans('games.show.titlescreen') }}</a>
+                                                <a data-toggle="pill" href="#tabs-1">{{ trans('app.titlescreen') }}</a>
                                             </li>
                                             <li>
-                                                <a data-toggle="pill" href="#tabs-2">{{ trans('games.show.screenshot') }} 1</a>
+                                                <a data-toggle="pill" href="#tabs-2">{{ trans('app.screenshot') }} 1</a>
                                             </li>
                                             <li>
-                                                <a data-toggle="pill" href="#tabs-3">{{ trans('games.show.screenshot') }} 2</a>
+                                                <a data-toggle="pill" href="#tabs-3">{{ trans('app.screenshot') }} 2</a>
                                             </li>
                                             <li>
-                                                <a data-toggle="pill" href="#tabs-4">{{ trans('games.show.screenshot') }} 3</a>
+                                                <a data-toggle="pill" href="#tabs-4">{{ trans('app.screenshot') }} 3</a>
                                             </li>
                                             <li>
-                                                <a data-toggle="pill" href="#tabs-5">{{ trans('games.show.screenshot') }} 4</a>
+                                                <a data-toggle="pill" href="#tabs-5">{{ trans('app.screenshot') }} 4</a>
                                             </li>
                                             <li>
-                                                <a data-toggle="pill" href="#tabs-6">{{ trans('games.show.screenshot') }} 5</a>
+                                                <a data-toggle="pill" href="#tabs-6">{{ trans('app.screenshot') }} 5</a>
                                             </li>
                                             @if($game->youtube)
                                                 <li>
-                                                    <a data-toggle="pill" href="#tabs-7">{{ trans('games.show.trailer') }}</a>
+                                                    <a data-toggle="pill" href="#tabs-7">{{ trans('app.trailer') }}</a>
                                                 </li>
                                             @endif
                                         </ul>
@@ -84,13 +84,13 @@
                                     <div class="tab-content">
                                         <div id="tabs-1" class="tab-pane fade in active">
                                             <div class="panel-body">
-                                                <img class="img-responsive center-block" src='{{ route('screenshot.show', [$game->id, 1]) }}' alt='{{ trans('games.show.titlescreen') }}' title='{{ trans('games.show.titlescreen') }}'/>
+                                                <img class="img-responsive center-block" src='{{ route('screenshot.show', [$game->id, 1]) }}' alt='{{ trans('app.titlescreen') }}' title='{{ trans('app.titlescreen') }}'/>
                                             </div>
                                             <div class="panel-footer">
-                                                <a href="{{ route('screenshot.show', [$game->id, 1, 1]) }}">{{ trans('games.show.show_origsize') }}</a>
+                                                <a href="{{ route('screenshot.show', [$game->id, 1, 1]) }}">{{ trans('app.show_original_size') }}</a>
                                                 @if(Auth::check())
                                                     ::
-                                                    <a href="{{ route('screenshot.create', [$game->id, 1]) }}">{{ trans('games.show.upload_titlescreen') }}</a>
+                                                    <a href="{{ route('screenshot.create', [$game->id, 1]) }}">{{ trans('app.upload_titlescreen') }}</a>
                                                 @endif
                                             </div>
                                         </div>
@@ -98,13 +98,13 @@
                                             <div id="tabs-{{ $i }}" class="tab-pane fade">
                                                 <div class="panel-body">
                                                     <img class="img-responsive center-block" src='{{ route('screenshot.show', [$game->id, $i]) }}'
-                                                         alt='{{ trans('games.show.screenshot') }}' title='{{ trans('games.show.screenshot') }}'/>
+                                                         alt='{{ trans('app.screenshot') }}' title='{{ trans('app.screenshot') }}'/>
                                                 </div>
                                                 <div class="panel-footer">
-                                                    <a href="{{ route('screenshot.show', [$game->id, $i, 1]) }}">{{ trans('games.show.show_origsize') }}</a>
+                                                    <a href="{{ route('screenshot.show', [$game->id, $i, 1]) }}">{{ trans('app.show_original_size') }}</a>
                                                     @if(Auth::check())
                                                         ::
-                                                        <a href="{{ route('screenshot.create', [$game->id, $i]) }}">{{ trans('games.show.upload_screenshot') }}</a>
+                                                        <a href="{{ route('screenshot.create', [$game->id, $i]) }}">{{ trans('app.upload_titlescreen') }}</a>
                                                     @endif
                                                 </div>
                                             </div>
@@ -120,7 +120,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="panel-footer">
-                                                    kann unter edit angepasst werden.
+                                                    {{ trans('app.editable_with_edit_button') }}
                                                 </div>
                                             </div>
 
@@ -136,26 +136,26 @@
                             <div class="col-md-6">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        informationen
+                                        {{ trans('app.informations') }}
                                     </div>
                                     <ul class="list-group">
                                         <li class="list-group-item">
-                                            {{ trans('games.show.maker') }} :
+                                            {{ trans('app.maker') }} :
                                             <a href="{{ route('maker.show', $game->maker->id) }}">
                                                 <span class="typei type_{{ $game->maker->short }}">{{ $game->maker->title }}</span> {{ $game->maker->title }}
                                             </a>
                                             </td>
                                         </li>
                                         <li class="list-group-item">
-                                            {{ trans('games.show.gametype') }} :
+                                            {{ trans('app.gametype') }} :
                                             @if(count($game->gamefiles) > 0)
                                                 <span class='typei type_{{ $game->gamefiles->first()->gamefiletype->short }}'>{{ $game->gamefiles->first()->gamefiletype->title }}</span> {{ $game->gamefiles->first()->gamefiletype->title }}
                                             @else
-                                                {{ trans('games.show.no_gamefile') }}
+                                                {{ trans('app.no_gamefile_available') }}
                                             @endif
                                         </li>
                                         <li class="list-group-item">
-                                            {{ trans('games.show.developer') }} :
+                                            {{ trans('app.developers') }} :
                                             @foreach($game->developers as $dev)
                                                 <a href="{{ url('developer',$dev->developer_id) }}">{{ $dev->developer->name }}</a>
                                                 @if($dev != $game->developers->last())
@@ -164,21 +164,21 @@
                                             @endforeach
                                         </li>
                                         <li class="list-group-item">
-                                            {{ trans('games.show.release_date') }} : {{ \App\Helpers\DatabaseHelper::getReleaseDateFromGameId($game->id) }}
+                                            {{ trans('app.release_date') }} : {{ \App\Helpers\DatabaseHelper::getReleaseDateFromGameId($game->id) }}
                                         </li>
                                         @if($game->website_url)
-                                            <li class="list-group-item">{{ trans('games.show.website') }} :
-                                                <a href="{{ $game->website_url }}" target="_blank">{{ trans('games.show.website_click') }}</a>
+                                            <li class="list-group-item">{{ trans('app.website') }} :
+                                                <a href="{{ $game->website_url }}" target="_blank">{{ trans('app.click_me') }}</a>
                                             </li>
                                         @endif
                                         @if($game->atelier_id)
                                             <li class="list-group-item">
-                                                {{ trans('games.show.atelier_link') }} :
-                                                <a href="http://www.rpg-atelier.net/index.php?site=showgame&gid={{ $game->atelier_id }}" target="_blank">{{ trans('games.show.website_click') }}</a>
+                                                {{ trans('app.atelier_link') }} :
+                                                <a href="http://www.rpg-atelier.net/index.php?site=showgame&gid={{ $game->atelier_id }}" target="_blank">{{ trans('app.click_me') }}</a>
                                             </li>
                                         @endif
                                         <li class="list-group-item">
-                                            hinzugefügt von: <a
+                                            {{ trans('app.submitted_by') }}: <a
                                                     href='{{ url('users', $game->user_id) }}' class='user'>{{ $game->user->name }}</a>
                                             <a href='{{ url('users', $game->user_id) }}' class='usera' title="{{ $game->user->name }}">
                                                 <img width="16px" src='http://ava.rmarchiv.de/?gender=male&id={{ $game->user_id }}'
@@ -186,7 +186,7 @@
                                             </a>
                                         </li>
                                         <li class="list-group-item">
-                                            hinzugefügt
+                                            {{ trans('app.submitted_at') }}
                                             <time datetime='{{ $game->created_at }}' title='{{ $game->created_at }}'>{{ \Carbon\Carbon::parse($game->created_at)->diffForHumans() }}</time>
                                         </li>
                                     </ul>
@@ -195,14 +195,14 @@
                             <div class="col-md-6">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        sonstiges
+                                        {{ trans('app.misc') }}
                                     </div>
                                     <ul class="list-group">
                                         <li class="list-group-item">
                                             @php
                                                 $perc = \App\Helpers\MiscHelper::getPopularity($game->views, \App\Helpers\DatabaseHelper::getGameViewsMax());
                                             @endphp
-                                            {{ trans('games.show.popularity') }}: {{  number_format($perc, 2) }}%
+                                            {{ trans('app.popularity') }}: {{  number_format($perc, 2) }}%
                                             <br/>
                                             <div class="progress">
                                                 <div class="progress-bar" style="width: {{  number_format($perc, 2) }}%;"></div>
@@ -212,10 +212,10 @@
                                             <ul class="col-md-6 list-unstyled">
                                                 <li>votes:</li>
                                                 <li>
-                                                    <img src='/assets/rate_up.gif' alt='{{ trans('games.show.voteup') }}'/>&nbsp;{{ $game->votes['up'] or 0 }}
+                                                    <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/>&nbsp;{{ $game->votes['up'] or 0 }}
                                                 </li>
                                                 <li>
-                                                    <img src='/assets/rate_down.gif' alt='{{ trans('games.show.votedown') }}'/>&nbsp;{{ $game->votes['down'] or 0 }}
+                                                    <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/>&nbsp;{{ $game->votes['down'] or 0 }}
                                                 </li>
                                             </ul>
                                             <ul class="col-md-6 list-unstyled">
@@ -241,21 +241,21 @@
                                             <li><img src="/assets/cdc.png" alt="cdcs">cdc's</li>
                                              endif
                                              --}}
-                                                <li>{{ trans('games.show.alltime_top') }}: #0</li>
+                                                <li>{{ trans('app.alltime_top') }}: #0</li>
                                             </ul>
                                         </li>
                                         @if(Auth::check())
                                             @if($game->gamefiles->count() != 0)
                                                 @if($game->maker_id == 2 or $game->maker_id == 3 or $game->maker_id == 9)
                                                     <li class="list-group-item">
-                                                        {{ trans('games.show.play_in_browser') }} :
+                                                        {{ trans('app.play_in_browser') }} :
                                                         <a href="{{ action('PlayerController@index', $game->gamefiles->first()->id) }}"><img src="/assets/play_button.png" alt="play"></a>
                                                     </li>
                                                 @endif
                                             @endif
                                         @endif
                                         <li class="list-group-item">
-                                            <a href="{{ action('ReportController@create_game_report', $game->id) }}">{{ trans('games.show.report_game') }}</a>
+                                            <a href="{{ action('ReportController@create_game_report', $game->id) }}">{{ trans('app.report_game') }}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -269,7 +269,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">{{ trans('games.show.gamedescription') }}</div>
+                                    <div class="panel-heading">{{ trans('app.description') }}</div>
                                     <div class="panel-body readmore">
                                         {!! $game->desc_html !!}
                                     </div>
@@ -283,17 +283,17 @@
                             <div class="col-md-6">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        {{ trans('games.show.tags') }}
+                                        {{ trans('app.tags') }}
                                     </div>
                                     <div class="panel-body">
                                         @if(Auth::check())
-                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addtag">tag hinzufügen</button>
+                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addtag">{{ trans('app.add_tag') }}</button>
                                             <div id="addtag" class="modal fade" role="dialog">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                            <h4 class="modal-title">tag hinzufügen</h4>
+                                                            <h4 class="modal-title">{{ trans('app.add_tag') }}</h4>
                                                         </div>
                                                         <div class="modal-body clearfix">
                                                             <div class="col-md-12">
@@ -302,11 +302,11 @@
                                                                 {!! Form::hidden('content_type', 'game') !!}
                                                                 <fieldset>
                                                                     <div class="form-group">
-                                                                        <label for="title" class="control-label">{{ trans('games.show.tag_add') }}</label>
+                                                                        <label for="title" class="control-label">{{ trans('app.tag_name') }}</label>
                                                                         <input type="text" class="form-control" name="title" id="title" placeholder="" value=""/>
                                                                     </div>
                                                                     <div class='form-group'>
-                                                                        <input class="btn btn-primary" type='submit' value='Submit' id='submit'>
+                                                                        <input class="btn btn-primary" type='submit' value='{{ trans('app.submit') }}' id='submit'>
                                                                     </div>
                                                                 </fieldset>
                                                                 {!! Form::close() !!}
@@ -329,7 +329,7 @@
                             <div class="col-md-6">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        downloads
+                                        {{ trans('app.downloads') }}
                                     </div>
                                     <ul class="list-group">
                                         @foreach($game->gamefiles as $f)
@@ -350,7 +350,7 @@
                                         @endforeach
                                         <li class="list-group-item">------------</li>
                                         <li class="list-group-item">
-                                            <a href="{{ action('GameFileController@create', $game->id) }}">{{ trans('games.show.add_gamefiles') }}</a>
+                                            <a href="{{ action('GameFileController@create', $game->id) }}">{{ trans('app.gamefile_list_and_add') }}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -364,7 +364,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">credits</div>
+                                    <div class="panel-heading">{{ trans('app.user_credits') }}</div>
                                     <ul class="list-group">
                                         @if($game->credits->count() != 0)
                                             @foreach($game->credits as $cr)
@@ -375,7 +375,7 @@
                                                 </li>
                                             @endforeach
                                         @else
-                                            <li class="list-group-item">bisher keine credits vorhanden</li>
+                                            <li class="list-group-item">{{ trans('app.no_user_credits_added') }}</li>
                                         @endif
                                     </ul>
                                 </div>
@@ -387,7 +387,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">awards</div>
+                                    <div class="panel-heading">{{ trans('app.awards') }}</div>
                                     <ul class="list-group">
                                         @foreach($game->awards as $aw)
                                             <?php
@@ -402,7 +402,7 @@
                                             }
                                             ?>
                                             <li class="list-group-item">
-                                                <img src="/assets/{{ $icon }}">({{ $aw->cat->year }}) {{ trans('games.show.place') }} {{ $aw->place }} - {{ $aw->page->title }}
+                                                <img src="/assets/{{ $icon }}">({{ $aw->cat->year }}) {{ trans('app.place') }} {{ $aw->place }} - {{ $aw->page->title }}
                                                 <a href="{{ url('awards', $aw->award_cat_id) }}">{{ $aw->cat->title }} - {{ $aw->subcat->title }}</a>
                                             </li>
                                         @endforeach
@@ -415,9 +415,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">{{ trans('games.show.popularity_helper_title') }}</div>
+                            <div class="panel-heading">{{ trans('app.popularity_helper') }}</div>
                             <div class="panel-body">
-                                <p>{{ trans('games.show.popularity_helper_msg') }}</p>
+                                <p>{{ trans('app.use_the_popularity_helper') }}</p>
                                 <input type='text' value='{{ Request::fullUrl() }}' size='50' readonly='readonly'/>
                             </div>
                         </div>
@@ -427,7 +427,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="panel panel-default">
-                                <div class="panel-heading">{{ trans('games.show.comments') }}</div>
+                                <div class="panel-heading">{{ trans('app.comments') }}</div>
                                 <div class="panel-body">
                                     @foreach($game->comments()->get() as $comment)
                                         <div class="media">
@@ -443,7 +443,7 @@
                                             <div class="media-body">
                                                 <div class="media-heading">
                                                     <a href='{{ url('users', $comment->user_id) }}' title="{{ $comment->user->name }}">{{ $comment->user->name }}</a> -
-                                                    {{ trans('games.show.added') }} {{ $comment->created_at }}
+                                                    {{ trans('app.posted_at') }} {{ $comment->created_at }}
                                                     @if($comment->vote_up == 1 and $comment->vote_down == 0)
                                                         <span class='vote up'>up</span>
                                                     @elseif($comment->vote_up == 0 and $comment->vote_down == 1)
@@ -466,9 +466,9 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="panel panel-default">
-                                <div class="panel-heading">{{ trans('games.show.comments') }}</div>
+                                <div class="panel-heading">{{ trans('app.comments') }}</div>
                                 <div class="panel-body">
-                                    {{ trans('games.show.no_comments') }}
+                                    {{ trans('app.no_comments_available') }}
                                 </div>
                             </div>
                         </div>
@@ -477,12 +477,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">{{ trans('games.show.comment_rules') }}</div>
+                            <div class="panel-heading">{{ trans('app.comment_rules') }}</div>
                             <div class="panel-body">
-                                <p>{{ trans('games.show.comment_tip1') }}</p>
-                                <p>{{ trans('games.show.comment_tip2') }}</p>
-                                <p>{{ trans('games.show.comment_tip3') }}</p>
-                                <p>{{ trans('games.show.comment_tip4') }}</p>
+                                <p>{{ trans('app.comment_rule_1') }}</p>
+                                <p>{{ trans('app.comment_rule_2') }}</p>
+                                <p>{{ trans('app.comment_rule_3') }}</p>
+                                <p>{{ trans('app.comment_rule_4') }}</p>
                             </div>
                         </div>
                     </div>
@@ -490,7 +490,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">{{ trans('games.show.add_comment') }}</div>
+                            <div class="panel-heading">{{ trans('app.add_comment') }}</div>
                             <div class="panel-body">
                                 @permission(('create-game-comments'))
                                 {!! Form::open(['action' => ['CommentController@add']]) !!}
@@ -501,26 +501,27 @@
                                         <div id='prodvote'>
                                             <input type="hidden" class="rating"/>
 
-                                            {{ trans('games.show.rate') }}<br>
+                                            {{ trans('app.rate_this_game') }}<br>
                                             <input type='radio' name='rating' id='ratingrulez' value='up'/>
-                                            <label for='ratingrulez'>{{ trans('games.show.voteup') }}</label>
+                                            <label for='ratingrulez'>{{ trans('app.rate_up') }}</label>
                                             <input type='radio' name='rating' id='ratingpig' value='neut' checked='checked'/>
-                                            <label for='ratingpig'>{{ trans('games.show.vote_neut') }}</label>
+                                            <label for='ratingpig'>{{ trans('app.rate_neut') }}</label>
                                             <input type='radio' name='rating' id='ratingsucks' value='down'/>
-                                            <label for='ratingsucks'>{{ trans('games.show.votedown') }}</label>
+                                            <label for='ratingsucks'>{{ trans('app.rate_down') }}</label>
                                         </div>
                                     @endif
 
                                     @include('_partials.markdown_editor')
 
-                                    <div><a href='/?page=faq#markdown'>{{ trans('games.show.markdown') }}</a></div>
+                                    <div><a href='/?page=faq#markdown'>{{ trans('app.markdown_is_usable_here') }}</a>
+                                    </div>
                                 </div>
                                 <div class='foot'>
                                     <input type='submit' value='Submit' id='submit'>
                                 </div>
                                 {!! Form::close() !!}
                                 @else
-                                    {{ trans('games.show.no_permissions_body') }}
+                                    {{ trans('app.your_permissions_are_to_low') }}
                                 @endpermission
                             </div>
                         </div>
@@ -529,7 +530,7 @@
             </div>
         </div>
     @else
-        <h1>{{ trans('games.show.no_id') }}</h1>
+        <h1>{{ trans('app.game_does_not_exist') }}</h1>
     @endif
 
     <script>

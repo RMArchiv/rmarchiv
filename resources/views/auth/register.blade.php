@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('pagetitle', 'account erstellen')
+@section('pagetitle', trans('app.register_account'))
 @section('content')
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>account erstellen</h1>
+                <h1>{{ trans('app.register_account') }}</h1>
                 {!! Breadcrumbs::render('register') !!}
             </div>
         </div>
@@ -16,7 +16,7 @@
                 <div class="panel panel-default">
                     @if ($errors->has('name'))
                         <div class="rmarchivtbl errorbox">
-                            <h2>{{ trans('app.auth.register_failed') }}</h2>
+                            <h2>{{ trans('app.registration_failed') }}</h2>
                             <div class="content">
                                 <strong>{{ $errors->first('name') }}</strong>
                             </div>
@@ -24,7 +24,7 @@
                     @endif
                     @if ($errors->has('email'))
                         <div class="rmarchivtbl errorbox">
-                            <h2>{{ trans('app.auth.register_failed') }}</h2>
+                            <h2>{{ trans('app.registration_failed') }}</h2>
                             <div class="content">
                                 <strong>{{ $errors->first('email') }}</strong>
                             </div>
@@ -32,7 +32,7 @@
                     @endif
                     @if ($errors->has('password'))
                         <div class="rmarchivtbl errorbox">
-                            <h2>{{ trans('app.auth.register_failed') }}</h2>
+                            <h2>{{ trans('app.registration_failed') }}</h2>
                             <div class="content">
                                 <strong>{{ $errors->first('password') }}</strong>
                             </div>
@@ -40,7 +40,7 @@
                     @endif
                     @if ($errors->has('captcha'))
                         <div class="rmarchivtbl errorbox">
-                            <h2>{{ trans('app.auth.register_failed') }}</h2>
+                            <h2>{{ trans('app.registration_failed') }}</h2>
                             <div class="content">
                                 <strong>{{ $errors->first('captcha') }}</strong>
                             </div>
@@ -51,7 +51,7 @@
                         <div class="formifier">
                             {!! Honeypot::generate('my_name', 'my_time') !!}
                             <div class="form-group" id="row_name">
-                                <label for="name" class="col-lg-2 control-label">benutzername:</label>
+                                <label for="name" class="col-lg-2 control-label">{{ trans('app.username') }}</label>
                                 <div class="col-lg-10">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
                                 </div>

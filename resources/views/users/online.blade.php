@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('pagetitle', 'user online')
+@section('pagetitle', trans('app.users_online'))
 @section('content')
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>user online</h1>
+                <h1>{{ trans('app.users_online') }}</h1>
                 {!! Breadcrumbs::render('online') !!}
             </div>
         </div>
@@ -13,13 +13,13 @@
                 <thead>
                 <tr>
                     <th>
-                        {{ trans('user.online.username') }}
+                        {{ trans('app.username') }}
                     </th>
                     <th>
-                        {{ trans('user.online.last_page') }}
+                        {{ trans('app.last_page_visit') }}
                     </th>
                     <th>
-                        {{ trans('user.online.last_action_date') }}
+                        {{ trans('app.last_action_date') }}
                     </th>
                 </tr>
                 </thead>

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', $award->pagetitle .':'. $award->cattitle .'-'. $award->catyear )
 @section('content')
     @include('awards._partials.nav')
     <div class="content">
@@ -6,7 +7,7 @@
             <h1>
                 {{ $award->pagetitle }}: {{ $award->cattitle }} - {{ $award->catyear }}
                 @if($award->catmonth <> 0)
-                     - {{ trans('_misc.month.'.$award->catmonth) }}
+                    - {{ trans('app.month.'.$award->catmonth) }}
                 @endif
             </h1>
 
@@ -14,7 +15,9 @@
             <h2>
                 {{ $subcat->subtitle }}
                 @permission(('create-awards'))
-                :: <small>[<a href="{{ action('AwardController@gameadd', $subcat->subid) }}">{{ trans('awards.show.addgame') }}</a>]</small>
+                ::
+                <small>[<a href="{{ action('AwardController@gameadd', $subcat->subid) }}">{{ trans('app.add_game_to_award') }}</a>]
+                </small>
                 @endpermission
             </h2>
             <table class="boxtable">
@@ -34,9 +37,10 @@
                         }
                         ?>
                         @if($icon != 'no')
-                                {{ trans('awards.show.place') }} {{ $game->place }}<img src="/assets/{{ $icon }}" alt="{{ $game->place }}" title="{{ $game->place }}">
+                            {{ trans('app.place') }} {{ $game->place }}
+                            <img src="/assets/{{ $icon }}" alt="{{ $game->place }}" title="{{ $game->place }}">
                         @else
-                                {{ trans('awards.show.place') }} {{ $game->place  }}
+                            {{ trans('app.place') }} {{ $game->place  }}
                         @endif
                     </td>
                     <td width="60%">

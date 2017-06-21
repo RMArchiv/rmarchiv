@@ -43,13 +43,13 @@
             {!! Form::open(['route' => ['messages.update', $thread->id], 'method' => 'PUT']) !!}
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    poste eine antwort
+                    {{ trans('app.post_a_reply') }}
                 </div>
                 <div class="panel-body">
                     @include('_partials.markdown_editor')
                 </div>
                 <div class="panel-body">
-                    weitere user hinzufügen:
+                    {{ trans('app.add_additional_users') }}
                     @if($users->count() > 0)
                         <div class="checkbox">
                             @foreach($users as $user)
@@ -63,7 +63,7 @@
                     @endif
                 </div>
                 <div class="panel-footer">
-                    <button type="submit" value="submit" class="btn btn-primary">senden</button>
+                    <button type="submit" value="submit" class="btn btn-primary">{{ trans('app.submit') }}</button>
                 </div>
             </div>
             {!! Form::close() !!}

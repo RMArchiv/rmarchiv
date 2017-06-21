@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('pagetitle', 'benutzer: '.$user->name)
+@section('pagetitle', trans('app.user').': '.$user->name)
 @section('content')
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>benutzer: {{ $user->name }}</h1>
+                <h1>{{ trans('app.user') }}: {{ $user->name }}</h1>
                 {!! Breadcrumbs::render('user', $user) !!}
             </div>
         </div>
@@ -12,7 +12,7 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        userinformationen
+                        {{ trans('app.user_informations') }}
                     </div>
                     <div class="panel-body">
                         <div class="col-md-4">
@@ -22,9 +22,13 @@
                                  alt="User Pic">
                         </div>
                         <div class="col-md-8">
-                            <p><span class="text-muted">benutzername: </span>{{ $user->name }}</p>
-                            <p><span class="text-muted">registriert seit: </span>{{ $user->created_at }}</p>
-                            <p><span class="text-muted">level: </span>{{ $user->roles[0]->display_name }}</p>
+                            <p><span class="text-muted">{{ trans('app.username') }}: </span>{{ $user->name }}</p>
+                            <p>
+                                <span class="text-muted">{{ trans('app.registered_since') }}: </span>{{ $user->created_at }}
+                            </p>
+                            <p>
+                                <span class="text-muted">{{ trans('app.userlevel') }}: </span>{{ $user->roles[0]->display_name }}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -32,7 +36,7 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        obyx übersicht
+                        {{ trans('app.obyx_overview') }}
                         <div class="pull-right">
                             <span class="badge">OBYX PLATZHALTER</span>
                         </div>
@@ -48,7 +52,7 @@
                                     @endphp
                                     {{ $sum }}
                                     </span>
-                                {{ trans('user.show.obyx.'.$ob->obyx->reason) }}
+                                {{ trans('app.obyx.'.$ob->obyx->reason) }}
                             </li>
                         @endforeach
                     </ul>
@@ -59,7 +63,7 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        {{ trans('user.show.shoutbox') }}
+                        {{ trans('app.last_shoutbox_posts') }}
                     </div>
                     <div class="panel-body">
                         <div class="panel-body">
@@ -77,7 +81,7 @@
                                     <div class="media-body">
                                         <div class="media-heading">
                                             <a href='{{ url('users', $comment->user_id) }}' title="{{ $comment->user->name }}">{{ $comment->user->name }}</a> -
-                                            {{ trans('games.show.added') }} {{ $comment->created_at }}<br>
+                                            {{ trans('app.posted_at') }} {{ $comment->created_at }}<br>
                                             {!! $comment->shout_html !!}
                                         </div>
                                         <a href='{{ url('user', $comment->user_id) }}'
@@ -93,7 +97,7 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        {{ trans('user.show.comments') }}
+                        {{ trans('app.last_comments') }}
                     </div>
                     <div class="panel-body">
                         @foreach($user->comments()->orderBy('created_at', 'desc')->limit(5)->get() as $comment)
@@ -110,7 +114,7 @@
                                 <div class="media-body">
                                     <div class="media-heading">
                                         <a href='{{ url('users', $comment->user_id) }}' title="{{ $comment->user->name }}">{{ $comment->user->name }}</a> -
-                                        {{ trans('games.show.added') }} {{ $comment->created_at }}<br>
+                                        {{ trans('app.posted_at') }} {{ $comment->created_at }}<br>
                                         <span class="text-muted">
                                             @if($comment->content_type == 'game')
                                                 spiel: <a href="{{ action('GameController@show', $comment->game()->first()->id) }}">{{ $comment->game()->first()->title }}</a>

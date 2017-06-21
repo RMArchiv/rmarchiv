@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <ul class="list-group">
             <li class="list-group-item active">
-                {{ trans('index.topmonth.title') }}
+                {{ trans('app.top_of_the_month') }}
             </li>
             @foreach($topmonth as $g)
                 <li class="list-group-item">

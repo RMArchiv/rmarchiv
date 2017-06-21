@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <ul class="list-group">
             <li class="list-group-item active">
-                {{ trans('index.latestadded.title') }}
+                {{ trans('app.latest_added_games') }}
             </li>
             @foreach($latestadded as $g)
                 <li class="list-group-item">

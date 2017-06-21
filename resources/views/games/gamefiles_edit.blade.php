@@ -1,17 +1,18 @@
 @extends('layouts.app')
+@section('pagetitle', trans('app.edit_gamefile'))
 @section('content')
     @if(Auth::check())
         {!! Form::open(['action' => ['GameFileController@update', $gamefile->game_id, $gamefile->id]]) !!}
         <div class="rmarchivtbl" id="rmarchivbox_submitprod">
-            <h2>{{trans('games.gamefiles.gamefile_edit')}}</h2>
+            <h2>{{trans('app.edit_gamefile')}}</h2>
 
             <div class="content">
-                {{ trans('games.gamefiles.edit_info') }}
+                {{ trans('app.edit_gamefile_infos') }}
                 <div class="formifier">
                     <div class='row' id='row_filetype'>
-                        <label for='filetype'>{{trans('games.gamefiles.type')}}</label>
+                        <label for='filetype'>{{trans('app.release_type')}}</label>
                         <select name='filetype' id='filetype'>
-                            <option value="0">{{trans('games.gamefiles.type_choose')}}</option>
+                            <option value="0">{{trans('app.choose_release_type')}}</option>
                             @foreach($filetypes as $types)
                                 <option @if ($gamefile->release_type == $types->id) selected="" @endif value="{{ $types->id }}">{{ $types->title }}</option>
                             @endforeach
@@ -19,27 +20,27 @@
                         <span>[<span class="req">req</span>]</span>
                     </div>
                     <div class="row" id="row_version">
-                        <label for="version">{{trans('games.gamefiles.fileversion')}}</label>
+                        <label for="version">{{trans('app.gamefile_version')}}</label>
                         <input name="version" id="version" value="{{ $gamefile->release_version }}" placeholder="1.0" />
                         <span> [<span class="req">req</span>]</span>
                     </div>
                     <div class="row" id="row_releasedate">
-                        <label for="releasedate">{{trans('games.gamefiles.release_date')}}</label>
+                        <label for="releasedate">{{trans('app.release_date')}}</label>
                         <div class="formdate" id="releasedate">
                             <select name="releasedate_day" id="releasedate_day">
-                                <option value="0">{{trans('games.gamefiles.release_day')}}</option>
+                                <option value="0">{{trans('app.release_date_day')}}</option>
                                 @for($i = 1; $i < 32; $i++)
                                     <option @if ($gamefile->release_day == $i) selected="" @endif value="{{ $i }}">{{ $i }}</option>
                                 @endfor
                             </select>
                             <select name="releasedate_month" id="releasedate_month">
-                                <option value="0">{{trans('games.gamefiles.release_month')}}</option>
+                                <option value="0">{{trans('app.release_date_month')}}</option>
                                 @for($i = 1; $i < 13; $i++)
-                                    <option @if ($gamefile->release_month == $i) selected="" @endif value="{{ $i }}">{{ trans('_misc.month.'.$i) }}</option>
+                                    <option @if ($gamefile->release_month == $i) selected="" @endif value="{{ $i }}">{{ trans('app.month.'.$i) }}</option>
                                 @endfor
                             </select>
                             <select name="releasedate_year" id="releasedate_year">
-                                <option value="0">{{trans('games.edit.release_year')}}</option>
+                                <option value="0">{{trans('app.release_date_year')}}</option>
                                 @for($i = 1990; $i < date("Y") + 1; $i++)
                                     <option @if ($gamefile->release_year == $i) selected="" @endif value="{{ $i }}">{{ $i }}</option>
                                 @endfor
@@ -48,21 +49,21 @@
                         <span>[<span class="req">req</span>]</span>
                     </div>
                     <div class="row" id="row_file">
-                        <label for="fine-uploader">{{trans('app.misc.upload_file')}}:</label>
+                        <label for="fine-uploader">{{trans('app.upload_file')}}:</label>
                         <div id="fine-uploader"></div>
                         <span>[<span class="req">req</span>]</span>
                     </div>
                     @if(Auth::user()->hasRole(['admin', 'owner']))
                         <div class="row" id="row_forbidden">
-                            <label for="forbidden">{{ trans('games.gamefiles.delete_gamefile') }}</label>
-                            <input name="forbidden" id="forbidden" value="" placeholder="{{ trans('games.gamefiles.delete_reason') }}" />
+                            <label for="forbidden">{{ trans('app.delete_gamefile') }}</label>
+                            <input name="forbidden" id="forbidden" value="" placeholder="{{ trans('app.delete_gamefile_reason') }}" />
                         </div>
                     @endif
                 </div>
             </div>
 
             <div class="foot">
-                <input type="submit" value="{{ trans('games.gamefiles.send') }}">
+                <input type="submit" value="{{ trans('app.submit') }}">
             </div>
         </div>
         {!! Form::close() !!}
@@ -79,7 +80,7 @@
                 <span class="qq-upload-drop-area-text-selector"></span>
             </div>
             <div class="qq-upload-button-selector qq-upload-button">
-                <div>{{ trans('games.gamefiles.upload_file') }}</div>
+                <div>{{ trans('app.upload_file') }}</div>
             </div>
             <span class="qq-drop-processing-selector qq-drop-processing">
                     <span>Processing dropped files...</span>
@@ -127,15 +128,15 @@
             <dialog class="qq-alert-dialog-selector">
                 <div class="qq-dialog-message-selector"></div>
                 <div class="qq-dialog-buttons">
-                    <button type="button" class="qq-cancel-button-selector">Close</button>
+                    <button type="button" class="qq-cancel-button-selector">{{ trans('app.close') }}</button>
                 </div>
             </dialog>
 
             <dialog class="qq-confirm-dialog-selector">
                 <div class="qq-dialog-message-selector"></div>
                 <div class="qq-dialog-buttons">
-                    <button type="button" class="qq-cancel-button-selector">No</button>
-                    <button type="button" class="qq-ok-button-selector">Yes</button>
+                    <button type="button" class="qq-cancel-button-selector">{{ trans('app.no') }}</button>
+                    <button type="button" class="qq-ok-button-selector">{{ trans('app.yes') }}</button>
                 </div>
             </dialog>
 
@@ -143,8 +144,8 @@
                 <div class="qq-dialog-message-selector"></div>
                 <input type="text">
                 <div class="qq-dialog-buttons">
-                    <button type="button" class="qq-cancel-button-selector">Cancel</button>
-                    <button type="button" class="qq-ok-button-selector">Ok</button>
+                    <button type="button" class="qq-cancel-button-selector">{{ trans('app.cancel') }}</button>
+                    <button type="button" class="qq-ok-button-selector">{{ trans('app.ok') }}</button>
                 </div>
             </dialog>
         </div>

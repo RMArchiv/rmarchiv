@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <ul class="list-group">
             <li class="list-group-item active">
-                {{ trans('index.topalltime.title') }}
+                {{ trans('app.alltime_top_widget') }}
             </li>
             @foreach($topalltime as $g)
                 <li class="list-group-item">

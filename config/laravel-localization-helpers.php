@@ -19,6 +19,7 @@ return array(
     'folders'                  => array(
         '%BASE/resources/views',
         '%APP/Http/Controllers',
+        '%BASE/routes',
     ),
 
 
@@ -118,6 +119,8 @@ return array(
     'never_obsolete_keys'      => array(
         'dynamic',
         'fields',
+        'month',
+        'obyx',
     ),
 
 
@@ -269,7 +272,7 @@ return array(
     | If both parameters are empty, no Code Style will be applied
     */
     'code_style'               => array(
-        'level'  => null,
+        'level'  => 'symfony',
         'fixers' => array(),
     ),
 
@@ -341,6 +344,6 @@ return array(
     | This parameter will change nothing if you use the output-flat option of course
     |
     */
-    'dot_notation_split_regex' => null,
+    'dot_notation_split_regex' => '/\\.(?=[^ .!?])/',
 
 );

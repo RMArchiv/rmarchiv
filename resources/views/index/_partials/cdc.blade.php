@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
-            <div class="panel-heading">{{ trans('index.cdc.title') }}</div>
+            <div class="panel-heading">{{ trans('app.coupdecoeur') }}</div>
             <div class="panel-body">
                 <img width="100%" src="{{ route('screenshot.show', [$cdc->game_id, 1]) }}"/>
             </div>

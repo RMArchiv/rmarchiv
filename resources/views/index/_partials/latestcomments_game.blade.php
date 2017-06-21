@@ -1,6 +1,6 @@
 <div class='rmarchivtbl' id='rmarchivbox_latestcomments'>
     <h2>
-        {{ trans('index.latestcomments_game.title') }}
+        {{ trans('app.latest_comments') }}
     </h2>
     <ul class='boxlist boxlisttable'>
         @foreach($latestcomments as $com)

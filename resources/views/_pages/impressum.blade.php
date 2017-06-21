@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('pagetitle', 'impressum')
+@section('pagetitle', trans('app.imprint'))
 @section('content')
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>{{ trans('_partials.footer.impressum') }}</h1>
+                <h1>{{ trans('app.imprint') }}</h1>
                 {!! Breadcrumbs::render('impressum') !!}
             </div>
         </div>

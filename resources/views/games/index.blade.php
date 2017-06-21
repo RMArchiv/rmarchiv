@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('pagetitle', trans('games.title'))
+@section('pagetitle', trans('app.games'))
 @section('content')
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>{{ trans('games.title') }}</h1>
+                <h1>{{ trans('app.games') }}</h1>
                 {!! Breadcrumbs::render('games') !!}
             </div>
         </div>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('pagetitle', 'webplayer: '.$game->title)
+@section('pagetitle', trans('app.webplayer').': '.$game->title)
 @section('content')
     <div class="container">
         <div class="row">
@@ -61,7 +61,8 @@
                         <input type="button" value="Full screen" onclick="if (Module.requestFullScreen) Module.requestFullScreen()">
                     </div>
 
-                    EasyRPG Player Status: <div id="status">{{ trans('player.index.downloading') }}</div>
+                    EasyRPG Player Status:
+                    <div id="status">{{ trans('app.webplayer_downloads_data') }}</div>
                 </div>
                 <div class="panel-body text-center">
                     <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
@@ -99,7 +100,7 @@
                         // application robust, you may want to override this behavior before shipping!
                         // See http://www.khronos.org/registry/webgl/specs/latest/1.0/#5.15.2
                         canvas.addEventListener("webglcontextlost", function (e) {
-                            alert('{{ trans('player.index.webgl_error') }}');
+                            alert('{{ trans('app.webplayer_webgl_error') }}');
                             e.preventDefault();
                         }, false);
 
@@ -113,12 +114,12 @@
                     totalDependencies: 0,
                     monitorRunDependencies: function (left) {
                         this.totalDependencies = Math.max(this.totalDependencies, left);
-                        Module.setStatus(left ? '{{ trans('player.index.prep') }} (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')' : '{{ trans('player.index.gamedata_download') }}');
+                        Module.setStatus(left ? '{{ trans('app.webplayer_preperation') }} (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')' : '{{ trans('app.webplayer_gamedata_download') }}');
                     }
                 };
-                Module.setStatus('{{ trans('player.index.downloading') }}');
+                Module.setStatus('{{ trans('app.webplayer_download_game') }}');
                 window.onerror = function (event) {
-                    Module.setStatus('{{ trans('player.index.exception') }}');
+                    Module.setStatus('{{ trans('app.webplayer_exception_jsconsole') }}');
                     Module.setStatus = function (text) {
                         if (text) Module.printErr('[post-exception status] ' + text);
                     };

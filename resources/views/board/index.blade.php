@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('pagetitle', 'forum übersicht')
+@section('pagetitle', trans('app.board_overview'))
 @section('content')
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>{{ trans('board.index.title') }}</h1>
+                <h1>{{ trans('app.board_overview') }}</h1>
                 {!! Breadcrumbs::render('forums') !!}
             </div>
         </div>
@@ -32,9 +32,12 @@
                                 <div class="media-body" style="font-size: 12px;">
                                     <a href="{{ route('board.cat.show', $cat->id) }}"><span @if(\App\Helpers\DatabaseHelper::isThreadUnread($thread->id) === true) style="font-weight: bold;" @endif>{{ $cat->title }}</span></a>
                                     <span> • </span>
-                                    erstellt <time datetime='{{ $thread->created_at }}' title='{{ $thread->created_at }}'>{{ \Carbon\Carbon::parse($thread->created_at)->diffForHumans() }}</time>
+                                    {{ trans('app.created_at') }}
+                                    <time datetime='{{ $thread->created_at }}' title='{{ $thread->created_at }}'>{{ \Carbon\Carbon::parse($thread->created_at)->diffForHumans() }}</time>
                                     <span> • </span>
-                                    letzte antwort <time datetime='{{ $thread->last_created_at }}' title='{{ $thread->last_created_at }}'>{{ \Carbon\Carbon::parse($thread->last_created_at)->diffForHumans() }}</time> von <a href='{{ url('users', $thread->last_user->id) }}' class='usera' title="{{ $thread->last_user->name }}">
+                                    {{ trans('app.last_reply') }}
+                                    <time datetime='{{ $thread->last_created_at }}' title='{{ $thread->last_created_at }}'>{{ \Carbon\Carbon::parse($thread->last_created_at)->diffForHumans() }}</time> {{ trans('app.by') }}
+                                    <a href='{{ url('users', $thread->last_user->id) }}' class='usera' title="{{ $thread->last_user->name }}">
                                         <img width="16px" class="img-rounded" src='http://ava.rmarchiv.de/?size=16&gender=male&id={{ $thread->last_user->id }}' alt="{{ $thread->last_user->name }}"/>
                                     </a> <a href='{{ url('users', $thread->last_user->id) }}' class='user'>{{ $thread->last_user->name }}</a>
                                 </div>
@@ -49,35 +52,35 @@
             @if(Auth::check())
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        {{ trans('board.index.create_thread') }}
+                        {{ trans('app.create_thread') }}
                     </div>
                     <div class="panel-body">
                         {!! Form::open(['route' => ['board.thread.store'], 'id' => 'frmBBSPost']) !!}
                         <div class='content'>
-                            <label for='topic'>{{ trans('board.index.topic_title') }}</label>
+                            <label for='topic'>{{ trans('app.topic') }}</label>
                             <input name='topic' id='topic'/>
-                            <label for='category'>{{ trans('board.index.category') }}</label>
+                            <label for='category'>{{ trans('app.category') }}</label>
                             <select name='category' id='category'>
                                 @foreach($cats as $cat)
                                     <option value='{{ $cat->id }}'>{{ $cat->title }}</option>
                                 @endforeach
                             </select>
-                            <label for='message'>{{ trans('board.index.message') }}</label>
+                            <label for='message'>{{ trans('app.message') }}</label>
                             @include('_partials.markdown_editor')
-                            <div>{!! trans('board.index.markdown') !!}</div>
+                            <div>{!! trans('app.markdown_is_usable_here') !!}</div>
                         </div>
                         <div class='foot'>
-                            <input type='submit' value='{{ trans('board.index.send') }}' id='submit'></div>
+                            <input type='submit' value='{{ trans('app.submit') }}' id='submit'></div>
                         {!! Form::close() !!}
                     </div>
                 </div>
             @else
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        {{ trans('board.index.show.no_login_title') }}
+                        {{ trans('app.login_needed') }}
                     </div>
                     <div class="panel-body">
-                        {{ trans('board.index.show.no_login_title') }}
+                        {{ trans('app.login_needed_to_post') }}
                     </div>
                 </div>
             @endif

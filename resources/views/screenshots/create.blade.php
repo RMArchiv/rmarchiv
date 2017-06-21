@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="foot">
-                    <input type="submit" value="{{ trans('app.misc.send') }}">
+                    <input type="submit" value="{{ trans('app.submit') }}">
                 </div>
             </div>
         </form>
