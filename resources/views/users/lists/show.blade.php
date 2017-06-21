@@ -1,9 +1,10 @@
 @extends('layouts.app')
+@section('pagetitle', trans('app.userlist_of').': '.$list->name)
 @section('content')
     <div id="content">
         <div id="prodpagecontainer">
             <div class="rmarchivtbl" id="rmarchivbox_news">
-                <h2>{{ $list->title }}</h2>
+                <h2>{{ trans('app.userlist_of').': '.$list->title }}</h2>
                 <div class="content">
                     {!! $list->desc_html !!}
                 </div>

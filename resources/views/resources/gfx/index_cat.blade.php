@@ -3,21 +3,21 @@
     @include('resources._partials.nav')
     <div id="content">
         @include('resources.gfx._partials.nav')
-        <h1>{{ trans('resources.gfx.index_cat.title') }} -> {{ Request::route('cat') }}</h1>
+        <h1>{{ trans('app.gfx') }} -> {{ Request::route('cat') }}</h1>
         <table id='rmarchiv_prodlist' class='boxtable pagedtable'>
             <thead>
             <tr class='sortable'>
-                <th>{{ trans('resources.gfx.index.type') }}</th>
-                <th>{{ trans('resources.gfx.index.category') }}</th>
-                <th>{{ trans('resources.gfx.index.by') }}</th>
-                <th>{{ trans('resources.gfx.index.created_at') }}</th>
-                <th>{{ trans('resources.gfx.index.res_title') }}</th>
-                <th>{{ trans('resources.gfx.index.content_type') }}</th>
-                <th><img src='/assets/rate_up.gif' alt='{{ trans('resources.gfx.index.voteup') }}' /></th>
-                <th><img src='/assets/rate_down.gif' alt='{{ trans('resources.gfx.index.votedown') }}' /></th>
-                <th>{{ trans('resources.gfx.index.avg') }}</th>
-                <th>{{ trans('resources.gfx.index.popularity') }}</th>
-                <th>{{ trans('resources.gfx.index.comments') }}</th>
+                <th>{{ trans('app.type') }}</th>
+                <th>{{ trans('app.category') }}</th>
+                <th>{{ trans('app.by') }}</th>
+                <th>{{ trans('app.created_at') }}</th>
+                <th>{{ trans('app.resource_title') }}</th>
+                <th>{{ trans('app.content_type') }}</th>
+                <th><img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/></th>
+                <th><img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/></th>
+                <th>{{ trans('app.avg') }}</th>
+                <th>{{ trans('app.popularity') }}</th>
+                <th>{{ trans('app.comments') }}</th>
             </tr>
             </thead>
 

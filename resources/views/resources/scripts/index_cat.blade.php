@@ -3,21 +3,21 @@
     @include('resources._partials.nav')
     <div id="content">
         @include('resources.scripts._partials.nav')
-        <h1>{{ trans('resources.scripts.index_cat.title') }} -> {{ Request::route('cat') }}</h1>
+        <h1>{{ trans('app.scripts') }} -> {{ Request::route('cat') }}</h1>
         <table id='rmarchiv_prodlist' class='boxtable pagedtable'>
             <thead>
             <tr class='sortable'>
-                <th>{{ trans('resources.scripts.index.type') }}</th>
-                <th>{{ trans('resources.scripts.index.category') }}</th>
-                <th>{{ trans('resources.scripts.index.by') }}</th>
-                <th>{{ trans('resources.scripts.index.created_at') }}</th>
-                <th>{{ trans('resources.scripts.index.res_title') }}</th>
-                <th>{{ trans('resources.scripts.index.content_type') }}</th>
-                <th><img src='/assets/rate_up.gif' alt='{{ trans('resources.scripts.index.voteup') }}' /></th>
-                <th><img src='/assets/rate_down.gif' alt='{{ trans('resources.scripts.index.votedown') }}' /></th>
-                <th>{{ trans('resources.scripts.index.avg') }}</th>
-                <th>{{ trans('resources.scripts.index.popularity') }}</th>
-                <th>{{ trans('resources.scripts.index.comments') }}</th>
+                <th>{{ trans('app.type') }}</th>
+                <th>{{ trans('app.category') }}</th>
+                <th>{{ trans('app.by') }}</th>
+                <th>{{ trans('app.created_at') }}</th>
+                <th>{{ trans('app.resource_title') }}</th>
+                <th>{{ trans('app.content_type') }}</th>
+                <th><img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/></th>
+                <th><img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/></th>
+                <th>{{ trans('app.avg') }}</th>
+                <th>{{ trans('app.popularity') }}</th>
+                <th>{{ trans('app.comments') }}</th>
             </tr>
             </thead>
 

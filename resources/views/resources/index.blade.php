@@ -1,22 +1,23 @@
 @extends('layouts.app')
+@section('pagetitle', trans('app.resources_overview'))
 @section('content')
     @include('resources._partials.nav')
     <div id="content">
-        <h1>{{ trans('resources.index.title') }}</h1>
+        <h1>{{ trans('app.resources_overview') }}</h1>
         <table id='rmarchiv_prodlist' class='boxtable pagedtable'>
             <thead>
             <tr class='sortable'>
-                <th>{{ trans('resources.index.type') }}</th>
-                <th>{{ trans('resources.index.category') }}</th>
-                <th>{{ trans('resources.index.by') }}</th>
-                <th>{{ trans('resources.index.created_at') }}</th>
-                <th>{{ trans('resources.index.res_title') }}</th>
-                <th>{{ trans('resources.index.content_type') }}</th>
-                <th><img src='/assets/rate_up.gif' alt='{{ trans('resources.index.voteup') }}' /></th>
-                <th><img src='/assets/rate_down.gif' alt='{{ trans('resources.index.votedown') }}' /></th>
-                <th>{{ trans('resources.index.avg') }}</th>
-                <th>{{ trans('resources.index.popularity') }}</th>
-                <th>{{ trans('resources.index.comments') }}</th>
+                <th>{{ trans('app.type') }}</th>
+                <th>{{ trans('app.category') }}</th>
+                <th>{{ trans('app.by') }}</th>
+                <th>{{ trans('app.created_at') }}</th>
+                <th>{{ trans('app.title') }}</th>
+                <th>{{ trans('app.content_type') }}</th>
+                <th><img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/></th>
+                <th><img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/></th>
+                <th>{{ trans('app.avg') }}</th>
+                <th>{{ trans('app.popularity') }}</th>
+                <th>{{ trans('app.comments') }}</th>
             </tr>
             </thead>
 
@@ -33,11 +34,11 @@
                     @php $avg = @(($res->voteup - $res->votedown) / ($res->voteup + $res->votedown)) @endphp
                     <td class='votes'>{{ number_format($avg, 2) }}&nbsp;
                         @if($avg > 0)
-                            <img src='/assets/rate_up.gif' alt='{{ trans('resources.index.voteup') }}' />
+                            <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/>
                         @elseif($avg == 0)
-                            <img src='/assets/rate_neut.gif' alt='{{ trans('resources.index.voteneut') }}' />
+                            <img src='/assets/rate_neut.gif' alt='{{ trans('app.rate_neut') }}'/>
                         @elseif($avg < 0)
-                            <img src='/assets/rate_down.gif' alt='{{ trans('resources.index.votedown') }}' />
+                            <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/>
                         @endif
                     </td>
                     @php
