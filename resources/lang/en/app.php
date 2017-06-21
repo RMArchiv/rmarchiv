@@ -381,4 +381,33 @@ return array(
     'you_make_something_realy_stupid'     => 'You make something realy stupid!',
     'your_permissions_are_to_low'         => 'Your permissions are to low.',
     'your_permissions_are_to_low_to_post' => 'Your permissions are to low to post a message.',
+
+    //============================== Dynamic protected strings =============================//
+    'month'                               => array(
+        1  => 'January',
+        10 => 'October',
+        11 => 'November',
+        12 => 'December',
+        2  => 'February',
+        3  => 'March',
+        4  => 'April',
+        5  => 'May',
+        6  => 'June',
+        7  => 'July',
+        8  => 'August',
+        9  => 'September',
+    ),
+    'obyx'                                => array(
+        'comment'        => 'Create a comment',
+        'dev-add'        => 'Add a developer',
+        'game-add'       => 'Add a game',
+        'gamefile-add'   => 'Upload a gamefile',
+        'post-add'       => 'Write a post',
+        'rating'         => 'Rate something',
+        'resource-add'   => 'Add a resource',
+        'screenshot-add' => 'Upload a screenshot',
+        'shoutbox'       => 'Post a shout',
+        'thread-add'     => 'Create a board thread',
+        'register'       => 'Register a account',
+    ),
 );

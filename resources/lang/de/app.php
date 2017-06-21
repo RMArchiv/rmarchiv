@@ -407,5 +407,6 @@ return array(
         'screenshot-add' => 'Screenshots hochgeladen',
         'shoutbox'       => 'Shoutbox genutzt',
         'thread-add'     => 'Forenthreads erstellt',
+        'register'       => 'Account registriert',
     ),
 );
