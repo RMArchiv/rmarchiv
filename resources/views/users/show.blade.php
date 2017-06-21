@@ -93,6 +93,7 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
@@ -117,15 +118,17 @@
                                         {{ trans('app.posted_at') }} {{ $comment->created_at }}<br>
                                         <span class="text-muted">
                                             @if($comment->content_type == 'game')
-                                                spiel: <a href="{{ action('GameController@show', $comment->game()->first()->id) }}">{{ $comment->game()->first()->title }}</a>
+                                                {{ trans('app.game') }}:
+                                                <a href="{{ action('GameController@show', $comment->game()->first()->id) }}">{{ $comment->game()->first()->title }}</a>
                                             @elseif($comment->content_type == 'news')
-                                                news: <a href="{{ action('NewsController@show', $comment->news()->first()->id) }}">{{ $comment->news()->first()->title }}</a>
+                                                {{ trans('app.news') }}:
+                                                <a href="{{ action('NewsController@show', $comment->news()->first()->id) }}">{{ $comment->news()->first()->title }}</a>
                                             @endif
                                         </span>
                                         @if($comment->vote_up == 1 and $comment->vote_down == 0)
-                                            <span class='vote up'>up</span>
+                                            <span class='vote up'>{{ trans('app.rate_up') }}</span>
                                         @elseif($comment->vote_up == 0 and $comment->vote_down == 1)
-                                            <span class='vote down'>down</span>
+                                            <span class='vote down'>{{ trans('app.rate_down') }}</span>
                                         @endif
                                     </div>
                                     <a href='{{ url('user', $comment->user_id) }}'

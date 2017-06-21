@@ -127,7 +127,7 @@ Breadcrumbs::register('news.show', function ($breadcrumbs, $news) {
 
 // Home -> News -> [News] -> Edit
 Breadcrumbs::register('news.edit', function ($breadcrumbs, $news) {
-    $breadcrumbs->parent('news', $news);
+    $breadcrumbs->parent('news.show', $news);
     $breadcrumbs->push(trans('app.edit'), action('NewsController@edit', $news->id));
 });
 

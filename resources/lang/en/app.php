@@ -1,10 +1,12 @@
 <?php
 /*************************************************************************
- * Generated via "php artisan localization:missing" at 2017/06/21 09:46:32
+ * Generated via "php artisan localization:missing" at 2017/06/21 13:55:55
  *************************************************************************/
 
 return array(
     //============================== New strings to translate ==============================//
+    'game'                                => 'Game',
+    //==================================== Translations ====================================//
     '10_newest_board_posts'               => '10 newest board posts',
     'accessdenied'                        => 'Access denied',
     'actions'                             => 'Actions',
@@ -98,6 +100,7 @@ return array(
     'create_vote_error'                   => 'TODO: create_vote_error',
     'created_at'                          => 'created at',
     'created_at_month'                    => 'created at month',
+    'created_at_year'                     => 'TODO: created_at_year',
     'credits_type'                        => 'Credtits type',
     'date'                                => 'Date',
     'delete'                              => 'Delete',
@@ -164,6 +167,7 @@ return array(
     'last_reply'                          => 'last reply',
     'last_reply_at'                       => 'last reply at',
     'last_savegame'                       => 'last savegame',
+    'last_shoutbox_posts'                 => 'TODO: last_shoutbox_posts',
     'latest_added_games'                  => 'Latest added games',
     'latest_comments'                     => 'Latest comments',
     'latest_released_games'               => 'Latest released games',
