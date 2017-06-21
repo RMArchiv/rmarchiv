@@ -1,49 +1,55 @@
 @extends('layouts.app')
-@section('pagetitle', trans('app.edit_news'))
+@section('pagetitle', trans('app.edit_news').': '.$news->title)
 @section('content')
-    <div id="content">
-        <div id="prodpagecontainer">
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>{{ trans('app.edit_news') }}: {{ $news->title }}</h1>
+                {!! Breadcrumbs::render('news.edit') !!}
+            </div>
+        </div>
+        <div class="row">
+            @if (count($errors) > 0))
+            <div class="rmarchivtbl errorbox">
+                <h2>{{ trans('app.edit_news_error') }}</h2>
+                <div class="content">
+                    @foreach ($errors->all() as $error)
+                        <strong>{{ $error }}</strong>
+                    @endforeach
+                </div>
+            </div>
+            @endif
             <form action="{{ route('news.update', $news->id) }}" method="POST" enctype="multipart/form-data">
                 {!! method_field('patch') !!}
                 {{ csrf_field() }}
 
-                <div class="rmarchivtbl rmarchivbox_newsbox" id="rmarchivbox_prodmain">
-                    <h2>{{ trans('app.edit_news') }}</h2>
-
-                    @if (count($errors) > 0))
-                    <div class="rmarchivtbl errorbox">
-                        <h2>{{ trans('app.edit_news_error') }}</h2>
-                        <div class="content">
-                            @foreach ($errors->all() as $error)
-                                <strong>{{ $error }}</strong>
-                            @endforeach
-                        </div>
+                <div class="panel panel-default">
+                    <div class="panel-header">
+                        {{ trans('app.edit_news') }}
                     </div>
-                    @endif
-
-                    <div class="content">
-                        <div class="formifier">
-                            <div class="row" id="row_type">
-                                <label for="title">{{ trans('app.news_title') }}:</label>
-                                <input name="title" id="title" value="{{ $news->title }}"/>
-                                <span> [<span class="req">req</span>]</span>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="title" class="col-lg-2 control-label">{{ trans('app.news_title') }}: *</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="title" name="title" value="{{ $news->title }}">
                             </div>
-
+                        </div>
+                        <div class="form-group">
                             @include('_partials.markdown_editor', ['edit_text' => $news->news_md])
-
-                            <div class="row" id="row_msg">
-                                <label for="cat">{{ trans('app.news_category') }}:</label>
-                                <input name="cat" id="cat" value="{{ $news->news_category }}" placeholder="allgemein"/>
-                                <span> [<span class="req">req</span>]</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="cat" class="col-lg-2 control-label">{{ trans('app.news_category') }}: *</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="cat" name="cat" value="{{ $news->news_category }}">
                             </div>
                         </div>
                     </div>
-                    <div class="foot">
-                        <input type="submit" value="{{ trans('app.submit') }}">
+                    <div class="panel-footer">
+                        <input class="btn btn-default" type="submit" value="{{trans('app.submit')}}">
                     </div>
                 </div>
-            </form>
 
+            </form>
         </div>
     </div>
 @endsection

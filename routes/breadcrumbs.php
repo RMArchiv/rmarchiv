@@ -125,6 +125,12 @@ Breadcrumbs::register('news.show', function ($breadcrumbs, $news) {
     $breadcrumbs->push($news->title, action('NewsController@show', $news->id));
 });
 
+// Home -> News -> [News] -> Edit
+Breadcrumbs::register('news.edit', function ($breadcrumbs, $news) {
+    $breadcrumbs->parent('news', $news);
+    $breadcrumbs->push(trans('app.edit'), action('NewsController@edit', $news->id));
+});
+
 
 //----------------- Awards -------------------------------------------------------------------------------------------//
 // Home -> Awards
