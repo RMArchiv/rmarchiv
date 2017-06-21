@@ -24,7 +24,7 @@
                 {{ csrf_field() }}
 
                 <div class="panel panel-default">
-                    <div class="panel-header">
+                    <div class="panel-heading">
                         {{ trans('app.edit_news') }}
                     </div>
                     <div class="panel-body">
@@ -35,6 +35,7 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="msg" class="col-lg-2 control-label">{{ trans('app.news') }}</label>
                             @include('_partials.markdown_editor', ['edit_text' => $news->news_md])
                         </div>
                         <div class="form-group">
