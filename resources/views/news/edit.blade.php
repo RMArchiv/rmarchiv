@@ -5,7 +5,7 @@
         <div class="row">
             <div class="page-header">
                 <h1>{{ trans('app.edit_news') }}: {{ $news->title }}</h1>
-                {!! Breadcrumbs::render('news.edit') !!}
+                {!! Breadcrumbs::render('news.edit', $news) !!}
             </div>
         </div>
         <div class="row">
