@@ -32,9 +32,10 @@
                                 {{ $a->created_at }}
                             </td>
                             <td>
-                                <a href="{{ url('/user', $a->causer->id) }}" class="usera" title="{{ $a->causer->name }}">
+                                <a href="{{ action('UserController@show', $a->causer->id) }}" class="usera" title="{{ $a->causer->name }}">
                                     <img width="16px" src="http://ava.rmarchiv.de/?gender=male&amp;id={{ $a->causer->id }}" alt="{{ $a->causer->name }}" class="avatar">
-                                </a> <a href="{{ url('/user', $a->causer->user_id) }}" class="user">{{ $a->causer->name }}</a>
+                                </a>
+                                <a href="{{ action('UserController@show', $a->causer->id) }}" class="user">{{ $a->causer->name }}</a>
                             </td>
                             <td>
                                 @if($a->description == 'updated')
