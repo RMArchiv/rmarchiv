@@ -58,7 +58,7 @@ class AwardCat extends Model
 
     public function subcats()
     {
-        return $this->hasMany('App\Models\AwardSubCat', 'cat_id', 'id');
+        return $this->hasMany('App\Models\AwardSubcat', 'cat_id', 'id');
     }
 
     public function user()
