@@ -230,6 +230,7 @@ return [
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
         Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProvider::class,
+        Spatie\CookieConsent\CookieConsentServiceProvider::class,
 
         /*
          * Application Service Providers...

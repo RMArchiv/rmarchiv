@@ -48,6 +48,6 @@ class AwardSubcat extends Model
 
     public function game_awards()
     {
-        return $this->hasMany('App\Models\GamesAward', 'award_subcat_id', 'id');
+        return $this->hasMany('App\Models\GamesAward', 'award_subcat_id', 'id')->orderBy('place');
     }
 }
