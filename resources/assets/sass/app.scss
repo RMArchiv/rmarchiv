@@ -106,3 +106,82 @@ $url_types: url(/assets/types.png);
 .table-user-information > tbody > tr > td {
   border-top: 0;
 }
+
+/* Cookies */
+
+.cookies {
+  position: fixed;
+  z-index: 9999;
+  right: 0;
+  left: 0;
+  width: 100%;
+  padding-right: 105px;
+  transition: all .4s ease;
+  color: $alert-danger-text;
+  background: $alert-danger-bg; /* fallback for old browsers */
+  top: 0;
+  animation-name: cpcookiestop;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+
+}
+
+@keyframes cpcookiestop {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+.cookies-message-link {
+  color: #ffeb3b;
+  opacity: 0.8;
+}
+
+.cookies-message-link:hover {
+  text-decoration: none;
+  color: #ffeb3b;
+  opacity: 1;
+}
+
+#cookies-close:checked ~ #cookies,
+#cookies-close:checked + .cookies-close {
+  top: -50%;
+}
+
+.cookies-close {
+  position: fixed;
+  z-index: 10000;
+  right: 20px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 400;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.2);
+  top: 10px;
+  animation-name: cpcookiesclosetop;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+@keyframes cpcookiesclosetop {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 10px;
+  }
+}
+
+.cookies-close:hover {
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.cookies-message {
+  margin: 20px;
+}
