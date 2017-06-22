@@ -1,77 +1,110 @@
 @extends('layouts.app')
-@section('pagetitle', $award->pagetitle .':'. $award->cattitle .'-'. $award->catyear )
+@section('pagetitle', $award->awardpage->title .': '. $award->title .' - '. $award->year . ' ' . trans('app.month.'. $award->month))
 @section('content')
-    @include('awards._partials.nav')
-    <div class="content">
-        <div class="rmarchivtbl" id="rmarchivbox_cdcmoderator" style="width: 80%">
-            <h1>
-                {{ $award->pagetitle }}: {{ $award->cattitle }} - {{ $award->catyear }}
-                @if($award->catmonth <> 0)
-                    - {{ trans('app.month.'.$award->catmonth) }}
-                @endif
-            </h1>
-
-            @foreach($subcats as $subcat)
-            <h2>
-                {{ $subcat->subtitle }}
-                @permission(('create-awards'))
-                ::
-                <small>[<a href="{{ action('AwardController@gameadd', $subcat->subid) }}">{{ trans('app.add_game_to_award') }}</a>]
-                </small>
-                @endpermission
-            </h2>
-            <table class="boxtable">
-                @if(array_key_exists($subcat->subid, $games))
-                @foreach($games[$subcat->subid] as $game)
-                <tr>
-                    <td width="60px">
-                        <?php
-                        if ($game->place == 1) {
-                            $icon = 'medal_gold.png';
-                        } elseif ($game->place == 2) {
-                            $icon = 'medal_silver.png';
-                        } elseif ($game->place == 3) {
-                            $icon = 'medal_bronze.png';
-                        } else {
-                            $icon = 'no';
-                        }
-                        ?>
-                        @if($icon != 'no')
-                            {{ trans('app.place') }} {{ $game->place }}
-                            <img src="/assets/{{ $icon }}" alt="{{ $game->place }}" title="{{ $game->place }}">
-                        @else
-                            {{ trans('app.place') }} {{ $game->place  }}
-                        @endif
-                    </td>
-                    <td width="60%">
-                    <span class='typeiconlist'>
-                        @if($game->gametype)
-                            <span class='typei type_{{ $game_types[$game->gametype]['short'] }}' title='{{ $game->gametype }}'>{{ $game->gametype }}</span>
-                        @endif
-                    </span>
-                        <span class='platformiconlist'>
-                        <span class='typei type_{{ $game->makershort }}' title='{{ $game->makertitle }}'>{{ $game->makertitle }}</span>
-                    </span>
-                        <span class='prod'>
-                        <a href='{{ url('games', $game->id) }}'>
-                            {{ $game->title }}
-                            @if($game->subtitle)
-                                <small> - {{ $game->subtitle }}</small>
-                            @endif
-                        </a>
-                    </span>
-                    </td>
-                    <td width="14%">
-                        {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($game->id) !!}
-                    </td>
-                    <td>
-                        {{ $game->award_desc }}
-                    </td>
-                </tr>
-                <tr>
-                @endforeach
-                @endif
-            </table>
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>{{ $award->awardpage->title .': '. $award->title .' - '. $award->year . ' ' . trans('app.month.'. $award->month) }}</h1>
+                {!! Breadcrumbs::render('awards.show', $award) !!}
+            </div>
+        </div>
+        <div class="row">
+            @include('awards._partials.nav')
+        </div>
+        <div class="row">
+            @foreach($award->subcats as $s)
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        {{ $s->title }}
+                    </div>
+                    <ul class="list-group">
+                        @foreach($s->game_awards as $a)
+                            <li class="list-group-item media" style="margin-top: 0px;">
+                                <a class="pull-right" href="{{ url('games', $a->game->id) }}"><span class="badge">{{ $a->game->comments }}</span></a>
+                                <div class="pull-left">
+                                    @php
+                                        if ($a->place == 1) {
+                                            $icon = 'medal_gold.png';
+                                        } elseif ($a->place == 2) {
+                                            $icon = 'medal_silver.png';
+                                        } elseif ($a->place == 3) {
+                                            $icon = 'medal_bronze.png';
+                                        } else {
+                                            $icon = 'no';
+                                        }
+                                    @endphp
+                                    @if($icon != 'no')
+                                        {{ trans('app.place') }} {{ $a->place }}
+                                        <img src="/assets/{{ $icon }}" alt="{{ $a->place }}" title="{{ $a->place }}">
+                                    @else
+                                        {{ trans('app.place') }} {{ $a->place  }}
+                                    @endif
+                                </div>
+                                <a class="pull-left" href="{{ url('games', $a->game->id) }}">
+                                    <img width="100px" class="img-responsive img-rounded" src='{{ route('screenshot.show', [$a->game->id, 1]) }}' alt='{{ trans('app.titlescreen') }}' title='{{ trans('app.titlescreen') }}'/>
+                                </a>
+                                <div class="thread-info">
+                                    <div class="media-heading">
+                                        @if($a->game->gamefiles->count() > 0)
+                                            <span class='typeiconlist'>
+                                                <span class='typei type_{{ $a->game->gamefiles->first()->gamefiletype->short }}'
+                                                      title='{{ $a->game->gamefiles->first()->gamefiletype->title }}'>{{ $a->game->gamefiles->first()->gamefiletype->title }}</span>
+                                            </span>
+                                        @endif
+                                        <span class="platformiconlist">
+                                            <a href="{{ route('maker.show', $a->game->maker->id) }}">
+                                                <span class="typei type_{{ $a->game->maker->short }}" title="{{ $a->game->maker->title }}">
+                                                    {{ $a->game->maker->title }}
+                                                </span>
+                                            </a>
+                                        </span>
+                                        <a href='{{ url('games', $a->game->id) }}'>
+                                            {{ $a->game->title }}
+                                            @if($a->game->subtitle)
+                                                <small> - {{ $a->game->subtitle }}</small>
+                                            @endif
+                                            <span><img src="/assets/lng/16/{{ strtoupper($a->game->language->short) }}.png"
+                                                       title="{{ $a->game->language->name }}"></span>
+                                        </a>
+                                        @if($a->game->cdcs->count() > 0)
+                                            <div class="cdcstack">
+                                                <img src="/assets/cdc.png" title="{{ trans('app.coupdecoeur') }}" alt="{{ trans('app.coupdecoeur') }}">
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="media-body" style="font-size: 12px;">
+                                        {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($a->game->id) !!}<br>
+                                        release date:
+                                        @if(\Carbon\Carbon::parse($a->game->release_date)->year != -1 )
+                                            {{ $a->game->release_date }}
+                                        @else
+                                            {{ \Carbon\Carbon::parse(\App\Helpers\DatabaseHelper::getReleaseDateFromGameId($a->game->id))->toDateString() }}
+                                        @endif
+                                        <span> • </span>
+                                        hinzugefügt {{ \Carbon\Carbon::parse($a->game->created_at)->diffForHumans() }}
+                                        <span> • </span>
+                                        <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/> {{ $a->game->voteup or 0 }} -
+                                        <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/> {{ $a->game->votedown or 0 }}
+                                        <span> • </span>
+                                        AVG: {{ number_format(floatval($a->game->avg), 2) }}&nbsp;
+                                        @if($a->game->avg > 0)
+                                            <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/>
+                                        @elseif($a->game->avg == 0)
+                                            <img src='/assets/rate_neut.gif' alt='{{ trans('app.rate_neut') }}'/>
+                                        @elseif($a->game->avg < 0)
+                                            <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/>
+                                        @endif
+                                        <div class="pull-right">
+                                            @foreach($a->game->tags as $tag)
+                                                <a href="{{ action('TaggingController@showGames', [$tag->tag_id]) }}"><span class="label label-primary">{{ $tag->tag->title }}</span></a>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
             @endforeach
         </div>
     </div>

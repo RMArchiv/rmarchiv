@@ -39,10 +39,8 @@ class AwardCat extends Model
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
 
-    protected $table = 'award_cats';
-
     public $timestamps = true;
-
+    protected $table = 'award_cats';
     protected $fillable = [
         'title',
         'award_page_id',
@@ -56,6 +54,11 @@ class AwardCat extends Model
     public function awardpage()
     {
         return $this->hasOne('App\Models\AwardPage', 'id', 'award_page_id');
+    }
+
+    public function subcats()
+    {
+        return $this->hasMany('App\Models\AwardSubCat', 'cat_id', 'id');
     }
 
     public function user()

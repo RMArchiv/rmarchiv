@@ -139,6 +139,12 @@ Breadcrumbs::register('awards', function ($breadcrumbs) {
     $breadcrumbs->push(trans('app.awards'), action('AwardController@index'));
 });
 
+// Home -> Awards -> [Award]
+Breadcrumbs::register('awards.show', function ($breadcrumbs, $award_cat) {
+    $breadcrumbs->parent('awards');
+    $breadcrumbs->push($award_cat->awardpage->title . ': ' . $award_cat->title, action('AwardController@show', $award_cat->id));
+});
+
 //----------------- Messanger / PN -----------------------------------------------------------------------------------//
 // Home -> Messages
 Breadcrumbs::register('messages', function ($breadcrumbs) {

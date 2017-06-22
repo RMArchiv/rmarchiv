@@ -1,11 +1,12 @@
 <?php
 /*************************************************************************
- * Generated via "php artisan localization:missing" at 2017/06/21 13:55:55
+ * Generated via "php artisan localization:missing" at 2017/06/21 16:20:48
  *************************************************************************/
 
 return array(
     //============================== New strings to translate ==============================//
-    'game'                                => 'Game',
+    '404_error'                           => 'TODO: 404_error',
+    '501_error'                           => 'TODO: 501_error',
     //==================================== Translations ====================================//
     '10_newest_board_posts'               => '10 newest board posts',
     'accessdenied'                        => 'Access denied',
@@ -71,23 +72,23 @@ return array(
     'choose_award_website'                => 'Choose a award website',
     'choose_category'                     => 'Choose a category',
     'choose_content_type'                 => 'Choose a content type',
-    'choose_credits_type'        => 'Choose a credits type',
-    'choose_language'            => 'Choose a langauge',
-    'choose_maker'               => 'Choose a maker engine',
-    'choose_permission'          => 'Choose a permission',
-    'choose_release_type'        => 'Choose a release type',
-    'choose_type'                => 'Choose a type',
-    'click_me'                   => 'CLICK!',
-    'close'                      => 'Close',
-    'comment_rule_1'             => 'Don´t write spam. Spam is evil. Spam makes your account get banned.',
-    'comment_rule_2'             => 'Don´t be rude.',
-    'comment_rule_3'             => 'Stay on topic.',
-    'comment_rule_4'             => 'Don´t disturbe admins and mods.',
-    'comment_rules'              => 'Comment rules',
-    'comments'                   => 'Comments',
-    'comments_per_month'         => 'Comments per month',
-    'connections'                => 'Connections',
-    'contact_admin_or_moderator' => 'Please contact a administrator or moderator',
+    'choose_credits_type'                 => 'Choose a credits type',
+    'choose_language'                     => 'Choose a langauge',
+    'choose_maker'                        => 'Choose a maker engine',
+    'choose_permission'                   => 'Choose a permission',
+    'choose_release_type'                 => 'Choose a release type',
+    'choose_type'                         => 'Choose a type',
+    'click_me'                            => 'CLICK!',
+    'close'                               => 'Close',
+    'comment_rule_1'                      => 'Don´t write spam. Spam is evil. Spam makes your account get banned.',
+    'comment_rule_2'                      => 'Don´t be rude.',
+    'comment_rule_3'                      => 'Stay on topic.',
+    'comment_rule_4'                      => 'Don´t disturbe admins and mods.',
+    'comment_rules'                       => 'Comment rules',
+    'comments'                            => 'Comments',
+    'comments_per_month'                  => 'Comments per month',
+    'connections'                         => 'Connections',
+    'contact_admin_or_moderator'          => 'Please contact a administrator or moderator',
     'content_type'                        => 'Content type',
     'coupdecoeur'                         => 'Coup de coeur',
     'create_new_pm'                       => 'Create new PM',
@@ -138,6 +139,7 @@ return array(
     'file'                                => 'File',
     'filecategory'                        => 'Filecategory',
     'filestats'                           => 'Filestats',
+    'game'                                => 'Game',
     'game_does_not_exist'                 => 'Game does not exist',
     'game_not_found'                      => 'Game not found',
     'gamefile_list_and_add'               => 'Gamefilelist / Add new',
@@ -381,9 +383,9 @@ return array(
     'you_make_something_realy_stupid'     => 'You make something realy stupid!',
     'your_permissions_are_to_low'         => 'Your permissions are to low.',
     'your_permissions_are_to_low_to_post' => 'Your permissions are to low to post a message.',
-
     //============================== Dynamic protected strings =============================//
     'month'                               => array(
+        0  => '',
         1  => 'January',
         10 => 'October',
         11 => 'November',
@@ -404,10 +406,10 @@ return array(
         'gamefile-add'   => 'Upload a gamefile',
         'post-add'       => 'Write a post',
         'rating'         => 'Rate something',
+        'register'       => 'Register a account',
         'resource-add'   => 'Add a resource',
         'screenshot-add' => 'Upload a screenshot',
         'shoutbox'       => 'Post a shout',
         'thread-add'     => 'Create a board thread',
-        'register'       => 'Register a account',
     ),
 );

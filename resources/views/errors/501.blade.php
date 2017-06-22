@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', trans('app.501_error'))
 @section('content')
     <div id="content">
         <h1>fünf null eins</h1>

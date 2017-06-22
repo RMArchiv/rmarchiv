@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('pagetitle', trans('app.404_error'))
 @section('content')
     <div id="content">
         <h1>vier null vier</h1>

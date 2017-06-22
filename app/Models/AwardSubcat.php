@@ -34,10 +34,8 @@ use Illuminate\Database\Eloquent\Model;
 class AwardSubcat extends Model
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
-    protected $table = 'award_subcats';
-
     public $timestamps = true;
-
+    protected $table = 'award_subcats';
     protected $fillable = [
         'title',
         'desc_html',
@@ -47,4 +45,9 @@ class AwardSubcat extends Model
     ];
 
     protected $guarded = [];
+
+    public function game_awards()
+    {
+        return $this->hasMany('App\Models\GamesAward', 'award_subcat_id', 'id');
+    }
 }

@@ -8,6 +8,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AwardCat;
+use App\Models\AwardSubcat;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -26,79 +27,10 @@ class AwardController extends Controller
 
     public function show($awardid)
     {
-        $award = \DB::table('award_cats')
-            ->leftJoin('award_pages', 'award_pages.id', '=', 'award_cats.award_page_id')
-            ->select([
-                'award_pages.id as pageid',
-                'award_pages.title as pagetitle',
-                'award_cats.id as catid',
-                'award_cats.title as cattitle',
-                'award_cats.year as catyear',
-                'award_cats.month as catmonth',
-            ])
-            ->where('award_cats.id', '=', $awardid)
-            ->first();
-
-        $subcats = \DB::table('award_subcats')
-            ->select([
-                'award_subcats.id as subid',
-                'award_subcats.title as subtitle',
-            ])
-            ->where('award_subcats.cat_id', '=', $awardid)
-            ->orderBy('award_subcats.title')
-            ->get();
-
-        $games = \DB::table('games_awards')
-            ->leftJoin('games', 'games.id', '=', 'games_awards.game_id')
-            ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
-            ->leftJoin('developer', 'developer.id', '=', 'games_developer.developer_id')
-            ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('games_files', 'games_files.game_id', '=', 'games.id')
-            ->select([
-                'games_awards.place as place',
-                'games_awards.award_subcat_id as award_subcat_id',
-                'games.title as title',
-                'games.subtitle as subtitle',
-                'games.id as id',
-                'games_awards.description as award_desc',
-                'developer.id as devid',
-                'developer.name as devname',
-                'makers.title as makertitle',
-                'makers.short as makershort',
-            ])
-            ->selectRaw('(SELECT COUNT(id) FROM games_coupdecoeur WHERE game_id = games.id) as cdccount')
-            ->selectRaw('MAX(games_files.release_type) as gametype')
-            ->where('games_awards.award_page_id', '=', $award->pageid)
-            ->where('games_awards.award_cat_id', '=', $award->catid)
-            ->orderBy('games_awards.award_subcat_id')
-            ->orderBy('games_awards.place')
-            ->groupBy('games_awards.id')
-            ->get();
-
-        //dd($games);
-
-        $gametypes = \DB::table('games_files_types')
-            ->select('id', 'title', 'short')
-            ->get();
-        $gtypes = [];
-        foreach ($gametypes as $gt) {
-            $t['title'] = $gt->title;
-            $t['short'] = $gt->short;
-            $gtypes[$gt->id] = $t;
-        }
-
-        $gamesret = [];
-
-        foreach ($games as $game) {
-            $id = $game->award_subcat_id;
-            $gamesret[$id][] = $game;
-        }
+        $award = AwardCat::whereId($awardid)->first();
 
         return view('awards.show', [
             'award' => $award,
-            'subcats' => $subcats,
-            'games' => $gamesret,
-            'game_types' => $gtypes,
         ]);
     }
 

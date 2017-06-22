@@ -1,11 +1,12 @@
 <?php
 /*************************************************************************
- * Generated via "php artisan localization:missing" at 2017/06/21 13:55:55
+ * Generated via "php artisan localization:missing" at 2017/06/21 16:20:47
  *************************************************************************/
 
 return array(
     //============================== New strings to translate ==============================//
-    'game'                                => 'Spiel',
+    '404_error'                           => 'TODO: 404_error',
+    '501_error'                           => 'TODO: 501_error',
     //==================================== Translations ====================================//
     '10_newest_board_posts'               => 'Die 10 aktuellsten Forenthreads',
     'accessdenied'                        => 'Zugriff verweigert!',
@@ -138,6 +139,7 @@ return array(
     'file'                                => 'Datei',
     'filecategory'                        => 'Dateikategorie',
     'filestats'                           => 'Dateistatistiken',
+    'game'                                => 'Spiel',
     'game_does_not_exist'                 => 'Dieses Spiel existiert nicht',
     'game_not_found'                      => 'Spiel nicht gefunden',
     'gamefile_list_and_add'               => 'Spieldateiliste / hinzufügen',
@@ -383,6 +385,7 @@ return array(
     'your_permissions_are_to_low_to_post' => 'Deine Berechtigungen sind zu niedrig um hier Posten zu können.',
     //============================== Dynamic protected strings =============================//
     'month'                               => array(
+        0  => '',
         1  => 'Januar',
         10 => 'Oktober',
         11 => 'November',
@@ -403,10 +406,10 @@ return array(
         'gamefile-add'   => 'Spieldateien hochgeladen',
         'post-add'       => 'Forenposts geschrieben',
         'rating'         => 'Bewertung abgegeben',
+        'register'       => 'Account registriert',
         'resource-add'   => 'Resource hochgeladen',
         'screenshot-add' => 'Screenshots hochgeladen',
         'shoutbox'       => 'Shoutbox genutzt',
         'thread-add'     => 'Forenthreads erstellt',
-        'register'       => 'Account registriert',
     ),
 );
