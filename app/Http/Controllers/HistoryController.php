@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
 use Spatie\Activitylog\Models\Activity;
 
 class HistoryController extends Controller
@@ -16,8 +17,11 @@ class HistoryController extends Controller
         $a = Activity::all()->where('subject_type', '=', 'App\Models\Game')
             ->where('subject_id', '=', $id);
 
+        $game = Game::whereId($id)->first();
+
         return view('history.index_game', [
             'activity' => $a,
+            'game'     => $game,
         ]);
     }
 }

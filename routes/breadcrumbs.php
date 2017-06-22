@@ -34,6 +34,11 @@ Breadcrumbs::register('game-edit', function ($breadcrumbs, $game) {
     $breadcrumbs->push(trans('app.edit_game'), action('GameController@edit', $game->id));
 });
 
+Breadcrumbs::register('game.changelog', function ($breadcrumbs, $game) {
+    $breadcrumbs->parent('game', $game);
+    $breadcrumbs->push(trans('app.changelog'), action('HistoryController@index', $game->id));
+});
+
 //----------------- FAQ ----------------------------------------------------------------------------------------------//
 // Home > FAQ
 Breadcrumbs::register('faq', function ($breadcrumbs) {

@@ -1,14 +1,20 @@
 <?php
 /*************************************************************************
- * Generated via "php artisan localization:missing" at 2017/06/21 16:20:47
+ * Generated via "php artisan localization:missing" at 2017/06/22 14:04:46
  *************************************************************************/
 
 return array(
     //============================== New strings to translate ==============================//
-    '404_error'                           => 'TODO: 404_error',
-    '501_error'                           => 'TODO: 501_error',
+    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\history\\index_game.blade.php
+    'activity'                            => 'Aktivität',
+    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\history\\index_game.blade.php
+    'activity_by'                         => 'Aktivität von',
+    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\history\\index_game.blade.php
+    'change'                              => 'Änderung',
     //==================================== Translations ====================================//
     '10_newest_board_posts'               => 'Die 10 aktuellsten Forenthreads',
+    '404_error'                           => 'TODO: 404_error',
+    '501_error'                           => 'TODO: 501_error',
     'accessdenied'                        => 'Zugriff verweigert!',
     'actions'                             => 'Aktionen',
     'add_additional_users'                => 'Weitere Benutzer hinzufügen',
@@ -66,6 +72,7 @@ return array(
     'by'                                  => 'von',
     'cancel'                              => 'Abbrechen',
     'category'                            => 'Kategorie',
+    'changelog'                           => 'Änderungshistorie',
     'charset'                             => 'Charset',
     'chipset'                             => 'Chipset',
     'choose_award_category'               => 'Wähle eine Awardkategorie',
