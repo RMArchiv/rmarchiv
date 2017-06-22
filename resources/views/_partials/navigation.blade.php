@@ -66,9 +66,9 @@
             </ul>
             {{ Form::open(['action' => ['SearchController@search'], 'class' => 'navbar-form navbar-right']) }}
                 <div class="form-group">
-                    <input type="text" class="form-control" id="term" name="term" placeholder="Search">
+                    <input type="text" class="form-control" id="term" name="term" placeholder="{{ trans('app.search') }}">
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-default">{{ trans('app.submit') }}</button>
 
                 <script type="text/javascript">
                     var sourcepath = new Bloodhound({
