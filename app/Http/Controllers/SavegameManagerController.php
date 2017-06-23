@@ -140,7 +140,7 @@ class SavegameManagerController extends Controller
                 'gamefile_id' => 'required',
             ]);
 
-            $data = file_get_contents($request->file()->getRealPath());
+            $data = file_get_contents($request->file('file')->getRealPath());
 
             if(PlayerHelper::getSavegameValidation($data) == true){
                 $check = GamesSavegame::whereGamefileId($request->get('gamefile_id'))
