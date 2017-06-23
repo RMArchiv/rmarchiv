@@ -11,9 +11,23 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-header">
 
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{ trans('app.savegames') }}
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target=".savegame-upload">{{ trans('app.upload') }}</button>
+                    </div>
                 </div>
                 <ul class="media-list">
                     @foreach($savegames as $s)
@@ -25,6 +39,7 @@
                                     </span>
                                     <div class="btn-group pull-right img-rounded" role="group">
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-target=".savegame-delete-{{ $s['id'] }}">{{ trans('app.delete') }}</button>
+                                        <a href="{{ action('SavegameManagerController@download', $s['id']) }}" class="btn btn-default">{{ trans('app.download') }}</a>
                                         <a href="{{ action('PlayerController@index', $gamefile_id).'?load-game-id='.$s['slot'] }}" class="btn btn-primary">{{ trans('app.play_in_browser') }}</a>
                                     </div>
                                     <div class="media-body">
@@ -57,6 +72,36 @@
                         </li>
                     @endforeach
                 </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade savegame-upload" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    {!! Form::open(['action' => ['SavegameManagerController@store']]) !!}
+                    {!! Form::hidden('gamefile_id', $gamefile->id) !!}
+                    <H2>{{ trans('app.upload_savegame') }}</H2>
+                    <h4>{{ trans('app.upload_savegames_only_for_the_right_gameversion') }}</h4>
+                    <label for="file">{{ trans('app.savegame') }}:</label>
+                    <input name="file" id="file" type="file" value=""/>
+                    <br>
+                    <label for="slot">{{ trans('app.savegame_slot') }}:</label><br>
+                    <select name="slot" id="slot">
+                        @for($i = 1; $i <= 15; $i++)
+                            <option value="{{ $i }}">{{ $i }}</option>
+                        @endfor
+                    </select>
+                    <br>
+                    <p class="text-danger">
+                        {{ trans('app.attention_uploading_can_overwrite') }}
+                    </p>
+                    <br><br>
+                    <button type="submit" class="btn btn-default">{{ trans('app.upload') }}</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('app.close') }}</button>
+                    {!! Form::close() !!}
+                </div>
             </div>
         </div>
     </div>

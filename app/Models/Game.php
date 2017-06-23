@@ -10,6 +10,7 @@ namespace App\Models;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Waavi\Translation\Traits\Translatable;
 
 /**
  * Class Game.
@@ -75,6 +76,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class Game extends Model
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
+    use Translatable;
     use LogsActivity;
     use Searchable;
 
@@ -114,6 +116,7 @@ class Game extends Model
 
     protected $guarded = [];
     protected $appends = ['votes'];
+    protected $translatableAttributes = ['desc_md'];
 
     public function user()
     {

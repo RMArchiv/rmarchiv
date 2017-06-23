@@ -7,8 +7,28 @@
 
 namespace App\Helpers;
 
+use PhpBinaryReader\BinaryReader;
+
 class PlayerHelper
 {
+    public static function getSavegameValidation($data)
+    {
+        $data = base64_decode($data);
+
+        $br = new BinaryReader($data);
+
+        $br->setPosition(0);
+
+        $datalength = $br->readInt8();
+        $returned = $br->readString($datalength);
+
+        if ($returned == 'LcfSaveData') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function getZipRootPath($zipfilepath){
         $dirarray = [
             'backdrop',

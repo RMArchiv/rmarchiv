@@ -271,7 +271,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">{{ trans('app.description') }}</div>
                                     <div class="panel-body readmore">
-                                        {!! $game->desc_html !!}
+                                        {!! Markdown::convertToHtml($game->desc_md) !!}
                                     </div>
                                 </div>
                             </div>
