@@ -146,7 +146,7 @@ class SavegameManagerController extends Controller
                     ->where('slot_id', '=', $request->get('slot'))
                     ->first();
 
-                if ($check->count() == 0) {
+                if ($check) {
                     $save = new GamesSavegame;
                     $save->gamefile_id = $request->get('gamefile_id');
                     $save->user_id = \Auth::id();
