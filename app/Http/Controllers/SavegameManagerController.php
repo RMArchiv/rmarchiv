@@ -140,6 +140,8 @@ class SavegameManagerController extends Controller
 
             $data = file_get_contents($request->file('file')->getRealPath());
 
+            dd($data);
+
             if(PlayerHelper::getSavegameValidation($data) == true){
                 $check = GamesSavegame::whereGamefileId($request->get('gamefile_id'))
                     ->where('user_id', '=', \Auth::id())
