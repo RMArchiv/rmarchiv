@@ -80,7 +80,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-body">
-                    {!! Form::open(['action' => ['SavegameManagerController@store'], 'files' => 'true']) !!}
+                    {!! Form::open(['action' => ['SavegameManagerController@store'], 'files' => true]) !!}
                     {!! Form::hidden('gamefile_id', $gamefile->id) !!}
                     <H2>{{ trans('app.upload_savegame') }}</H2>
                     <h4>{{ trans('app.upload_savegames_only_for_the_right_gameversion') }}</h4>
