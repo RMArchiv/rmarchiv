@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\PlayerHelper;
-use App\Models\Game;
 use App\Models\GamesFile;
 use App\Models\GamesSavegame;
-use App\Models\PlayerFileHash;
 use Illuminate\Http\Request;
 use PhpBinaryReader\BinaryReader;
 
@@ -140,9 +138,7 @@ class SavegameManagerController extends Controller
                 'gamefile_id' => 'required',
             ]);
 
-            dd($request->file('file'));
-
-            $data = file_get_contents($request->file('file')->getRealPath());
+            $data = file_get_contents(Input::file('file')->getRealPath());
 
             if(PlayerHelper::getSavegameValidation($data) == true){
                 $check = GamesSavegame::whereGamefileId($request->get('gamefile_id'))
