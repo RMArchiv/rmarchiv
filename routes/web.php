@@ -311,7 +311,7 @@ Route::get('player/{gamefileid}/play', 'PlayerController@index')->name('player.r
 //Savegame Management
 Route::get('savegames/manager', 'SavegameManagerController@index');
 Route::get('savegames/manager/game/{gamefile_id}', 'SavegameManagerController@show');
-Route::post('savegames/manager/save/{savegame_id}/delete', 'SavegameManagerController@delete');
+Route::get('savegames/manager/save/{savegame_id}/delete', 'SavegameManagerController@delete');
 Route::get('savegames/manager/save/{savegame_id}/download', 'SavegameManagerController@download');
 Route::post('savegame/manager/save/upload', 'SavegameManagerController@store');
 //EasyRPG Savegame API
