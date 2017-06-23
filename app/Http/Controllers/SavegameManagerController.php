@@ -122,7 +122,7 @@ class SavegameManagerController extends Controller
             $save = GamesSavegame::whereId($savegame_id)->where('user_id', '=', \Auth::id())->first();
             $data = base64_decode($save->save_data);
 
-            $filename = "Save" . str_pad($save->slot, 2, '0', STR_PAD_LEFT) . ".lsd";
+            $filename = "Save" . str_pad($save->slot_id, 2, '0', STR_PAD_LEFT) . ".lsd";
             $headers = [
                 'Content-type'        => 'application/octet-stream',
                 'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
@@ -145,7 +145,7 @@ class SavegameManagerController extends Controller
             if(PlayerHelper::getSavegameValidation($data) == true){
                 $check = GamesSavegame::whereGamefileId($request->get('gamefile_id'))
                     ->where('user_id', '=', \Auth::id())
-                    ->where('slot', '=', $request->get('slot'))
+                    ->where('slot_is', '=', $request->get('slot'))
                     ->first();
 
                 if ($check->count() == 0) {
@@ -153,6 +153,7 @@ class SavegameManagerController extends Controller
                     $save->gamefile_id = $request->get('gamefile_id');
                     $save->user_id = \Auth::id();
                     $save->save_data = base64_encode($data);
+                    $save->slot_id = $request->get('slot');
                     $save->save();
                 }else{
                     $check->save_data = base64_encode($data);
