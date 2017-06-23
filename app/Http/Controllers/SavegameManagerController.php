@@ -123,8 +123,8 @@ class SavegameManagerController extends Controller
             $filename = "Save" . str_pad($save->slot_id, 2, '0', STR_PAD_LEFT) . ".lsd";
             $headers = [
                 'Content-type'        => 'application/octet-stream',
-                'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
-                'Content-Length'      => sizeof($data)];
+                'Content-Disposition' => sprintf('attachment; filename="%s"', $filename)
+                ];
             return \Response::make($data, 200, $headers);
         }
     }
@@ -139,8 +139,6 @@ class SavegameManagerController extends Controller
             ]);
 
             $data = file_get_contents($request->file('file')->getRealPath());
-
-            dd($data);
 
             if(PlayerHelper::getSavegameValidation($data) == true){
                 $check = GamesSavegame::whereGamefileId($request->get('gamefile_id'))
