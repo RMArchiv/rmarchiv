@@ -111,7 +111,7 @@ class SavegameManagerController extends Controller
             $save->forceDelete();
         }
 
-        return redirect()->action('SavegameManagerController@show');
+        return redirect()->back();
     }
 
     public function download($savegame_id)
