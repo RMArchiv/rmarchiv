@@ -143,7 +143,7 @@ class SavegameManagerController extends Controller
             if(PlayerHelper::getSavegameValidation($data) == true){
                 $check = GamesSavegame::whereGamefileId($request->get('gamefile_id'))
                     ->where('user_id', '=', \Auth::id())
-                    ->where('slot_is', '=', $request->get('slot'))
+                    ->where('slot_id', '=', $request->get('slot'))
                     ->first();
 
                 if ($check->count() == 0) {
