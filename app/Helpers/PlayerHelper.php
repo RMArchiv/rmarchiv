@@ -13,8 +13,6 @@ class PlayerHelper
 {
     public static function getSavegameValidation($data)
     {
-        $data = base64_decode($data);
-
         $br = new BinaryReader($data);
 
         $br->setPosition(0);
