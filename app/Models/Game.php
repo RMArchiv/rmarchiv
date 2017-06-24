@@ -76,7 +76,7 @@ use Waavi\Translation\Traits\Translatable;
 class Game extends Model
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
-    use Translatable;
+    //use Translatable;
     use LogsActivity;
     use Searchable;
 
@@ -116,7 +116,7 @@ class Game extends Model
 
     protected $guarded = [];
     protected $appends = ['votes'];
-    protected $translatableAttributes = ['desc_md'];
+    //protected $translatableAttributes = ['desc_md'];
 
     public function user()
     {
