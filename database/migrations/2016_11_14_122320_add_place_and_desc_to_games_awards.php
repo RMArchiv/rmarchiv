@@ -19,8 +19,8 @@ class AddPlaceAndDescToGamesAwards extends Migration
     public function up()
     {
         Schema::table('games_awards', function (Blueprint $table) {
-            $table->integer('place');
-            $table->string('description');
+            $table->integer('place')->nullable();
+            $table->string('description')->nullable();
         });
     }
 

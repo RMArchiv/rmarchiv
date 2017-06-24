@@ -19,7 +19,7 @@ class AddFilenameToScreenshotTable extends Migration
     public function up()
     {
         Schema::table('screenshots', function (Blueprint $table) {
-            $table->string('filename', 1024);
+            $table->string('filename', 1024)->nullable();
         });
     }
 

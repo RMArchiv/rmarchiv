@@ -19,7 +19,7 @@ class AddReleaseTypeColumnToGamesTable extends Migration
     public function up()
     {
         Schema::table('games', function (Blueprint $table) {
-            $table->integer('release_type');
+            $table->integer('release_type')->nullable();
         });
     }
 

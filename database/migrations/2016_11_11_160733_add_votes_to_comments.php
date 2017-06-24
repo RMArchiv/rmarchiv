@@ -19,8 +19,8 @@ class AddVotesToComments extends Migration
     public function up()
     {
         Schema::table('comments', function (Blueprint $table) {
-            $table->integer('vote_up');
-            $table->integer('vote_down');
+            $table->integer('vote_up')->nullable();
+            $table->integer('vote_down')->nullable();
         });
     }
 

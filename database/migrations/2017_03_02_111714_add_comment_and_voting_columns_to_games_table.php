@@ -19,10 +19,10 @@ class AddCommentAndVotingColumnsToGamesTable extends Migration
     public function up()
     {
         Schema::table('games', function (Blueprint $table) {
-            $table->integer('voteup');
-            $table->integer('votedown');
-            $table->string('avg');
-            $table->integer('comments');
+            $table->integer('voteup')->nullable();
+            $table->integer('votedown')->nullable();
+            $table->string('avg')->nullable();
+            $table->integer('comments')->nullable();
         });
     }
 

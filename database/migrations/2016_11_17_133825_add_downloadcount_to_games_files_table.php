@@ -19,7 +19,7 @@ class AddDownloadcountToGamesFilesTable extends Migration
     public function up()
     {
         Schema::table('games_files', function (Blueprint $table) {
-            $table->integer('downloadcount');
+            $table->integer('downloadcount')->nullable();
         });
     }
 

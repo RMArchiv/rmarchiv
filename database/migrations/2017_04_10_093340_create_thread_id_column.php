@@ -19,7 +19,7 @@ class CreateThreadIdColumn extends Migration
     public function up()
     {
         Schema::table('board_poll', function (Blueprint $table) {
-            $table->integer('thread_id');
+            $table->integer('thread_id')->nullable();
 
             $table->index('thread_id');
         });

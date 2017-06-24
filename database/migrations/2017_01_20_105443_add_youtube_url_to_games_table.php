@@ -19,7 +19,7 @@ class AddYoutubeUrlToGamesTable extends Migration
     public function up()
     {
         Schema::table('games', function (Blueprint $table) {
-            $table->string('youtube');
+            $table->string('youtube')->nullable();
         });
     }
 

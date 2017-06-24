@@ -19,7 +19,7 @@ class AddAwardSubcatIdToGamesAwardsTable extends Migration
     public function up()
     {
         Schema::table('games_awards', function (Blueprint $table) {
-            $table->integer('award_subcat_id');
+            $table->integer('award_subcat_id')->nullable();
         });
     }
 

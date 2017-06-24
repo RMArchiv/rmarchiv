@@ -19,8 +19,8 @@ class AddSubidsToAwardSubcatsTable extends Migration
     public function up()
     {
         Schema::table('award_subcats', function (Blueprint $table) {
-            $table->integer('page_id');
-            $table->integer('cat_id');
+            $table->integer('page_id')->nullable();
+            $table->integer('cat_id')->nullable();
 
             $table->index('page_id');
             $table->index('cat_id');
