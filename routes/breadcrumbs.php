@@ -258,8 +258,28 @@ Breadcrumbs::register('savegamemanager.show', function ($breadcrumbs, $gamefile)
 });
 
 //----------------- Page Statistics ---------------------------------------------------------------------------------//
-// Home -> Savegame Manager
+// Home -> Statistics
 Breadcrumbs::register('statistics', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.statistics'), action('StatsticController@show'));
+});
+
+//----------------- Page Statistics ---------------------------------------------------------------------------------//
+// Home -> Missing Titlescreens
+Breadcrumbs::register('missing.titles', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('app.missing_screenshots'), action('MissingController@index_gamescreens'));
+});
+
+Breadcrumbs::register('missing.gamefiles', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('app.missing_gamefiles'), action('MissingController@index_gamefiles'));
+});
+Breadcrumbs::register('missing.gamedesc', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('app.missing_gamedescriptions'), action('MissingController@index_gamedesc'));
+});
+Breadcrumbs::register('missing.tags', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('app.games_without_tags'), action('MissingController@index_notags'));
 });
