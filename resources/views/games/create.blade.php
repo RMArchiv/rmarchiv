@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="subtitle" class="col-lg-2 control-label">{{trans('app.gamesubtitle')}} *</label>
+                                <label for="subtitle" class="col-lg-2 control-label">{{trans('app.gamesubtitle')}}</label>
                                 <div class="col-lg-10">
                                     <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Erschaffung einer neuen Welt">
                                 </div>

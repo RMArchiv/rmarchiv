@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="title" class="col-lg-2 control-label">{{trans('app.gamesubtitle')}} *</label>
+                        <label for="title" class="col-lg-2 control-label">{{trans('app.gamesubtitle')}}</label>
                         <div class="col-lg-10">
                             <input type="text" class="form-control" id="title" name="subtitle" value="{{ $game->subtitle }}">
                         </div>
@@ -123,7 +123,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="atelier_id" class="col-lg-2 control-label">{{trans('app.atelier_id')}} *</label>
+                        <label for="atelier_id" class="col-lg-2 control-label">{{trans('app.atelier_id')}}</label>
                         <div class="col-lg-10">
                             <input type="text" class="form-control" id="atelier_id" name="atelier_id" value="{{ $game->atelier_id }}">
                         </div>
