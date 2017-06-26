@@ -45,40 +45,50 @@ class ScreenshotController extends Controller
 
     public function create($gameid, $screenid)
     {
-        return view('screenshots.create', [
-            'gameid'   => $gameid,
-            'screenid' => $screenid,
-        ]);
+        if(\Auth::check()){
+            return view('screenshots.create', [
+                'gameid'   => $gameid,
+                'screenid' => $screenid,
+            ]);
+        }else{
+            return redirect()->back();
+        }
+
     }
 
     public function upload(Request $request, $gameid, $screenid)
     {
-        $this->validate($request, [
-            'file' => 'required|image|mimes:png|max:2048',
-        ]);
+        if(\Auth::check()){
+            $this->validate($request, [
+                'file' => 'required|image|mimes:png|max:2048',
+            ]);
 
-        $file = $request->file('file');
-        $extorig = $file->getExtension();
+            $file = $request->file('file');
+            $extorig = $file->getExtension();
 
-        $imageName = \Storage::putFile('screenshots', new UploadedFile($file->path(), $file->getClientOriginalName()));
-        //dd($file);
+            $imageName = \Storage::putFile('screenshots', new UploadedFile($file->path(), $file->getClientOriginalName()));
+            //dd($file);
 
-        //Löschen des vorhandenen DB Eintrages
-        $old = Screenshot::whereGameId($gameid)->where('screenshot_id', '=', $screenid)->first();
-        if ($old) {
-            $old->delete();
-        } else {
-            event(new Obyx('screenshot-add', \Auth::id()));
+            //Löschen des vorhandenen DB Eintrages
+            $old = Screenshot::whereGameId($gameid)->where('screenshot_id', '=', $screenid)->first();
+            if ($old) {
+                $old->delete();
+            } else {
+                event(new Obyx('screenshot-add', \Auth::id()));
+            }
+
+            //Speichern des Screenshots
+            $scr = new Screenshot();
+            $scr->game_id = $gameid;
+            $scr->user_id = \Auth::id();
+            $scr->screenshot_id = $screenid;
+            $scr->filename = str_replace($extorig, '', $imageName);
+            $scr->save();
+
+            return redirect()->route('screenshot.upload.success', $gameid);
+        }else{
+            return redirect()->back();
         }
 
-        //Speichern des Screenshots
-        $scr = new Screenshot();
-        $scr->game_id = $gameid;
-        $scr->user_id = \Auth::id();
-        $scr->screenshot_id = $screenid;
-        $scr->filename = str_replace($extorig, '', $imageName);
-        $scr->save();
-
-        return redirect()->route('screenshot.upload.success', $gameid);
     }
 }
