@@ -1,12 +1,19 @@
 @extends('layouts.app')
-@section('pagetitle', 'spiele ohne tags')
+@section('pagetitle', trans('app.games_without_tags'))
 @section('content')
-    <div id='content'>
-        <h2>spiele ohne tags</h2>
-        @include('_partials.tables.game_table', [
-            'games' => $games,
-            'orderby' => $orderby,
-            'direction' => $direction,
-        ])
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>{{ trans('app.games_without_tags') }}</h1>
+                {!! Breadcrumbs::render('missing.tags') !!}
+            </div>
+        </div>
+        <div class="row">
+            @include('_partials.tables.game_table', [
+                'games' => $games,
+                'orderby' => $orderby,
+                'direction' => $direction,
+            ])
+        </div>
     </div>
 @endsection
