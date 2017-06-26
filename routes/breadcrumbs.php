@@ -256,3 +256,10 @@ Breadcrumbs::register('savegamemanager.show', function ($breadcrumbs, $gamefile)
     $breadcrumbs->parent('savegamemanager.index');
     $breadcrumbs->push($gamefile->game->title, action('SavegameManagerController@show', $gamefile->id));
 });
+
+//----------------- Page Statistics ---------------------------------------------------------------------------------//
+// Home -> Savegame Manager
+Breadcrumbs::register('statistics', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('app.statistics'), action('StatsticController@show'));
+});

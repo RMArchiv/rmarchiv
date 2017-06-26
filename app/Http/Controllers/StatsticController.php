@@ -25,7 +25,7 @@ class StatsticController extends Controller
                 ],
             ],
             'backgroundColor' => [
-                'fill' => '#17395c',
+                'fill' => '#002B36',
             ],
             'hAxis' => [
                 'textStyle' => [
