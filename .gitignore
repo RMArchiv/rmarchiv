@@ -9,3 +9,5 @@ Homestead.yaml
 .env
 .gitattributes
 /bootstrap/cache
+.phpstorm.meta.php
+_ide_helper.php
