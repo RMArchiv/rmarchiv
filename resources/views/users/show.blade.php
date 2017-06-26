@@ -158,6 +158,36 @@
                         </div>
                     </div>
                 </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        {{ trans('app.last_board_posts') }}
+                    </div>
+                    <div class="panel-body">
+                        @foreach($user->boardposts()->orderBy('created_at', 'desc')->limit(5)->get() as $comment)
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href='{{ url('users', $comment->user_id) }}'
+                                       title="{{ $comment->user->name }}">
+                                        <img
+                                                width="32px"
+                                                src='http://ava.rmarchiv.de/?gender=male&id={{ $comment->user_id }}'
+                                                alt="{{ $comment->user->name }}" class='media img-rounded'/>
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <div class="media-heading">
+                                        <a href='{{ url('users', $comment->user_id) }}' title="{{ $comment->user->name }}">{{ $comment->user->name }}</a> -
+                                        {{ trans('app.posted_at') }} {{ $comment->created_at }}<br>
+                                        <a href="{{ action('BoardController@show_cat', $comment->cat->id) }}">{{ $comment->cat->title }}</a> ->
+                                        <a href="{{ action('BoardController@show_thread', $comment->thread->id) }}">{{ $comment->thread->title }}</a>
+                                    </div>
+                                    <a href='{{ url('user', $comment->user_id) }}'
+                                       class='user'>{{ $comment->name }}</a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">

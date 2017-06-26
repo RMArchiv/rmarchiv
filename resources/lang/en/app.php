@@ -1,12 +1,12 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2017/06/26 11:35:00
+ Generated via "php artisan localization:missing" at 2017/06/26 11:48:29
 *************************************************************************/
 
 return array(
   //============================== New strings to translate ==============================//
   // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\users\\show.blade.php
-  'latest_added_developers' => 'Recently added developers',
+  'last_board_posts' => 'The last board posts',
   //==================================== Translations ====================================//
   '10_newest_board_posts' => '10 newest board posts',
   '404_error' => 'TODO: 404_error',
@@ -177,6 +177,7 @@ return array(
   'last_reply_at' => 'last reply at',
   'last_savegame' => 'last savegame',
   'last_shoutbox_posts' => 'TODO: last_shoutbox_posts',
+  'latest_added_developers' => 'Recently added developers',
   'latest_added_games' => 'Latest added games',
   'latest_comments' => 'Latest comments',
   'latest_released_games' => 'Latest released games',
