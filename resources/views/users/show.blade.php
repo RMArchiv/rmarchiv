@@ -65,7 +65,45 @@
                     <div class="panel-heading">
                         {{ trans('app.latest_added_games') }}
                     </div>
-
+                    <ul class="list-group">
+                        @foreach($user->games()->orderBy('created_at', 'desc')->limit(5)->get() as $g)
+                            <li class="list-group-item">
+                                <span class='rowprod'>
+                                    <span class='prodentry'>
+                                        @if(isset($g->gamefiles[0]))
+                                            <span class='typeiconlist'>
+                                                <span class='typei type_{{ $g->gamefiles[0]->gamefiletype->short }}'
+                                                      title='{{ $g->gamefiles[0]->gamefiletype->title }}'>{{ $g->gamefiles[0]->gamefiletype->title }}</span>
+                                            </span>
+                                        @endif
+                                        <span class="platformiconlist">
+                                            <a href="{{ route('maker.show', $g->maker->id) }}">
+                                                <span class="typei type_{{ $g->maker->short }}" title="{{ $g->maker->title }}">
+                                                    {{ $g->maker->title }}
+                                                </span>
+                                            </a>
+                                        </span>
+                                        <span class='prod'>
+                                            <a href='{{ url('games',$g->id) }}'>{{ $g->title }}
+                                                @if($g->subtitle != '')
+                                                    <small> - {{ $g->subtitle }}</small>
+                                                @endif
+                                            </a>
+                                            <span><img src="/assets/lng/16/{{ strtoupper($g->language->short) }}.png"
+                                                       title="{{ $g->langname }}"></span>
+                                        </span>
+                                            <br>
+                                        <span class='group'>
+                                            {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($g->id) !!}
+                                        </span>
+                                        <span class="pull-right">
+                                            {{ trans('app.created_at') }}: {{ \Carbon\Carbon::parse($g->created_at)->diffForHumans() }}
+                                        </span>
+                                    </span>
+                                </span>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
             <div class="col-md-6">
@@ -73,7 +111,16 @@
                     <div class="panel-heading">
                         {{ trans('app.latest_added_developers') }}
                     </div>
-
+                    <ul class="list-group">
+                        @foreach($user->developers()->orderBy('created_at', 'desc')->limit(8)->get() as $dev)
+                            <li class="list-group-item">
+                                <div class="pull-right">
+                                    {{ trans('app.created_at') }}: {{ \Carbon\Carbon::parse($dev->created_at)->diffForHumans() }}
+                                </div>
+                                <a href="{{ action('DeveloperController@show', $dev->id) }}">{{ $dev->name }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
