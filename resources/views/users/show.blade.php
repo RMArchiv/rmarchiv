@@ -63,6 +63,24 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
+                        {{ trans('app.latest_added_games') }}
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        {{ trans('app.latest_added_developers') }}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
                         {{ trans('app.last_shoutbox_posts') }}
                     </div>
                     <div class="panel-body">
@@ -92,7 +110,6 @@
                             @endforeach
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
             <div class="col-md-6">
