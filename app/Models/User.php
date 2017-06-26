@@ -134,7 +134,7 @@ class User extends Authenticatable
 
     public function games()
     {
-        return $this->belongsToMany('App\Models\Game');
+        return $this->hasMany('App\Models\Game', 'user_id', 'id');
     }
 
     public function news()
@@ -179,4 +179,9 @@ class User extends Authenticatable
     public function shoutbox(){
         return $this->hasMany('App\Models\Shoutbox', 'user_id', 'id');
     }
+
+    public function developers(){
+        return $this->hasMany('App\Models\Developer', 'user_id', 'id');
+    }
+
 }
