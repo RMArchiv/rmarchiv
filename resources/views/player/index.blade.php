@@ -68,7 +68,7 @@
                     <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
                 </div>
                 <div class="panel-footer">
-                    This awesome and outstanding WebPlayer is created and actively maintained by <a href="https://easyrpg.org"><img src="/assets/easyrpg-logo.png"></a>
+                    This awesome and outstanding WebPlayer is created and actively maintained by <a href="https://easyrpg.org" target="_blank"><img src="/assets/easyrpg-logo.png"></a>
                 </div>
             </div>
             <script type='text/javascript'>
