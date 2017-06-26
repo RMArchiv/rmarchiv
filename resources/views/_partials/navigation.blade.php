@@ -55,7 +55,7 @@
                         <li><a href="{{ url('faq/create') }}">{{ trans('app.add_faq') }}</a></li>
                         @endpermission
                         @permission(('create-awards'))
-                        <li><a href="{{ url('awards/create') }}">{{ trans('app.add_faq_category') }}</a></li>
+                        <li><a href="{{ url('awards/create') }}">{{ trans('app.add_award') }}</a></li>
                         @endpermission
                         @permission(('admin-comments'))
                         <li><a href="{{ url('reported/comments') }}">{{ trans('app.reported_comments') }}</a></li>
