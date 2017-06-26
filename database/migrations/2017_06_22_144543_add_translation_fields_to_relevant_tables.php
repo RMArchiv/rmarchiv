@@ -14,7 +14,7 @@ class AddTranslationFieldsToRelevantTables extends Migration
     public function up()
     {
         Schema::table('games', function (Blueprint $table) {
-            $table->longText('desc_md_translation');
+            $table->longText('desc_md_translation')->nullable();
         });
     }
 

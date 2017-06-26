@@ -19,8 +19,8 @@ class AddForbiddenToGamesFilesTable extends Migration
     public function up()
     {
         Schema::table('games_files', function (Blueprint $table) {
-            $table->integer('forbidden');
-            $table->string('reason', 9999);
+            $table->integer('forbidden')->nullable();
+            $table->string('reason', 9999)->nullable();
         });
     }
 

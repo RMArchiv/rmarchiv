@@ -19,7 +19,7 @@ class AddApprovedToNews extends Migration
     public function up()
     {
         Schema::table('news', function (Blueprint $table) {
-            $table->integer('approved');
+            $table->integer('approved')->nullable();
         });
     }
 

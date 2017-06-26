@@ -19,9 +19,9 @@ class AddClosedToUserReportsTable extends Migration
     public function up()
     {
         Schema::table('user_reports', function (Blueprint $table) {
-            $table->integer('closed');
-            $table->integer('closed_user_id');
-            $table->string('closed_remarks', 9999);
+            $table->integer('closed')->nullable();
+            $table->integer('closed_user_id')->nullable();
+            $table->string('closed_remarks', 9999)->nullable();
             $table->timestamp('closed_at');
         });
     }

@@ -19,7 +19,7 @@ class AddShortToGamesFilesTypesTable extends Migration
     public function up()
     {
         Schema::table('games_files_types', function (Blueprint $table) {
-            $table->string('short');
+            $table->string('short')->nullable();
         });
     }
 

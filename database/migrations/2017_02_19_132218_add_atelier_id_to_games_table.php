@@ -19,7 +19,7 @@ class AddAtelierIdToGamesTable extends Migration
     public function up()
     {
         Schema::table('games', function (Blueprint $table) {
-            $table->integer('atelier_id');
+            $table->integer('atelier_id')->nullable();
         });
     }
 

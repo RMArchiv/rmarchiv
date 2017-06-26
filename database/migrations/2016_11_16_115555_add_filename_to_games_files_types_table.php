@@ -19,7 +19,7 @@ class AddFilenameToGamesFilesTypesTable extends Migration
     public function up()
     {
         Schema::table('games_files', function (Blueprint $table) {
-            $table->string('filename');
+            $table->string('filename')->nullable();
         });
     }
 

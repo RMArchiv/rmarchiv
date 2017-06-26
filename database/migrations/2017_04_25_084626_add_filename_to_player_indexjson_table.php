@@ -14,7 +14,7 @@ class AddFilenameToPlayerIndexjsonTable extends Migration
     public function up()
     {
         Schema::table('player_indexjson', function (Blueprint $table) {
-            $table->string('filename', 1024);
+            $table->string('filename', 1024)->nullable();
         });
     }
 

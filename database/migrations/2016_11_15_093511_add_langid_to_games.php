@@ -19,7 +19,7 @@ class AddLangidToGames extends Migration
     public function up()
     {
         Schema::table('games', function (Blueprint $table) {
-            $table->integer('lang_id');
+            $table->integer('lang_id')->nullable();
             $table->index('lang_id');
         });
     }
