@@ -32,6 +32,24 @@
                         </div>
                     </div>
                 </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        {{ trans('app.userlists') }}
+                    </div>
+                    <ul class="list-group">
+                        @foreach($user->userlists as $ul)
+                            <li class="list-group-item">
+                                <span class="badge pull-right">
+                                    {{ $ul->listitems->count() }} {{ trans('app.games') }}
+                                </span>
+                                <a href="{{ action('UserListController@show', [$user->id, $ul->id]) }}">{{ $ul->title }}</a><br>
+                                <span class="text-muted">
+                                    {!! Markdown::convertToHtml($ul->desc_md) !!}
+                                </span>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
