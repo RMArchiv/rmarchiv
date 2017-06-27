@@ -32,10 +32,8 @@ use Illuminate\Database\Eloquent\Model;
 class UserList extends Model
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
-    protected $table = 'user_lists';
-
     public $timestamps = true;
-
+    protected $table = 'user_lists';
     protected $fillable = [
         'user_id',
         'title',
@@ -44,4 +42,14 @@ class UserList extends Model
     ];
 
     protected $guarded = [];
+
+    public function listitems()
+    {
+        return $this->hasMany('App\Models\UserListItem', 'list_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
 }
