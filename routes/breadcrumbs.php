@@ -297,3 +297,8 @@ Breadcrumbs::register('userlist.show', function ($breadcrumbs, $user, $list) {
     $breadcrumbs->parent('user', $user);
     $breadcrumbs->push(trans('app.userlist') . ': ' . $list->title, action('UserListController@show', [$user->id, $list->id]));
 });
+
+Breadcrumbs::register('userlist.create', function ($breadcrumbs, $user) {
+    $breadcrumbs->parent('user', $user);
+    $breadcrumbs->push(trans('app.create_userlist', action('UserListController@show')));
+});
