@@ -300,5 +300,5 @@ Breadcrumbs::register('userlist.show', function ($breadcrumbs, $user, $list) {
 
 Breadcrumbs::register('userlist.create', function ($breadcrumbs, $user) {
     $breadcrumbs->parent('user', $user);
-    $breadcrumbs->push(trans('app.create_userlist', action('UserListController@create')));
+    $breadcrumbs->push(trans('app.create_userlist'), action('UserListController@create'));
 });
