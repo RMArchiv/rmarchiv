@@ -47,4 +47,9 @@ class UserList extends Model
     {
         return $this->hasMany('App\Models\UserListItem', 'list_id', 'id');
     }
+
+    public function user()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
 }

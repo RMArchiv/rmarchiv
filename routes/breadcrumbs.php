@@ -290,3 +290,10 @@ Breadcrumbs::register('user.settings', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.user_settings'), action('UserSettingsController@index'));
 });
+
+//----------------- Userlists ----------------------------------------------------------------------------------------//
+// Home -> Userlist
+Breadcrumbs::register('userlist.show', function ($breadcrumbs, $user, $list) {
+    $breadcrumbs->parent('user', $user);
+    $breadcrumbs->push(trans('app.userlist') . ': ' . $list->title, action('UserListController@show', [$user->id, $list->id]));
+});
