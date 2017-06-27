@@ -27,8 +27,8 @@
                     <div class="panel-footer">
                         <div class="pull-right">
                             <input class="btn btn-primary" type="submit" id="submit" value="{{ trans('app.submit') }}">
-                            <div class="clearfix"></div>
                         </div>
+                        <div class="clearfix"></div>
                     </div>
                 </div>
             </form>
@@ -104,8 +104,8 @@
                 <div class="panel-footer">
                     <div class="pull-right">
                         <input class="btn btn-primary" type="submit" id="submit" value="{{ trans('app.submit') }}">
-                        <div class="clearfix"></div>
                     </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
             {!! Form::close() !!}
@@ -146,8 +146,8 @@
                 <div class="panel-footer">
                     <div class="pull-right">
                         <input class="btn btn-primary" type="submit" id="submit" value="{{ trans('app.submit') }}">
-                        <div class="clearfix"></div>
                     </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
             {!! Form::close() !!}
