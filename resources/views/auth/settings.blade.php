@@ -9,8 +9,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <form action="http://ava.rmarchiv.de/upload.php" method="post" enctype="multipart/form-data">
+            <form action="http://ava.rmarchiv.de/upload.php" method="post" enctype="multipart/form-data">
+                <div class="panel panel-default">
                     <input type="hidden" name="posttype" value="avatar">
                     <input type="hidden" name="userid" value="{{ Auth::id() }}">
 
@@ -27,10 +27,11 @@
                     <div class="panel-footer">
                         <div class="pull-right">
                             <input class="btn btn-primary" type="submit" id="submit" value="{{ trans('app.submit') }}">
+                            <div class="clearfix"></div>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
         <div class="row">
             <div class="panel panel-default">
@@ -56,8 +57,8 @@
             </div>
         </div>
         <div class="row">
+            {!! Form::open(['action' => ['UserSettingsController@store_rowsPerPage']]) !!}
             <div class="panel panel-default">
-                {!! Form::open(['action' => ['UserSettingsController@store_rowsPerPage']]) !!}
                 <div class="panel-heading">
                     {{ trans('app.rows_per_page') }}
                 </div>
@@ -103,14 +104,15 @@
                 <div class="panel-footer">
                     <div class="pull-right">
                         <input class="btn btn-primary" type="submit" id="submit" value="{{ trans('app.submit') }}">
+                        <div class="clearfix"></div>
                     </div>
                 </div>
-                {!! Form::close() !!}
             </div>
+            {!! Form::close() !!}
         </div>
         <div class="row">
+            {!! Form::open(['action' => ['UserSettingsController@store_password']]) !!}
             <div class="panel panel-default">
-                {!! Form::open(['action' => ['UserSettingsController@store_password']]) !!}
                 <div class="panel-heading">
                     {{ trans('app.change_password') }}
                 </div>
@@ -144,10 +146,11 @@
                 <div class="panel-footer">
                     <div class="pull-right">
                         <input class="btn btn-primary" type="submit" id="submit" value="{{ trans('app.submit') }}">
+                        <div class="clearfix"></div>
                     </div>
                 </div>
-                {!! Form::close() !!}
             </div>
+            {!! Form::close() !!}
         </div>
     </div>
 
