@@ -1,28 +1,14 @@
 <?php
 /*************************************************************************
- * Generated via "php artisan localization:missing" at 2017/06/27 10:01:39
+ * Generated via "php artisan localization:missing" at 2017/06/27 11:00:42
 *************************************************************************/
 
 return array(
   //============================== New strings to translate ==============================//
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\auth\\settings.blade.php
-    'avatar_upload'                                   => 'Avatar hochladen',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\auth\\settings.blade.php
-    'change_password'                                 => 'Passwort ändern',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\auth\\settings.blade.php
-    'devs_per_row'                                    => 'Entwickler Zeilen',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\auth\\settings.blade.php
-    'games_per_row'                                   => 'Spiele Zeilen',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\auth\\settings.blade.php
-    'indexpage_widget_settings'                       => 'Widgeteinstellungen auf der Hauptseite',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\auth\\settings.blade.php
-    'new_password'                                    => 'Neues Passwort',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\auth\\settings.blade.php
-    'new_password_confirm'                            => 'Neues Passwort bestätigen',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\auth\\settings.blade.php
-    'old_password'                                    => 'Altes Passwort',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\auth\\settings.blade.php
-    'rows_per_page'                                   => 'Zeilen pro Seiten',
+    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\games\\edit.blade.php
+    'choose_license'                                  => 'Wähle eine Lizenz',
+    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\games\\show.blade.php
+    'license'                                         => 'Lizenz',
   //==================================== Translations ====================================//
     '10_newest_board_posts'                           => 'Die 10 aktuellsten Forenthreads',
     '404_error'                                       => 'TODO: 404_error',
@@ -63,6 +49,7 @@ return array(
     'attention_uploading_can_overwrite'               => 'ACHTUNG!! Wenn in dem ausgewähltem Slot schon ein Savegame existiert, wird der alte überschrieben.',
     'audio'                                           => 'Audio',
     'autotiles'                                       => 'Autotiles',
+    'avatar_upload'                                   => 'Avatar hochladen',
     'avg'                                             => 'Avg.',
     'avg_file_size'                                   => 'Durchnittsgröße',
     'award_category'                                  => 'Awardkategorie',
@@ -87,6 +74,7 @@ return array(
     'cancel'                                          => 'Abbrechen',
     'category'                                        => 'Kategorie',
     'change'                                          => 'Änderung',
+    'change_password'                                 => 'Passwort ändern',
     'changelog'                                       => 'Änderungshistorie',
     'charset'                                         => 'Charset',
     'chipset'                                         => 'Chipset',
@@ -136,6 +124,7 @@ return array(
     'developer_not_found'                             => 'Entwickler nicht gefunden',
     'developer_profile'                               => 'Entwicklerprofil',
     'developers'                                      => 'Entwickler',
+    'devs_per_row'                                    => 'Entwickler Zeilen',
     'download'                                        => 'Download',
     'download_deleted'                                => 'Download gelöscht',
     'download_traffic'                                => 'Downloadtraffic',
@@ -172,6 +161,7 @@ return array(
     'gameovers'                                       => 'Gameovers',
     'games'                                           => 'Spiele',
     'games_downloaded'                                => 'Spiele heruntergeladen',
+    'games_per_row'                                   => 'Spiele Zeilen',
     'games_without_tags'                              => 'Spiele ohne Tags',
     'gamesubtitle'                                    => 'Spiel Untertitel',
     'gametitle'                                       => 'Spieltitel',
@@ -183,6 +173,7 @@ return array(
     'if_you_think_thats_wrong'                        => 'Glaubst du, das dies ein versehen war?',
     'image'                                           => 'Image',
     'imprint'                                         => 'Impressum',
+    'indexpage_widget_settings'                       => 'Widgeteinstellungen auf der Hauptseite',
     'informations'                                    => 'Informationen',
     'language'                                        => 'Sprache',
     'last_action_date'                                => 'Letzte Aktion am',
@@ -249,6 +240,8 @@ return array(
     'music'                                           => 'Musik',
     'name'                                            => 'Name',
     'new_message_available'                           => 'Neue Nachrichten verfügbar',
+    'new_password'                                    => 'Neues Passwort',
+    'new_password_confirm'                            => 'Neues Passwort bestätigen',
     'newest_user'                                     => 'Neuester Benutzer',
     'news'                                            => 'News',
     'news_category'                                   => 'News Kategorie',
@@ -265,6 +258,7 @@ return array(
     'obyx_for'                                        => 'Obyx für',
     'obyx_overview'                                   => 'Obyx Übersicht',
     'ok'                                              => 'OK',
+    'old_password'                                    => 'Altes Passwort',
     'panorama'                                        => 'Panorama',
     'participants'                                    => 'Empfänger',
     'password'                                        => 'Passwort',
@@ -316,6 +310,7 @@ return array(
     'rmmv'                                            => 'RPG Maker MV',
     'rmvx'                                            => 'RPG Maker VX',
     'rmxp'                                            => 'RPG Maker XP',
+    'rows_per_page'                                   => 'Zeilen pro Seiten',
     'rtp'                                             => 'Runtime Package',
     'savegame'                                        => 'Savegame',
     'savegame_manager'                                => 'Savegame Manager',

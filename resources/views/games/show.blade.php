@@ -189,6 +189,12 @@
                                             {{ trans('app.submitted_at') }}
                                             <time datetime='{{ $game->created_at }}' title='{{ $game->created_at }}'>{{ \Carbon\Carbon::parse($game->created_at)->diffForHumans() }}</time>
                                         </li>
+                                        @if($game->license)
+                                            <li class="list-group-item">
+                                                {{ trans('app.license') }}
+                                                {{ $game->license->title }}
+                                            </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>

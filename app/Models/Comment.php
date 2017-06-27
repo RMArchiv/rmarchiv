@@ -41,6 +41,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \App\Models\Game $game
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property-read \App\Models\News $news
+ * @method static bool|null forceDelete()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment onlyTrashed()
+ * @method static bool|null restore()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment withoutTrashed()
  */
 class Comment extends Model
 {

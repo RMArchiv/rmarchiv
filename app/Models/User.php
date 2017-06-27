@@ -89,6 +89,7 @@ use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNo
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereDiscordUser($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Shoutbox[] $shoutbox
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Developer[] $developers
  */
 class User extends Authenticatable
 {

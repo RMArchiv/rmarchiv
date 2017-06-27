@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\License;
 use Carbon\Carbon;
 use App\Events\Obyx;
 use App\Models\Game;
@@ -64,7 +65,9 @@ class GameController extends Controller
             ->orderBy('id')
             ->get();
 
-        return view('games.create', ['makers' => $maker, 'langs' => $langs]);
+        $licenses = License::get();
+
+        return view('games.create', ['makers' => $maker, 'langs' => $langs, 'licenses' => $licenses]);
     }
 
     /**
@@ -102,6 +105,7 @@ class GameController extends Controller
         $g->user_id = \Auth::id();
         $g->youtube = $request->get('youtube');
         $g->atelier_id = $request->get('atelier_id');
+        $g->license_id = $request->get('license');
         $g->save();
 
         \DB::table('games_developer')->insert([
@@ -190,13 +194,16 @@ class GameController extends Controller
             $credittypes[$cred->id]['id'] = $cred->id;
         }
 
+        $licenses = License::get();
+
         $game = Game::whereId($id)->first();
 
         return view('games.edit', [
-            'game'        => $game,
-            'makers'      => $makers,
+            'game'     => $game,
+            'makers'   => $makers,
             //'developers'  => $developers,
-            'langs'       => $langs,
+            'langs'    => $langs,
+            'licenses' => $licenses,
             //'credittypes' => $credittypes,
             //'credits'     => $credits,
             //'tags' => $tags,
@@ -226,6 +233,7 @@ class GameController extends Controller
         $game->youtube = $request->get('youtube');
         $game->atelier_id = $request->get('atelier_id');
         $game->release_date = Carbon::createFromDate($request->get('releasedate_year'), $request->get('releasedate_month'), $request->get('releasedate_day'));
+        $game->license_id = $request->get('license');
         $game->save();
 
         return redirect()->action('GameController@edit', [$id]);

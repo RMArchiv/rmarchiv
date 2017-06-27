@@ -1,28 +1,14 @@
 <?php
 /*************************************************************************
- * Generated via "php artisan localization:missing" at 2017/06/27 10:01:39
+ * Generated via "php artisan localization:missing" at 2017/06/27 11:00:42
 *************************************************************************/
 
 return array(
   //============================== New strings to translate ==============================//
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\auth\\settings.blade.php
-    'avatar_upload'                                   => 'Avatar upload',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\auth\\settings.blade.php
-    'change_password'                                 => 'Change password',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\auth\\settings.blade.php
-    'devs_per_row'                                    => 'Developer rows',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\auth\\settings.blade.php
-    'games_per_row'                                   => 'Game rows',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\auth\\settings.blade.php
-    'indexpage_widget_settings'                       => 'Widget settings for index page',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\auth\\settings.blade.php
-    'new_password'                                    => 'New password',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\auth\\settings.blade.php
-    'new_password_confirm'                            => 'Password confirmation',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\auth\\settings.blade.php
-    'old_password'                                    => 'Old password',
-    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\auth\\settings.blade.php
-    'rows_per_page'                                   => 'Rows per page',
+    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\games\\edit.blade.php
+    'choose_license'                                  => 'Choose a license',
+    // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\games\\show.blade.php
+    'license'                                         => 'License',
   //==================================== Translations ====================================//
     '10_newest_board_posts'                           => '10 newest board posts',
     '404_error'                                       => 'TODO: 404_error',
@@ -63,6 +49,7 @@ return array(
     'attention_uploading_can_overwrite'               => 'CAUTION!! If a savegame already exists in the selected slot, the old one is overwritten.',
     'audio'                                           => 'Audio',
     'autotiles'                                       => 'Autotiles',
+    'avatar_upload'                                   => 'Avatar upload',
     'avg'                                             => 'Avg.',
     'avg_file_size'                                   => 'Avg. filesize',
     'award_category'                                  => 'Awardcategory',
@@ -87,6 +74,7 @@ return array(
     'cancel'                                          => 'Cancel',
     'category'                                        => 'Category',
     'change'                                          => 'Change',
+    'change_password'                                 => 'Change password',
     'changelog'                                       => 'Changelog',
     'charset'                                         => 'Charset',
     'chipset'                                         => 'Chipset',
@@ -136,6 +124,7 @@ return array(
     'developer_not_found'                             => 'Developer not found',
     'developer_profile'                               => 'Developerprofile',
     'developers'                                      => 'Developers',
+    'devs_per_row'                                    => 'Developer rows',
     'download'                                        => 'Download',
     'download_deleted'                                => 'Download deleted',
     'download_traffic'                                => 'Download Traffic',
@@ -172,6 +161,7 @@ return array(
     'gameovers'                                       => 'Gameovers',
     'games'                                           => 'Games',
     'games_downloaded'                                => 'Games downloaded',
+    'games_per_row'                                   => 'Game rows',
     'games_without_tags'                              => 'Games without tags',
     'gamesubtitle'                                    => 'Game Subtitle',
     'gametitle'                                       => 'Gametitle',
@@ -183,6 +173,7 @@ return array(
     'if_you_think_thats_wrong'                        => 'TODO: if_you_think_thats_wrong',
     'image'                                           => 'Image',
     'imprint'                                         => 'Imprint',
+    'indexpage_widget_settings'                       => 'Widget settings for index page',
     'informations'                                    => 'Informations',
     'language'                                        => 'Language',
     'last_action_date'                                => 'last action date',
@@ -249,6 +240,8 @@ return array(
     'music'                                           => 'Music',
     'name'                                            => 'Name',
     'new_message_available'                           => 'New Message available',
+    'new_password'                                    => 'New password',
+    'new_password_confirm'                            => 'Password confirmation',
     'newest_user'                                     => 'Newest User',
     'news'                                            => 'News',
     'news_category'                                   => 'News Category',
@@ -265,6 +258,7 @@ return array(
     'obyx_for'                                        => 'Obyx for',
     'obyx_overview'                                   => 'Obyx overview',
     'ok'                                              => 'Ok',
+    'old_password'                                    => 'Old password',
     'panorama'                                        => 'Panorama',
     'participants'                                    => 'Participants',
     'password'                                        => 'Password',
@@ -316,6 +310,7 @@ return array(
     'rmmv'                                            => 'RPG Maker MV',
     'rmvx'                                            => 'RPG Maker VX',
     'rmxp'                                            => 'RPG Maker XP',
+    'rows_per_page'                                   => 'Rows per page',
     'rtp'                                             => 'Runtime Package',
     'savegame'                                        => 'Savegame',
     'savegame_manager'                                => 'Savegame manager',

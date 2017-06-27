@@ -70,6 +70,17 @@
                                     <input type="text" class="form-control" id="atelier_id" name="atelier_id" placeholder="1337">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for='license' class="col-lg-2 control-label">{{trans('app.license')}} *</label>
+                                <div class="col-lg-10">
+                                    <select name='license' id='license' class="form-control">
+                                        <option value="0">{{trans('app.choose_license')}}</option>
+                                        @foreach($licenses as $maker)
+                                            <option value="{{ $maker->id }}">{{ $maker->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </fieldset>
                     </div>
                 </div>

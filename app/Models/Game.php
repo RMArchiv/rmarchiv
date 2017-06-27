@@ -72,6 +72,11 @@ use Waavi\Translation\Traits\Translatable;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereVotedown($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereVoteup($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @property string $desc_md_translation
+ * @property int $license_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Game whereDescMdTranslation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Game whereLicenseId($value)
+ * @property-read \App\Models\License $license
  */
 class Game extends Model
 {
@@ -109,6 +114,7 @@ class Game extends Model
         'votedown',
         'avg',
         'comments',
+        'license_id',
     ];
     protected $hidden = [
         'votes'
@@ -207,5 +213,10 @@ class Game extends Model
             'title' => $this->title,
             'subtitle' => $this->subtitle,
         ];
+    }
+
+    public function license()
+    {
+        return $this->hasOne('App\Models\License', 'id', 'license_id');
     }
 }

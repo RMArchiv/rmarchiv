@@ -128,6 +128,21 @@
                             <input type="text" class="form-control" id="atelier_id" name="atelier_id" value="{{ $game->atelier_id }}">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for='license' class="col-lg-2 control-label">{{trans('app.license')}} *</label>
+                        <div class="col-lg-10">
+                            <select name='license' id='license' class="form-control">
+                                <option value="0">{{trans('app.choose_license')}}</option>
+                                @foreach($licensens as $maker)
+                                    @if($game->license_id == $maker->id)
+                                        <option selected="selected" value="{{ $maker->id }}">{{ $maker->title }}</option>
+                                    @else
+                                        <option value="{{ $maker->id }}">{{ $maker->title }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="panel-heading">
