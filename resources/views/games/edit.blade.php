@@ -133,7 +133,7 @@
                         <div class="col-lg-10">
                             <select name='license' id='license' class="form-control">
                                 <option value="0">{{trans('app.choose_license')}}</option>
-                                @foreach($licensens as $maker)
+                                @foreach($licenses as $maker)
                                     @if($game->license_id == $maker->id)
                                         <option selected="selected" value="{{ $maker->id }}">{{ $maker->title }}</option>
                                     @else
