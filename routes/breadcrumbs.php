@@ -283,3 +283,10 @@ Breadcrumbs::register('missing.tags', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.games_without_tags'), action('MissingController@index_notags'));
 });
+
+//----------------- Usersettings -------------------------------------------------------------------------------------//
+// Home -> Usersettings
+Breadcrumbs::register('user.settings', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('app.user_settings'), action('UserSettingsController@index'));
+});

@@ -121,6 +121,7 @@ return array(
         'fields',
         'month',
         'obyx',
+        'widget',
     ),
 
 
