@@ -317,22 +317,3 @@ Route::post('savegame/manager/save/upload', 'SavegameManagerController@store');
 //EasyRPG Savegame API
 Route::get('savegames/{gamefileid}', 'SavegameController@api_load');
 Route::post('savegames/{gamefileid}', 'SavegameController@api_save');
-
-//Routen für API
-$api = app('Dingo\Api\Routing\Router');
-$api->version('v1', function ($api) {
-    $api->get('games', 'App\Http\Controllers\Api\v1\GameController@index');
-    $api->get('games/{id}', 'App\Http\Controllers\Api\v1\GameController@show');
-    $api->get('games_app', 'App\Http\Controllers\Api\v1\GameController@show_app');
-    $api->get('tako/filelist', 'App\Http\Controllers\Api\v1\TakoController@filelist');
-
-    //EasyRPG Hash API
-    $api->get('easyrpg', 'App\Http\Controllers\Api\v1\EasyRPGController@index');
-    $api->get('easyrpg/{ldbhash}', 'App\Http\Controllers\Api\v1\EasyRPGController@show');
-
-    $api->group(['prefix' => 'v2'], function ($api) { // Use this route group for v2
-
-        $api->get('test', 'App\Http\Controllers\Api\v2\TestController@show');
-
-    });
-});

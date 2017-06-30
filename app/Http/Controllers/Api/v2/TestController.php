@@ -13,7 +13,7 @@ class TestController extends Controller
     public function __construct()
     {
         // Only apply to a subset of methods.
-        $this->middleware('api.auth', ['only' => ['index']]);
+        $this->middleware('api.auth', ['only' => ['show']]);
     }
 
     public function show()

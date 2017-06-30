@@ -31,8 +31,9 @@ class AuthenticationController extends Controller
         }
 
         return response()->json([
-            'status' => 'ok',
-            'token'  => $token,
+            'status_code' => '200',
+            'message'     => 'ok',
+            'token'       => $token,
         ]);
     }
 }

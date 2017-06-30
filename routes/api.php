@@ -39,6 +39,9 @@ $api->version('v1', function ($api) {
             $api->post('login', 'App\Http\Controllers\Api\v2\AuthenticationController@login');
         });
 
+        $api->group(['prefix' => 'games'], function (\Dingo\Api\Routing\Router $api) {
+            $api->get('/', 'App\Http\Controllers\Api\v2\GamesController@index');
+        });
 
     });
 });
