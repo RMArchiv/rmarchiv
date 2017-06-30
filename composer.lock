@@ -216,16 +216,16 @@
         },
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "v2.4.0",
+            "version": "v2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "de15d00a74696db62e1b4782474c27ed0c4fc763"
+                "reference": "af98b3a4ccac9364f2145fae974ff3392ec402b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/de15d00a74696db62e1b4782474c27ed0c4fc763",
-                "reference": "de15d00a74696db62e1b4782474c27ed0c4fc763",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/af98b3a4ccac9364f2145fae974ff3392ec402b1",
+                "reference": "af98b3a4ccac9364f2145fae974ff3392ec402b1",
                 "shasum": ""
             },
             "require": {
@@ -274,34 +274,34 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2017-06-01T17:46:08+00:00"
+            "time": "2017-06-14T07:44:44+00:00"
         },
         {
             "name": "barryvdh/laravel-ide-helper",
-          "version": "v2.4.0",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-ide-helper.git",
-              "reference": "87a02ff574f722c685e011f76692ab869ab64f6c"
+                "reference": "87a02ff574f722c685e011f76692ab869ab64f6c"
             },
             "dist": {
                 "type": "zip",
-              "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/87a02ff574f722c685e011f76692ab869ab64f6c",
-              "reference": "87a02ff574f722c685e011f76692ab869ab64f6c",
+                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/87a02ff574f722c685e011f76692ab869ab64f6c",
+                "reference": "87a02ff574f722c685e011f76692ab869ab64f6c",
                 "shasum": ""
             },
             "require": {
                 "barryvdh/reflection-docblock": "^2.0.4",
-              "illuminate/console": "^5.0,<5.6",
-              "illuminate/filesystem": "^5.0,<5.6",
-              "illuminate/support": "^5.0,<5.6",
+                "illuminate/console": "^5.0,<5.6",
+                "illuminate/filesystem": "^5.0,<5.6",
+                "illuminate/support": "^5.0,<5.6",
                 "php": ">=5.4.0",
                 "symfony/class-loader": "^2.3|^3.0"
             },
             "require-dev": {
                 "doctrine/dbal": "~2.3",
-              "illuminate/config": "^5.0,<5.6",
-              "illuminate/view": "^5.0,<5.6",
+                "illuminate/config": "^5.0,<5.6",
+                "illuminate/view": "^5.0,<5.6",
                 "phpunit/phpunit": "4.*",
                 "scrutinizer/ocular": "~1.1",
                 "squizlabs/php_codesniffer": "~2.3"
@@ -314,10 +314,10 @@
                 "branch-alias": {
                     "dev-master": "2.3-dev"
                 },
-              "laravel": {
-                "providers": [
-                  "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider"
-                ]
+                "laravel": {
+                    "providers": [
+                        "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider"
+                    ]
                 }
             },
             "autoload": {
@@ -347,7 +347,7 @@
                 "phpstorm",
                 "sublime"
             ],
-          "time": "2017-06-16T14:08:59+00:00"
+            "time": "2017-06-16T14:08:59+00:00"
         },
         {
             "name": "barryvdh/reflection-docblock",
@@ -504,16 +504,16 @@
         },
         {
             "name": "davejamesmiller/laravel-breadcrumbs",
-          "version": "3.0.3",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davejamesmiller/laravel-breadcrumbs.git",
-              "reference": "0b0f4792dee645b0f084164aa17d4320e4bb734f"
+                "reference": "0b0f4792dee645b0f084164aa17d4320e4bb734f"
             },
             "dist": {
                 "type": "zip",
-              "url": "https://api.github.com/repos/davejamesmiller/laravel-breadcrumbs/zipball/0b0f4792dee645b0f084164aa17d4320e4bb734f",
-              "reference": "0b0f4792dee645b0f084164aa17d4320e4bb734f",
+                "url": "https://api.github.com/repos/davejamesmiller/laravel-breadcrumbs/zipball/0b0f4792dee645b0f084164aa17d4320e4bb734f",
+                "reference": "0b0f4792dee645b0f084164aa17d4320e4bb734f",
                 "shasum": ""
             },
             "require": {
@@ -524,7 +524,7 @@
             "require-dev": {
                 "mockery/mockery": "0.9.*",
                 "orchestra/testbench": "3.2.*|3.3.*",
-              "phpunit/phpunit": "4.*"
+                "phpunit/phpunit": "4.*"
             },
             "type": "library",
             "autoload": {
@@ -543,12 +543,12 @@
                     "homepage": "https://davejamesmiller.com/"
                 }
             ],
-          "description": "A simple Laravel-style way to create breadcrumbs in Laravel.",
+            "description": "A simple Laravel-style way to create breadcrumbs in Laravel.",
             "homepage": "https://laravel-breadcrumbs.readthedocs.io/",
             "keywords": [
                 "laravel"
             ],
-          "time": "2017-06-24T11:10:49+00:00"
+            "time": "2017-06-24T11:10:49+00:00"
         },
         {
             "name": "dingo/api",
@@ -3258,16 +3258,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v3.0.5",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "2b9e2f71b722f7c53918ab0c25f7646c2013f17d"
+                "reference": "0808939f81c1347a3c8a82a5925385a08074b0f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/2b9e2f71b722f7c53918ab0c25f7646c2013f17d",
-                "reference": "2b9e2f71b722f7c53918ab0c25f7646c2013f17d",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/0808939f81c1347a3c8a82a5925385a08074b0f1",
+                "reference": "0808939f81c1347a3c8a82a5925385a08074b0f1",
                 "shasum": ""
             },
             "require": {
@@ -3305,7 +3305,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2017-03-05T18:23:57+00:00"
+            "time": "2017-06-28T20:53:48+00:00"
         },
         {
             "name": "optimus/fineuploader-server",
@@ -3956,16 +3956,16 @@
         },
         {
             "name": "spatie/laravel-activitylog",
-          "version": "1.15.3",
+            "version": "1.15.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-activitylog.git",
-              "reference": "95ddf8401cd38b764dd147668086b2d0aa3f9a78"
+                "reference": "95ddf8401cd38b764dd147668086b2d0aa3f9a78"
             },
             "dist": {
                 "type": "zip",
-              "url": "https://api.github.com/repos/spatie/laravel-activitylog/zipball/95ddf8401cd38b764dd147668086b2d0aa3f9a78",
-              "reference": "95ddf8401cd38b764dd147668086b2d0aa3f9a78",
+                "url": "https://api.github.com/repos/spatie/laravel-activitylog/zipball/95ddf8401cd38b764dd147668086b2d0aa3f9a78",
+                "reference": "95ddf8401cd38b764dd147668086b2d0aa3f9a78",
                 "shasum": ""
             },
             "require": {
@@ -4023,7 +4023,7 @@
                 "spatie",
                 "user"
             ],
-          "time": "2017-06-23T07:40:29+00:00"
+            "time": "2017-06-23T07:40:29+00:00"
         },
         {
             "name": "spatie/laravel-backup",
@@ -5648,16 +5648,16 @@
         },
         {
             "name": "watson/sitemap",
-            "version": "2.0.19",
+            "version": "2.0.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dwightwatson/sitemap.git",
-                "reference": "480bd1fcad5fcc9743e42894a045c68a86dc89e9"
+                "reference": "2618d3e4e1d7cb7ae5bde3587489df76a6f37f03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dwightwatson/sitemap/zipball/480bd1fcad5fcc9743e42894a045c68a86dc89e9",
-                "reference": "480bd1fcad5fcc9743e42894a045c68a86dc89e9",
+                "url": "https://api.github.com/repos/dwightwatson/sitemap/zipball/2618d3e4e1d7cb7ae5bde3587489df76a6f37f03",
+                "reference": "2618d3e4e1d7cb7ae5bde3587489df76a6f37f03",
                 "shasum": ""
             },
             "require": {
@@ -5670,6 +5670,16 @@
                 "phpunit/phpunit": "4.3.*"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Watson\\Sitemap\\SitemapServiceProvider"
+                    ],
+                    "aliases": {
+                        "Sitemap": "Watson\\Sitemap\\Facades\\Sitemap"
+                    }
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Watson\\": "src/Watson"
@@ -5690,7 +5700,7 @@
                 "laravel",
                 "sitemaps"
             ],
-            "time": "2016-12-24T06:16:46+00:00"
+            "time": "2017-06-30T01:15:34+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -6638,16 +6648,16 @@
         },
         {
             "name": "phpunit/phpunit",
-          "version": "5.7.21",
+            "version": "5.7.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-              "reference": "3b91adfb64264ddec5a2dee9851f354aa66327db"
+                "reference": "3b91adfb64264ddec5a2dee9851f354aa66327db"
             },
             "dist": {
                 "type": "zip",
-              "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3b91adfb64264ddec5a2dee9851f354aa66327db",
-              "reference": "3b91adfb64264ddec5a2dee9851f354aa66327db",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3b91adfb64264ddec5a2dee9851f354aa66327db",
+                "reference": "3b91adfb64264ddec5a2dee9851f354aa66327db",
                 "shasum": ""
             },
             "require": {
@@ -6716,7 +6726,7 @@
                 "testing",
                 "xunit"
             ],
-          "time": "2017-06-21T08:11:54+00:00"
+            "time": "2017-06-21T08:11:54+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

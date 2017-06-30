@@ -20,7 +20,9 @@ class AuthenticationController extends Controller
             'password' => 'required',
         ]);
 
-        $credentials = $request->only(['email', 'password']);
+        $credentials['email'] = $request->header('email');
+        $credentials['password'] = $request->header('password');
+
         try {
             $token = $JWTAuth->attempt($credentials);
             if (!$token) {
