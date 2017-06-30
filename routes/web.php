@@ -329,4 +329,10 @@ $api->version('v1', function ($api) {
     //EasyRPG Hash API
     $api->get('easyrpg', 'App\Http\Controllers\Api\v1\EasyRPGController@index');
     $api->get('easyrpg/{ldbhash}', 'App\Http\Controllers\Api\v1\EasyRPGController@show');
+
+    $api->group(['prefix' => 'v2'], function ($api) { // Use this route group for v2
+
+        $api->get('test', 'App\Http\Controllers\Api\v2\TestController@show');
+
+    });
 });

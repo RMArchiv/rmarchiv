@@ -231,6 +231,7 @@ return [
         GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
         Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProvider::class,
         Spatie\CookieConsent\CookieConsentServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -281,6 +282,8 @@ return [
         'Honeypot'            => Msurguy\Honeypot\HoneypotFacade::class,
         'Html'                => Collective\Html\HtmlFacade::class,
         'Image'               => Intervention\Image\Facades\Image::class,
+        'JWTAuth'             => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory'          => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Lang'                => Illuminate\Support\Facades\Lang::class,
         'LocalizationHelpers' => Potsky\LaravelLocalizationHelpers\Facade\LocalizationHelpers::class,
         'Log'                 => Illuminate\Support\Facades\Log::class,
