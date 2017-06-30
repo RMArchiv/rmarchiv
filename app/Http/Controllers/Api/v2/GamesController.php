@@ -22,31 +22,17 @@ class GamesController extends Controller
     {
         \Debugbar::disable();
 
-        $games = Game::get();
-
-        $result = array();
-
-        foreach ($games as $game) {
-            $g['id'] = $game->id;
-            $g['title'] = $game->title;
-            $g['subtitle'] = $game->subtitle;
-
-            $devs = GamesDeveloper::whereGameId($game->id)->get();
-
-            foreach ($devs as $dev) {
-                $d['id'] = $dev->developer_id;
-                $d['name'] = $dev->developer->name;
-
-                $g['developers'][] = $d;
-            }
-
-            $result[] = $g;
-        }
+        $games = Game::select([
+            'id',
+            'title',
+            'subtitle',
+        ])
+            ->get();
 
         return response()->json([
             'status_code' => 200,
             'message'     => 'List of games',
-            'data'        => $result,
+            'data'        => $games,
         ]);
     }
 }
