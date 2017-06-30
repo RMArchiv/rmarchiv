@@ -15,11 +15,6 @@ class AuthenticationController extends Controller
     {
         \Debugbar::disable();
 
-        $this->validate($request, [
-            'email'    => 'required|email',
-            'password' => 'required',
-        ]);
-
         $credentials['email'] = $request->header('email');
         $credentials['password'] = $request->header('password');
 
