@@ -22,3 +22,30 @@ Polls is a simple API allowing consumers to view polls and vote in them.
             "status": "ok",
             "token": "Auth-Token"
         }
+        
+## Game lists [/games]
+
+### Get all games [GET]
+
++ Request (application/json)
+
+    + Headers
+    
+            Authentication: Bearer "AuthToken"
+        
++ Response 200 (application/json)
+
+        {
+            "status": "ok",
+            "message": "Game List",
+            "data": [
+                {
+                    "id": 1
+                    "title": "Gametitle"
+                    "subtitle": "Subtitle"
+                },
+                {
+                    ...
+                },
+            ],
+        }
