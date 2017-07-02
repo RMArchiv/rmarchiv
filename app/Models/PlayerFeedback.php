@@ -1,11 +1,16 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class PlayerFeedback
+ * Class PlayerFeedback.
  *
  * @property int $id
  * @property int $gamefile_id
@@ -41,6 +46,4 @@ class PlayerFeedback extends Model
     ];
 
     protected $guarded = [];
-
-
 }

@@ -1,37 +1,43 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Http\Controllers\Api\v1;
 
-use App\Models\Game;
-use App\Models\GamesDeveloper;
-use App\Models\GamesFile;
-use App\Models\PlayerFileGamefileRel;
-use App\Models\PlayerFileHash;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+use App\Models\Game;
+use App\Models\GamesFile;
+use App\Models\GamesDeveloper;
+use App\Models\PlayerFileHash;
 use App\Http\Controllers\Controller;
+use App\Models\PlayerFileGamefileRel;
 
 class EasyRPGController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $hashes = PlayerFileGamefileRel::where('orig_filename', 'like', '%rpg_rt.ldb%')
             ->join('player_file_hashes', 'player_file_hashes.id', 'player_file_gamefile_rel.file_hash_id')
             ->select([
                 'player_file_gamefile_rel.gamefile_id',
-                'player_file_hashes.filehash'
+                'player_file_hashes.filehash',
             ])
             ->get();
 
         $array = [
             'type' => 'hashlist',
             'count' => $hashes->count(),
-            'data' => $hashes->toArray()
+            'data' => $hashes->toArray(),
         ];
 
         return $array;
     }
 
-    public function show($ldbhash){
+    public function show($ldbhash)
+    {
         $hashid = PlayerFileHash::whereFilehash($ldbhash)->first()->id;
         $gamefileid = PlayerFileGamefileRel::whereFileHashId($hashid)->first()->gamefile_id;
         $gamefile = GamesFile::whereId($gamefileid)->first();
@@ -54,21 +60,21 @@ class EasyRPGController extends Controller
                 'engine' => $game->maker->short,
                 'release_type' => $gamefile->gamefiletype->short,
                 'files' => '',
-            ]
+            ],
         ];
 
         //Lade Entwickler
         $developer = GamesDeveloper::whereGameId($game->id)->get();
-        $t = array();
-        foreach($developer as $dev){
+        $t = [];
+        foreach ($developer as $dev) {
             $t[] = $dev->developer->name;
         }
         $array['data']['developers'] = $t;
 
         //Lade Dateien
         $files = PlayerFileGamefileRel::whereGamefileId($gamefileid)->get();
-        $t = array();
-        foreach ($files as $f){
+        $t = [];
+        foreach ($files as $f) {
             $t[$f->orig_filename] = $f->filehash->filehash;
         }
         $array['data']['files'] = $t;

@@ -83,7 +83,8 @@ class Comment extends Model
         return $this->hasOne('App\Models\Game', 'id', 'content_id')->with('user', 'maker', 'gamefiles', 'language');
     }
 
-    public function news(){
+    public function news()
+    {
         return $this->hasOne('App\Models\News', 'id', 'content_id');
     }
 }

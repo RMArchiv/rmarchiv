@@ -1,11 +1,16 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class PlayerFileGamefileRel
+ * Class PlayerFileGamefileRel.
  *
  * @property int $id
  * @property int $gamefile_id
@@ -29,12 +34,13 @@ class PlayerFileGamefileRel extends Model
     protected $fillable = [
         'gamefile_id',
         'file_hash_id',
-        'orig_filename'
+        'orig_filename',
     ];
 
     protected $guarded = [];
 
-    public function filehash(){
+    public function filehash()
+    {
         return $this->hasOne('App\Models\PlayerFileHash', 'id', 'file_hash_id');
     }
 }

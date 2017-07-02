@@ -8,7 +8,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
-use App\Helpers\DatabaseHelper;
 
 class MissingController extends Controller
 {

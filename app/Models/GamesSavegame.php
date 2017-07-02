@@ -1,11 +1,16 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class GamesSavegame
+ * Class GamesSavegame.
  *
  * @property int $id
  * @property int $user_id
@@ -32,7 +37,7 @@ class GamesSavegame extends Model
         'user_id',
         'gamefile_id',
         'slot_id',
-        'save_data'
+        'save_data',
     ];
 
     protected $guarded = [];
@@ -41,6 +46,4 @@ class GamesSavegame extends Model
     {
         return $this->hasOne('App\Models\GamesFile', 'id', 'gamefile_id');
     }
-
-        
 }

@@ -1,9 +1,11 @@
 <?php
-/*************************************************************************
- * Generated via "php artisan localization:missing" at 2017/06/27 11:00:42
-*************************************************************************/
 
-return array(
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
+return [
   //============================== New strings to translate ==============================//
     // Defined in file D:\\Projekte\\quartier_laravel\\resources\\views\\games\\edit.blade.php
     'choose_license'                                  => 'Choose a license',
@@ -210,33 +212,33 @@ return array(
     'missing_screenshots'                             => 'Missing screenshots',
     'monster'                                         => 'Monster',
     'more'                                            => 'more',
-    'msgbox'                                          => array(
-    'cdc' => array(
+    'msgbox'                                          => [
+    'cdc' => [
       'msg' => 'TODO: msg',
       'redirect' => 'Go to home',
       'title' => 'TODO: title',
-    ),
-    'comment' => array(
+    ],
+    'comment' => [
       'msg' => 'TODO: msg',
       'redirect' => 'Go to previous page',
       'title' => 'TODO: title',
-    ),
-    'game' => array(
+    ],
+    'game' => [
       'msg' => 'TODO: msg',
       'redirect' => 'Go to game',
       'title' => 'TODO: title',
-    ),
-    'logo' => array(
+    ],
+    'logo' => [
       'msg' => 'TODO: msg',
       'redirect' => 'Go to logo voting',
       'title' => 'Logo upload successful',
-    ),
-    'screenshot' => array(
+    ],
+    'screenshot' => [
       'msg' => 'TODO: msg',
       'redirect' => 'Go to game',
       'title' => 'Screenshot upload successful.',
-    ),
-  ),
+    ],
+  ],
     'music'                                           => 'Music',
     'name'                                            => 'Name',
     'new_message_available'                           => 'New Message available',
@@ -408,7 +410,7 @@ return array(
     'your_permissions_are_to_low'                     => 'Your permissions are to low.',
     'your_permissions_are_to_low_to_post'             => 'Your permissions are to low to post a message.',
   //============================== Dynamic protected strings =============================//
-    'month'                                           => array(
+    'month'                                           => [
     0 => '',
     1 => 'January',
     10 => 'October',
@@ -422,8 +424,8 @@ return array(
     7 => 'July',
     8 => 'August',
     9 => 'September',
-  ),
-    'obyx'                                            => array(
+  ],
+    'obyx'                                            => [
     'comment' => 'Create a comment',
     'dev-add' => 'Add a developer',
     'game-add' => 'Add a game',
@@ -435,8 +437,8 @@ return array(
     'screenshot-add' => 'Upload a screenshot',
     'shoutbox' => 'Post a shout',
     'thread-add' => 'Create a board thread',
-  ),
-    'widget'                                          => array(
+  ],
+    'widget'                                          => [
         'disable_widget_alltimetop'    => 'Alltime top widget',
         'disable_widget_board'         => 'Board widget',
         'disable_widget_cdc'           => 'Coup de coeur widget',
@@ -451,5 +453,5 @@ return array(
         'disable_widget_stats'         => 'Statistics widget',
         'disable_widget_tags'          => 'Tag cloud widget',
         'disable_widget_topmonth'      => 'Top of the wonth widget',
-    ),
-);
+    ],
+];

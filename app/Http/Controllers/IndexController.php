@@ -7,10 +7,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Carbon\Carbon;
 use App\Models\Game;
 use App\Models\News;
+use App\Models\User;
 use App\Models\Comment;
 use App\Models\Shoutbox;
 use App\Helpers\MiscHelper;

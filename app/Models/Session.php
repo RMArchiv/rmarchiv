@@ -1,11 +1,16 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Session
+ * Class Session.
  *
  * @property int $id
  * @property int|null $user_id
@@ -34,6 +39,4 @@ class Session extends Model
     ];
 
     protected $guarded = [];
-
-
 }

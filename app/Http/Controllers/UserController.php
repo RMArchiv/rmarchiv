@@ -9,8 +9,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserObyx;
-use App\Models\UserOnline;
 use App\Models\UserRole;
+use App\Models\UserOnline;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -80,7 +80,8 @@ class UserController extends Controller
         ]);
     }
 
-    public function users_online(){
+    public function users_online()
+    {
         $uo = UserOnline::orderBy('created_at', 'desc')->get();
 
         return view('users.online', [
