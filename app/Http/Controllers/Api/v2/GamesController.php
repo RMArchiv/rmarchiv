@@ -1,11 +1,14 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Http\Controllers\Api\v2;
 
 use App\Models\Game;
-use App\Models\GamesDeveloper;
 use Dingo\Api\Routing\Helpers;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class GamesController extends Controller

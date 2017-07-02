@@ -1,11 +1,16 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Http\Controllers;
 
-use App\Helpers\PlayerHelper;
 use App\Models\GamesFile;
-use App\Models\GamesSavegame;
 use Illuminate\Http\Request;
+use App\Helpers\PlayerHelper;
+use App\Models\GamesSavegame;
 use PhpBinaryReader\BinaryReader;
 
 class SavegameManagerController extends Controller
@@ -32,7 +37,7 @@ class SavegameManagerController extends Controller
 
             $gamefile = GamesFile::whereId($gamefile_id)->first();
 
-            $array = array();
+            $array = [];
 
             foreach ($savegames as $savegame) {
                 $t['id'] = $savegame->id;
@@ -51,16 +56,15 @@ class SavegameManagerController extends Controller
         } else {
             return redirect()->action('IndexController@index');
         }
-
     }
 
-    function get_lsd_headerdata($data, $gamefile_id)
+    public function get_lsd_headerdata($data, $gamefile_id)
     {
         $data = base64_decode($data);
 
         $br = new BinaryReader($data);
 
-        $array = array();
+        $array = [];
         $br->setPosition(0);
 
         $array['header']['length'] = $br->readInt8();
@@ -96,11 +100,12 @@ class SavegameManagerController extends Controller
         $pc = new PlayerController();
         $files = json_decode($pc->deliver_indexjson($gamefile_id), true);
 
-        $file = $files['faceset/' . strtolower($array[$cat]['char1_face']['data'])];
+        $file = $files['faceset/'.strtolower($array[$cat]['char1_face']['data'])];
 
         $file = action('PlayerController@deliver_files', [$gamefile_id, $file]);
 
         $array[$cat]['char1_face']['url'] = $file;
+
         return $array;
     }
 
@@ -120,11 +125,12 @@ class SavegameManagerController extends Controller
             $save = GamesSavegame::whereId($savegame_id)->where('user_id', '=', \Auth::id())->first();
             $data = base64_decode($save->save_data);
 
-            $filename = "Save" . str_pad($save->slot_id, 2, '0', STR_PAD_LEFT) . ".lsd";
+            $filename = 'Save'.str_pad($save->slot_id, 2, '0', STR_PAD_LEFT).'.lsd';
             $headers = [
                 'Content-type'        => 'application/octet-stream',
-                'Content-Disposition' => sprintf('attachment; filename="%s"', $filename)
+                'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
                 ];
+
             return \Response::make($data, 200, $headers);
         }
     }
@@ -140,20 +146,20 @@ class SavegameManagerController extends Controller
 
             $data = file_get_contents($request->file('file')->getRealPath());
 
-            if(PlayerHelper::getSavegameValidation($data) == true){
+            if (PlayerHelper::getSavegameValidation($data) == true) {
                 $check = GamesSavegame::whereGamefileId($request->get('gamefile_id'))
                     ->where('user_id', '=', \Auth::id())
                     ->where('slot_id', '=', $request->get('slot'))
                     ->first();
 
-                if (!$check) {
+                if (! $check) {
                     $save = new GamesSavegame;
                     $save->gamefile_id = $request->get('gamefile_id');
                     $save->user_id = \Auth::id();
                     $save->save_data = base64_encode($data);
                     $save->slot_id = $request->get('slot');
                     $save->save();
-                }else{
+                } else {
                     $check->save_data = base64_encode($data);
                     $check->save();
                 }

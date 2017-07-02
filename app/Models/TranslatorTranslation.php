@@ -1,11 +1,16 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class TranslatorTranslation
+ * Class TranslatorTranslation.
  *
  * @property int $id
  * @property string $locale
@@ -42,10 +47,8 @@ class TranslatorTranslation extends Model
         'item',
         'text',
         'unstable',
-        'locked'
+        'locked',
     ];
 
     protected $guarded = [];
-
-        
 }

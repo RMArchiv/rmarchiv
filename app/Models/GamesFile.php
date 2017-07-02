@@ -91,11 +91,13 @@ class GamesFile extends Model
         return $this->hasOne('App\Models\Game', 'id', 'game_id');
     }
 
-    public function playerIndex(){
+    public function playerIndex()
+    {
         return $this->hasMany('App\Models\PlayerIndexjson', 'gamefile_id', 'id');
     }
 
-    public function user(){
+    public function user()
+    {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 }

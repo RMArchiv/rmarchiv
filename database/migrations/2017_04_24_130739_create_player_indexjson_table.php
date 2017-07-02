@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -16,8 +21,8 @@ class CreatePlayerIndexjsonTable extends Migration
         Schema::create('player_indexjson', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('gamefile_id');
-            $table->string('key',1024);
-            $table->string('value',1024);
+            $table->string('key', 1024);
+            $table->string('value', 1024);
             $table->timestamps();
         });
     }

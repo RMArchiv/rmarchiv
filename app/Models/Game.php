@@ -9,8 +9,8 @@ namespace App\Models;
 
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Activitylog\Traits\LogsActivity;
 use Waavi\Translation\Traits\Translatable;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Game.
@@ -117,7 +117,7 @@ class Game extends Model
         'license_id',
     ];
     protected $hidden = [
-        'votes'
+        'votes',
     ];
 
     protected $guarded = [];

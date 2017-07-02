@@ -7,9 +7,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Developer;
-use App\Models\GamesDeveloper;
-use App\Models\GamesFile;
 use App\Models\Maker;
 use Khill\Lavacharts\Lavacharts;
 
