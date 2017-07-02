@@ -7,12 +7,11 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Models\Game;
-use App\Http\Controllers\Controller;
-use App\Models\GamesDeveloper;
 use Carbon\Carbon;
+use App\Models\Game;
+use App\Models\GamesDeveloper;
 use Dingo\Api\Routing\Helpers;
-use function MongoDB\BSON\toJSON;
+use App\Http\Controllers\Controller;
 
 class GameController extends Controller
 {
@@ -47,19 +46,18 @@ class GameController extends Controller
                 'developers' => '',
                 'language' => $game->language->short,
                 'engine' => $game->maker->short,
-            ]
+            ],
         ];
 
         //Lade Entwickler
         $developer = GamesDeveloper::whereGameId($id)->get();
-        $t = array();
-        foreach($developer as $dev){
+        $t = [];
+        foreach ($developer as $dev) {
             $t[] = $dev->developer->name;
         }
         $array['game']['developer'] = $t;
 
         //Lade Tags
-
 
         return $array;
     }

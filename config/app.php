@@ -5,7 +5,6 @@
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
-
 const BUILD = 10;
 
 return [
@@ -26,7 +25,7 @@ return [
     'rows_per_page_developer' => 20,
     'rows_per_page_games'     => 20,
 
-    'version' => '0.2.22b' . BUILD,
+    'version' => '0.2.22b'.BUILD,
 
     'tntsearch' => [
         'driver'   => 'sqlite',

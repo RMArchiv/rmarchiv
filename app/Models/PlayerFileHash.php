@@ -1,11 +1,16 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class PlayerFileHash
+ * Class PlayerFileHash.
  *
  * @property int $id
  * @property string $filehash
@@ -28,10 +33,8 @@ class PlayerFileHash extends Model
     protected $fillable = [
         'filehash',
         'supported',
-        'description'
+        'description',
     ];
 
     protected $guarded = [];
-
-        
 }

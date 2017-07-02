@@ -8,9 +8,8 @@
 namespace App\Exceptions;
 
 use Exception;
-use GrahamCampbell\Exceptions\NewExceptionHandler;
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use GrahamCampbell\Exceptions\NewExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 

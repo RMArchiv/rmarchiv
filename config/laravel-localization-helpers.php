@@ -1,6 +1,11 @@
 <?php
 
-return array(
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -16,12 +21,11 @@ return array(
     | No error or exception is thrown when a folder does not exist.
     |
     */
-    'folders'                  => array(
+    'folders'                  => [
         '%BASE/resources/views',
         '%APP/Http/Controllers',
         '%BASE/routes',
-    ),
-
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -34,10 +38,9 @@ return array(
     | - a specific file path like '/resources/lang/de/cms.php'
     |
     */
-    'ignore_lang_files'        => array(
+    'ignore_lang_files'        => [
         'validation',
-    ),
-
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +55,6 @@ return array(
     */
     'lang_folder_path'         => null,
 
-
     /*
     |--------------------------------------------------------------------------
     | Methods or functions to search for
@@ -62,35 +64,34 @@ return array(
     | Several regular expressions can be used for a single method or function.
     |
     */
-    'trans_methods'            => array(
-        'trans'        => array(
+    'trans_methods'            => [
+        'trans'        => [
             '@trans\(\s*(\'.*\')\s*(,.*)*\)@U',
             '@trans\(\s*(".*")\s*(,.*)*\)@U',
-        ),
-        'Lang::Get'    => array(
+        ],
+        'Lang::Get'    => [
             '@Lang::Get\(\s*(\'.*\')\s*(,.*)*\)@U',
             '@Lang::Get\(\s*(".*")\s*(,.*)*\)@U',
             '@Lang::get\(\s*(\'.*\')\s*(,.*)*\)@U',
             '@Lang::get\(\s*(".*")\s*(,.*)*\)@U',
-        ),
-        'trans_choice' => array(
+        ],
+        'trans_choice' => [
             '@trans_choice\(\s*(\'.*\')\s*,.*\)@U',
             '@trans_choice\(\s*(".*")\s*,.*\)@U',
-        ),
-        'Lang::choice' => array(
+        ],
+        'Lang::choice' => [
             '@Lang::choice\(\s*(\'.*\')\s*,.*\)@U',
             '@Lang::choice\(\s*(".*")\s*,.*\)@U',
-        ),
-        '@lang'        => array(
+        ],
+        '@lang'        => [
             '@\@lang\(\s*(\'.*\')\s*(,.*)*\)@U',
             '@\@lang\(\s*(".*")\s*(,.*)*\)@U',
-        ),
-        '@choice'      => array(
+        ],
+        '@choice'      => [
             '@\@choice\(\s*(\'.*\')\s*,.*\)@U',
             '@\@choice\(\s*(".*")\s*,.*\)@U',
-        ),
-    ),
-
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -116,14 +117,13 @@ return array(
     |   translation files.
     |
     */
-    'never_obsolete_keys'      => array(
+    'never_obsolete_keys'      => [
         'dynamic',
         'fields',
         'month',
         'obyx',
         'widget',
-    ),
-
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -149,7 +149,6 @@ return array(
     */
     'obsolete_array_key'       => 'LLH:obsolete',
 
-
     /*
     |--------------------------------------------------------------------------
     | Editor
@@ -159,7 +158,6 @@ return array(
     |
     */
     'editor_command_line'      => '/Applications/Sublime\\ Text.app/Contents/SharedSupport/bin/subl',
-
 
     /*
     |--------------------------------------------------------------------------
@@ -272,11 +270,10 @@ return array(
     |
     | If both parameters are empty, no Code Style will be applied
     */
-    'code_style'               => array(
+    'code_style'               => [
         'level'  => 'symfony',
-        'fixers' => array(),
-    ),
-
+        'fixers' => [],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -287,7 +284,6 @@ return array(
     |
     */
     'translator'               => 'Microsoft',
-
 
     /*
     |--------------------------------------------------------------------------
@@ -322,14 +318,13 @@ return array(
     | - LLH_MICROSOFT_TRANSLATOR_CLIENT_SECRET
     |
     */
-    'translators'              => array(
-        'Microsoft' => array(
+    'translators'              => [
+        'Microsoft' => [
             'default_language' => null,
             'client_id'        => null,
             'client_secret'    => null,
-        ),
-    ),
-
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -347,4 +342,4 @@ return array(
     */
     'dot_notation_split_regex' => '/\\.(?=[^ .!?])/',
 
-);
+];

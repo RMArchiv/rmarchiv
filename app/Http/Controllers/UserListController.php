@@ -7,12 +7,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Game;
 use App\Models\UserList;
 use App\Models\UserListItem;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Helpers\DatabaseHelper;
 
 class UserListController extends Controller
 {

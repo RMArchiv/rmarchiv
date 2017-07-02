@@ -12,13 +12,12 @@ use App\Models\User;
 use Illuminate\Http\Request;
 
 /**
- * Class UserCreditsController
- * @package App\Http\Controllers
+ * Class UserCreditsController.
  */
 class UserCreditsController extends Controller
 {
     /**
-     * Store usercredits to the database
+     * Store usercredits to the database.
      *
      * @param Request $request
      * @param $id - game_id
