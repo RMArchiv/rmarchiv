@@ -17,4 +17,6 @@
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    Header set Strict-Transport-Security "max-age=10886400", includeSubDomains; preload
 </IfModule>
