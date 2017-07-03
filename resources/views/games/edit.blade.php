@@ -266,7 +266,7 @@
                     @foreach($game->credits as $credit)
                         <li class="list-group-item">
                             <a class='usera' href='{{ url('users', $credit->user_id) }}' title="{{ $credit->user->name }}">
-                                <img alt="{{ $credit->user->name }}" class='avatar' src='http://ava.rmarchiv.de/?gender=male&id={{ $credit->user_id }}'>
+                                <img alt="{{ $credit->user->name }}" class='avatar' src='//ava.rmarchiv.de/?gender=male&id={{ $credit->user_id }}'>
                             </a>
                             <span class='prod'><a href='{{ url('users', $credit->user_id) }}' class='user'>{{ $credit->user->name }}</a></span>
                             - {{ $credit->type->title }}

@@ -115,7 +115,7 @@
                             <a
                                     href='{{ url('users', $resource->userid) }}' class='user'>{{ $resource->username }}</a>
                             <a href='{{ url('users', $resource->userid) }}' class='usera' title="{{ $resource->username }}"><img
-                                        src='http://ava.rmarchiv.de/?gender=male&id={{ $resource->userid }}'
+                                        src='//ava.rmarchiv.de/?gender=male&id={{ $resource->userid }}'
                                         alt="{{ $resource->username }}" class='avatar'/>
                             </a>
                         </td>
@@ -151,7 +151,7 @@
                                                                          class='user'>{{ $comment->name }}</a>
                                     <a href='{{ url('users', $comment->user_id) }}' class='usera'
                                        title="{{ $comment->name }}"><img
-                                                src='http://ava.rmarchiv.de/?gender=male&id={{ $comment->user_id }}'
+                                                src='//ava.rmarchiv.de/?gender=male&id={{ $comment->user_id }}'
                                                 alt="{{ $comment->name }}" class='avatar'/>
                                     </a>
                                 </div>

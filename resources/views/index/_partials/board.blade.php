@@ -8,7 +8,7 @@
                             @if(\App\Helpers\DatabaseHelper::isThreadUnread($t->id) === true) style="font-weight: bold;" @endif>
                         <td>
                             <a href='{{ url('users', $t->user->id) }}' class='usera' title="{{ $t->user->name }}">
-                                <img width="16px" src='http://ava.rmarchiv.de/?gender=male&id={{ $t->user->id }}'
+                                <img width="16px" src='//ava.rmarchiv.de/?gender=male&id={{ $t->user->id }}'
                                      alt="{{ $t->user->name }}" class='avatar'/>
                             </a>
                             <a href='{{ url('users', $t->user->id) }}' class='usera'
@@ -30,7 +30,7 @@
                         <td>
                             <a href='{{ url('users', $t->last_user->id) }}' class='usera'
                                title="{{ $t->last_user->name }}">
-                                <img width="16px" src='http://ava.rmarchiv.de/?gender=&id={{ $t->last_user->id }}'
+                                <img width="16px" src='//ava.rmarchiv.de/?gender=&id={{ $t->last_user->id }}'
                                      alt="{{ $t->last_user->name }}" class='avatar'/>
                             </a>
                             <a href='{{ url('users', $t->last_user->id) }}' class='usera'

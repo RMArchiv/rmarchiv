@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="row">
-            <form action="http://ava.rmarchiv.de/upload.php" method="post" enctype="multipart/form-data">
+            <form action="//ava.rmarchiv.de/upload.php" method="post" enctype="multipart/form-data">
                 <div class="panel panel-default">
                     <input type="hidden" name="posttype" value="avatar">
                     <input type="hidden" name="userid" value="{{ Auth::id() }}">
