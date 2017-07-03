@@ -1,11 +1,16 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class ActivityLog
+ * Class ActivityLog.
  *
  * @property int $id
  * @property string $log_name
@@ -42,10 +47,8 @@ class ActivityLog extends Model
         'subject_type',
         'causer_id',
         'causer_type',
-        'properties'
+        'properties',
     ];
 
     protected $guarded = [];
-
-        
 }

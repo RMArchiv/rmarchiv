@@ -67,7 +67,7 @@ class MessagesController extends Controller
             ]
         );
         // Recipients
-        foreach($input['recipients'] as $rec){
+        foreach ($input['recipients'] as $rec) {
             Participant::create(
                 [
                     'thread_id' => $thread->id,

@@ -5,8 +5,6 @@
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -42,6 +40,5 @@ $api->version('v1', function ($api) {
         $api->group(['prefix' => 'games'], function (\Dingo\Api\Routing\Router $api) {
             $api->get('/', 'App\Http\Controllers\Api\v2\GamesController@index');
         });
-
     });
 });

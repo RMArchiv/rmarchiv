@@ -43,9 +43,9 @@ class TranslationController extends Controller
     {
         $list = null;
 
-        if($viewtype == 'untranslated'){
+        if ($viewtype == 'untranslated') {
             $list = $this->translationRepository->untranslated($loc2);
-        }elseif($viewtype == 'all'){
+        } elseif ($viewtype == 'all') {
             $list = $this->translationRepository->allByLocale($loc2);
         }
 
@@ -56,7 +56,8 @@ class TranslationController extends Controller
         ]);
     }
 
-    public function savestring(Request $request){
+    public function savestring(Request $request)
+    {
         //$this->translationRepository->translateText($request->get('transstring'), $request->get('loc2'), $request->get('loc1'));
         $trans = $this->translationRepository->find($request->get('id'));
 

@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Http\Controllers;
 
 use App\Models\Game;
@@ -8,25 +13,27 @@ use App\Models\PlayerIndexjson;
 
 class PlayerController extends Controller
 {
-    public function api_savegames_get($gamefileid){
-
+    public function api_savegames_get($gamefileid)
+    {
     }
 
-    public function index($gamefileid){
-        if(\Auth::check()){
+    public function index($gamefileid)
+    {
+        if (\Auth::check()) {
             $gamefile = GamesFile::whereId($gamefileid)->first();
             $game = Game::whereId($gamefile->game_id)->first();
 
             return view('player.index', [
                 'gamefileid' => $gamefileid,
-                'game' => $game
+                'game' => $game,
             ]);
-        }else{
+        } else {
             return redirect()->action('IndexController@index');
         }
     }
 
-    public function deliver_files($gamefileid, $fileid){
+    public function deliver_files($gamefileid, $fileid)
+    {
         $gf = GamesFile::whereId($gamefileid)->first();
         $file = PlayerIndexjson::whereId($fileid)->first();
 
@@ -38,18 +45,21 @@ class PlayerController extends Controller
         return $fp;
     }
 
-    public function deliver_rtp($gamefileid, $filename){
+    public function deliver_rtp($gamefileid, $filename)
+    {
         $path = storage_path('app/public/rtp/'.$filename);
+
         return response()->download($path);
     }
 
-    public function deliver_indexjson($gamefileid){
+    public function deliver_indexjson($gamefileid)
+    {
         $index = PlayerIndexjson::whereGamefileId($gamefileid)->get();
         $gamefile = GamesFile::whereId($gamefileid)->first();
         $game = Game::whereId($gamefile->game_id)->first();
         $maker = '_'.$game->maker->short;
 
-        $res = array();
+        $res = [];
 
         //Backdrops
         $res['backdrop\/arena'] = 'rtp\/backdrop_arena.png';
@@ -1430,7 +1440,7 @@ class PlayerController extends Controller
             $res[$ind->key] = $ind->id;
         }
 
-        $return = str_replace('\/', '/' ,\GuzzleHttp\json_encode($res, JSON_UNESCAPED_SLASHES));
+        $return = str_replace('\/', '/', \GuzzleHttp\json_encode($res, JSON_UNESCAPED_SLASHES));
 
         return  $return;
     }
