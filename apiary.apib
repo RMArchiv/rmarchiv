@@ -1,0 +1,51 @@
+FORMAT: 1A
+HOST: http://rmarchiv.de/api/v2
+
+# rmarchiv
+
+Polls is a simple API allowing consumers to view polls and vote in them.
+
+## Authentication [/auth/login]
+
+### Authenticate [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            email: "your email for your rmarchiv account",
+            password: "your password for rmarchiv",
+
++ Response 200 (application/json)
+
+        {
+            "status": "ok",
+            "token": "Auth-Token"
+        }
+        
+## Game lists [/games]
+
+### Get all games [GET]
+
++ Request (application/json)
+
+    + Headers
+    
+            Authentication: Bearer "AuthToken"
+        
++ Response 200 (application/json)
+
+        {
+            "status": "ok",
+            "message": "Game List",
+            "data": [
+                {
+                    "id": 1
+                    "title": "Gametitle"
+                    "subtitle": "Subtitle"
+                },
+                {
+                    ...
+                },
+            ],
+        }

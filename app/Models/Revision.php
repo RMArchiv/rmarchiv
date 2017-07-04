@@ -1,11 +1,16 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Revision
+ * Class Revision.
  *
  * @property int $id
  * @property string $revisionable_type
@@ -39,10 +44,8 @@ class Revision extends Model
         'user_id',
         'key',
         'old_value',
-        'new_value'
+        'new_value',
     ];
 
     protected $guarded = [];
-
-        
 }

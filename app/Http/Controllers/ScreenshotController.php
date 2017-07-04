@@ -45,20 +45,19 @@ class ScreenshotController extends Controller
 
     public function create($gameid, $screenid)
     {
-        if(\Auth::check()){
+        if (\Auth::check()) {
             return view('screenshots.create', [
                 'gameid'   => $gameid,
                 'screenid' => $screenid,
             ]);
-        }else{
+        } else {
             return redirect()->back();
         }
-
     }
 
     public function upload(Request $request, $gameid, $screenid)
     {
-        if(\Auth::check()){
+        if (\Auth::check()) {
             $this->validate($request, [
                 'file' => 'required|image|mimes:png|max:2048',
             ]);
@@ -86,9 +85,8 @@ class ScreenshotController extends Controller
             $scr->save();
 
             return redirect()->route('screenshot.upload.success', $gameid);
-        }else{
+        } else {
             return redirect()->back();
         }
-
     }
 }

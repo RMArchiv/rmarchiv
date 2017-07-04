@@ -23,7 +23,7 @@ class IndexSearch extends Command
      *
      * @var string
      */
-    protected $description = 'Erneuern des Suchindexes';
+    protected $description = 'Recreate the fuzzysearch index';
 
     /**
      * Create a new command instance.

@@ -1,9 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mhering
- * Date: 24.04.2017
- * Time: 15:08
+
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
 phpinfo();

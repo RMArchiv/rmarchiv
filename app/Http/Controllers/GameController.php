@@ -7,11 +7,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\License;
 use Carbon\Carbon;
 use App\Events\Obyx;
 use App\Models\Game;
 use App\Models\Comment;
+use App\Models\License;
 use App\Events\GameView;
 use App\Models\Language;
 use App\Models\GamesFile;
@@ -177,7 +177,6 @@ class GameController extends Controller
      */
     public function edit($id)
     {
-
         $makers = \DB::table('makers')
             ->get();
 

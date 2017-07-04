@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/rygos/rmarchiv.png?label=ready&title=Ready)](https://waffle.io/rygos/rmarchiv?utm_source=badge)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rygos/rmarchiv/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/rygos/rmarchiv/?branch=master)
 [![StyleCI](https://styleci.io/repos/80870043/shield?branch=master)](https://styleci.io/repos/80870043)
 

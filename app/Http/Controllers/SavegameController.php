@@ -1,23 +1,27 @@
 <?php
 
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 namespace App\Http\Controllers;
 
-use App\Models\GamesSavegame;
-use Dingo\Api\Facade\API;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
+use App\Models\GamesSavegame;
 
 class SavegameController extends Controller
 {
-    public function index($gamefileid){
-
+    public function index($gamefileid)
+    {
     }
 
-    public function show($gamefileid, $slotid){
-
+    public function show($gamefileid, $slotid)
+    {
     }
 
-    public function api_load($gamefileid){
+    public function api_load($gamefileid)
+    {
         //Load Savegame Data from Database
         $savegames = GamesSavegame::whereGamefileId($gamefileid)
             ->where('user_id', '=', \Auth::id())
@@ -25,19 +29,20 @@ class SavegameController extends Controller
 
         $ret = [];
 
-        foreach($savegames as $s){
+        foreach ($savegames as $s) {
             $ret[$s->slot_id] = $s->save_data;
         }
 
         return \GuzzleHttp\json_encode($ret);
     }
 
-    public function api_save(Request $request ,$gamefileid){
+    public function api_save(Request $request, $gamefileid)
+    {
         $payLoad = json_decode(request()->getContent(), true);
 
-        \Log::info('savegamecount: '. count($payLoad));
+        \Log::info('savegamecount: '.count($payLoad));
 
-        foreach($payLoad as $key=>$value){
+        foreach ($payLoad as $key=>$value) {
             \Log::info('slot: '.$key);
             \Log::info('data: '.$value);
             $save = GamesSavegame::where([
@@ -47,7 +52,7 @@ class SavegameController extends Controller
                 ])
                 ->first();
 
-            if(!$save){
+            if (! $save) {
                 $s = new GamesSavegame;
                 $s->save_data = $value;
                 $s->slot_id = $key;
@@ -55,7 +60,7 @@ class SavegameController extends Controller
                 $s->user_id = \Auth::id();
                 $s->save();
                 \Log::info('created');
-            }else{
+            } else {
                 $save->save_data = $value;
                 $save->save();
                 \Log::info('updated');

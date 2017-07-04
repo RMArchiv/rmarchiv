@@ -19,7 +19,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-/*
+        /*
         $news = \DB::table('news')
             ->leftJoin('users', 'news.user_id', '=', 'users.id')
             ->leftJoin('comments', function ($join) {

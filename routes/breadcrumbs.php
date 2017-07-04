@@ -1,6 +1,10 @@
 <?php
 
-// Home
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
 Breadcrumbs::register('home', function ($breadcrumbs) {
     $breadcrumbs->push(trans('app.home'), action('IndexController@index'));
 });
@@ -16,7 +20,7 @@ Breadcrumbs::register('games', function ($breadcrumbs) {
 Breadcrumbs::register('game', function ($breadcrumbs, $game) {
     $breadcrumbs->parent('games');
     if ($game->subtitle) {
-        $breadcrumbs->push($game->title . ' - ' . $game->subtitle, action('GameController@show', $game->id));
+        $breadcrumbs->push($game->title.' - '.$game->subtitle, action('GameController@show', $game->id));
     } else {
         $breadcrumbs->push($game->title, action('GameController@show', $game->id));
     }
@@ -136,7 +140,6 @@ Breadcrumbs::register('news.edit', function ($breadcrumbs, $news) {
     $breadcrumbs->push(trans('app.edit'), action('NewsController@edit', $news->id));
 });
 
-
 //----------------- Awards -------------------------------------------------------------------------------------------//
 // Home -> Awards
 Breadcrumbs::register('awards', function ($breadcrumbs) {
@@ -147,7 +150,7 @@ Breadcrumbs::register('awards', function ($breadcrumbs) {
 // Home -> Awards -> [Award]
 Breadcrumbs::register('awards.show', function ($breadcrumbs, $award_cat) {
     $breadcrumbs->parent('awards');
-    $breadcrumbs->push($award_cat->awardpage->title . ': ' . $award_cat->title, action('AwardController@show', $award_cat->id));
+    $breadcrumbs->push($award_cat->awardpage->title.': '.$award_cat->title, action('AwardController@show', $award_cat->id));
 });
 
 //----------------- Messanger / PN -----------------------------------------------------------------------------------//
@@ -236,7 +239,6 @@ Breadcrumbs::register('webplayer', function ($breadcrumbs, $game, $gamefileid) {
     $breadcrumbs->push(trans('app.webplayer'), action('PlayerController@index', $game->id));
 });
 
-
 //----------------- Registrieren -------------------------------------------------------------------------------------//
 // Home -> account erstellen
 Breadcrumbs::register('register', function ($breadcrumbs) {
@@ -295,7 +297,7 @@ Breadcrumbs::register('user.settings', function ($breadcrumbs) {
 // Home -> Userlist
 Breadcrumbs::register('userlist.show', function ($breadcrumbs, $user, $list) {
     $breadcrumbs->parent('user', $user);
-    $breadcrumbs->push(trans('app.userlist') . ': ' . $list->title, action('UserListController@show', [$user->id, $list->id]));
+    $breadcrumbs->push(trans('app.userlist').': '.$list->title, action('UserListController@show', [$user->id, $list->id]));
 });
 
 Breadcrumbs::register('userlist.create', function ($breadcrumbs, $user) {

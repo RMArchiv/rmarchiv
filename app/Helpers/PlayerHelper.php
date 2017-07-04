@@ -27,7 +27,8 @@ class PlayerHelper
         }
     }
 
-    public function getZipRootPath($zipfilepath){
+    public function getZipRootPath($zipfilepath)
+    {
         $dirarray = [
             'backdrop',
             'battle',
@@ -58,8 +59,8 @@ class PlayerHelper
             'rpg_rt.dat',
         ];
 
-        $mapparray = array();
-        for($i = 0; $i < 2000; $i++){
+        $mapparray = [];
+        for ($i = 0; $i < 2000; $i++) {
             $mapparray[] = 'map'.sprintf('%04d', $i).'.lmu';
         }
 
@@ -67,25 +68,24 @@ class PlayerHelper
 
         $searcharray = array_merge($dirarray, $filearray);
 
-        if(starts_with(strtolower($zipfilepath), $searcharray)){
-            $imp = str_replace('/','\\/',$zipfilepath);
-        }else{
-            if(str_contains(strtolower($zipfilepath), $searcharray)){
+        if (starts_with(strtolower($zipfilepath), $searcharray)) {
+            $imp = str_replace('/', '\\/', $zipfilepath);
+        } else {
+            if (str_contains(strtolower($zipfilepath), $searcharray)) {
                 $exp = explode('/', $zipfilepath);
                 $res = array_shift($exp);
                 $imp = implode('/', $exp);
                 $imp = $this->getZipRootPath($imp);
-            }else{
+            } else {
                 $imp = '';
             }
         }
 
-        if($imp != ''){
-            if(array_search(strtolower($imp), $filearray)){
+        if ($imp != '') {
+            if (array_search(strtolower($imp), $filearray)) {
                 $imp = '.\\/'.$imp;
             }
         }
-
 
         return $imp;
     }

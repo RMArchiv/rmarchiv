@@ -7,6 +7,7 @@
 
 namespace App\Providers;
 
+use Dingo\Api\Auth\Provider\JWT;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        app('Dingo\Api\Auth\Auth')->extend('jwt', function ($app) {
+            return new JWT($app['Tymon\JWTAuth\JWTAuth']);
+        });
     }
 
     /**

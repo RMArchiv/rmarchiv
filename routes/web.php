@@ -8,7 +8,7 @@
 Route::get('/', 'IndexController@index')->name('home');
 
 //Administration
-Route::group(['middelware' => ['permission:admin-user']], function(){
+Route::group(['middelware' => ['permission:admin-user']], function () {
     Route::get('users/admin/{userid}', 'UserController@admin')->name('user.admin');
     Route::post('users/admin/{userid}', 'UserController@admin_store');
     Route::get('users/perm/role', 'UserPermissionController@createRole');
@@ -32,7 +32,7 @@ Route::post('user_settings/rowsperpage', 'UserSettingsController@store_rowsPerPa
 
 //News Routen
 Route::resource('news', 'NewsController');
-Route::group(['middelware' => ['permission:approve-news']], function(){
+Route::group(['middelware' => ['permission:approve-news']], function () {
     Route::get('news/{id}/approve/{approve}', 'NewsController@approve');
 });
 
@@ -289,14 +289,14 @@ Route::get('logo/{filename}', function ($filename) {
     return $response;
 })->name('logo.get');
 
-Route::get('easyrpg/download/{hash}', function($hash){
+Route::get('easyrpg/download/{hash}', function ($hash) {
     $filename = 'app/public/games_hashed/'.substr($hash, 0, 2).'/'.$hash;
     $path = storage_path($filename);
 
     return response()->download($path, $hash, ['Content-Type' => 'application/octet-stream']);
 });
 
-Route::group(['middleware' => 'permission:translate-page'], function(){
+Route::group(['middleware' => 'permission:translate-page'], function () {
     Route::get('translation', 'TranslationController@index')->name('trans.index');
     Route::get('translation/{loc1}/{loc2?}/{viewtype?}/{searchterm?}', 'TranslationController@edit')->name('trans.edit');
     Route::post('translation/save', 'TranslationController@savestring')->name('trans.save');
@@ -317,16 +317,3 @@ Route::post('savegame/manager/save/upload', 'SavegameManagerController@store');
 //EasyRPG Savegame API
 Route::get('savegames/{gamefileid}', 'SavegameController@api_load');
 Route::post('savegames/{gamefileid}', 'SavegameController@api_save');
-
-//Routen für API
-$api = app('Dingo\Api\Routing\Router');
-$api->version('v1', function ($api) {
-    $api->get('games', 'App\Http\Controllers\Api\v1\GameController@index');
-    $api->get('games/{id}', 'App\Http\Controllers\Api\v1\GameController@show');
-    $api->get('games_app', 'App\Http\Controllers\Api\v1\GameController@show_app');
-    $api->get('tako/filelist', 'App\Http\Controllers\Api\v1\TakoController@filelist');
-
-    //EasyRPG Hash API
-    $api->get('easyrpg', 'App\Http\Controllers\Api\v1\EasyRPGController@index');
-    $api->get('easyrpg/{ldbhash}', 'App\Http\Controllers\Api\v1\EasyRPGController@show');
-});

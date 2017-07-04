@@ -5,7 +5,6 @@
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
-
 const BUILD = 10;
 
 return [
@@ -26,7 +25,7 @@ return [
     'rows_per_page_developer' => 20,
     'rows_per_page_games'     => 20,
 
-    'version' => '0.2.22b' . BUILD,
+    'version' => '0.2.22b'.BUILD,
 
     'tntsearch' => [
         'driver'   => 'sqlite',
@@ -231,6 +230,7 @@ return [
         GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
         Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProvider::class,
         Spatie\CookieConsent\CookieConsentServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -281,6 +281,8 @@ return [
         'Honeypot'            => Msurguy\Honeypot\HoneypotFacade::class,
         'Html'                => Collective\Html\HtmlFacade::class,
         'Image'               => Intervention\Image\Facades\Image::class,
+        'JWTAuth'             => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory'          => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Lang'                => Illuminate\Support\Facades\Lang::class,
         'LocalizationHelpers' => Potsky\LaravelLocalizationHelpers\Facade\LocalizationHelpers::class,
         'Log'                 => Illuminate\Support\Facades\Log::class,
