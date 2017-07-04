@@ -16250,67 +16250,67 @@ INPUT.qq-edit-filename.qq-editing {
 }
 
 .face_1 {
-    background-position: 0px 0px;
+  background-position: 0px 0px;
 }
 
 .face_2 {
-    background-position: -48px 0px;
+  background-position: -48px 0px;
 }
 
 .face_3 {
-    background-position: -96px 0px;
+  background-position: -96px 0px;
 }
 
 .face_4 {
-    background-position: -144px 0px;
+  background-position: -144px 0px;
 }
 
 .face_5 {
-    background-position: 0px -48px;
+  background-position: 0px -48px;
 }
 
 .face_6 {
-    background-position: -48px -48px;
+  background-position: -48px -48px;
 }
 
 .face_7 {
-    background-position: -96px -48px;
+  background-position: -96px -48px;
 }
 
 .face_8 {
-    background-position: -144px -48px;
+  background-position: -144px -48px;
 }
 
 .face_9 {
-    background-position: 0px -96px;
+  background-position: 0px -96px;
 }
 
 .face_10 {
-    background-position: -48px -96px;
+  background-position: -48px -96px;
 }
 
 .face_11 {
-    background-position: -96px -96px;
+  background-position: -96px -96px;
 }
 
 .face_12 {
-    background-position: -144px -96px;
+  background-position: -144px -96px;
 }
 
 .face_13 {
-    background-position: 0px -144px;
+  background-position: 0px -144px;
 }
 
 .face_14 {
-    background-position: -48px -144px;
+  background-position: -48px -144px;
 }
 
 .face_15 {
-    background-position: -96px -144px;
+  background-position: -96px -144px;
 }
 
 .face_16 {
-    background-position: -144px -144px;
+  background-position: -144px -144px;
 }
 
 .typei {
@@ -16325,17 +16325,17 @@ INPUT.qq-edit-filename.qq-editing {
 }
 
 .facei {
-    width: 48px;
-    height: 48px;
-    display: inline-block;
-    background-repeat: no-repeat;
-    vertical-align: middle;
-    overflow: hidden;
-    line-height: 100px;
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  overflow: hidden;
+  line-height: 100px;
 }
 
 .facei {
-    float: left;
+  float: left;
 }
 
 .typei {
@@ -16405,105 +16405,105 @@ INPUT.qq-edit-filename.qq-editing {
 
 /* Cookies */
 .cookies {
-    position: fixed;
-    z-index: 9999;
-    right: 0;
-    left: 0;
-    width: 100%;
-    padding-right: 105px;
-    -webkit-transition: all .4s ease;
-    transition: all .4s ease;
-    color: #fff;
-    background: #D33682;
-    /* fallback for old browsers */
-    top: 0;
-    -webkit-animation-name: cpcookiestop;
-    animation-name: cpcookiestop;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-iteration-count: 1;
-    animation-iteration-count: 1;
+  position: fixed;
+  z-index: 9999;
+  right: 0;
+  left: 0;
+  width: 100%;
+  padding-right: 105px;
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease;
+  color: #fff;
+  background: #D33682;
+  /* fallback for old browsers */
+  top: 0;
+  -webkit-animation-name: cpcookiestop;
+  animation-name: cpcookiestop;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
 }
 
 @-webkit-keyframes cpcookiestop {
-    0% {
-        top: -50%;
-    }
-    100% {
-        top: 0;
-    }
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 0;
+  }
 }
 
 @keyframes cpcookiestop {
-    0% {
-        top: -50%;
-    }
-    100% {
-        top: 0;
-    }
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 0;
+  }
 }
 
 .cookies-message-link {
-    color: #ffeb3b;
-    opacity: 0.8;
+  color: #ffeb3b;
+  opacity: 0.8;
 }
 
 .cookies-message-link:hover {
-    text-decoration: none;
-    color: #ffeb3b;
-    opacity: 1;
+  text-decoration: none;
+  color: #ffeb3b;
+  opacity: 1;
 }
 
 #cookies-close:checked ~ #cookies,
 #cookies-close:checked + .cookies-close {
-    top: -50%;
+  top: -50%;
 }
 
 .cookies-close {
-    position: fixed;
-    z-index: 10000;
-    right: 20px;
-    padding: 10px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: 400;
-    color: #ffffff;
-    background: rgba(0, 0, 0, 0.2);
-    top: 10px;
-    -webkit-animation-name: cpcookiesclosetop;
-    animation-name: cpcookiesclosetop;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-iteration-count: 1;
-    animation-iteration-count: 1;
+  position: fixed;
+  z-index: 10000;
+  right: 20px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 400;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.2);
+  top: 10px;
+  -webkit-animation-name: cpcookiesclosetop;
+  animation-name: cpcookiesclosetop;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
 }
 
 @-webkit-keyframes cpcookiesclosetop {
-    0% {
-        top: -50%;
-    }
-    100% {
-        top: 10px;
-    }
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 10px;
+  }
 }
 
 @keyframes cpcookiesclosetop {
-    0% {
-        top: -50%;
-    }
-    100% {
-        top: 10px;
-    }
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 10px;
+  }
 }
 
 .cookies-close:hover {
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .cookies-message {
-    margin: 20px;
+  margin: 20px;
 }
 
 /*# sourceMappingURL=app.css.map */
