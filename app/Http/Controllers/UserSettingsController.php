@@ -33,7 +33,7 @@ class UserSettingsController extends Controller
         return redirect()->action('UserSettingsController@index');
     }
 
-    public function chage_username(Request $request){
+    public function change_username(Request $request){
         $this->validate($request, [
             'usernameold' => 'required',
             'usernamenew'   => 'required',
