@@ -335,7 +335,7 @@
         @permission(('delete-games'))
         <div class="row">
             <div class="panel panel-warning">
-                {!! Form::open(['method' => 'DELETE', 'action' => ['GameController@destroy', $game->gameid]]) !!}
+                {!! Form::open(['method' => 'DELETE', 'route' => ['games.destroy', $game->gameid]]) !!}
                 <div class="panel-heading">
                     {{trans('app.delete_game')}}
                 </div>
