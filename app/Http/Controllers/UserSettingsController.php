@@ -33,6 +33,21 @@ class UserSettingsController extends Controller
         return redirect()->action('UserSettingsController@index');
     }
 
+    public function chage_username(Request $request){
+        $this->validate($request, [
+            'usernameold' => 'required',
+            'usernamenew'   => 'required',
+        ]);
+
+        if (\Auth::user()->name == $request->get('usernameold')) {
+            $user = \Auth::user();
+            $user->name = $request->get('usernamenew');
+            $user->save();
+        }
+
+        return view('auth.settings');
+    }
+
     public function store_password(Request $request)
     {
         $this->validate($request, [

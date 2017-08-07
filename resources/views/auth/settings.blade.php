@@ -152,6 +152,44 @@
             </div>
             {!! Form::close() !!}
         </div>
+        <div class="row">
+            {!! Form::open(['action' => ['UserSettingsController@change_username']]) !!}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{ trans('app.change_username') }}
+                </div>
+                <div class="panel-body">
+                    @if (count($errors) > 0)
+                        <div class="rmarchivtbl errorbox">
+                            <h2>{{ trans('app.change_username') }}</h2>
+                            <div class="content">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li><strong>{{ $error }}</strong></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    @endif
+
+                    <div class="form-group">
+                        <label for="usernameold">{{ trans('app.old_username') }} *</label>
+                        <input name="usernameold" id="usernameold" type="text" value=""/>
+                    </div>
+                    <div class="form-group">
+                        <label for="usernamenew">{{ trans('app.new_username') }} *</label>
+                        <input name="usernamenew" id="usernamenew" type="text" value=""/>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="pull-right">
+                        <input class="btn btn-primary" type="submit" id="submit" value="{{ trans('app.submit') }}">
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            {!! Form::close() !!}
+        </div>
     </div>
 
 @endsection
