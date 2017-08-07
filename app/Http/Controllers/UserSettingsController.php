@@ -40,9 +40,14 @@ class UserSettingsController extends Controller
         ]);
 
         if (\Auth::user()->name == $request->get('usernameold')) {
-            $user = \Auth::user();
-            $user->name = $request->get('usernamenew');
-            $user->save();
+
+            $check = User::whereName($request->get('usernamenew'))->get();
+
+            if($check->count() == 0){
+                $user = \Auth::user();
+                $user->name = $request->get('usernamenew');
+                $user->save();
+            }
         }
 
         return view('auth.settings');
