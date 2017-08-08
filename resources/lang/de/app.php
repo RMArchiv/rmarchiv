@@ -1,13 +1,8 @@
 <?php
-/*************************************************************************
- Generated via "php artisan localization:missing" at 2017/08/07 13:46:21
-*************************************************************************/
 
 return array(
   //============================== New strings to translate ==============================//
-  'change_username' => 'Benutzername ändern',
-  'new_username' => 'Neuer Benutzername',
-  'old_username' => 'Alter Benutzername',
+  'hello' => 'Hallo',
   //==================================== Translations ====================================//
   '10_newest_board_posts' => 'Die 10 aktuellsten Forenthreads',
   '404_error' => 'TODO: 404_error',
@@ -74,6 +69,7 @@ return array(
   'category' => 'Kategorie',
   'change' => 'Änderung',
   'change_password' => 'Passwort ändern',
+  'change_username' => 'Benutzername ändern',
   'changelog' => 'Änderungshistorie',
   'charset' => 'Charset',
   'chipset' => 'Chipset',
@@ -241,6 +237,7 @@ return array(
   'new_message_available' => 'Neue Nachrichten verfügbar',
   'new_password' => 'Neues Passwort',
   'new_password_confirm' => 'Neues Passwort bestätigen',
+  'new_username' => 'Neuer Benutzername',
   'newest_user' => 'Neuester Benutzer',
   'news_category' => 'News Kategorie',
   'news_not_published' => 'NEWS NOCH NICHT VERÖFFENTLICHT',
@@ -257,6 +254,7 @@ return array(
   'obyx_overview' => 'Obyx Übersicht',
   'ok' => 'OK',
   'old_password' => 'Altes Passwort',
+  'old_username' => 'Alter Benutzername',
   'panorama' => 'Panorama',
   'participants' => 'Empfänger',
   'password' => 'Passwort',

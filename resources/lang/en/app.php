@@ -1,38 +1,8 @@
 <?php
-/*************************************************************************
- Generated via "php artisan localization:missing" at 2017/08/07 13:46:21
-*************************************************************************/
 
 return array(
   //============================== New strings to translate ==============================//
-  // Defined in file /Users/ryg/PhpstormProjects/rmarchiv/resources/views/auth/settings.blade.php
-  'change_username' => 'TODO: change_username',
-  // Defined in file /Users/ryg/PhpstormProjects/rmarchiv/resources/views/events/show.blade.php
-  'comments' => array(
-    'tip1' => 'TODO: tip1',
-    'tip2' => 'TODO: tip2',
-    'tip3' => 'TODO: tip3',
-    'tip4' => 'TODO: tip4',
-  ),
-  // Defined in file /Users/ryg/PhpstormProjects/rmarchiv/resources/views/events/show.blade.php
-  // Defined in file /Users/ryg/PhpstormProjects/rmarchiv/resources/views/events/show.blade.php
-  // Defined in file /Users/ryg/PhpstormProjects/rmarchiv/resources/views/events/show.blade.php
-  // Defined in file /Users/ryg/PhpstormProjects/rmarchiv/resources/views/auth/settings.blade.php
-  'new_username' => 'TODO: new_username',
-  // Defined in file /Users/ryg/PhpstormProjects/rmarchiv/resources/views/events/show.blade.php
-  'news' => array(
-    'popularity_helper' => array(
-      'msg' => 'TODO: msg',
-      'title' => 'TODO: title',
-    ),
-    'show' => array(
-      'delete' => 'TODO: delete',
-    ),
-  ),
-  // Defined in file /Users/ryg/PhpstormProjects/rmarchiv/resources/views/events/show.blade.php
-  // Defined in file /Users/ryg/PhpstormProjects/rmarchiv/resources/views/events/show.blade.php
-  // Defined in file /Users/ryg/PhpstormProjects/rmarchiv/resources/views/auth/settings.blade.php
-  'old_username' => 'TODO: old_username',
+  'hello' => 'Hello',
   //==================================== Translations ====================================//
   '10_newest_board_posts' => '10 newest board posts',
   '404_error' => 'TODO: 404_error',
@@ -99,6 +69,7 @@ return array(
   'category' => 'Category',
   'change' => 'Change',
   'change_password' => 'Change password',
+  'change_username' => 'Change Username',
   'changelog' => 'Changelog',
   'charset' => 'Charset',
   'chipset' => 'Chipset',
@@ -120,6 +91,12 @@ return array(
   'comment_rule_3' => 'Stay on topic.',
   'comment_rule_4' => 'Don´t disturbe admins and mods.',
   'comment_rules' => 'Comment rules',
+  'comments' => array(
+    'tip1' => 'TODO: tip1',
+    'tip2' => 'TODO: tip2',
+    'tip3' => 'TODO: tip3',
+    'tip4' => 'TODO: tip4',
+  ),
   'comments_per_month' => 'Comments per month',
   'connections' => 'Connections',
   'contact_admin_or_moderator' => 'Please contact a administrator or moderator',
@@ -266,7 +243,17 @@ return array(
   'new_message_available' => 'New Message available',
   'new_password' => 'New password',
   'new_password_confirm' => 'Password confirmation',
+  'new_username' => 'New Username',
   'newest_user' => 'Newest User',
+  'news' => array(
+    'popularity_helper' => array(
+      'msg' => 'TODO: msg',
+      'title' => 'TODO: title',
+    ),
+    'show' => array(
+      'delete' => 'TODO: delete',
+    ),
+  ),
   'news_category' => 'News Category',
   'news_not_published' => 'Noews not published',
   'news_title' => 'News Title',
@@ -282,6 +269,7 @@ return array(
   'obyx_overview' => 'Obyx overview',
   'ok' => 'Ok',
   'old_password' => 'Old password',
+  'old_username' => 'Old Username',
   'panorama' => 'Panorama',
   'participants' => 'Participants',
   'password' => 'Password',

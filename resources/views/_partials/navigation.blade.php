@@ -109,7 +109,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
                            data-vivaldi-spatnav-clickable="1">
-                            hallo, {{ Auth::user()->name }} <span class="caret"></span>
+                            {{ trans('app.hello') }}, {{ Auth::user()->name }} <span class="caret"></span>
                             @if(\Auth::user()->newThreadsCount() >= 1)
                                 <span class="badge">{{ \Auth::user()->newThreadsCount() }}</span>
                             @endif
