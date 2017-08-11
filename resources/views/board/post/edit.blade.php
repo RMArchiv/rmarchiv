@@ -17,20 +17,29 @@
                                 {{ csrf_field() }}
 
                                     @if (count($errors) > 0))
-                                    <div class="rmarchivtbl errorbox">
-                                        <h2>{{ trans('app.edit_post_failed') }}</h2>
-                                        <div class="content">
-                                            @foreach ($errors->all() as $error)
-                                                <strong>{{ $error }}</strong>
-                                            @endforeach
+                                        <div class="rmarchivtbl errorbox">
+                                            <h2>{{ trans('app.edit_post_failed') }}</h2>
+                                            <div class="content">
+                                                @foreach ($errors->all() as $error)
+                                                    <strong>{{ $error }}</strong>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    @endif
+
+                                    @if($post->thread()->user_id == Auth::id())
+                                    <div class="form-group">
+                                        <label for="title" class="col-lg-2 control-label">{{trans('app.change_board_title')}} *</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" class="form-control" id="title" name="title" value="{{ $post->thread()->title }}">
                                         </div>
                                     </div>
                                     @endif
 
-                                        <input type="hidden" name="thread_id" id="thread_id" value="{{ $post->thread_id }}">
-                                        <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
+                                    <input type="hidden" name="thread_id" id="thread_id" value="{{ $post->thread_id }}">
+                                    <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
 
-                                        @include('_partials.markdown_editor', ['edit_text' => $post->content_md])
+                                    @include('_partials.markdown_editor', ['edit_text' => $post->content_md])
                                     <div class="foot">
                                         <input type="submit" value="{{ trans('app.submit') }}">
                                     </div>

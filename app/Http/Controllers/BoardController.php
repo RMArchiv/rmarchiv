@@ -253,12 +253,23 @@ class BoardController extends Controller
                 'thread_id' => 'required',
                 'post_id'   => 'required',
                 'msg'       => 'required',
+                'title'     => 'required',
             ]);
 
             $post = BoardPost::whereId($postid)->first();
             $post->content_md = $request->get('msg');
             $post->content_html = \Markdown::convertToHtml($request->get('msg'));
             $post->save();
+
+            $thread = BoardThread::whereId($threadid)->first();
+
+            $ttitle = $request->get('title');
+
+            if($ttitle != $thread->title and $ttitle != ''){
+                $thread->title = $request->get('title');
+                $thread->save();
+            }
+
         }
 
         return redirect()->action('BoardController@show_thread', $threadid);
