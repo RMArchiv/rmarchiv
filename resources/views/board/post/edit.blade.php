@@ -31,7 +31,7 @@
                                     <div class="form-group">
                                         <label for="title" class="col-lg-2 control-label">{{trans('app.change_board_title')}} *</label>
                                         <div class="col-lg-10">
-                                            <input type="text" class="form-control" id="title" name="title" value="{{ $post->thread()->title }}">
+                                            <input type="text" class="form-control" id="title" name="title" value="{{ $post->thread->title }}">
                                         </div>
                                     </div>
                                     @endif
