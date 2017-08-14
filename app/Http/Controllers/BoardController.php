@@ -265,11 +265,10 @@ class BoardController extends Controller
 
             $ttitle = $request->get('title');
 
-            if($ttitle != $thread->title and $ttitle != ''){
+            if ($ttitle != $thread->title and $ttitle != '') {
                 $thread->title = $request->get('title');
                 $thread->save();
             }
-
         }
 
         return redirect()->action('BoardController@show_thread', $threadid);

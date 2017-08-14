@@ -1,6 +1,11 @@
 <?php
 
-return array(
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
+return [
   //============================== New strings to translate ==============================//
   'hello' => 'Hello',
   //==================================== Translations ====================================//
@@ -91,12 +96,12 @@ return array(
   'comment_rule_3' => 'Stay on topic.',
   'comment_rule_4' => 'Don´t disturbe admins and mods.',
   'comment_rules' => 'Comment rules',
-  'comments' => array(
+  'comments' => [
     'tip1' => 'TODO: tip1',
     'tip2' => 'TODO: tip2',
     'tip3' => 'TODO: tip3',
     'tip4' => 'TODO: tip4',
-  ),
+  ],
   'comments_per_month' => 'Comments per month',
   'connections' => 'Connections',
   'contact_admin_or_moderator' => 'Please contact a administrator or moderator',
@@ -211,33 +216,33 @@ return array(
   'missing_screenshots' => 'Missing screenshots',
   'monster' => 'Monster',
   'more' => 'more',
-  'msgbox' => array(
-    'cdc' => array(
+  'msgbox' => [
+    'cdc' => [
       'msg' => 'TODO: msg',
       'redirect' => 'Go to home',
       'title' => 'TODO: title',
-    ),
-    'comment' => array(
+    ],
+    'comment' => [
       'msg' => 'TODO: msg',
       'redirect' => 'Go to previous page',
       'title' => 'TODO: title',
-    ),
-    'game' => array(
+    ],
+    'game' => [
       'msg' => 'TODO: msg',
       'redirect' => 'Go to game',
       'title' => 'TODO: title',
-    ),
-    'logo' => array(
+    ],
+    'logo' => [
       'msg' => 'TODO: msg',
       'redirect' => 'Go to logo voting',
       'title' => 'Logo upload successful',
-    ),
-    'screenshot' => array(
+    ],
+    'screenshot' => [
       'msg' => 'TODO: msg',
       'redirect' => 'Go to game',
       'title' => 'Screenshot upload successful.',
-    ),
-  ),
+    ],
+  ],
   'music' => 'Music',
   'name' => 'Name',
   'new_message_available' => 'New Message available',
@@ -245,15 +250,15 @@ return array(
   'new_password_confirm' => 'Password confirmation',
   'new_username' => 'New Username',
   'newest_user' => 'Newest User',
-  'news' => array(
-    'popularity_helper' => array(
+  'news' => [
+    'popularity_helper' => [
       'msg' => 'TODO: msg',
       'title' => 'TODO: title',
-    ),
-    'show' => array(
+    ],
+    'show' => [
       'delete' => 'TODO: delete',
-    ),
-  ),
+    ],
+  ],
   'news_category' => 'News Category',
   'news_not_published' => 'Noews not published',
   'news_title' => 'News Title',
@@ -418,7 +423,7 @@ return array(
   'your_permissions_are_to_low' => 'Your permissions are to low.',
   'your_permissions_are_to_low_to_post' => 'Your permissions are to low to post a message.',
   //============================== Dynamic protected strings =============================//
-  'month' => array(
+  'month' => [
     0 => '',
     1 => 'January',
     10 => 'October',
@@ -432,8 +437,8 @@ return array(
     7 => 'July',
     8 => 'August',
     9 => 'September',
-  ),
-  'obyx' => array(
+  ],
+  'obyx' => [
     'comment' => 'Create a comment',
     'dev-add' => 'Add a developer',
     'game-add' => 'Add a game',
@@ -445,8 +450,8 @@ return array(
     'screenshot-add' => 'Upload a screenshot',
     'shoutbox' => 'Post a shout',
     'thread-add' => 'Create a board thread',
-  ),
-  'widget' => array(
+  ],
+  'widget' => [
     'disable_widget_alltimetop' => 'Alltime top widget',
     'disable_widget_board' => 'Board widget',
     'disable_widget_cdc' => 'Coup de coeur widget',
@@ -461,12 +466,12 @@ return array(
     'disable_widget_stats' => 'Statistics widget',
     'disable_widget_tags' => 'Tag cloud widget',
     'disable_widget_topmonth' => 'Top of the wonth widget',
-  ),
+  ],
   //================================== Obsolete strings ==================================//
-  'LLH:obsolete' => array(
+  'LLH:obsolete' => [
     'comments' => 'Comments',
     'created_at_year' => 'TODO: created_at_year',
     'news' => 'News',
     'release_date_year' => 'Release year',
-  ),
-);
+  ],
+];
