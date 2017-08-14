@@ -1,6 +1,11 @@
 <?php
 
-return array(
+/*
+ * rmarchiv.de
+ * (c) 2016-2017 by Marcel 'ryg' Hering
+ */
+
+return [
   //============================== New strings to translate ==============================//
   'hello' => 'Hallo',
   //==================================== Translations ====================================//
@@ -205,33 +210,33 @@ return array(
   'missing_screenshots' => 'Fehlende Screenshots',
   'monster' => 'Monster',
   'more' => 'mehr',
-  'msgbox' => array(
-    'cdc' => array(
+  'msgbox' => [
+    'cdc' => [
       'msg' => 'Der Coup de Coeur Eintrag wurde erfolgreich angelegt.',
       'redirect' => 'Zurück zur Hauptseite...',
       'title' => 'Coup de Coeur erfolgreich hinzugefügt.',
-    ),
-    'comment' => array(
+    ],
+    'comment' => [
       'msg' => 'Der Kommentar wurden erfolgreich abgespeichert.',
       'redirect' => 'Zurück zur vorherigen Seite...',
       'title' => 'Kommentar erfolgreich erstellt.',
-    ),
-    'game' => array(
+    ],
+    'game' => [
       'msg' => 'Das Spiel wurde erfolgreich angelegt',
       'redirect' => 'Zurück zum neuen Spiel...',
       'title' => 'Spiel hinzugefügt.',
-    ),
-    'logo' => array(
+    ],
+    'logo' => [
       'msg' => 'Dein Logo wurde erfolgreich hochgeladen.',
       'redirect' => 'Weiter zur Logobewertung...',
       'title' => 'Logo Upload erfolgreich.',
-    ),
-    'screenshot' => array(
+    ],
+    'screenshot' => [
       'msg' => 'Der Screenshot wurde erfolgreich hochgeladen.',
       'redirect' => 'Zurück zum Spiel...',
       'title' => 'Screenshot Upload erfolgreich.',
-    ),
-  ),
+    ],
+  ],
   'music' => 'Musik',
   'name' => 'Name',
   'new_message_available' => 'Neue Nachrichten verfügbar',
@@ -403,7 +408,7 @@ return array(
   'your_permissions_are_to_low' => 'Fehlende Berechtigungen',
   'your_permissions_are_to_low_to_post' => 'Deine Berechtigungen sind zu niedrig um hier Posten zu können.',
   //============================== Dynamic protected strings =============================//
-  'month' => array(
+  'month' => [
     0 => '',
     1 => 'Januar',
     10 => 'Oktober',
@@ -417,8 +422,8 @@ return array(
     7 => 'Juli',
     8 => 'August',
     9 => 'September',
-  ),
-  'obyx' => array(
+  ],
+  'obyx' => [
     'comment' => 'Kommentar verfasst',
     'dev-add' => 'Entwickler hinzugefügt',
     'game-add' => 'Spiel hinzugefügt',
@@ -430,8 +435,8 @@ return array(
     'screenshot-add' => 'Screenshots hochgeladen',
     'shoutbox' => 'Shoutbox genutzt',
     'thread-add' => 'Forenthreads erstellt',
-  ),
-  'widget' => array(
+  ],
+  'widget' => [
     'disable_widget_alltimetop' => 'Alltime Top Widget',
     'disable_widget_board' => 'Foren Widget',
     'disable_widget_cdc' => 'Coup de coeur Widget',
@@ -446,12 +451,12 @@ return array(
     'disable_widget_stats' => 'Statistik Widget',
     'disable_widget_tags' => 'Tag Cloud Widget',
     'disable_widget_topmonth' => 'Top of the Month Widget',
-  ),
+  ],
   //================================== Obsolete strings ==================================//
-  'LLH:obsolete' => array(
+  'LLH:obsolete' => [
     'comments' => 'Kommentare',
     'created_at_year' => 'Erstellt im Jahr',
     'news' => 'News',
     'release_date_year' => 'Release Jahr',
-  ),
-);
+  ],
+];

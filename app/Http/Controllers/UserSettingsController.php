@@ -33,17 +33,17 @@ class UserSettingsController extends Controller
         return redirect()->action('UserSettingsController@index');
     }
 
-    public function change_username(Request $request){
+    public function change_username(Request $request)
+    {
         $this->validate($request, [
             'usernameold' => 'required',
             'usernamenew'   => 'required',
         ]);
 
         if (\Auth::user()->name == $request->get('usernameold')) {
-
             $check = User::whereName($request->get('usernamenew'))->get();
 
-            if($check->count() == 0){
+            if ($check->count() == 0) {
                 $user = \Auth::user();
                 $user->name = $request->get('usernamenew');
                 $user->save();
