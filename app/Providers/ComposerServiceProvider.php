@@ -19,7 +19,7 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('*.index', 'App\Http\ViewComposers\UserComposer@compose');
+        //View::composer('*.index', 'App\Http\ViewComposers\UserComposer@compose');
         View::composer('_partials.header', 'App\Http\ViewComposers\LogoComposer@compose');
     }
 
