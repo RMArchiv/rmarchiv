@@ -22,7 +22,7 @@ Route::group(['middelware' => ['permission:admin-user']], function () {
 });
 
 //Benutzer und Authentifizierung
-Auth::routes();
+Route::auth();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //Benutzereinstellungen
 Route::get('user_settings', 'UserSettingsController@index');

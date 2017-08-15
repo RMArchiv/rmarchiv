@@ -1,7 +1,7 @@
 <footer class="text-center">
     <ul class="list-unstyled">
         <li>
-            <a href="/">{{ config('app.name') }}</a> {{ config('app.version') }}.{{ App::getLocale() }} &copy; 2016-{{ date('Y', time()) }} by rmarchiv.de Team
+            <a href="/">{{ config('app.name') }}</a> {{ config('app.version') }}.{{ App::getLocale() }} &copy; 2016-{{ date('Y', time()) }} by RMArchiv Team
         </li>
         <li>
             {{ trans('app.feedback_for_features_or_bugs') }} <a href="mailto:webmaster@rmarchiv.de">webmaster@rmarchiv.de</a>
