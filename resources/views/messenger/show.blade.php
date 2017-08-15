@@ -18,7 +18,7 @@
                                 <div class="media-body active">
                                     <div class="media">
                                         <a class="pull-left" href="#">
-                                            <img width="32px" class="media-object img-rounded" src="//{{ config('avatar_path') }}?size=160&gender=male&id={{ $post->user->id }}">
+                                            <img width="32px" class="media-object img-rounded" src="//{{ config('app.avatar_path') }}?size=160&gender=male&id={{ $post->user->id }}">
                                         </a>
                                         <div class="media-body">
                                             {!! \App\Helpers\InlineBoxHelper::GameBox(Markdown::convertToHtml($post->body)) !!}

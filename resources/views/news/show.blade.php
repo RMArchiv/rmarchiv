@@ -65,7 +65,7 @@
                                        title="{{ $comment->user->name }}">
                                         <img
                                                 width="32px"
-                                                src='//{{ config('avatar_path') }}?gender=male&id={{ $comment->user_id }}'
+                                                src='//{{ config('app.avatar_path') }}?gender=male&id={{ $comment->user_id }}'
                                                 alt="{{ $comment->user->name }}" class='media img-rounded'/>
                                     </a>
                                 </div>

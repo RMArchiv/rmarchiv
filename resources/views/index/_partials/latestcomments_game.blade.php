@@ -36,7 +36,7 @@
                 <span class='rowuser'>
                 <a class='usera' href='{{ url('users', $com->user->id) }}' title="{{ $com->user->name }}">
                     <img alt="{{ $com->user->name }}" class='avatar'
-                         src='//{{ config('avatar_path') }}?gender=male&id={{ $com->user->id }}'>
+                         src='//{{ config('app.avatar_path') }}?gender=male&id={{ $com->user->id }}'>
                 </a>
             </span>
             </li>

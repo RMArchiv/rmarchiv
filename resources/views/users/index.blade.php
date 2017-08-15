@@ -49,7 +49,7 @@
                             <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
                                 <a href='{{ url('users', $user->id) }}' class='usera' title="{{ $user->name }}"><img class="img-rounded"
                                      width="50px"
-                                     src="//{{ config('avatar_path') }}?size=50&gender=male&id={{ $user->id }}"
+                                     src="//{{ config('app.avatar_path') }}?size=50&gender=male&id={{ $user->id }}"
                                                                                                                              alt="User Pic"></a>
                             </div>
                             <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
@@ -71,13 +71,13 @@
                                             <div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
                                                 <img class="img-rounded"
                                                      width="100px"
-                                                     src="//{{ config('avatar_path') }}?size=100&gender=male&id={{ $user->id }}"
+                                                     src="//{{ config('app.avatar_path') }}?size=100&gender=male&id={{ $user->id }}"
                                                      alt="User Pic">
                                             </div>
                                             <div class="col-xs-2 col-sm-2 hidden-md hidden-lg">
                                                 <img class="img-rounded"
                                                      width="50px"
-                                                     src="//{{ config('avatar_path') }}?size=50&gender=male&id={{ $user->id }}"
+                                                     src="//{{ config('app.avatar_path') }}?size=50&gender=male&id={{ $user->id }}"
                                                      alt="User Pic">
                                             </div>
                                             <div class="col-xs-10 col-sm-10 hidden-md hidden-lg">

@@ -41,7 +41,7 @@
                             <span> • </span>
                             <span>
                                 <a href="{{ url('/user', $gf->user->id) }}" class="usera" title="{{ $gf->user->name }}">
-                                    <img width="16px" src="//{{ config('avatar_path') }}?gender=male&amp;id={{ $gf->user->id }}" alt="{{ $gf->user->name }}" class="avatar">
+                                    <img width="16px" src="//{{ config('app.avatar_path') }}?gender=male&amp;id={{ $gf->user->id }}" alt="{{ $gf->user->name }}" class="avatar">
                                 </a> <a href="{{ url('/user', $gf->user->id) }}" class="user">{{ $gf->user->name }}</a>
                             </span>
                             <span> • </span>

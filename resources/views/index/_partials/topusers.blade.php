@@ -4,7 +4,7 @@
         @foreach($topusers as $topuser)
             <li class="list-group-item">
                 <a href='{{ url('users', $topuser->userid) }}' class='usera' title="{{ $topuser->username }}">
-                    <img width="16px" src='//{{ config('avatar_path') }}?gender=male&id={{ $topuser->userid }}' alt="{{ $topuser->username }}" class='avatar' />
+                    <img width="16px" src='//{{ config('app.avatar_path') }}?gender=male&id={{ $topuser->userid }}' alt="{{ $topuser->username }}" class='avatar' />
                 </a>
                 <span class='prod'><a href='{{ url('users', $topuser->userid) }}' class='user'>{{ $topuser->username }}</a></span>
                 <span class='group'>:: {{ (is_null($topuser->obyx)) ? 0 : $topuser->obyx }} Obyx</span>

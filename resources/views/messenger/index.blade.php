@@ -23,7 +23,7 @@
                     @foreach($threads as $thread)
                         <li class="list-group-item media" style="margin-top: 0px;">
                             <a class="pull-right" href="{{ route('messages.show', $thread->id) }}"><span class="badge">{{ App\Models\MessengerMessage::whereThreadId($thread->id)->count() }}</span></a>
-                            <a class="pull-left" href="{{ url('users', $thread->creator()->id) }}"><img class="media-object img-rounded" width="42px" src="//{{ config('avatar_path') }}?size=42&gender=male&id={{ $thread->creator()->id }}" alt="{{ $thread->creator()->name }}"></a>
+                            <a class="pull-left" href="{{ url('users', $thread->creator()->id) }}"><img class="media-object img-rounded" width="42px" src="//{{ config('app.avatar_path') }}?size=42&gender=male&id={{ $thread->creator()->id }}" alt="{{ $thread->creator()->name }}"></a>
                             <div class="thread-info">
                                 <div class="media-heading">
                                     @if($thread->closed == 1)
@@ -60,7 +60,7 @@
                                     @foreach(App\Models\MessengerParticipant::whereThreadId($thread->id)->get() as $pp)
                                         @php $user = \App\Models\User::whereId($pp->user_id)->first() @endphp
                                     <a href='{{ url('users', $user->id) }}' class='usera' title="{{ $user->name }}">
-                                        <img width="16px" class="img-rounded" src='//{{ config('avatar_path') }}?size=16&gender=male&id={{ $user->id }}' alt="{{ $user->name }}"/>
+                                        <img width="16px" class="img-rounded" src='//{{ config('app.avatar_path') }}?size=16&gender=male&id={{ $user->id }}' alt="{{ $user->name }}"/>
                                     </a> <a href='{{ url('users', $user->id) }}' class='user'>{{ $user->name }}</a>
                                     @endforeach
                                 </div>

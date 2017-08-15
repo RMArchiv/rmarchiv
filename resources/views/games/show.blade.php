@@ -181,7 +181,7 @@
                                             {{ trans('app.submitted_by') }}: <a
                                                     href='{{ url('users', $game->user_id) }}' class='user'>{{ $game->user->name }}</a>
                                             <a href='{{ url('users', $game->user_id) }}' class='usera' title="{{ $game->user->name }}">
-                                                <img width="16px" src='//{{ config('avatar_path') }}?gender=male&id={{ $game->user_id }}'
+                                                <img width="16px" src='//{{ config('app.avatar_path') }}?gender=male&id={{ $game->user_id }}'
                                                      alt="{{ $game->user->name }}" class='avatar'/>
                                             </a>
                                         </li>
@@ -375,7 +375,7 @@
                                         @if($game->credits->count() != 0)
                                             @foreach($game->credits as $cr)
                                                 <li class="list-group-item">
-                                                    <a href='{{ url('users', $cr->user_id) }}' class='usera' title="{{ $cr->user->name }}"><img width="16px" src='//{{ config('avatar_path') }}?gender=male&id={{ $cr->user_id }}' alt="{{ $cr->user->name }}" class='avatar'/>
+                                                    <a href='{{ url('users', $cr->user_id) }}' class='usera' title="{{ $cr->user->name }}"><img width="16px" src='//{{ config('app.avatar_path') }}?gender=male&id={{ $cr->user_id }}' alt="{{ $cr->user->name }}" class='avatar'/>
                                                     </a>
                                                     <a href='{{ url('users', $cr->user_id) }}' class='user'>{{ $cr->user->name }}</a> [{{ $cr->type->title }}]
                                                 </li>
@@ -442,7 +442,7 @@
                                                    title="{{ $comment->user->name }}">
                                                     <img
                                                             width="32px"
-                                                            src='//{{ config('avatar_path') }}?gender=male&id={{ $comment->user_id }}'
+                                                            src='//{{ config('app.avatar_path') }}?gender=male&id={{ $comment->user_id }}'
                                                             alt="{{ $comment->user->name }}" class='media img-rounded'/>
                                                 </a>
                                             </div>
