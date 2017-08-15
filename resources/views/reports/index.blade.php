@@ -23,7 +23,7 @@
                         <tr>
                             <td>
                                 <a href="{{ url('/user', $r->user_id) }}" class="usera" title="{{ $r->user->name }}">
-                                    <img src="//ava.rmarchiv.de/?gender=male&amp;id={{ $r->user_id }}" alt="{{ $r->user->name }}" class="avatar">
+                                    <img src="//{{ config('avatar_path') }}?gender=male&amp;id={{ $r->user_id }}" alt="{{ $r->user->name }}" class="avatar">
                                 </a> <a href="{{ url('/user', $r->user_id) }}" class="user">{{ $r->user->name }}</a>
                             </td>
                             <td><time datetime='{{ $r->created_at }}' title='{{ $r->created_at }}'>{{ \Carbon\Carbon::parse($r->created_at)->diffForHumans() }}</time></td>
@@ -35,7 +35,7 @@
                             <td>
                                 @if($r->closed == 1)
                                     <a href="{{ url('/user', $r->user_closed->id) }}" class="usera" title="{{ $r->user_closed->name }}">
-                                        <img src="//ava.rmarchiv.de/?gender=male&amp;id={{ $r->user_closed->id }}" alt="{{ $r->user_closed->name }}" class="avatar">
+                                        <img src="//{{ config('avatar_path') }}?gender=male&amp;id={{ $r->user_closed->id }}" alt="{{ $r->user_closed->name }}" class="avatar">
                                     </a> <a href="{{ url('/user', $r->user_closed->id) }}" class="user">{{ $r->user_closed->name }}</a>
                                 @endif
                             </td>

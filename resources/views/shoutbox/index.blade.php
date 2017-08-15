@@ -17,7 +17,7 @@
                     @foreach($shoutbox as $shout)
                         <li class="list-group-item clearfix">
                             <a href='{{ url('users' , $shout->user->id) }}' class='usera' title="{{ $shout->user->name }}">
-                                <img width="16px" src='//ava.rmarchiv.de/?gender=male&id={{ $shout->user->id  }}' alt="{{ $shout->user->name }}" class='avatar' /> {{ $shout->user->name }}
+                                <img width="16px" src='//{{ config('avatar_path') }}?gender=male&id={{ $shout->user->id  }}' alt="{{ $shout->user->name }}" class='avatar' /> {{ $shout->user->name }}
                             </a> :: <time datetime='{{ $shout->created_at }}' title='{{ $shout->created_at }}'>{{ \Carbon\Carbon::parse($shout->created_at)->diffForHumans() }}</time>
                             {!! $shout->shout_html !!}
                         </li>

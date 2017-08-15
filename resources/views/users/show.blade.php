@@ -18,7 +18,7 @@
                         <div class="col-md-4">
                             <img class="img-responsive img-rounded"
                                  width="160px"
-                                 src="//ava.rmarchiv.de/?size=160&gender=male&id={{ $user->id }}"
+                                 src="//{{ config('avatar_path') }}?size=160&gender=male&id={{ $user->id }}"
                                  alt="User Pic">
                         </div>
                         <div class="col-md-8">
@@ -157,7 +157,7 @@
                                            title="{{ $comment->user->name }}">
                                             <img
                                                     width="32px"
-                                                    src='//ava.rmarchiv.de/?gender=male&id={{ $comment->user_id }}'
+                                                    src='//{{ config('avatar_path') }}?gender=male&id={{ $comment->user_id }}'
                                                     alt="{{ $comment->user->name }}" class='media img-rounded'/>
                                         </a>
                                     </div>
@@ -188,7 +188,7 @@
                                        title="{{ $comment->user->name }}">
                                         <img
                                                 width="32px"
-                                                src='//ava.rmarchiv.de/?gender=male&id={{ $comment->user_id }}'
+                                                src='//{{ config('avatar_path') }}?gender=male&id={{ $comment->user_id }}'
                                                 alt="{{ $comment->user->name }}" class='media img-rounded'/>
                                     </a>
                                 </div>
@@ -220,7 +220,7 @@
                                        title="{{ $comment->user->name }}">
                                         <img
                                                 width="32px"
-                                                src='//ava.rmarchiv.de/?gender=male&id={{ $comment->user_id }}'
+                                                src='//{{ config('avatar_path') }}?gender=male&id={{ $comment->user_id }}'
                                                 alt="{{ $comment->user->name }}" class='media img-rounded'/>
                                     </a>
                                 </div>

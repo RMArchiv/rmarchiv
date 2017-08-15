@@ -33,7 +33,7 @@
                             </td>
                             <td>
                                 <a href="{{ action('UserController@show', $a->causer->id) }}" class="usera" title="{{ $a->causer->name }}">
-                                    <img width="16px" src="//ava.rmarchiv.de/?gender=male&amp;id={{ $a->causer->id }}" alt="{{ $a->causer->name }}" class="avatar">
+                                    <img width="16px" src="//{{ config('avatar_path') }}?gender=male&amp;id={{ $a->causer->id }}" alt="{{ $a->causer->name }}" class="avatar">
                                 </a>
                                 <a href="{{ action('UserController@show', $a->causer->id) }}" class="user">{{ $a->causer->name }}</a>
                             </td>
