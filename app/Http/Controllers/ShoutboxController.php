@@ -1,7 +1,7 @@
 <?php
 
 /*
- * rmarchiv.de
+ * rmarchiv.tk
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
@@ -29,7 +29,7 @@ class ShoutboxController extends Controller
                 'created_at' => Carbon::now(),
             ]);
 
-        MiscHelper::sendTelegram('Shoutbox von ['.\Auth::user()->name.'](http://rmarchiv.de/users/'.\Auth::user()->id.')'.PHP_EOL.'*Nachricht:* '.$request->get('shout'));
+        MiscHelper::sendTelegram('Shoutbox von ['.\Auth::user()->name.'](http://rmarchiv.tk/users/'.\Auth::user()->id.')'.PHP_EOL.'*Nachricht:* '.$request->get('shout'));
         event(new Obyx('shoutbox', \Auth::id()));
 
         return redirect()->route('home');

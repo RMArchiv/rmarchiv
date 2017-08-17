@@ -1,7 +1,7 @@
 <?php
 
 /*
- * rmarchiv.de
+ * rmarchiv.tk
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
@@ -11,7 +11,7 @@ return [
      *  Server URL
      */
 
-    'piwik_url'     => 'https://stats.rmarchiv.de',
+    'piwik_url'     => 'https://stats.rmarchiv.tk',
 
     /*
      *  Piwik Username and Password

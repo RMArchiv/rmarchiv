@@ -4,7 +4,7 @@
             <a href="/">{{ config('app.name') }}</a> {{ config('app.version') }}.{{ App::getLocale() }} &copy; 2016-{{ date('Y', time()) }} by RMArchiv Team
         </li>
         <li>
-            {{ trans('app.feedback_for_features_or_bugs') }} <a href="mailto:webmaster@rmarchiv.de">webmaster@rmarchiv.de</a>
+            {{ trans('app.feedback_for_features_or_bugs') }} <a href="mailto:webmaster@rmarchiv.tk">webmaster@rmarchiv.tk</a>
         </li>
         <li>
             <a href="{{ url('/impressum') }}">{{ trans('app.imprint') }}</a>

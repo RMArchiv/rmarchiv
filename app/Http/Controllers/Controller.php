@@ -1,7 +1,7 @@
 <?php
 
 /*
- * rmarchiv.de
+ * rmarchiv.tk
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
@@ -20,10 +20,10 @@ class Controller extends BaseController
     public function __construct()
     {
         //default title Meta Plugin
-        \Meta::title('rmarchiv.de :: your online rpgmaker resource');
+        \Meta::title('rmarchiv.tk :: your online rpgmaker resource');
 
         // Default Robots
         \Meta::set('robots', 'index,follow');
-        \Meta::set('image', 'http://rmarchiv.de/logo/def7cdf80a1dd01ea3ee297ed019a500.png');
+        \Meta::set('image', 'http://rmarchiv.tk/logo/def7cdf80a1dd01ea3ee297ed019a500.png');
     }
 }

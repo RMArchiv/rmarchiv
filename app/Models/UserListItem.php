@@ -1,7 +1,7 @@
 <?php
 
 /*
- * rmarchiv.de
+ * rmarchiv.tk
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
@@ -28,6 +28,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserListItem whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @property-read \App\Models\Game $game
+ * @property-read \App\Models\UserList $userlist
  */
 class UserListItem extends Model
 {

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * rmarchiv.de
+ * rmarchiv.tk
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
@@ -321,7 +321,7 @@ return [
   'resources_overview' => 'Resources overview',
   'rm2k' => 'RPG Maker 2000',
   'rm2k3' => 'RPG Maker 2003',
-  'rmarchiv_team' => 'RMArchiv.de Team',
+  'rmarchiv_team' => 'RMArchiv.tk Team',
   'rmmv' => 'RPG Maker MV',
   'rmvx' => 'RPG Maker VX',
   'rmxp' => 'RPG Maker XP',

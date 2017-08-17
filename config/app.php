@@ -1,7 +1,7 @@
 <?php
 
 /*
- * rmarchiv.de
+ * rmarchiv.tk
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
@@ -27,7 +27,7 @@ return [
 
     'avatar_path' => 'ava.rmarchiv.tk',
 
-    'version' => '0.2.22b'.BUILD,
+    'version' => '0.2.23c'.BUILD,
 
     'tntsearch' => [
         'driver'   => 'sqlite',
@@ -45,7 +45,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'rmarchiv.de',
+    'name' => 'rmarchiv.tk',
 
     /*
     |--------------------------------------------------------------------------
@@ -84,7 +84,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://rmarchiv.de'),
+    'url' => env('APP_URL', 'http://rmarchiv.tk'),
 
     /*
     |--------------------------------------------------------------------------

@@ -107,7 +107,7 @@
                                 <script type="text/javascript">
                                     $(function() {
                                         $('textarea').inlineattachment({
-                                            uploadUrl: 'http://rmarchiv.de/attachment/upload',
+                                            uploadUrl: 'http://rmarchiv.tk/attachment/upload',
                                         });
                                     });
                                 </script>

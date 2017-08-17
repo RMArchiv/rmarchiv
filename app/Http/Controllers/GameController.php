@@ -1,7 +1,7 @@
 <?php
 
 /*
- * rmarchiv.de
+ * rmarchiv.tk
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
@@ -116,7 +116,7 @@ class GameController extends Controller
         ]);
 
         event(new Obyx('game-add', \Auth::id()));
-        MiscHelper::sendTelegram('['.\Auth::user()->name.'](http://rmarchiv.de/users/'.\Auth::user()->id.') hat ein neues Spiel angelegt:'.PHP_EOL.'*'.$g->title.'*');
+        MiscHelper::sendTelegram('['.\Auth::user()->name.'](http://rmarchiv.tk/users/'.\Auth::user()->id.') hat ein neues Spiel angelegt:'.PHP_EOL.'*'.$g->title.'*');
 
         return redirect()->action('MsgBoxController@game_add', [$g->id]);
     }

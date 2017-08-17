@@ -28,7 +28,7 @@
                     <p>
                         <strong>Kontakt:</strong><br>
                         Telefon: 0163-1831204<br>
-                        E-Mail: <a href='mailto:webmaster@rmarchiv.de'>webmaster@rmarchiv.de</a></br>
+                        E-Mail: <a href='mailto:webmaster@rmarchiv.tk'>webmaster@rmarchiv.tk</a></br>
                     </p>
                     <p>
                         <strong>Haftungsausschluss: </strong><br><br>
