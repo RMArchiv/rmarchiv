@@ -9,6 +9,8 @@ Header set X-Webkit-CSP "img-src 'self' ava.rmarchiv.tk"
 
 Header set Strict-Transport-Security "max-age=63072000; includeSubdomains; preload" env=HTTPS
 
+Header set Referrer-Policy: strict-origin-when-cross-origin
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews
