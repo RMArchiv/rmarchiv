@@ -1,6 +1,7 @@
 Header set Content-Security-Policy "default-src 'self'"
 Header set X-Content-Security-Policy "default-src 'self'"
 Header set X-Webkit-CSP "default-src 'self'"
+Header set Strict-Transport-Security "max-age=63072000; includeSubdomains; preload" env=HTTPS
 
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
