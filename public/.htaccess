@@ -1,3 +1,7 @@
+Header set Content-Security-Policy "default-src 'self'"
+Header set X-Content-Security-Policy "default-src 'self'"
+Header set X-Webkit-CSP "default-src 'self'"
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews
