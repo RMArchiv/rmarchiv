@@ -25,6 +25,7 @@ class Kernel extends ConsoleKernel
         Commands\PlayerCreateInfo::class,
         Commands\PlayerRar2Zip::class,
         Commands\PT::class,
+        Commands\TestSearch::class,
     ];
 
     /**
