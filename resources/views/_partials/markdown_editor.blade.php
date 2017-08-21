@@ -16,7 +16,7 @@
         });
 
         var editor = editormd("row_message", {
-            autofocus: false,
+            autoFocus: false,
             width: "99%",
             height: 320,
             imageUpload    : true,
