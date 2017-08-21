@@ -1,14 +1,14 @@
 <?php
 
-/*
- * rmarchiv.tk
- * (c) 2016-2017 by Marcel 'ryg' Hering
- */
-
-return [
+return array(
   //============================== New strings to translate ==============================//
-  'hello' => 'Hello',
+  // Defined in file /Users/ryg/PhpstormProjects/rmarchiv/resources/views/board/post/edit.blade.php
+  'change_board_title' => 'Change thread title',
   //==================================== Translations ====================================//
+    'comments' => 'Comments',
+    'created_at_year' => 'TODO: created_at_year',
+    'news' => 'News',
+    'release_date_year' => 'Release year',
   '10_newest_board_posts' => '10 newest board posts',
   '404_error' => 'TODO: 404_error',
   '501_error' => 'TODO: 501_error',
@@ -96,12 +96,12 @@ return [
   'comment_rule_3' => 'Stay on topic.',
   'comment_rule_4' => 'Don´t disturbe admins and mods.',
   'comment_rules' => 'Comment rules',
-  'comments' => [
+  'comments' => array(
     'tip1' => 'TODO: tip1',
     'tip2' => 'TODO: tip2',
     'tip3' => 'TODO: tip3',
     'tip4' => 'TODO: tip4',
-  ],
+  ),
   'comments_per_month' => 'Comments per month',
   'connections' => 'Connections',
   'contact_admin_or_moderator' => 'Please contact a administrator or moderator',
@@ -173,6 +173,7 @@ return [
   'gametype' => 'Gametype',
   'gfx' => 'Gfx',
   'greetings_your' => 'Best regards, your',
+  'hello' => 'Hello',
   'home' => 'Home',
   'hp' => 'HP',
   'if_you_think_thats_wrong' => 'TODO: if_you_think_thats_wrong',
@@ -216,33 +217,33 @@ return [
   'missing_screenshots' => 'Missing screenshots',
   'monster' => 'Monster',
   'more' => 'more',
-  'msgbox' => [
-    'cdc' => [
+  'msgbox' => array(
+    'cdc' => array(
       'msg' => 'TODO: msg',
       'redirect' => 'Go to home',
       'title' => 'TODO: title',
-    ],
-    'comment' => [
+    ),
+    'comment' => array(
       'msg' => 'TODO: msg',
       'redirect' => 'Go to previous page',
       'title' => 'TODO: title',
-    ],
-    'game' => [
+    ),
+    'game' => array(
       'msg' => 'TODO: msg',
       'redirect' => 'Go to game',
       'title' => 'TODO: title',
-    ],
-    'logo' => [
+    ),
+    'logo' => array(
       'msg' => 'TODO: msg',
       'redirect' => 'Go to logo voting',
       'title' => 'Logo upload successful',
-    ],
-    'screenshot' => [
+    ),
+    'screenshot' => array(
       'msg' => 'TODO: msg',
       'redirect' => 'Go to game',
       'title' => 'Screenshot upload successful.',
-    ],
-  ],
+    ),
+  ),
   'music' => 'Music',
   'name' => 'Name',
   'new_message_available' => 'New Message available',
@@ -250,15 +251,15 @@ return [
   'new_password_confirm' => 'Password confirmation',
   'new_username' => 'New Username',
   'newest_user' => 'Newest User',
-  'news' => [
-    'popularity_helper' => [
+  'news' => array(
+    'popularity_helper' => array(
       'msg' => 'TODO: msg',
       'title' => 'TODO: title',
-    ],
-    'show' => [
+    ),
+    'show' => array(
       'delete' => 'TODO: delete',
-    ],
-  ],
+    ),
+  ),
   'news_category' => 'News Category',
   'news_not_published' => 'Noews not published',
   'news_title' => 'News Title',
@@ -423,7 +424,7 @@ return [
   'your_permissions_are_to_low' => 'Your permissions are to low.',
   'your_permissions_are_to_low_to_post' => 'Your permissions are to low to post a message.',
   //============================== Dynamic protected strings =============================//
-  'month' => [
+  'month' => array(
     0 => '',
     1 => 'January',
     10 => 'October',
@@ -437,8 +438,8 @@ return [
     7 => 'July',
     8 => 'August',
     9 => 'September',
-  ],
-  'obyx' => [
+  ),
+  'obyx' => array(
     'comment' => 'Create a comment',
     'dev-add' => 'Add a developer',
     'game-add' => 'Add a game',
@@ -450,8 +451,8 @@ return [
     'screenshot-add' => 'Upload a screenshot',
     'shoutbox' => 'Post a shout',
     'thread-add' => 'Create a board thread',
-  ],
-  'widget' => [
+  ),
+  'widget' => array(
     'disable_widget_alltimetop' => 'Alltime top widget',
     'disable_widget_board' => 'Board widget',
     'disable_widget_cdc' => 'Coup de coeur widget',
@@ -466,12 +467,5 @@ return [
     'disable_widget_stats' => 'Statistics widget',
     'disable_widget_tags' => 'Tag cloud widget',
     'disable_widget_topmonth' => 'Top of the wonth widget',
-  ],
-  //================================== Obsolete strings ==================================//
-  'LLH:obsolete' => [
-    'comments' => 'Comments',
-    'created_at_year' => 'TODO: created_at_year',
-    'news' => 'News',
-    'release_date_year' => 'Release year',
-  ],
-];
+  ),
+);

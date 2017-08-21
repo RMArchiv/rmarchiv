@@ -1,14 +1,14 @@
 <?php
 
-/*
- * rmarchiv.tk
- * (c) 2016-2017 by Marcel 'ryg' Hering
- */
-
-return [
+return array(
   //============================== New strings to translate ==============================//
-  'hello' => 'Hallo',
+  'change_board_title' => 'Thread Titel ändern',
+
   //==================================== Translations ====================================//
+    'comments' => 'Kommentare',
+    'created_at_year' => 'Erstellt im Jahr',
+    'news' => 'News',
+    'release_date_year' => 'Release Jahr',
   '10_newest_board_posts' => 'Die 10 aktuellsten Forenthreads',
   '404_error' => 'TODO: 404_error',
   '501_error' => 'TODO: 501_error',
@@ -167,6 +167,7 @@ return [
   'gametype' => 'Spieltyp',
   'gfx' => 'Grafiken',
   'greetings_your' => 'Grüße, dein',
+  'hello' => 'Hallo',
   'home' => 'HOME',
   'hp' => 'HP',
   'if_you_think_thats_wrong' => 'Glaubst du, das dies ein versehen war?',
@@ -210,33 +211,33 @@ return [
   'missing_screenshots' => 'Fehlende Screenshots',
   'monster' => 'Monster',
   'more' => 'mehr',
-  'msgbox' => [
-    'cdc' => [
+  'msgbox' => array(
+    'cdc' => array(
       'msg' => 'Der Coup de Coeur Eintrag wurde erfolgreich angelegt.',
       'redirect' => 'Zurück zur Hauptseite...',
       'title' => 'Coup de Coeur erfolgreich hinzugefügt.',
-    ],
-    'comment' => [
+    ),
+    'comment' => array(
       'msg' => 'Der Kommentar wurden erfolgreich abgespeichert.',
       'redirect' => 'Zurück zur vorherigen Seite...',
       'title' => 'Kommentar erfolgreich erstellt.',
-    ],
-    'game' => [
+    ),
+    'game' => array(
       'msg' => 'Das Spiel wurde erfolgreich angelegt',
       'redirect' => 'Zurück zum neuen Spiel...',
       'title' => 'Spiel hinzugefügt.',
-    ],
-    'logo' => [
+    ),
+    'logo' => array(
       'msg' => 'Dein Logo wurde erfolgreich hochgeladen.',
       'redirect' => 'Weiter zur Logobewertung...',
       'title' => 'Logo Upload erfolgreich.',
-    ],
-    'screenshot' => [
+    ),
+    'screenshot' => array(
       'msg' => 'Der Screenshot wurde erfolgreich hochgeladen.',
       'redirect' => 'Zurück zum Spiel...',
       'title' => 'Screenshot Upload erfolgreich.',
-    ],
-  ],
+    ),
+  ),
   'music' => 'Musik',
   'name' => 'Name',
   'new_message_available' => 'Neue Nachrichten verfügbar',
@@ -408,7 +409,7 @@ return [
   'your_permissions_are_to_low' => 'Fehlende Berechtigungen',
   'your_permissions_are_to_low_to_post' => 'Deine Berechtigungen sind zu niedrig um hier Posten zu können.',
   //============================== Dynamic protected strings =============================//
-  'month' => [
+  'month' => array(
     0 => '',
     1 => 'Januar',
     10 => 'Oktober',
@@ -422,8 +423,8 @@ return [
     7 => 'Juli',
     8 => 'August',
     9 => 'September',
-  ],
-  'obyx' => [
+  ),
+  'obyx' => array(
     'comment' => 'Kommentar verfasst',
     'dev-add' => 'Entwickler hinzugefügt',
     'game-add' => 'Spiel hinzugefügt',
@@ -435,8 +436,8 @@ return [
     'screenshot-add' => 'Screenshots hochgeladen',
     'shoutbox' => 'Shoutbox genutzt',
     'thread-add' => 'Forenthreads erstellt',
-  ],
-  'widget' => [
+  ),
+  'widget' => array(
     'disable_widget_alltimetop' => 'Alltime Top Widget',
     'disable_widget_board' => 'Foren Widget',
     'disable_widget_cdc' => 'Coup de coeur Widget',
@@ -451,12 +452,9 @@ return [
     'disable_widget_stats' => 'Statistik Widget',
     'disable_widget_tags' => 'Tag Cloud Widget',
     'disable_widget_topmonth' => 'Top of the Month Widget',
-  ],
+  ),
   //================================== Obsolete strings ==================================//
-  'LLH:obsolete' => [
-    'comments' => 'Kommentare',
-    'created_at_year' => 'Erstellt im Jahr',
-    'news' => 'News',
-    'release_date_year' => 'Release Jahr',
-  ],
-];
+  'LLH:obsolete' => array(
+
+  ),
+);
