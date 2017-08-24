@@ -74,7 +74,7 @@
             </div>
 
             <script type="text/javascript">
-                var tattletale = new Tattletale('easyticket/storeconsole');
+                var tattletale = new Tattletale('/easyticket/storeconsole');
                 tattletale.send();
             </script>
 
