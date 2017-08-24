@@ -47,8 +47,8 @@
         "mdurrant/php-binary-reader": "^1.0",
         "filp/whoops": "^2.1",
         "graham-campbell/exceptions": "^9.3",
-      "spatie/laravel-cookie-consent": "^1.8",
-      "tymon/jwt-auth": "^0.5.12",
+        "spatie/laravel-cookie-consent": "^1.8",
+        "tymon/jwt-auth": "^0.5.12",
         "optimus/fineuploader-server-thumbnail-creator": "^0.1.1"
     },
     "require-dev": {
