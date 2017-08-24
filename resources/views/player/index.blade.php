@@ -74,7 +74,9 @@
             </div>
 
             <script type="text/javascript">
-                var tattletale = new Tattletale('/easyticket/storeconsole');
+                var tattletale = new Tattletale('/easyticket/storeconsole', {
+                    'X-CSRF-Token': $('meta[name="_token"]').attr('content')
+                });
                 tattletale.send();
             </script>
 
