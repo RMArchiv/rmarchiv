@@ -72,6 +72,11 @@
                     <a href="https://easyrpg.org" target="_blank"><img src="/assets/easyrpg-logo.png"></a>
                 </div>
             </div>
+
+            <script type="text/javascript">
+                var tattletale = new Tattletale('');
+            </script>
+
             <script type='text/javascript'>
                 var statusElement = document.getElementById('status');
 

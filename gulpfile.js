@@ -17,6 +17,7 @@ elixir(function(mix) {
         'editormd':     './bower_components/editor.md/',
         'matchheight':  './bower_components/matchHeight/dist/',
         'bootstraprating': './bower_components/bootstrap-rating/',
+        'tattletale': './node_modules/Tattletale/',
     };
 
     mix.sass(
@@ -41,6 +42,7 @@ elixir(function(mix) {
             paths.editormd         + 'editormd.js',
             paths.matchheight      + 'jquery.matchHeight.js',
             paths.bootstraprating  + 'bootstrap-rating.js',
+            paths.tattletale       + 'tattletale.js'
             //paths.js            + 'app.js'
         ])
 

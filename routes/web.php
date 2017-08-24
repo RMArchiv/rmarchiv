@@ -309,12 +309,16 @@ Route::get('player/{gamefileid}/games/default/{fileid}', 'PlayerController@deliv
 Route::get('player/{gamefileid}/games/default/rtp/{filename}', 'PlayerController@deliver_rtp')->name('player.rtp');
 Route::get('player/{gamefileid}/play', 'PlayerController@index')->name('player.run');
 
+//EasyRPG Player Ticketsystem
+//Route::get('easyticket')
+
 //Savegame Management
 Route::get('savegames/manager', 'SavegameManagerController@index');
 Route::get('savegames/manager/game/{gamefile_id}', 'SavegameManagerController@show');
 Route::get('savegames/manager/save/{savegame_id}/delete', 'SavegameManagerController@delete');
 Route::get('savegames/manager/save/{savegame_id}/download', 'SavegameManagerController@download');
 Route::post('savegame/manager/save/upload', 'SavegameManagerController@store');
+
 //EasyRPG Savegame API
 Route::get('savegames/{gamefileid}', 'SavegameController@api_load');
 Route::post('savegames/{gamefileid}', 'SavegameController@api_save');

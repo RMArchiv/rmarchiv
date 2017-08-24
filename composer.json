@@ -9,7 +9,7 @@
         "laravel/framework": "5.4.*",
         "barryvdh/laravel-ide-helper": "^2.3",
         "barryvdh/laravel-debugbar": "^2.3",
-        "doctrine/dbal": "^2.5",
+        "doctrine/dbal": "^2.6",
         "laravelcollective/html": "^5.3",
         "graham-campbell/markdown": "^7.0",
         "optimus/fineuploader-server": "^0.2.5",
