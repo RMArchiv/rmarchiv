@@ -310,7 +310,7 @@ Route::get('player/{gamefileid}/games/default/rtp/{filename}', 'PlayerController
 Route::get('player/{gamefileid}/play', 'PlayerController@index')->name('player.run');
 
 //EasyRPG Player Ticketsystem
-//Route::get('easyticket')
+Route::post('easyticket/storeconsole', 'EasyTicketController@store_consolelog');
 
 //Savegame Management
 Route::get('savegames/manager', 'SavegameManagerController@index');
