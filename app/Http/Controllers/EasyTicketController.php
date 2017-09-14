@@ -30,7 +30,7 @@ class EasyTicketController extends Controller
 
     }
 
-    public function store_consolelog(Request $request, $ticket_id){
+    public function store_consolelog(Request $request){
 
     }
 }
