@@ -49,7 +49,8 @@
         "graham-campbell/exceptions": "^9.3",
         "spatie/laravel-cookie-consent": "^1.8",
         "tymon/jwt-auth": "^0.5.12",
-        "optimus/fineuploader-server-thumbnail-creator": "^0.1.1"
+        "optimus/fineuploader-server-thumbnail-creator": "^0.1.1",
+        "botman/botman": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

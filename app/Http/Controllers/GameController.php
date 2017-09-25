@@ -65,7 +65,7 @@ class GameController extends Controller
             ->orderBy('id')
             ->get();
 
-        $licenses = License::get();
+        $licenses = License::all();
 
         return view('games.create', ['makers' => $maker, 'langs' => $langs, 'licenses' => $licenses]);
     }

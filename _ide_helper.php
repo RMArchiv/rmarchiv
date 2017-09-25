@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.33 on 2017-08-24.
+ * Generated for Laravel 5.4.36 on 2017-09-25.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -416,7 +416,7 @@ namespace Illuminate\Support\Facades {
          * Register a deferred provider and service.
          *
          * @param string $provider
-         * @param string $service
+         * @param string|null $service
          * @return void 
          * @static 
          */ 
@@ -16955,6 +16955,18 @@ namespace  {
             }
          
             /**
+             * Add a relationship count / exists condition to the query with an "or".
+             *
+             * @param string $relation
+             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @static 
+             */ 
+            public static function orDoesntHave($relation)
+            {    
+                return \Illuminate\Database\Eloquent\Builder::orDoesntHave($relation);
+            }
+         
+            /**
              * Add a relationship count / exists condition to the query with where clauses.
              *
              * @param string $relation
@@ -16995,6 +17007,19 @@ namespace  {
             public static function whereDoesntHave($relation, $callback = null)
             {    
                 return \Illuminate\Database\Eloquent\Builder::whereDoesntHave($relation, $callback);
+            }
+         
+            /**
+             * Add a relationship count / exists condition to the query with where clauses and an "or".
+             *
+             * @param string $relation
+             * @param \Closure $callback
+             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @static 
+             */ 
+            public static function orWhereDoesntHave($relation, $callback = null)
+            {    
+                return \Illuminate\Database\Eloquent\Builder::orWhereDoesntHave($relation, $callback);
             }
          
             /**
