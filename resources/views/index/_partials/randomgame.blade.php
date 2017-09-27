@@ -3,8 +3,8 @@
         <div class="panel panel-default">
             <div class="panel-heading">{{ trans('app.random_game') }}</div>
             <div class="panel-body">
-                <a href='{{ url('games', $randomgame->game_id) }}'>
-                    <img width="100%" src="{{ route('screenshot.show', [$randomgame->game_id, 1]) }}"/>
+                <a href='{{ url('games', $randomgame->id) }}'>
+                    <img width="100%" src="{{ route('screenshot.show', [$randomgame->id, 1]) }}"/>
                 </a>
             </div>
             <div class="panel-footer">
