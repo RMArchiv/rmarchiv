@@ -27,7 +27,7 @@ class TestController extends Controller
         $dat->savegame_slot = 1;
         $dat->save();
 
-        return view('test.onoff', ['onoff', 'on']);
+        return view('test.onoff', ['onoff' => 'on']);
     }
 
     public function off(){
@@ -35,7 +35,7 @@ class TestController extends Controller
         $dat->savegame_slot = 0;
         $dat->save();
 
-        return view('test.onoff', ['onoff', 'off']);
+        return view('test.onoff', ['onoff' => 'off']);
     }
 
     public function onoff(){
