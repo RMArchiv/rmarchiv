@@ -322,3 +322,7 @@ Route::post('savegame/manager/save/upload', 'SavegameManagerController@store');
 //EasyRPG Savegame API
 Route::get('savegames/{gamefileid}', 'SavegameController@api_load');
 Route::post('savegames/{gamefileid}', 'SavegameController@api_save');
+
+Route::get('data/onoff', 'TestController@onoff');
+Route::get('data/on', 'TestController@on');
+Route::get('data/off', 'TestController@off');

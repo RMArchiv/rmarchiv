@@ -13,7 +13,6 @@
                 <div class="panel panel-default">
                     <input type="hidden" name="posttype" value="avatar">
                     <input type="hidden" name="userid" value="{{ Auth::id() }}">
-
                     <div class="panel-heading">
                         {{ trans('app.avatar_upload') }}
                     </div>

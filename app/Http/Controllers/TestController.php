@@ -7,6 +7,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PlayerFeedback;
+
 class TestController extends Controller
 {
     public function index()
@@ -18,5 +20,26 @@ class TestController extends Controller
     public function webhook()
     {
         $updates = \Telegram::getWebhookUpdates();
+    }
+
+    public function on(){
+        $dat = PlayerFeedback::whereId(1)->first();
+        $dat->savegame_slot = 1;
+        $dat->save();
+
+        return view('test.onoff', ['onoff', 'on']);
+    }
+
+    public function off(){
+        $dat = PlayerFeedback::whereId(1)->first();
+        $dat->savegame_slot = 0;
+        $dat->save();
+
+        return view('test.onoff', ['onoff', 'off']);
+    }
+
+    public function onoff(){
+        $dat = PlayerFeedback::whereId(1)->first();
+        return $dat->savegame_slot;
     }
 }
