@@ -29,7 +29,6 @@ class ShoutboxController extends Controller
                 'created_at' => Carbon::now(),
             ]);
 
-        MiscHelper::sendTelegram('Shoutbox von ['.\Auth::user()->name.'](http://rmarchiv.tk/users/'.\Auth::user()->id.')'.PHP_EOL.'*Nachricht:* '.$request->get('shout'));
         event(new Obyx('shoutbox', \Auth::id()));
 
         return redirect()->route('home');
