@@ -26,7 +26,8 @@
     "matchHeight": "matchheight#^0.7.2",
     "bootstrap-rating": "^1.4.0",
     "font-awesome": "^4.7.0",
-    "editor.md": "^1.5.0"
+    "editor.md": "^1.5.0",
+    "dropzone": "^5.1.1"
   },
   "resolutions": {
     "jquery": "^3.1.1"
