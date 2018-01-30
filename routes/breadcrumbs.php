@@ -52,7 +52,7 @@ Breadcrumbs::register('faq', function ($breadcrumbs) {
 // FAQ > Add
 Breadcrumbs::register('faq-add', function ($breadcrumbs) {
     $breadcrumbs->parent('faq');
-    $breadcrumbs->push(trans('app.faq_add'), action('FaqController@create'));
+    $breadcrumbs->push(trans('app.add_faq'), action('FaqController@create'));
 });
 
 //----------------- Users --------------------------------------------------------------------------------------------//

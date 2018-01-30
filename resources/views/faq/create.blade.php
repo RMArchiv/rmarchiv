@@ -9,42 +9,56 @@
             {!! Breadcrumbs::render('faq-add') !!}
         </div>
     </div>
+    @if (count($errors) > 0)
+        <div class="row">
+            <div class="alert alert-dismissible alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <h4>Fehler!</h4>
+                <p>
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li><strong>{{ $error }}</strong></li>
+                    @endforeach
+                </ul>
+                </p>
+            </div>
+        </div>
+    @endif
     <div class="row">
         <div id="content">
             <form action="{{ url('faq') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
-                <div class="rmarchivtbl" id="rmarchivbox_submitfaq">
-                    <h2>{{ trans('app.add_faq') }}</h2>
+                <div class="well">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <legend>{{trans('app.add_faq')}}</legend>
+                            <div class="form-group">
+                                <label for="cat" class="col-lg-2 control-label">{{trans('app.faq_category')}} *</label>
+                                <div class="col-lg-10">
+                                    <input autocomplete="off" class="auto" name="cat" id="cat" value=""/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="msg" class="col-lg-2 control-label">{{trans('app.faq_question')}} *</label>
+                                <div class="col-lg-10">
+                                    <input name="title" id="msg" value=""/>
+                                </div>
+                            </div>
 
-                    @if (count($errors) > 0)
-                        <div class="rmarchivtbl errorbox">
-                            <h2>{{ trans('app.add_faq') }}</h2>
                             <div class="content">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li><strong>{{ $error }}</strong></li>
-                                    @endforeach
-                                </ul>
+                                @include('_partials.markdown_editor')
                             </div>
-                        </div>
-                    @endif
 
-                    <div class="content">
-                        <div class="formifier">
-                            <div class="row" id="row_cat">
-                                <label for="cat">{{ trans('app.faq_category') }}:</label>
-                                <input autocomplete="off" class="auto" name="cat" id="cat" value=""/>
-                                <span> [<span class="req">req</span>]</span>
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button type="reset" class="btn btn-default">{{ trans('app.cancel') }}</button>
+                                    <button type="submit" class="btn btn-primary">{{ trans('app.submit') }}</button>
+                                </div>
                             </div>
-                            <div class="row" id="row_title">
-                                <label for="title">{{ trans('app.faq_question') }}:</label>
-                                <input name="title" id="msg" value=""/>
-                                <span> [<span class="req">req</span>]</span>
-                            </div>
-                            @include('_partials.markdown_editor')
-                        </div>
+                        </fieldset>
                     </div>
+                </div>
                     <script type="text/javascript">
                         var sourcepath = new Bloodhound({
                             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -74,10 +88,6 @@
                             }
                         });
                     </script>
-                    <div class="foot">
-                        <input type="submit" value="{{ trans('app.submit') }}">
-                    </div>
-                </div>
             </form>
         </div>
     </div>
