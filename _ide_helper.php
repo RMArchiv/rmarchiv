@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.36 on 2017-10-11.
+ * Generated for Laravel 5.4.36 on 2018-01-30.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -2908,86 +2908,6 @@ namespace Illuminate\Support\Facades {
         public static function getQueuedCookies()
         {
             return \Illuminate\Cookie\CookieJar::getQueuedCookies();
-        }
-         
-    }
-
-    class Crypt {
-        
-        /**
-         * Determine if the given key and cipher combination is valid.
-         *
-         * @param string $key
-         * @param string $cipher
-         * @return bool 
-         * @static 
-         */ 
-        public static function supported($key, $cipher)
-        {
-            return \Illuminate\Encryption\Encrypter::supported($key, $cipher);
-        }
-        
-        /**
-         * Encrypt the given value.
-         *
-         * @param mixed $value
-         * @param bool $serialize
-         * @return string 
-         * @throws \Illuminate\Contracts\Encryption\EncryptException
-         * @static 
-         */ 
-        public static function encrypt($value, $serialize = true)
-        {
-            return \Illuminate\Encryption\Encrypter::encrypt($value, $serialize);
-        }
-        
-        /**
-         * Encrypt a string without serialization.
-         *
-         * @param string $value
-         * @return string 
-         * @static 
-         */ 
-        public static function encryptString($value)
-        {
-            return \Illuminate\Encryption\Encrypter::encryptString($value);
-        }
-        
-        /**
-         * Decrypt the given value.
-         *
-         * @param mixed $payload
-         * @param bool $unserialize
-         * @return string 
-         * @throws \Illuminate\Contracts\Encryption\DecryptException
-         * @static 
-         */ 
-        public static function decrypt($payload, $unserialize = true)
-        {
-            return \Illuminate\Encryption\Encrypter::decrypt($payload, $unserialize);
-        }
-        
-        /**
-         * Decrypt the given string without unserialization.
-         *
-         * @param string $payload
-         * @return string 
-         * @static 
-         */ 
-        public static function decryptString($payload)
-        {
-            return \Illuminate\Encryption\Encrypter::decryptString($payload);
-        }
-        
-        /**
-         * Get the encryption key.
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getKey()
-        {
-            return \Illuminate\Encryption\Encrypter::getKey();
         }
          
     }
@@ -6729,7 +6649,7 @@ namespace Illuminate\Support\Facades {
          * @param array $cookies The request cookies ($_COOKIE)
          * @param array $files The request files ($_FILES)
          * @param array $server The server parameters ($_SERVER)
-         * @param string $content The raw body data
+         * @param string|resource $content The raw body data
          * @return static 
          * @static 
          */ 
@@ -6931,8 +6851,8 @@ namespace Illuminate\Support\Facades {
          * 
          * Order of precedence: PATH (routing placeholders or custom attributes), GET, BODY
          *
-         * @param string $key the key
-         * @param mixed $default the default value if the parameter key does not exist
+         * @param string $key The key
+         * @param mixed $default The default value if the parameter key does not exist
          * @return mixed 
          * @static 
          */ 
@@ -7565,6 +7485,24 @@ namespace Illuminate\Support\Facades {
         {
             //Method inherited from \Symfony\Component\HttpFoundation\Request            
             return \Illuminate\Http\Request::isMethodCacheable();
+        }
+        
+        /**
+         * Returns the protocol version.
+         * 
+         * If the application is behind a proxy, the protocol version used in the
+         * requests between the client and the proxy and between the proxy and the
+         * server might be different. This returns the former (from the "Via" header)
+         * if the proxy is trusted (see "setTrustedProxies()"), otherwise it returns
+         * the latter (from the "SERVER_PROTOCOL" server parameter).
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getProtocolVersion()
+        {
+            //Method inherited from \Symfony\Component\HttpFoundation\Request            
+            return \Illuminate\Http\Request::getProtocolVersion();
         }
         
         /**
@@ -15392,10 +15330,10 @@ namespace Chumper\Zipper\Facades {
          *
          * @param $pathToFile string The file to open
          * @param \Chumper\Zipper\RepositoryInterface|string $type The type of the archive, defaults to zip, possible are zip, phar
-         * @return $this Zipper instance
          * @throws \RuntimeException
          * @throws \Exception
          * @throws \InvalidArgumentException
+         * @return $this Zipper instance
          * @static 
          */ 
         public static function make($pathToFile, $type = 'zip')
@@ -15407,8 +15345,8 @@ namespace Chumper\Zipper\Facades {
          * Create a new zip archive or open an existing one
          *
          * @param $pathToFile
-         * @return $this 
          * @throws \Exception
+         * @return $this 
          * @static 
          */ 
         public static function zip($pathToFile)
@@ -15420,8 +15358,8 @@ namespace Chumper\Zipper\Facades {
          * Create a new phar file or open one
          *
          * @param $pathToFile
-         * @return $this 
          * @throws \Exception
+         * @return $this 
          * @static 
          */ 
         public static function phar($pathToFile)
@@ -15433,8 +15371,8 @@ namespace Chumper\Zipper\Facades {
          * Create a new rar file or open one
          *
          * @param $pathToFile
-         * @return $this 
          * @throws \Exception
+         * @return $this 
          * @static 
          */ 
         public static function rar($pathToFile)
@@ -15489,6 +15427,7 @@ namespace Chumper\Zipper\Facades {
          * Add one or multiple files to the zip.
          *
          * @param $pathToAdd array|string An array or string of files and folders to add
+         * @param null|mixed $fileName
          * @return $this Zipper instance
          * @static 
          */ 
@@ -15525,7 +15464,7 @@ namespace Chumper\Zipper\Facades {
         /**
          * Gets the status of the zip.
          *
-         * @return integer The status of the internal zip file
+         * @return int The status of the internal zip file
          * @static 
          */ 
         public static function getStatus()
@@ -15560,7 +15499,7 @@ namespace Chumper\Zipper\Facades {
          * Sets the password to be used for decompressing
          *
          * @param $password
-         * @return boolean 
+         * @return bool 
          * @static 
          */ 
         public static function usePassword($password)
@@ -15683,8 +15622,8 @@ namespace Chumper\Zipper\Facades {
          * List all files that are within the archive
          *
          * @param string|null $regexFilter regular expression to filter returned files/folders. See @link http://php.net/manual/en/reference.pcre.pattern.syntax.php
-         * @return array 
          * @throws \RuntimeException
+         * @return array 
          * @static 
          */ 
         public static function listFiles($regexFilter = null)
@@ -16287,8 +16226,6 @@ namespace  {
     class Config extends \Illuminate\Support\Facades\Config {}
 
     class Cookie extends \Illuminate\Support\Facades\Cookie {}
-
-    class Crypt extends \Illuminate\Support\Facades\Crypt {}
 
     class DB extends \Illuminate\Support\Facades\DB {}
 
