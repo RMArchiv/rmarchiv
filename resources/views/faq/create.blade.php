@@ -35,7 +35,7 @@
                             <legend>{{trans('app.add_faq')}}</legend>
                             <div class="form-group">
                                 <label for="cat" class="col-lg-2 control-label">{{trans('app.faq_category')}} *</label>
-                                <div class="col-lg-10">
+                                <div class="col-lg-10" id="row_cat">
                                     <input autocomplete="off" class="auto" name="cat" id="cat" value=""/>
                                 </div>
                             </div>
