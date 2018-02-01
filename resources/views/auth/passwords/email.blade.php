@@ -15,13 +15,13 @@
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">E-Mail Adresse:</label>
+                                <label for="email" class="col-md-4 col-form-label">E-Mail Adresse:</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                     @if ($errors->has('email'))
-                                        <span class="help-block">
+                                        <span class="form-text">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                     @endif

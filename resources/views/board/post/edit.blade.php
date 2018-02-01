@@ -29,7 +29,7 @@
 
                                     @if($post->thread->user_id == Auth::id() or Auth::user()->can('mod-threads'))
                                     <div class="form-group">
-                                        <label for="title" class="col-lg-2 control-label">{{trans('app.change_board_title')}} *</label>
+                                        <label for="title" class="col-lg-2 col-form-label">{{trans('app.change_board_title')}} *</label>
                                         <div class="col-lg-10">
                                             <input type="text" class="form-control" id="title" name="title" value="{{ $post->thread->title }}">
                                         </div>

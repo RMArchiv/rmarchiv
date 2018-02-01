@@ -293,7 +293,7 @@
                                     </div>
                                     <div class="panel-body">
                                         @if(Auth::check())
-                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addtag">{{ trans('app.add_tag') }}</button>
+                                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addtag">{{ trans('app.add_tag') }}</button>
                                             <div id="addtag" class="modal fade" role="dialog">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -308,7 +308,7 @@
                                                                 {!! Form::hidden('content_type', 'game') !!}
                                                                 <fieldset>
                                                                     <div class="form-group">
-                                                                        <label for="title" class="control-label">{{ trans('app.tag_name') }}</label>
+                                                                        <label for="title" class="col-form-label">{{ trans('app.tag_name') }}</label>
                                                                         <input type="text" class="form-control" name="title" id="title" placeholder="" value=""/>
                                                                     </div>
                                                                     <div class='form-group'>

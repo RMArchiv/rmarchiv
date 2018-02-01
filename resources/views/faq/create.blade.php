@@ -34,13 +34,13 @@
                         <fieldset>
                             <legend>{{trans('app.add_faq')}}</legend>
                             <div class="form-group">
-                                <label for="cat" class="col-lg-2 control-label">{{trans('app.faq_category')}} *</label>
+                                <label for="cat" class="col-lg-2 col-form-label">{{trans('app.faq_category')}} *</label>
                                 <div class="col-lg-10" id="row_cat">
                                     <input autocomplete="off" class="auto" name="cat" id="cat" value=""/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="msg" class="col-lg-2 control-label">{{trans('app.faq_question')}} *</label>
+                                <label for="msg" class="col-lg-2 col-form-label">{{trans('app.faq_question')}} *</label>
                                 <div class="col-lg-10">
                                     <input name="title" id="msg" value=""/>
                                 </div>
@@ -52,7 +52,7 @@
 
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
-                                    <button type="reset" class="btn btn-default">{{ trans('app.cancel') }}</button>
+                                    <button type="reset" class="btn btn-secondary">{{ trans('app.cancel') }}</button>
                                     <button type="submit" class="btn btn-primary">{{ trans('app.submit') }}</button>
                                 </div>
                             </div>

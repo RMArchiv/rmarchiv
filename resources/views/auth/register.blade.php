@@ -51,31 +51,31 @@
                         <div class="formifier">
                             {!! Honeypot::generate('my_name', 'my_time') !!}
                             <div class="form-group" id="row_name">
-                                <label for="name" class="col-lg-2 control-label">{{ trans('app.username') }}</label>
+                                <label for="name" class="col-lg-2 col-form-label">{{ trans('app.username') }}</label>
                                 <div class="col-lg-10">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
                                 </div>
                             </div>
                             <div class="form-group" id="row_name">
-                                <label  for="email" class="col-lg-2 control-label">e-mail adresse:</label>
+                                <label  for="email" class="col-lg-2 col-form-label">e-mail adresse:</label>
                                 <div class="col-lg-10">
                                 <input id="email" type="email" class="col-md-4 form-control" name="email" value="{{ old('email') }}" required>
                                 </div>
                             </div>
                             <div class="form-group" id="row_pass">
-                                <label for="password" class="col-lg-2 control-label">passwort: </label>
+                                <label for="password" class="col-lg-2 col-form-label">passwort: </label>
                                 <div class="col-lg-10">
                                 <input id="password" type="password" class="form-control" name="password" required>
                                 </div>
                             </div>
                             <div class="form-group" id="row_pass2">
-                                <label for="password-confirm" class="col-lg-2 control-label">passwort bestätigung:</label>
+                                <label for="password-confirm" class="col-lg-2 col-form-label">passwort bestätigung:</label>
                                 <div class="col-lg-10">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                                 </div>
                             </div>
                             <div class="form-group" id="row_captcha">
-                                <label for="captcha" class="col-lg-2 control-label">captcha:</label>
+                                <label for="captcha" class="col-lg-2 col-form-label">captcha:</label>
                                 <div class="col-lg-10">
                                 {!! captcha_img('rmarchiv') !!}
                                 <input id="captcha" class="form-control" name="captcha" required>

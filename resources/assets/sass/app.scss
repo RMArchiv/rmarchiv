@@ -1,12 +1,10 @@
+@import '../../../node_modules/bootstrap/scss/bootstrap';
 @import "variables";
 
 @import '../../../bower_components/font-awesome/scss/font-awesome';
 @import 'editormd/editormd'; //Original Import
-@import "editormd_edit"; // Anpassungen zum Design
+// @import "editormd_edit"; // Anpassungen zum Design - Muss angepasst werden!!!!!!!!!
 
-@import '../../../node_modules/bootstrap/scss/bootstrap';
-
-@import "bootswatch";
 @import 'typeahead/typeahead.scss';
 @import "fine-uploader/fine-uploader";
 
@@ -47,26 +45,26 @@ $url_types: url(/assets/types.png);
 
 .table-striped {
   > tbody > tr:nth-of-type(odd) {
-    background-color: $table-bg-accent;
+    //background-color: $table-bg-accent;
   },
   > tbody > tr:nth-of-type(even) {
-    background-color: $gray-darker;
+    //background-color: $gray-darker;
   }
 }
 .list-group-item {
-  background-color: $gray-darker;
+  //background-color: $gray-darker;
 }
 
 .panel-body {
-  background-color: $gray-darker;
+  //background-color: $gray-darker;
 }
 
 .table-hover {
   > tbody > tr{
-    background-color: $gray-darker;
+    //background-color: $gray-darker;
   },
   > tbody > tr:hover {
-    background-color: $gray-dark;
+    //background-color: $gray-dark;
   }
 }
 
@@ -117,8 +115,8 @@ $url_types: url(/assets/types.png);
   width: 100%;
   padding-right: 105px;
   transition: all .4s ease;
-  color: $alert-danger-text;
-  background: $alert-danger-bg; /* fallback for old browsers */
+  //color: $alert-danger-text;
+  //background: $alert-danger-bg; /* fallback for old browsers */
   top: 0;
   animation-name: cpcookiestop;
   animation-duration: 1s;

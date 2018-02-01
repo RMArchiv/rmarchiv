@@ -20,7 +20,7 @@
                     <fieldset>
                         <legend>suche</legend>
                         <div class="form-group">
-                            <label for="inputEmail" class="col-lg-2 control-label">suche</label>
+                            <label for="inputEmail" class="col-lg-2 col-form-label">suche</label>
                             <div class="col-lg-10">
                                 @if(isset($term))
                                     <input class="form-control" id="inputEmail" autocomplete="off" type='text' name='term' size='64' value="{{ $term }}" />

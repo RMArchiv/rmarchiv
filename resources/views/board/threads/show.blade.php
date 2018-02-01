@@ -5,7 +5,7 @@
     <script>
         $(document).ready(function(){
             // add button style
-            $("[name='poll_bar'").addClass("btn btn-default");
+            $("[name='poll_bar'").addClass("btn btn-secondary");
             // Add button style with alignment to left with margin.
             $("[name='poll_bar'").css({"text-align":"left","margin":"5px"});
 

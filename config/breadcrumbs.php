@@ -7,6 +7,6 @@
 
 return [
 
-    'view' => 'breadcrumbs::bootstrap3',
+    'view' => '_partials/breadcrumb',
 
 ];

@@ -20,7 +20,7 @@
                         <div class="form-group">
                             <label for="file">{{ trans('app.upload_file') }}</label>
                             <input type="file" id="file" name="file">
-                            <p class="help-block">160*160px MAX! (gif,png,jpg)</p>
+                            <p class="form-text">160*160px MAX! (gif,png,jpg)</p>
                         </div>
                     </div>
                     <div class="panel-footer">

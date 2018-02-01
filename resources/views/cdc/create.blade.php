@@ -25,7 +25,7 @@
                 <fieldset>
                     <legend>cdc hinzufügen</legend>
                     <div class="form-group" id="gamename">
-                        <label for="gamename" class="col-lg-2 control-label">Spiel</label>
+                        <label for="gamename" class="col-lg-2 col-form-label">Spiel</label>
                         <div class="col-lg-10">
                             <input type="text" class="auto form-control" name="gamename" id="gamename">
                         </div>
