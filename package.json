@@ -17,6 +17,9 @@
   },
   "dependencies": {
     "Tattletale": "^0.1.0",
-    "elixir": "^0.1.2"
+    "bootstrap": "^4.0.0",
+    "elixir": "^0.1.2",
+    "node-sass": "^4.7.2",
+    "popper.js": "^1.12.9"
   }
 }

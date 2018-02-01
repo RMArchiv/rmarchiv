@@ -4,7 +4,7 @@
 @import 'editormd/editormd'; //Original Import
 @import "editormd_edit"; // Anpassungen zum Design
 
-@import '../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+@import '../../../node_modules/bootstrap/scss/bootstrap';
 
 @import "bootswatch";
 @import 'typeahead/typeahead.scss';
