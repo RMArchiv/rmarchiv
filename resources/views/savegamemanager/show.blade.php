@@ -22,8 +22,8 @@
                 </div>
             @endif
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{ trans('app.savegames') }}
                     <div class="pull-right">
                         <button type="button" class="btn btn-secondary btn-xs" data-toggle="modal" data-target=".savegame-upload">{{ trans('app.upload') }}</button>

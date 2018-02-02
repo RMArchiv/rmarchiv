@@ -34,10 +34,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ $news->title }}</div>
-                <div class="panel-body">{!! \App\Helpers\InlineBoxHelper::GameBox($news->news_html) !!}</div>
-                <div class="panel-footer">
+            <div class="card">
+                <div class="card-header">{{ $news->title }}</div>
+                <div class="card-body">{!! \App\Helpers\InlineBoxHelper::GameBox($news->news_html) !!}</div>
+                <div class="card-footer">
                     {{ trans('app.submitted_by') }}
                     <a href='{{ url('users', $news->user_id) }}'>{{ $news->name }}</a> ::
                     <time datetime='{{ $news->created_at }}' title='{{ $news->created_at }}'>{{ \Carbon\Carbon::parse($news->created_at)->diffForHumans() }}</time>
@@ -45,9 +45,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('app.popularity_helper') }}</div>
-                <div class="panel-body">
+            <div class="card">
+                <div class="card-header">{{ trans('app.popularity_helper') }}</div>
+                <div class="card-body">
                     <p>{{ trans('app.use_the_popularity_helper') }}</p>
                     <input type='text' value='{{ Request::fullUrl() }}' size='50' readonly='readonly'/>
                 </div>
@@ -55,9 +55,9 @@
         </div>
         @if($news->comments()->count() > 0)
             <div class="row">
-                <div class="panel panel-default">
-                    <div class="panel-heading">{{ trans('app.comments') }}</div>
-                    <div class="panel-body">
+                <div class="card">
+                    <div class="card-header">{{ trans('app.comments') }}</div>
+                    <div class="card-body">
                         @foreach($news->comments()->get() as $comment)
                             <div class="media">
                                 <div class="media-left">
@@ -90,18 +90,18 @@
             </div>
         @else
             <div class="row">
-                <div class="panel panel-default">
-                    <div class="panel-heading">{{ trans('app.comments') }}</div>
-                    <div class="panel-body">
+                <div class="card">
+                    <div class="card-header">{{ trans('app.comments') }}</div>
+                    <div class="card-body">
                         {{ trans('app.no_comments_available') }}
                     </div>
                 </div>
             </div>
         @endif
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('app.comment_rules') }}</div>
-                <div class="panel-body">
+            <div class="card">
+                <div class="card-header">{{ trans('app.comment_rules') }}</div>
+                <div class="card-body">
                     <p>{{ trans('app.comment_rule_1') }}</p>
                     <p>{{ trans('app.comment_rule_2') }}</p>
                     <p>{{ trans('app.comment_rule_3') }}</p>
@@ -110,9 +110,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('app.add_comment') }}</div>
-                <div class="panel-body">
+            <div class="card">
+                <div class="card-header">{{ trans('app.add_comment') }}</div>
+                <div class="card-body">
                     @permission(('create-game-comments'))
                     {!! Form::open(['action' => ['CommentController@add']]) !!}
                     {!! Form::hidden('content_id', $news->id) !!}

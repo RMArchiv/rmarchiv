@@ -10,16 +10,16 @@
         </div>
         @foreach($faq as $cat)
             <div class="row">
-                <div class="panel-group" id="faq{{ $cat->cat }}">
-                    <div class="panel panel-default ">
+                <div id="faq{{ $cat->cat }}">
+                    <div class="card ">
                     @foreach(\App\Models\Faq::whereCat($cat->cat)->get() as $f)
-                        <div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faq{{ $f->cat }}" data-target="#question{{ $f->id }}">
-                            <h4 class="panel-title">
+                        <div class="card-header accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faq{{ $f->cat }}" data-target="#question{{ $f->id }}">
+                            <h4 class="card-title">
                                 <a href="#" class="ing">Q: {{ $f->cat }} # {{ $f->title }}</a>
                             </h4>
                         </div>
                         <div id="question{{ $f->id }}" class="panel-collapse collapse" style="height: 0px;">
-                            <div class="panel-body">
+                            <div class="card-body">
                                 <h5><span class="label label-primary">Answer</span></h5>
                                 <p>
                                     {!! Markdown::convertToHtml($f->desc_md) !!}

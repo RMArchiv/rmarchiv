@@ -1,7 +1,7 @@
 @permission(('create-awards'))
 <div class="row">
-    <div class="panel panel-default">
-        <div class="panel-body">
+    <div class="card">
+        <div class="card-body">
             <a href="{{ route('awards.create') }}">{{ trans('app.add_award') }}</a>
         </div>
     </div>

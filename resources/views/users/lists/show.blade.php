@@ -9,11 +9,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{ $list->title }}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     {!! Markdown::convertToHtml($list->desc_md) !!}
                 </div>
             </div>

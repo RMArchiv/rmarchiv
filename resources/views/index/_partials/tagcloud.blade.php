@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="card">
+            <div class="card-header">
                 {{ trans('app.tag_cloud') }}
             </div>
-            <div class="panel-body">
+            <div class="card-body">
                 @php
                     $cloud = new \LithiumDev\TagCloud\TagCloud();
                 @endphp
@@ -39,7 +39,7 @@
                 @endphp
                 {!!  $cloud->render() !!}
             </div>
-            <div class="panel-footer">
+            <div class="card-footer">
                 <a href="{{ url('tags') }}">{{ trans('app.more') }}...</a>
             </div>
         </div>

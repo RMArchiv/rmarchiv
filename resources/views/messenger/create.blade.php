@@ -53,9 +53,9 @@
             </div>
         </div>
         @else
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('app.login_needed') }}</div>
-                <div class="panel-body">
+            <div class="card">
+                <div class="card-header">{{ trans('app.login_needed') }}</div>
+                <div class="card-body">
                     {{ trans('app.login_needed_to_post') }}
                 </div>
             </div>

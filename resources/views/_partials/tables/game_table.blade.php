@@ -1,6 +1,6 @@
 
-<div class="panel panel-default">
-    <div class="panel-heading">
+<div class="card">
+    <div class="card-header">
         @if($games instanceof \Illuminate\Pagination\LengthAwarePaginator )
             {{ $games->links('vendor.pagination.bootstrap-4') }}
         @endif
@@ -16,7 +16,7 @@
             @include('_partials.tables.game_table_row', ['game' => $game, 'maxviews' => $maxviews])
         @endforeach
     </ul>
-    <div class="panel-footer">
+    <div class="card-footer">
         @if($games instanceof \Illuminate\Pagination\LengthAwarePaginator )
             {{ $games->links('vendor.pagination.bootstrap-4') }}
         @endif

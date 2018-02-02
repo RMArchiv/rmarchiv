@@ -55,8 +55,8 @@
                     }
                 }
             </style>
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     <div class="pull-right" id="controls">
                         <input type="button" value="Full screen" onclick="if (Module.requestFullScreen) Module.requestFullScreen()">
                     </div>
@@ -64,10 +64,10 @@
                     EasyRPG Player Status:
                     <div id="status">{{ trans('app.webplayer_downloads_data') }}</div>
                 </div>
-                <div class="panel-body text-center">
+                <div class="card-body text-center">
                     <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
                 </div>
-                <div class="panel-footer">
+                <div class="card-footer">
                     This awesome and outstanding WebPlayer is created, actively maintained and provided by
                     <a href="https://easyrpg.org" target="_blank"><img src="/assets/easyrpg-logo.png"></a>
                 </div>

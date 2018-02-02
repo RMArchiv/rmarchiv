@@ -33,11 +33,11 @@
         @endif
         {!! Form::open(['method' => 'PUT', 'route' => ['games.update', $game->id]]) !!}
         <div class="row">
-            <div class="panel panel-default form">
-                <div class="panel-heading">
+            <div class="card form">
+                <div class="card-header">
                     grundinformationen
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     <div class="form-group">
                         <label for="title" class="col-lg-2 col-form-label">{{trans('app.gametitle')}} *</label>
                         <div class="col-lg-10">
@@ -145,17 +145,17 @@
                     </div>
                 </div>
 
-                <div class="panel-heading">
+                <div class="card-header">
                     {{trans('app.description')}}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     @include('_partials.markdown_editor', ['edit_text' => $game->desc_md])
                 </div>
 
-                <div class="panel-heading">
+                <div class="card-header">
                     {{trans('app.links')}}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     <div class="form-group">
                         <label for="websiteurl" class="col-lg-2 col-form-label">{{trans('app.website')}} *</label>
                         <div class="col-lg-10">
@@ -170,18 +170,18 @@
                     </div>
                 </div>
 
-                <div class="panel-footer">
+                <div class="card-footer">
                     <input type="submit" value="{{trans('app.submit')}}" class="btn btn-primary">
                 </div>
             </div>
         </div>
         {!! Form::close() !!}
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{trans('app.developers')}}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     <div class="form-horizontal">
                         @foreach($game->developers as $dev)
                             <div id="row_dev_{{ $dev->developer->id }}">
@@ -194,10 +194,10 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="panel-heading">
+                <div class="card-header">
                     {{trans('app.add_developer')}}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     {!! Form::open(['method' => 'POST', 'route' => ['games.developer.store', $game->id]]) !!}
                     <div class="form-group" id="row_developer">
                         <label for="developer" class="col-lg-2 col-form-label">{{trans('app.developer')}}</label>
@@ -241,8 +241,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{ trans('app.added_tags') }}
                 </div>
                 <ul class="list-group">
@@ -258,8 +258,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{trans('app.user_credits')}}
                 </div>
                 <ul class="list-group">
@@ -276,10 +276,10 @@
                         </li>
                     @endforeach
                 </ul>
-                <div class="panel-heading">
+                <div class="card-header">
                     {{trans('app.add_credits')}}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     {!! Form::open(['method' => 'POST', 'route' => ['gamecredits.store', $game->id], 'class' => 'form-horizontal']) !!}
                     <div class="form-group" id="row_user">
                         <label for="user" class="col-lg-2 col-form-label">{{trans('app.username')}}:</label>
@@ -334,12 +334,12 @@
         </div>
         @permission(('delete-games'))
         <div class="row">
-            <div class="panel panel-warning">
+            <div class="card">
                 {!! Form::open(['method' => 'DELETE', 'route' => ['games.destroy', $game->id]]) !!}
-                <div class="panel-heading">
+                <div class="card-header">
                     {{trans('app.delete_game')}}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     <div class="form-group">
                         <label for="confirm" class="col-lg-2 col-form-label">{{trans('app.enter_confirm_plus_id')}}</label>
                         <div class="col-lg-10">
@@ -347,7 +347,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel-footer">
+                <div class="card-footer">
                     <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
                 </div>
                 {!! Form::close() !!}

@@ -39,11 +39,11 @@
         </div>
         <div class="row">
             {{ $users->links('vendor.pagination.bootstrap-4') }}
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{ trans('app.userlist') }}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     @foreach($users as $user)
                         <div class="row user-row">
                             <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
@@ -62,11 +62,11 @@
                         </div>
                         <div class="row user-infos {{ str_replace(" ", "",$user->name) }}">
                             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">{{ trans('app.userinformations') }}</h3>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">{{ trans('app.userinformations') }}</h3>
                                     </div>
-                                    <div class="panel-body">
+                                    <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
                                                 <img class="img-rounded"
@@ -112,7 +112,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="panel-footer">
+                                    <div class="card-footer">
                                         @if(Auth::check())
                                             <button class="btn btn-sm btn-primary" type="button"
                                                     data-toggle="tooltip"

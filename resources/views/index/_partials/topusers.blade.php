@@ -1,5 +1,5 @@
-<div class="panel panel-default">
-    <div class="panel-heading">{{ trans('app.top_users') }}</div>
+<div class="card">
+    <div class="card-header">{{ trans('app.top_users') }}</div>
     <ul class='list-group'>
         @foreach($topusers as $topuser)
             <li class="list-group-item">

@@ -9,8 +9,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{ trans('app.list_with_savegames_newest_on_top') }}
                 </div>
                 <ul class="list-group">

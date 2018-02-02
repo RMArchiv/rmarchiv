@@ -9,8 +9,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     @if($makers instanceof \Illuminate\Pagination\LengthAwarePaginator )
                         {{ $makers->links('vendor.pagination.gamelist') }}
                     @endif
@@ -27,7 +27,7 @@
                         @endif
                     @endforeach
                 </ul>
-                <div class="panel-footer">
+                <div class="card-footer">
                     @if($makers instanceof \Illuminate\Pagination\LengthAwarePaginator )
                         {{ $makers->links('vendor.pagination.gamelist') }}
                     @endif

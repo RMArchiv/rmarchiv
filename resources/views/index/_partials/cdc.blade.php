@@ -1,13 +1,13 @@
 <div class="row">
     <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">{{ trans('app.coupdecoeur') }}</div>
-            <div class="panel-body">
+        <div class="card">
+            <div class="card-header">{{ trans('app.coupdecoeur') }}</div>
+            <div class="card-body">
                 <a href='{{ url('games', $cdc->game_id) }}'>
                     <img width="100%" src="{{ route('screenshot.show', [$cdc->game_id, 1]) }}"/>
                 </a>
             </div>
-            <div class="panel-footer">
+            <div class="card-footer">
                 <span class='rowprod'>
                     <span class='prodentry'>
                         @if($cdc->game->gamefiles)

@@ -23,11 +23,11 @@
                 {!! method_field('patch') !!}
                 {{ csrf_field() }}
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.edit_news') }}
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         <div class="form-group">
                             <label for="title" class="col-lg-2 col-form-label">{{ trans('app.news_title') }}: *</label>
                             <div class="col-lg-10">
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="card-footer">
                         <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
                     </div>
                 </div>

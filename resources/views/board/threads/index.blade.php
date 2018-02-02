@@ -9,8 +9,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{ $threads->links('vendor.pagination.bootstrap-4') }}
                 </div>
                 <ul class="list-group">
@@ -44,7 +44,7 @@
                         </li>
                     @endforeach
                 </ul>
-                <div class="panel-footer">
+                <div class="card-footer">
                     {{ $threads->links('vendor.pagination.bootstrap-4') }}
                 </div>
             </div>
@@ -52,11 +52,11 @@
 
         <div class="row">
             @if(Auth::check())
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.create_thread') }}
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         {!! Form::open(['route' => ['board.thread.store'], 'id' => 'frmBBSPost']) !!}
                         {!! Form::hidden('category', $cat->id) !!}
                         <div class='content'>
@@ -73,11 +73,11 @@
                     </div>
                 </div>
             @else
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.login_needed') }}
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         {{ trans('app.login_needed_to_post') }}
                     </div>
                 </div>

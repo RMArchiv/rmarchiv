@@ -9,8 +9,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     Organisatorisches
                 </div>
                 <ul class="list-group">
@@ -19,8 +19,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     RPG Maker
                 </div>
                 <ul class="list-group">
@@ -33,8 +33,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     Community
                 </div>
                 <ul class="list-group">
@@ -46,11 +46,11 @@
 
         <div class="row">
             @if(Auth::check())
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.create_thread') }}
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         {!! Form::open(['route' => ['board.thread.store'], 'id' => 'frmBBSPost']) !!}
                         <div class='content'>
                             <label for='topic'>{{ trans('app.topic') }}</label>
@@ -71,11 +71,11 @@
                     </div>
                 </div>
             @else
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.login_needed') }}
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         {{ trans('app.login_needed_to_post') }}
                     </div>
                 </div>

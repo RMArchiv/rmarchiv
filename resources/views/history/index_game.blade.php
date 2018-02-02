@@ -9,8 +9,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{ trans('app.changelog') }}
                 </div>
                 <table class="table table-striped table-bordered table-list">

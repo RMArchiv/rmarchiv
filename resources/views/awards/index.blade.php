@@ -16,8 +16,8 @@
         {{ $ayear = null }}
         <div class="row">
             @foreach($awards->groupBy('year') as $cats)
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ $cats->first()->year }}
                     </div>
                     <ul class="list-group">

@@ -21,8 +21,8 @@
             </div>
         @endif
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{ trans('app.gamefiles_count') }}: {{ $gamefiles->count() }}
                 </div>
                 <ul class="list-group">
@@ -78,11 +78,11 @@
         </div>
         @if(Auth::check())
             <div class="row">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{trans('app.add_gamefile')}}
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         {!! Form::open(['route' => ['gamefiles.store', $game->id], 'class' => 'form-horizontal']) !!}
                         <div class="form-group">
                             <label for="filetype" class="col-sm-2 col-form-label">{{trans('app.release_type')}}: *</label>

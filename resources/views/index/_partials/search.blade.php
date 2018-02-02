@@ -1,7 +1,7 @@
 <div class="row">
-    <div class="panel panel-default">
-        <div class="panel-heading">{{ trans('app.search') }}</div>
-        <div class="panel-body">
+    <div class="card">
+        <div class="card-header">{{ trans('app.search') }}</div>
+        <div class="card-body">
             {{ Form::open(['action' => ['SearchController@search']], ['class' => 'form-horizontal']) }}
                 <input id="term" type='text' name='term' />
                 <input id="term" type='submit' value='Submit' />

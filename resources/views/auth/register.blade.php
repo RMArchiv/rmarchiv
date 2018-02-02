@@ -13,7 +13,7 @@
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                 {{ csrf_field() }}
 
-                <div class="panel panel-default">
+                <div class="card">
                     @if ($errors->has('name'))
                         <div class="rmarchivtbl errorbox">
                             <h2>{{ trans('app.registration_failed') }}</h2>
@@ -47,7 +47,7 @@
                         </div>
                     @endif
 
-                    <div class="panel-body">
+                    <div class="card-body">
                         <div class="formifier">
                             {!! Honeypot::generate('my_name', 'my_time') !!}
                             <div class="form-group" id="row_name">
@@ -83,7 +83,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="card-footer">
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

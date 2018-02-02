@@ -56,11 +56,11 @@
         </div>
         @if($poll)
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{ $poll->title }}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     @foreach($answers as $ans)
                         @if($ans->title != '')
                             {!! Form::open(['action' => ['BoardController@add_vote'], 'method' => 'POST', 'id' => 'vote_'.$ans->id]) !!}
@@ -90,9 +90,9 @@
         </div>
         @endif
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ $posts->links('vendor.pagination.bootstrap-4') }}</div>
-                <div class="panel-body">
+            <div class="card">
+                <div class="card-header">{{ $posts->links('vendor.pagination.bootstrap-4') }}</div>
+                <div class="card-body">
                     <ul class="media-list">
                         @foreach($posts as $post)
                         <li class="media" id="c{{$post->id}}">
@@ -124,16 +124,16 @@
                         @endforeach
                     </ul>
                 </div>
-                <div class="panel-footer">{{ $posts->links('vendor.pagination.bootstrap-4') }}</div>
+                <div class="card-footer">{{ $posts->links('vendor.pagination.bootstrap-4') }}</div>
             </div>
         </div>
         <div class="row">
             @if(Auth::check())
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.create_thread') }}
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         @if($post->thread->closed == 0)
                             {!! Form::open(['action' => ['BoardController@store_post', $posts->first()->thread->id], 'id' => 'frmBBSPost']) !!}
                             <input type='hidden' name='catid' value='{{ $posts->first()->cat->id }}'>
@@ -151,11 +151,11 @@
                     </div>
                 </div>
             @else
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.login_needed_to_post') }}
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         {{ trans('app.login_needed_to_post') }}
                     </div>
                 </div>

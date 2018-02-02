@@ -53,8 +53,8 @@
                         {{-- screenshots --}}
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
+                                <div class="card">
+                                    <div class="card-header">
                                         <ul class="nav nav-pills">
                                             <li class="active">
                                                 <a data-toggle="pill" href="#tabs-1">{{ trans('app.titlescreen') }}</a>
@@ -83,10 +83,10 @@
                                     </div>
                                     <div class="tab-content">
                                         <div id="tabs-1" class="tab-pane fade in active">
-                                            <div class="panel-body">
+                                            <div class="card-body">
                                                 <img class="img-responsive center-block" src='{{ route('screenshot.show', [$game->id, 1]) }}' alt='{{ trans('app.titlescreen') }}' title='{{ trans('app.titlescreen') }}'/>
                                             </div>
-                                            <div class="panel-footer">
+                                            <div class="card-footer">
                                                 <a href="{{ route('screenshot.show', [$game->id, 1, 1]) }}">{{ trans('app.show_original_size') }}</a>
                                                 @if(Auth::check())
                                                     ::
@@ -96,11 +96,11 @@
                                         </div>
                                         @for($i = 2; $i <=6; $i++)
                                             <div id="tabs-{{ $i }}" class="tab-pane fade">
-                                                <div class="panel-body">
+                                                <div class="card-body">
                                                     <img class="img-responsive center-block" src='{{ route('screenshot.show', [$game->id, $i]) }}'
                                                          alt='{{ trans('app.screenshot') }}' title='{{ trans('app.screenshot') }}'/>
                                                 </div>
-                                                <div class="panel-footer">
+                                                <div class="card-footer">
                                                     <a href="{{ route('screenshot.show', [$game->id, $i, 1]) }}">{{ trans('app.show_original_size') }}</a>
                                                     @if(Auth::check())
                                                         ::
@@ -114,12 +114,12 @@
                                                 $vid = str_replace('watch?v=', "embed/", $game->youtube);
                                             @endphp
                                             <div id="tabs-7" class="tab-pane fade">
-                                                <div class="panel-body">
+                                                <div class="card-body">
                                                     <div class="embed-responsive embed-responsive-16by9">
                                                         <iframe class="embed-responsive-item" src="{{ $vid }}" frameborder="0" allowfullscreen></iframe>
                                                     </div>
                                                 </div>
-                                                <div class="panel-footer">
+                                                <div class="card-footer">
                                                     {{ trans('app.editable_with_edit_button') }}
                                                 </div>
                                             </div>
@@ -134,8 +134,8 @@
                         {{-- infos & stats --}}
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
+                                <div class="card">
+                                    <div class="card-header">
                                         {{ trans('app.informations') }}
                                     </div>
                                     <ul class="list-group">
@@ -199,8 +199,8 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
+                                <div class="card">
+                                    <div class="card-header">
                                         {{ trans('app.misc') }}
                                     </div>
                                     <ul class="list-group">
@@ -274,9 +274,9 @@
                         {{-- spielbeschreibung --}}
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">{{ trans('app.description') }}</div>
-                                    <div class="panel-body readmore">
+                                <div class="card">
+                                    <div class="card-header">{{ trans('app.description') }}</div>
+                                    <div class="card-body readmore">
                                         {!! Markdown::convertToHtml($game->desc_md) !!}
                                     </div>
                                 </div>
@@ -287,11 +287,11 @@
                         {{-- tags & downloads --}}
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
+                                <div class="card">
+                                    <div class="card-header">
                                         {{ trans('app.tags') }}
                                     </div>
-                                    <div class="panel-body">
+                                    <div class="card-body">
                                         @if(Auth::check())
                                             <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addtag">{{ trans('app.add_tag') }}</button>
                                             <div id="addtag" class="modal fade" role="dialog">
@@ -333,8 +333,8 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
+                                <div class="card">
+                                    <div class="card-header">
                                         {{ trans('app.downloads') }}
                                     </div>
                                     <ul class="list-group">
@@ -369,8 +369,8 @@
                         {{-- credits --}}
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">{{ trans('app.user_credits') }}</div>
+                                <div class="card">
+                                    <div class="card-header">{{ trans('app.user_credits') }}</div>
                                     <ul class="list-group">
                                         @if($game->credits->count() != 0)
                                             @foreach($game->credits as $cr)
@@ -392,8 +392,8 @@
                         {{-- award spalte --}}
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">{{ trans('app.awards') }}</div>
+                                <div class="card">
+                                    <div class="card-header">{{ trans('app.awards') }}</div>
                                     <ul class="list-group">
                                         @foreach($game->awards as $aw)
                                             <?php
@@ -420,9 +420,9 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">{{ trans('app.popularity_helper') }}</div>
-                            <div class="panel-body">
+                        <div class="card">
+                            <div class="card-header">{{ trans('app.popularity_helper') }}</div>
+                            <div class="card-body">
                                 <p>{{ trans('app.use_the_popularity_helper') }}</p>
                                 <input type='text' value='{{ Request::fullUrl() }}' size='50' readonly='readonly'/>
                             </div>
@@ -432,9 +432,9 @@
                 @if($game->comments()->count() > 0)
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">{{ trans('app.comments') }}</div>
-                                <div class="panel-body">
+                            <div class="card">
+                                <div class="card-header">{{ trans('app.comments') }}</div>
+                                <div class="card-body">
                                     @foreach($game->comments()->get() as $comment)
                                         <div class="media">
                                             <div class="media-left">
@@ -471,9 +471,9 @@
                 @else
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">{{ trans('app.comments') }}</div>
-                                <div class="panel-body">
+                            <div class="card">
+                                <div class="card-header">{{ trans('app.comments') }}</div>
+                                <div class="card-body">
                                     {{ trans('app.no_comments_available') }}
                                 </div>
                             </div>
@@ -482,9 +482,9 @@
                 @endif
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">{{ trans('app.comment_rules') }}</div>
-                            <div class="panel-body">
+                        <div class="card">
+                            <div class="card-header">{{ trans('app.comment_rules') }}</div>
+                            <div class="card-body">
                                 <p>{{ trans('app.comment_rule_1') }}</p>
                                 <p>{{ trans('app.comment_rule_2') }}</p>
                                 <p>{{ trans('app.comment_rule_3') }}</p>
@@ -495,9 +495,9 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">{{ trans('app.add_comment') }}</div>
-                            <div class="panel-body">
+                        <div class="card">
+                            <div class="card-header">{{ trans('app.add_comment') }}</div>
+                            <div class="card-body">
                                 @permission(('create-game-comments'))
                                 {!! Form::open(['action' => ['CommentController@add']]) !!}
                                 {!! Form::hidden('content_id', $game->id) !!}
