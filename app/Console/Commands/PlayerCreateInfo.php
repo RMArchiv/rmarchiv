@@ -104,7 +104,7 @@ class PlayerCreateInfo extends Command
                         }
                     }
                 }
-                $zip->close();
+                @$zip->close();
             } else {
                 continue;
             }
