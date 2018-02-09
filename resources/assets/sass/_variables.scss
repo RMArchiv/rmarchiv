@@ -148,16 +148,16 @@ $sizes: map-merge((
 //
 // Settings for the `<body>` element.
 
-$body-bg:                   $white !default;
-$body-color:                $gray-900 !default;
+$body-bg:                   $rm-back;
+$body-color:                $rm-text;
 
 // Links
 //
 // Style anchor elements.
 
-$link-color:                theme-color("primary") !default;
+$link-color:                $rm-link;
 $link-decoration:           none !default;
-$link-hover-color:          darken($link-color, 15%) !default;
+$link-hover-color:          $rm-link-hover;
 $link-hover-decoration:     underline !default;
 
 // Paragraphs
