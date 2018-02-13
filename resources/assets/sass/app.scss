@@ -1,5 +1,7 @@
+@import 'variables';
+@import '_custom';
 @import '../../../node_modules/bootstrap/scss/bootstrap';
-@import "variables";
+
 
 @import '../../../bower_components/font-awesome/scss/font-awesome';
 @import 'editormd/editormd'; //Original Import

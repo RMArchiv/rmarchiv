@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-4">
     <div class="col-md-12">
         <ul class='list-group'>
             <li class="list-group-item active clearfix">{{ trans('app.shoutbox_widget_title') }}</li>

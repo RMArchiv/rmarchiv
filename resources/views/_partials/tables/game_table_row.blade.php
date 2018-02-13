@@ -54,7 +54,7 @@
             @endif
             <div class="pull-right">
                 @foreach($game->tags as $tag)
-                    <a href="{{ action('TaggingController@showGames', [$tag->tag_id]) }}"><span class="label label-primary">{{ $tag->tag->title }}</span></a>
+                    <a href="{{ action('TaggingController@showGames', [$tag->tag_id]) }}"><span class="badge badge-pill">{{ $tag->tag->title }}</span></a>
                 @endforeach
             </div>
         </div>

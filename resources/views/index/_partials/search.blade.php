@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-4">
     <div class="card">
         <div class="card-header">{{ trans('app.search') }}</div>
         <div class="card-body">

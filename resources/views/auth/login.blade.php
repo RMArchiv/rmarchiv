@@ -25,7 +25,7 @@
             </div>
         @endif
         <div class="row">
-            <div class="well">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.login') }}

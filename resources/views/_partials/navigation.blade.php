@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
         <div class="navbar-header">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-controls="bs-example-navbar-collapse-2" aria-expanded="false" aria-label="{{ trans('app.toggle_navigation') }}">
@@ -61,7 +61,7 @@
                 @endif
             </ul>
             {{ Form::open(['action' => ['SearchController@search'], 'class' => 'form-inline my-2 my-lg-0']) }}
-                <div class="form-group">
+                <div class="form-inline my-2 my-lg-0">
                     <input type="text" class="form-control mr-sm-2" id="term" name="term" placeholder="{{ trans('app.search') }}">
                     <button type="submit" class="btn btn-outline-success my-2 my-sm-0">{{ trans('app.submit') }}</button>
                 </div>

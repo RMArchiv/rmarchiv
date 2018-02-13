@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-4">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">{{ trans('app.10_newest_board_posts') }}</div>
