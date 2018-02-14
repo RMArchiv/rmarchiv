@@ -55131,7 +55131,7 @@ if (!String.prototype.repeat) {
         // Add foreground symbol to the symbol container.
         // The filled icon is wrapped with a div to allow fractional selection.
         $('<div class="rating-symbol-foreground"></div>')
-          .append('<span></span>')
+          .append('<span class="' + this.options.filled + '"></span>')
           .css({
             display: 'inline-block',
             position: 'absolute',

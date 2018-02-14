@@ -8,19 +8,19 @@
     "bootstrap-sass": "^3.3.7",
     "gulp": "^3.9.1",
     "jquery": "^3.1.0",
-    "laravel-elixir": "^6.0.0-11",
+    "laravel-elixir": "^6.0.0-17",
     "laravel-elixir-clean": "^0.1.1",
     "laravel-elixir-vue-2": "^0.2.0",
     "laravel-elixir-webpack-official": "^1.0.2",
-    "lodash": "^4.16.2",
-    "vue": "^2.3.4",
-    "vue-resource": "^1.3.4"
+    "lodash": "^4.17.5",
+    "vue": "^2.5.13",
+    "vue-resource": "^1.3.6"
   },
   "dependencies": {
     "Tattletale": "^0.1.0",
     "bootstrap": "^4.0.0",
     "elixir": "^0.1.2",
     "node-sass": "^4.7.2",
-    "popper.js": "^1.12.9"
+    "popper.js": "^1.13.0"
   }
 }
