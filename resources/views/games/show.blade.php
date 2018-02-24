@@ -396,23 +396,29 @@
                                     <div class="card">
                                         <div class="card-header">{{ trans('app.awards') }}</div>
                                         <ul class="list-group">
-                                            @foreach($game->awards as $aw)
-                                                <?php
-                                                if ($aw->place == 1) {
-                                                    $icon = 'medal_gold.png';
-                                                } elseif ($aw->place == 2) {
-                                                    $icon = 'medal_silver.png';
-                                                } elseif ($aw->place == 3) {
-                                                    $icon = 'medal_bronze.png';
-                                                } else {
-                                                    $icon = 'no';
-                                                }
-                                                ?>
+                                            @if($game->awards)
+                                                @foreach($game->awards as $aw)
+                                                    <?php
+                                                    if ($aw->place == 1) {
+                                                        $icon = 'medal_gold.png';
+                                                    } elseif ($aw->place == 2) {
+                                                        $icon = 'medal_silver.png';
+                                                    } elseif ($aw->place == 3) {
+                                                        $icon = 'medal_bronze.png';
+                                                    } else {
+                                                        $icon = 'no';
+                                                    }
+                                                    ?>
+                                                    <li class="list-group-item">
+                                                        <img src="/assets/{{ $icon }}">({{ $aw->cat->year }}) {{ trans('app.place') }} {{ $aw->place }} - {{ $aw->page->title }}
+                                                        <a href="{{ url('awards', $aw->award_cat_id) }}">{{ $aw->cat->title }} - {{ $aw->subcat->title }}</a>
+                                                    </li>
+                                                @endforeach
+                                            @else
                                                 <li class="list-group-item">
-                                                    <img src="/assets/{{ $icon }}">({{ $aw->cat->year }}) {{ trans('app.place') }} {{ $aw->place }} - {{ $aw->page->title }}
-                                                    <a href="{{ url('awards', $aw->award_cat_id) }}">{{ $aw->cat->title }} - {{ $aw->subcat->title }}</a>
+                                                    Dieses Spiel hat noch keine Awards. Oder es wurden noch keine hinzugefügt.
                                                 </li>
-                                            @endforeach
+                                            @endif
                                         </ul>
                                     </div>
                                 </div>
