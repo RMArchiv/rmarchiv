@@ -10,8 +10,8 @@
 @import 'typeahead/typeahead.scss';
 @import "fine-uploader/fine-uploader";
 
+//Filetypes
 @import 'types';
-
 $url_types: url(/assets/types.png);
 
 %extend_types {
@@ -34,6 +34,32 @@ $url_types: url(/assets/types.png);
   overflow: hidden;
   line-height: 100px;
 }
+
+body {
+  font-size: 0.9rem;
+}
+
+li>p {
+  margin-bottom: 0;
+}
+
+.table th, .table td {
+  border-top: 1px solid $rm-base;
+}
+
+.btn-secondary {
+  color: $rm-link;
+  background-color: $rm-base;
+  border-color: $rm-base-p1;
+}
+
+header[role="banner"] {
+  #logo-main {
+    display: block;
+    margin: 20px auto;
+  }
+}
+
 
 .facei {
   @extend %extend_faces;

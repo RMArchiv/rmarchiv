@@ -16394,6 +16394,29 @@ INPUT.qq-edit-filename.qq-editing {
   line-height: 100px;
 }
 
+body {
+  font-size: 0.9rem;
+}
+
+li > p {
+  margin-bottom: 0;
+}
+
+.table th, .table td {
+  border-top: 1px solid #17395c;
+}
+
+.btn-secondary {
+  color: #ffbf00;
+  background-color: #17395c;
+  border-color: #1a4169;
+}
+
+header[role="banner"] #logo-main {
+  display: block;
+  margin: 20px auto;
+}
+
 .facei {
   float: left;
 }

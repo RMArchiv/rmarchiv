@@ -1,10 +1,12 @@
+<div class="row justify-content-center">
+   @include('_partials.header')
+</div>
 <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
         <div class="navbar-header">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-controls="bs-example-navbar-collapse-2" aria-expanded="false" aria-label="{{ trans('app.toggle_navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-            <a class="navbar-brand" href="{{ url('/') }}" data-vivaldi-spatnav-clickable="1">rmarchiv.tk</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
@@ -61,9 +63,9 @@
                 @endif
             </ul>
             {{ Form::open(['action' => ['SearchController@search'], 'class' => 'form-inline my-2 my-lg-0']) }}
-                <div class="form-inline my-2 my-lg-0">
-                    <input type="text" class="form-control mr-sm-2" id="term" name="term" placeholder="{{ trans('app.search') }}">
-                    <button type="submit" class="btn btn-outline-success my-2 my-sm-0">{{ trans('app.submit') }}</button>
+                <div class="form-inline mt-2 mt-md-0" style="flex-flow: nowrap">
+                    <input type="text" class="form-control form-control-sm mr-sm-2" id="term" name="term" placeholder="{{ trans('app.search') }}">
+                    <button type="submit" class="btn btn-outline-success my-2 my-sm-0 btn-sm">{{ trans('app.submit') }}</button>
                 </div>
 
 
