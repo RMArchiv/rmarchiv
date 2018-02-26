@@ -29,12 +29,12 @@
                         {{ trans('app.submit_content') }} <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href='{{ url('games/create') }}'>{{ trans('app.submit_game') }}</a></li>
+                        <li class="dropdown-item"><a href='{{ url('games/create') }}'>{{ trans('app.submit_game') }}</a></li>
                         <li><a href='{{ url('resources/create') }}'>{{ trans('app.submit_resource') }}</a></li>
                         <li><a href='{{ url('news/create') }}'>{{ trans('app.submit_news') }}</a></li>
                         <li><a href='{{ url('submit/logo') }}'>{{ trans('app.submit_logo') }}</a></li>
                         <li><a href='{{ url('logo/vote') }}'>{{ trans('app.rate_logos') }}</a></li>
-                        <li class="divider"></li>
+                        <li class="dropdown-divider"></li>
                         <li><a href='{{ url('missing/gamescreens') }}'>{{ trans('app.missing_screenshots') }}</a></li>
                         <li><a href='{{ url('missing/gamefiles') }}'>{{ trans('app.missing_gamefiles') }}</a></li>
                         <li><a href='{{ url('missing/gamedesc') }}'>{{ trans('app.missing_gamedescriptions') }}</a></li>
