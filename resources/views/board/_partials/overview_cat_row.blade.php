@@ -3,7 +3,7 @@
     <a class="pull-right" href="{{ route('board.cat.show', $cat->id) }}"><span class="badge">{{ $count = \App\Models\BoardPost::whereCatId($cat->id)->count() }}</span></a>
 
     @if($count != 0)
-        <a class="pull-left" href="{{ url('users', $cat->last_user->id) }}"><img class="media-object img-rounded" width="42px" src="//{{ config('app.avatar_path') }}?size=42&gender=male&id={{ $cat->last_user->id }}" alt="{{ $cat->last_user->name }}"></a>
+        <a class="pull-left" href="{{ url('users', $cat->last_user->id) }}"><img class="mr-3" width="42px" src="//{{ config('app.avatar_path') }}?size=42&gender=male&id={{ $cat->last_user->id }}" alt="{{ $cat->last_user->name }}"></a>
     @endif
 
     <div class="thread-info">
