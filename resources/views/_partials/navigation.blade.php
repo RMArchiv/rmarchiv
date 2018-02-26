@@ -113,18 +113,16 @@
                                 <span class="badge">{{ \Auth::user()->newThreadsCount() }}</span>
                             @endif
                         </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li class="nav-item"><a class="nav-link" href="{{ action('MessagesController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.unreaded_pms') }} <span class="badge">{{\Auth::user()->newThreadsCount()}}</span></a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ action('MessagesController@create') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.create_new_pm') }}</a></li>
-                            <li class="divider"></li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ action('SavegameManagerController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.savegame_manager') }}</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ action('UserSettingsController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.user_settings') }}</a></li>
-                            <li class="divider"></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ action('Auth\LoginController@logout') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.logout') }}</a></li>
-                        </ul>
+                        <div class="dropdown-menu" role="menu">
+                            <a class="dropdown-item" href="{{ action('MessagesController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.unreaded_pms') }} <span class="badge">{{\Auth::user()->newThreadsCount()}}</span></a>
+                            <a class="dropdown-item" href="{{ action('MessagesController@create') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.create_new_pm') }}</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ action('SavegameManagerController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.savegame_manager') }}</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ action('UserSettingsController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.user_settings') }}</a>
+                            <div class="dropdown-ivider"></div>
+                            <a class="dropdown-item" href="{{ action('Auth\LoginController@logout') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.logout') }}</a>
+                        </div>
                     </li>
                 </ul>
             @else
