@@ -1,3 +1,5 @@
+<div class="row mt-4">
+    <div class="col-md-12">
 <div class="card">
     <div class="card-header">{{ trans('app.top_users') }}</div>
     <ul class='list-group'>
@@ -11,4 +13,4 @@
             </li>
         @endforeach
     </ul>
-</div>
+</div></div></div>
