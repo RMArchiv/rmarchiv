@@ -15,10 +15,10 @@
                 {!! Form::open(['action' => ['ShoutboxController@store']]) !!}
                 <div class="col-md-12">
                     <div class="input-group">
-                        <input class="form-control" type='text' name='shout' placeholder='{{ trans('app.shoutbox_placeholder') }}' id='onelinermsg' maxlength='300'/>
+                        <input class="form-control form-control-sm" type='text' name='shout' placeholder='{{ trans('app.shoutbox_placeholder') }}' id='onelinermsg' maxlength='300'/>
                         <span class="input-group-btn">
-                            <button class="btn btn-secondary" type="submit">go!</button>
-                            <a href="{{ action('ShoutboxController@index') }}" class="btn btn-secondary" role="button">{{ trans('app.more') }}...</a>
+                            <button class="btn btn-secondary btn-sm" type="submit">go!</button>
+                            <a href="{{ action('ShoutboxController@index') }}" class="btn btn-secondary btn-sm" role="button">{{ trans('app.more') }}...</a>
                         </span>
                     </div>
                 </div>
