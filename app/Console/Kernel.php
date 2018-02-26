@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
         Commands\PlayerRar2Zip::class,
         Commands\PT::class,
         Commands\TestSearch::class,
+        Commands\GetMissingGameFilesCommand::class,
     ];
 
     /**
