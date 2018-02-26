@@ -23,47 +23,47 @@
                 <li class="nav-item"><a class="nav-link" href="{{ url('board') }}">{{ trans('app.board') }}</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('faq') }}">{{ trans('app.faq') }}</a></li>
                 @if(Auth::check())
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
-                       data-vivaldi-spatnav-clickable="1">
-                        {{ trans('app.submit_content') }} <span class="caret"></span>
-                    </a>
-                    <div class="dropdown-menu" role="menu">
-                        <a class="dropdown-item" href='{{ url('games/create') }}'>{{ trans('app.submit_game') }}</a>
-                        <a class="dropdown-item" href='{{ url('resources/create') }}'>{{ trans('app.submit_resource') }}</a>
-                        <a class="dropdown-item" href='{{ url('news/create') }}'>{{ trans('app.submit_news') }}</a>
-                        <a class="dropdown-item" href='{{ url('submit/logo') }}'>{{ trans('app.submit_logo') }}</a>
-                        <a class="dropdown-item" href='{{ url('logo/vote') }}'>{{ trans('app.rate_logos') }}</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href='{{ url('missing/gamescreens') }}'>{{ trans('app.missing_screenshots') }}</a>
-                        <a class="dropdown-item" href='{{ url('missing/gamefiles') }}'>{{ trans('app.missing_gamefiles') }}</a>
-                        <a class="dropdown-item" href='{{ url('missing/gamedesc') }}'>{{ trans('app.missing_gamedescriptions') }}</a>
-                        <a class="dropdown-item" href='{{ url('missing/notags') }}'>{{ trans('app.games_without_tags') }}</a>
-                        <div class="dropdown-divider"></div>
-                        @permission(('admin-user'))
-                        <a class="dropdown-item" href="{{ url('users/perm/role') }}">{{ trans('app.user_permissions') }}</a>
-                        @endpermission
-                        @permission(('admin-board'))
-                        <a class="dropdown-item" href="{{ url('board/create') }}">{{ trans('app.add_board_category') }}</a>
-                        @endpermission
-                        @permission(('admin-cdc'))
-                        <a class="dropdown-item" href="{{ url('cdc/create') }}">{{ trans('app.add_coupdecoeur') }}</a>
-                        @endpermission
-                        @permission(('create-faq'))
-                        <a class="dropdown-item" href="{{ url('faq/create') }}">{{ trans('app.add_faq') }}</a>
-                        @endpermission
-                        @permission(('create-awards'))
-                        <a class="dropdown-item" href="{{ url('awards/create') }}">{{ trans('app.add_award') }}</a>
-                        @endpermission
-                        @permission(('admin-comments'))
-                        <a class="dropdown-item" href="{{ url('reported/comments') }}">{{ trans('app.reported_comments') }}</a>
-                        @endpermission
-                    </div>
-                </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
+                           data-vivaldi-spatnav-clickable="1">
+                            {{ trans('app.submit_content') }} <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu" role="menu">
+                            <a class="dropdown-item" href='{{ url('games/create') }}'>{{ trans('app.submit_game') }}</a>
+                            <a class="dropdown-item" href='{{ url('resources/create') }}'>{{ trans('app.submit_resource') }}</a>
+                            <a class="dropdown-item" href='{{ url('news/create') }}'>{{ trans('app.submit_news') }}</a>
+                            <a class="dropdown-item" href='{{ url('submit/logo') }}'>{{ trans('app.submit_logo') }}</a>
+                            <a class="dropdown-item" href='{{ url('logo/vote') }}'>{{ trans('app.rate_logos') }}</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href='{{ url('missing/gamescreens') }}'>{{ trans('app.missing_screenshots') }}</a>
+                            <a class="dropdown-item" href='{{ url('missing/gamefiles') }}'>{{ trans('app.missing_gamefiles') }}</a>
+                            <a class="dropdown-item" href='{{ url('missing/gamedesc') }}'>{{ trans('app.missing_gamedescriptions') }}</a>
+                            <a class="dropdown-item" href='{{ url('missing/notags') }}'>{{ trans('app.games_without_tags') }}</a>
+                            <div class="dropdown-divider"></div>
+                            @permission(('admin-user'))
+                            <a class="dropdown-item" href="{{ url('users/perm/role') }}">{{ trans('app.user_permissions') }}</a>
+                            @endpermission
+                            @permission(('admin-board'))
+                            <a class="dropdown-item" href="{{ url('board/create') }}">{{ trans('app.add_board_category') }}</a>
+                            @endpermission
+                            @permission(('admin-cdc'))
+                            <a class="dropdown-item" href="{{ url('cdc/create') }}">{{ trans('app.add_coupdecoeur') }}</a>
+                            @endpermission
+                            @permission(('create-faq'))
+                            <a class="dropdown-item" href="{{ url('faq/create') }}">{{ trans('app.add_faq') }}</a>
+                            @endpermission
+                            @permission(('create-awards'))
+                            <a class="dropdown-item" href="{{ url('awards/create') }}">{{ trans('app.add_award') }}</a>
+                            @endpermission
+                            @permission(('admin-comments'))
+                            <a class="dropdown-item" href="{{ url('reported/comments') }}">{{ trans('app.reported_comments') }}</a>
+                            @endpermission
+                        </div>
+                    </li>
                 @endif
                 @if(Auth::check())
                     <li class="nav-item dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
                            data-vivaldi-spatnav-clickable="1">
                             {{ trans('app.hello') }}, {{ Auth::user()->name }} <span class="caret"></span>
                             @if(\Auth::user()->newThreadsCount() >= 1)
