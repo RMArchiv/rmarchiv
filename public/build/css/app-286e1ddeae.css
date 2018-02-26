@@ -16417,6 +16417,39 @@ header[role="banner"] #logo-main {
   margin: 20px auto;
 }
 
+.page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #ffbf00;
+  background-color: #17395c;
+  border: 1px solid #215285;
+}
+
+.page-item.disabled .page-link {
+  color: #868e96;
+  pointer-events: none;
+  cursor: auto;
+  background-color: #17395c;
+  border-color: #215285;
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: #ffffe0;
+  background-color: #1a4169;
+  border-color: #215285;
+}
+
+.page-link:focus, .page-link:hover {
+  color: #ffdf00;
+  text-decoration: none;
+  background-color: #1a4169;
+  border-color: #215285;
+}
+
 .facei {
   float: left;
 }
