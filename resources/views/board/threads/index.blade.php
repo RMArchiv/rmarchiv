@@ -18,7 +18,7 @@
                         @foreach($threads as $thread)
                             <li class="list-group-item media" style="margin-top: 0px;">
                                 <a class="pull-right" href="{{ route('board.thread.show', $thread->id) }}"><span class="badge">{{ $thread->posts->count() }}</span></a>
-                                <a class="pull-left" href="{{ url('users', $thread->user->id) }}"><img class="media-object img-rounded" width="42px" src="//{{ config('app.avatar_path') }}?size=42&gender=male&id={{ $thread->user->id }}" alt="{{ $thread->user->name }}"></a>
+                                <a class="pull-left" href="{{ url('users', $thread->user->id) }}"><img class="mr-3" width="42px" src="//{{ config('app.avatar_path') }}?size=42&gender=male&id={{ $thread->user->id }}" alt="{{ $thread->user->name }}"></a>
                                 <div class="thread-info">
                                     <div class="media-heading">
                                         @if($thread->closed == 1)
