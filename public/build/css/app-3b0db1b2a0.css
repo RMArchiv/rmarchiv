@@ -16402,6 +16402,11 @@ li > p {
   margin-bottom: 0;
 }
 
+p > img {
+  max-width: 100%;
+  height: auto;
+}
+
 .table th, .table td {
   border-top: 1px solid #17395c;
 }

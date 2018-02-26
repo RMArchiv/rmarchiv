@@ -2,7 +2,6 @@
 @import '_custom';
 @import '../../../node_modules/bootstrap/scss/bootstrap';
 
-
 @import '../../../bower_components/font-awesome/scss/font-awesome';
 @import 'editormd/editormd'; //Original Import
 // @import "editormd_edit"; // Anpassungen zum Design - Muss angepasst werden!!!!!!!!!
@@ -41,6 +40,11 @@ body {
 
 li>p {
   margin-bottom: 0;
+}
+
+p>img {
+  max-width: 100%;
+  height: auto;
 }
 
 .table th, .table td {
