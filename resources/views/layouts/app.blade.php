@@ -53,7 +53,7 @@
 @if(Route::currentRouteName() == 'home')
     @yield('content')
 @else
-    <div class="col-md-12">
+    <div class="col-md-12 mt-3">
         @yield('content')
     </div>
 @endif

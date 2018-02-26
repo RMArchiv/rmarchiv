@@ -56,36 +56,36 @@
                                 <div class="col-md-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <ul class="nav nav-pills">
-                                                <li class="active">
-                                                    <a data-toggle="pill" href="#tabs-1">{{ trans('app.titlescreen') }}</a>
+                                            <ul class="nav nav-pills nav-fill">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" data-toggle="pill" href="#tabs-1">{{ trans('app.titlescreen') }}</a>
                                                 </li>
-                                                <li>
-                                                    <a data-toggle="pill" href="#tabs-2">{{ trans('app.screenshot') }} 1</a>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="pill" href="#tabs-2">{{ trans('app.screenshot') }} 1</a>
                                                 </li>
-                                                <li>
-                                                    <a data-toggle="pill" href="#tabs-3">{{ trans('app.screenshot') }} 2</a>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="pill" href="#tabs-3">{{ trans('app.screenshot') }} 2</a>
                                                 </li>
-                                                <li>
-                                                    <a data-toggle="pill" href="#tabs-4">{{ trans('app.screenshot') }} 3</a>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="pill" href="#tabs-4">{{ trans('app.screenshot') }} 3</a>
                                                 </li>
-                                                <li>
-                                                    <a data-toggle="pill" href="#tabs-5">{{ trans('app.screenshot') }} 4</a>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="pill" href="#tabs-5">{{ trans('app.screenshot') }} 4</a>
                                                 </li>
-                                                <li>
-                                                    <a data-toggle="pill" href="#tabs-6">{{ trans('app.screenshot') }} 5</a>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="pill" href="#tabs-6">{{ trans('app.screenshot') }} 5</a>
                                                 </li>
                                                 @if($game->youtube)
-                                                    <li>
-                                                        <a data-toggle="pill" href="#tabs-7">{{ trans('app.trailer') }}</a>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="pill" href="#tabs-7">{{ trans('app.trailer') }}</a>
                                                     </li>
                                                 @endif
                                             </ul>
                                         </div>
                                         <div class="tab-content">
-                                            <div id="tabs-1" class="tab-pane fade in active">
+                                            <div id="tabs-1" class="tab-pane fade show active">
                                                 <div class="card-body">
-                                                    <img class="img-responsive center-block" src='{{ route('screenshot.show', [$game->id, 1]) }}' alt='{{ trans('app.titlescreen') }}' title='{{ trans('app.titlescreen') }}'/>
+                                                    <img class="img-fluid center-block" src='{{ route('screenshot.show', [$game->id, 1]) }}' alt='{{ trans('app.titlescreen') }}' title='{{ trans('app.titlescreen') }}'/>
                                                 </div>
                                                 <div class="card-footer">
                                                     <a href="{{ route('screenshot.show', [$game->id, 1, 1]) }}">{{ trans('app.show_original_size') }}</a>
@@ -98,7 +98,7 @@
                                             @for($i = 2; $i <=6; $i++)
                                                 <div id="tabs-{{ $i }}" class="tab-pane fade">
                                                     <div class="card-body">
-                                                        <img class="img-responsive center-block" src='{{ route('screenshot.show', [$game->id, $i]) }}'
+                                                        <img class="img-fluid center-block" src='{{ route('screenshot.show', [$game->id, $i]) }}'
                                                              alt='{{ trans('app.screenshot') }}' title='{{ trans('app.screenshot') }}'/>
                                                     </div>
                                                     <div class="card-footer">
