@@ -103,7 +103,7 @@ Breadcrumbs::register('post.edit', function ($breadcrumbs, $boardcat, $post) {
 // Home > Developers
 Breadcrumbs::register('developers', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push(trans('app.developers'), url('developers'));
+    $breadcrumbs->push(trans('app.developers'), url('developer'));
 });
 
 // Home > Developers > Developer
