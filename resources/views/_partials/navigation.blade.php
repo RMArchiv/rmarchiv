@@ -28,37 +28,37 @@
                        data-vivaldi-spatnav-clickable="1">
                         {{ trans('app.submit_content') }} <span class="caret"></span>
                     </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li class="dropdown-item"><a href='{{ url('games/create') }}'>{{ trans('app.submit_game') }}</a></li>
-                        <li><a href='{{ url('resources/create') }}'>{{ trans('app.submit_resource') }}</a></li>
-                        <li><a href='{{ url('news/create') }}'>{{ trans('app.submit_news') }}</a></li>
-                        <li><a href='{{ url('submit/logo') }}'>{{ trans('app.submit_logo') }}</a></li>
-                        <li><a href='{{ url('logo/vote') }}'>{{ trans('app.rate_logos') }}</a></li>
-                        <li class="dropdown-divider"></li>
-                        <li><a href='{{ url('missing/gamescreens') }}'>{{ trans('app.missing_screenshots') }}</a></li>
-                        <li><a href='{{ url('missing/gamefiles') }}'>{{ trans('app.missing_gamefiles') }}</a></li>
-                        <li><a href='{{ url('missing/gamedesc') }}'>{{ trans('app.missing_gamedescriptions') }}</a></li>
-                        <li><a href='{{ url('missing/notags') }}'>{{ trans('app.games_without_tags') }}</a></li>
-                        <div class="divider"></div>
+                    <div class="dropdown-menu" role="menu">
+                        <a class="dropdown-item" href='{{ url('games/create') }}'>{{ trans('app.submit_game') }}</a>
+                        <a class="dropdown-item" href='{{ url('resources/create') }}'>{{ trans('app.submit_resource') }}</a>
+                        <a class="dropdown-item" href='{{ url('news/create') }}'>{{ trans('app.submit_news') }}</a>
+                        <a class="dropdown-item" href='{{ url('submit/logo') }}'>{{ trans('app.submit_logo') }}</a>
+                        <a class="dropdown-item" href='{{ url('logo/vote') }}'>{{ trans('app.rate_logos') }}</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href='{{ url('missing/gamescreens') }}'>{{ trans('app.missing_screenshots') }}</a>
+                        <a class="dropdown-item" href='{{ url('missing/gamefiles') }}'>{{ trans('app.missing_gamefiles') }}</a>
+                        <a class="dropdown-item" href='{{ url('missing/gamedesc') }}'>{{ trans('app.missing_gamedescriptions') }}</a>
+                        <a class="dropdown-item" href='{{ url('missing/notags') }}'>{{ trans('app.games_without_tags') }}</a>
+                        <div class="dropdown-divider"></div>
                         @permission(('admin-user'))
-                        <li><a href="{{ url('users/perm/role') }}">{{ trans('app.user_permissions') }}</a></li>
+                        <a class="dropdown-item" href="{{ url('users/perm/role') }}">{{ trans('app.user_permissions') }}</a>
                         @endpermission
                         @permission(('admin-board'))
-                        <li><a href="{{ url('board/create') }}">{{ trans('app.add_board_category') }}</a></li>
+                        <a class="dropdown-item" href="{{ url('board/create') }}">{{ trans('app.add_board_category') }}</a>
                         @endpermission
                         @permission(('admin-cdc'))
-                        <li><a href="{{ url('cdc/create') }}">{{ trans('app.add_coupdecoeur') }}</a></li>
+                        <a class="dropdown-item" href="{{ url('cdc/create') }}">{{ trans('app.add_coupdecoeur') }}</a>
                         @endpermission
                         @permission(('create-faq'))
-                        <li><a href="{{ url('faq/create') }}">{{ trans('app.add_faq') }}</a></li>
+                        <a class="dropdown-item" href="{{ url('faq/create') }}">{{ trans('app.add_faq') }}</a>
                         @endpermission
                         @permission(('create-awards'))
-                        <li><a href="{{ url('awards/create') }}">{{ trans('app.add_award') }}</a></li>
+                        <a class="dropdown-item" href="{{ url('awards/create') }}">{{ trans('app.add_award') }}</a>
                         @endpermission
                         @permission(('admin-comments'))
-                        <li><a href="{{ url('reported/comments') }}">{{ trans('app.reported_comments') }}</a></li>
+                        <a class="dropdown-item" href="{{ url('reported/comments') }}">{{ trans('app.reported_comments') }}</a>
                         @endpermission
-                    </ul>
+                    </div>
                 </li>
                 @endif
             </ul>
