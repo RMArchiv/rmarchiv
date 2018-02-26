@@ -48,7 +48,7 @@
                             <span>{{ $gf->filecreated_at }}</span>
                             <div class="pull-right">
                                 <div class="button-group">
-                                    @if(Auth::check() and !$gf->deleted_at)
+
                                         @if($gf->forbidden == 1)
                                             [
                                             <span class="button" title="{{ $gf->reason }}">{{trans('app.download_deleted')}}</span>]
@@ -58,17 +58,20 @@
                                             @php
                                                 $playable = \App\Models\PlayerIndexjson::whereGamefileId($gf->id)->get();
                                             @endphp
-                                            @if($playable->count() != 0 )
-                                                :: [<a href="{{ route('player.run', [$gf->id]) }}">{{ trans('app.play') }}</a>]
+                                            @if(Auth::check() and !$gf->deleted_at)
+                                                @if($playable->count() != 0 )
+                                                    :: [<a href="{{ route('player.run', [$gf->id]) }}">{{ trans('app.play') }}</a>]
+                                                @endif
+                                                    :: [
+                                                    <a href="{{ route('gamefiles.edit', [$game->id, $gf->id]) }}">{{trans('app.edit')}}</a>]
+                                                    @if(Auth::user()->settings->is_admin)
+                                                        :: [
+                                                        <a href="{{ route("gamefiles.delete", [$game->id, $gf->id]) }}">{{trans('app.delete')}}</a>]
+                                                    @endif
                                             @endif
                                         @endif
-                                        :: [
-                                        <a href="{{ route('gamefiles.edit', [$game->id, $gf->id]) }}">{{trans('app.edit')}}</a>]
-                                        @if(Auth::user()->settings->is_admin)
-                                            :: [
-                                            <a href="{{ route("gamefiles.delete", [$game->id, $gf->id]) }}">{{trans('app.delete')}}</a>]
-                                        @endif
-                                    @endif
+
+
                                 </div>
                             </div>
                         </li>

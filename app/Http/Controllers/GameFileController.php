@@ -42,11 +42,19 @@ class GameFileController extends Controller
             ->limit(1)
             ->first();
 
-        UserDownloadLog::insert([
-            'user_id'     => \Auth::id(),
-            'gamefile_id' => $id,
-            'created_at'  => Carbon::now(),
-        ]);
+        if(\Auth::check()){
+            UserDownloadLog::insert([
+                'user_id'     => \Auth::id(),
+                'gamefile_id' => $id,
+                'created_at'  => Carbon::now(),
+            ]);
+        }else{
+            UserDownloadLog::insert([
+                'user_id'     => 0,
+                'gamefile_id' => $id,
+                'created_at'  => Carbon::now(),
+            ]);
+        }
 
         $filepath = storage_path('app/public/'.$g->filename);
 

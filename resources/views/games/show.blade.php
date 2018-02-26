@@ -341,18 +341,11 @@
                                         <ul class="list-group">
                                             @foreach($game->gamefiles as $f)
                                                 <li class="list-group-item">
-                                                    @if(Auth::check() and !$f->forbidden == 1)
                                                         {{ str_pad($f->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_day, 2, 0, STR_PAD_LEFT) }}
                                                         [
                                                         <a href="{{ url('games/download', $f->id) }}" class="down_l">{{ $f->gamefiletype->title }}
                                                             - {{ $f->release_version }}</a>]
                                                         <span class="badge">{{ $f->downloadcount }}</span>
-                                                    @else
-                                                        {{ str_pad($f->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_day, 2, 0, STR_PAD_LEFT) }}
-                                                        [{{ $f->gamefiletype->title }}
-                                                        - {{ $f->release_version }}]
-                                                        <span class="badge">{{ $f->downloadcount }}</span>
-                                                    @endif
                                                 </li>
                                             @endforeach
                                             <li class="list-group-item">------------</li>
