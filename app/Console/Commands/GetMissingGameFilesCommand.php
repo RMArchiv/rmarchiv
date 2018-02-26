@@ -45,7 +45,7 @@ class GetMissingGameFilesCommand extends Command
             $filepath = storage_path('app/public/'.$g->filename);
             if (!file_exists($filepath)){
                 $i +=1;
-                echo $g->game->title.PHP_EOL;
+                echo $g->game->title.' - '.$g->game_id.PHP_EOL;
                 echo $filepath.PHP_EOL;
                 echo '--------------------------'.PHP_EOL;
             }
