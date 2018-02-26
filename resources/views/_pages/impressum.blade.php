@@ -9,11 +9,11 @@
             </div>
         </div>
         <div class='row'>
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     <h1>Impressum</h1>
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     <p>Angaben gemäß § 5 TMG</p>
                     <p>
                         Marcel Hering <br>

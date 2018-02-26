@@ -10,65 +10,65 @@
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.releases_per_year') }}
                     </div>
-                    <div class="panel-body" id="rel_div"></div>
+                    <div class="card-body" id="rel_div"></div>
                 </div>
             </div>
             <div class="col-sm-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         Hall of Kelven...
                     </div>
-                    <div class="panel-body" id="relkelven_div"></div>
+                    <div class="card-body" id="relkelven_div"></div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.registrations_per_month') }}
                     </div>
-                    <div class="panel-body" id="reg_div"></div>
+                    <div class="card-body" id="reg_div"></div>
                 </div>
             </div>
             <div class="col-sm-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.releases_per_month') }}
                     </div>
-                    <div class="panel-body" id="relmon_div"></div>
+                    <div class="card-body" id="relmon_div"></div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.makerchart') }}
                     </div>
-                    <div class="panel-body" id="makerchart_div" style="height: 488px">
+                    <div class="card-body" id="makerchart_div" style="height: 488px">
 
                     </div>
                 </div>
             </div>
             <div class="col-sm-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.comments_per_month') }}
                     </div>
-                    <div class="panel-body" id="com_div">
+                    <div class="card-body" id="com_div">
 
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.board_posts_per_month') }}
                     </div>
-                    <div class="panel-body" id="boardposts_div">
+                    <div class="card-body" id="boardposts_div">
 
                     </div>
                 </div>
@@ -76,8 +76,8 @@
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.filestats') }}
                     </div>
                     <table class="table">

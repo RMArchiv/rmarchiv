@@ -10,20 +10,20 @@
         </div>
         <div class="row">
             <form action="//{{ config('app.avatar_path') }}/upload.php" method="post" enctype="multipart/form-data">
-                <div class="panel panel-default">
+                <div class="card">
                     <input type="hidden" name="posttype" value="avatar">
                     <input type="hidden" name="userid" value="{{ Auth::id() }}">
-                    <div class="panel-heading">
+                    <div class="card-header">
                         {{ trans('app.avatar_upload') }}
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         <div class="form-group">
                             <label for="file">{{ trans('app.upload_file') }}</label>
                             <input type="file" id="file" name="file">
-                            <p class="help-block">160*160px MAX! (gif,png,jpg)</p>
+                            <p class="form-text">160*160px MAX! (gif,png,jpg)</p>
                         </div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="card-footer">
                         <div class="pull-right">
                             <input class="btn btn-primary" type="submit" id="submit" value="{{ trans('app.submit') }}">
                         </div>
@@ -33,8 +33,8 @@
             </form>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{ trans('app.indexpage_widget_settings') }}
                 </div>
                 <ul class="list-group">
@@ -57,11 +57,11 @@
         </div>
         <div class="row">
             {!! Form::open(['action' => ['UserSettingsController@store_rowsPerPage']]) !!}
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{ trans('app.rows_per_page') }}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     @if (count($errors) > 0)
                         <div class="rmarchivtbl errorbox">
                             <h2>{{ trans('app.rows_per_page') }}</h2>
@@ -100,7 +100,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="panel-footer">
+                <div class="card-footer">
                     <div class="pull-right">
                         <input class="btn btn-primary" type="submit" id="submit" value="{{ trans('app.submit') }}">
                     </div>
@@ -111,11 +111,11 @@
         </div>
         <div class="row">
             {!! Form::open(['action' => ['UserSettingsController@store_password']]) !!}
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{ trans('app.change_password') }}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     @if (count($errors) > 0)
                         <div class="rmarchivtbl errorbox">
                             <h2>{{ trans('app.change_password') }}</h2>
@@ -142,7 +142,7 @@
                             <input name="password2" id="password2" type="password" value=""/>
                         </div>
                     </div>
-                <div class="panel-footer">
+                <div class="card-footer">
                     <div class="pull-right">
                         <input class="btn btn-primary" type="submit" id="submit" value="{{ trans('app.submit') }}">
                     </div>
@@ -153,11 +153,11 @@
         </div>
         <div class="row">
             {!! Form::open(['action' => ['UserSettingsController@change_username']]) !!}
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{ trans('app.change_username') }}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     @if (count($errors) > 0)
                         <div class="rmarchivtbl errorbox">
                             <h2>{{ trans('app.change_username') }}</h2>
@@ -180,7 +180,7 @@
                         <input name="usernamenew" id="usernamenew" type="text" value=""/>
                     </div>
                 </div>
-                <div class="panel-footer">
+                <div class="card-footer">
                     <div class="pull-right">
                         <input class="btn btn-primary" type="submit" id="submit" value="{{ trans('app.submit') }}">
                     </div>

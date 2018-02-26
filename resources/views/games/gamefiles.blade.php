@@ -21,8 +21,8 @@
             </div>
         @endif
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{ trans('app.gamefiles_count') }}: {{ $gamefiles->count() }}
                 </div>
                 <ul class="list-group">
@@ -78,14 +78,14 @@
         </div>
         @if(Auth::check())
             <div class="row">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{trans('app.add_gamefile')}}
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         {!! Form::open(['route' => ['gamefiles.store', $game->id], 'class' => 'form-horizontal']) !!}
                         <div class="form-group">
-                            <label for="filetype" class="col-sm-2 control-label">{{trans('app.release_type')}}: *</label>
+                            <label for="filetype" class="col-sm-2 col-form-label">{{trans('app.release_type')}}: *</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name='filetype' id='filetype'>
                                     <option value="0">{{trans('app.choose_release_type')}}</option>
@@ -96,13 +96,13 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="version" class="col-sm-2 control-label">{{trans('app.gamefile_version')}}: *</label>
+                            <label for="version" class="col-sm-2 col-form-label">{{trans('app.gamefile_version')}}: *</label>
                             <div class="col-sm-10">
                                 <input name="version" id="version" value="" placeholder="1.0" class="form-control"/>
                             </div>
                         </div>
                         <div class="form-inline form-group">
-                            <label for="releasedate" class="col-sm-2 control-label">{{trans('app.release_date')}}</label>
+                            <label for="releasedate" class="col-sm-2 col-form-label">{{trans('app.release_date')}}</label>
                             <div class="col-sm-10">
                                 <select name="releasedate_day" id="releasedate_day" class="form-control">
                                     <option value="0">{{trans('app.release_date_day')}}</option>
@@ -125,12 +125,12 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="fine-uploader" class="col-sm-2 control-label">{{trans('app.upload_file')}}:</label>
+                            <label for="fine-uploader" class="col-sm-2 col-form-label">{{trans('app.upload_file')}}:</label>
                             <div class="col-sm-10">
                                 <div id="fine-uploader"></div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-default">{{ trans('app.submit') }}</button>
+                        <button type="submit" class="btn btn-secondary">{{ trans('app.submit') }}</button>
                         {!! Form::close() !!}
                     </div>
                 </div>

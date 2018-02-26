@@ -16,23 +16,25 @@
         {{ $ayear = null }}
         <div class="row">
             @foreach($awards->groupBy('year') as $cats)
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        {{ $cats->first()->year }}
-                    </div>
-                    <ul class="list-group">
-                        @foreach($cats as $aws)
-                            <li class="list-group-item">
-                                <span class="text-muted">{{ $aws->awardpage->title }}</span>
-                                <span> • </span>
-                                <a href="{{ action('AwardController@show', $aws->id) }}">{{ $aws->title }}</a>
-                                @if($aws->month <> 0)
+                <div class="col-md-12 mb-3">
+                    <div class="card">
+                        <div class="card-header">
+                            {{ $cats->first()->year }}
+                        </div>
+                        <ul class="list-group">
+                            @foreach($cats as $aws)
+                                <li class="list-group-item">
+                                    <span class="text-muted">{{ $aws->awardpage->title }}</span>
                                     <span> • </span>
-                                    ({{ trans('app.month.'.$aws->month) }})
-                                @endif
-                            </li>
-                        @endforeach
-                    </ul>
+                                    <a href="{{ action('AwardController@show', $aws->id) }}">{{ $aws->title }}</a>
+                                    @if($aws->month <> 0)
+                                        <span> • </span>
+                                        ({{ trans('app.month.'.$aws->month) }})
+                                    @endif
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             @endforeach
         </div>

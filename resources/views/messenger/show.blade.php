@@ -9,9 +9,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ $messages->links('vendor.pagination.bootstrap-4') }}</div>
-                <div class="panel-body">
+            <div class="card">
+                <div class="card-header">{{ $messages->links('vendor.pagination.bootstrap-4') }}</div>
+                <div class="card-body">
                     <ul class="media-list">
                         @foreach($messages as $post)
                             <li class="media">
@@ -36,25 +36,25 @@
                         @endforeach
                     </ul>
                 </div>
-                <div class="panel-footer">{{ $messages->links('vendor.pagination.bootstrap-4') }}</div>
+                <div class="card-footer">{{ $messages->links('vendor.pagination.bootstrap-4') }}</div>
             </div>
         </div>
         <div class="row">
             {!! Form::open(['route' => ['messages.update', $thread->id], 'method' => 'PUT']) !!}
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{ trans('app.post_a_reply') }}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     @include('_partials.markdown_editor')
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     {{ trans('app.add_additional_users') }}
                     @if($users->count() > 0)
                         <div class="checkbox">
                             @foreach($users as $user)
                                 <div class="btn-group" data-toggle="buttons">
-                                    <label class="btn btn-default">
+                                    <label class="btn btn-secondary">
                                         <input type="checkbox" autocomplete="off" name="recipients[]" value="{{ $user->id }}"> {{ $user->name }}
                                     </label>
                                 </div>
@@ -62,7 +62,7 @@
                         </div>
                     @endif
                 </div>
-                <div class="panel-footer">
+                <div class="card-footer">
                     <button type="submit" value="submit" class="btn btn-primary">{{ trans('app.submit') }}</button>
                 </div>
             </div>

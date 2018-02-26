@@ -16,25 +16,25 @@
                     <fieldset>
                         <legend>{{ trans('app.create_new_pm') }}</legend>
                         <div class="form-group">
-                            <label for="inputEmail" class="col-lg-2 control-label">{{ trans('app.subject') }}</label>
+                            <label for="inputEmail" class="col-lg-2 col-form-label">{{ trans('app.subject') }}</label>
                             <div class="col-lg-10">
                                 <input type="text" class="form-control" id="inputEmail" name="subject">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="textArea" class="col-lg-2 control-label">{{ trans('app.message') }}</label>
+                            <label for="textArea" class="col-lg-2 col-form-label">{{ trans('app.message') }}</label>
                             <div class="col-lg-10">
                                 @include('_partials/markdown_editor')
-                                <span class="help-block">{{ trans('app.markdown_is_usable_here') }}</span>
+                                <span class="form-text">{{ trans('app.markdown_is_usable_here') }}</span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="select" class="col-lg-2 control-label">{{ trans('app.recipients') }}</label>
+                            <label for="select" class="col-lg-2 col-form-label">{{ trans('app.recipients') }}</label>
                             <div class="col-lg-10">
                                 <div class="checkbox">
                                     @foreach($users as $user)
                                         <div class="btn-group" data-toggle="buttons">
-                                            <label class="btn btn-default">
+                                            <label class="btn btn-secondary">
                                                 <input type="checkbox" autocomplete="off" name="recipients[]" value="{{ $user->id }}"> {{ $user->name }}
                                             </label>
                                         </div>
@@ -53,9 +53,9 @@
             </div>
         </div>
         @else
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('app.login_needed') }}</div>
-                <div class="panel-body">
+            <div class="card">
+                <div class="card-header">{{ trans('app.login_needed') }}</div>
+                <div class="card-body">
                     {{ trans('app.login_needed_to_post') }}
                 </div>
             </div>

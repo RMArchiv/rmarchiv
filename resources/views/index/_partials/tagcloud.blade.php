@@ -1,10 +1,10 @@
-<div class="row">
+<div class="row mt-4">
     <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="card">
+            <div class="card-header">
                 {{ trans('app.tag_cloud') }}
             </div>
-            <div class="panel-body">
+            <div class="card-body">
                 @php
                     $cloud = new \LithiumDev\TagCloud\TagCloud();
                 @endphp
@@ -31,7 +31,7 @@
                             $btnsize = 'btn-lg';
                         }
                         $counter = \App\Models\TagRelation::whereTagId($tag['id'])->count();
-                        $link = '<a class="btn btn-default '.$btnsize.'" href="'.$tag['url'].'">'.$tag['tag'].'<span class="badge">'.$counter.'</span></a> ';
+                        $link = '<a class="btn btn-secondary '.$btnsize.'" href="'.$tag['url'].'">'.$tag['tag'].'<span class="badge">'.$counter.'</span></a> ';
                         return $link;
                         //return "<span  class='tag size{$size}'>{$link}</span> ";
                     });
@@ -39,7 +39,7 @@
                 @endphp
                 {!!  $cloud->render() !!}
             </div>
-            <div class="panel-footer">
+            <div class="card-footer">
                 <a href="{{ url('tags') }}">{{ trans('app.more') }}...</a>
             </div>
         </div>

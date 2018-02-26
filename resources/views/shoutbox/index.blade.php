@@ -9,8 +9,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{ $shoutbox->links('vendor.pagination.bootstrap-4') }}
                 </div>
                 <ul class="list-group">
@@ -23,7 +23,7 @@
                         </li>
                     @endforeach
                 </ul>
-                <div class="panel-footer">
+                <div class="card-footer">
                     {{ $shoutbox->links('vendor.pagination.bootstrap-4') }}
                 </div>
             </div>

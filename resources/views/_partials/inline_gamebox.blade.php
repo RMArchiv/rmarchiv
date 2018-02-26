@@ -1,5 +1,5 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
+<div class="card">
+    <div class="card-header">
         <a href='{{ url('games', $game->id) }}'>
             @if($game->gamefiles->count() > 0)
                 <span class='typeiconlist'>

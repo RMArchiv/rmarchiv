@@ -23,30 +23,30 @@
                 {!! method_field('patch') !!}
                 {{ csrf_field() }}
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.edit_news') }}
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         <div class="form-group">
-                            <label for="title" class="col-lg-2 control-label">{{ trans('app.news_title') }}: *</label>
+                            <label for="title" class="col-lg-2 col-form-label">{{ trans('app.news_title') }}: *</label>
                             <div class="col-lg-10">
                                 <input type="text" class="form-control" id="title" name="title" value="{{ $news->title }}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="msg" class="col-lg-2 control-label">{{ trans('app.news') }}</label>
+                            <label for="msg" class="col-lg-2 col-form-label">{{ trans('app.news') }}</label>
                             @include('_partials.markdown_editor', ['edit_text' => $news->news_md])
                         </div>
                         <div class="form-group">
-                            <label for="cat" class="col-lg-2 control-label">{{ trans('app.news_category') }}: *</label>
+                            <label for="cat" class="col-lg-2 col-form-label">{{ trans('app.news_category') }}: *</label>
                             <div class="col-lg-10">
                                 <input type="text" class="form-control" id="cat" name="cat" value="{{ $news->news_category }}">
                             </div>
                         </div>
                     </div>
-                    <div class="panel-footer">
-                        <input class="btn btn-default" type="submit" value="{{trans('app.submit')}}">
+                    <div class="card-footer">
+                        <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
                     </div>
                 </div>
 

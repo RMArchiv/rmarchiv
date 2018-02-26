@@ -1,31 +1,29 @@
-<nav class="navbar navbar-default">
+<div class="row justify-content-center">
+   @include('_partials.header')
+</div>
+<nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-2">
-                <span class="sr-only">{{ trans('app.toggle_navigation') }}</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{ url('/') }}" data-vivaldi-spatnav-clickable="1">rmarchiv.tk</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-controls="bs-example-navbar-collapse-2" aria-expanded="false" aria-label="{{ trans('app.toggle_navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-            <ul class="nav navbar-nav">
-                <li><a href="{{ url('/') }}">{{ trans('app.home') }}</a></li>
-                <li><a href="{{ url('news') }}">{{ trans('app.news') }}</a></li>
-                <li><a href="{{ url('games') }}">{{ trans('app.games') }}</a></li>
-                <li><a href="{{ url('resources') }}">{{ trans('app.resources') }}</a></li>
-                <li><a href="{{ url('developer') }}">{{ trans('app.developers') }}</a></li>
-                <li><a href="{{ url('makers') }}">{{ trans('app.makers') }}</a></li>
-                <li><a href="{{ url('awards') }}">{{ trans('app.awards') }}</a></li>
-                <li><a href="{{ url('users') }}">{{ trans('app.users') }}</a></li>
-                <li><a href="{{ url('search') }}">{{ trans('app.search') }}</a></li>
-                <li><a href="{{ url('board') }}">{{ trans('app.board') }}</a></li>
-                <li><a href="{{ url('faq') }}">{{ trans('app.faq') }}</a></li>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">{{ trans('app.home') }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('news') }}">{{ trans('app.news') }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('games') }}">{{ trans('app.games') }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('resources') }}">{{ trans('app.resources') }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('developer') }}">{{ trans('app.developers') }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('makers') }}">{{ trans('app.makers') }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('awards') }}">{{ trans('app.awards') }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('users') }}">{{ trans('app.users') }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('search') }}">{{ trans('app.search') }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('board') }}">{{ trans('app.board') }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('faq') }}">{{ trans('app.faq') }}</a></li>
                 @if(Auth::check())
-                <li class="dropdown">
+                <li class="nav-item dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
                        data-vivaldi-spatnav-clickable="1">
                         {{ trans('app.submit_content') }} <span class="caret"></span>
@@ -64,11 +62,12 @@
                 </li>
                 @endif
             </ul>
-            {{ Form::open(['action' => ['SearchController@search'], 'class' => 'navbar-form navbar-right']) }}
-                <div class="form-group">
-                    <input type="text" class="form-control" id="term" name="term" placeholder="{{ trans('app.search') }}">
+            {{ Form::open(['action' => ['SearchController@search'], 'class' => 'form-inline my-2 my-lg-0']) }}
+                <div class="form-inline mt-2 mt-md-0" style="flex-flow: nowrap">
+                    <input type="text" class="form-control form-control-sm mr-sm-2" id="term" name="term" placeholder="{{ trans('app.search') }}">
+                    <button type="submit" class="btn btn-outline-success my-2 my-sm-0 btn-sm">{{ trans('app.submit') }}</button>
                 </div>
-            <button type="submit" class="btn btn-default">{{ trans('app.submit') }}</button>
+
 
                 <script type="text/javascript">
                     var sourcepath = new Bloodhound({
@@ -115,23 +114,23 @@
                             @endif
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ action('MessagesController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.unreaded_pms') }} <span class="badge">{{\Auth::user()->newThreadsCount()}}</span></a></li>
-                            <li><a href="{{ action('MessagesController@create') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.create_new_pm') }}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ action('MessagesController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.unreaded_pms') }} <span class="badge">{{\Auth::user()->newThreadsCount()}}</span></a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ action('MessagesController@create') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.create_new_pm') }}</a></li>
                             <li class="divider"></li>
-                            <li>
-                                <a href="{{ action('SavegameManagerController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.savegame_manager') }}</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ action('SavegameManagerController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.savegame_manager') }}</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="{{ action('UserSettingsController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.user_settings') }}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ action('UserSettingsController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.user_settings') }}</a></li>
                             <li class="divider"></li>
-                            <li><a href="{{ action('Auth\LoginController@logout') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.logout') }}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ action('Auth\LoginController@logout') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.logout') }}</a></li>
                         </ul>
                     </li>
                 </ul>
             @else
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ action('Auth\LoginController@showLoginForm') }}">{{ trans('app.login') }}</a></li>
-                    <li><a href="{{ action('Auth\RegisterController@showRegistrationForm') }}">{{ trans('app.register') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ action('Auth\LoginController@showLoginForm') }}">{{ trans('app.login') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ action('Auth\RegisterController@showRegistrationForm') }}">{{ trans('app.register') }}</a></li>
                 </ul>
             @endif
         </div>

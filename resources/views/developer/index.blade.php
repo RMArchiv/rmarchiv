@@ -8,8 +8,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     @if($developer instanceof \Illuminate\Pagination\LengthAwarePaginator )
                         {{ $developer->links('vendor.pagination.bootstrap-4') }}
                     @endif
@@ -55,7 +55,7 @@
                     @endforeach
 
                 </table>
-                <div class="panel-footer">
+                <div class="card-footer">
                     @if($developer instanceof \Illuminate\Pagination\LengthAwarePaginator )
                         {{ $developer->links('vendor.pagination.bootstrap-4') }}
                     @endif

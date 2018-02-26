@@ -11,8 +11,8 @@
         @if(Auth::check())
             @if(Auth::user()->id == $post->user_id or Auth::user()->can('mod-threads'))
                 <div class="row">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
+                    <div class="card">
+                        <div class="card-body">
                             <form action="{{ route('board.post.update', [$post->thread_id, $post->id]) }}" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
 
@@ -29,7 +29,7 @@
 
                                     @if($post->thread->user_id == Auth::id() or Auth::user()->can('mod-threads'))
                                     <div class="form-group">
-                                        <label for="title" class="col-lg-2 control-label">{{trans('app.change_board_title')}} *</label>
+                                        <label for="title" class="col-lg-2 col-form-label">{{trans('app.change_board_title')}} *</label>
                                         <div class="col-lg-10">
                                             <input type="text" class="form-control" id="title" name="title" value="{{ $post->thread->title }}">
                                         </div>
@@ -49,11 +49,11 @@
                 </div>
             @else
                 <div class="row">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="card">
+                        <div class="card-header">
                             {{ trans('app.your_permissions_are_to_low') }}
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                             {{ trans('app.your_permissions_are_to_low_to_post') }}
                         </div>
                     </div>
@@ -62,11 +62,11 @@
 
         @else
             <div class="row">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.your_permissions_are_to_low') }}
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         {{ trans('app.your_permissions_are_to_low_to_post') }}
                     </div>
                 </div>

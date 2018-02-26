@@ -33,25 +33,25 @@
         @endif
         {!! Form::open(['method' => 'PUT', 'route' => ['games.update', $game->id]]) !!}
         <div class="row">
-            <div class="panel panel-default form">
-                <div class="panel-heading">
+            <div class="card form">
+                <div class="card-header">
                     grundinformationen
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     <div class="form-group">
-                        <label for="title" class="col-lg-2 control-label">{{trans('app.gametitle')}} *</label>
+                        <label for="title" class="col-lg-2 col-form-label">{{trans('app.gametitle')}} *</label>
                         <div class="col-lg-10">
                             <input type="text" class="form-control" id="title" name="title" value="{{ $game->title }}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="title" class="col-lg-2 control-label">{{trans('app.gamesubtitle')}}</label>
+                        <label for="title" class="col-lg-2 col-form-label">{{trans('app.gamesubtitle')}}</label>
                         <div class="col-lg-10">
                             <input type="text" class="form-control" id="title" name="subtitle" value="{{ $game->subtitle }}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for='maker' class="col-lg-2 control-label">{{trans('app.maker')}} *</label>
+                        <label for='maker' class="col-lg-2 col-form-label">{{trans('app.maker')}} *</label>
                         <div class="col-lg-10">
                             <select name='maker' id='maker' class="form-control">
                                 <option value="0">{{trans('app.choose_maker')}}</option>
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <div class='form-group'>
-                        <label class="col-lg-2 control-label" for='language'>{{trans('app.language')}} *</label>
+                        <label class="col-lg-2 col-form-label" for='language'>{{trans('app.language')}} *</label>
                         <div class="col-lg-10">
                             <select name='language' id='language' class="form-control">
                                 <option value="0">{{trans('app.choose_language')}}</option>
@@ -81,7 +81,7 @@
                         </div>
                     </div>
                     <div class="form-inline">
-                        <label class="col-lg-2 control-label" for="releasedate_day">{{trans('app.release_date')}}</label>
+                        <label class="col-lg-2 col-form-label" for="releasedate_day">{{trans('app.release_date')}}</label>
                         <div class="col-lg-10">
                         <div class="form-group">
                             @php $reldate = \Carbon\Carbon::parse($game->release_date) @endphp
@@ -123,13 +123,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="atelier_id" class="col-lg-2 control-label">{{trans('app.atelier_id')}}</label>
+                        <label for="atelier_id" class="col-lg-2 col-form-label">{{trans('app.atelier_id')}}</label>
                         <div class="col-lg-10">
                             <input type="text" class="form-control" id="atelier_id" name="atelier_id" value="{{ $game->atelier_id }}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for='license' class="col-lg-2 control-label">{{trans('app.license')}} *</label>
+                        <label for='license' class="col-lg-2 col-form-label">{{trans('app.license')}} *</label>
                         <div class="col-lg-10">
                             <select name='license' id='license' class="form-control">
                                 <option value="0">{{trans('app.choose_license')}}</option>
@@ -145,67 +145,67 @@
                     </div>
                 </div>
 
-                <div class="panel-heading">
+                <div class="card-header">
                     {{trans('app.description')}}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     @include('_partials.markdown_editor', ['edit_text' => $game->desc_md])
                 </div>
 
-                <div class="panel-heading">
+                <div class="card-header">
                     {{trans('app.links')}}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     <div class="form-group">
-                        <label for="websiteurl" class="col-lg-2 control-label">{{trans('app.website')}} *</label>
+                        <label for="websiteurl" class="col-lg-2 col-form-label">{{trans('app.website')}} *</label>
                         <div class="col-lg-10">
                             <input type="text" class="form-control" id="websiteurl" name="websiteurl" value="{{ $game->website_url }}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="youtube" class="col-lg-2 control-label">{{ trans('app.trailer') }} *</label>
+                        <label for="youtube" class="col-lg-2 col-form-label">{{ trans('app.trailer') }} *</label>
                         <div class="col-lg-10">
                             <input type="text" class="form-control" id="youtube" name="youtube"  placeholder="https://www.youtube.com/watch?v=V7tKQ4AuOk8" value="{{ $game->youtube }}">
                         </div>
                     </div>
                 </div>
 
-                <div class="panel-footer">
+                <div class="card-footer">
                     <input type="submit" value="{{trans('app.submit')}}" class="btn btn-primary">
                 </div>
             </div>
         </div>
         {!! Form::close() !!}
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{trans('app.developers')}}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     <div class="form-horizontal">
                         @foreach($game->developers as $dev)
                             <div id="row_dev_{{ $dev->developer->id }}">
                                 {!! Form::open(['method' => 'POST', 'route' => ['games.developer.delete', $game->id]]) !!}
                                 {!! Form::hidden('devid', $dev->developer->id) !!}
                                 {!! Form::label($dev->id, $dev->developer->name) !!}
-                                {!! Form::submit(trans('app.delete'),['name' => $dev->developer->id, 'class' => 'btn btn-default']) !!}
+                                {!! Form::submit(trans('app.delete'),['name' => $dev->developer->id, 'class' => 'btn btn-secondary']) !!}
                                 {!! Form::close() !!}
                             </div>
                         @endforeach
                     </div>
                 </div>
-                <div class="panel-heading">
+                <div class="card-header">
                     {{trans('app.add_developer')}}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     {!! Form::open(['method' => 'POST', 'route' => ['games.developer.store', $game->id]]) !!}
                     <div class="form-group" id="row_developer">
-                        <label for="developer" class="col-lg-2 control-label">{{trans('app.developer')}}</label>
+                        <label for="developer" class="col-lg-2 col-form-label">{{trans('app.developer')}}</label>
                         <div class="col-lg-10">
                             <input autocomplete="off" type="text" class="auto form-control" id="developer" name="developer" value="">
                         </div>
                     </div>
-                    <input class="btn btn-default" type="submit" value="{{trans('app.submit')}}">
+                    <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
 
                     <script type="text/javascript">
                         var sourcepath = new Bloodhound({
@@ -241,8 +241,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{ trans('app.added_tags') }}
                 </div>
                 <ul class="list-group">
@@ -250,7 +250,7 @@
                         <li class="list-group-item">
                             {{ $t->tag->title }}
                             <div class="badge">
-                                <a class="btn btn-default btn-xs" href="{{ action('TaggingController@delete_gametag', [$game->id, $t->tag->id]) }}">{{trans('app.delete')}}</a>
+                                <a class="btn btn-secondary btn-xs" href="{{ action('TaggingController@delete_gametag', [$game->id, $t->tag->id]) }}">{{trans('app.delete')}}</a>
                             </div>
                         </li>
                     @endforeach
@@ -258,8 +258,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{trans('app.user_credits')}}
                 </div>
                 <ul class="list-group">
@@ -271,24 +271,24 @@
                             <span class='prod'><a href='{{ url('users', $credit->user_id) }}' class='user'>{{ $credit->user->name }}</a></span>
                             - {{ $credit->type->title }}
                             <div class="badge">
-                                <a class="btn btn-default btn-xs" href="{{ action('UserCreditsController@destroy', [$game->id, $credit->id]) }}">{{trans('app.delete')}}</a>
+                                <a class="btn btn-secondary btn-xs" href="{{ action('UserCreditsController@destroy', [$game->id, $credit->id]) }}">{{trans('app.delete')}}</a>
                             </div>
                         </li>
                     @endforeach
                 </ul>
-                <div class="panel-heading">
+                <div class="card-header">
                     {{trans('app.add_credits')}}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     {!! Form::open(['method' => 'POST', 'route' => ['gamecredits.store', $game->id], 'class' => 'form-horizontal']) !!}
                     <div class="form-group" id="row_user">
-                        <label for="user" class="col-lg-2 control-label">{{trans('app.username')}}:</label>
+                        <label for="user" class="col-lg-2 col-form-label">{{trans('app.username')}}:</label>
                         <div class="col-lg-10">
                             <input autocomplete="off" class="auto form-control" name="user" id="user" placeholder="{{trans('app.username')}}" value=""/>
                         </div>
                     </div>
                     <div class="form-group" id="row_credittype">
-                        <label for="credit" class="col-lg-2 control-label">{{trans('app.credits_type')}}:</label>
+                        <label for="credit" class="col-lg-2 col-form-label">{{trans('app.credits_type')}}:</label>
                         <div class="col-lg-10">
                             <select name='credit' id='credit' class="form-control">
                                 <option value="0">{{trans('app.choose_credits_type')}}</option>
@@ -298,7 +298,7 @@
                             </select>
                         </div>
                     </div>
-                    <input class="btn btn-default" type="submit" value="{{trans('app.submit')}}">
+                    <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
                     <script type="text/javascript">
                         var sourcepath = new Bloodhound({
                             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -334,21 +334,21 @@
         </div>
         @permission(('delete-games'))
         <div class="row">
-            <div class="panel panel-warning">
+            <div class="card">
                 {!! Form::open(['method' => 'DELETE', 'route' => ['games.destroy', $game->id]]) !!}
-                <div class="panel-heading">
+                <div class="card-header">
                     {{trans('app.delete_game')}}
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     <div class="form-group">
-                        <label for="confirm" class="col-lg-2 control-label">{{trans('app.enter_confirm_plus_id')}}</label>
+                        <label for="confirm" class="col-lg-2 col-form-label">{{trans('app.enter_confirm_plus_id')}}</label>
                         <div class="col-lg-10">
                             <input class="form-control" name="confirm" id="confirm" placeholder="CONFIRM+1014" value=""/>
                         </div>
                     </div>
                 </div>
-                <div class="panel-footer">
-                    <input class="btn btn-default" type="submit" value="{{trans('app.submit')}}">
+                <div class="card-footer">
+                    <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
                 </div>
                 {!! Form::close() !!}
             </div>

@@ -1,7 +1,7 @@
-<div class="row">
+<div class="row mt-4">
     <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">{{ trans('app.statistics') }}</div>
+        <div class="card">
+            <div class="card-header">{{ trans('app.statistics') }}</div>
                 <table class="table table-striped table-hover">
                     <tr>
                         <td>
@@ -83,7 +83,7 @@
                         </td>
                     </tr>
                 </table>
-            <div class="panel-footer">
+            <div class="card-footer">
                 <a href="{{ url('stats') }}">{{ trans('app.more') }}...</a>
             </div>
         </div>

@@ -10,11 +10,11 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.user_informations') }}
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         <div class="col-md-4">
                             <img class="img-responsive img-rounded"
                                  width="160px"
@@ -32,8 +32,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.userlists') }}
                     </div>
                     <ul class="list-group">
@@ -52,8 +52,8 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.obyx_overview') }}
                         <div class="pull-right">
                             <span class="badge">OBYX PLATZHALTER</span>
@@ -79,8 +79,8 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.latest_added_games') }}
                     </div>
                     <ul class="list-group">
@@ -125,8 +125,8 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.latest_added_developers') }}
                     </div>
                     <ul class="list-group">
@@ -144,12 +144,12 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.last_shoutbox_posts') }}
                     </div>
-                    <div class="panel-body">
-                        <div class="panel-body">
+                    <div class="card-body">
+                        <div class="card-body">
                             @foreach($user->shoutbox()->orderBy('created_at', 'desc')->limit(5)->get() as $comment)
                                 <div class="media">
                                     <div class="media-left">
@@ -176,11 +176,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.last_board_posts') }}
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         @foreach($user->boardposts()->orderBy('created_at', 'desc')->limit(5)->get() as $comment)
                             <div class="media">
                                 <div class="media-left">
@@ -208,11 +208,11 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ trans('app.last_comments') }}
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         @foreach($user->comments()->orderBy('created_at', 'desc')->limit(5)->get() as $comment)
                             <div class="media">
                                 <div class="media-left">

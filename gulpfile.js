@@ -5,20 +5,20 @@ elixir(function(mix) {
 
     // define some paths for our bower component sass files
     var paths = {
-        'js':           './resources/assets/js/',
-        'sass':         './resources/assets/sass/',
-        'jquery':       './bower_components/jquery/dist/',
-        'jquery_ui':    './bower_components/jquery-ui/',
-        'bootstrap':    './node_modules/bootstrap-sass/assets/javascripts/',
-        'typeahead':    './bower_components/typeahead.js/dist/',
-        'fineuploader': './bower_components/fine-uploader/dist/',
-        'jqcloud2':     './bower_components/jqcloud2/dist/',
+        'js':               './resources/assets/js/',
+        'sass':             './resources/assets/sass/',
+        'jquery':           './bower_components/jquery/dist/',
+        'jquery_ui':        './bower_components/jquery-ui/',
+        'bootstrap':        './node_modules/bootstrap/dist/js/',
+        'typeahead':        './bower_components/typeahead.js/dist/',
+        'fineuploader':     './bower_components/fine-uploader/dist/',
+        'jqcloud2':         './bower_components/jqcloud2/dist/',
         'inlineattachment': './bower_components/inline-attachment/dist/',
-        'editormd':     './bower_components/editor.md/',
-        'matchheight':  './bower_components/matchHeight/dist/',
-        'bootstraprating': './bower_components/bootstrap-rating/',
-        'tattletale': './node_modules/Tattletale/',
-        'dropzone' : './bower_components/dropzone/dist/'
+        'editormd':         './bower_components/editor.md/',
+        'matchheight':      './bower_components/matchHeight/dist/',
+        'bootstraprating':  './bower_components/bootstrap-rating/',
+        'tattletale':       './node_modules/Tattletale/',
+        'dropzone' :        './bower_components/dropzone/dist/'
     };
 
     mix.sass(
@@ -33,7 +33,7 @@ elixir(function(mix) {
         .scripts([
             paths.jquery           + 'jquery.js',
             paths.jquery_ui        + 'jquery-ui.js',
-            paths.bootstrap        + 'bootstrap.js',
+            paths.bootstrap        + 'bootstrap.bundle.js',
             paths.typeahead        + 'typeahead.bundle.js',
             paths.fineuploader     + 'fine-uploader.js',
             paths.jqcloud2         + 'jqcloud.js',

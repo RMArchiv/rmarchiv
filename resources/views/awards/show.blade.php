@@ -13,8 +13,8 @@
         </div>
         <div class="row">
             @foreach($award->subcats as $s)
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card">
+                    <div class="card-header">
                         {{ $s->title }}
                     </div>
                     <ul class="list-group">
