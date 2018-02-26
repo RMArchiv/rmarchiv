@@ -15446,6 +15446,56 @@ hr.editormd-page-break {
   border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.editormd {
+  border-color: #1a4169;
+  border-radius: 4px;
+}
+
+.editormd-toolbar {
+  background: #17395c;
+  border-bottom: 1px solid #1a4169;
+}
+
+.editormd-menu li a {
+  color: #ffbf00;
+  background-color: #17395c;
+  border-color: #1a4169;
+  transition: none;
+}
+
+.editormd-menu li a:focus {
+  color: #ffdf00;
+  background-color: #826200;
+  border-color: #785b00;
+  transition: none;
+}
+
+.editormd-menu li a:hover {
+  color: #ffdf00;
+  background-color: #826200;
+  border-color: #785b00;
+  transition: none;
+}
+
+.editormd .CodeMirror {
+  border-right: rgba(0, 0, 0, 0.15);
+  background-color: #A9BDBD;
+  color: #073642;
+}
+
+.CodeMirror-linunumber {
+  color: #839496;
+}
+
+.CodeMirror-gutters {
+  background-color: #17395c !important;
+  border-right: 1px solid #1a4169 !important;
+}
+
+.editormd-container-mask {
+  background-color: #17395c;
+}
+
 span.twitter-typeahead .tt-menu,
 span.twitter-typeahead .tt-dropdown-menu {
   position: absolute;

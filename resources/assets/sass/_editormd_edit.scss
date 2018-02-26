@@ -1,25 +1,25 @@
 @import "variables";
 
 .editormd {
-  border-color: $panel-default-heading-bg;
+  border-color: $rm-base-p1;
   border-radius: 4px;
 }
 
 .editormd-toolbar {
-  background: $panel-default-heading-bg;
-  border-bottom: 1px solid $panel-default-heading-bg;
+  background: $rm-base;
+  border-bottom: 1px solid $rm-base-p1;
 }
 
 .editormd-menu li a {
-  color: $btn-primary-color;
-  background-color: $btn-primary-bg;
-  border-color: $btn-primary-border;
+  color: $rm-link;
+  background-color: $rm-base;
+  border-color: $rm-base-p1;
   -webkit-transition: none;
   transition: none;
 }
 
 .editormd-menu li a:focus {
-  color: $btn-primary-color;
+  color: $rm-link-hover;
   background-color: #826200;
   border-color: #785b00;
   -webkit-transition: none;
@@ -27,7 +27,7 @@
 }
 
 .editormd-menu li a:hover {
-  color: $btn-primary-color;
+  color: $rm-link-hover;
   background-color: #826200;
   border-color: #785b00;
   -webkit-transition: none;
@@ -46,10 +46,10 @@
 }
 
 .CodeMirror-gutters {
-  background-color: $panel-default-heading-bg !important;
-  border-right: 1px solid $panel-default-heading-bg !important;
+  background-color: $rm-base !important;
+  border-right: 1px solid $rm-base-p1 !important;
 }
 
 .editormd-container-mask {
-  background-color: $panel-default-heading-bg;
+  background-color: $rm-base;
 }

@@ -4,7 +4,7 @@
 
 @import '../../../bower_components/font-awesome/scss/font-awesome';
 @import 'editormd/editormd'; //Original Import
-// @import "editormd_edit"; // Anpassungen zum Design - Muss angepasst werden!!!!!!!!!
+@import "editormd_edit"; // Anpassungen zum Design - Muss angepasst werden!!!!!!!!!
 
 @import 'typeahead/typeahead.scss';
 @import "fine-uploader/fine-uploader";
