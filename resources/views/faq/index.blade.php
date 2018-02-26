@@ -11,13 +11,11 @@
         <div class="col-md-12">
             @foreach($faq as $cat)
                 <div class="row">
-                    <div id="faq{{ $cat->cat }}">
+                    <div class="col-md-12" id="faq{{ $cat->cat }}">
                         <div class="card">
                         @foreach(\App\Models\Faq::whereCat($cat->cat)->get() as $f)
                             <div class="card-header accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faq{{ $f->cat }}" data-target="#question{{ $f->id }}">
-                                <h4 class="card-title">
-                                    <a href="#" class="ing">Q: {{ $f->cat }} # {{ $f->title }}</a>
-                                </h4>
+                                <a href="#" class="ing">Q: {{ $f->cat }} # {{ $f->title }}</a>
                             </div>
                             <div id="question{{ $f->id }}" class="panel-collapse collapse" style="height: 0px;">
                                 <div class="card-body">
