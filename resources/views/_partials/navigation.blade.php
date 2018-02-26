@@ -24,7 +24,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{ url('faq') }}">{{ trans('app.faq') }}</a></li>
                 @if(Auth::check())
                 <li class="nav-item dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
                        data-vivaldi-spatnav-clickable="1">
                         {{ trans('app.submit_content') }} <span class="caret"></span>
                     </a>
