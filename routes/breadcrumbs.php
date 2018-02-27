@@ -165,7 +165,7 @@ Breadcrumbs::register('awards.gameadd', function ($breadcrumbs, $award_cat) {
 });
 
 // Home -> Awards -> Add Award Cats
-Breadcrumbs::register('awards', function ($breadcrumbs) {
+Breadcrumbs::register('awards.catadd', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Awards hinzufügen', action('AwardController@index'));
 });
