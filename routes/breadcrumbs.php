@@ -158,6 +158,19 @@ Breadcrumbs::register('awards.show', function ($breadcrumbs, $award_cat) {
     $breadcrumbs->push($award_cat->awardpage->title.': '.$award_cat->title, action('AwardController@show', $award_cat->id));
 });
 
+// Home -> Awards -> [Award] -> Add Game
+Breadcrumbs::register('awards.gameadd', function ($breadcrumbs, $award_cat) {
+    $breadcrumbs->parent('awards');
+    $breadcrumbs->push(trans('app.add_game_to_award').': '.$award_cat->awardpage->title.': '.$award_cat->title, action('AwardController@show', $award_cat->id));
+});
+
+// Home -> Awards -> Add Award Cats
+Breadcrumbs::register('awards', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Awards hinzufügen', action('AwardController@index'));
+});
+
+
 //----------------- Messanger / PN -----------------------------------------------------------------------------------//
 // Home -> Messages
 Breadcrumbs::register('messages', function ($breadcrumbs) {
