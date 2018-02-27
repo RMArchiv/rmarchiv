@@ -63,8 +63,9 @@ class AwardController extends Controller
 
     public function gameadd($subcatid)
     {
+        $awardcat = AwardSubcat::whereCatId($subcatid)->first();
         // Get award model from catid.
-        $award = AwardCat::whereId($subcatid)->first();
+        $award = AwardCat::whereId($awardcat->awa)->first();
 
         return view('awards.gameadd', [
             'subcatid' => $subcatid,

@@ -5,13 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="page-header">
-                    <h1>{{ $award->awardpage->title .': '. $award->title .' - '. $award->year . ' ' . trans('app.month.'. $award->month) }}
-                        @if(Auth::check())
-                            <div class="float-right">
-                                <a href="{{ route('awards.gameadd') }}" role="button" class="btn btn-primary"><span class="fa fa-plus"></span></a>
-                            </div>
-                        @endif
-                    </h1>
+                    <h1>{{ $award->awardpage->title .': '. $award->title .' - '. $award->year . ' ' . trans('app.month.'. $award->month) }}</h1>
                     {!! Breadcrumbs::render('awards.show', $award) !!}
                 </div>
             </div>
@@ -22,6 +16,11 @@
                     <div class="card">
                         <div class="card-header">
                             {{ $s->title }}
+                            @if(Auth::check())
+                                <div class="float-right">
+                                    <a href="{{ route('awards.gameadd') }}" role="button" class="btn btn-primary"><span class="fa fa-plus"></span></a>
+                                </div>
+                            @endif
                         </div>
                         <ul class="list-group">
                             @foreach($s->game_awards as $a)
