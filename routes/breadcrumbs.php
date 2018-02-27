@@ -160,9 +160,10 @@ Breadcrumbs::register('awards.show', function ($breadcrumbs, $award_cat) {
 
 // Home -> Awards -> [Award] -> Add Game
 Breadcrumbs::register('awards.gameadd', function ($breadcrumbs, $subcatid) {
-    $award_cat = \App\Models\AwardSubcat::whereId($subcatid)->first()->award_cat();
+    $award_subcat = \App\Models\AwardSubcat::whereId($subcatid)->first();
+    $award_cat = \App\Models\AwardCat::whereId($award_subcat->cat_id)->first();
     $breadcrumbs->parent('awards');
-    $breadcrumbs->push(trans('app.add_game_to_award').': '.$award_cat->awardpage->title.': '.$award_cat->title, action('AwardController@show', $award_cat->id));
+    $breadcrumbs->push(trans('app.add_game_to_award').': '.$award_cat->awardpage->title.': '.$award_cat->title.' - '.$award_subcat->title, action('AwardController@show', $award_cat->id));
 });
 
 // Home -> Awards -> Add Award Cats
