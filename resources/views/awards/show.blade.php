@@ -8,7 +8,7 @@
                     <h1>{{ $award->awardpage->title .': '. $award->title .' - '. $award->year . ' ' . trans('app.month.'. $award->month) }}
                         @if(Auth::check())
                             <div class="float-right">
-                                <a href="{{ route('awards.create') }}" role="button" class="btn btn-primary"><span class="fa fa-plus"></span></a>
+                                <a href="{{ route('awards.gameadd') }}" role="button" class="btn btn-primary"><span class="fa fa-plus"></span></a>
                             </div>
                         @endif
                     </h1>
