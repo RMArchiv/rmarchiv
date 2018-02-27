@@ -18,7 +18,7 @@
                             {{ $s->title }}
                             @if(Auth::check())
                                 <div class="float-right">
-                                    <a href="{{ route('awards.gameadd') }}" role="button" class="btn btn-primary"><span class="fa fa-plus"></span></a>
+                                    <a href="{{ route('awards.gameadd', $s->id) }}" role="button" class="btn btn-primary"><span class="fa fa-plus"></span></a>
                                 </div>
                             @endif
                         </div>
