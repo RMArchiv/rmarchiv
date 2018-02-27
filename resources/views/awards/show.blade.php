@@ -47,7 +47,7 @@
                                         @endif
                                     </div>
                                     <a class="float-left" href="{{ url('games', $a->game->id) }}">
-                                        <img width="100px" class="m-3" src='{{ route('screenshot.show', [$a->game->id, 1]) }}' alt='{{ trans('app.titlescreen') }}' title='{{ trans('app.titlescreen') }}'/>
+                                        <img width="100px" class="mx-3" src='{{ route('screenshot.show', [$a->game->id, 1]) }}' alt='{{ trans('app.titlescreen') }}' title='{{ trans('app.titlescreen') }}'/>
                                     </a>
                                     <div class="thread-info">
                                         <div class="media-heading">
