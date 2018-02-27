@@ -3,14 +3,17 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="page-header">
-                <h1>{{ trans('app.awards') }}
-                    <div class="pull-right">
-                        <a href="{{ route('awards.create') }}" role="button" class="btn btn-primary"><span class="fa fa-plus"></span></a>
-                    </div>
-                </h1>
-
-                {!! Breadcrumbs::render('awards') !!}
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>{{ trans('app.awards') }}
+                        @if(Auth::check())
+                            <div class="float-right">
+                                <a href="{{ route('awards.create') }}" role="button" class="btn btn-primary"><span class="fa fa-plus"></span></a>
+                            </div>
+                        @endif
+                    </h1>
+                    {!! Breadcrumbs::render('awards') !!}
+                </div>
             </div>
         </div>
         {{ $ayear = null }}
