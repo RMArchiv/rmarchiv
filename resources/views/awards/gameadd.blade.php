@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="page-header">
                     <h1>{{ trans('app.add_game_to_award') }} {{ $award->awardpage->title .': '. $award->title .' - '. $award->year . ' ' . trans('app.month.'. $award->month) }}</h1>
-                    {!! Breadcrumbs::render('awards.gameadd', $award) !!}
+                    {!! Breadcrumbs::render('awards.gameadd', $subcatid) !!}
                 </div>
             </div>
         </div>
