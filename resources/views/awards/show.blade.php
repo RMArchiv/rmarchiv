@@ -26,8 +26,8 @@
                         <ul class="list-group">
                             @foreach($s->game_awards as $a)
                                 <li class="list-group-item media" style="margin-top: 0px;">
-                                    <a class="pull-right" href="{{ url('games', $a->game->id) }}"><span class="badge">{{ $a->game->comments }}</span></a>
-                                    <div class="pull-left">
+                                    <a class="float-right" href="{{ url('games', $a->game->id) }}"><span class="badge">{{ $a->game->comments }}</span></a>
+                                    <div class="float-left">
                                         @php
                                             if ($a->place == 1) {
                                                 $icon = 'medal_gold.png';
@@ -46,7 +46,7 @@
                                             {{ trans('app.place') }} {{ $a->place  }}
                                         @endif
                                     </div>
-                                    <a class="pull-left" href="{{ url('games', $a->game->id) }}">
+                                    <a class="float-left" href="{{ url('games', $a->game->id) }}">
                                         <img width="100px" class="img-responsive img-rounded" src='{{ route('screenshot.show', [$a->game->id, 1]) }}' alt='{{ trans('app.titlescreen') }}' title='{{ trans('app.titlescreen') }}'/>
                                     </a>
                                     <div class="thread-info">
