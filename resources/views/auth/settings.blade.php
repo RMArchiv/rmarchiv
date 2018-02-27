@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mb-3">
                 <form action="//{{ config('app.avatar_path') }}/upload.php" method="post" enctype="multipart/form-data">
                     <div class="card">
                         <input type="hidden" name="posttype" value="avatar">
@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mb-3">
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.indexpage_widget_settings') }}
@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mb-3">
                 {!! Form::open(['action' => ['UserSettingsController@store_rowsPerPage']]) !!}
                 <div class="card">
                     <div class="card-header">
@@ -118,7 +118,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mb-3">
                 {!! Form::open(['action' => ['UserSettingsController@store_password']]) !!}
                 <div class="card">
                     <div class="card-header">
@@ -162,7 +162,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mb-3">
                 {!! Form::open(['action' => ['UserSettingsController@change_username']]) !!}
                 <div class="card">
                     <div class="card-header">
