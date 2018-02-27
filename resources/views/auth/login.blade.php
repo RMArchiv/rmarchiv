@@ -3,9 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="page-header">
-                <h1>{{ trans('app.login') }}</h1>
-                {!! Breadcrumbs::render('login') !!}
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>{{ trans('app.login') }}</h1>
+                    {!! Breadcrumbs::render('login') !!}
+                </div>
             </div>
         </div>
         {!! Form::open(['url' => '/login']) !!}
