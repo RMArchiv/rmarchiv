@@ -102,7 +102,7 @@ Breadcrumbs::register('post.edit', function ($breadcrumbs, $boardcat, $post) {
 // Home > Board > [Forum] -> [Thread] -> Add/Edit Vote
 Breadcrumbs::register('board.vote', function ($breadcrumbs, $boardcat, $thread){
    $breadcrumbs->parent('forum', $boardcat);
-   $breadcrumbs->push(trans('app.create_vote', action('BoardController@create_vote', [$thread->id])));
+   $breadcrumbs->push(trans('app.create_vote'), action('BoardController@create_vote', [$thread->id]));
 });
 
 //----------------- Developers ---------------------------------------------------------------------------------------//
