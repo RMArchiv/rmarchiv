@@ -19,6 +19,9 @@ Route::group(['middelware' => ['permission:admin-user']], function () {
     Route::get('users/perm/permissions/{id}', 'UserPermissionController@showPermission');
     Route::post('users/perm/role/{roleid}', 'UserPermissionController@addPermToRole')->name('user.perm.permtorole');
     Route::get('users/perm/role/{roleid}/remove/{permid}', 'UserPermissionController@removePermFromRole')->name('user.perm.removefromrole');
+    Route::get('banuser/{userid}', 'UserBanController@show');
+    Route::post('banuser/{userid}/ban', 'UserBanController@ban');
+    Route::post('banuser/{userid}/unban', 'UserBanController@unban');
 });
 
 //Benutzer und Authentifizierung
@@ -30,9 +33,6 @@ Route::post('user_settings/password', 'UserSettingsController@store_password');
 Route::get('user_settings/change/{setting}/{value}', 'UserSettingsController@change_setting');
 Route::post('user_settings/rowsperpage', 'UserSettingsController@store_rowsPerPage');
 Route::post('user_settings/change_username', 'UserSettingsController@change_username');
-Route::get('banuser/{userid}', 'UserBanController@show');
-Route::post('banuser/{userid}/ban', 'UserBanController@ban');
-Route::post('banuser/{userid}/unban', 'UserBanController@unban');
 
 
 //News Routen

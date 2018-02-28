@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('pagetitle', trans('app.awards'))
+@section('pagetitle', 'Benutzer bannen')
 @section('content')
     <div class="container">
         <div class="row">
