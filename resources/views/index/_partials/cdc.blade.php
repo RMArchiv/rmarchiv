@@ -1,7 +1,11 @@
 <div class="row mt-4">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">{{ trans('app.coupdecoeur') }}</div>
+            <div class="card-header">
+                <a href="{{ action('CDCController@index') }}">
+                    {{ trans('app.coupdecoeur') }}
+                </a>
+            </div>
             <div class="card-body">
                 <a href='{{ url('games', $cdc->game_id) }}'>
                     <img width="100%" src="{{ route('screenshot.show', [$cdc->game_id, 1]) }}"/>
