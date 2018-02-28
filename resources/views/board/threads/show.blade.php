@@ -31,27 +31,30 @@
     </script>
     <div class="container">
         <div class="row">
-            <div class="page-header">
-                @permission(('mod-threads'))
-                <div class='btn-toolbar pull-right'>
-                    <div class='btn-group'>
-                        @if(Auth::check())
-                            @if(Auth::id() == $posts->first()->thread->user_id or Auth::user()->can('mod-threads'))
-                                @if(!$poll)
-                                    <a role="button" class="btn btn-primary" href="{{ route('board.vote.create', ['threadid' => $posts->first()->thread_id])}}"><span class="fa fa-signal fa-rotate-270"></span></a>
+            <div class="col-md-12">
+                <div class="page-header">
+                    <div class='btn-toolbar pull-right'>
+                        <div class='btn-group'>
+                            @if(Auth::check())
+                                @if(Auth::id() == $posts->first()->thread->user_id or Auth::user()->can('mod-threads'))
+                                    @if(!$poll)
+                                        <a role="button" class="btn btn-primary" href="{{ route('board.vote.create', ['threadid' => $posts->first()->thread_id])}}"><span class="fa fa-signal fa-rotate-270"></span></a>
+                                    @endif
                                 @endif
                             @endif
-                        @endif
-                        @if($posts->first()->thread->closed == 0)
-                            <a role="button" class="btn btn-primary" href="{{ route('board.thread.switch.close', [$posts->first()->thread->id, 1]) }}"><span class="fa fa-minus-circle"></span></a>
-                        @else
-                            <a role="button" class="btn btn-primary" href="{{ route('board.thread.switch.close', [$posts->first()->thread->id, 0]) }}"><span class="fa fa-plus-circle"></span></a>
-                        @endif
+                            @permission(('mod-threads'))
+                            @if($posts->first()->thread->closed == 0)
+                                <a role="button" class="btn btn-primary" href="{{ route('board.thread.switch.close', [$posts->first()->thread->id, 1]) }}"><span class="fa fa-minus-circle"></span></a>
+                            @else
+                                <a role="button" class="btn btn-primary" href="{{ route('board.thread.switch.close', [$posts->first()->thread->id, 0]) }}"><span class="fa fa-plus-circle"></span></a>
+                            @endif
+                            @endpermission
+                        </div>
                     </div>
+
+                    <h1>{{$posts->first()->thread->title}}</h1>
+                    {!! Breadcrumbs::render('thread',$posts->first()->cat, $posts->first()->thread ) !!}
                 </div>
-                @endpermission
-                <h1>{{$posts->first()->thread->title}}</h1>
-                {!! Breadcrumbs::render('thread',$posts->first()->cat, $posts->first()->thread ) !!}
             </div>
         </div>
         @if($poll)

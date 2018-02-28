@@ -99,6 +99,12 @@ Breadcrumbs::register('post.edit', function ($breadcrumbs, $boardcat, $post) {
     $breadcrumbs->push(trans('app.edit_post'), action('BoardController@post_edit', [$post->thread_id, $post->id]));
 });
 
+// Home > Board > [Forum] -> [Thread] -> Add/Edit Vote
+Breadcrumbs::register('board.vote', function ($breadcrumbs, $boardcat, $thread){
+   $breadcrumbs->parent('forum', $boardcat);
+   $breadcrumbs->push(trans('app.create_vote', action('BoardController@create_vote', [$thread->id])));
+});
+
 //----------------- Developers ---------------------------------------------------------------------------------------//
 // Home > Developers
 Breadcrumbs::register('developers', function ($breadcrumbs) {

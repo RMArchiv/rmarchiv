@@ -278,6 +278,7 @@ class BoardController extends Controller
     {
         $check = BoardPoll::whereThreadId($threadid)->get();
         $thread = BoardThread::whereId($threadid)->first();
+        $cat = $thread->cat;
 
         $edit = 0;
 
@@ -289,6 +290,7 @@ class BoardController extends Controller
             'edit' => $edit,
             'thread_id' => $threadid,
             'thread' => $thread,
+            'cat' => $cat,
         ]);
     }
 
