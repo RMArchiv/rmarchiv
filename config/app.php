@@ -233,6 +233,7 @@ return [
         Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProvider::class,
         Spatie\CookieConsent\CookieConsentServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        Cog\Laravel\Ban\Providers\BanServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -3,14 +3,22 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="page-header">
-                <h1>{{ trans('app.user') }}: {{ $user->name }}</h1>
-                {!! Breadcrumbs::render('user', $user) !!}
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>{{ trans('app.user') }}: {{ $user->name }}
+                        @permission('admin-user')
+                        <div class="float-right">
+                            <a href="{{ action('UserBanController@show', $user->id) }}" role="button" class="btn btn-primary"><span class="fa fa-crosshairs"></span></a>
+                        </div>
+                        @endpermission
+                    </h1>
+                    {!! Breadcrumbs::render('user', $user) !!}
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-header">
                         {{ trans('app.user_informations') }}
                     </div>
@@ -32,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-header">
                         {{ trans('app.userlists') }}
                     </div>
@@ -144,7 +152,7 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-header">
                         {{ trans('app.last_shoutbox_posts') }}
                     </div>

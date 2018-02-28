@@ -10,6 +10,8 @@ namespace App\Models;
 use Cmgmyr\Messenger\Traits\Messagable;
 use Illuminate\Notifications\Notifiable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 /*
  * App\User
@@ -90,10 +92,15 @@ use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNo
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Shoutbox[] $shoutbox
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Developer[] $developers
+ * @property string|null $banned_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Cog\Laravel\Ban\Models\Ban[] $bans
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereBannedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User withRole($role)
  */
-class User extends Authenticatable
+class User extends Authenticatable implements BannableContract
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
+    use Bannable;
 
     /**
      * The attributes that are mass assignable.
