@@ -30,12 +30,11 @@
                         }else{
                             $btnsize = 'btn-lg';
                         }
-                        $counter = \App\Models\TagRelation::whereTagId($tag['id'])->count();
-                        $link = '<a class="btn btn-secondary '.$btnsize.' my-2" href="'.$tag['url'].'">'.$tag['tag'].'</a> ';
+                        $link = '<a class="badge badge-info '.$btnsize.' my-2" href="'.$tag['url'].'">'.$tag['tag'].$size'</a> ';
                         return $link;
                         //return "<span  class='tag size{$size}'>{$link}</span> ";
                     });
-                    $cloud->setLimit(30);
+                    $cloud->setLimit(15);
                 @endphp
                 {!!  $cloud->render() !!}
             </div>
