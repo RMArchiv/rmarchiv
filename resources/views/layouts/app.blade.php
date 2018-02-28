@@ -48,14 +48,44 @@
 
 {{--  @include('_partials.header') --}}
 @include('_partials.navigation', ['part' => 'toppart'])
-@include('_partials.banned')
 
-@if(Route::currentRouteName() == 'home')
-    @yield('content')
+@if(Auth::check())
+    @if(Auth::user()->isBanned())
+        <div class="col-md-12 mt-3">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            Du wurdest gebannt.
+                        </div>
+                        <div class="card-body">
+                            <p>Der Grund für den Bann:</p>
+                            <p>{{ Auth::user()->bans()->latest()->first()->comment }}</p>
+                        </div>
+                        <div class="card-footer">
+                            Automatisches entsperren am: {{ Auth::user()->bans()->latest()->first()->expired_at }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @else
+        @if(Route::currentRouteName() == 'home')
+            @yield('content')
+        @else
+            <div class="col-md-12 mt-3">
+                @yield('content')
+            </div>
+        @endif
+    @endif
 @else
-    <div class="col-md-12 mt-3">
+    @if(Route::currentRouteName() == 'home')
         @yield('content')
-    </div>
+    @else
+        <div class="col-md-12 mt-3">
+            @yield('content')
+        </div>
+    @endif
 @endif
 
 
