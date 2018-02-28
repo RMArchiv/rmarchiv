@@ -41,9 +41,8 @@
                         <div class="form-horizontal">
                             <fieldset>
                                 <div class="form-group" id="row_game">
-                                    <label for="game">{{ trans('app.gametitle') }}</label>
+                                    <label for="game">{{ trans('app.gametitle') }} *</label>
                                     <input autocomplete="off" class="auto form-control" name="game" id="game" placeholder="{{ trans('app.gametitle') }}" value=""/>
-                                    <span> [<span class="req">req</span>]</span>
                                     <script type="text/javascript">
                                         var sourcepath = new Bloodhound({
                                             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -75,9 +74,8 @@
                                     </script>
                                 </div>
                                 <div class="form-group">
-                                    <label for="place">{{ trans('app.place') }}</label>
+                                    <label for="place">{{ trans('app.place') }} *</label>
                                     <input autocomplete="off" class="form-control" name="place" id="place" placeholder="1" value=""/>
-                                    <span> [<span class="req">req</span>]</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="desc">{{ trans('app.description') }}</label>
