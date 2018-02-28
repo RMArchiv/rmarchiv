@@ -17,7 +17,7 @@
                         Coup de Coeur Historie
                     </div>
                     <ul class="list-group">
-                        @foreach($cdcs as $c)
+                        @foreach($cdcs->reverse() as $c)
                             <li class="list-group-item media" style="margin-top: 0px;">
                                 <a class="pull-right" href="{{ url('games', $c->game->id) }}"><span
                                             class="badge">{{ $c->game->comments }}</span></a>
