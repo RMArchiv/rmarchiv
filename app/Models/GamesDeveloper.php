@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class GamesDeveloper.
@@ -34,6 +35,8 @@ use Illuminate\Database\Eloquent\Model;
 class GamesDeveloper extends Model
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
+    use LogsActivity;
+
     protected $table = 'games_developer';
 
     public $timestamps = true;
