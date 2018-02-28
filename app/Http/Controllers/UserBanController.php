@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class UserBanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:admin-user');
+    }
+
     public function show($userid){
         $user = User::whereId($userid)->first();
 
