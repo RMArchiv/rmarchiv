@@ -42,7 +42,7 @@
                             <fieldset>
                                 <div class="form-group" id="row_game">
                                     <label for="game">{{ trans('app.gametitle') }}</label>
-                                    <input autocomplete="off" class="auto" name="game" id="game" placeholder="{{ trans('app.gametitle') }}" value=""/>
+                                    <input autocomplete="off" class="auto form-control" name="game" id="game" placeholder="{{ trans('app.gametitle') }}" value=""/>
                                     <span> [<span class="req">req</span>]</span>
                                     <script type="text/javascript">
                                         var sourcepath = new Bloodhound({
@@ -76,18 +76,18 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="place">{{ trans('app.place') }}</label>
-                                    <input autocomplete="off" class="auto" name="place" id="place" placeholder="1" value=""/>
+                                    <input autocomplete="off" class="form-control" name="place" id="place" placeholder="1" value=""/>
                                     <span> [<span class="req">req</span>]</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="desc">{{ trans('app.description') }}</label>
-                                    <input autocomplete="off" class="auto" name="desc" id="desc" placeholder="123 points" value=""/>
+                                    <input autocomplete="off" class="form-control" name="desc" id="desc" placeholder="123 points" value=""/>
                                 </div>
                             </fieldset>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <input type="submit" value="{{trans('app.submit')}}">
+                        <input type="submit" class="btn btn-primary" value="{{trans('app.submit')}}">
                     </div>
                 </div>
                 {!! Form::close() !!}
