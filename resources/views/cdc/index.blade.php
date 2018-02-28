@@ -19,9 +19,10 @@
                     <ul class="list-group">
                         @foreach($cdcs->reverse() as $c)
                             <li class="list-group-item media" style="margin-top: 0px;">
-                                <a class="pull-right" href="{{ url('games', $c->game->id) }}"><span
-                                            class="badge">{{ $c->game->comments }}</span></a>
-                                <a class="pull-left" href="{{ url('games', $c->game->id) }}"><img width="100px"
+                                <div class="float-right">
+                                    Gekürt am: {{ $c->created_at }}
+                                </div>
+                                <a class="float-left" href="{{ url('games', $c->game->id) }}"><img width="100px"
                                                                                                class="mr-3"
                                                                                                src='{{ route('screenshot.show', [$c->game->id, 1]) }}'
                                                                                                alt='{{ trans('app.titlescreen') }}'
