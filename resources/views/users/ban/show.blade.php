@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                @if($user->isNotBanned)
+                @if($user->isNotBanned())
                     {!! Form::open(['action' => ['UserBanController@ban', $user->id]]) !!}
                     <div class="card">
                         <div class="card-header">
