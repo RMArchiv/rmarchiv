@@ -31,7 +31,7 @@
                             $btnsize = 'btn-lg';
                         }
                         $counter = \App\Models\TagRelation::whereTagId($tag['id'])->count();
-                        $link = '<a class="btn btn-secondary '.$btnsize.' my-2" href="'.$tag['url'].'">'.$tag['tag'].'<span class="badge badge-pill badge-info">'.$counter.'</span></a> ';
+                        $link = '<a class="btn btn-secondary '.$btnsize.' my-2" href="'.$tag['url'].'">'.$tag['tag'].'</a> ';
                         return $link;
                         //return "<span  class='tag size{$size}'>{$link}</span> ";
                     });
