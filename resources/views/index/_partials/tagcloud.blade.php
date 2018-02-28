@@ -30,7 +30,7 @@
                         }else{
                             $btnsize = 'btn-lg';
                         }
-                        $link = '<a class="badge badge-info '.$btnsize.' my-2" href="'.$tag['url'].'">'.$tag['tag'].$size'</a> ';
+                        $link = '<a class="badge badge-info '.$btnsize.' my-2" href="'.$tag['url'].'">'.$tag['tag'].$size.'</a> ';
                         return $link;
                         //return "<span  class='tag size{$size}'>{$link}</span> ";
                     });
