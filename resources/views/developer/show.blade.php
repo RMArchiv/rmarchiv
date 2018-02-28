@@ -3,9 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="page-header">
-                <h1>{{ trans('app.developer_profile') }}: {{ \App\Models\Developer::whereId($id)->first()->name }}</h1>
-                {!! Breadcrumbs::render('developer', \App\Models\Developer::whereId($id)->first()) !!}
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>{{ trans('app.developer_profile') }}: {{ \App\Models\Developer::whereId($id)->first()->name }}</h1>
+                    {!! Breadcrumbs::render('developer', \App\Models\Developer::whereId($id)->first()) !!}
+                </div>
             </div>
         </div>
         <div class="row">

@@ -3,12 +3,13 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="page-header">
-                <h1>{{ trans('app.faq') }}</h1>
-                {!! Breadcrumbs::render('faq') !!}
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>{{ trans('app.faq') }}</h1>
+                    {!! Breadcrumbs::render('faq') !!}
+                </div>
             </div>
         </div>
-        <div class="col-md-12">
             @foreach($faq as $cat)
                 <div class="row">
                     <div class="col-md-12" id="faq{{ $cat->cat }}">
@@ -30,6 +31,5 @@
                     </div>
                 </div>
             @endforeach
-        </div>
     </div>
 @endsection
