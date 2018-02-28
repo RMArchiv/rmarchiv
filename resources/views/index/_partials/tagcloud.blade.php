@@ -21,16 +21,18 @@
                 @php
                     $cloud->setHtmlizeTagFunction(function($tag, $size) {
                         $btnsize = '';
-                        if($size <= 3){
-                            $btnsize = 'btn-xs';
-                        }elseif($size <= 5){
-                            $btnsize = 'btn-sm';
-                        }elseif($size <= 7){
-                            $btnsize = '';
+                        if($size <= 2){
+                            $btnsize = 6;
+                        }elseif($size <= 4){
+                            $btnsize = 5;
+                        }elseif($size <= 6){
+                            $btnsize = 4;
+                        }elseif($size <= 8){
+                            $btnsize = 3;
                         }else{
-                            $btnsize = 'btn-lg';
+                            $btnsize = 2;
                         }
-                        $link = '<a class="badge badge-info '.$btnsize.' my-2" href="'.$tag['url'].'">'.$tag['tag'].$size.'</a> ';
+                        $link = '<'.$btnsize.'><a class="badge badge-info my-2" href="'.$tag['url'].'">'.$tag['tag'].'</a></h'.$btnsize.'>';
                         return $link;
                         //return "<span  class='tag size{$size}'>{$link}</span> ";
                     });
