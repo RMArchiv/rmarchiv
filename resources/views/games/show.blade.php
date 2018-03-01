@@ -14,37 +14,39 @@
 
         <div class="container">
             <div class="row">
-                <div class="page-header">
-                    @if(Auth::check())
-                        <div class='btn-toolbar pull-right'>
-                            <div class='btn-group'>
-                                @if(Auth::check())
-                                    @if(Auth::user()->userlists)
-                                        @php
-                                            $ul_data = "<a href='". url('lists/create') ."'>".trans('app.create_userlist') ."</a><br>";
-                                            foreach (Auth::user()->userlists as $list){
-                                                $ul_data .= "<a href='". route('lists.add_game', [$list->id, $game->id]). "'>".$list->title."</a><br>";
-                                            }
-                                        @endphp
+                <div class="col-md-12">
+                    <div class="page-header">
+                        @if(Auth::check())
+                            <div class='btn-toolbar pull-right'>
+                                <div class='btn-group'>
+                                    @if(Auth::check())
+                                        @if(Auth::user()->userlists)
+                                            @php
+                                                $ul_data = "<a href='". url('lists/create') ."'>".trans('app.create_userlist') ."</a><br>";
+                                                foreach (Auth::user()->userlists as $list){
+                                                    $ul_data .= "<a href='". route('lists.add_game', [$list->id, $game->id]). "'>".$list->title."</a><br>";
+                                                }
+                                            @endphp
+                                        @endif
+                                        <a role="button" class="btn btn-primary"
+                                           data-toggle="userlist"
+                                           title="benutzerliste"
+                                           data-content="{!! $ul_data !!}">
+                                            <span class="fa fa-list"></span></a>
+                                        @permission(('create-games'))
+                                        <a href="{{ route('history.game.index', ['id' => $game->id]) }}" role='button' class='btn btn-primary'><span class="fa fa-history"></span></a>
+                                        <a href="{{ route('games.edit', [ 'id' => $game->id]) }}" role="button" class="btn btn-primary"><span class="fa fa-edit"></span></a>
+                                        @endpermission
                                     @endif
-                                    <a role="button" class="btn btn-primary"
-                                       data-toggle="userlist"
-                                       title="benutzerliste"
-                                       data-content="{!! $ul_data !!}">
-                                        <span class="fa fa-list"></span></a>
-                                    @permission(('create-games'))
-                                    <a href="{{ route('history.game.index', ['id' => $game->id]) }}" role='button' class='btn btn-primary'><span class="fa fa-history"></span></a>
-                                    <a href="{{ route('games.edit', [ 'id' => $game->id]) }}" role="button" class="btn btn-primary"><span class="fa fa-edit"></span></a>
-                                    @endpermission
-                                @endif
 
+                                </div>
                             </div>
-                        </div>
-                    @endif
-                    <h1>
-                        <span id='title'><big>{{ $game->title }}</big>@if($game->subtitle) :: {{ $game->subtitle }}@endif</span>
-                    </h1>
-                    {!! Breadcrumbs::render('game', $game) !!}
+                        @endif
+                        <h1>
+                            <span id='title'><big>{{ $game->title }}</big>@if($game->subtitle) :: {{ $game->subtitle }}@endif</span>
+                        </h1>
+                        {!! Breadcrumbs::render('game', $game) !!}
+                    </div>
                 </div>
             </div>
             <div class="row">
