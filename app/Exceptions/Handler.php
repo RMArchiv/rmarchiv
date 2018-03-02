@@ -8,12 +8,12 @@
 namespace App\Exceptions;
 
 use Exception;
+use GrahamCampbell\Exceptions\ExceptionHandler;
 use Illuminate\Auth\AuthenticationException;
-use GrahamCampbell\Exceptions\NewExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
-class Handler extends NewExceptionHandler
+class Handler extends ExceptionHandler
 {
     /**
      * A list of the exception types that should not be reported.
