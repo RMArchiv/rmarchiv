@@ -3,18 +3,22 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="page-header">
-                <h1>{{ trans('app.create_new_pm') }}</h1>
-                {!! Breadcrumbs::render('messages.create') !!}
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>{{ trans('app.create_new_pm') }}</h1>
+                    {!! Breadcrumbs::render('messages.create') !!}
+                </div>
             </div>
         </div>
         @if(Auth::check())
         <div class="row">
-            <div class="well">
+            <div class="col-md-12">
                 {!! Form::open(['route' => 'messages.store', 'class' => 'form-horizontal']) !!}
-                <form class="form-horizontal">
-                    <fieldset>
-                        <legend>{{ trans('app.create_new_pm') }}</legend>
+                <div class="card">
+                    <div class="card-header">
+                        {{ trans('app.create_new_pm') }}
+                    </div>
+                    <div class="card-body">
                         <div class="form-group">
                             <label for="inputEmail" class="col-lg-2 col-form-label">{{ trans('app.subject') }}</label>
                             <div class="col-lg-10">
@@ -47,8 +51,8 @@
                                 <button type="submit" class="btn btn-primary">{{ trans('app.submit') }}</button>
                             </div>
                         </div>
-                    </fieldset>
-                </form>
+                    </div>
+                </div>
                 {!! Form::close() !!}
             </div>
         </div>
