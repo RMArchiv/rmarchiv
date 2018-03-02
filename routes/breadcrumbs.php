@@ -355,3 +355,8 @@ Breadcrumbs::register('logorating', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.rate_logos'), action('LogoController@vote_get'));
 });
+
+Breadcrumbs::register('logoadd', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('app.submit_logo'), action('SubmitController@logo_index'));
+});
