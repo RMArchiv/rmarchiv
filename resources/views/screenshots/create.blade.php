@@ -34,7 +34,7 @@
                             <div class="card-body">
                                 <div class="form-group" id="row_file">
                                     <label for="file">Screenshot:</label>
-                                    <input class="form-control" name="file" id="file" type="file" value=""/>
+                                    <input class="form-control-file" name="file" id="file" type="file" value=""/>
                                     <span> [<span class="req">req</span>] nur PNG!</span>
                                 </div>
                             </div>
