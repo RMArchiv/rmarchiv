@@ -3,34 +3,36 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="page-header">
-                <div class="btn-toolbar pull-right">
-                    <div class="btn-group">
-                        @if(Auth::check())
-                            @if(Auth::user()->settings->is_admin)
-                                <a class="btn btn-primary" href="javascript:void(0);" onclick="$(this).find('form').submit();">
-                                    <form action="{{ url('/news', $news->id) }}" method="post">
-                                        {{ csrf_field() }}
-                                        <input type="hidden" name="_method" value="DELETE">
-                                    </form>
-                                    <span class="fa fa-trash"></span>
-                                </a>
+            <div class="col-md-12">
+                <div class="page-header">
+                    <div class="btn-toolbar pull-right">
+                        <div class="btn-group">
+                            @if(Auth::check())
+                                @if(Auth::user()->settings->is_admin)
+                                    <a class="btn btn-primary" href="javascript:void(0);" onclick="$(this).find('form').submit();">
+                                        <form action="{{ url('/news', $news->id) }}" method="post">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="_method" value="DELETE">
+                                        </form>
+                                        <span class="fa fa-trash"></span>
+                                    </a>
+                                @endif
+                                @permission(('edit-news'))
+                                @if($news->approved == 1)
+                                    <a class="btn btn-primary" href="{{ url('news/'.$news->id.'/approve/0') }}"><span class="fa fa-minus"></span></a>
+                                @else
+                                    <a class="btn btn-primary" href="{{ url('news/'.$news->id.'/approve/1') }}"><span class="fa fa-plus"></span></a>
+                                @endif
+                                @endpermission
+                                @permission(('edit-news'))
+                                <a class="btn btn-primary" href="{{ action('NewsController@edit', $news->id) }}"><span class="fa fa-edit"></span></a>
+                                @endpermission
                             @endif
-                            @permission(('edit-news'))
-                            @if($news->approved == 1)
-                                <a class="btn btn-primary" href="{{ url('news/'.$news->id.'/approve/0') }}"><span class="fa fa-minus"></span></a>
-                            @else
-                                <a class="btn btn-primary" href="{{ url('news/'.$news->id.'/approve/1') }}"><span class="fa fa-plus"></span></a>
-                            @endif
-                            @endpermission
-                            @permission(('edit-news'))
-                            <a class="btn btn-primary" href="{{ action('NewsController@edit', $news->id) }}"><span class="fa fa-edit"></span></a>
-                            @endpermission
-                        @endif
+                        </div>
                     </div>
+                    <h1>{{ trans('app.news').': '.$news->title }}</h1>
+                    {!! Breadcrumbs::render('news.show', $news) !!}
                 </div>
-                <h1>{{ trans('app.news').': '.$news->title }}</h1>
-                {!! Breadcrumbs::render('news.show', $news) !!}
             </div>
         </div>
         <div class="row">

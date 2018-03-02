@@ -3,9 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="page-header">
-                <h1>{{ trans('app.news') }}</h1>
-                {!! Breadcrumbs::render('news') !!}
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>{{ trans('app.news') }}</h1>
+                    {!! Breadcrumbs::render('news') !!}
+                </div>
             </div>
         </div>
         <div class="row">
