@@ -6,16 +6,16 @@
     "type": "project",
     "require": {
         "php": "^7.0",
-        "laravel/framework": "5.4.*",
+        "laravel/framework": "5.5.*",
         "barryvdh/laravel-ide-helper": "^2.3",
         "barryvdh/laravel-debugbar": "^2.3",
         "doctrine/dbal": "^2.6",
         "laravelcollective/html": "^5.3",
-        "graham-campbell/markdown": "^7.0",
+        "graham-campbell/markdown": "^10.0",
         "optimus/fineuploader-server": "^0.2.5",
         "gabrielelana/byte-units": "^0.4.0",
         "intervention/image": "^2.3",
-        "webuni/commonmark-table-extension": "^0.6.0",
+        "webuni/commonmark-table-extension": "^0.8.0",
         "zizaco/entrust": "^1.7",
         "cmgmyr/messenger": "^2.13",
         "watson/sitemap": "^2.0",
@@ -29,7 +29,7 @@
         "backpack/base": "^0.7.14",
         "RobBrazier/Piwik": "^2.1",
         "xethron/migrations-generator": "^2.0",
-        "spatie/laravel-activitylog": "^1.11",
+        "spatie/laravel-activitylog": "^2.5",
         "intervention/imagecache": "^2.3",
         "laravel-notification-channels/telegram": "^0.0.1",
         "laravel-notification-channels/discord": "^0.0.1",
@@ -44,23 +44,22 @@
         "dmamontov/rararchiver": "^1.0",
         "wapmorgan/unified-archive": "^0.0.8",
         "davejamesmiller/laravel-breadcrumbs": "^3.0",
-        "mdurrant/php-binary-reader": "^1.0",
         "filp/whoops": "^2.1",
-        "graham-campbell/exceptions": "^9.3",
-        "spatie/laravel-cookie-consent": "^1.8",
+        "graham-campbell/exceptions": "^10.1",
+        "spatie/laravel-cookie-consent": "^2.2",
         "tymon/jwt-auth": "^0.5.12",
         "optimus/fineuploader-server-thumbnail-creator": "^0.1.1",
-        "botman/botman": "^2.0",
         "cybercog/laravel-ban": "^3.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.7",
+        "phpunit/phpunit": "~6.0",
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*",
         "ignasbernotas/laravel-model-generator": "^1.1",
-        "potsky/laravel-localization-helpers": "2.5.*"
+        "potsky/laravel-localization-helpers": "2.6.*",
+        "filp/whoops": "~2.0"
     },
     "autoload": {
         "classmap": [
@@ -91,6 +90,10 @@
             "php artisan ide-helper:generate",
             "php artisan ide-helper:meta",
             "php artisan optimize"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
         ]
     },
     "config": {
