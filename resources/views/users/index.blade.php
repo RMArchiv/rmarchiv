@@ -32,9 +32,11 @@
 
     <div class="container">
         <div class="row">
-            <div class="page-header">
-                <h1>{{ trans('app.users') }}</h1>
-                {!! Breadcrumbs::render('users') !!}
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>{{ trans('app.users') }}</h1>
+                    {!! Breadcrumbs::render('users') !!}
+                </div>
             </div>
         </div>
         <div class="row">
