@@ -1,11 +1,25 @@
 @extends('layouts.app')
 @section('content')
-    <div id="content">
-        <h1>vier null drei</h1>
-        <br>
-        <h2>Herzlichen Glückwunsch!</h2>
-        <br>
-        <h3>Du hast eine Seite gefunden, für die du keine Berechtigung hast.</h3>
-        <h3>Sei stolz, aber versuche es noch mal <a href="{{ url('/') }}">hiermit</a>.</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card bg-danger">
+                    <div class="card-header">
+                        403
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Kein Zugriff auf diese Seite.
+                        </h5>
+                        <p class="card-text">
+                            Herzlichen Glückwunsch. Du hast eine Seite gefunden, für die du keine Berechtigung hast.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ URL::previous() }}" class="btn btn-default">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
