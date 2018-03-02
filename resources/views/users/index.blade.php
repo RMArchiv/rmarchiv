@@ -59,11 +59,11 @@
                                     <strong><a href='{{ url('users', $user->id) }}' class='usera' title="{{ $user->name }}">{{ $user->name }}</a></strong><br>
                                     <span class="text-muted">{{ trans('app.level') }}: <span title="{{ $user->roles[0]->display_name }}">{{ $user->roles[0]->display_name }}</span></span>
                                 </div>
-                                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 dropdown-user" data-for=".{{ str_replace(" ", "",$user->name) }}">
+                                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 dropdown-user" data-for=".user{{ $user->id }}">
                                     <i class="fa fa-chevron-down text-muted"></i>
                                 </div>
                             </div>
-                            <div class="row user-infos {{ str_replace(" ", "",$user->name) }}">
+                            <div class="row user-infos user{{ $user->id }}">
                                 <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1">
                                     <div class="card">
                                         <div class="card-header">
