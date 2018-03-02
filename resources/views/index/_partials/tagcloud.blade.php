@@ -32,11 +32,11 @@
                         }else{
                             $btnsize = 2;
                         }
-                        $link = '<h'.$btnsize.' style="display: inline;"><a class="badge badge-info m-2" href="'.$tag['url'].'">'.$tag['tag'].'</a></h'.$btnsize.'>';
+                        $link = '<h'.$btnsize.' style="display: inline;"><a href="'.$tag['url'].'">'.$tag['tag'].'</a></h'.$btnsize.'>';
                         return $link;
                         //return "<span  class='tag size{$size}'>{$link}</span> ";
                     });
-                    $cloud->setLimit(15);
+                    $cloud->setLimit(25);
                 @endphp
                 {!!  $cloud->render() !!}
             </div>
