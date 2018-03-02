@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('pagetitle', trans('app.user_activities'))
 @section('content')
-    <div id="container">
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="page-header">
