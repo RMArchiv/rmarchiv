@@ -3,9 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="page-header">
-                <h1>{{ trans('app.gamefiles') }}</h1>
-                {!! Breadcrumbs::render('gamefiles.add', $game) !!}
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>{{ trans('app.gamefiles') }}</h1>
+                    {!! Breadcrumbs::render('gamefiles.add', $game) !!}
+                </div>
             </div>
         </div>
         @if (count($errors) > 0)
@@ -21,33 +23,34 @@
             </div>
         @endif
         <div class="row">
-            <div class="card">
-                <div class="card-header">
-                    {{ trans('app.gamefiles_count') }}: {{ $gamefiles->count() }}
-                </div>
-                <ul class="list-group">
-                    @foreach($gamefiles as $gf)
-                        <li class="list-group-item clearfix">
+            <div class="col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        {{ trans('app.gamefiles_count') }}: {{ $gamefiles->count() }}
+                    </div>
+                    <ul class="list-group">
+                        @foreach($gamefiles as $gf)
+                            <li class="list-group-item clearfix">
                             <span class='typeiconlist'>
                                 <span class='typei type_{{ $gf->gamefiletype->short }}' title='{{ $gf->gamefiletype->title }}'>{{ $gf->gamefiletype->title }}</span>
                             </span>
-                            <span> • </span><span>version: {{ $gf->release_version }}</span>
-                            <span> • </span>
-                            <span>release date: {{ str_pad($gf->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_day, 2, 0, STR_PAD_LEFT) }}</span>
-                            <span> • </span>
-                            <span>size: {{ ByteUnits\Metric::bytes($gf->filesize)->format() }}</span>
-                            <span> • </span>
-                            <span>downloads: {{ $gf->downloadcount or 0 }}</span>
-                            <span> • </span>
-                            <span>
+                                <span> • </span><span>version: {{ $gf->release_version }}</span>
+                                <span> • </span>
+                                <span>release date: {{ str_pad($gf->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_day, 2, 0, STR_PAD_LEFT) }}</span>
+                                <span> • </span>
+                                <span>size: {{ ByteUnits\Metric::bytes($gf->filesize)->format() }}</span>
+                                <span> • </span>
+                                <span>downloads: {{ $gf->downloadcount or 0 }}</span>
+                                <span> • </span>
+                                <span>
                                 <a href="{{ url('/user', $gf->user->id) }}" class="usera" title="{{ $gf->user->name }}">
                                     <img width="16px" src="//{{ config('app.avatar_path') }}?gender=male&amp;id={{ $gf->user->id }}" alt="{{ $gf->user->name }}" class="avatar">
                                 </a> <a href="{{ url('/user', $gf->user->id) }}" class="user">{{ $gf->user->name }}</a>
                             </span>
-                            <span> • </span>
-                            <span>{{ $gf->filecreated_at }}</span>
-                            <div class="pull-right">
-                                <div class="button-group">
+                                <span> • </span>
+                                <span>{{ $gf->filecreated_at }}</span>
+                                <div class="pull-right">
+                                    <div class="button-group">
 
                                         @if($gf->forbidden == 1)
                                             [
@@ -62,81 +65,86 @@
                                                 @if($playable->count() != 0 )
                                                     :: [<a href="{{ route('player.run', [$gf->id]) }}">{{ trans('app.play') }}</a>]
                                                 @endif
+                                                :: [
+                                                <a href="{{ route('gamefiles.edit', [$game->id, $gf->id]) }}">{{trans('app.edit')}}</a>]
+                                                @if(Auth::user()->settings->is_admin)
                                                     :: [
-                                                    <a href="{{ route('gamefiles.edit', [$game->id, $gf->id]) }}">{{trans('app.edit')}}</a>]
-                                                    @if(Auth::user()->settings->is_admin)
-                                                        :: [
-                                                        <a href="{{ route("gamefiles.delete", [$game->id, $gf->id]) }}">{{trans('app.delete')}}</a>]
-                                                    @endif
+                                                    <a href="{{ route("gamefiles.delete", [$game->id, $gf->id]) }}">{{trans('app.delete')}}</a>]
+                                                @endif
                                             @endif
                                         @endif
 
 
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
+
         </div>
         @if(Auth::check())
             <div class="row">
-                <div class="card">
-                    <div class="card-header">
-                        {{trans('app.add_gamefile')}}
-                    </div>
-                    <div class="card-body">
-                        {!! Form::open(['route' => ['gamefiles.store', $game->id], 'class' => 'form-horizontal']) !!}
-                        <div class="form-group">
-                            <label for="filetype" class="col-sm-2 col-form-label">{{trans('app.release_type')}}: *</label>
-                            <div class="col-sm-10">
-                                <select class="form-control" name='filetype' id='filetype'>
-                                    <option value="0">{{trans('app.choose_release_type')}}</option>
-                                    @foreach($filetypes as $types)
-                                        <option value="{{ $types->id }}">{{ $types->title }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                <div class="col-md-12 mb-3">
+                    <div class="card">
+                        <div class="card-header">
+                            {{trans('app.add_gamefile')}}
                         </div>
-                        <div class="form-group">
-                            <label for="version" class="col-sm-2 col-form-label">{{trans('app.gamefile_version')}}: *</label>
-                            <div class="col-sm-10">
-                                <input name="version" id="version" value="" placeholder="1.0" class="form-control"/>
+                        <div class="card-body">
+                            {!! Form::open(['route' => ['gamefiles.store', $game->id], 'class' => 'form-horizontal']) !!}
+                            <div class="form-group">
+                                <label for="filetype" class="col-sm-2 col-form-label">{{trans('app.release_type')}}: *</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name='filetype' id='filetype'>
+                                        <option value="0">{{trans('app.choose_release_type')}}</option>
+                                        @foreach($filetypes as $types)
+                                            <option value="{{ $types->id }}">{{ $types->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-inline form-group">
-                            <label for="releasedate" class="col-sm-2 col-form-label">{{trans('app.release_date')}}</label>
-                            <div class="col-sm-10">
-                                <select name="releasedate_day" id="releasedate_day" class="form-control">
-                                    <option value="0">{{trans('app.release_date_day')}}</option>
-                                    @for($i = 1; $i < 32; $i++)
-                                        <option value="{{ $i }}">{{ $i }}</option>
-                                    @endfor
-                                </select>
-                                <select name="releasedate_month" id="releasedate_month" class="form-control">
-                                    <option value="0">{{trans('app.release_date_month')}}</option>
-                                    @for($i = 1; $i < 13; $i++)
-                                        <option value="{{ $i }}">{{ trans('app.month.'.$i) }}</option>
-                                    @endfor
-                                </select>
-                                <select name="releasedate_year" id="releasedate_year" class="form-control">
-                                    <option value="0">{{trans('app.release_date_year')}}</option>
-                                    @for($i = 1990; $i < date("Y") + 1; $i++)
-                                        <option value="{{ $i }}">{{ $i }}</option>
-                                    @endfor
-                                </select>
+                            <div class="form-group">
+                                <label for="version" class="col-sm-2 col-form-label">{{trans('app.gamefile_version')}}: *</label>
+                                <div class="col-sm-10">
+                                    <input name="version" id="version" value="" placeholder="1.0" class="form-control"/>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="fine-uploader" class="col-sm-2 col-form-label">{{trans('app.upload_file')}}:</label>
-                            <div class="col-sm-10">
-                                <div id="fine-uploader"></div>
+                            <div class="form-inline form-group">
+                                <label for="releasedate" class="col-sm-2 col-form-label">{{trans('app.release_date')}}</label>
+                                <div class="col-sm-10">
+                                    <select name="releasedate_day" id="releasedate_day" class="form-control">
+                                        <option value="0">{{trans('app.release_date_day')}}</option>
+                                        @for($i = 1; $i < 32; $i++)
+                                            <option value="{{ $i }}">{{ $i }}</option>
+                                        @endfor
+                                    </select>
+                                    <select name="releasedate_month" id="releasedate_month" class="form-control">
+                                        <option value="0">{{trans('app.release_date_month')}}</option>
+                                        @for($i = 1; $i < 13; $i++)
+                                            <option value="{{ $i }}">{{ trans('app.month.'.$i) }}</option>
+                                        @endfor
+                                    </select>
+                                    <select name="releasedate_year" id="releasedate_year" class="form-control">
+                                        <option value="0">{{trans('app.release_date_year')}}</option>
+                                        @for($i = 1990; $i < date("Y") + 1; $i++)
+                                            <option value="{{ $i }}">{{ $i }}</option>
+                                        @endfor
+                                    </select>
+                                </div>
                             </div>
+                            <div class="form-group">
+                                <label for="fine-uploader" class="col-sm-2 col-form-label">{{trans('app.upload_file')}}:</label>
+                                <div class="col-sm-10">
+                                    <div id="fine-uploader"></div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-secondary">{{ trans('app.submit') }}</button>
+                            {!! Form::close() !!}
                         </div>
-                        <button type="submit" class="btn btn-secondary">{{ trans('app.submit') }}</button>
-                        {!! Form::close() !!}
                     </div>
                 </div>
+
             </div>
         @endif
     </div>
