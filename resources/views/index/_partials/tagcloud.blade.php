@@ -32,7 +32,7 @@
                         }else{
                             $btnsize = 2;
                         }
-                        $link = '<h'.$btnsize.' style="display: inline;"><a class="m-3" href="'.$tag['url'].'">'.$tag['tag'].'</a></h'.$btnsize.'>';
+                        $link = '<a class="m-3 h'.$btnsize.'" href="'.$tag['url'].'">'.$tag['tag'].'</a>';
                         return $link;
                         //return "<span  class='tag size{$size}'>{$link}</span> ";
                     });
