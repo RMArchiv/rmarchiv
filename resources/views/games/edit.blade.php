@@ -38,7 +38,7 @@
             <div class="col-md-12">
                 <div class="card form">
                     <div class="card-header">
-                        grundinformationen
+                        Grundinformationen
                     </div>
                     <div class="card-body">
                         <div class="form-group">
@@ -181,7 +181,7 @@
         </div>
         {!! Form::close() !!}
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mt-3">
                 <div class="card">
                     <div class="card-header">
                         {{trans('app.developers')}}
@@ -247,7 +247,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mt-3">
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.added_tags') }}
@@ -266,7 +266,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mt-3">
                 <div class="card">
                     <div class="card-header">
                         {{trans('app.user_credits')}}
@@ -344,7 +344,7 @@
         </div>
         @permission(('delete-games'))
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mt-3">
                 <div class="card">
                     {!! Form::open(['method' => 'DELETE', 'route' => ['games.destroy', $game->id]]) !!}
                     <div class="card-header">
