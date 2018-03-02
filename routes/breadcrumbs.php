@@ -258,6 +258,12 @@ Breadcrumbs::register('gamefiles.add', function ($breadcrumbs, $game) {
     $breadcrumbs->push(trans('app.add_gamefiles'), action('GameFileController@create', $game->id));
 });
 
+// Home -> Games -> [Gametitle] -> [Gamefileversion] -> Edit
+Breadcrumbs::register('gamefiles.edit', function ($breadcrumbs, $gamefile) {
+    $breadcrumbs->parent('game', $gamefile->game());
+    $breadcrumbs->push(trans('app.edit_gamefile').' - '.$gamefile->release_version, action('GameFileController@create', $gamefile->game()->id));
+});
+
 //----------------- Player -------------------------------------------------------------------------------------------//
 // Home -> spieledatei
 Breadcrumbs::register('webplayer', function ($breadcrumbs, $game, $gamefileid) {

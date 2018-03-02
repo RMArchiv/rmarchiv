@@ -2,6 +2,18 @@
 @section('pagetitle', trans('app.edit_gamefile'))
 @section('content')
     @if(Auth::check())
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>{{ trans('app.games') }}</h1>
+                        {!! Breadcrumbs::render('gamefiles.edit', $gamefile) !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         {!! Form::open(['action' => ['GameFileController@update', $gamefile->game_id, $gamefile->id]]) !!}
         <div class="rmarchivtbl" id="rmarchivbox_submitprod">
             <h2>{{trans('app.edit_gamefile')}}</h2>
