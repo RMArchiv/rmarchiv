@@ -260,7 +260,7 @@ Breadcrumbs::register('gamefiles.add', function ($breadcrumbs, $game) {
 
 // Home -> Games -> [Gametitle] -> [Gamefileversion] -> Edit
 Breadcrumbs::register('gamefiles.edit', function ($breadcrumbs, $gamefile) {
-    $breadcrumbs->parent('game', $gamefile->game());
+    $breadcrumbs->parent('game', $gamefile->game);
     $breadcrumbs->push(trans('app.edit_gamefile').' - '.$gamefile->release_version, action('GameFileController@create', $gamefile->game()->id));
 });
 
