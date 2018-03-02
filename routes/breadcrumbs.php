@@ -139,6 +139,12 @@ Breadcrumbs::register('news', function ($breadcrumbs) {
     $breadcrumbs->push(trans('app.news'), action('NewsController@index'));
 });
 
+// Home -> Create
+Breadcrumbs::register('news.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('app.create_news'), action('NewsController@create'));
+});
+
 // Home -> News -> [News]
 Breadcrumbs::register('news.show', function ($breadcrumbs, $news) {
     $breadcrumbs->parent('news');
