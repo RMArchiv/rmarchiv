@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('pagetitle', 'screenshot hinzufügen')
+@section('pagetitle', 'Screenshot hinzufügen')
 @section('content')
     <div class="container">
         <div class="row">
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h1>{{ trans('app.news') }}</h1>
+                        <h1>Screenshot hinzufügen</h1>
                         {!! Breadcrumbs::render('game-screenshot', $game, $screenid) !!}
                     </div>
                 </div>
