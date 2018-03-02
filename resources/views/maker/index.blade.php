@@ -3,9 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="page-header">
-                <h1>maker</h1>
-                {!! Breadcrumbs::render('maker') !!}
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>maker</h1>
+                    {!! Breadcrumbs::render('maker') !!}
+                </div>
             </div>
         </div>
         <div class="row">
