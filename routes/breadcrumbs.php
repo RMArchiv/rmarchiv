@@ -342,3 +342,10 @@ Breadcrumbs::register('userlist.create', function ($breadcrumbs, $user) {
     $breadcrumbs->parent('user', $user);
     $breadcrumbs->push(trans('app.create_userlist'), action('UserListController@create'));
 });
+
+//----------------- Logo ---------------------------------------------------------------------------------------------//
+// Home -> Logo Rating
+Breadcrumbs::register('logorating', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('app.rate_logos'), action('LogoController@vote_get'));
+});
