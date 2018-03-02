@@ -3,9 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="page-header">
-                <h1>{{ $tag->title }}</h1>
-                {!! Breadcrumbs::render('tag', $tag) !!}
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>{{ $tag->title }}</h1>
+                    {!! Breadcrumbs::render('tag', $tag) !!}
+                </div>
             </div>
         </div>
         <div class="row">

@@ -80,6 +80,12 @@ Breadcrumbs::register('online', function ($breadcrumbs) {
     $breadcrumbs->push(trans('app.users_online'), action('UserController@users_online'));
 });
 
+// Home > Users > Online
+Breadcrumbs::register('user.activities', function ($breadcrumbs) {
+    $breadcrumbs->parent('users');
+    $breadcrumbs->push(trans('app.user_activities'), action('UserController@activity_index'));
+});
+
 //----------------- Board --------------------------------------------------------------------------------------------//
 // Home > Board
 Breadcrumbs::register('forums', function ($breadcrumbs) {
