@@ -3,13 +3,15 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="page-header">
-                <h1>{{ trans('app.statistics') }}</h1>
-                {!! Breadcrumbs::render('statistics') !!}
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>{{ trans('app.statistics') }}</h1>
+                    {!! Breadcrumbs::render('statistics') !!}
+                </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.releases_per_year') }}
@@ -17,7 +19,7 @@
                     <div class="card-body" id="rel_div"></div>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-header">
                         Hall of Kelven...
@@ -27,7 +29,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.registrations_per_month') }}
@@ -35,7 +37,7 @@
                     <div class="card-body" id="reg_div"></div>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.releases_per_month') }}
@@ -45,7 +47,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.makerchart') }}
@@ -55,7 +57,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.comments_per_month') }}
@@ -75,7 +77,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.filestats') }}
