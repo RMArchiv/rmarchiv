@@ -3,9 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="page-header">
-                <h1>{{ trans('app.missing_screenshots') }}</h1>
-                {!! Breadcrumbs::render('missing.titles') !!}
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>{{ trans('app.missing_screenshots') }}</h1>
+                    {!! Breadcrumbs::render('missing.titles') !!}
+                </div>
             </div>
         </div>
         <div class="row">

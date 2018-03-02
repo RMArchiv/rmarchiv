@@ -3,9 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="page-header">
-                <h1>{{ trans('app.games_without_tags') }}</h1>
-                {!! Breadcrumbs::render('missing.tags') !!}
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>{{ trans('app.games_without_tags') }}</h1>
+                    {!! Breadcrumbs::render('missing.tags') !!}
+                </div>
             </div>
         </div>
         <div class="row">
