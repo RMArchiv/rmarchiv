@@ -38,6 +38,12 @@ Breadcrumbs::register('game-edit', function ($breadcrumbs, $game) {
     $breadcrumbs->push(trans('app.edit_game'), action('GameController@edit', $game->id));
 });
 
+// Home > Games > [game] > Add Screenshot
+Breadcrumbs::register('game-screenshot', function ($breadcrumbs, $game, $screenid) {
+    $breadcrumbs->parent('game', $game);
+    $breadcrumbs->push(trans('app.screenshot'), action('ScreenshotController@create', $game->id, $screenid));
+});
+
 Breadcrumbs::register('game.changelog', function ($breadcrumbs, $game) {
     $breadcrumbs->parent('game', $game);
     $breadcrumbs->push(trans('app.changelog'), action('HistoryController@index', $game->id));

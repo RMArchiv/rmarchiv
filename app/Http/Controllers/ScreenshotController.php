@@ -8,6 +8,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\Obyx;
+use App\Models\Game;
 use App\Models\Screenshot;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -46,9 +47,13 @@ class ScreenshotController extends Controller
     public function create($gameid, $screenid)
     {
         if (\Auth::check()) {
+
+            $game = Game::whereId($gameid)->first();
+
             return view('screenshots.create', [
                 'gameid'   => $gameid,
                 'screenid' => $screenid,
+                'game' => $game,
             ]);
         } else {
             return redirect()->back();

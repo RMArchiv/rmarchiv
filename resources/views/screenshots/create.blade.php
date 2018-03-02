@@ -1,13 +1,17 @@
 @extends('layouts.app')
 @section('pagetitle', 'screenshot hinzufügen')
 @section('content')
-    <div id="content">
-        <form action="{{ route('screenshot.upload', [$gameid, $screenid]) }}" method="post" enctype="multipart/form-data">
-            {{ csrf_field() }}
-
-            <div class="rmarchivtbl" id="rmarchivbox_submitscreenshot">
-                <h2>Screenshot hochladen</h2>
-
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>{{ trans('app.news') }}</h1>
+                        {!! Breadcrumbs::render('game-screenshot', $game, $screenid) !!}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 @if (count($errors) > 0))
                 <div class="rmarchivtbl errorbox">
                     <h2>Screenshot hochladen fehlgeschlagen</h2>
@@ -18,20 +22,30 @@
                     </div>
                 </div>
                 @endif
-
-                <div class="content">
-                    <div class="formifier">
-                        <div class="row" id="row_file">
-                            <label for="file">Screenshot:</label>
-                            <input name="file" id="file" type="file" value=""/>
-                            <span> [<span class="req">req</span>] nur PNG!</span>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="{{ route('screenshot.upload', [$gameid, $screenid]) }}" method="post" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="card">
+                            <div class="card-header">
+                                Screenshot hochladen
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group" id="row_file">
+                                    <label for="file">Screenshot:</label>
+                                    <input class="form-control" name="file" id="file" type="file" value=""/>
+                                    <span> [<span class="req">req</span>] nur PNG!</span>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <input class="btn btn-primary" type="submit" value="{{ trans('app.submit') }}">
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="foot">
-                    <input type="submit" value="{{ trans('app.submit') }}">
+                    </form>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
+
 @endsection
