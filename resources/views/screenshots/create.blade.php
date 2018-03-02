@@ -13,9 +13,9 @@
             </div>
             <div class="row">
                 @if (count($errors) > 0))
-                <div class="rmarchivtbl errorbox">
-                    <h2>Screenshot hochladen fehlgeschlagen</h2>
-                    <div class="content">
+                <div class="card">
+                    <div class="card-header">Screenshot hochladen fehlgeschlagen</div>
+                    <div class="card-body">
                         @foreach ($errors->all() as $error)
                             <strong>{{ $error }}</strong>
                         @endforeach
