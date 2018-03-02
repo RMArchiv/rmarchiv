@@ -3,15 +3,17 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="page-header">
-                <h1>
-                    @if(isset($term))
-                        {{ trans('app.search') }}: '{{ $term }}' - nach relevanz
-                    @else
-                        {{ trans('app.search') }}
-                    @endif
-                </h1>
-                {!! Breadcrumbs::render('search') !!}
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>
+                        @if(isset($term))
+                            {{ trans('app.search') }}: '{{ $term }}' - nach relevanz
+                        @else
+                            {{ trans('app.search') }}
+                        @endif
+                    </h1>
+                    {!! Breadcrumbs::render('search') !!}
+                </div>
             </div>
         </div>
         <div class="row">
