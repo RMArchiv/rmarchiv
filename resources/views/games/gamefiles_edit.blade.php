@@ -11,74 +11,73 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-
-        {!! Form::open(['action' => ['GameFileController@update', $gamefile->game_id, $gamefile->id]]) !!}
-        <div class="rmarchivtbl" id="rmarchivbox_submitprod">
-            <h2>{{trans('app.edit_gamefile')}}</h2>
-
-            <div class="content">
-                {{ trans('app.edit_gamefile_infos') }}
-                <div class="formifier">
-                    <div class='row' id='row_filetype'>
-                        <label for='filetype'>{{trans('app.release_type')}}</label>
-                        <select name='filetype' id='filetype'>
-                            <option value="0">{{trans('app.choose_release_type')}}</option>
-                            @foreach($filetypes as $types)
-                                <option @if ($gamefile->release_type == $types->id) selected="" @endif value="{{ $types->id }}">{{ $types->title }}</option>
-                            @endforeach
-                        </select>
-                        <span>[<span class="req">req</span>]</span>
-                    </div>
-                    <div class="row" id="row_version">
-                        <label for="version">{{trans('app.gamefile_version')}}</label>
-                        <input name="version" id="version" value="{{ $gamefile->release_version }}" placeholder="1.0" />
-                        <span> [<span class="req">req</span>]</span>
-                    </div>
-                    <div class="row" id="row_releasedate">
-                        <label for="releasedate">{{trans('app.release_date')}}</label>
-                        <div class="formdate" id="releasedate">
-                            <select name="releasedate_day" id="releasedate_day">
-                                <option value="0">{{trans('app.release_date_day')}}</option>
-                                @for($i = 1; $i < 32; $i++)
-                                    <option @if ($gamefile->release_day == $i) selected="" @endif value="{{ $i }}">{{ $i }}</option>
-                                @endfor
-                            </select>
-                            <select name="releasedate_month" id="releasedate_month">
-                                <option value="0">{{trans('app.release_date_month')}}</option>
-                                @for($i = 1; $i < 13; $i++)
-                                    <option @if ($gamefile->release_month == $i) selected="" @endif value="{{ $i }}">{{ trans('app.month.'.$i) }}</option>
-                                @endfor
-                            </select>
-                            <select name="releasedate_year" id="releasedate_year">
-                                <option value="0">{{trans('app.release_date_year')}}</option>
-                                @for($i = 1990; $i < date("Y") + 1; $i++)
-                                    <option @if ($gamefile->release_year == $i) selected="" @endif value="{{ $i }}">{{ $i }}</option>
-                                @endfor
-                            </select>
+            <div class="row">
+                <div class="col-md-12">
+                    {!! Form::open(['action' => ['GameFileController@update', $gamefile->game_id, $gamefile->id]]) !!}
+                    <div class="card">
+                        <div class="card-header">
+                            {{trans('app.edit_gamefile')}}
                         </div>
-                        <span>[<span class="req">req</span>]</span>
-                    </div>
-                    <div class="row" id="row_file">
-                        <label for="fine-uploader">{{trans('app.upload_file')}}:</label>
-                        <div id="fine-uploader"></div>
-                        <span>[<span class="req">req</span>]</span>
-                    </div>
-                    @if(Auth::user()->hasRole(['admin', 'owner']))
-                        <div class="row" id="row_forbidden">
-                            <label for="forbidden">{{ trans('app.delete_gamefile') }}</label>
-                            <input name="forbidden" id="forbidden" value="" placeholder="{{ trans('app.delete_gamefile_reason') }}" />
+                        <div class="card-body">
+                            <div class='form-group' id='row_filetype'>
+                                <label for='filetype'>{{trans('app.release_type')}}</label>
+                                <select class="form-control" name='filetype' id='filetype'>
+                                    <option value="0">{{trans('app.choose_release_type')}}</option>
+                                    @foreach($filetypes as $types)
+                                        <option @if ($gamefile->release_type == $types->id) selected="" @endif value="{{ $types->id }}">{{ $types->title }}</option>
+                                    @endforeach
+                                </select>
+                                <span>[<span class="req">req</span>]</span>
+                            </div>
+                            <div class="form-group" id="row_version">
+                                <label for="version">{{trans('app.gamefile_version')}}</label>
+                                <input class="form-control" name="version" id="version" value="{{ $gamefile->release_version }}" placeholder="1.0" />
+                                <span> [<span class="req">req</span>]</span>
+                            </div>
+                            <div class="form-group" id="row_releasedate">
+                                <label for="releasedate">{{trans('app.release_date')}}</label>
+                                <div class="formdate" id="releasedate">
+                                    <select class="form-control" name="releasedate_day" id="releasedate_day">
+                                        <option value="0">{{trans('app.release_date_day')}}</option>
+                                        @for($i = 1; $i < 32; $i++)
+                                            <option @if ($gamefile->release_day == $i) selected="" @endif value="{{ $i }}">{{ $i }}</option>
+                                        @endfor
+                                    </select>
+                                    <select class="form-control" name="releasedate_month" id="releasedate_month">
+                                        <option value="0">{{trans('app.release_date_month')}}</option>
+                                        @for($i = 1; $i < 13; $i++)
+                                            <option @if ($gamefile->release_month == $i) selected="" @endif value="{{ $i }}">{{ trans('app.month.'.$i) }}</option>
+                                        @endfor
+                                    </select>
+                                    <select class="form-control" name="releasedate_year" id="releasedate_year">
+                                        <option value="0">{{trans('app.release_date_year')}}</option>
+                                        @for($i = 1990; $i < date("Y") + 1; $i++)
+                                            <option @if ($gamefile->release_year == $i) selected="" @endif value="{{ $i }}">{{ $i }}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                                <span>[<span class="req">req</span>]</span>
+                            </div>
+                            <div class="form-group" id="row_file">
+                                <label for="fine-uploader">{{trans('app.upload_file')}}:</label>
+                                <div id="fine-uploader"></div>
+                                <span>[<span class="req">req</span>]</span>
+                            </div>
+                            @if(Auth::user()->hasRole(['admin', 'owner']))
+                                <div class="form-group" id="row_forbidden">
+                                    <label for="forbidden">{{ trans('app.delete_gamefile') }}</label>
+                                    <input class="form-control" name="forbidden" id="forbidden" value="" placeholder="{{ trans('app.delete_gamefile_reason') }}" />
+                                </div>
+                            @endif
                         </div>
-                    @endif
+                        <div class="card-footer">
+                            <input class="btn btn-primary" type="submit" value="{{ trans('app.submit') }}">
+                        </div>
+                    </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
-
-            <div class="foot">
-                <input type="submit" value="{{ trans('app.submit') }}">
-            </div>
         </div>
-        {!! Form::close() !!}
     @endif
 
 
