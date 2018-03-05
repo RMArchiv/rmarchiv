@@ -43,7 +43,7 @@ class GetMissingGameFilesCommand extends Command
         $i = 0;
         $content = '';
 
-        $doc_root = print_r(scandir('./public'));
+        $doc_root = './public';
         echo $doc_root;
 
         foreach ($gf as $g){
