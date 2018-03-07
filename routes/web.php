@@ -28,40 +28,40 @@ Route::group(['middelware' => ['permission:admin-user']], function () {
 Route::auth();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //Benutzereinstellungen
-Route::get('user_settings', 'UserSettingsController@index');
-Route::post('user_settings/password', 'UserSettingsController@store_password');
-Route::get('user_settings/change/{setting}/{value}', 'UserSettingsController@change_setting');
-Route::post('user_settings/rowsperpage', 'UserSettingsController@store_rowsPerPage');
-Route::post('user_settings/change_username', 'UserSettingsController@change_username');
+Route::get('user_settings', 'UserSettingsController@index')->middleware('auth');
+Route::post('user_settings/password', 'UserSettingsController@store_password')->middleware('auth');
+Route::get('user_settings/change/{setting}/{value}', 'UserSettingsController@change_setting')->middleware('auth');
+Route::post('user_settings/rowsperpage', 'UserSettingsController@store_rowsPerPage')->middleware('auth');
+Route::post('user_settings/change_username', 'UserSettingsController@change_username')->middleware('auth');
 
 
 //News Routen
 Route::resource('news', 'NewsController');
 Route::group(['middelware' => ['permission:approve-news']], function () {
-    Route::get('news/{id}/approve/{approve}', 'NewsController@approve');
+    Route::get('news/{id}/approve/{approve}', 'NewsController@approve')->middleware('permission:approve-news');
 });
 
 //Games Routen
 Route::resource('games', 'GameController');
-Route::post('games/{id}/developer', 'GameController@store_developer')->name('games.developer.store');
-Route::post('games/{id}/developer/delete', 'GameController@destroy_developer')->name('games.developer.delete');
+Route::post('games/{id}/developer', 'GameController@store_developer')->name('games.developer.store')->middleware('permission:create-games');
+Route::post('games/{id}/developer/delete', 'GameController@destroy_developer')->name('games.developer.delete')->middleware('permission:admin-games');
 
 //Gamefiles routen
 Route::get('games/{id}/gamefiles', 'GameFileController@create')->name('gamefiles.index');
-Route::post('games/{id}/gamefiles', 'GameFileController@store')->name('gamefiles.store');
-Route::post('games/{id}/gamefiles/upload', 'FineUploaderController@endpoint')->name('gamefiles.upload');
-Route::get('games/{id}/gamefiles/delete/{fileid}', 'GameFileController@destroy')->name('gamefiles.delete');
-Route::get('games/{id}/gamefiles/edit/{gamefileid}', 'GameFileController@edit')->name('gamefiles.edit');
-Route::post('games/{id}/gamefiles/edit/{gamefileid}/update', 'GameFileController@update')->name('gamefiles.update');
+Route::post('games/{id}/gamefiles', 'GameFileController@store')->name('gamefiles.store')->middleware('permission:create-games');
+Route::post('games/{id}/gamefiles/upload', 'FineUploaderController@endpoint')->name('gamefiles.upload')->middleware('permission:create-games');
+Route::get('games/{id}/gamefiles/delete/{fileid}', 'GameFileController@destroy')->name('gamefiles.delete')->middleware('permission:admin-games');
+Route::get('games/{id}/gamefiles/edit/{gamefileid}', 'GameFileController@edit')->name('gamefiles.edit')->middleware('permission:create-games');
+Route::post('games/{id}/gamefiles/edit/{gamefileid}/update', 'GameFileController@update')->name('gamefiles.update')->middleware('permission:create-games');
 Route::get('games/download/{id}', 'GameFileController@download')->name('gamefiles.download');
 Route::get('games/{gameid}/screenshot/show/{screenid}/{full?}', 'ScreenshotController@show')->name('screenshot.show');
-Route::get('games/{gameid}/screenshot/create/{screenid}', 'ScreenshotController@create')->name('screenshot.create');
-Route::post('games/{gameid}/screenshot/upload/{screenid}', 'ScreenshotController@upload')->name('screenshot.upload');
+Route::get('games/{gameid}/screenshot/create/{screenid}', 'ScreenshotController@create')->name('screenshot.create')->middleware('permission:create-game-screenshots');
+Route::post('games/{gameid}/screenshot/upload/{screenid}', 'ScreenshotController@upload')->name('screenshot.upload')->middleware('permission:create-game-screenshots');
 Route::get('games/index/{orderby?}/{direction?}', 'GameController@index')->name('games.index.sorted');
 
-Route::post('gameupload', '\Optimus\FineuploaderServer\Controller\LaravelController@upload');
-Route::delete('gameupload/delete/{uuid}', '\Optimus\FineuploaderServer\Controller\LaravelController@delete');
-Route::get('gameupload/session', '\Optimus\FineuploaderServer\Controller\LaravelController@session');
+Route::post('gameupload', '\Optimus\FineuploaderServer\Controller\LaravelController@upload')->middleware('permission:create-games');
+Route::delete('gameupload/delete/{uuid}', '\Optimus\FineuploaderServer\Controller\LaravelController@delete')->middleware('permission:create-games');
+Route::get('gameupload/session', '\Optimus\FineuploaderServer\Controller\LaravelController@session')->middleware('permission:create-games');
 
 //History Routen
 Route::get('history/game/{id}', 'HistoryController@index')->name('history.game.index');
@@ -71,8 +71,6 @@ Route::get('makers/{orderby?}/{direction?}', 'MakerController@index')->name('mak
 Route::get('maker/{makerid}/{orderby?}/{direction?}', 'MakerController@show')->name('maker.show');
 
 //Reporting Routen
-//Route::get('reports', 'ReportController@index');
-
 Route::get('reports/add/game/{gameid}', 'ReportController@create_game_report');
 Route::post('reports/add/game/{gameid}', 'ReportController@store_game_report');
 Route::get('reports', 'ReportController@index_user');
@@ -81,8 +79,8 @@ Route::get('reports/open/{id}', 'ReportController@open_ticket');
 Route::get('reports/remark/{id}', 'ReportController@remark_ticket');
 
 //Gamecredits routen
-Route::post('games/{id}/credit', 'UserCreditsController@store')->name('gamecredits.store');
-Route::get('games/{id}/credit/{credit_id}/delete', 'UserCreditsController@destroy')->name('gamecredits-delete');
+Route::post('games/{id}/credit', 'UserCreditsController@store')->name('gamecredits.store')->middleware('permission:create-games');
+Route::get('games/{id}/credit/{credit_id}/delete', 'UserCreditsController@destroy')->name('gamecredits-delete')->middleware('permission:create-games');
 
 //Suchrouten
 Route::get('search', 'SearchController@index');
@@ -111,12 +109,12 @@ Route::group(['prefix' => 'resources'], function () {
 
     Route::get('/{type}/{cat}/{id}', ['as' => 'resources.show', 'uses' => 'ResourceController@show']);
 
-    Route::post('/create', ['as' => 'resources.create_steps', 'uses' => 'ResourceController@create_steps']);
-    Route::get('/create', ['as' => 'resources.create', 'uses' => 'ResourceController@create']);
-    Route::post('/create/store', ['as' => 'resources.store', 'uses' => 'ResourceController@store']);
+    Route::post('/create', ['as' => 'resources.create_steps', 'uses' => 'ResourceController@create_steps'])->middleware('permission:create-games');
+    Route::get('/create', ['as' => 'resources.create', 'uses' => 'ResourceController@create'])->middleware('permission:create-games');
+    Route::post('/create/store', ['as' => 'resources.store', 'uses' => 'ResourceController@store'])->middleware('permission:create-games');
 });
 
-Route::post('resources/upload', 'FineUploaderController@endpoint@upload')->name('resources.upload');
+Route::post('resources/upload', 'FineUploaderController@endpoint@upload')->name('resources.upload')->middleware('permission:create-games');
 
 //User Routings
 Route::get('users', 'UserController@index');
@@ -125,7 +123,7 @@ Route::get('users/online', 'UserController@users_online');
 Route::get('users/{id}', 'UserController@show')->name('users.show');
 
 //PN Routen
-Route::group(['prefix' => 'messages'], function () {
+Route::group(['prefix' => 'messages', 'middleware' => ['auth']], function () {
     Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
     Route::get('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
     Route::post('/', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
@@ -134,64 +132,64 @@ Route::group(['prefix' => 'messages'], function () {
 });
 
 //Comment routings
-Route::post('comment', 'CommentController@add');
+Route::post('comment', 'CommentController@add')->middleware('permission:create-news-comments|create-game-comments');
 
 //Logo Voting
-Route::get('logo/vote', 'LogoController@vote_get')->name('logo.vote');
-Route::post('logo/vote/{userid}', 'LogoController@vote_add');
+Route::get('logo/vote', 'LogoController@vote_get')->name('logo.vote')->middleware('auth');
+Route::post('logo/vote/{userid}', 'LogoController@vote_add')->middleware('auth');
 
 //Submit Routen
-Route::get('submit', 'SubmitController@index');
+Route::get('submit', 'SubmitController@index')->middleware('auth');
 
 //Logo Routen
-Route::get('submit/logo', 'SubmitController@logo_index');
-Route::post('submit/logo', 'SubmitController@logo_add');
+Route::get('submit/logo', 'SubmitController@logo_index')->middleware('auth');
+Route::post('submit/logo', 'SubmitController@logo_add')->middleware('auth');
 
 //Shoutbox Routen
-Route::post('shoutbox', 'ShoutboxController@store');
+Route::post('shoutbox', 'ShoutboxController@store')->middleware('permission:create-shoutbox');
 Route::get('shoutbox', 'ShoutboxController@index');
 
 //Routen für Forum/Board
 Route::get('board', 'BoardController@index')->name('board.show');
-Route::get('board/create', 'BoardController@create_cat')->name('board.cat.create');
-Route::post('board/create', 'BoardController@store_cat')->name('board.cat.store');
+Route::get('board/create', 'BoardController@create_cat')->name('board.cat.create')->middleware('permission:admin-board');
+Route::post('board/create', 'BoardController@store_cat')->name('board.cat.store')->middleware('permission:admin-board');
 Route::get('board/cat/{catid}', 'BoardController@show_cat')->name('board.cat.show');
 Route::get('board/cat/{catid}/{direction}', 'BoardController@order_cat')->name('board.cat.order');
-Route::get('board/cat/{catid}/thread/create', 'BoardController@create_thread')->name('board.thread.create');
-Route::post('board/thread/create', 'BoardController@store_thread')->name('board.thread.store');
-Route::get('board/thread/{threadid}/edit/{postid}', 'BoardController@post_edit')->name('board.post.edit');
-Route::post('board/thread/{threadid}/edit/{postid}', 'BoardController@post_update')->name('board.post.update');
+Route::get('board/cat/{catid}/thread/create', 'BoardController@create_thread')->name('board.thread.create')->middleware('permission:create-threads');
+Route::post('board/thread/create', 'BoardController@store_thread')->name('board.thread.store')->middleware('permission:create-threads');
+Route::get('board/thread/{threadid}/edit/{postid}', 'BoardController@post_edit')->name('board.post.edit')->middleware('permission:create-posts');
+Route::post('board/thread/{threadid}/edit/{postid}', 'BoardController@post_update')->name('board.post.update')->middleware('permission:create-posts');
 Route::get('board/thread/{threadid}', 'BoardController@show_thread')->name('board.thread.show');
-Route::post('board/thread/{threadid}', 'BoardController@store_post')->name('board.post.store');
-Route::get('board/thread/{id}/switchclosestate/{state}', 'BoardController@thread_close_switch')->name('board.thread.switch.close');
-Route::get('board/thread/{threadid}/vote/create', 'BoardController@create_vote')->name('board.vote.create');
-Route::post('board/thread/{threadid}/vote/store', 'BoardController@store_vote')->name('board.vote.store');
-Route::post('board/thread/{threadid}/vote/update', 'BoardController@update_vote')->name('board.vote.update');
-Route::post('board/thread/vote/add', 'BoardController@add_vote')->name('board.vote.add');
+Route::post('board/thread/{threadid}', 'BoardController@store_post')->name('board.post.store')->middleware('permission:create-posts');
+Route::get('board/thread/{id}/switchclosestate/{state}', 'BoardController@thread_close_switch')->name('board.thread.switch.close')->middleware('permission:mod-threads');
+Route::get('board/thread/{threadid}/vote/create', 'BoardController@create_vote')->name('board.vote.create')->middleware('permission:create-threads');
+Route::post('board/thread/{threadid}/vote/store', 'BoardController@store_vote')->name('board.vote.store')->middleware('permission:create-threads');
+Route::post('board/thread/{threadid}/vote/update', 'BoardController@update_vote')->name('board.vote.update')->middleware('permission:create-threads');
+Route::post('board/thread/vote/add', 'BoardController@add_vote')->name('board.vote.add')->middleware('permission:create-threads');
 
 //Routen für FAQ
 Route::get('faq', 'FaqController@index');
-Route::get('faq/create', 'FaqController@create');
-Route::post('faq', 'FaqController@store');
+Route::get('faq/create', 'FaqController@create')->middleware('permission:create-faq');
+Route::post('faq', 'FaqController@store')->middleware('permission:create-faq');
 
 //Routen für Awards
 Route::get('awards', 'AwardController@index')->name('awards.index');
-Route::get('awards/create', 'AwardController@create')->name('awards.create');
-Route::get('awards/gameadd/{subcatid}', 'AwardController@gameadd')->name('awards.gameadd');
+Route::get('awards/create', 'AwardController@create')->name('awards.create')->middleware('permission:create-games');
+Route::get('awards/gameadd/{subcatid}', 'AwardController@gameadd')->name('awards.gameadd')->middleware('permission:create-games');
 Route::get('awards/{awardid}', 'AwardController@show')->name('awards.show');
-Route::post('awards/store/page', 'AwardController@store_page');
-Route::post('awards/store/cat', 'AwardController@store_cat');
-Route::post('awards/store/subcat', 'AwardController@store_subcat');
-Route::post('awards/gameadd/', 'AwardController@gameadd_store');
+Route::post('awards/store/page', 'AwardController@store_page')->middleware('permission:create-games');
+Route::post('awards/store/cat', 'AwardController@store_cat')->middleware('permission:create-games');
+Route::post('awards/store/subcat', 'AwardController@store_subcat')->middleware('permission:create-games');
+Route::post('awards/gameadd/', 'AwardController@gameadd_store')->middleware('permission:create-games');
 
 //Routen für Userlisten
-Route::get('lists/create', 'UserListController@create');
-Route::post('lists/create', 'UserListController@store');
+Route::get('lists/create', 'UserListController@create')->middleware('auth');
+Route::post('lists/create', 'UserListController@store')->middleware('auth');
 Route::get('lists/{userid}', 'UserListController@index');
-Route::get('lists/{listid}/add_game/{gameid}', 'UserListController@add_game')->name('lists.add_game');
+Route::get('lists/{listid}/add_game/{gameid}', 'UserListController@add_game')->name('lists.add_game')->middleware('auth');
 Route::get('lists/{userid}/show/{listid}', 'UserListController@show');
-Route::get('lists/{listid}/delete/game/{itemid}', 'UserListController@delete_game')->name('lists.delete_game');
-Route::get('lists/delete/{listid}', 'UserListController@delete');
+Route::get('lists/{listid}/delete/game/{itemid}', 'UserListController@delete_game')->name('lists.delete_game')->middleware('auth');
+Route::get('lists/delete/{listid}', 'UserListController@delete')->middleware('auth');
 
 //Autocomplete Routen
 Route::get('ac_developer/{term}', 'AutocompleteController@developer');
@@ -211,10 +209,10 @@ Route::get('screenshot/upload/success/{gameid}', 'MsgBoxController@screenshot_ad
 Route::get('cdc/success/{gameid}', 'MsgBoxController@cdc_add');
 
 //Routen für Fehlendes oder Statistiken
-Route::get('missing/gamescreens/{orderby?}/{direction?}', 'MissingController@index_gamescreens');
-Route::get('missing/gamefiles/{orderby?}/{direction?}', 'MissingController@index_gamefiles');
-Route::get('missing/gamedesc/{orderby?}/{direction?}', 'MissingController@index_gamedesc');
-Route::get('missing/notags/{orderby?}/{direction?}', 'MissingController@index_notags');
+Route::get('missing/gamescreens/{orderby?}/{direction?}', 'MissingController@index_gamescreens')->middleware('permission:admin-games');
+Route::get('missing/gamefiles/{orderby?}/{direction?}', 'MissingController@index_gamefiles')->middleware('permission:admin-games');
+Route::get('missing/gamedesc/{orderby?}/{direction?}', 'MissingController@index_gamedesc')->middleware('permission:admin-games');
+Route::get('missing/notags/{orderby?}/{direction?}', 'MissingController@index_notags')->middleware('permission:admin-games');
 
 //Sonstige Seiten
 Route::get('/impressum', function () {
@@ -236,11 +234,11 @@ Route::get('sitemap/news', 'SitemapController@news')->name('sitemap.news');
 Route::get('stats', 'StatsticController@show');
 
 //Routen für Tags
-Route::post('tags/create', 'TaggingController@store');
+Route::post('tags/create', 'TaggingController@store')->middleware('permission:create-games');
 Route::get('tags/game/{id}/{orderby?}/{direction?}', 'TaggingController@showGames');
 Route::get('tags', 'TaggingController@index');
 Route::get('tags/{orderby?}/{direction?}', 'TaggingController@index')->name('tags.index.sorted');
-Route::get('tags/delete/game/{gameid}/{tagid}', 'TaggingController@delete_gametag');
+Route::get('tags/delete/game/{gameid}/{tagid}', 'TaggingController@delete_gametag')->middleware('permission:create-games');
 
 //Routen für Events
 Route::group(['prefix' => 'events'], function () {
@@ -308,24 +306,24 @@ Route::group(['middleware' => 'permission:translate-page'], function () {
 });
 
 //Player Routen
-Route::get('player/{gamefileid}/games/default/index.json', 'PlayerController@deliver_indexjson')->name('player.deliverindex');
-Route::get('player/{gamefileid}/games/default/{fileid}', 'PlayerController@deliver_files')->name('player.files');
-Route::get('player/{gamefileid}/games/default/rtp/{filename}', 'PlayerController@deliver_rtp')->name('player.rtp');
-Route::get('player/{gamefileid}/play', 'PlayerController@index')->name('player.run');
+Route::get('player/{gamefileid}/games/default/index.json', 'PlayerController@deliver_indexjson')->name('player.deliverindex')->middleware('auth');
+Route::get('player/{gamefileid}/games/default/{fileid}', 'PlayerController@deliver_files')->name('player.files')->middleware('auth');
+Route::get('player/{gamefileid}/games/default/rtp/{filename}', 'PlayerController@deliver_rtp')->name('player.rtp')->middleware('auth');
+Route::get('player/{gamefileid}/play', 'PlayerController@index')->name('player.run')->middleware('auth');
 
 //EasyRPG Player Ticketsystem
-Route::post('easyticket/storeconsole', 'EasyTicketController@store_consolelog');
+Route::post('easyticket/storeconsole', 'EasyTicketController@store_consolelog')->middleware('auth');
 
 //Savegame Management
-Route::get('savegames/manager', 'SavegameManagerController@index');
-Route::get('savegames/manager/game/{gamefile_id}', 'SavegameManagerController@show');
-Route::get('savegames/manager/save/{savegame_id}/delete', 'SavegameManagerController@delete');
-Route::get('savegames/manager/save/{savegame_id}/download', 'SavegameManagerController@download');
-Route::post('savegame/manager/save/upload', 'SavegameManagerController@store');
+Route::get('savegames/manager', 'SavegameManagerController@index')->middleware('auth');
+Route::get('savegames/manager/game/{gamefile_id}', 'SavegameManagerController@show')->middleware('auth');
+Route::get('savegames/manager/save/{savegame_id}/delete', 'SavegameManagerController@delete')->middleware('auth');
+Route::get('savegames/manager/save/{savegame_id}/download', 'SavegameManagerController@download')->middleware('auth');
+Route::post('savegame/manager/save/upload', 'SavegameManagerController@store')->middleware('auth');
 
 //EasyRPG Savegame API
-Route::get('savegames/{gamefileid}', 'SavegameController@api_load');
-Route::post('savegames/{gamefileid}', 'SavegameController@api_save');
+Route::get('savegames/{gamefileid}', 'SavegameController@api_load')->middleware('auth');
+Route::post('savegames/{gamefileid}', 'SavegameController@api_save')->middleware('auth');
 
 Route::get('data/on', 'TestController@on');
 Route::get('data/off', 'TestController@off');
