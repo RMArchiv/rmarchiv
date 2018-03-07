@@ -1,12 +1,12 @@
 <div class="row justify-content-center">
    @include('_partials.header')
 </div>
-<nav class="navbar navbar-expand-lg navbar-custom">
+<nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
         <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-controls="bs-example-navbar-collapse-2" aria-expanded="false" aria-label="{{ trans('app.toggle_navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-controls="bs-example-navbar-collapse-2" aria-expanded="false" aria-label="{{ trans('app.toggle_navigation') }}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
