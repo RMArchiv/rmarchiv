@@ -344,14 +344,22 @@ Breadcrumbs::register('user.settings', function ($breadcrumbs) {
 });
 
 //----------------- Userlists ----------------------------------------------------------------------------------------//
+
+//Home -> User -> [User] -> Userlists
+// Home -> Userlist
+Breadcrumbs::register('userlist.index', function ($breadcrumbs, $user) {
+    $breadcrumbs->parent('user', $user);
+    $breadcrumbs->push(trans('app.userlists'), action('UserListController@index', [$user->id]));
+});
+
 // Home -> Userlist
 Breadcrumbs::register('userlist.show', function ($breadcrumbs, $user, $list) {
-    $breadcrumbs->parent('user', $user);
+    $breadcrumbs->parent('userlist.index', $user);
     $breadcrumbs->push(trans('app.userlist').': '.$list->title, action('UserListController@show', [$user->id, $list->id]));
 });
 
 Breadcrumbs::register('userlist.create', function ($breadcrumbs, $user) {
-    $breadcrumbs->parent('user', $user);
+    $breadcrumbs->parent('userlist.index', $user);
     $breadcrumbs->push(trans('app.create_userlist'), action('UserListController@create'));
 });
 
