@@ -187,7 +187,7 @@ Route::get('lists/create', 'UserListController@create')->middleware('auth');
 Route::post('lists/create', 'UserListController@store')->middleware('auth');
 Route::get('lists/{userid}', 'UserListController@index');
 Route::get('lists/{listid}/add_game/{gameid}', 'UserListController@add_game')->name('lists.add_game')->middleware('auth');
-Route::get('lists/{userid}/show/{listid}', 'UserListController@show');
+Route::get('lists/{userid}/show/{listid}', 'UserListController@show')->name('userlist.show');
 Route::get('lists/{listid}/delete/game/{itemid}', 'UserListController@delete_game')->name('lists.delete_game')->middleware('auth');
 Route::get('lists/delete/{listid}', 'UserListController@delete')->middleware('auth');
 

@@ -40,11 +40,15 @@ class UserListController extends Controller
 
     public function delete_game($listid, $itemid)
     {
-        \DB::table('user_list_items')
-            ->where('list_id', '=', $listid)
-            ->where('content_id', '=', $itemid)
-            ->where('content_type', '=', 'game')
-            ->delete();
+        $list = UserList::whereId($listid)->first();
+
+        if(\Auth::check() and \Auth::user()->id == $list->user_id){
+            \DB::table('user_list_items')
+                ->where('list_id', '=', $listid)
+                ->where('content_id', '=', $itemid)
+                ->where('content_type', '=', 'game')
+                ->delete();
+        }
 
         return \Redirect::back();
     }

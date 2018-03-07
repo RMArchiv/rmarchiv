@@ -3,6 +3,8 @@
 /*
  * rmarchiv.tk
  * (c) 2016-2017 by Marcel 'ryg' Hering
+ *
+ * Get all rar gamefiles and repack with zip
  */
 
 namespace App\Console\Commands;
@@ -43,38 +45,46 @@ class PlayerRar2Zip extends Command
      */
     public function handle()
     {
+        //get all rar files from database
         $files = GamesFile::whereExtension('rar')->orderBy('filesize', 'asc')->get();
 
         foreach ($files as $f) {
-            //entpacken
-
-            if(!array_search($f->game->maker_id, [2,3,9]) === FALSE){
+            //Check for maker engine 2=rm2k, 3=rm2k3, 9=rm2k3 Steam Edition
+            if (!array_search($f->game->maker_id, [2, 3, 9]) === FALSE) {
                 echo "Gamefile: $f->filename";
-                $pathrar = storage_path('app/public/'.$f->filename);
-                $pathzip = storage_path('app/public/'.str_replace('.rar', '.zip', $f->filename));
-                $pathdest = storage_path('app/public/games/'.$f->id.'/');
 
-                //löschen der eventuell vorhandenen tempdateien
+                //prepare the path variables
+                $pathrar = storage_path('app/public/' . $f->filename); // Path to original rar file
+                $pathzip = storage_path('app/public/' . str_replace('.rar', '.zip', $f->filename)); //Path to zip destination
+                $pathdest = storage_path('app/public/games/' . $f->id . '/'); //destination for unrared files
+
+                //delete old temp files (just in case.)
                 $this->Delete($pathdest);
 
-                $command = 'unrar x \''.$pathrar.'\' '.$pathdest;
+                // unrar the rar archive
+                $command = 'unrar x \'' . $pathrar . '\' ' . $pathdest;
                 exec($command);
 
-                $handle = opendir($pathdest);
+                $handle = opendir($pathdest); // erm??
 
+                //zip previous decompressed files
                 $this->Zip($pathdest, $pathzip);
+
+                //delete decomressed files
                 $this->Delete($pathdest);
 
+                //Update the Database
                 $upd = GamesFile::whereId($f->id)->first();
                 $upd->extension = 'zip';
                 $upd->filename = str_replace('.rar', '.zip', $f->filename);
                 $upd->save();
 
+                //delete rar file
                 unlink($pathrar);
 
                 echo " - done\n";
             }
-            }
+        }
 
     }
 
@@ -103,12 +113,12 @@ class PlayerRar2Zip extends Command
 
     public function Zip($source, $destination)
     {
-        if (! extension_loaded('zip') || ! file_exists($source)) {
+        if (!extension_loaded('zip') || !file_exists($source)) {
             return false;
         }
 
         $zip = new \ZipArchive();
-        if (! $zip->open($destination, \ZIPARCHIVE::CREATE)) {
+        if (!$zip->open($destination, \ZIPARCHIVE::CREATE)) {
             return false;
         }
 
@@ -128,9 +138,9 @@ class PlayerRar2Zip extends Command
                 $file = realpath($file);
 
                 if (is_dir($file) === true) {
-                    $zip->addEmptyDir(str_replace($source.'/', '', $file.'/'));
+                    $zip->addEmptyDir(str_replace($source . '/', '', $file . '/'));
                 } elseif (is_file($file) === true) {
-                    $zip->addFromString(str_replace($source.'/', '', $file), file_get_contents($file));
+                    $zip->addFromString(str_replace($source . '/', '', $file), file_get_contents($file));
                 }
             }
         } elseif (is_file($source) === true) {
