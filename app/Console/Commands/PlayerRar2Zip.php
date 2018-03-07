@@ -47,31 +47,35 @@ class PlayerRar2Zip extends Command
 
         foreach ($files as $f) {
             //entpacken
-            echo "Gamefile: $f->filename";
-            $pathrar = storage_path('app/public/'.$f->filename);
-            $pathzip = storage_path('app/public/'.str_replace('.rar', '.zip', $f->filename));
-            $pathdest = storage_path('app/public/games/'.$f->id.'/');
 
-            //löschen der eventuell vorhandenen tempdateien
-            $this->Delete($pathdest);
+            if(!array_search($f->game->maker_id, [2,3,9]) === FALSE){
+                echo "Gamefile: $f->filename";
+                $pathrar = storage_path('app/public/'.$f->filename);
+                $pathzip = storage_path('app/public/'.str_replace('.rar', '.zip', $f->filename));
+                $pathdest = storage_path('app/public/games/'.$f->id.'/');
 
-            $command = 'unrar x \''.$pathrar.'\' '.$pathdest;
-            exec($command);
+                //löschen der eventuell vorhandenen tempdateien
+                $this->Delete($pathdest);
 
-            $handle = opendir($pathdest);
+                $command = 'unrar x \''.$pathrar.'\' '.$pathdest;
+                exec($command);
 
-            $this->Zip($pathdest, $pathzip);
-            $this->Delete($pathdest);
+                $handle = opendir($pathdest);
 
-            $upd = GamesFile::whereId($f->id)->first();
-            $upd->extension = 'zip';
-            $upd->filename = str_replace('.rar', '.zip', $f->filename);
-            $upd->save();
+                $this->Zip($pathdest, $pathzip);
+                $this->Delete($pathdest);
 
-            unlink($pathrar);
+                $upd = GamesFile::whereId($f->id)->first();
+                $upd->extension = 'zip';
+                $upd->filename = str_replace('.rar', '.zip', $f->filename);
+                $upd->save();
 
-            echo " - done\n";
-        }
+                unlink($pathrar);
+
+                echo " - done\n";
+            }
+            }
+
     }
 
     public function Delete($path)
