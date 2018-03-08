@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-header">
                         {{ trans('app.obyx_overview') }}
                         <div class="pull-right">
@@ -87,7 +87,7 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-header">
                         {{ trans('app.latest_added_games') }}
                     </div>
@@ -133,7 +133,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-header">
                         {{ trans('app.latest_added_developers') }}
                     </div>
@@ -151,7 +151,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
                 <div class="card mb-3">
                     <div class="card-header">
                         {{ trans('app.last_shoutbox_posts') }}
@@ -215,7 +215,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.last_comments') }}
