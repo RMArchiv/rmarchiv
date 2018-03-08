@@ -16,7 +16,7 @@ class SetLocaleMiddleware
     public function handle($request, Closure $next)
     {
         if(\Auth::check()){
-            if(\Auth::user()->settings->language == null){
+            if(\Auth::user()->settings->language == ''){
                 \Auth::user()->settings->language = 'de';
                 \Auth::user()->save();
                 \App::setLocale('de');
