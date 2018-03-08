@@ -166,7 +166,7 @@
                                             <img
                                                     width="32px"
                                                     src='//{{ config('app.avatar_path') }}?gender=male&id={{ $comment->user_id }}'
-                                                    alt="{{ $comment->user->name }}" class='media img-rounded'/>
+                                                    alt="{{ $comment->user->name }}" class='media img-rounded mr-2'/>
                                         </a>
                                     </div>
                                     <div class="media-body">
@@ -197,7 +197,7 @@
                                         <img
                                                 width="32px"
                                                 src='//{{ config('app.avatar_path') }}?gender=male&id={{ $comment->user_id }}'
-                                                alt="{{ $comment->user->name }}" class='media img-rounded'/>
+                                                alt="{{ $comment->user->name }}" class='media img-rounded mr-2'/>
                                     </a>
                                 </div>
                                 <div class="media-body">
