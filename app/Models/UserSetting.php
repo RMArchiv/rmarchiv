@@ -65,6 +65,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereRowsPerPageDeveloper($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereRowsPerPageGames($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @property string $language
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserSetting whereLanguage($value)
  */
 class UserSetting extends Model
 {
@@ -93,6 +95,7 @@ class UserSetting extends Model
         'disable_widget_stats',
         'disable_widget_obyx',
         'disable_widget_comments',
+        'language',
     ];
 
     protected $guarded = [];
