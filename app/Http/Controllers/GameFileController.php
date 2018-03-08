@@ -176,7 +176,15 @@ class GameFileController extends Controller
         $gamefile->release_type = $request->get('filetype');
 
         if ($request->get('uuid')) {
-            \Storage::delete($gamefile->filename);
+            //Check for free Backup-Number
+            $freenumbercount = 0;
+            do {
+                $freenumbercount += 1; //Counter
+                //Check for existent file
+                $freenumber = \Storage::exists($gamefile->filename.'-bu'.$freenumbercount);
+            } while ($freenumber === false);
+
+            \Storage::move($gamefile->filename, $gamefile->filename.'-bu'.$freenumbercount);
 
             $storagetemp = 'temp/'.$request->get('uuid').'/file';
             $storagedest = 'games/'.$request->get('uuid').'.'.$request->get('ext');
