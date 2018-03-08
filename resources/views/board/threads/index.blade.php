@@ -29,7 +29,7 @@
                                         @if(\App\Models\BoardPoll::whereThreadId($thread->id)->count() != 0)
                                             <i class="fa fa-signal fa-rotate-270"></i>
                                         @endif
-                                        <a href="{{ route('board.thread.show', $thread->id) }}">{{ $thread->title }}</a>
+                                        <a @if(\App\Helpers\DatabaseHelper::isThreadUnread($thread->id) === true) style="font-weight: bold;" @endif href="{{ route('board.thread.show', $thread->id) }}">{{ $thread->title }}</a>
                                     </div>
                                     <div class="media-body" style="font-size: 12px;">
                                         <a href="{{ route('board.cat.show', $cat->id) }}"><span @if(\App\Helpers\DatabaseHelper::isThreadUnread($thread->id) === true) style="font-weight: bold;" @endif>{{ $cat->title }}</span></a>
