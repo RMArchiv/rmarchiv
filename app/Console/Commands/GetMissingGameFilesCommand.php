@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Helpers\DatabaseHelper;
 use App\Models\Developer;
 use App\Models\GamesDeveloper;
 use App\Models\GamesFile;
@@ -58,7 +59,7 @@ class GetMissingGameFilesCommand extends Command
             if (!file_exists($filepath)){
                 $i +=1;
                 $dev = GamesDeveloper::whereGameId($g->id)->first();
-                $content .= $i.' - '.$g->game->title.' - '.$g->game->subtitle.' - '.$dev->developer->name.' - '.$g->game->maker->short.' - '.$g->game_id.' - '.$g->release_version.' - '.$g->user->name.PHP_EOL;
+                $content .= $i.' - '.$g->game->title.' - '.$g->game->subtitle.' - '.DatabaseHelper::getDevelopersUrlList($g->id).' - '.$g->game->maker->short.' - '.$g->game_id.' - '.$g->release_version.' - '.$g->user->name.PHP_EOL;
             }
         }
 
