@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Developer;
+use App\Models\GamesDeveloper;
 use App\Models\GamesFile;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -49,13 +51,14 @@ class GetMissingGameFilesCommand extends Command
         $content = "Missing Gamefiles:".PHP_EOL;
         $content .= 'Created at: '.Carbon::now()->toDateTimeString().PHP_EOL;
         $content .= '----------------------------------------------------------------'.PHP_EOL;
-        $content .= 'No., Title, Subtitle, Developer, Engine, RMAGameID, Version, Uploader';
+        $content .= 'No., Title, Subtitle, Developer, Engine, RMAGameID, Version, Uploader'.PHP_EOL;
 
         foreach ($gf as $g){
             $filepath = storage_path('app/public/'.$g->filename);
             if (!file_exists($filepath)){
                 $i +=1;
-                $content .= $i.' - '.$g->game->title.' - '.$g->game->subtitle.' - '.$g->game->developers()->first()->name.' - '.$g->game->maker->short.' - '.$g->game_id.' - '.$g->release_version.' - '.$g->user->name.PHP_EOL;
+                $dev = GamesDeveloper::whereGameId($g->id)->first();
+                $content .= $i.' - '.$g->game->title.' - '.$g->game->subtitle.' - '.$dev->developer->name.' - '.$g->game->maker->short.' - '.$g->game_id.' - '.$g->release_version.' - '.$g->user->name.PHP_EOL;
             }
         }
 
