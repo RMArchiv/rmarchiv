@@ -174,7 +174,7 @@ class DatabaseHelper
         }
     }
 
-    public static function getDevelopersUrlList($gameid)
+    public static function getDevelopersUrlList($gameid, $urlstyle=true)
     {
         $developers = \DB::table('games_developer')
             ->leftJoin('developer', 'developer.id', '=', 'games_developer.developer_id')
@@ -183,7 +183,12 @@ class DatabaseHelper
 
         $res = '';
         foreach ($developers as $dev) {
-            $res = $res.'<a href="'.url('developer', $dev->id).'">'.$dev->name.'</a> :: ';
+            if($urlstyle == true){
+                $res = $res.'<a href="'.url('developer', $dev->id).'">'.$dev->name.'</a> :: ';
+            }else{
+                $res .= $dev->name.', ';
+            }
+
         }
 
         $res = substr($res, 0, -4);
