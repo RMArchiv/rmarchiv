@@ -49,12 +49,13 @@ class GetMissingGameFilesCommand extends Command
         $content = "Missing Gamefiles:".PHP_EOL;
         $content .= 'Created at: '.Carbon::now()->toDateTimeString().PHP_EOL;
         $content .= '----------------------------------------------------------------'.PHP_EOL;
+        $content .= 'No., Title, Subtitle, Developer, Engine, RMAGameID, Version, Uploader';
 
         foreach ($gf as $g){
             $filepath = storage_path('app/public/'.$g->filename);
             if (!file_exists($filepath)){
                 $i +=1;
-                $content .= $i.' - '.$g->game->title.' - '.$g->game->subtitle.' - ID:'.$g->game_id.' - Version:'.$g->release_version.' - up by:'.$g->user->name.' - uuid: '.$g->filename.PHP_EOL;
+                $content .= $i.' - '.$g->game->title.' - '.$g->game->subtitle.' - '.$g->game->developers()->first()->name.' - '.$g->game->maker->short.' - '.$g->game_id.' - '.$g->release_version.' - '.$g->user->name;
             }
         }
 
