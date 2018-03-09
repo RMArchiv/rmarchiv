@@ -184,7 +184,9 @@ class GameFileController extends Controller
                 $freenumber = \Storage::exists($gamefile->filename.'-bu'.$freenumbercount);
             } while ($freenumber === false);
 
-            \Storage::move($gamefile->filename, $gamefile->filename.'-bu'.$freenumbercount);
+            if (!\Storage::exists($gamefile->filename)){
+                \Storage::move($gamefile->filename, $gamefile->filename.'-bu'.$freenumbercount);
+            }
 
             $storagetemp = 'temp/'.$request->get('uuid').'/file';
             $storagedest = 'games/'.$request->get('uuid').'.'.$request->get('ext');
