@@ -38,8 +38,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('backup:clean')->daily()->at('04:00');
-        $schedule->command('backup:run')->daily()->at('05:00');
         $schedule->command('ban:delete-expired')->everyMinute();
         $schedule->command('debug:missingfiles')->everyFiveMinutes();
     }

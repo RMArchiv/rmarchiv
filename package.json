@@ -14,7 +14,7 @@
     "laravel-elixir-webpack-official": "^1.0.2",
     "lodash": "^4.17.5",
     "vue": "^2.5.13",
-    "vue-resource": "^1.3.6"
+    "vue-resource": "^1.5.0"
   },
   "dependencies": {
     "Tattletale": "^0.1.0",
