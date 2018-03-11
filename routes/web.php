@@ -58,6 +58,7 @@ Route::get('games/{gameid}/screenshot/show/{screenid}/{full?}', 'ScreenshotContr
 Route::get('games/{gameid}/screenshot/create/{screenid}', 'ScreenshotController@create')->name('screenshot.create')->middleware('permission:create-game-screenshots');
 Route::post('games/{gameid}/screenshot/upload/{screenid}', 'ScreenshotController@upload')->name('screenshot.upload')->middleware('permission:create-game-screenshots');
 Route::get('games/index/{orderby?}/{direction?}', 'GameController@index')->name('games.index.sorted');
+Route::get('games/restoregamefile/{gamefileid}', 'GameFileController@restore')->name('gamefiles.restore');
 
 Route::post('gameupload', '\Optimus\FineuploaderServer\Controller\LaravelController@upload')->middleware('permission:create-games');
 Route::delete('gameupload/delete/{uuid}', '\Optimus\FineuploaderServer\Controller\LaravelController@delete')->middleware('permission:create-games');

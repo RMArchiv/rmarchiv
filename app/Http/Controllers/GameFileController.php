@@ -156,6 +156,15 @@ class GameFileController extends Controller
         ]);
     }
 
+    public function restore($gamefileid){
+        $gamefile = GamesFile::whereId($gamefileid)->first();
+        $gamefile->forbidden = 0;
+        $gamefile->reason = '';
+        $gamefile->save();
+
+        return redirect()->back();
+    }
+
     public function update(Request $request, $id, $gamefileid)
     {
         $this->validate($request, [

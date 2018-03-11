@@ -53,8 +53,8 @@
                                     <div class="button-group">
 
                                         @if($gf->forbidden == 1)
-                                            [
-                                            <span class="button" title="{{ $gf->reason }}">{{trans('app.download_deleted')}}</span>]
+                                            [<span class="button" title="{{ $gf->reason }}">{{trans('app.download_deleted')}}</span>] ::
+                                            [<a href="{{ action('GameFileController@restore', $gf->id) }}">Wiederherstellen</a>
                                         @else
                                             [
                                             <a href="{{ url('games/download', $gf->id) }} " class="down_l">{{trans('app.download')}}</a>]
