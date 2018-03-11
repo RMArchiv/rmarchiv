@@ -349,6 +349,8 @@
                                                         <a href="{{ url('games/download', $f->id) }}" class="down_l">
                                                             {{ $f->gamefiletype->title }} - {{ $f->release_version }}
                                                         </a>
+                                                        @else
+                                                            {{ $f->gamefiletype->title }} - {{ $f->release_version }}
                                                         @endif
                                                         ]
                                                         <span class="badge">{{ $f->downloadcount }}</span>

@@ -54,7 +54,9 @@
 
                                         @if($gf->forbidden == 1)
                                             [<span class="button" title="{{ $gf->reason }}">{{trans('app.download_deleted')}}</span>] ::
+                                            @if(Auth::user()->hasRole(['admin', 'owner']))
                                             [<a href="{{ action('GameFileController@restore', $gf->id) }}">Wiederherstellen</a>
+                                            @endif
                                         @else
                                             [
                                             <a href="{{ url('games/download', $gf->id) }} " class="down_l">{{trans('app.download')}}</a>]
