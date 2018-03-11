@@ -17,15 +17,15 @@ return [
      *  Piwik Username and Password
      */
 
-    'username'      => '',
-    'password'      => '',
+    'username'      => 'ryg',
+    'password'      => 'Skymaster2',
 
     /*
      *  Optional API Key (will be used instead of Username and Password)
      *  The bundle works much faster with the API Key, rather than username and password.
      */
 
-    'api_key'       => 'c4dfcb6ba19dae920e2017bb275a4862',
+    'api_key'       => 'd5a5fb7267299f00e13b9878b8e3360e',
 
     /*
      *  Format for API calls to be returned in
