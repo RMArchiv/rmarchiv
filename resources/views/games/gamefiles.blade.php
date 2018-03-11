@@ -67,10 +67,6 @@
                                                 @endif
                                                 :: [
                                                 <a href="{{ route('gamefiles.edit', [$game->id, $gf->id]) }}">{{trans('app.edit')}}</a>]
-                                                @if(Auth::user()->settings->is_admin)
-                                                    :: [
-                                                    <a href="{{ route("gamefiles.delete", [$game->id, $gf->id]) }}">{{trans('app.delete')}}</a>]
-                                                @endif
                                             @endif
                                         @endif
 

@@ -345,8 +345,12 @@
                                                 <li class="list-group-item">
                                                         {{ str_pad($f->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_day, 2, 0, STR_PAD_LEFT) }}
                                                         [
-                                                        <a href="{{ url('games/download', $f->id) }}" class="down_l">{{ $f->gamefiletype->title }}
-                                                            - {{ $f->release_version }}</a>]
+                                                        @if($f->forbidden == 0)
+                                                        <a href="{{ url('games/download', $f->id) }}" class="down_l">
+                                                            {{ $f->gamefiletype->title }} - {{ $f->release_version }}
+                                                        </a>
+                                                        @endif
+                                                        ]
                                                         <span class="badge">{{ $f->downloadcount }}</span>
                                                 </li>
                                             @endforeach
