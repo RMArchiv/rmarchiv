@@ -25,10 +25,9 @@ class TakoController extends Controller
 
         $res = array();
 
-        foreach ($devs->developers() as $dev){
-            $res[] = $dev->name;
-        }
 
-        return $res;
+        foreach ($devs->developers()->get() as $dev){
+            return $dev->developer->name;
+        }
     }
 }
