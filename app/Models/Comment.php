@@ -46,6 +46,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static bool|null restore()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment withoutTrashed()
+ * @property int $deleted
+ * @property string $delete_reason
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereDeleteReason($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereDeleted($value)
  */
 class Comment extends Model
 {
@@ -62,6 +66,8 @@ class Comment extends Model
         'comment_html',
         'vote_up',
         'vote_down',
+        'deleted',
+        'delete_reason',
     ];
 
     protected $dates = ['deleted_at'];

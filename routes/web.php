@@ -134,6 +134,8 @@ Route::group(['prefix' => 'messages', 'middleware' => ['auth']], function () {
 
 //Comment routings
 Route::post('comment', 'CommentController@add')->middleware('permission:create-news-comments|create-game-comments');
+Route::post('comment/delete/{comment_id}', 'CommentController@delete')->middleware('permission:admin-comments');
+Route::post('comment/restore/{comment_id}', 'CommentController@restore')->middleware('permission:admin-comments');
 
 //Logo Voting
 Route::get('logo/vote', 'LogoController@vote_get')->name('logo.vote')->middleware('auth');
@@ -147,7 +149,7 @@ Route::get('submit/logo', 'SubmitController@logo_index')->middleware('auth');
 Route::post('submit/logo', 'SubmitController@logo_add')->middleware('auth');
 
 //Shoutbox Routen
-Route::post('shoutbox', 'ShoutboxController@store')->middleware('permission:create-shoutbox');
+Route::post('shoutbox', 'ShoutboxController@store')->middleware('fion:create-shoutbox');
 Route::get('shoutbox', 'ShoutboxController@index');
 
 //Routen für Forum/Board

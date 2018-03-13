@@ -15,6 +15,24 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 
 class CommentController extends Controller
 {
+    public function delete(Request $request, $comment_id){
+        $c = Comment::whereId($comment_id)->first();
+        $c->deleted = 1;
+        $c->delete_reason = $request->get('reason');
+        $c->save();
+
+        return redirect()->back();
+    }
+
+    public function restore(Request $request, $comment_id){
+        $c = Comment::whereId($comment_id)->first();
+        $c->deleted = 0;
+        $c->delete_reason = '';
+        $c->save();
+
+        return redirect()->back();
+    }
+
     public function add(Request $request)
     {
         $comment = new Comment();

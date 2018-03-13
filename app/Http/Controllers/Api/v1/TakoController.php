@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Models\Game;
 use App\Models\GamesFile;
 use App\Http\Controllers\Controller;
 
@@ -17,5 +18,11 @@ class TakoController extends Controller
         $list = GamesFile::with('gamefiletype', 'game')->get(); //->take(5);
 
         return $list;
+    }
+
+    public function getdevelopers($gameid){
+        $devs = Game::whereId($gameid)->developers()->get();
+
+        return $devs;
     }
 }
