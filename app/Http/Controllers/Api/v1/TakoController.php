@@ -23,6 +23,12 @@ class TakoController extends Controller
     public function getdevelopers($gameid){
         $devs = Game::whereId($gameid)->first();
 
-        return $devs->developers();
+        $res = array();
+
+        foreach ($devs->developers() as $dev){
+            $res[] = $dev->name;
+        }
+
+        return $res;
     }
 }
