@@ -13,7 +13,7 @@
         "laravelcollective/html": "^5.5",
         "graham-campbell/markdown": "^10.0",
         "optimus/fineuploader-server": "^0.2",
-        "gabrielelana/byte-units": "^0.5.0",
+        "gabrielelana/byte-units": "^0.4.0",
         "intervention/image": "^2.4",
         "webuni/commonmark-table-extension": "^0.8.0",
         "zizaco/entrust": "^1.7",
