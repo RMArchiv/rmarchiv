@@ -149,7 +149,7 @@ Route::get('submit/logo', 'SubmitController@logo_index')->middleware('auth');
 Route::post('submit/logo', 'SubmitController@logo_add')->middleware('auth');
 
 //Shoutbox Routen
-Route::post('shoutbox', 'ShoutboxController@store')->middleware('fion:create-shoutbox');
+Route::post('shoutbox', 'ShoutboxController@store')->middleware('permission:create-shoutbox');
 Route::get('shoutbox', 'ShoutboxController@index');
 
 //Routen für Forum/Board
