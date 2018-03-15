@@ -14,7 +14,7 @@
                         <p class="card-text">
                             Herzlichen Glückwunsch. Du hast eine Seite gefunden, die einen internen Serverfehler verursacht hat.
                         </p>
-                        {!! isset($exception)? ($exception->getMessage()?$exception->getMessage():$default_error_message): $default_error_message !!}
+                        {!! isset($exception)? ($exception->getMessage()?$exception->getMessage():''): '' !!}
                     </div>
                     <div class="card-footer">
                         <a href="{{ URL::previous() }}" class="btn btn-default">Back</a>
