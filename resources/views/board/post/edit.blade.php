@@ -38,6 +38,8 @@
                                                 <input type="text" class="form-control" id="title" name="title" value="{{ $post->thread->title }}">
                                             </div>
                                         </div>
+                                    @else
+                                        <input type="hidden" name="title" value="{{ $post->thread->title }}">
                                     @endif
 
                                     <input type="hidden" name="thread_id" id="thread_id" value="{{ $post->thread_id }}">
