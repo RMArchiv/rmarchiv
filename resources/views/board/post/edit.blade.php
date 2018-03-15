@@ -2,8 +2,8 @@
 @section('pagetitle', trans('app.edit_post'))
 @section('content')
     <div class="container">
-        <div class="col-md-12">
-            <div class="row">
+        <div class="row">
+            <div class="col-md-12">
                 <div class="page-header">
                     <h1>{{ trans('app.edit_post') }}</h1>
                     {!! Breadcrumbs::render('post.edit', \App\Models\BoardCat::whereId($post->cat_id)->first(), $post) !!}
@@ -13,8 +13,8 @@
 
         @if(Auth::check())
             @if(Auth::user()->id == $post->user_id or Auth::user()->can('mod-threads'))
-                <div class="col-md-12">
-                    <div class="row">
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
                                 <form action="{{ route('board.post.update', [$post->thread_id, $post->id]) }}" method="post" enctype="multipart/form-data">
