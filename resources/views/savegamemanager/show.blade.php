@@ -36,9 +36,9 @@
                             <li class="media">
                                 <div class="media-body active">
                                     <div class="media">
-                                    <span class="float-left">
-                                        <span class="facei face_{{ $s['data'][100]['char1_face']['img_idx']+1 }} mb-3" style="background-image: url({{ $s['data'][100]['char1_face']['url'] }})">faceset</span>
-                                    </span>
+                                        <div class="float-left">
+                                            <span class="facei face_{{ $s['data'][100]['char1_face']['img_idx']+1 }} mb-3" style="background-image: url({{ $s['data'][100]['char1_face']['url'] }})">faceset</span>
+                                        </div>
                                         <div class="btn-group float-right img-rounded" role="group">
                                             <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target=".savegame-delete-{{ $s['id'] }}">{{ trans('app.delete') }}</button>
                                             <a href="{{ action('SavegameManagerController@download', $s['id']) }}" class="btn btn-secondary btn-sm">{{ trans('app.download') }}</a>
