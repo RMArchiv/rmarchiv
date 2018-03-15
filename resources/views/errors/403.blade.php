@@ -14,6 +14,7 @@
                         <p class="card-text">
                             Herzlichen Glückwunsch. Du hast eine Seite gefunden, für die du keine Berechtigung hast.
                         </p>
+                        {!! isset($exception)? ($exception->getMessage()?$exception->getMessage():$default_error_message): $default_error_message !!}
                     </div>
                     <div class="card-footer">
                         <a href="{{ URL::previous() }}" class="btn btn-default">Back</a>
