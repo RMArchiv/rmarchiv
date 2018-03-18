@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class SetLocaleMiddleware
 {
@@ -18,14 +19,11 @@ class SetLocaleMiddleware
         if(\Auth::check()){
             if(\Auth::user()->settings->language == ''){
                 \App::setLocale('de');
-                echo 'AuthNoSett'.\App::getLocale();
             }else{
                 \App::setLocale(\Auth::user()->settings->language);
-                echo 'AuthFromSet'.\App::getLocale();
             }
         }else{
             \App::setLocale('de');
-            echo 'Noauth'.\App::getLocale();
         }
 
         return $next($request);
