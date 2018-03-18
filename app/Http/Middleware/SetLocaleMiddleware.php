@@ -23,7 +23,7 @@ class SetLocaleMiddleware
                 if(array_search($userLangs, config('translator.available_locales'))){
                     \App::setLocale($userLangs);
                 }else{
-                    \App::setLocale('de');
+                    \App::setLocale('en');
                 }
             }else{
                 \App::setLocale(\Auth::user()->settings->language);
@@ -32,7 +32,7 @@ class SetLocaleMiddleware
             if(array_search($userLangs, config('translator.available_locales'))){
                 \App::setLocale($userLangs);
             }else{
-                \App::setLocale('de');
+                \App::setLocale('en');
             }
         }
 
