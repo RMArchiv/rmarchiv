@@ -7,7 +7,7 @@
                     <a href='{{ url('users' , $shout->user->id) }}' class='usera' title="{{ $shout->user->name }}">
                         <img width="16px" src='//{{ config('app.avatar_path') }}?gender=male&id={{ $shout->user->id  }}' alt="{{ $shout->user->name }}" class='avatar' /> {{ $shout->user->name }}
                     </a> :: <time datetime='{{ $shout->created_at }}' title='{{ $shout->created_at }}'>{{ \Carbon\Carbon::parse($shout->created_at)->diffForHumans() }}</time>
-                    {!! $shout->shout_html !!}
+                    {!! \App\Helpers\InlineBoxHelper::TextColor($shout->shout_html) !!}
                 </li>
             @endforeach
             <li class="list-group-item active clearfix">
