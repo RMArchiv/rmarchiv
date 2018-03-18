@@ -80,4 +80,12 @@ class UserSettingsController extends Controller
 
         return redirect()->action('UserSettingsController@index');
     }
+
+    public function change_language(Request $request){
+        $l = UserSetting::whereUserId(\Auth::id())->first();
+        $l->language = $request->get('language');
+        $l->save();
+
+        return redirect()->back();
+    }
 }

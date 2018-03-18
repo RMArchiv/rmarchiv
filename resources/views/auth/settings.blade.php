@@ -38,6 +38,36 @@
         </div>
         <div class="row">
             <div class="col-md-12 mb-3">
+                {!! Form::open(['action' => ['UserSettingsController@change_language']]) !!}
+                <div class="card">
+                    <div class="card-header">
+                        {{ trans('app.language') }}
+                    </div>
+                    <div class="card-body">
+                        <div class='form-group'>
+                            <label class="col-lg-2 col-form-label" for='language'>{{trans('app.language')}} *</label>
+                            <div class="col-lg-10">
+                                <select name='language' id='language' class="form-control">
+                                    <option @if(Auth::user()->settings->language == 'de') selected="selected" @endif value="de">deutsch</option>
+                                    <option @if(Auth::user()->settings->language == 'en') selected="selected" @endif value="en">english</option>
+                                    <option @if(Auth::user()->settings->language == 'es') selected="selected" @endif value="es">español</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="pull-right">
+                            <input class="btn btn-primary" type="submit" id="submit" value="{{ trans('app.submit') }}">
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                {{ Form::close() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-3">
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.indexpage_widget_settings') }}
