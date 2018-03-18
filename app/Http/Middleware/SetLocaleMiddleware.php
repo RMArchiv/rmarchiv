@@ -18,14 +18,16 @@ class SetLocaleMiddleware
         if(\Auth::check()){
             if(\Auth::user()->settings->language == ''){
                 \App::setLocale('de');
+                echo \App::getLocale();
             }else{
                 \App::setLocale(\Auth::user()->settings->language);
+                echo \App::getLocale();
             }
         }else{
             \App::setLocale('de');
+            echo \App::getLocale();
         }
 
-        //dd(\App::getLocale());
         return $next($request);
     }
 }
