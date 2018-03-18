@@ -33,7 +33,9 @@ class InlineBoxHelper
     }
 
     public static function TextColor($htmlcontent){
-        $htmlcontent = preg_replace('/\[color\=(.*?)\](.*?)\[\/color\]/', '<span style="color: $1;">$2<span>',$htmlcontent);
+        $htmlcontent = preg_replace('/\[color\=(.*?)\](.*?)\[\/color\]/', '<span style="color: $1;">$2</span>',$htmlcontent);
+
+
 
         return $htmlcontent;
     }
