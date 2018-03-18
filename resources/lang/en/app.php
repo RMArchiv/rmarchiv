@@ -96,12 +96,6 @@ return array(
   'comment_rule_3' => 'Stay on topic.',
   'comment_rule_4' => 'Don´t disturbe admins and mods.',
   'comment_rules' => 'Comment rules',
-  'comments' => array(
-    'tip1' => 'TODO: tip1',
-    'tip2' => 'TODO: tip2',
-    'tip3' => 'TODO: tip3',
-    'tip4' => 'TODO: tip4',
-  ),
   'comments_per_month' => 'Comments per month',
   'connections' => 'Connections',
   'contact_admin_or_moderator' => 'Please contact a administrator or moderator',
@@ -251,15 +245,6 @@ return array(
   'new_password_confirm' => 'Password confirmation',
   'new_username' => 'New Username',
   'newest_user' => 'Newest User',
-  'news' => array(
-    'popularity_helper' => array(
-      'msg' => 'TODO: msg',
-      'title' => 'TODO: title',
-    ),
-    'show' => array(
-      'delete' => 'TODO: delete',
-    ),
-  ),
   'news_category' => 'News Category',
   'news_not_published' => 'Noews not published',
   'news_title' => 'News Title',
