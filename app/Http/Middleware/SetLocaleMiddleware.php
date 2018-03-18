@@ -16,14 +16,24 @@ class SetLocaleMiddleware
      */
     public function handle($request, Closure $next)
     {
+        $userLangs = preg_split('/,|;/', $request->server('HTTP_ACCEPT_LANGUAGE'));
+
         if(Auth::check()){
             if(Auth::user()->settings->language == ''){
-                \App::setLocale('de');
+                if(array_search($userLangs, config('translator.available_locales'))){
+                    \App::setLocale($userLangs);
+                }else{
+                    \App::setLocale('de');
+                }
             }else{
                 \App::setLocale(\Auth::user()->settings->language);
             }
         }else{
-            \App::setLocale('de');
+            if(array_search($userLangs, config('translator.available_locales'))){
+                \App::setLocale($userLangs);
+            }else{
+                \App::setLocale('de');
+            }
         }
 
         return $next($request);
