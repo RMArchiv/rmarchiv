@@ -27,6 +27,14 @@ class InlineBoxHelper
             }
         }
 
+        $htmlcontent = self::TextColor($htmlcontent);
+
+        return $htmlcontent;
+    }
+
+    public static function TextColor($htmlcontent){
+        $htmlcontent = preg_replace('/\[color\=(.*?)\](.*?)\[\/color\]/', '<span style="color: $1;">$2<span>',$htmlcontent);
+
         return $htmlcontent;
     }
 }
