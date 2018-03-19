@@ -15,7 +15,11 @@ class UserSettingsController extends Controller
 {
     public function index()
     {
-        return view('auth.settings');
+        $settings = UserSetting::whereUserId(\Auth::user()->id)->first();
+
+        return view('auth.settings', [
+            'settings' => $settings,
+        ]);
     }
 
     public function store_rowsPerPage(Request $req)

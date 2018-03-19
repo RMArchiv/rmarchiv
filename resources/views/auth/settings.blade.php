@@ -85,7 +85,7 @@
                             <div class="col-lg-10">
                                 <div class="form-group">
                                     <label for="download_template">Download template: </label>
-                                    <input name="download_template" id="download_template" type="text" value=""/>
+                                    <input name="download_template" id="download_template" type="text" value="{{ $settings->download_template }}"/>
                                     <small id="download_templateHelp" class="form-text text-muted">
                                         Possible Strings:<br>
                                         {title} - Gametitle<br>
