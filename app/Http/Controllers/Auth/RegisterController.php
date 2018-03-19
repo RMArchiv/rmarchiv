@@ -8,11 +8,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Events\Obyx;
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserSetting;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {

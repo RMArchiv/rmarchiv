@@ -7,9 +7,9 @@
 
 namespace App\Http\Controllers\Api\v2;
 
-use App\Http\Controllers\Controller;
 use App\Models\Game;
 use Dingo\Api\Routing\Helpers;
+use App\Http\Controllers\Controller;
 
 class GamesController extends Controller
 {

@@ -7,8 +7,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Game;
 use App\Models\Tag;
+use App\Models\Game;
 use App\Models\TagRelation;
 use Illuminate\Http\Request;
 

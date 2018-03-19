@@ -9,8 +9,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserObyx;
-use App\Models\UserOnline;
 use App\Models\UserRole;
+use App\Models\UserOnline;
 use Illuminate\Http\Request;
 
 class UserController extends Controller

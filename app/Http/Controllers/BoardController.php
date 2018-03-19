@@ -7,17 +7,17 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Events\Obyx;
-use App\Helpers\DatabaseHelper;
 use App\Models\BoardCat;
 use App\Models\BoardPoll;
-use App\Models\BoardPollAnswer;
-use App\Models\BoardPollVote;
 use App\Models\BoardPost;
 use App\Models\BoardThread;
-use Carbon\Carbon;
-use Cmgmyr\Messenger\Models\Thread;
 use Illuminate\Http\Request;
+use App\Models\BoardPollVote;
+use App\Helpers\DatabaseHelper;
+use App\Models\BoardPollAnswer;
+use Cmgmyr\Messenger\Models\Thread;
 use Illuminate\Support\Facades\Input;
 
 class BoardController extends Controller
@@ -129,7 +129,7 @@ class BoardController extends Controller
 
         DatabaseHelper::setThreadViewDate($threadid);
 
-        if (!Input::get('page')) {
+        if (! Input::get('page')) {
             return redirect('board/thread/'.$threadid.'?page='.$posts->lastPage());
         } else {
             return view('board.threads.show', [

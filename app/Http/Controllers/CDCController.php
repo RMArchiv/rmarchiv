@@ -7,10 +7,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Game;
-use App\Models\GamesCoupdecoeur;
 use Carbon\Carbon;
+use App\Models\Game;
 use Illuminate\Http\Request;
+use App\Models\GamesCoupdecoeur;
 
 class CDCController extends Controller
 {

@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Developer;
-use App\Models\GamesDeveloper;
-use App\Models\GamesFile;
 use Carbon\Carbon;
+use App\Models\Developer;
+use App\Models\GamesFile;
+use App\Models\GamesDeveloper;
 use Illuminate\Console\Command;
 
 class GetMissingGameFilesCommand extends Command
@@ -55,7 +55,7 @@ class GetMissingGameFilesCommand extends Command
 
         foreach ($gf as $g) {
             $filepath = storage_path('app/public/'.$g->filename);
-            if (!file_exists($filepath)) {
+            if (! file_exists($filepath)) {
                 $i += 1;
                 $dev = GamesDeveloper::whereGameId($g->id)->first();
                 $content .= $i.' - '.$g->game->title.' - '.$g->game->subtitle.' - '.$g->game_id.' - '.$g->game->maker->short.' - '.$g->filename.' - '.$g->release_version.' - '.$g->user->name.PHP_EOL;

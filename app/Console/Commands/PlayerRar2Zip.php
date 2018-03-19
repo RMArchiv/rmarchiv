@@ -50,7 +50,7 @@ class PlayerRar2Zip extends Command
 
         foreach ($files as $f) {
             //Check for maker engine 2=rm2k, 3=rm2k3, 9=rm2k3 Steam Edition
-            if (!array_search($f->game->maker_id, [2, 3, 9]) === false) {
+            if (! array_search($f->game->maker_id, [2, 3, 9]) === false) {
                 echo "Gamefile: $f->filename";
 
                 //prepare the path variables
@@ -112,12 +112,12 @@ class PlayerRar2Zip extends Command
 
     public function Zip($source, $destination)
     {
-        if (!extension_loaded('zip') || !file_exists($source)) {
+        if (! extension_loaded('zip') || ! file_exists($source)) {
             return false;
         }
 
         $zip = new \ZipArchive();
-        if (!$zip->open($destination, \ZIPARCHIVE::CREATE)) {
+        if (! $zip->open($destination, \ZIPARCHIVE::CREATE)) {
             return false;
         }
 

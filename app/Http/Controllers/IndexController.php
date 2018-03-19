@@ -7,15 +7,15 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Game;
+use App\Models\News;
+use App\Models\User;
+use App\Models\Comment;
+use App\Models\Shoutbox;
 use App\Helpers\MiscHelper;
 use App\Models\BoardThread;
-use App\Models\Comment;
-use App\Models\Game;
 use App\Models\GamesCoupdecoeur;
-use App\Models\News;
-use App\Models\Shoutbox;
-use App\Models\User;
-use Carbon\Carbon;
 
 class IndexController extends Controller
 {
