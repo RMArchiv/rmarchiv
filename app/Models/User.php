@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Cmgmyr\Messenger\Traits\Messagable;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Cog\Contracts\Ban\Bannable as BannableContract;
@@ -48,8 +49,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cmgmyr\Messenger\Models\Thread[] $threads
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserList[] $userlists
  */
-
-use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNotification;
 
 /**
  * App\Models\User.
@@ -101,6 +100,7 @@ class User extends Authenticatable implements BannableContract
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
     use Bannable;
+    use CanResetPassword;
 
     /**
      * The attributes that are mass assignable.
