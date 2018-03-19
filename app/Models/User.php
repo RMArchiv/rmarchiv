@@ -128,18 +128,6 @@ class User extends Authenticatable implements BannableContract
         parent::boot();
     }
 
-    /**
-     * Send the password reset notification.
-     *
-     * @param string $token
-     *
-     * @return void
-     */
-    public function sendPasswordResetNotification($token)
-    {
-        $this->notify(new ResetPasswordNotification($token));
-    }
-
     public function games()
     {
         return $this->hasMany('App\Models\Game', 'user_id', 'id');
