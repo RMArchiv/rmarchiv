@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Helpers\SearchFilterHelper;
 use Illuminate\Console\Command;
+use App\Helpers\SearchFilterHelper;
 
 class TestSearch extends Command
 {

@@ -7,8 +7,8 @@
 
 namespace App\Console\Commands;
 
-use App\Helpers\DatabaseHelper;
 use App\Models\Game;
+use App\Helpers\DatabaseHelper;
 use Illuminate\Console\Command;
 
 class setReldate extends Command

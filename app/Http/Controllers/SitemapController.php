@@ -7,12 +7,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BoardThread;
-use App\Models\Developer;
+use Sitemap;
 use App\Models\Game;
 use App\Models\News;
 use App\Models\User;
-use Sitemap;
+use App\Models\Developer;
+use App\Models\BoardThread;
 
 class SitemapController extends Controller
 {

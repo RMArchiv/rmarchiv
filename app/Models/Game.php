@@ -7,10 +7,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
-use Spatie\Activitylog\Traits\LogsActivity;
+use Illuminate\Database\Eloquent\Model;
 use Waavi\Translation\Traits\Translatable;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Game.

@@ -7,9 +7,9 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Events\Obyx;
 use App\Models\Shoutbox;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ShoutboxController extends Controller

@@ -7,8 +7,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\GamesSavegame;
 use Illuminate\Http\Request;
+use App\Models\GamesSavegame;
 
 class SavegameController extends Controller
 {
@@ -52,7 +52,7 @@ class SavegameController extends Controller
                 ])
                 ->first();
 
-            if (!$save) {
+            if (! $save) {
                 $s = new GamesSavegame();
                 $s->save_data = $value;
                 $s->slot_id = $key;

@@ -7,13 +7,13 @@
 
 namespace App\Models;
 
-use Cmgmyr\Messenger\Traits\Messagable;
-use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Cmgmyr\Messenger\Traits\Messagable;
 use Illuminate\Notifications\Notifiable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Cog\Contracts\Ban\Bannable as BannableContract;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /*
  * App\User

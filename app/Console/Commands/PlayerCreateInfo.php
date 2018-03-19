@@ -83,13 +83,13 @@ class PlayerCreateInfo extends Command
                 for ($i = 0; $i < $zip->numFiles; $i++) {
                     $filename = $zip->getNameIndex($i);
 
-                    if (!ends_with($filename, '/') and !starts_with($filename, '_MACOSX')) {
+                    if (! ends_with($filename, '/') and ! starts_with($filename, '_MACOSX')) {
                         $imp = $this->search_for_base_path($filename);
 
-                        if (!$imp == '') {
+                        if (! $imp == '') {
                             $pl = new PlayerIndexjson();
                             $pl->gamefile_id = $toindex->id;
-                            if (!ends_with(strtolower($imp), ['.exe', '.lmu', '.ldb', 'ini', '.dll', 'lmt', 'lsd'])) {
+                            if (! ends_with(strtolower($imp), ['.exe', '.lmu', '.ldb', 'ini', '.dll', 'lmt', 'lsd'])) {
                                 $pl->key = preg_replace('/(\.\w+$)/', '', strtolower($imp));
                             } else {
                                 $pl->key = strtolower($imp);

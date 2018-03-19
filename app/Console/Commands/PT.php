@@ -7,11 +7,11 @@
 
 namespace App\Console\Commands;
 
-use App\Helpers\PlayerHelper;
 use App\Models\GamesFile;
-use App\Models\PlayerFileGamefileRel;
+use App\Helpers\PlayerHelper;
 use App\Models\PlayerFileHash;
 use Illuminate\Console\Command;
+use App\Models\PlayerFileGamefileRel;
 
 class PT extends Command
 {
@@ -78,18 +78,18 @@ class PT extends Command
                         $filename = $zip->getNameIndex($i);
 
                         //Filter Directory and _MACOSX from index
-                        if (!ends_with($filename, '/') and !starts_with($filename, '_MACOSX')) {
+                        if (! ends_with($filename, '/') and ! starts_with($filename, '_MACOSX')) {
 
                             //Get root path of the file
                             $phelper = new PlayerHelper();
                             $imp = $phelper->getZipRootPath($filename);
 
                             //if root path not ''
-                            if (!$imp == '') {
+                            if (! $imp == '') {
                                 $rel = new PlayerFileGamefileRel();
                                 $rel->gamefile_id = $gamefile->id;
 
-                                if (!ends_with(strtolower($imp), ['.exe', '.lmu', '.ldb', 'ini', '.dll', 'lmt', 'lsd'])) {
+                                if (! ends_with(strtolower($imp), ['.exe', '.lmu', '.ldb', 'ini', '.dll', 'lmt', 'lsd'])) {
                                     $rel->orig_filename = preg_replace('/(\.\w+$)/', '', strtolower($imp));
                                 } else {
                                     $rel->orig_filename = strtolower($imp);
@@ -104,7 +104,7 @@ class PT extends Command
                                 $newfilepath = storage_path('app/public/games_hashed/'.substr($filehash, 0, 2).'/');
 
                                 //check for directory existance
-                                if (!file_exists($newfilepath)) {
+                                if (! file_exists($newfilepath)) {
                                     mkdir($newfilepath);
                                 }
 
@@ -113,7 +113,7 @@ class PT extends Command
 
                                 //check for Database existance of this file
                                 $check = PlayerFileHash::whereFilehash($filehash)->first();
-                                if (!$check) {
+                                if (! $check) {
                                     //create a new record to player_file_hash table
                                     $pfh = new PlayerFileHash();
                                     $pfh->filehash = $filehash;

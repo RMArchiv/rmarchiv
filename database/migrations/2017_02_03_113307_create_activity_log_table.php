@@ -5,8 +5,8 @@
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateActivityLogTable extends Migration
 {

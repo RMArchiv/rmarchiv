@@ -9,8 +9,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\EventSetting;
-use App\Models\EventUserRegistered;
 use Illuminate\Http\Request;
+use App\Models\EventUserRegistered;
 use Illuminate\Support\Facades\Input;
 
 class EventController extends Controller

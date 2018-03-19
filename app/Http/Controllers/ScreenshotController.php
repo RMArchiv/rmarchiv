@@ -29,7 +29,7 @@ class ScreenshotController extends Controller
         }
 
         $img = \Image::make($storagePath);
-        if (!$full) {
+        if (! $full) {
             $response = \Response::make($img->encode('jpg', 80));
             $response->header('Content-Type', 'image/jpg');
         } else {
