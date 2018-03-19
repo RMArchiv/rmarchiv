@@ -17,27 +17,21 @@ class SetLocaleMiddleware
     public function handle($request, Closure $next)
     {
         $userLangs = strtolower(substr(explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE'])[0],0,2));
-
         if(Auth::check()){
             if(Auth::user()->settings->language == ''){
-                if(array_search($userLangs, ['de', 'en', 'es'])){
+                if(array_search($userLangs, ['de', 'en', 'es']) !== false){
                     \App::setLocale($userLangs);
-                    echo 'AUTHBROWSER'.\App::getLocale();
                 }else{
                     \App::setLocale('en');
-                    echo 'AUTHDEFAULT'.\App::getLocale();
                 }
             }else{
                 \App::setLocale(\Auth::user()->settings->language);
-                echo 'AUTHDB'.\App::getLocale();
             }
         }else{
-            if(array_search($userLangs, ['de', 'en', 'es'])){
+            if(array_search($userLangs, ['de', 'en', 'es']) !== false){
                 \App::setLocale($userLangs);
-                echo 'NOAUTHBROWSER'.\App::getLocale();
             }else{
                 \App::setLocale('en');
-                echo 'NOAUTHDEFAULT'.\App::getLocale();
             }
         }
 
