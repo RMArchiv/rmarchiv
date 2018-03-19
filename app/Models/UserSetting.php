@@ -67,6 +67,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property string $language
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserSetting whereLanguage($value)
+ * @property string $download_template
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserSetting whereDownloadTemplate($value)
  */
 class UserSetting extends Model
 {
@@ -96,6 +98,7 @@ class UserSetting extends Model
         'disable_widget_obyx',
         'disable_widget_comments',
         'language',
+        'download_template',
     ];
 
     protected $guarded = [];

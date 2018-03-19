@@ -34,6 +34,7 @@ Route::get('user_settings/change/{setting}/{value}', 'UserSettingsController@cha
 Route::post('user_settings/rowsperpage', 'UserSettingsController@store_rowsPerPage')->middleware('auth');
 Route::post('user_settings/change_username', 'UserSettingsController@change_username')->middleware('auth');
 Route::post('user_settings/change_language', 'UserSettingsController@change_language')->middleware('auth');
+Route::post('user_Settings/change_download_template', 'UserSettingsController@change_download_template')->middleware('auth');
 
 //News Routen
 Route::resource('news', 'NewsController');

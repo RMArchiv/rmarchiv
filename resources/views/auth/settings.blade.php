@@ -66,6 +66,45 @@
                 {{ Form::close() }}
             </div>
         </div>
+        <div class="col-md-12 mb-3">
+            {!! Form::open(['action' => ['UserSettingsController@change_download_template']]) !!}
+            <div class="card">
+                <div class="card-header">
+                    Download file template
+                </div>
+                <div class="card-body">
+                    <div class='form-group'>
+                        <div class="col-lg-10">
+                            <div class="form-group">
+                                <label for="download_template">Download template</label>
+                                <input name="download_template" id="download_template" type="text" value=""/>
+                                <small id="download_templateHelp" class="form-text text-muted">
+                                    Possible Strings:<br>
+                                    {title} - Gametitle<br>
+                                    {subtitle} - Game Subtitle<br>
+                                    {reltype} - Demo/Fullversion<br>
+                                    {relversion} - Version Number<br>
+                                    {relday} - Release Day<br>
+                                    {relmonth} - Month<br>
+                                    {relyear} - Year<br>
+                                    {ext} - Fileextension<br>
+                                    <br>
+                                    Example: {title} - {subtitle} [{reltype} {relversion} - {relyear}-{relmonth}-{relday}.{ext}]
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="pull-right">
+                        <input class="btn btn-primary" type="submit" id="submit" value="{{ trans('app.submit') }}">
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            {{ Form::close() }}
+        </div>
+    </div>
         <div class="row">
             <div class="col-md-12 mb-3">
                 <div class="card">

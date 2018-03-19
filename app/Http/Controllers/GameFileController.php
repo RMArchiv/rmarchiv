@@ -61,6 +61,25 @@ class GameFileController extends Controller
         $newfilename = $g->gametitle.' - '.$g->gamesubtitle.' ['.$g->filetype.'-'.$g->fileversion.']-'.str_pad($g->fileyear, 2, 0, STR_PAD_LEFT)
             .'-'.str_pad($g->filemonth, 2, 0, STR_PAD_LEFT).'-'.str_pad($g->fileday, 2, 0, STR_PAD_LEFT).'.'.$g->fileextension;
 
+
+        if(\Auth::check()){
+            //Check for existing download Template
+            if(\Auth::user()->settings->download_template != '') {
+
+                //Replace all stuff for download template
+                $t = \Auth::user()->settings->download_template;
+                $t = str_replace('{title}', $g->gametitle, $t);
+                $t = str_replace('{subtitle}', $g->gamesubtitle, $t);
+                $t = str_replace('{reltype}', $g->filetype, $t);
+                $t = str_replace('{relversion}', $g->fileversion, $t);
+                $t = str_replace('{relyear}', str_pad($g->fileyear, 2, 0, STR_PAD_LEFT), $t);
+                $t = str_replace('{relmonth}', str_pad($g->filemonth, 2, 0, STR_PAD_LEFT), $t);
+                $t = str_replace('{relday}', str_pad($g->fileday, 2, 0, STR_PAD_LEFT), $t);
+                $t = str_replace('{ext}', $g->fileextension, $t);
+                $newfilename = $t;
+            }
+        }
+
         return response()->download($filepath, $newfilename);
     }
 

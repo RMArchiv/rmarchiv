@@ -88,4 +88,12 @@ class UserSettingsController extends Controller
 
         return redirect()->back();
     }
+
+    public function change_download_template(Request $request){
+        $l = UserSetting::whereUserId(\Auth::id())->first();
+        $l->download_template = $request->get('download_template');
+        $l->save();
+
+        return redirect()->back();
+    }
 }
