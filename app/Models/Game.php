@@ -7,10 +7,10 @@
 
 namespace App\Models;
 
-use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
-use Waavi\Translation\Traits\Translatable;
+use Laravel\Scout\Searchable;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Waavi\Translation\Traits\Translatable;
 
 /**
  * Class Game.
@@ -30,6 +30,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property int $atelier_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereSubtitle($value)
@@ -45,6 +46,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Maker $maker
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesDeveloper[] $developer
@@ -55,27 +57,37 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property-read \App\Models\Language $language
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesFile[] $gamefiles
  * @property string $youtube
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereYoutube($value)
+ *
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TagRelation[] $tags
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserCredit[] $credits
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesAward[] $awards
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activity
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesCoupdecoeur[] $cdcs
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereAtelierId($value)
+ *
  * @property int $release_type
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereReleaseType($value)
+ *
  * @property int $voteup
  * @property int $votedown
  * @property string $avg
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereAvg($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereComments($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereVotedown($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereVoteup($value)
+ *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property string $desc_md_translation
  * @property int $license_id
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Game whereDescMdTranslation($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Game whereLicenseId($value)
+ *
  * @property-read \App\Models\License $license
  */
 class Game extends Model
@@ -209,8 +221,8 @@ class Game extends Model
     public function toSearchableArray()
     {
         return [
-            'id' => $this->id,
-            'title' => $this->title,
+            'id'       => $this->id,
+            'title'    => $this->title,
             'subtitle' => $this->subtitle,
         ];
     }

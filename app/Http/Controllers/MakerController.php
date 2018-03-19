@@ -18,8 +18,8 @@ class MakerController extends Controller
             ->paginate(25);
 
         return view('maker.index', [
-            'makers' => $makers,
-            'orderby' => $orderby,
+            'makers'    => $makers,
+            'orderby'   => $orderby,
             'direction' => $direction,
         ]);
     }
@@ -33,11 +33,11 @@ class MakerController extends Controller
         $maker = Maker::whereId($makerid)->first();
 
         return view('maker.show', [
-            'games' => $games,
-            'maker' => $maker,
-            'orderby' => $orderby,
+            'games'     => $games,
+            'maker'     => $maker,
+            'orderby'   => $orderby,
             'direction' => $direction,
-            'id' => $makerid,
+            'id'        => $makerid,
         ]);
     }
 }

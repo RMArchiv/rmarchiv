@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Easyticket
+ * Class Easyticket.
  *
  * @property int $id
  * @property int $gamefile_id
@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $known_patches
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Easyticket whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Easyticket whereGamefileId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Easyticket whereId($value)
@@ -39,10 +40,8 @@ class Easyticket extends Model
         'savegame_id',
         'userreport',
         'player_version',
-        'known_patches'
+        'known_patches',
     ];
 
     protected $guarded = [];
-
-        
 }

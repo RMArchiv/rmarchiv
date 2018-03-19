@@ -13,7 +13,9 @@ class MiscHelper
 {
     /**
      * Get the hash of the current git HEAD.
+     *
      * @param string $branch The git branch to check
+     *
      * @return mixed Either the hash or a boolean false
      */
     public static function get_current_git_commit($branch = 'master')
@@ -31,9 +33,9 @@ class MiscHelper
     public static function sendTelegram($content)
     {
         \Telegram::sendMessage([
-            'chat_id' => 51419661,
-            'text' => $content,
-            'parse_mode' => 'markdown',
+            'chat_id'                  => 51419661,
+            'text'                     => $content,
+            'parse_mode'               => 'markdown',
             'disable_web_page_preview' => true,
         ]);
     }
@@ -43,15 +45,15 @@ class MiscHelper
         $difference = [];
         foreach ($array1 as $key => $value) {
             if (is_array($value)) {
-                if (! isset($array2[$key]) || ! is_array($array2[$key])) {
+                if (!isset($array2[$key]) || !is_array($array2[$key])) {
                     $difference[$key] = $value;
                 } else {
                     $new_diff = self::array_diff_assoc_recursive($value, $array2[$key]);
-                    if (! empty($new_diff)) {
+                    if (!empty($new_diff)) {
                         $difference[$key] = $new_diff;
                     }
                 }
-            } elseif (! array_key_exists($key, $array2) || $array2[$key] !== $value) {
+            } elseif (!array_key_exists($key, $array2) || $array2[$key] !== $value) {
                 $difference[$key] = $value;
             }
         }

@@ -7,9 +7,9 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\AwardCat;
 use App\Models\AwardSubcat;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AwardController extends Controller
@@ -56,7 +56,7 @@ class AwardController extends Controller
             ->get();
 
         return view('awards.create', [
-            'pages' => $pages,
+            'pages'  => $pages,
             'awards' => $awards,
         ]);
     }
@@ -69,15 +69,15 @@ class AwardController extends Controller
 
         return view('awards.gameadd', [
             'subcatid' => $subcatid,
-            'award' => $award,
+            'award'    => $award,
         ]);
     }
 
     public function gameadd_store(Request $request)
     {
         $this->validate($request, [
-            'game' => 'required|numeric',
-            'place' => 'required|numeric',
+            'game'     => 'required|numeric',
+            'place'    => 'required|numeric',
             'subcatid' => 'required|numeric',
         ]);
 
@@ -94,14 +94,14 @@ class AwardController extends Controller
 
         if ($check->count() == 0) {
             \DB::table('games_awards')->insert([
-                'game_id' => $request->get('game'),
-                'developer_id' => 0,
-                'award_cat_id' => $subcat->cat_id,
-                'award_page_id' => $subcat->page_id,
-                'user_id' => \Auth::id(),
-                'created_at' => Carbon::now(),
-                'place' => $request->get('place'),
-                'description' => $request->get('desc'),
+                'game_id'         => $request->get('game'),
+                'developer_id'    => 0,
+                'award_cat_id'    => $subcat->cat_id,
+                'award_page_id'   => $subcat->page_id,
+                'user_id'         => \Auth::id(),
+                'created_at'      => Carbon::now(),
+                'place'           => $request->get('place'),
+                'description'     => $request->get('desc'),
                 'award_subcat_id' => $request->get('subcatid'),
             ]);
         }
@@ -121,10 +121,10 @@ class AwardController extends Controller
 
         if ($check->count() == 0) {
             \DB::table('award_pages')->insert([
-                'title' => $request->get('awardpage'),
+                'title'       => $request->get('awardpage'),
                 'website_url' => $request->get('awardpageurl'),
-                'user_id' => \Auth::id(),
-                'created_at' => Carbon::now(),
+                'user_id'     => \Auth::id(),
+                'created_at'  => Carbon::now(),
             ]);
         }
 
@@ -134,8 +134,8 @@ class AwardController extends Controller
     public function store_cat(Request $request)
     {
         $this->validate($request, [
-            'awardpage' => 'required|not_in:0',
-            'awardname' => 'required',
+            'awardpage'      => 'required|not_in:0',
+            'awardname'      => 'required',
             'awarddate_year' => 'required|not_in:0',
         ]);
 
@@ -148,12 +148,12 @@ class AwardController extends Controller
 
         if ($check->count() == 0) {
             \DB::table('award_cats')->insert([
-                'title' => $request->get('awardname'),
+                'title'         => $request->get('awardname'),
                 'award_page_id' => $request->get('awardpage'),
-                'year' => $request->get('awarddate_year'),
-                'month' => $request->get('awarddate_month'),
-                'user_id' => \Auth::id(),
-                'created_at' => Carbon::now(),
+                'year'          => $request->get('awarddate_year'),
+                'month'         => $request->get('awarddate_month'),
+                'user_id'       => \Auth::id(),
+                'created_at'    => Carbon::now(),
             ]);
         }
 
@@ -163,7 +163,7 @@ class AwardController extends Controller
     public function store_subcat(Request $request)
     {
         $this->validate($request, [
-            'award' => 'required|not_in:0',
+            'award'       => 'required|not_in:0',
             'awardsubcat' => 'required',
         ]);
 
@@ -177,10 +177,10 @@ class AwardController extends Controller
 
         if ($check->count() == 0) {
             \DB::table('award_subcats')->insert([
-                'title' => $request->get('awardsubcat'),
+                'title'      => $request->get('awardsubcat'),
                 'created_at' => Carbon::now(),
 
-                'cat_id' => $aw[1],
+                'cat_id'  => $aw[1],
                 'page_id' => $aw[0],
             ]);
         }

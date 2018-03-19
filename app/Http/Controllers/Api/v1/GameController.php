@@ -7,11 +7,11 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use Carbon\Carbon;
+use App\Http\Controllers\Controller;
 use App\Models\Game;
 use App\Models\GamesDeveloper;
+use Carbon\Carbon;
 use Dingo\Api\Routing\Helpers;
-use App\Http\Controllers\Controller;
 
 class GameController extends Controller
 {
@@ -36,16 +36,16 @@ class GameController extends Controller
 
         //Fülle Array
         $array = [
-            'type' => 'RpgGame',
-            'version' => 'rmapi_v1',
+            'type'      => 'RpgGame',
+            'version'   => 'rmapi_v1',
             'data_date' => Carbon::now()->toDateTimeString(),
-            'game' => [
-                'title' => $game->title,
-                'subtitle' => $game->subtitle,
+            'game'      => [
+                'title'        => $game->title,
+                'subtitle'     => $game->subtitle,
                 'release_date' => $game->release_date,
-                'developers' => '',
-                'language' => $game->language->short,
-                'engine' => $game->maker->short,
+                'developers'   => '',
+                'language'     => $game->language->short,
+                'engine'       => $game->maker->short,
             ],
         ];
 

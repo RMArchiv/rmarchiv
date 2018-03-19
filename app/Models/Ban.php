@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Ban
+ * Class Ban.
  *
  * @property int $id
  * @property int $bannable_id
@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $deleted_at
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ban whereBannableId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ban whereBannableType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ban whereComment($value)
@@ -41,10 +42,8 @@ class Ban extends Model
         'created_by_id',
         'created_by_type',
         'comment',
-        'expired_at'
+        'expired_at',
     ];
 
     protected $guarded = [];
-
-        
 }

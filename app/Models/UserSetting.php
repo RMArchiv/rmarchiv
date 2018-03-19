@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereIsAdmin($value)
@@ -31,6 +32,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property-read \App\Models\User $user
  * @property int $disable_widget_msg
  * @property int $disable_widget_cdc
@@ -46,6 +48,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $disable_widget_stats
  * @property int $disable_widget_obyx
  * @property int $disable_widget_comments
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereDisableWidgetAlltimetop($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereDisableWidgetBoard($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereDisableWidgetCdc($value)
@@ -60,14 +63,20 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereDisableWidgetStats($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereDisableWidgetTags($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereDisableWidgetTopmonth($value)
+ *
  * @property int $rows_per_page_developer
  * @property int $rows_per_page_games
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereRowsPerPageDeveloper($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserSetting whereRowsPerPageGames($value)
+ *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property string $language
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserSetting whereLanguage($value)
+ *
  * @property string $download_template
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserSetting whereDownloadTemplate($value)
  */
 class UserSetting extends Model

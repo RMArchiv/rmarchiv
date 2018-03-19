@@ -7,13 +7,13 @@
 
 namespace App\Helpers;
 
-use Carbon\Carbon;
-use App\Models\Game;
-use App\Models\Developer;
-use App\Models\GamesFile;
-use App\Models\UserOnline;
 use App\Models\BoardThread;
 use App\Models\BoardThreadsTracker;
+use App\Models\Developer;
+use App\Models\Game;
+use App\Models\GamesFile;
+use App\Models\UserOnline;
+use Carbon\Carbon;
 
 class DatabaseHelper
 {
@@ -23,9 +23,9 @@ class DatabaseHelper
 
         Game::whereId($gameid)
             ->update([
-                'voteup' => $game->votes['up'],
+                'voteup'   => $game->votes['up'],
                 'votedown' => $game->votes['down'],
-                'avg' => $game->votes['avg'],
+                'avg'      => $game->votes['avg'],
                 'comments' => $game->comments()->count(),
             ]);
     }
@@ -141,7 +141,7 @@ class DatabaseHelper
     {
         if (\Auth::check()) {
             $track = BoardThreadsTracker::updateOrInsert([
-                'user_id' => \Auth::id(),
+                'user_id'   => \Auth::id(),
                 'thread_id' => $thread_id,
             ], [
                 'last_read' => Carbon::now(),
@@ -174,7 +174,7 @@ class DatabaseHelper
         }
     }
 
-    public static function getDevelopersUrlList($gameid, $urlstyle=true)
+    public static function getDevelopersUrlList($gameid, $urlstyle = true)
     {
         $developers = \DB::table('games_developer')
             ->leftJoin('developer', 'developer.id', '=', 'games_developer.developer_id')
@@ -183,12 +183,11 @@ class DatabaseHelper
 
         $res = '';
         foreach ($developers as $dev) {
-            if($urlstyle == true){
+            if ($urlstyle == true) {
                 $res = $res.'<a href="'.url('developer', $dev->id).'">'.$dev->name.'</a> :: ';
-            }else{
+            } else {
                 $res .= $dev->name.', ';
             }
-
         }
 
         $res = substr($res, 0, -4);

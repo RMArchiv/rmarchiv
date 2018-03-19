@@ -55,14 +55,15 @@ class NewsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         if (\Auth::check()) {
             if (\Auth::user()->hasRole(['admin', 'owner', 'moderator'])) {
-                $n = new News;
+                $n = new News();
                 $n->news_category = $request->get('cat');
                 $n->user_id = \Auth::id();
                 $n->news_md = $request->get('msg');
@@ -84,7 +85,8 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -99,7 +101,8 @@ class NewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -122,8 +125,9 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -131,8 +135,8 @@ class NewsController extends Controller
         if (\Auth::user()->hasRole(['admin', 'owner', 'moderator'])) {
             $this->validate($request, [
                 'title' => 'required',
-                'msg' => 'required',
-                'cat' => 'required',
+                'msg'   => 'required',
+                'cat'   => 'required',
             ]);
 
             $news = News::whereId($id)->first();
@@ -150,7 +154,8 @@ class NewsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

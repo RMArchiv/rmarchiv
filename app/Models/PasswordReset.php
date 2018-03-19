@@ -15,10 +15,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $email
  * @property string $token
  * @property \Carbon\Carbon $created_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PasswordReset whereEmail($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PasswordReset whereToken($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PasswordReset whereCreatedAt($value)
  * @mixin \Eloquent
+ *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class PasswordReset extends Model

@@ -21,7 +21,7 @@ class UserSettingsController extends Controller
     public function store_rowsPerPage(Request $req)
     {
         $this->validate($req, [
-            'row_dev' => 'required',
+            'row_dev'     => 'required',
             'row_games'   => 'required',
         ]);
 
@@ -36,7 +36,7 @@ class UserSettingsController extends Controller
     public function change_username(Request $request)
     {
         $this->validate($request, [
-            'usernameold' => 'required',
+            'usernameold'   => 'required',
             'usernamenew'   => 'required',
         ]);
 
@@ -81,7 +81,8 @@ class UserSettingsController extends Controller
         return redirect()->action('UserSettingsController@index');
     }
 
-    public function change_language(Request $request){
+    public function change_language(Request $request)
+    {
         $l = UserSetting::whereUserId(\Auth::id())->first();
         $l->language = $request->get('language');
         $l->save();
@@ -89,7 +90,8 @@ class UserSettingsController extends Controller
         return redirect()->back();
     }
 
-    public function change_download_template(Request $request){
+    public function change_download_template(Request $request)
+    {
         $l = UserSetting::whereUserId(\Auth::id())->first();
         $l->download_template = $request->get('download_template');
         $l->save();

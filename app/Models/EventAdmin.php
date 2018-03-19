@@ -17,12 +17,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $event_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventAdmin whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventAdmin whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventAdmin whereEventId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventAdmin whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventAdmin whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Event $event
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory

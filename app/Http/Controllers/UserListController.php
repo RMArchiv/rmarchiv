@@ -7,10 +7,10 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\Game;
 use App\Models\UserList;
 use App\Models\UserListItem;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class UserListController extends Controller
@@ -42,7 +42,7 @@ class UserListController extends Controller
     {
         $list = UserList::whereId($listid)->first();
 
-        if(\Auth::check() and \Auth::user()->id == $list->user_id){
+        if (\Auth::check() and \Auth::user()->id == $list->user_id) {
             \DB::table('user_list_items')
                 ->where('list_id', '=', $listid)
                 ->where('content_id', '=', $itemid)

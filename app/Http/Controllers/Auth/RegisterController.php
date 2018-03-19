@@ -8,11 +8,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Events\Obyx;
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserSetting;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -49,7 +49,8 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -57,29 +58,30 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'my_name'   => 'honeypot',
             'my_time'   => 'required|honeytime:5',
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-            'captcha' => 'required|captcha',
+            'name'      => 'required|max:255',
+            'email'     => 'required|email|max:255|unique:users',
+            'password'  => 'required|min:6|confirmed',
+            'captcha'   => 'required|captcha',
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return User
      */
     protected function create(array $data)
     {
         $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'name'     => $data['name'],
+            'email'    => $data['email'],
             'password' => bcrypt($data['password']),
             'is_admin' => 0,
         ]);
 
-        $us = new UserSetting;
+        $us = new UserSetting();
         $us->avatar_path = '';
         $us->user_id = $user->id;
         $us->is_admin = 0;

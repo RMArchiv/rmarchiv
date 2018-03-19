@@ -29,15 +29,15 @@ class FaqController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'cat' => 'required',
+            'cat'   => 'required',
             'title' => 'required',
-            'msg' => 'required',
+            'msg'   => 'required',
         ]);
 
         \DB::table('faq')->insert([
-            'cat' => $request->get('cat'),
-            'title' => $request->get('title'),
-            'desc_md' => $request->get('msg'),
+            'cat'       => $request->get('cat'),
+            'title'     => $request->get('title'),
+            'desc_md'   => $request->get('msg'),
             'desc_html' => \Markdown::convertToHtml($request->get('msg')),
         ]);
 

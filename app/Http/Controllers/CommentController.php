@@ -8,14 +8,15 @@
 namespace App\Http\Controllers;
 
 use App\Events\Obyx;
-use App\Models\Comment;
-use Illuminate\Http\Request;
 use App\Helpers\DatabaseHelper;
+use App\Models\Comment;
 use GrahamCampbell\Markdown\Facades\Markdown;
+use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function delete(Request $request, $comment_id){
+    public function delete(Request $request, $comment_id)
+    {
         $c = Comment::whereId($comment_id)->first();
         $c->deleted = 1;
         $c->delete_reason = $request->get('reason');
@@ -24,7 +25,8 @@ class CommentController extends Controller
         return redirect()->back();
     }
 
-    public function restore(Request $request, $comment_id){
+    public function restore(Request $request, $comment_id)
+    {
         $c = Comment::whereId($comment_id)->first();
         $c->deleted = 0;
         $c->delete_reason = '';

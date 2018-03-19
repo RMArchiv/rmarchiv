@@ -60,22 +60,22 @@ return [
     */
 
     'algolia' => [
-        'id' => env('ALGOLIA_APP_ID', ''),
+        'id'     => env('ALGOLIA_APP_ID', ''),
         'secret' => env('ALGOLIA_SECRET', ''),
     ],
 
     'tntsearch' => [
-        'driver' => 'mysql',
+        'driver'    => 'mysql',
         'host'      => 'localhost',
         'database'  => env('DB_DATABASE', '').'_search',
         'username'  => env('DB_USERNAME', '').'_search',
         'password'  => env('DB_PASSWORD', ''),
-        'storage' => storage_path(),
+        'storage'   => storage_path(),
         'fuzziness' => env('TNTSEARCH_FUZZINESS', true),
-        'fuzzy' => [
-            'prefix_length' => 2,
+        'fuzzy'     => [
+            'prefix_length'  => 2,
             'max_expansions' => 50,
-            'distance' => 2,
+            'distance'       => 2,
         ],
         'asYouType' => false,
     ],

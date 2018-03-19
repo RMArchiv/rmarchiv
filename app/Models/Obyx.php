@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $reason_visible
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Obyx whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Obyx whereValue($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Obyx whereReason($value)
@@ -25,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Obyx whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Obyx whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class Obyx extends Model

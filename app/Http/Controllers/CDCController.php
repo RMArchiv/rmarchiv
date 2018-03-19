@@ -7,9 +7,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
 use App\Models\GamesCoupdecoeur;
 use Carbon\Carbon;
-use App\Models\Game;
 use Illuminate\Http\Request;
 
 class CDCController extends Controller
@@ -41,7 +41,8 @@ class CDCController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -63,8 +64,8 @@ class CDCController extends Controller
         }
 
         \DB::table('games_coupdecoeur')->insert([
-            'game_id' => $game->id,
-            'user_id' => \Auth::id(),
+            'game_id'    => $game->id,
+            'user_id'    => \Auth::id(),
             'created_at' => Carbon::now(),
         ]);
 

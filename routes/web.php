@@ -332,4 +332,3 @@ Route::post('savegames/{gamefileid}', 'SavegameController@api_save')->middleware
 Route::get('data/on', 'TestController@on');
 Route::get('data/off', 'TestController@off');
 Route::get('data/onoff', 'TestController@onoff');
-

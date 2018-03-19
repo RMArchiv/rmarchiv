@@ -7,14 +7,14 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Events\Obyx;
+use App\Helpers\DatabaseHelper;
 use App\Models\Game;
 use App\Models\GamesFile;
-use Illuminate\Http\Request;
 use App\Models\GamesFilesType;
-use App\Helpers\DatabaseHelper;
 use App\Models\UserDownloadLog;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class GameFileController extends Controller
 {
@@ -42,13 +42,13 @@ class GameFileController extends Controller
             ->limit(1)
             ->first();
 
-        if(\Auth::check()){
+        if (\Auth::check()) {
             UserDownloadLog::insert([
                 'user_id'     => \Auth::id(),
                 'gamefile_id' => $id,
                 'created_at'  => Carbon::now(),
             ]);
-        }else{
+        } else {
             UserDownloadLog::insert([
                 'user_id'     => 0,
                 'gamefile_id' => $id,
@@ -61,10 +61,9 @@ class GameFileController extends Controller
         $newfilename = $g->gametitle.' - '.$g->gamesubtitle.' ['.$g->filetype.'-'.$g->fileversion.']-'.str_pad($g->fileyear, 2, 0, STR_PAD_LEFT)
             .'-'.str_pad($g->filemonth, 2, 0, STR_PAD_LEFT).'-'.str_pad($g->fileday, 2, 0, STR_PAD_LEFT).'.'.$g->fileextension;
 
-
-        if(\Auth::check()){
+        if (\Auth::check()) {
             //Check for existing download Template
-            if(\Auth::user()->settings->download_template != '') {
+            if (\Auth::user()->settings->download_template != '') {
 
                 //Replace all stuff for download template
                 $t = \Auth::user()->settings->download_template;
@@ -104,7 +103,7 @@ class GameFileController extends Controller
 
         return view('games.gamefiles', [
             'gamefiles' => $gamefiles,
-            'game' => $game,
+            'game'      => $game,
             'filetypes' => $filetypes,
         ]);
     }
@@ -175,7 +174,8 @@ class GameFileController extends Controller
         ]);
     }
 
-    public function restore($gamefileid){
+    public function restore($gamefileid)
+    {
         $gamefile = GamesFile::whereId($gamefileid)->first();
         $gamefile->forbidden = 0;
         $gamefile->reason = '';
@@ -205,7 +205,7 @@ class GameFileController extends Controller
 
         if ($request->get('uuid')) {
             //Create Backupfile
-            if (\Storage::exists($gamefile->filename)){
+            if (\Storage::exists($gamefile->filename)) {
                 \Storage::move($gamefile->filename, $gamefile->filename.'-'.time());
             }
 

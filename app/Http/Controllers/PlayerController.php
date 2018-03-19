@@ -25,7 +25,7 @@ class PlayerController extends Controller
 
             return view('player.index', [
                 'gamefileid' => $gamefileid,
-                'game' => $game,
+                'game'       => $game,
             ]);
         } else {
             return redirect()->action('IndexController@index');
@@ -38,7 +38,7 @@ class PlayerController extends Controller
         $file = PlayerIndexjson::whereId($fileid)->first();
 
         $path = storage_path('app/public/'.$gf->filename);
-        $zip = new \ZipArchive;
+        $zip = new \ZipArchive();
         $zip->open($path);
         $fp = $zip->getFromName($file->filename);
 

@@ -20,6 +20,7 @@ use Zizaco\Entrust\EntrustRole;
  * @property \Carbon\Carbon $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserPermission[] $perms
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserRole whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserRole whereName($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserRole whereDisplayName($value)

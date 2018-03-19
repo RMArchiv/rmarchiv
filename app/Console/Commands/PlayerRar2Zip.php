@@ -50,19 +50,19 @@ class PlayerRar2Zip extends Command
 
         foreach ($files as $f) {
             //Check for maker engine 2=rm2k, 3=rm2k3, 9=rm2k3 Steam Edition
-            if (!array_search($f->game->maker_id, [2, 3, 9]) === FALSE) {
+            if (!array_search($f->game->maker_id, [2, 3, 9]) === false) {
                 echo "Gamefile: $f->filename";
 
                 //prepare the path variables
-                $pathrar = storage_path('app/public/' . $f->filename); // Path to original rar file
-                $pathzip = storage_path('app/public/' . str_replace('.rar', '.zip', $f->filename)); //Path to zip destination
-                $pathdest = storage_path('app/public/games/' . $f->id . '/'); //destination for unrared files
+                $pathrar = storage_path('app/public/'.$f->filename); // Path to original rar file
+                $pathzip = storage_path('app/public/'.str_replace('.rar', '.zip', $f->filename)); //Path to zip destination
+                $pathdest = storage_path('app/public/games/'.$f->id.'/'); //destination for unrared files
 
                 //delete old temp files (just in case.)
                 $this->Delete($pathdest);
 
                 // unrar the rar archive
-                $command = 'unrar x \'' . $pathrar . '\' ' . $pathdest;
+                $command = 'unrar x \''.$pathrar.'\' '.$pathdest;
                 exec($command);
 
                 $handle = opendir($pathdest); // erm??
@@ -85,7 +85,6 @@ class PlayerRar2Zip extends Command
                 echo " - done\n";
             }
         }
-
     }
 
     public function Delete($path)
@@ -138,9 +137,9 @@ class PlayerRar2Zip extends Command
                 $file = realpath($file);
 
                 if (is_dir($file) === true) {
-                    $zip->addEmptyDir(str_replace($source . '/', '', $file . '/'));
+                    $zip->addEmptyDir(str_replace($source.'/', '', $file.'/'));
                 } elseif (is_file($file) === true) {
-                    $zip->addFromString(str_replace($source . '/', '', $file), file_get_contents($file));
+                    $zip->addFromString(str_replace($source.'/', '', $file), file_get_contents($file));
                 }
             }
         } elseif (is_file($source) === true) {

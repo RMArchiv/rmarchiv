@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $credit_type_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserCredit whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserCredit whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserCredit whereGameId($value)
@@ -25,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserCredit whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserCredit whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property-read \App\Models\UserCreditType $type
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory

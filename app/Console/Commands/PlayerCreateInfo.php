@@ -78,18 +78,18 @@ class PlayerCreateInfo extends Command
             \Log::info('Entapcken von '.$toindex->game_id.'/'.$toindex->id);
             $path = storage_path('app/public/'.$toindex->filename);
             if ($toindex->extension == 'zip') {
-                $zip = new \ZipArchive;
+                $zip = new \ZipArchive();
                 $zip->open($path);
                 for ($i = 0; $i < $zip->numFiles; $i++) {
                     $filename = $zip->getNameIndex($i);
 
-                    if (! ends_with($filename, '/') and ! starts_with($filename, '_MACOSX')) {
+                    if (!ends_with($filename, '/') and !starts_with($filename, '_MACOSX')) {
                         $imp = $this->search_for_base_path($filename);
 
-                        if (! $imp == '') {
-                            $pl = new PlayerIndexjson;
+                        if (!$imp == '') {
+                            $pl = new PlayerIndexjson();
                             $pl->gamefile_id = $toindex->id;
-                            if (! ends_with(strtolower($imp), ['.exe', '.lmu', '.ldb', 'ini', '.dll', 'lmt', 'lsd'])) {
+                            if (!ends_with(strtolower($imp), ['.exe', '.lmu', '.ldb', 'ini', '.dll', 'lmt', 'lsd'])) {
                                 $pl->key = preg_replace('/(\.\w+$)/', '', strtolower($imp));
                             } else {
                                 $pl->key = strtolower($imp);

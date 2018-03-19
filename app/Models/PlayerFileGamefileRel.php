@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $orig_filename
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PlayerFileGamefileRel whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PlayerFileGamefileRel whereFileHashId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PlayerFileGamefileRel whereGamefileId($value)
@@ -25,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PlayerFileGamefileRel whereOrigFilename($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PlayerFileGamefileRel whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property-read \App\Models\PlayerFileHash $filehash
  */
 class PlayerFileGamefileRel extends Model

@@ -7,10 +7,10 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Events\Obyx;
-use Illuminate\Http\Request;
 use App\Helpers\DatabaseHelper;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class ResourceController extends Controller
 {
