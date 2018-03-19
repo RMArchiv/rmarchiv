@@ -16,23 +16,30 @@ class SetLocaleMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $userLangs = strtolower(substr(explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE'])[0],0,2));
+        $http_lang = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2);
+
+        switch ($http_lang) {
+            case 'de':
+                $userLangs = 'de';
+                break;
+            case 'en':
+                $userLangs = 'en';
+                break;
+            case 'es':
+                $userLangs = 'es';
+                break;
+            default:
+                $userLangs = 'en';
+        }
+
         if(Auth::check()){
             if(Auth::user()->settings->language == ''){
-                if(array_search($userLangs, ['de', 'en', 'es']) !== false){
-                    \App::setLocale($userLangs);
-                }else{
-                    \App::setLocale('en');
-                }
+                \App::setLocale($userLangs);
             }else{
                 \App::setLocale(\Auth::user()->settings->language);
             }
         }else{
-            if(array_search($userLangs, ['de', 'en', 'es']) !== false){
-                \App::setLocale($userLangs);
-            }else{
-                \App::setLocale('en');
-            }
+            \App::setLocale($userLangs);
         }
 
         return $next($request);
