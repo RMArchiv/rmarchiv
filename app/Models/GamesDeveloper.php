@@ -20,6 +20,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesDeveloper whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesDeveloper whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesDeveloper whereGameId($value)
@@ -28,6 +29,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesDeveloper whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesDeveloper whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property-read \App\Models\Developer $developer
  * @property-read \App\Models\Game $game
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory

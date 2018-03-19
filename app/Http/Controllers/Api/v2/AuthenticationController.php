@@ -7,12 +7,12 @@
 
 namespace App\Http\Controllers\Api\v2;
 
-use Tymon\JWTAuth\JWTAuth;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Tymon\JWTAuth\Exceptions\JWTException;
 use Illuminate\Foundation\Testing\HttpException;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\JWTAuth;
 
 class AuthenticationController extends Controller
 {
@@ -25,7 +25,7 @@ class AuthenticationController extends Controller
 
         try {
             $token = $JWTAuth->attempt($credentials);
-            if (! $token) {
+            if (!$token) {
                 throw new AccessDeniedHttpException();
             }
         } catch (JWTException $e) {

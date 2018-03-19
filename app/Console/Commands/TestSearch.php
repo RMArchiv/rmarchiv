@@ -38,7 +38,7 @@ class TestSearch extends Command
      */
     public function handle()
     {
-        $searchTerm = "zelda maps:25 legend maps:30";
+        $searchTerm = 'zelda maps:25 legend maps:30';
         $result = SearchFilterHelper::searchFilter($searchTerm);
 
         echo PHP_EOL;

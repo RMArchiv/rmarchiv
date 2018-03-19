@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property bool $locked
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\TranslatorTranslation whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\TranslatorTranslation whereGroup($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\TranslatorTranslation whereId($value)

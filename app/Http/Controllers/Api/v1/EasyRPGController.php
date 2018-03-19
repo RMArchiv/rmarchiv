@@ -7,13 +7,13 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use Carbon\Carbon;
-use App\Models\Game;
-use App\Models\GamesFile;
-use App\Models\GamesDeveloper;
-use App\Models\PlayerFileHash;
 use App\Http\Controllers\Controller;
+use App\Models\Game;
+use App\Models\GamesDeveloper;
+use App\Models\GamesFile;
 use App\Models\PlayerFileGamefileRel;
+use App\Models\PlayerFileHash;
+use Carbon\Carbon;
 
 class EasyRPGController extends Controller
 {
@@ -28,9 +28,9 @@ class EasyRPGController extends Controller
             ->get();
 
         $array = [
-            'type' => 'hashlist',
+            'type'  => 'hashlist',
             'count' => $hashes->count(),
-            'data' => $hashes->toArray(),
+            'data'  => $hashes->toArray(),
         ];
 
         return $array;
@@ -47,19 +47,19 @@ class EasyRPGController extends Controller
 
         //Fülle Array
         $array = [
-            'type' => 'RpgGame',
-            'version' => 'rmapi_v1',
+            'type'      => 'RpgGame',
+            'version'   => 'rmapi_v1',
             'data_date' => Carbon::now()->toDateTimeString(),
-            'data' => [
-                'identifier' => $ldbhash,
-                'title' => $game->title,
-                'subtitle' => $game->subtitle,
+            'data'      => [
+                'identifier'   => $ldbhash,
+                'title'        => $game->title,
+                'subtitle'     => $game->subtitle,
                 'release_date' => Carbon::create($gamefile->release_year, $gamefile->release_month, $gamefile->release_day)->toDateString(),
-                'developers' => '',
-                'language' => $game->language->short,
-                'engine' => $game->maker->short,
+                'developers'   => '',
+                'language'     => $game->language->short,
+                'engine'       => $game->maker->short,
                 'release_type' => $gamefile->gamefiletype->short,
-                'files' => '',
+                'files'        => '',
             ],
         ];
 

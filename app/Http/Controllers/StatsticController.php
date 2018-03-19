@@ -16,7 +16,7 @@ class StatsticController extends Controller
     {
         $lava_config = [
             'legend' => [
-                'position' => 'in',
+                'position'  => 'in',
                 'textStyle' => [
                     'color' => '#ffffe0',
                 ],
@@ -34,17 +34,17 @@ class StatsticController extends Controller
                     'color' => '#ffffe0',
                 ],
             ],
-            'pointSize' => 5,
+            'pointSize'  => 5,
             'pointShape' => [
-                'type' => 'circle',
+                'type'     => 'circle',
                 'rotation' => 180,
             ],
             'trendlines' => [
                 0 => [
-                    'type' => 'line',
-                    'color' => 'red',
+                    'type'          => 'line',
+                    'color'         => 'red',
                     'pointsVisible' => true,
-                    'pointSize' => 1,
+                    'pointSize'     => 1,
                 ],
             ],
         ];
@@ -135,27 +135,27 @@ class StatsticController extends Controller
 
         $filesize = [
             'attach' => [
-                'size' => 0,
+                'size'  => 0,
                 'count' => 0,
             ],
             'screens' => [
-                'size' => 0,
+                'size'  => 0,
                 'count' => 0,
             ],
             'games' => [
-                'size' => 0,
+                'size'  => 0,
                 'count' => 0,
             ],
             'logos' => [
-                'size' => 0,
+                'size'  => 0,
                 'count' => 0,
             ],
             'resources' => [
-                'size' => 0,
+                'size'  => 0,
                 'count' => 0,
             ],
             'sum' => [
-                'size' => 0,
+                'size'  => 0,
                 'count' => 0,
             ],
         ];
@@ -228,7 +228,7 @@ class StatsticController extends Controller
         $lava->AreaChart('PlayerReleases', $com, $lava_config);
 
         return view('statistics.index', [
-            'lava' => $lava,
+            'lava'  => $lava,
             'files' => $filesize,
         ]);
     }

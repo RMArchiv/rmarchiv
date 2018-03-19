@@ -62,11 +62,11 @@ class TranslationController extends Controller
         $trans = $this->translationRepository->find($request->get('id'));
 
         $this->translationRepository->create([
-            'locale' => $request->get('loc2'),
+            'locale'    => $request->get('loc2'),
             'namespace' => $trans->namespace,
-            'group' => $trans->group,
-            'item' => $trans->item,
-            'text' => $request->get('transstring'),
+            'group'     => $trans->group,
+            'item'      => $trans->item,
+            'text'      => $request->get('transstring'),
         ]);
 
         return redirect()->action('TranslationController@edit', [$request->get('loc1'), $request->get('loc2')]);

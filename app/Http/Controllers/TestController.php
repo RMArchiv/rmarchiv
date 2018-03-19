@@ -22,7 +22,8 @@ class TestController extends Controller
         $updates = \Telegram::getWebhookUpdates();
     }
 
-    public function on(){
+    public function on()
+    {
         $dat = PlayerFeedback::whereId(1)->first();
         $dat->savegame_slot = 1;
         $dat->save();
@@ -30,7 +31,8 @@ class TestController extends Controller
         return view('test.onoff', ['onoff' => 'on']);
     }
 
-    public function off(){
+    public function off()
+    {
         $dat = PlayerFeedback::whereId(1)->first();
         $dat->savegame_slot = 0;
         $dat->save();
@@ -38,8 +40,10 @@ class TestController extends Controller
         return view('test.onoff', ['onoff' => 'off']);
     }
 
-    public function onoff(){
+    public function onoff()
+    {
         $dat = PlayerFeedback::whereId(1)->first();
+
         return $dat->savegame_slot;
     }
 }

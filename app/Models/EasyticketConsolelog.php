@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class EasyticketConsolelog
+ * Class EasyticketConsolelog.
  *
  * @property int $id
  * @property int $ticket_id
@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $console_text
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EasyticketConsolelog whereConsoleId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EasyticketConsolelog whereConsoleText($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EasyticketConsolelog whereConsoleType($value)
@@ -33,10 +34,8 @@ class EasyticketConsolelog extends Model
         'ticket_id',
         'console_id',
         'console_type',
-        'console_text'
+        'console_text',
     ];
 
     protected $guarded = [];
-
-        
 }

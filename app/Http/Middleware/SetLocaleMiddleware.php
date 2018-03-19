@@ -10,13 +10,14 @@ class SetLocaleMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
+     *
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        $http_lang = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2);
+        $http_lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 
         switch ($http_lang) {
             case 'de':
@@ -32,13 +33,13 @@ class SetLocaleMiddleware
                 $userLangs = 'en';
         }
 
-        if(Auth::check()){
-            if(Auth::user()->settings->language == ''){
+        if (Auth::check()) {
+            if (Auth::user()->settings->language == '') {
                 \App::setLocale($userLangs);
-            }else{
+            } else {
                 \App::setLocale(\Auth::user()->settings->language);
             }
-        }else{
+        } else {
             \App::setLocale($userLangs);
         }
 

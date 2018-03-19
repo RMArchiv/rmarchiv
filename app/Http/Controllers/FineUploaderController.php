@@ -22,7 +22,7 @@ class FineUploaderController extends Controller
     {
         $fu = new FineUploader();
         $destpath = storage_path('app/public/temp');
-        if (! file_exists($destpath)) {
+        if (!file_exists($destpath)) {
             mkdir($destpath);
         }
         $res = $fu->handleUpload(storage_path('app/public/temp'), 'file');

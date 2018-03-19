@@ -7,8 +7,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tag;
 use App\Models\Game;
+use App\Models\Tag;
 use App\Models\TagRelation;
 use Illuminate\Http\Request;
 
@@ -51,8 +51,8 @@ class TaggingController extends Controller
 
         return view('tags.show', [
             'games'     => $games,
-            'tag' => $tag,
-            'orderby' => $orderby,
+            'tag'       => $tag,
+            'orderby'   => $orderby,
             'direction' => $direction,
         ]);
     }

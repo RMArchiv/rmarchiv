@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $filename
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventPicture whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventPicture whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventPicture whereEventId($value)
@@ -29,6 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventPicture whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventPicture whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Event $event
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory

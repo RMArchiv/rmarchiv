@@ -7,20 +7,19 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use App\Events\Obyx;
-use App\Models\Game;
-use App\Models\Comment;
-use App\Models\License;
 use App\Events\GameView;
-use App\Models\Language;
-use App\Models\GamesFile;
-use App\Models\Screenshot;
-use App\Helpers\MiscHelper;
-use App\Models\TagRelation;
-use Illuminate\Http\Request;
-use App\Models\GamesDeveloper;
+use App\Events\Obyx;
 use App\Helpers\DatabaseHelper;
+use App\Models\Comment;
+use App\Models\Game;
+use App\Models\GamesDeveloper;
+use App\Models\GamesFile;
+use App\Models\Language;
+use App\Models\License;
+use App\Models\Screenshot;
+use App\Models\TagRelation;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 class GameController extends Controller

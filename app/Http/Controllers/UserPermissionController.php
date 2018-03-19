@@ -7,9 +7,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserPermission;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
-use App\Models\UserPermission;
 
 class UserPermissionController extends Controller
 {
@@ -63,8 +63,8 @@ class UserPermissionController extends Controller
         $ptoadd = UserPermission::all();
 
         return view('users.entrust.showrole', [
-            'perms' => $p,
-            'roleid' => $id,
+            'perms'      => $p,
+            'roleid'     => $id,
             'permstoadd' => $ptoadd,
         ]);
     }

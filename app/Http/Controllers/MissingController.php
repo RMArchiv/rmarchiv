@@ -61,8 +61,8 @@ class MissingController extends Controller
         }
 
         return view('missing.notags.index', [
-            'games' => $games,
-            'orderby' => $orderby,
+            'games'     => $games,
+            'orderby'   => $orderby,
             'direction' => $direction,
         ]);
     }

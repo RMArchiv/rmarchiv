@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $list_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserListItem whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserListItem whereContentId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserListItem whereContentType($value)
@@ -27,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserListItem whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserListItem whereUpdatedAt($value)
  * @mixin \Eloquent
+ *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property-read \App\Models\Game $game
  * @property-read \App\Models\UserList $userlist

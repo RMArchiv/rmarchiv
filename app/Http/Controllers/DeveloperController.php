@@ -57,10 +57,10 @@ class DeveloperController extends Controller
             ]);
 
         return view('developer.show', [
-            'games' => $games,
-            'orderby' => $orderby,
+            'games'     => $games,
+            'orderby'   => $orderby,
             'direction' => $direction,
-            'id' => $id,
+            'id'        => $id,
         ]);
     }
 }

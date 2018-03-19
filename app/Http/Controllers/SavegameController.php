@@ -7,8 +7,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\GamesSavegame;
+use Illuminate\Http\Request;
 
 class SavegameController extends Controller
 {
@@ -46,14 +46,14 @@ class SavegameController extends Controller
             \Log::info('slot: '.$key);
             \Log::info('data: '.$value);
             $save = GamesSavegame::where([
-                'user_id' => $user = \Auth::id(),
+                'user_id'     => $user = \Auth::id(),
                 'gamefile_id' => $gamefileid,
-                'slot_id' => $key,
+                'slot_id'     => $key,
                 ])
                 ->first();
 
-            if (! $save) {
-                $s = new GamesSavegame;
+            if (!$save) {
+                $s = new GamesSavegame();
                 $s->save_data = $value;
                 $s->slot_id = $key;
                 $s->gamefile_id = $gamefileid;

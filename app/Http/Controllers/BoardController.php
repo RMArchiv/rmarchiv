@@ -7,17 +7,17 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Events\Obyx;
+use App\Helpers\DatabaseHelper;
 use App\Models\BoardCat;
 use App\Models\BoardPoll;
+use App\Models\BoardPollAnswer;
+use App\Models\BoardPollVote;
 use App\Models\BoardPost;
 use App\Models\BoardThread;
-use Illuminate\Http\Request;
-use App\Models\BoardPollVote;
-use App\Helpers\DatabaseHelper;
-use App\Models\BoardPollAnswer;
+use Carbon\Carbon;
 use Cmgmyr\Messenger\Models\Thread;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 class BoardController extends Controller
@@ -44,7 +44,7 @@ class BoardController extends Controller
 
         return view('board.threads.index', [
             'threads' => $thr,
-            'cat' => $cat,
+            'cat'     => $cat,
         ]);
     }
 
@@ -129,16 +129,16 @@ class BoardController extends Controller
 
         DatabaseHelper::setThreadViewDate($threadid);
 
-        if (! Input::get('page')) {
+        if (!Input::get('page')) {
             return redirect('board/thread/'.$threadid.'?page='.$posts->lastPage());
         } else {
             return view('board.threads.show', [
-                'posts' => $posts,
-                'poll' => $poll,
-                'answers' => $pollanswers,
+                'posts'     => $posts,
+                'poll'      => $poll,
+                'answers'   => $pollanswers,
                 'votecount' => $votecount,
-                'canvote' => $canvote,
-                'votes' => $votes,
+                'canvote'   => $canvote,
+                'votes'     => $votes,
             ]);
         }
     }
@@ -178,7 +178,7 @@ class BoardController extends Controller
     {
         $this->validate($request, [
             'catid'   => 'required',
-            'msg' => 'required',
+            'msg'     => 'required',
         ]);
 
         $check = BoardThread::whereId($threadid)->first();
@@ -287,10 +287,10 @@ class BoardController extends Controller
         }
 
         return view('board.threads.vote', [
-            'edit' => $edit,
+            'edit'      => $edit,
             'thread_id' => $threadid,
-            'thread' => $thread,
-            'cat' => $cat,
+            'thread'    => $thread,
+            'cat'       => $cat,
         ]);
     }
 
@@ -303,14 +303,14 @@ class BoardController extends Controller
             'answer1'   => 'required',
         ]);
 
-        $poll = new BoardPoll;
+        $poll = new BoardPoll();
         $poll->user_id = \Auth::id();
         $poll->title = $request->get('question');
         $poll->thread_id = $request->get('thread_id');
         $poll->save();
 
         for ($i = 0; $i < 10; $i++) {
-            $pollAnswers = new BoardPollAnswer;
+            $pollAnswers = new BoardPollAnswer();
             $pollAnswers->title = $request->get('answer'.$i);
             $pollAnswers->user_id = \Auth::id();
             $pollAnswers->poll_id = $poll->id;
@@ -332,7 +332,7 @@ class BoardController extends Controller
                 $c->answer_id = $request->get('answer_id');
                 $c->save();
             } else {
-                $vote = new BoardPollVote;
+                $vote = new BoardPollVote();
                 $vote->poll_id = $request->get('poll_id');
                 $vote->user_id = \Auth::id();
                 $vote->answer_id = $request->get('answer_id');

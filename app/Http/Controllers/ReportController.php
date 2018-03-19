@@ -7,9 +7,9 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\Game;
 use App\Models\UserReport;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -34,7 +34,7 @@ class ReportController extends Controller
 
     public function store_game_report(Request $request, $gameid)
     {
-        $r = new UserReport;
+        $r = new UserReport();
         $r->content_id = $gameid;
         $r->content_type = 'game';
         $r->reason = $request->get('msg');

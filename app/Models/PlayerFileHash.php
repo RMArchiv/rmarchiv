@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $description
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PlayerFileHash whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PlayerFileHash whereDescription($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PlayerFileHash whereFilehash($value)

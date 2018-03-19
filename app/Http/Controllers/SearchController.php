@@ -7,9 +7,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\DatabaseHelper;
 use App\Models\Game;
 use Illuminate\Http\Request;
-use App\Helpers\DatabaseHelper;
 
 class SearchController extends Controller
 {
@@ -29,8 +29,8 @@ class SearchController extends Controller
             return view('search.index', [
                 'games'     => $games,
                 'maxviews'  => DatabaseHelper::getGameViewsMax(),
-                'term' => $query,
-                'orderby' => $orderby,
+                'term'      => $query,
+                'orderby'   => $orderby,
                 'direction' => $direction,
             ]);
         }

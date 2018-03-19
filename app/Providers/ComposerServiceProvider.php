@@ -7,8 +7,8 @@
 
 namespace App\Providers;
 
-use View;
 use Illuminate\Support\ServiceProvider;
+use View;
 
 class ComposerServiceProvider extends ServiceProvider
 {

@@ -7,15 +7,15 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use App\Models\Game;
-use App\Models\News;
-use App\Models\User;
-use App\Models\Comment;
-use App\Models\Shoutbox;
 use App\Helpers\MiscHelper;
 use App\Models\BoardThread;
+use App\Models\Comment;
+use App\Models\Game;
 use App\Models\GamesCoupdecoeur;
+use App\Models\News;
+use App\Models\Shoutbox;
+use App\Models\User;
+use Carbon\Carbon;
 
 class IndexController extends Controller
 {
@@ -138,23 +138,23 @@ class IndexController extends Controller
         $newuser = User::orderBy('created_at', 'desc')->first();
 
         return view('index.index', [
-            'news' => $news,
-            'shoutbox' => $shoutbox,
-            'cdc' => $cdc,
-            'latestadded' => $latestadded,
-            'gametypes' => $gtypes,
+            'news'           => $news,
+            'shoutbox'       => $shoutbox,
+            'cdc'            => $cdc,
+            'latestadded'    => $latestadded,
+            'gametypes'      => $gtypes,
             'latestreleased' => $latestreleased,
-            'threads' => $threads,
-            'obeymax' => $obyxmax,
-            'topusers' => $topusers,
-            'pm' => $pm,
-            'stats' => $stats,
-            'topmonth' => $topmonth,
-            'topalltime' => $topalltime,
+            'threads'        => $threads,
+            'obeymax'        => $obyxmax,
+            'topusers'       => $topusers,
+            'pm'             => $pm,
+            'stats'          => $stats,
+            'topmonth'       => $topmonth,
+            'topalltime'     => $topalltime,
             'latestcomments' => $latestcomments,
-            'size' => $size,
-            'randomgame' => $randomgame,
-            'newuser' => $newuser,
+            'size'           => $size,
+            'randomgame'     => $randomgame,
+            'newuser'        => $newuser,
         ]);
     }
 }

@@ -9,8 +9,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\EventSetting;
-use Illuminate\Http\Request;
 use App\Models\EventUserRegistered;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 class EventController extends Controller
@@ -32,7 +32,7 @@ class EventController extends Controller
         $reg = EventUserRegistered::whereEventId($id)->where('user_id', '=', \Auth::id())->get();
 
         return view('events.show', [
-            'event' => $event,
+            'event'    => $event,
             'reg_user' => $reg,
         ]);
     }
@@ -52,7 +52,7 @@ class EventController extends Controller
             'slots'          => 'required|numeric',
             'reg_start_date' => 'date',
             'reg_end_date'   => 'date',
-            'price' => 'numeric',
+            'price'          => 'numeric',
         ]);
 
         $e = new Event();
@@ -118,7 +118,7 @@ class EventController extends Controller
         $reg = EventUserRegistered::whereEventId($eventid)->where('user_id', '=', \Auth::id())->get();
 
         return view('events.register', [
-            'event' => $event,
+            'event'    => $event,
             'reg_user' => $reg,
         ]);
     }
@@ -130,10 +130,10 @@ class EventController extends Controller
         if ($event->settings->reg_allowed == 1 && $event->settings->slots > $event->users_registered->count()) {
             if (EventUserRegistered::whereEventId($eventid)->where('user_id', '=', \Auth::id())->count() == 0) {
                 EventUserRegistered::firstOrNew([
-                    'event_id' => $eventid,
-                    'user_id' => \Auth::id(),
+                    'event_id'        => $eventid,
+                    'user_id'         => \Auth::id(),
                     'reg_price_payed' => 0,
-                    'reg_state' => 0,
+                    'reg_state'       => 0,
                 ])->save();
             }
         }

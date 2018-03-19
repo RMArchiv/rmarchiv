@@ -7,8 +7,8 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 /**
@@ -21,6 +21,7 @@ class UserCreditsController extends Controller
      *
      * @param Request $request
      * @param $id - game_id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request, $id)
@@ -54,6 +55,7 @@ class UserCreditsController extends Controller
      *
      * @param $id
      * @param $credit_id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id, $credit_id)

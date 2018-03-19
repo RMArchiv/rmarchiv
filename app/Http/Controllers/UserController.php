@@ -9,8 +9,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserObyx;
-use App\Models\UserRole;
 use App\Models\UserOnline;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -27,7 +27,7 @@ class UserController extends Controller
             ->first();
 
         return view('users.index', [
-            'users' => $user,
+            'users'   => $user,
             'obyxmax' => $obyxmax,
         ]);
     }
@@ -53,7 +53,7 @@ class UserController extends Controller
                 $perms = UserRole::all();
 
                 return view('users.admin', [
-                    'user' => $user,
+                    'user'  => $user,
                     'perms' => $perms,
                 ]);
             }
@@ -85,7 +85,7 @@ class UserController extends Controller
         $uo = UserOnline::orderBy('created_at', 'desc')->get();
 
         return view('users.online', [
-            'uo' =>$uo,
+            'uo' => $uo,
         ]);
     }
 }

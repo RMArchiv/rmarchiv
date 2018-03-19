@@ -7,14 +7,14 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\User;
-use Cmgmyr\Messenger\Models\Thread;
+use Carbon\Carbon;
 use Cmgmyr\Messenger\Models\Message;
+use Cmgmyr\Messenger\Models\Participant;
+use Cmgmyr\Messenger\Models\Thread;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
-use Cmgmyr\Messenger\Models\Participant;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class MessagesController extends Controller
 {
@@ -98,7 +98,7 @@ class MessagesController extends Controller
                 $thread->markAsRead($userId);
                 $messages = $thread->messages()->paginate(25);
 
-                if (! Input::get('page')) {
+                if (!Input::get('page')) {
                     return redirect('messages/'.$id.'?page='.$messages->lastPage());
                 } else {
                     return view('messenger.show', compact('thread', 'users', 'messages'));
@@ -134,7 +134,7 @@ class MessagesController extends Controller
                     'user_id'   => \Auth::user()->id,
                 ]
             );
-            $participant->last_read = new Carbon;
+            $participant->last_read = new Carbon();
             $participant->save();
             // Recipients
             if (Input::has('recipients')) {

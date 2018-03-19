@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $user_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPollVote whereAnswerId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPollVote whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPollVote whereId($value)

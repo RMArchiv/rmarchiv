@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: ryg
  * Date: 21.08.17
- * Time: 09:04
+ * Time: 09:04.
  */
 
 namespace App\Helpers;
@@ -14,7 +14,7 @@ class SearchFilterHelper
 {
     public static function searchFilter($searchterm)
     {
-        $result = array();
+        $result = [];
         $result['searchterm'] = $searchterm;
 
         preg_match_all('/maps:([0-9]+)/', $searchterm, $match);

@@ -112,9 +112,9 @@ Breadcrumbs::register('post.edit', function ($breadcrumbs, $boardcat, $post) {
 });
 
 // Home > Board > [Forum] -> [Thread] -> Add/Edit Vote
-Breadcrumbs::register('board.vote', function ($breadcrumbs, $boardcat, $thread){
-   $breadcrumbs->parent('forum', $boardcat);
-   $breadcrumbs->push(trans('app.create_vote'), action('BoardController@create_vote', [$thread->id]));
+Breadcrumbs::register('board.vote', function ($breadcrumbs, $boardcat, $thread) {
+    $breadcrumbs->parent('forum', $boardcat);
+    $breadcrumbs->push(trans('app.create_vote'), action('BoardController@create_vote', [$thread->id]));
 });
 
 //----------------- Developers ---------------------------------------------------------------------------------------//
@@ -195,7 +195,6 @@ Breadcrumbs::register('awards.catadd', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Awards hinzufügen', action('AwardController@index'));
 });
-
 
 //----------------- Messanger / PN -----------------------------------------------------------------------------------//
 // Home -> Messages

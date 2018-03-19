@@ -7,10 +7,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\GamesFile;
-use Illuminate\Http\Request;
 use App\Helpers\PlayerHelper;
+use App\Models\GamesFile;
 use App\Models\GamesSavegame;
+use Illuminate\Http\Request;
 use PhpBinaryReader\BinaryReader;
 
 class SavegameManagerController extends Controller
@@ -152,8 +152,8 @@ class SavegameManagerController extends Controller
                     ->where('slot_id', '=', $request->get('slot'))
                     ->first();
 
-                if (! $check) {
-                    $save = new GamesSavegame;
+                if (!$check) {
+                    $save = new GamesSavegame();
                     $save->gamefile_id = $request->get('gamefile_id');
                     $save->user_id = \Auth::id();
                     $save->save_data = base64_encode($data);

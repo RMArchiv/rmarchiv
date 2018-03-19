@@ -7,9 +7,9 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Http\Controllers\Controller;
 use App\Models\Game;
 use App\Models\GamesFile;
-use App\Http\Controllers\Controller;
 
 class TakoController extends Controller
 {
@@ -20,13 +20,13 @@ class TakoController extends Controller
         return $list;
     }
 
-    public function getdevelopers($gameid){
+    public function getdevelopers($gameid)
+    {
         $devs = Game::whereId($gameid)->first();
 
-        $res = array();
+        $res = [];
 
-
-        foreach ($devs->developers()->get() as $dev){
+        foreach ($devs->developers()->get() as $dev) {
             return $dev->developer->name;
         }
     }

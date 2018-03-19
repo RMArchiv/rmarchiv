@@ -29,7 +29,7 @@ class ScreenshotController extends Controller
         }
 
         $img = \Image::make($storagePath);
-        if (! $full) {
+        if (!$full) {
             $response = \Response::make($img->encode('jpg', 80));
             $response->header('Content-Type', 'image/jpg');
         } else {
@@ -47,13 +47,12 @@ class ScreenshotController extends Controller
     public function create($gameid, $screenid)
     {
         if (\Auth::check()) {
-
             $game = Game::whereId($gameid)->first();
 
             return view('screenshots.create', [
                 'gameid'   => $gameid,
                 'screenid' => $screenid,
-                'game' => $game,
+                'game'     => $game,
             ]);
         } else {
             return redirect()->back();
