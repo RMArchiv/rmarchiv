@@ -28,6 +28,7 @@ class InlineBoxHelper
         }
 
         $htmlcontent = self::TextColor($htmlcontent);
+        $htmlcontent = self::StrikeText($htmlcontent);
 
         return $htmlcontent;
     }
@@ -35,6 +36,12 @@ class InlineBoxHelper
     public static function TextColor($htmlcontent)
     {
         $htmlcontent = preg_replace('/\[color\=(.*?)\](.*?)\[\/color\]/', '<span style="color: $1;">$2</span>', $htmlcontent);
+
+        return $htmlcontent;
+    }
+
+    public static function StrikeText($htmlcontent){
+        $htmlcontent = preg_replace('/(~{2})(.*?)(~{2})/', '<s>$2</s>', $htmlcontent);
 
         return $htmlcontent;
     }
