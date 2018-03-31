@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Developer;
 use App\Models\Game;
 use App\Models\User;
 
@@ -33,11 +34,7 @@ class AutocompleteController extends Controller
     {
         $result = [];
 
-        //$devs = Developer::whereName($term)->get();
-        $devs = \DB::table('developer')
-            ->select(['id', 'name'])
-            ->where('developer.name', 'like', '%'.$term.'%')
-            ->get();
+        $devs = Developer::where('name', 'like', '%'.$term.'%')->get();
 
         foreach ($devs as $dev) {
             $result[] = ['id' => $dev->id, 'value' => $dev->name];
