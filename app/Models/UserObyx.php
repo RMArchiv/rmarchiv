@@ -17,14 +17,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $obyx_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserObyx whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserObyx whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserObyx whereObyxId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserObyx whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserObyx whereUpdatedAt($value)
  * @mixin \Eloquent
- *
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Obyx $obyx
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory

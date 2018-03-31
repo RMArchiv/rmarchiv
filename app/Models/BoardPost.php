@@ -20,7 +20,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $content_html
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPost whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPost whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPost whereCatId($value)
@@ -30,7 +29,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPost whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPost whereUpdatedAt($value)
  * @mixin \Eloquent
- *
  * @property-read \App\Models\BoardCat $cat
  * @property-read \App\Models\BoardThread $thread
  * @property-read \App\Models\User $user

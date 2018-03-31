@@ -21,7 +21,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $savegame_slot
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
- *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PlayerFeedback whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PlayerFeedback whereGamefileId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PlayerFeedback whereId($value)

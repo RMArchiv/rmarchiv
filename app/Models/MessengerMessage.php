@@ -18,7 +18,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $body
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerMessage whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerMessage whereThreadId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerMessage whereUserId($value)
@@ -26,10 +25,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerMessage whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerMessage whereUpdatedAt($value)
  * @mixin \Eloquent
- *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property string $deleted_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerMessage whereDeletedAt($value)
  */
 class MessengerMessage extends Model

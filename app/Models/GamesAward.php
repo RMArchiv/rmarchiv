@@ -23,7 +23,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $updated_at
  * @property int $place
  * @property string $description
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesAward whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesAward whereGameId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesAward whereDeveloperId($value)
@@ -36,11 +35,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesAward wherePlace($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesAward whereDescription($value)
  * @mixin \Eloquent
- *
  * @property int $award_subcat_id
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesAward whereAwardSubcatId($value)
- *
  * @property-read \App\Models\User $user
  * @property-read \App\Models\AwardCat $cat
  * @property-read \App\Models\AwardPage $page

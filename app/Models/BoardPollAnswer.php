@@ -20,7 +20,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $updated_at
  * @property-read \App\Models\BoardPoll $poll
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BoardPollVote[] $votes
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPollAnswer whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPollAnswer whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPollAnswer wherePollId($value)

@@ -17,14 +17,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $gamefile_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserDownloadLog whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserDownloadLog whereGamefileId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserDownloadLog whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserDownloadLog whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserDownloadLog whereUserId($value)
  * @mixin \Eloquent
- *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class UserDownloadLog extends Model

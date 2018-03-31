@@ -21,7 +21,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BoardPollAnswer[] $answers
  * @property-read \App\Models\BoardThread $thread
  * @property-read \App\Models\User $user
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPoll whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPoll whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPoll whereThreadId($value)

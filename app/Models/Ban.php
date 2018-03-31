@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $deleted_at
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
- *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ban whereBannableId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ban whereBannableType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ban whereComment($value)

@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $icon
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
- *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\License whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\License whereIcon($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\License whereId($value)

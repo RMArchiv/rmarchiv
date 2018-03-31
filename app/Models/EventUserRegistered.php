@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $reg_state
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventUserRegistered whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventUserRegistered whereEventId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventUserRegistered whereUserId($value)
@@ -28,7 +27,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventUserRegistered whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventUserRegistered whereUpdatedAt($value)
  * @mixin \Eloquent
- *
  * @property-read \App\Models\Event $event
  * @property-read \App\Models\Event $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory

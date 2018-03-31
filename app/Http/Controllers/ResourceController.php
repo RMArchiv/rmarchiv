@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Resource;
 use Carbon\Carbon;
 use App\Events\Obyx;
 use Illuminate\Http\Request;
@@ -405,17 +406,16 @@ class ResourceController extends Controller
             $content_path = $storagedest;
         }
 
-        \DB::table('resources')->insert([
-            'type'         => $request->get('type'),
-            'cat'          => $request->get('cat'),
-            'user_id'      => \Auth::id(),
-            'title'        => $request->get('title'),
-            'desc_md'      => $request->get('desc'),
-            'desc_html'    => \Markdown::convertToHtml($request->get('desc')),
-            'content_type' => $request->get('content_type'),
-            'content_path' => $content_path,
-            'created_at'   => Carbon::now(),
-        ]);
+        $res = new Resource();
+        $res->type = $request->get('type');
+        $res->cat = $request->get('cat');
+        $res->user_id = \Auth::id();
+        $res->title = $request->get('title');
+        $res->desc_md = $request->get('msg');
+        $res->desc_html = \Markdown::convertToHtml($request->get('msg'));
+        $res->content_path = $content_path;
+        $res->content_type = $request->get('content_type');
+        $res->save();
 
         event(new Obyx('resource-add', \Auth::id()));
 

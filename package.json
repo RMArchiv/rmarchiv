@@ -13,14 +13,15 @@
     "laravel-elixir-vue-2": "^0.2.0",
     "laravel-elixir-webpack-official": "^1.0.2",
     "lodash": "^4.17.5",
-    "vue": "^2.5.13",
+    "vue": "^2.5.16",
     "vue-resource": "^1.5.0"
   },
   "dependencies": {
     "Tattletale": "^0.1.0",
     "bootstrap": "^4.0.0",
     "elixir": "^0.1.2",
-    "node-sass": "^4.7.2",
-    "popper.js": "^1.13.0"
+    "node-sass": "^4.8.3",
+    "npm": "^5.8.0",
+    "popper.js": "^1.14.1"
   }
 }

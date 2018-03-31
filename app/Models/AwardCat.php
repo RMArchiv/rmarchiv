@@ -21,7 +21,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardCat whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardCat whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardCat whereAwardPageId($value)
@@ -32,7 +31,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardCat whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardCat whereUpdatedAt($value)
  * @mixin \Eloquent
- *
  * @property-read \App\Models\AwardPage $awardpage
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory

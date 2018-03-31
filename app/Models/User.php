@@ -74,7 +74,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cmgmyr\Messenger\Models\Thread[] $threads
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserList[] $userlists
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserObyx[] $userobyx
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereEmail($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereId($value)
@@ -84,21 +83,17 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereRememberToken($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereUpdatedAt($value)
  * @mixin \Eloquent
- *
  * @property string $discord_user
  * @property string $discord_channel
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BoardPost[] $boardposts
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereDiscordChannel($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereDiscordUser($value)
- *
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Shoutbox[] $shoutbox
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Developer[] $developers
  * @property string|null $banned_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cog\Laravel\Ban\Models\Ban[] $bans
- *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereBannedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User withRole($role)
  */

@@ -22,7 +22,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $updated_at
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Logo $logo
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\LogoVote whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\LogoVote whereLogoId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\LogoVote whereUserId($value)
@@ -32,7 +31,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\LogoVote whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\LogoVote whereUpdatedAt($value)
  * @mixin \Eloquent
- *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class LogoVote extends Model

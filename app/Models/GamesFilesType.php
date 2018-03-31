@@ -18,7 +18,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $short
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFilesType whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFilesType whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFilesType whereDeletedAt($value)
@@ -26,7 +25,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFilesType whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFilesType whereShort($value)
  * @mixin \Eloquent
- *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class GamesFilesType extends Model

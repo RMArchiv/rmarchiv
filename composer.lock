@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "550dcb9cf81dff27cab2b952ec65b386",
+    "content-hash": "000f311eac29f2b753aa146f850a4383",
     "packages": [
         {
             "name": "anahkiasen/underscore-php",
@@ -58,16 +58,16 @@
         },
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "v3.1.3",
+            "version": "v3.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "664fa434e26febf04d60df0368303cf0fe14f63a"
+                "reference": "7a91480cc6e597caed5117a3c5d685f06d35c5a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/664fa434e26febf04d60df0368303cf0fe14f63a",
-                "reference": "664fa434e26febf04d60df0368303cf0fe14f63a",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/7a91480cc6e597caed5117a3c5d685f06d35c5a1",
+                "reference": "7a91480cc6e597caed5117a3c5d685f06d35c5a1",
                 "shasum": ""
             },
             "require": {
@@ -122,7 +122,7 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2018-02-25T13:31:58+00:00"
+            "time": "2018-03-06T08:35:31+00:00"
         },
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -1970,20 +1970,20 @@
         },
         {
             "name": "jeremeamia/SuperClosure",
-            "version": "2.3.0",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeremeamia/super_closure.git",
-                "reference": "443c3df3207f176a1b41576ee2a66968a507b3db"
+                "reference": "5707d5821b30b9a07acfb4d76949784aaa0e9ce9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeremeamia/super_closure/zipball/443c3df3207f176a1b41576ee2a66968a507b3db",
-                "reference": "443c3df3207f176a1b41576ee2a66968a507b3db",
+                "url": "https://api.github.com/repos/jeremeamia/super_closure/zipball/5707d5821b30b9a07acfb4d76949784aaa0e9ce9",
+                "reference": "5707d5821b30b9a07acfb4d76949784aaa0e9ce9",
                 "shasum": ""
             },
             "require": {
-                "nikic/php-parser": "^1.2|^2.0|^3.0",
+                "nikic/php-parser": "^1.2|^2.0|^3.0|^4.0",
                 "php": ">=5.4",
                 "symfony/polyfill-php56": "^1.0"
             },
@@ -1993,7 +1993,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.3-dev"
+                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
@@ -2024,7 +2024,7 @@
                 "serialize",
                 "tokenizer"
             ],
-            "time": "2016-12-07T09:37:55+00:00"
+            "time": "2018-03-21T22:21:57+00:00"
         },
         {
             "name": "khill/lavacharts",
@@ -2284,16 +2284,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.5.37",
+            "version": "v5.5.39",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "cf750b00c77d0d73e889c86f7db6a0e13b8dea8c"
+                "reference": "a21ef7e51df831a7c38d24dcf8c4774ee0847526"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/cf750b00c77d0d73e889c86f7db6a0e13b8dea8c",
-                "reference": "cf750b00c77d0d73e889c86f7db6a0e13b8dea8c",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/a21ef7e51df831a7c38d24dcf8c4774ee0847526",
+                "reference": "a21ef7e51df831a7c38d24dcf8c4774ee0847526",
                 "shasum": ""
             },
             "require": {
@@ -2304,7 +2304,7 @@
                 "league/flysystem": "~1.0",
                 "monolog/monolog": "~1.12",
                 "mtdowling/cron-expression": "~1.0",
-                "nesbot/carbon": "~1.20",
+                "nesbot/carbon": "^1.24.1",
                 "php": ">=7.0",
                 "psr/container": "~1.0",
                 "psr/simple-cache": "^1.0",
@@ -2414,7 +2414,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-03-07T14:11:09+00:00"
+            "time": "2018-03-09T17:24:53+00:00"
         },
         {
             "name": "laravel/scout",
@@ -2483,16 +2483,16 @@
         },
         {
             "name": "laravelcollective/html",
-            "version": "v5.5.3",
+            "version": "v5.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LaravelCollective/html.git",
-                "reference": "b79edc7acf574144c9811277286b4cafee8a07cc"
+                "reference": "04c596a69975b901f2223eb6eb4adf55354121c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/b79edc7acf574144c9811277286b4cafee8a07cc",
-                "reference": "b79edc7acf574144c9811277286b4cafee8a07cc",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/04c596a69975b901f2223eb6eb4adf55354121c2",
+                "reference": "04c596a69975b901f2223eb6eb4adf55354121c2",
                 "shasum": ""
             },
             "require": {
@@ -2510,7 +2510,9 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": [],
+                "branch-alias": {
+                    "dev-master": "5.5-dev"
+                },
                 "laravel": {
                     "providers": [
                         "Collective\\Html\\HtmlServiceProvider"
@@ -2545,20 +2547,20 @@
             ],
             "description": "HTML and Form Builders for the Laravel Framework",
             "homepage": "https://laravelcollective.com",
-            "time": "2018-02-12T14:19:55+00:00"
+            "time": "2018-03-24T00:39:21+00:00"
         },
         {
             "name": "league/commonmark",
-            "version": "0.17.0",
+            "version": "0.17.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "3b4c2224524776a584de663c7a04bc8eb2e1544d"
+                "reference": "fae7d27d6667365b0f497418014916d9918827ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/3b4c2224524776a584de663c7a04bc8eb2e1544d",
-                "reference": "3b4c2224524776a584de663c7a04bc8eb2e1544d",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/fae7d27d6667365b0f497418014916d9918827ab",
+                "reference": "fae7d27d6667365b0f497418014916d9918827ab",
                 "shasum": ""
             },
             "require": {
@@ -2573,10 +2575,10 @@
                 "commonmark/commonmark.js": "0.28",
                 "erusev/parsedown": "~1.0",
                 "michelf/php-markdown": "~1.4",
-                "mikehaertl/php-shellcommand": "~1.2.0",
-                "phpunit/phpunit": "~5.7|~6.5",
-                "scrutinizer/ocular": "~1.1",
-                "symfony/finder": "~3.0|~4.0"
+                "mikehaertl/php-shellcommand": "^1.2",
+                "phpunit/phpunit": "^5.7|^6.5",
+                "scrutinizer/ocular": "^1.1",
+                "symfony/finder": "^3.0|^4.0"
             },
             "suggest": {
                 "league/commonmark-extras": "Library of useful extensions including smart punctuation"
@@ -2614,7 +2616,7 @@
                 "markdown",
                 "parser"
             ],
-            "time": "2017-12-30T22:08:48+00:00"
+            "time": "2018-03-26T20:05:02+00:00"
         },
         {
             "name": "league/flysystem",
@@ -3173,20 +3175,20 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.23.0",
+            "version": "1.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "4a874a39b2b00d7e0146cd46fab6f47c41ce9e65"
+                "reference": "cbcf13da0b531767e39eb86e9687f5deba9857b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/4a874a39b2b00d7e0146cd46fab6f47c41ce9e65",
-                "reference": "4a874a39b2b00d7e0146cd46fab6f47c41ce9e65",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/cbcf13da0b531767e39eb86e9687f5deba9857b4",
+                "reference": "cbcf13da0b531767e39eb86e9687f5deba9857b4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
+                "php": ">=5.3.9",
                 "symfony/translation": "~2.6 || ~3.0 || ~4.0"
             },
             "require-dev": {
@@ -3222,28 +3224,28 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-02-28T09:22:05+00:00"
+            "time": "2018-03-19T15:50:49+00:00"
         },
         {
             "name": "nikic/php-parser",
-            "version": "v3.1.5",
+            "version": "v4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "bb87e28e7d7b8d9a7fda231d37457c9210faf6ce"
+                "reference": "e4a54fa90a5cd8e8dd3fb4099942681731c5cdd3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/bb87e28e7d7b8d9a7fda231d37457c9210faf6ce",
-                "reference": "bb87e28e7d7b8d9a7fda231d37457c9210faf6ce",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/e4a54fa90a5cd8e8dd3fb4099942681731c5cdd3",
+                "reference": "e4a54fa90a5cd8e8dd3fb4099942681731c5cdd3",
                 "shasum": ""
             },
             "require": {
                 "ext-tokenizer": "*",
-                "php": ">=5.5"
+                "php": ">=7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.0|~5.0"
+                "phpunit/phpunit": "^6.5 || ^7.0"
             },
             "bin": [
                 "bin/php-parse"
@@ -3251,7 +3253,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "4.0-dev"
                 }
             },
             "autoload": {
@@ -3273,7 +3275,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2018-02-28T20:30:58+00:00"
+            "time": "2018-03-25T17:35:16+00:00"
         },
         {
             "name": "optimus/fineuploader-server",
@@ -6124,16 +6126,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v2.10.4",
+            "version": "v2.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "b2dce1dacff988b79c4aadf252e5dee31bc04e19"
+                "reference": "ad94441c17b8ef096e517acccdbf3238af8a2da8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/b2dce1dacff988b79c4aadf252e5dee31bc04e19",
-                "reference": "b2dce1dacff988b79c4aadf252e5dee31bc04e19",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/ad94441c17b8ef096e517acccdbf3238af8a2da8",
+                "reference": "ad94441c17b8ef096e517acccdbf3238af8a2da8",
                 "shasum": ""
             },
             "require": {
@@ -6142,7 +6144,7 @@
                 "ext-json": "*",
                 "ext-tokenizer": "*",
                 "php": "^5.6 || >=7.0 <7.3",
-                "php-cs-fixer/diff": "^1.2",
+                "php-cs-fixer/diff": "^1.3",
                 "symfony/console": "^3.2 || ^4.0",
                 "symfony/event-dispatcher": "^3.0 || ^4.0",
                 "symfony/filesystem": "^3.0 || ^4.0",
@@ -6163,7 +6165,7 @@
                 "mikey179/vfsstream": "^1.6",
                 "php-coveralls/php-coveralls": "^2.0",
                 "php-cs-fixer/accessible-object": "^1.0",
-                "phpunit/phpunit": "^5.7.23 || ^6.4.3",
+                "phpunit/phpunit": "^5.7.23 || ^6.4.3 || ^7.0",
                 "phpunitgoodpractices/traits": "^1.3.1",
                 "symfony/phpunit-bridge": "^3.2.2 || ^4.0"
             },
@@ -6175,6 +6177,11 @@
                 "php-cs-fixer"
             ],
             "type": "application",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.11-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "PhpCsFixer\\": "src/"
@@ -6185,6 +6192,8 @@
                     "tests/Test/AbstractIntegrationTestCase.php",
                     "tests/Test/Assert/AssertTokensTrait.php",
                     "tests/Test/Constraint/SameStringsConstraint.php",
+                    "tests/Test/Constraint/SameStringsConstraintForV5.php",
+                    "tests/Test/Constraint/SameStringsConstraintForV7.php",
                     "tests/Test/IntegrationCase.php",
                     "tests/Test/IntegrationCaseFactory.php",
                     "tests/Test/IntegrationCaseFactoryInterface.php",
@@ -6207,7 +6216,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2018-03-08T11:13:12+00:00"
+            "time": "2018-03-21T17:41:26+00:00"
         },
         {
             "name": "fzaninotto/faker",

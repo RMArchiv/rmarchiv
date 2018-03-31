@@ -21,7 +21,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $new_value
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Revision whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Revision whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Revision whereKey($value)

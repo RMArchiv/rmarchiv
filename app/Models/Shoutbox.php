@@ -20,7 +20,6 @@ use Illuminate\Notifications\Notifiable;
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Shoutbox whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Shoutbox whereShoutMd($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Shoutbox whereShoutHtml($value)
@@ -29,7 +28,6 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Shoutbox whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Shoutbox whereUpdatedAt($value)
  * @mixin \Eloquent
- *
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory

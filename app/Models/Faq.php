@@ -20,7 +20,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $desc_html
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Faq whereCat($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Faq whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Faq whereDescHtml($value)
@@ -30,7 +29,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Faq whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Faq whereUserId($value)
  * @mixin \Eloquent
- *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class Faq extends Model

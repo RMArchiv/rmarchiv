@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $filename
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Screenshot whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Screenshot whereGameId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Screenshot whereUserId($value)
@@ -28,7 +27,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Screenshot whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Screenshot whereFilename($value)
  * @mixin \Eloquent
- *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class Screenshot extends Model

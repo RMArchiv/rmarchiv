@@ -24,7 +24,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $reg_allowed
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Event whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Event whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Event whereStartDate($value)
@@ -38,7 +37,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Event whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Event whereUpdatedAt($value)
  * @mixin \Eloquent
- *
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EventSetting[] $settings
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EventMeeting[] $meetings

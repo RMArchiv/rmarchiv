@@ -24,7 +24,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $deleted_at
  * @property int $vote_up
  * @property int $vote_down
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment whereContentId($value)
@@ -37,22 +36,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment whereVoteUp($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment whereVoteDown($value)
  * @mixin \Eloquent
- *
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $content
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Game $game
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property-read \App\Models\News $news
- *
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment onlyTrashed()
  * @method static bool|null restore()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment withoutTrashed()
- *
  * @property int $deleted
  * @property string $delete_reason
- *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereDeleteReason($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereDeleted($value)
  */

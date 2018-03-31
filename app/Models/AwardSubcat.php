@@ -20,7 +20,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $updated_at
  * @property int $page_id
  * @property int $cat_id
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardSubcat whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardSubcat whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardSubcat whereDescHtml($value)
@@ -30,7 +29,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardSubcat wherePageId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardSubcat whereCatId($value)
  * @mixin \Eloquent
- *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GamesAward[] $game_awards
  * @property-read \App\Models\AwardCat $award_cat

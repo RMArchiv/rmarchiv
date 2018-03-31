@@ -20,7 +20,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardPage whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardPage whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardPage whereShort($value)
@@ -30,7 +29,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardPage whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AwardPage whereUpdatedAt($value)
  * @mixin \Eloquent
- *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class AwardPage extends Model

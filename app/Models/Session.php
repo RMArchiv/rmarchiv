@@ -18,7 +18,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $user_agent
  * @property string $payload
  * @property int $last_activity
- *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Session whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Session whereIpAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Session whereLastActivity($value)

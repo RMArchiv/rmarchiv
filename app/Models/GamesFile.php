@@ -26,7 +26,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereGameId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereFilesize($value)
@@ -41,25 +40,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereUpdatedAt($value)
  * @mixin \Eloquent
- *
  * @property string $filename
  * @property int $downloadcount
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereFilename($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereDownloadcount($value)
- *
  * @property-read \App\Models\GamesFilesType $gamefiletype
  * @property-read \App\Models\Game $game
  * @property int $forbidden
  * @property string $reason
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereForbidden($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile whereReason($value)
- *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\PlayerIndexjson[] $playerIndex
  * @property-read \App\Models\User $user
- *
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile onlyTrashed()
  * @method static bool|null restore()

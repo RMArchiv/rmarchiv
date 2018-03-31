@@ -18,7 +18,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\TranslatorLanguage whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\TranslatorLanguage whereDeletedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\TranslatorLanguage whereId($value)

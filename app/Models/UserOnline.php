@@ -17,14 +17,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $last_place
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserOnline whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserOnline whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserOnline whereLastPlace($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserOnline whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserOnline whereUserId($value)
  * @mixin \Eloquent
- *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property-read \App\Models\User $user
  */

@@ -18,7 +18,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $user_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventMeetingUserRegistered whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventMeetingUserRegistered whereEventId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventMeetingUserRegistered whereMeetingId($value)
@@ -26,7 +25,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventMeetingUserRegistered whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventMeetingUserRegistered whereUpdatedAt($value)
  * @mixin \Eloquent
- *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  */
 class EventMeetingUserRegistered extends Model
