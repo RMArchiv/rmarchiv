@@ -47,7 +47,8 @@
         "spatie/laravel-cookie-consent": "^2.2",
         "tymon/jwt-auth": "^0.5.12",
         "optimus/fineuploader-server-thumbnail-creator": "^0.1.1",
-        "cybercog/laravel-ban": "^3.1"
+        "cybercog/laravel-ban": "^3.1",
+        "mdurrant/php-binary-reader": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
