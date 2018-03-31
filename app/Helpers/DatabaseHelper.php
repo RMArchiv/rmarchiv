@@ -15,8 +15,15 @@ use App\Models\UserOnline;
 use App\Models\BoardThread;
 use App\Models\BoardThreadsTracker;
 
+/**
+ * Class DatabaseHelper
+ * @package App\Helpers
+ */
 class DatabaseHelper
 {
+    /** Sets Vots and Comments
+     * @param $gameid
+     */
     public static function setVotesAndComments($gameid)
     {
         $game = Game::whereId($gameid)->first();
@@ -30,6 +37,9 @@ class DatabaseHelper
             ]);
     }
 
+    /** Set Release Informations on Game Change
+     * @param $gameid
+     */
     public static function setReleaseInfos($gameid)
     {
         $game = Game::find($gameid);
@@ -92,6 +102,9 @@ class DatabaseHelper
         }
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Model|null|object|static
+     */
     public static function getOnlineUserCount()
     {
         $users = \DB::table('user_online')
@@ -102,6 +115,9 @@ class DatabaseHelper
         return $users;
     }
 
+    /**
+     * @param $where
+     */
     public static function setOnline($where)
     {
         if (\Auth::check()) {
@@ -115,6 +131,10 @@ class DatabaseHelper
         }
     }
 
+    /**
+     * @param $thread_id
+     * @return bool
+     */
     public static function isThreadUnread($thread_id)
     {
         if (\Auth::check()) {
@@ -137,6 +157,9 @@ class DatabaseHelper
         }
     }
 
+    /**
+     * @param $thread_id
+     */
     public static function setThreadViewDate($thread_id)
     {
         if (\Auth::check()) {
@@ -149,6 +172,10 @@ class DatabaseHelper
         }
     }
 
+    /**
+     * @param $gameid
+     * @return string
+     */
     public static function getReleaseDateFromGameId($gameid)
     {
         $game = Game::whereId($gameid)->first();
@@ -174,6 +201,11 @@ class DatabaseHelper
         }
     }
 
+    /**
+     * @param $gameid
+     * @param bool $urlstyle
+     * @return bool|string
+     */
     public static function getDevelopersUrlList($gameid, $urlstyle = true)
     {
         $developers = \DB::table('games_developer')
@@ -195,6 +227,10 @@ class DatabaseHelper
         return $res;
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
     public static function getResourcePathArray($id)
     {
         $resource = \DB::table('resources')
@@ -210,6 +246,10 @@ class DatabaseHelper
         return $res;
     }
 
+    /**
+     * @param $reason
+     * @return mixed
+     */
     public static function getObyxPoints($reason)
     {
         $obyx = \DB::table('obyx')
@@ -219,6 +259,9 @@ class DatabaseHelper
         return $obyx->value;
     }
 
+    /**
+     * @return mixed
+     */
     public static function getGameViewsMax()
     {
         $v = \DB::table('games')
@@ -241,6 +284,10 @@ class DatabaseHelper
         return $v->maxviews;
     }
 
+    /**
+     * @param $short
+     * @return int|mixed
+     */
     public static function langId_from_short($short)
     {
         $lang = \DB::table('languages')
@@ -255,6 +302,10 @@ class DatabaseHelper
         }
     }
 
+    /**
+     * @param $developername
+     * @return int|mixed
+     */
     public static function developerId_from_developerName($developername)
     {
         $dev = \DB::table('developer')
@@ -269,6 +320,10 @@ class DatabaseHelper
         }
     }
 
+    /**
+     * @param $developername
+     * @return int
+     */
     public static function developer_add_and_get_developerId($developername)
     {
         $d = new Developer();
