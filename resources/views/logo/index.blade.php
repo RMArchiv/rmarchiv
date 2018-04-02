@@ -19,16 +19,16 @@
                     </div>
                     <div class="card-body">
                         {{ trans('app.please_rate_this_logo') }}
-                        <img src="{{ asset($logo->filename) }}">
-                        {{ $logo->title }}
+                        <img src="{{ asset($logos->filename) }}">
+                        {{ $logos->title }}
                     </div>
                     <div class="card-footer">
-                        {!! Form::open(['action' => ['LogoController@vote_add', $logo->id]]) !!}
+                        {!! Form::open(['action' => ['LogoController@vote_add', $logos->id]]) !!}
                         {!! Form::hidden('value', '0') !!}
                         {!! Form::submit(trans('app.rate_down')) !!}
                         {!! Form::close() !!}
 
-                        {!! Form::open(['action' => ['LogoController@vote_add', $logo->id]]) !!}
+                        {!! Form::open(['action' => ['LogoController@vote_add', $logos->id]]) !!}
                         {!! Form::hidden('value', '1') !!}
                         {!! Form::submit(trans('app.rate_up')) !!}
                         {!! Form::close() !!}
