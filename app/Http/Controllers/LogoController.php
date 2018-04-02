@@ -34,7 +34,7 @@ class LogoController extends Controller
 
         }
 
-        return view('logo.index', ['logo' => $logos]);
+        return view('logo.index', ['logos' => $logos]);
     }
 
     public function vote_add($id, Request $request)
