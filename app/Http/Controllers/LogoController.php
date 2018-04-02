@@ -32,7 +32,6 @@ class LogoController extends Controller
                 ->inRandomOrder()
                 ->first();
 
-            dd($logos);
         }
 
         return view('logo.index', ['logo' => $logos]);
