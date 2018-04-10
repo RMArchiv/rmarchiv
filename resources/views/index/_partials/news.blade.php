@@ -6,7 +6,7 @@
                     <a href="{{ url('/news', $new->id) }}">{{ $new->title }}</a>
                 </div>
                 <div class="card-body">
-                    {!! $new->news_html !!}
+                    {!! \App\Helpers\InlineBoxHelper::GameBox($new->news_html) !!}
                 </div>
                 <div class="card-footer">
                     {{ trans('app.submitted_by') }} <a href='{{ url('users', $new->user->id) }}'>{{ $new->user->name }}</a> :: <time datetime='{{ $new->created_at }}' title='{{ $new->created_at }}'>{{ \Carbon\Carbon::parse($new->created_at)->diffForHumans() }}</time> - {{ trans('app.comments') }}: {{ $new->comments->count() }}
