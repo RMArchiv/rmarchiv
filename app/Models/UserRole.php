@@ -7,6 +7,7 @@
 
 namespace App\Models;
 
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Zizaco\Entrust\EntrustRole;
 
 /**
@@ -30,5 +31,5 @@ use Zizaco\Entrust\EntrustRole;
  */
 class UserRole extends EntrustRole
 {
-    //
+    use Cachable;
 }
