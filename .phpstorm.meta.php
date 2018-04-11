@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-03-31 11:39:01.
+    * Generated on 2018-04-11 14:03:40.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -218,6 +218,7 @@ namespace PHPSTORM_META {
         'queue.listener' => \Illuminate\Queue\Listener::class,
         'queue.failer' => \Illuminate\Queue\Failed\DatabaseFailedJobProvider::class,
         'redis' => \Illuminate\Redis\RedisManager::class,
+        'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
         'auth.password.broker' => \Illuminate\Auth\Passwords\PasswordBroker::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
@@ -440,6 +441,7 @@ namespace PHPSTORM_META {
         'queue.listener' => \Illuminate\Queue\Listener::class,
         'queue.failer' => \Illuminate\Queue\Failed\DatabaseFailedJobProvider::class,
         'redis' => \Illuminate\Redis\RedisManager::class,
+        'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
         'auth.password.broker' => \Illuminate\Auth\Passwords\PasswordBroker::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
@@ -662,6 +664,7 @@ namespace PHPSTORM_META {
         'queue.listener' => \Illuminate\Queue\Listener::class,
         'queue.failer' => \Illuminate\Queue\Failed\DatabaseFailedJobProvider::class,
         'redis' => \Illuminate\Redis\RedisManager::class,
+        'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
         'auth.password.broker' => \Illuminate\Auth\Passwords\PasswordBroker::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
@@ -884,6 +887,7 @@ namespace PHPSTORM_META {
         'queue.listener' => \Illuminate\Queue\Listener::class,
         'queue.failer' => \Illuminate\Queue\Failed\DatabaseFailedJobProvider::class,
         'redis' => \Illuminate\Redis\RedisManager::class,
+        'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
         'auth.password.broker' => \Illuminate\Auth\Passwords\PasswordBroker::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
@@ -1106,6 +1110,7 @@ namespace PHPSTORM_META {
         'queue.listener' => \Illuminate\Queue\Listener::class,
         'queue.failer' => \Illuminate\Queue\Failed\DatabaseFailedJobProvider::class,
         'redis' => \Illuminate\Redis\RedisManager::class,
+        'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
         'auth.password.broker' => \Illuminate\Auth\Passwords\PasswordBroker::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
@@ -1328,6 +1333,7 @@ namespace PHPSTORM_META {
         'queue.listener' => \Illuminate\Queue\Listener::class,
         'queue.failer' => \Illuminate\Queue\Failed\DatabaseFailedJobProvider::class,
         'redis' => \Illuminate\Redis\RedisManager::class,
+        'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
         'auth.password.broker' => \Illuminate\Auth\Passwords\PasswordBroker::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
@@ -1550,6 +1556,7 @@ namespace PHPSTORM_META {
         'queue.listener' => \Illuminate\Queue\Listener::class,
         'queue.failer' => \Illuminate\Queue\Failed\DatabaseFailedJobProvider::class,
         'redis' => \Illuminate\Redis\RedisManager::class,
+        'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
         'auth.password.broker' => \Illuminate\Auth\Passwords\PasswordBroker::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
