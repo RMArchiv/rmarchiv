@@ -7,6 +7,7 @@
 
 namespace App\Models;
 
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Waavi\Translation\Traits\Translatable;
@@ -80,6 +81,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  */
 class Game extends Model
 {
+    use Cachable;
     use \Venturecraft\Revisionable\RevisionableTrait;
     //use Translatable;
     use LogsActivity;
