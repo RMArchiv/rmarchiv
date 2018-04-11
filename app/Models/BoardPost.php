@@ -7,6 +7,7 @@
 
 namespace App\Models;
 
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -36,6 +37,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class BoardPost extends Model
 {
+    use Cachable;
     use \Venturecraft\Revisionable\RevisionableTrait;
     public $timestamps = true;
     protected $table = 'board_posts';
