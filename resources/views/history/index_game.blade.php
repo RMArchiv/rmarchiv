@@ -42,7 +42,7 @@
                                 </td>
                                 <td>
                                     @if($a->description == 'updated')
-                                        {{ implode(', ', array_keys(\App\Helpers\MiscHelper::array_diff_assoc_recursive($a->changes['old'], $a->changes['attributes']))) }}
+                                        {{ implode(', ', array_keys(\App\Helpers\MiscHelper::array_diff_assoc_recursive($a->changes()['old'], $a->changes()['attributes']))) }}
                                     @endif
                                 </td>
                             </tr>
