@@ -37,6 +37,9 @@ class ScreenshotController extends Controller
             $response->header('Content-Type', 'image/png');
         }
         //$response->setMaxAge(604800);
+        $etag = md5($s->id.'-'.$s->updated_at);
+        $response->setEtag($etag);
+        $response->setLastModified($s->updated_at);
         $response->setPublic();
 
         return $response;
