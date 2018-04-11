@@ -9,6 +9,7 @@ namespace App\Models;
 
 use Cog\Laravel\Ban\Traits\Bannable;
 use Cmgmyr\Messenger\Traits\Messagable;
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Notifications\Notifiable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -99,6 +100,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable implements BannableContract
 {
+    use Cachable;
     use \Venturecraft\Revisionable\RevisionableTrait;
     use Bannable;
     use CanResetPassword;
