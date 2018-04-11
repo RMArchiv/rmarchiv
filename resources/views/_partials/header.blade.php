@@ -1,4 +1,4 @@
-<div>
+<div class="mt-1 mb-1">
     @php
         $logo = \DB::table('logos')
         ->leftJoin('users', 'logos.user_id', '=', 'users.id')
@@ -12,5 +12,5 @@
     <a href="/">
         <img class="mx-auto d-block" height="100px" src="{{ asset($logo->filename) }}" alt="Logo: {{ $logo->title }}"/>
     </a>
-    <p>logo '{{ $logo->title }}' by <a href='{{ url('users', $logo->id) }}' class='user'>{{ $logo->name }}</a> :: {{ config('app.name') }} is brought to you with love.</p>
+    <p class="text-center">logo '{{ $logo->title }}' by <a href='{{ url('users', $logo->id) }}' class='user'>{{ $logo->name }}</a> :: {{ config('app.name') }} is brought to you with love.</p>
 </div>

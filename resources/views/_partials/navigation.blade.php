@@ -1,6 +1,5 @@
-<div class="row justify-content-center">
-   @include('_partials.header')
-</div>
+@include('_partials.header')
+
 <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
         <div class="navbar-header">
