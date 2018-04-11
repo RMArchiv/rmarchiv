@@ -7,6 +7,7 @@
 
 namespace App\Models;
 
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -72,6 +73,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserSetting extends Model
 {
+    use Cachable;
     use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'user_settings';
 

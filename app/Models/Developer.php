@@ -7,6 +7,7 @@
 
 namespace App\Models;
 
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
@@ -35,6 +36,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Developer extends Model
 {
+    use Cachable;
     use \Venturecraft\Revisionable\RevisionableTrait;
     use Searchable;
 

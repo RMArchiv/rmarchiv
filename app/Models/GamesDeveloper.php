@@ -7,6 +7,7 @@
 
 namespace App\Models;
 
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 
@@ -35,6 +36,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  */
 class GamesDeveloper extends Model
 {
+    use Cachable;
     use \Venturecraft\Revisionable\RevisionableTrait;
     use LogsActivity;
 
