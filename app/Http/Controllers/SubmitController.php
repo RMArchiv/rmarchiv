@@ -39,6 +39,8 @@ class SubmitController extends Controller
         $imageName = \Storage::putFile('logos', new UploadedFile($file->path(), $file->getClientOriginalName()));
         //dd($file);
 
+        $imageName = str_replace('logos', 'logo', $imageName);
+
         $l = new Logo();
         $l->extension = \Storage::mimeType($imageName);
         $l->filename = str_replace($extorig, '', $imageName);
