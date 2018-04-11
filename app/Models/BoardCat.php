@@ -36,7 +36,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class BoardCat extends Model
 {
-    use Cachable;
     use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'board_cats';
 

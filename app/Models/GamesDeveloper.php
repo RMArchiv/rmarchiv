@@ -36,7 +36,6 @@ use Spatie\Activitylog\Traits\LogsActivity;
  */
 class GamesDeveloper extends Model
 {
-    use Cachable;
     use \Venturecraft\Revisionable\RevisionableTrait;
     use LogsActivity;
 

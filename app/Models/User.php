@@ -100,7 +100,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable implements BannableContract
 {
-    use Cachable;
     use \Venturecraft\Revisionable\RevisionableTrait;
     use Bannable;
     use CanResetPassword;

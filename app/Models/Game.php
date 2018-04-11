@@ -81,7 +81,6 @@ use Spatie\Activitylog\Traits\LogsActivity;
  */
 class Game extends Model
 {
-    use Cachable;
     use \Venturecraft\Revisionable\RevisionableTrait;
     //use Translatable;
     use LogsActivity;
