@@ -36,7 +36,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Developer extends Model
 {
-    use Cachable;
     use \Venturecraft\Revisionable\RevisionableTrait;
     use Searchable;
 

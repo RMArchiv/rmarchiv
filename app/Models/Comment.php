@@ -54,7 +54,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Comment extends Model
 {
-    use Cachable;
     use \Venturecraft\Revisionable\RevisionableTrait;
     use SoftDeletes;
 

@@ -37,7 +37,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Logo extends Model
 {
-    use Cachable;
     use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'logos';
 

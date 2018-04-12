@@ -62,7 +62,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class GamesFile extends Model
 {
-    use Cachable;
     use \Venturecraft\Revisionable\RevisionableTrait;
     use SoftDeletes;
 

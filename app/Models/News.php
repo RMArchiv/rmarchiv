@@ -40,7 +40,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class News extends Model
 {
-    use Cachable;
     use \Venturecraft\Revisionable\RevisionableTrait;
     public $timestamps = true;
     protected $table = 'news';
