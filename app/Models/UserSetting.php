@@ -73,7 +73,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserSetting extends Model
 {
-    use Cachable;
     use \Venturecraft\Revisionable\RevisionableTrait;
     protected $table = 'user_settings';
 

@@ -31,5 +31,5 @@ use Zizaco\Entrust\EntrustRole;
  */
 class UserRole extends EntrustRole
 {
-    use Cachable;
+//
 }
