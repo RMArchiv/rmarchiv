@@ -30,6 +30,7 @@ class InlineBoxHelper
 
         $htmlcontent = self::TextColor($htmlcontent);
         $htmlcontent = self::StrikeText($htmlcontent);
+        $htmlcontent = self::BlockQuote($htmlcontent);
 
         return $htmlcontent;
     }
@@ -47,5 +48,10 @@ class InlineBoxHelper
         $htmlcontent = preg_replace('/(~{2})(.*?)(~{2})/', '<s>$2</s>', $htmlcontent);
 
         return $htmlcontent;
+    }
+
+    public static function BlockQuote($mhtmcontent){
+        $mhtmcontent = str_replace('<blockquote>', '<blockquote class="blockquote">', $mhtmcontent);
+        return $mhtmcontent;
     }
 }
