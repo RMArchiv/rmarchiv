@@ -126,7 +126,7 @@ header[role="banner"] {
 .table-striped {
   > tbody > tr:nth-of-type(odd) {
     //background-color: $table-bg-accent;
-  },
+  }
   > tbody > tr:nth-of-type(even) {
     //background-color: $gray-darker;
   }
@@ -142,7 +142,7 @@ header[role="banner"] {
 .table-hover {
   > tbody > tr{
     //background-color: $gray-darker;
-  },
+  }
   > tbody > tr:hover {
     //background-color: $gray-dark;
   }
@@ -262,4 +262,10 @@ header[role="banner"] {
 
 .cookies-message {
   margin: 20px;
+}
+
+blockquote {
+  margin-left: 1em;
+  font-size: 1em;
+  background-color: $rm-base-p2;
 }
