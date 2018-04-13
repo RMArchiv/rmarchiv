@@ -15,7 +15,7 @@ class TakoController extends Controller
 {
     public function filelist()
     {
-        $list = GamesFile::with('gamefiletype', 'game')->get(); //->take(5);
+        $list = GamesFile::with('gamefiletype', 'game.maker' )->get(); //->take(5);
 
         return $list;
     }
