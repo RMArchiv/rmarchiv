@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Models\Game;
 use App\Models\GamesFile;
 use App\Http\Controllers\Controller;
+use App\Models\Maker;
 
 class TakoController extends Controller
 {
@@ -29,5 +30,11 @@ class TakoController extends Controller
         foreach ($devs->developers()->get() as $dev) {
             return $dev->developer->name;
         }
+    }
+
+    public function getMakers(){
+        $maker = Maker::all();
+
+        return $maker;
     }
 }

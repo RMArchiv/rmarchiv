@@ -25,6 +25,7 @@ $api->version('v1', function ($api) {
     $api->get('games_app', 'App\Http\Controllers\Api\v1\GameController@show_app');
     $api->get('tako/filelist', 'App\Http\Controllers\Api\v1\TakoController@filelist');
     $api->get('tako/dev/{gameid}', 'App\Http\Controllers\Api\v1\TakoController@getdevelopers');
+    $api->get('tako/makers', 'App\Http\Controllers\Api\v1\TakoController@getMakers');
 
     //EasyRPG Hash API
     $api->get('easyrpg', 'App\Http\Controllers\Api\v1\EasyRPGController@index');
