@@ -17,7 +17,11 @@ class SetLocaleMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $http_lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+        if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])){
+            $http_lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+        }else{
+            $http_lang = 'en';
+        }
 
         switch ($http_lang) {
             case 'de':
