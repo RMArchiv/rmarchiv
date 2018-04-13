@@ -27,12 +27,14 @@
                             <a href="{{ url('users/activity') }}">{{ trans('app.user_activities') }}</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            {{ trans('app.newest_user') }}:
-                            <a href="{{ action('UserController@show', $newuser->id) }}">{{ $newuser->name }}</a>
-                        </td>
-                    </tr>
+                    @if($newuser)
+                        <tr>
+                            <td>
+                                {{ trans('app.newest_user') }}:
+                                <a href="{{ action('UserController@show', $newuser->id) }}">{{ $newuser->name }}</a>
+                            </td>
+                        </tr>
+                    @endif
                     <tr>
                         <td>
                             {{ number_format($stats->logocount, 0, ',', '.') }}
