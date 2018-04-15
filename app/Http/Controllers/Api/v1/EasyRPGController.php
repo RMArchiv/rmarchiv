@@ -15,8 +15,18 @@ use App\Models\PlayerFileHash;
 use App\Http\Controllers\Controller;
 use App\Models\PlayerFileGamefileRel;
 
+/**
+ * Class EasyRPGController
+ * @package App\Http\Controllers\Api\v1
+ *
+ * Class for EasyRPG related stuff
+ */
 class EasyRPGController extends Controller
 {
+    /**
+     * return index of all gamefile_ids with filehash
+     * @return array
+     */
     public function index()
     {
         $hashes = PlayerFileGamefileRel::where('orig_filename', 'like', '%rpg_rt.ldb%')
@@ -36,6 +46,10 @@ class EasyRPGController extends Controller
         return $array;
     }
 
+    /**
+     * @param $ldbhash
+     * @return array
+     */
     public function show($ldbhash)
     {
         $hashid = PlayerFileHash::whereFilehash($ldbhash)->first()->id;

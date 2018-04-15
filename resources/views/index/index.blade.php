@@ -42,6 +42,8 @@
             <div class="col-md-3">
                 @include('index._partials.randomgame')
 
+                <iframe src="https://discordapp.com/widget?id=269382903450959872&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0"></iframe>
+
                 @if(!Auth::check() || Auth::user()->settings->disable_widget_tags != 1)
                     @include('index._partials.tagcloud')
                 @endif

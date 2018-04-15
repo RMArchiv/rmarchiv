@@ -13,6 +13,11 @@ use App\Models\User;
 
 class AutocompleteController extends Controller
 {
+    /**
+     * returns autocomplete values for games
+     * @param $term
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function search($term)
     {
         $result = [];
