@@ -42,16 +42,6 @@
             <div class="col-md-3">
                 @include('index._partials.randomgame')
 
-                <div class="row mt-4">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <iframe src="https://discordapp.com/widget?id=269382903450959872&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0"></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 @if(!Auth::check() || Auth::user()->settings->disable_widget_tags != 1)
                     @include('index._partials.tagcloud')
                 @endif
@@ -70,6 +60,16 @@
 
                 @include('index._partials.nextparty')
                 @include('index._partials.welike')
+
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <iframe src="https://discordapp.com/widget?id=269382903450959872&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
