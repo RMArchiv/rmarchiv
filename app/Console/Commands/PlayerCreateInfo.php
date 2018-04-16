@@ -46,7 +46,7 @@ class PlayerCreateInfo extends Command
     {
         $this->info('Lade Gamefiles ohne index.json');
 
-        $gamefiles = GamesFile::with('games')->get();
+        $gamefiles = GamesFile::with('game')->get();
 
         $counter = 0;
         $toindexed = [];
@@ -54,6 +54,7 @@ class PlayerCreateInfo extends Command
         foreach ($gamefiles as $gamefile) {
             $makerid = $gamefile->game->maker_id;
 
+            echo $makerid.' - '.$gamefile->id;
             if ($makerid == 2 or $makerid == 3 or $makerid == 9) {
                 if ($gamefile->playerIndex()->count() == 0) {
                     $toindexed[] = $gamefile;
