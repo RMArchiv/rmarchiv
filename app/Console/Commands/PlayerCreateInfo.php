@@ -52,9 +52,9 @@ class PlayerCreateInfo extends Command
         $toindexed = [];
 
         foreach ($gamefiles as $gamefile) {
-            $makerid = $gamefile->game->maker_id.PHP_EOL;
+            $makerid = $gamefile->game->maker_id;
 
-            echo $makerid.' - '.$gamefile->id;
+            echo $makerid.' - '.$gamefile->id.PHP_EOL;
             if ($makerid == 2 or $makerid == 3 or $makerid == 9) {
                 if ($gamefile->playerIndex()->count() == 0) {
                     $toindexed[] = $gamefile;
