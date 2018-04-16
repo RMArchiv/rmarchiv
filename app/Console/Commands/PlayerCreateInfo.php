@@ -46,7 +46,7 @@ class PlayerCreateInfo extends Command
     {
         $this->info('Lade Gamefiles ohne index.json');
 
-        $gamefiles = GamesFile::all();
+        $gamefiles = GamesFile::with('games')->get();
 
         $counter = 0;
         $toindexed = [];
