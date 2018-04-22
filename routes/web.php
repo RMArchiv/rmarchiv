@@ -74,7 +74,7 @@ Route::get('maker/{makerid}/{orderby?}/{direction?}', 'MakerController@show')->n
 
 //Reporting Routen
 Route::get('reports/add/game/{gameid}', 'ReportController@create_game_report');
-Route::post('reports/add/game/{gameid}', 'ReportController@store_game_report');
+Route::post('reports/add/game/{gameid}', 'ReportController@store_game_report')->name('game-report.store');
 Route::get('reports', 'ReportController@index_user');
 Route::get('reports/close/{id}', 'ReportController@close_ticket');
 Route::get('reports/open/{id}', 'ReportController@open_ticket');

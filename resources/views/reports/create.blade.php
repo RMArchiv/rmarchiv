@@ -1,37 +1,58 @@
 @extends('layouts.app')
 @section('pagetitle', trans('app.report_game'))
 @section('content')
-    <div id="content">
-        <form action="{{ url('reports/add/game', $game->id) }}" method="post" enctype="multipart/form-data">
-            {{ csrf_field() }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>
+                        @if($game->subtitle)
+                            {{ $game->title }}
+                            <small> - {{ $game->subtitle }}</small> {{ trans('app.report_game') }}
+                        @else
+                            {{ $game->title }} {{ trans('app.report_game') }}
+                        @endif
 
-            <div class="rmarchivtbl" id="rmarchivbox_submitnews">
-                <h2>{{ trans('app.report_game') }}</h2>
-
-                @if (count($errors) > 0))
-                <div class="rmarchivtbl errorbox">
-                    <h2>{{ trans('app.report_game_error') }}</h2>
-                    <div class="content">
-                        @foreach ($errors->all() as $error)
-                            <strong>{{ $error }}</strong>
-                        @endforeach
-                    </div>
+                    </h1>
+                    {!! Breadcrumbs::render('game-report', $game) !!}
                 </div>
-                @endif
+            </div>
+        </div>
+        <div class="row">
+            @if(Auth::check())
+                {!! Form::open(['method' => 'POST', 'route' => ['game-report.store', $game->id]]) !!}
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                {{ trans('app.report_game') }}
+                            </div>
+                            <div class="card-body">
+                                @include('_partials.markdown_editor')
+                            </div>
+                            <div class="card-footer">
+                                <input type="submit" value="{{trans('app.submit')}}" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </div>
+                {!! Form::close() !!}
+            @else
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            Keine Berechtigung / Missing Permissions
+                        </div>
+                        <div class="card-body">
+                            Momentan können Spiele Repots nur mit einem registrierten Benutzeraccount gesendet werden.<br>
+                            Alternativ kann eine E-Mail an <a href="mailto:report@rmarchiv.tk">report@rmarchiv.tk</a> gesendet werden<br>
+                            <br>
+                            Currently, system-side game reports can only be created with an registered user account.<br>
+                            Alternatively you can send an e-mail to <a href="mailto:report@rmarchiv.tk">report@rmarchiv.tk</a><br>
+                            <br>
 
-                <div class="content">
-                    <div class="formifier">
-                        <div class="row" id="row_message">
-                            <label for="msg">{{ trans('app.report_description') }}:</label>
-                            <textarea name="msg" id="msg" maxlength="9999" rows="10" placeholder="{{ trans('app.report_description_placeholder') }}"></textarea>
-                            <span> [<span class="req">req</span>] Markdown!</span>
                         </div>
                     </div>
                 </div>
-                <div class="foot">
-                    <input type="submit" value="{{ trans('app.submit') }}">
-                </div>
-            </div>
-        </form>
+            @endif
+        </div>
     </div>
 @endsection
