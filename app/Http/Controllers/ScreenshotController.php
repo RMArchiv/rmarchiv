@@ -22,7 +22,7 @@ class ScreenshotController extends Controller
             ->first();
 
         //Prüfen ob Screenshots vorhanden sind
-        if (is_null($s)) {//Es sind keine Screenshots vorhanden
+        if (!$s) {//Es sind keine Screenshots vorhanden
             $storagePath = public_path().'/assets/no_image.png';
         } else {//Es sind Screenshots vorhanden
             $storagePath = \Storage::get($s->filename);
@@ -37,9 +37,9 @@ class ScreenshotController extends Controller
             $response->header('Content-Type', 'image/png');
         }
         //$response->setMaxAge(604800);
-        $etag = md5($s->id.'-'.$s->updated_at);
-        $response->setEtag($etag);
-        $response->setLastModified($s->updated_at);
+        //$etag = md5($s->id.'-'.$s->updated_at);
+        //$response->setEtag($etag);
+        //$response->setLastModified($s->updated_at);
         $response->setPublic();
 
         return $response;
