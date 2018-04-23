@@ -11,3 +11,5 @@ Homestead.yaml
 /bootstrap/cache
 .phpstorm.meta.php
 _ide_helper.php
+composer.lock
+package-lock.json

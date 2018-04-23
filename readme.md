@@ -38,6 +38,10 @@ Language Tabellen füllen
 ```bash
 php artisan db:seed
 ```
+Key Generieren
+```bash
+php artisan key:generate
+```
 Lokalen Webserver starten
 ```bash
 php artisan serv
