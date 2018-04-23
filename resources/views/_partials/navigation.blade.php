@@ -72,6 +72,7 @@
                                 <a class="dropdown-item" href="{{ action('MessagesController@create') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.create_new_pm') }}</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ action('SavegameManagerController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.savegame_manager') }}</a>
+                                <a class="dropdown-item" href="{{ action('ReportController@index_user') }}" data-vivaldi-spatnav-clickable="1">Reported Games</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ action('UserSettingsController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.user_settings') }}</a>
                                 <div class="dropdown-ivider"></div>

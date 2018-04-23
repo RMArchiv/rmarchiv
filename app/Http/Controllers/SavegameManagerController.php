@@ -97,14 +97,19 @@ class SavegameManagerController extends Controller
         $array[$cat]['char1_face']['data'] = $br->readString($array[$cat]['char1_face']['length']);
         $array[$cat]['char1_face']['img_idx'] = $br->readInt8();
 
-        $pc = new PlayerController();
-        $files = json_decode($pc->deliver_indexjson($gamefile_id), true);
+        if(!is_null($array[$cat]['char1_face']['img_idx'])){
+            $pc = new PlayerController();
+            $files = json_decode($pc->deliver_indexjson($gamefile_id), true);
 
-        $file = $files['faceset/'.strtolower($array[$cat]['char1_face']['data'])];
+            $file = $files['faceset/'.strtolower($array[$cat]['char1_face']['data'])];
 
-        $file = action('PlayerController@deliver_files', [$gamefile_id, $file]);
+            $file = action('PlayerController@deliver_files', [$gamefile_id, $file]);
 
-        $array[$cat]['char1_face']['url'] = $file;
+            $array[$cat]['char1_face']['url'] = $file;
+        }else{
+            $array[$cat]['char1_face']['url'] = '';
+        }
+
 
         return $array;
     }
