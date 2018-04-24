@@ -38,22 +38,28 @@ class PlayerMvController extends Controller
 
     public function deliver($gamefileid, $filename)
     {
+        // OrangeMouseData is broken outside of Chrome browser -_-
+        if ($filename == "js/plugins/OrangeMouseData.js") {
+            $path = public_path('mv/'.$filename);
+            return response()->download($path);
+        }
+
         $gf = GamesFile::whereId($gamefileid)->first();
         $index = PlayerIndexjson::whereGamefileId($gamefileid)->first();
 
         $path = storage_path('app/public/'.$gf->filename);
-        //echo $path;
+
         $zip = new \ZipArchive();
         $zip->open($path);
         $fp = $zip->getFromName($index->value.$filename);
-        //dd($fp);
+
         $t = 'application/octet-stream';
-
-        if (ends_with($filename, ".js") == true){
-          $t = 'application/javascript';}
-        else if (ends_with($filename, ".css") == true){
-          $t = 'text/css';}
-
+        // Loading fails when js or css have wrong mimetype
+        if (ends_with($filename, ".js") == true) {
+            $t = 'application/javascript';
+        } else if (ends_with($filename, ".css") == true) {
+            $t = 'text/css';
+        }
 
         return response($fp, 200)->header('Content-Type', $t);
     }
