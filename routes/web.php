@@ -309,11 +309,15 @@ Route::group(['middleware' => 'permission:translate-page'], function () {
     Route::post('translation/save', 'TranslationController@savestring')->name('trans.save');
 });
 
-//Player Routen
+// EasyRPG Player (2k/2k3) Routen
 Route::get('player/{gamefileid}/games/default/index.json', 'Player2kController@deliver_indexjson')->name('player.deliverindex')->middleware('auth');
 Route::get('player/{gamefileid}/games/default/{fileid}', 'Player2kController@deliver_files')->name('player.files')->middleware('auth');
 Route::get('player/{gamefileid}/games/default/rtp/{filename}', 'Player2kController@deliver_rtp')->name('player.rtp')->middleware('auth');
 Route::get('player/{gamefileid}/play', 'Player2kController@index')->name('player.run')->middleware('auth');
+
+// RPG Maker MV Player Routen
+Route::get('playermv/{gamefileid}/play', 'PlayerMvController@index')->name('playermv.run')->middleware('auth');
+Route::get('playermv/{gamefileid}/{filename}', 'PlayerMvController@deliver')->name('playermv.deliver')->middleware('auth')->where('filename', '.*');
 
 //EasyRPG Player Ticketsystem
 Route::post('easyticket/storeconsole', 'EasyTicketController@store_consolelog')->middleware('auth');
