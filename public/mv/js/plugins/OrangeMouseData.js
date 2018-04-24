@@ -97,10 +97,8 @@ var OrangeMouseData = OrangeMouseData || {};
   $._onMouseMove = function(event) {
     if ($gameVariables === null || $gameSwitches === undefined) return;
 
-    var rect = Graphics._canvas.getBoundingClientRect();
-
-	var x = event.clientX - rect.left;
-    var y = event.clientY - rect.top;
+    var x = Graphics.pageToCanvasX(event.pageX);
+    var y = Graphics.pageToCanvasY(event.pageY);
 
     var tileX = x;
     var tileY = y;
