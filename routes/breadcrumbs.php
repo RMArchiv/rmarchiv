@@ -291,7 +291,7 @@ Breadcrumbs::register('gamefiles.edit', function ($breadcrumbs, $gamefile) {
 // Home -> spieledatei
 Breadcrumbs::register('webplayer', function ($breadcrumbs, $game, $gamefileid) {
     $breadcrumbs->parent('game', $game);
-    $breadcrumbs->push(trans('app.webplayer'), action('PlayerController@index', $game->id));
+    $breadcrumbs->push(trans('app.webplayer'), action('Player2kController@index', $game->id));
 });
 
 //----------------- Registrieren -------------------------------------------------------------------------------------//

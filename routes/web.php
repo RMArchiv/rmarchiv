@@ -310,10 +310,10 @@ Route::group(['middleware' => 'permission:translate-page'], function () {
 });
 
 //Player Routen
-Route::get('player/{gamefileid}/games/default/index.json', 'PlayerController@deliver_indexjson')->name('player.deliverindex')->middleware('auth');
-Route::get('player/{gamefileid}/games/default/{fileid}', 'PlayerController@deliver_files')->name('player.files')->middleware('auth');
-Route::get('player/{gamefileid}/games/default/rtp/{filename}', 'PlayerController@deliver_rtp')->name('player.rtp')->middleware('auth');
-Route::get('player/{gamefileid}/play', 'PlayerController@index')->name('player.run')->middleware('auth');
+Route::get('player/{gamefileid}/games/default/index.json', 'Player2kController@deliver_indexjson')->name('player.deliverindex')->middleware('auth');
+Route::get('player/{gamefileid}/games/default/{fileid}', 'Player2kController@deliver_files')->name('player.files')->middleware('auth');
+Route::get('player/{gamefileid}/games/default/rtp/{filename}', 'Player2kController@deliver_rtp')->name('player.rtp')->middleware('auth');
+Route::get('player/{gamefileid}/play', 'Player2kController@index')->name('player.run')->middleware('auth');
 
 //EasyRPG Player Ticketsystem
 Route::post('easyticket/storeconsole', 'EasyTicketController@store_consolelog')->middleware('auth');

@@ -258,7 +258,7 @@
                                                     @if($game->maker_id == 2 or $game->maker_id == 3 or $game->maker_id == 9)
                                                         <li class="list-group-item">
                                                             {{ trans('app.play_in_browser') }} :
-                                                            <a href="{{ action('PlayerController@index', $game->gamefiles->first()->id) }}"><img src="/assets/play_button.png" alt="play"></a>
+                                                            <a href="{{ action('Player2kController@index', $game->gamefiles->first()->id) }}"><img src="/assets/play_button.png" alt="play"></a>
                                                         </li>
                                                     @endif
                                                 @endif

@@ -9,7 +9,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 
-class PlayerController extends Controller
+class Player2kController extends Controller
 {
     public function save_index($gamefile_id)
     {
