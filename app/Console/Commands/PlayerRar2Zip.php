@@ -70,6 +70,10 @@ class PlayerRar2Zip extends Command
                 //zip previous decompressed files
                 $this->Zip($pathdest, $pathzip);
 
+                if(!file_exists($pathzip)){
+                    dd($pathzip);
+                }
+
                 //delete decomressed files
                 $this->Delete($pathdest);
 
