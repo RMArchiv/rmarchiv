@@ -70,7 +70,9 @@ class PlayerRar2Zip extends Command
                 //zip previous decompressed files
                 $this->Zip($pathdest, $pathzip);
 
+                // Check for zip file
                 if(!file_exists($pathzip)){
+                    // zip file does not exist. debug & die.
                     dd($pathzip);
                 }
 
@@ -93,14 +95,20 @@ class PlayerRar2Zip extends Command
 
     public function Delete($path)
     {
+        // check for directory is not a file
         if (is_dir($path) === true) {
+            // get all files and directorys recursive from all directorys
             $files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path), \RecursiveIteratorIterator::CHILD_FIRST);
 
             foreach ($files as $file) {
+                // if file is . or .. skip
                 if (in_array($file->getBasename(), ['.', '..']) !== true) {
+                    // if $file is a directory
                     if ($file->isDir() === true) {
+                        // delete directory
                         rmdir($file->getPathName());
-                    } elseif (($file->isFile() === true) || ($file->isLink() === true)) {
+                    } elseif (($file->isFile() === true) || ($file->isLink() === true)) { // or a file
+                        // delete file
                         unlink($file->getPathname());
                     }
                 }
@@ -116,11 +124,15 @@ class PlayerRar2Zip extends Command
 
     public function Zip($source, $destination)
     {
+        // check for php_zip extension and file existance
         if (! extension_loaded('zip') || ! file_exists($source)) {
             return false;
         }
 
+        // create ZipArchive Object
         $zip = new \ZipArchive();
+
+        // Create a new ZIP
         if (! $zip->open($destination, \ZIPARCHIVE::CREATE)) {
             return false;
         }
