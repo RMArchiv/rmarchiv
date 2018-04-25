@@ -11,7 +11,7 @@ use App\Models\Game;
 use App\Models\GamesFile;
 use App\Models\PlayerIndexjson;
 
-class PlayerController extends Controller
+class Player2kController extends Controller
 {
     public function api_savegames_get($gamefileid)
     {

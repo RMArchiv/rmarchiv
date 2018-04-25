@@ -42,7 +42,7 @@
                                         <div class="btn-group float-right img-rounded" role="group">
                                             <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target=".savegame-delete-{{ $s['id'] }}">{{ trans('app.delete') }}</button>
                                             <a href="{{ action('SavegameManagerController@download', $s['id']) }}" class="btn btn-secondary btn-sm">{{ trans('app.download') }}</a>
-                                            <a href="{{ action('PlayerController@index', $gamefile_id).'?load-game-id='.$s['slot'] }}" class="btn btn-primary btn-sm">{{ trans('app.play_in_browser') }}</a>
+                                            <a href="{{ action('Player2kController@index', $gamefile_id).'?load-game-id='.$s['slot'] }}" class="btn btn-primary btn-sm">{{ trans('app.play_in_browser') }}</a>
                                         </div>
                                         <div class="media-body">
                                             Slot: {{ $s['slot'] }}<br>

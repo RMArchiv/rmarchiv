@@ -52,13 +52,18 @@ class PlayerCreateInfo extends Command
         $toindexed = [];
 
         foreach ($gamefiles as $gamefile) {
-            if($gamefile->game){
+            if ($gamefile->game) {
                 $makerid = $gamefile->game->maker_id;
-
-                echo $makerid.' - '.$gamefile->id.PHP_EOL;
-                if ($makerid == 2 or $makerid == 3 or $makerid == 9 or $makerid == 11) {
+                //echo $makerid.' - '.$gamefile->id.PHP_EOL;
+                if ($makerid == 2 or
+                    $makerid == 3 or
+                    $makerid == 6 or
+                    $makerid == 9 or
+                    $makerid == 11) {
+                    // RPG2k/2k3/MV
                     if ($gamefile->playerIndex()->count() == 0) {
                         $toindexed[] = $gamefile;
+                        $this->info('ADD '.$gamefile->game->title);
                         $counter += 1;
                     }
                 }
@@ -78,32 +83,54 @@ class PlayerCreateInfo extends Command
         $i = 0;
         foreach ($toindexed as $toindex) {
             $bar->setMessage('Entpacken von: '.$toindex->game_id.'/'.$toindex->id, 'title');
-            \Log::info('Entapcken von '.$toindex->game_id.'/'.$toindex->id);
+            \Log::info('Entpacken von '.$toindex->game_id.'/'.$toindex->id);
             $path = storage_path('app/public/'.$toindex->filename);
             if ($toindex->extension == 'zip') {
                 $zip = new \ZipArchive();
                 $zip->open($path);
-                for ($i = 0; $i < $zip->numFiles; $i++) {
-                    $filename = $zip->getNameIndex($i);
-
-                    if (! ends_with($filename, '/') and ! starts_with($filename, '_MACOSX')) {
-                        $imp = $this->search_for_base_path($filename);
-
-                        if (! $imp == '') {
+                $makerid = $toindex->game->maker_id;
+                if ($makerid == 6) {
+                    // RPG Maker MV
+                    // Nur Pfad zum "www/" Ordner noetig
+                    for ($i = 0; $i < $zip->numFiles; $i++) {
+                        $filename = $zip->getNameIndex($i);
+                        $this->info('Saved XXX basepath: '.$filename);
+                        if (ends_with($filename, 'www/')) {
                             $pl = new PlayerIndexjson();
                             $pl->gamefile_id = $toindex->id;
-                            if (! ends_with(strtolower($imp), ['.exe', '.lmu', '.ldb', 'ini', '.dll', 'lmt', 'lsd'])) {
-                                $pl->key = preg_replace('/(\.\w+$)/', '', strtolower($imp));
-                            } else {
-                                $pl->key = strtolower($imp);
-                            }
-                            $pl->value = $imp;
+                            $pl->key = 'www';
+                            $pl->value = $filename;
                             $pl->filename = $filename;
                             $pl->save();
 
                             \Log::info('Saved basepath: '.$filename);
-                        } else {
-                            \Log::info('Empty basepath: '.$filename);
+                            break;
+                        }
+                    }
+                } else {
+                    // RPG Maker 2k/2k3
+                    for ($i = 0; $i < $zip->numFiles; $i++) {
+                        $filename = $zip->getNameIndex($i);
+
+                        if (! ends_with($filename, '/') and ! starts_with($filename, '_MACOSX')) {
+                            $imp = $this->search_for_base_path($filename);
+
+                            if (! $imp == '') {
+                                $pl = new PlayerIndexjson();
+                                $pl->gamefile_id = $toindex->id;
+                                if (! ends_with(strtolower($imp), ['.exe', '.lmu', '.ldb', 'ini', '.dll', 'lmt', 'lsd'])) {
+                                    $pl->key = preg_replace('/(\.\w+$)/', '', strtolower($imp));
+                                } else {
+                                    $pl->key = strtolower($imp);
+                                }
+                                $pl->value = $imp;
+                                $pl->filename = 'www';
+                                $pl->save();
+
+                                \Log::info('Saved basepath: '.$filename);
+                            } else {
+                                \Log::info('Empty basepath: '.$filename);
+                            }
                         }
                     }
                 }

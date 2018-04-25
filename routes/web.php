@@ -309,11 +309,15 @@ Route::group(['middleware' => 'permission:translate-page'], function () {
     Route::post('translation/save', 'TranslationController@savestring')->name('trans.save');
 });
 
-//Player Routen
-Route::get('player/{gamefileid}/games/default/index.json', 'PlayerController@deliver_indexjson')->name('player.deliverindex')->middleware('auth');
-Route::get('player/{gamefileid}/games/default/{fileid}', 'PlayerController@deliver_files')->name('player.files')->middleware('auth');
-Route::get('player/{gamefileid}/games/default/rtp/{filename}', 'PlayerController@deliver_rtp')->name('player.rtp')->middleware('auth');
-Route::get('player/{gamefileid}/play', 'PlayerController@index')->name('player.run')->middleware('auth');
+// EasyRPG Player (2k/2k3) Routen
+Route::get('player/{gamefileid}/games/default/index.json', 'Player2kController@deliver_indexjson')->name('player.deliverindex')->middleware('auth');
+Route::get('player/{gamefileid}/games/default/{fileid}', 'Player2kController@deliver_files')->name('player.files')->middleware('auth');
+Route::get('player/{gamefileid}/games/default/rtp/{filename}', 'Player2kController@deliver_rtp')->name('player.rtp')->middleware('auth');
+Route::get('player/{gamefileid}/play', 'Player2kController@index')->name('player.run')->middleware('auth');
+
+// RPG Maker MV Player Routen
+Route::get('playermv/{gamefileid}/play', 'PlayerMvController@index')->name('playermv.run')->middleware('auth');
+Route::get('playermv/{gamefileid}/{filename}', 'PlayerMvController@deliver')->name('playermv.deliver')->middleware('auth')->where('filename', '.*');
 
 //EasyRPG Player Ticketsystem
 Route::post('easyticket/storeconsole', 'EasyTicketController@store_consolelog')->middleware('auth');
@@ -325,9 +329,10 @@ Route::get('savegames/manager/save/{savegame_id}/delete', 'SavegameManagerContro
 Route::get('savegames/manager/save/{savegame_id}/download', 'SavegameManagerController@download')->middleware('auth');
 Route::post('savegame/manager/save/upload', 'SavegameManagerController@store')->middleware('auth');
 
-//EasyRPG Savegame API
+// Web Player Savegame API
 Route::get('savegames/{gamefileid}', 'SavegameController@api_load')->middleware('auth');
 Route::post('savegames/{gamefileid}', 'SavegameController@api_save')->middleware('auth');
+Route::post('savegames/{gamefileid}/{slot}', 'SavegameController@api_save_slot')->middleware('auth');
 
 Route::get('data/on', 'TestController@on');
 Route::get('data/off', 'TestController@off');

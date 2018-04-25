@@ -255,10 +255,16 @@
                                             </li>
                                             @if(Auth::check())
                                                 @if($game->gamefiles->count() != 0)
-                                                    @if($game->maker_id == 2 or $game->maker_id == 3 or $game->maker_id == 9)
+                                                    @if($game->maker_id == 2 or $game->maker_id == 3 or $game->maker_id == 6 or $game->maker_id == 9)
                                                         <li class="list-group-item">
                                                             {{ trans('app.play_in_browser') }} :
-                                                            <a href="{{ action('PlayerController@index', $game->gamefiles->first()->id) }}"><img src="/assets/play_button.png" alt="play"></a>
+                                                            <a href=
+                                                            @if($game->maker_id == 6)
+                                                                "{{ action('PlayerMvController@index', $game->gamefiles->first()->id) }}"
+                                                            @else
+                                                                "{{ action('Player2kController@index', $game->gamefiles->first()->id) }}"
+                                                            @endif
+                                                            ><img src="/assets/play_button.png" alt="play"></a>
                                                         </li>
                                                     @endif
                                                 @endif
