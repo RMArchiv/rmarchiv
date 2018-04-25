@@ -33,7 +33,7 @@ class SavegameController extends Controller
             $ret[$s->slot_id] = $s->save_data;
         }
 
-        return \GuzzleHttp\json_encode($ret);
+        return response()->json($ret);
     }
 
     public function api_save(Request $request, $gamefileid)
@@ -65,6 +65,35 @@ class SavegameController extends Controller
                 $save->save();
                 \Log::info('updated');
             }
+        }
+    }
+
+    public function api_save_slot(Request $request, $gamefileid, $slot)
+    {
+        $value = request()->getContent();
+        $key = $slot;
+
+        \Log::info('slot: '.$key);
+        \Log::info('data: '.$value);
+        $save = GamesSavegame::where([
+            'user_id'     => $user = \Auth::id(),
+            'gamefile_id' => $gamefileid,
+            'slot_id'     => $key,
+            ])
+            ->first();
+
+        if (! $save) {
+            $s = new GamesSavegame();
+            $s->save_data = $value;
+            $s->slot_id = $key;
+            $s->gamefile_id = $gamefileid;
+            $s->user_id = \Auth::id();
+            $s->save();
+            \Log::info('created');
+        } else {
+            $save->save_data = $value;
+            $save->save();
+            \Log::info('updated');
         }
     }
 }

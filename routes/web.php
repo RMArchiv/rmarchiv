@@ -329,9 +329,10 @@ Route::get('savegames/manager/save/{savegame_id}/delete', 'SavegameManagerContro
 Route::get('savegames/manager/save/{savegame_id}/download', 'SavegameManagerController@download')->middleware('auth');
 Route::post('savegame/manager/save/upload', 'SavegameManagerController@store')->middleware('auth');
 
-//EasyRPG Savegame API
+// Web Player Savegame API
 Route::get('savegames/{gamefileid}', 'SavegameController@api_load')->middleware('auth');
 Route::post('savegames/{gamefileid}', 'SavegameController@api_save')->middleware('auth');
+Route::post('savegames/{gamefileid}/{slot}', 'SavegameController@api_save_slot')->middleware('auth');
 
 Route::get('data/on', 'TestController@on');
 Route::get('data/off', 'TestController@off');
