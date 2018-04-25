@@ -29,7 +29,7 @@ class PlayerMvController extends Controller
             return view('playermv.index', [
                 'gamefileid' => $gamefileid,
                 'game'       => $game,
-                'index'      => $fp
+                'index'      => $fp,
             ]);
         } else {
             return redirect()->action('IndexController@index');
@@ -39,8 +39,9 @@ class PlayerMvController extends Controller
     public function deliver($gamefileid, $filename)
     {
         // OrangeMouseData is broken outside of Chrome browser -_-
-        if ($filename == "js/plugins/OrangeMouseData.js") {
+        if ($filename == 'js/plugins/OrangeMouseData.js') {
             $path = public_path('mv/'.$filename);
+
             return response()->download($path);
         }
 
@@ -55,9 +56,9 @@ class PlayerMvController extends Controller
 
         $t = 'application/octet-stream';
         // Loading fails when js or css have wrong mimetype
-        if (ends_with($filename, ".js") == true) {
+        if (ends_with($filename, '.js') == true) {
             $t = 'application/javascript';
-        } else if (ends_with($filename, ".css") == true) {
+        } elseif (ends_with($filename, '.css') == true) {
             $t = 'text/css';
         }
 

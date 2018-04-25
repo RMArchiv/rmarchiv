@@ -97,7 +97,7 @@ class SavegameManagerController extends Controller
         $array[$cat]['char1_face']['data'] = $br->readString($array[$cat]['char1_face']['length']);
         $array[$cat]['char1_face']['img_idx'] = $br->readInt8();
 
-        if(!is_null($array[$cat]['char1_face']['img_idx'])){
+        if (! is_null($array[$cat]['char1_face']['img_idx'])) {
             $pc = new Player2kController();
             $files = json_decode($pc->deliver_indexjson($gamefile_id), true);
 
@@ -106,10 +106,9 @@ class SavegameManagerController extends Controller
             $file = action('Player2kController@deliver_files', [$gamefile_id, $file]);
 
             $array[$cat]['char1_face']['url'] = $file;
-        }else{
+        } else {
             $array[$cat]['char1_face']['url'] = '';
         }
-
 
         return $array;
     }
