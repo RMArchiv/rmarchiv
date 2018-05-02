@@ -26,8 +26,6 @@ class GetMissingGameFilesCommand extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -43,7 +41,6 @@ class GetMissingGameFilesCommand extends Command
     {
         $gf = GamesFile::all();
         $i = 0;
-        $content = '';
 
         $doc_root = './public';
         echo $doc_root;
@@ -57,7 +54,6 @@ class GetMissingGameFilesCommand extends Command
             $filepath = storage_path('app/public/'.$g->filename);
             if (! file_exists($filepath)) {
                 $i += 1;
-                $dev = GamesDeveloper::whereGameId($g->id)->first();
                 $content .= $i.' - '.$g->game->title.' - '.$g->game->subtitle.' - '.$g->game_id.' - '.$g->game->maker->short.' - '.$g->filename.' - '.$g->release_version.' - '.$g->user->name.PHP_EOL;
             }
         }
