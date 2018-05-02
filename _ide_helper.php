@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.5.40 on 2018-04-12 11:10:26.
+ * Generated for Laravel 5.5.40 on 2018-05-02 20:54:47.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -12386,12 +12386,13 @@ namespace Mews\Captcha\Facades {
          * Create captcha image
          *
          * @param string $config
+         * @param boolean $api
          * @return \Mews\Captcha\ImageManager->response 
          * @static 
          */ 
-        public static function create($config = 'default')
+        public static function create($config = 'default', $api = false)
         {
-            return \Mews\Captcha\Captcha::create($config);
+            return \Mews\Captcha\Captcha::create($config, $api);
         }
         
         /**
@@ -12404,6 +12405,18 @@ namespace Mews\Captcha\Facades {
         public static function check($value)
         {
             return \Mews\Captcha\Captcha::check($value);
+        }
+        
+        /**
+         * Captcha check
+         *
+         * @param $value
+         * @return bool 
+         * @static 
+         */ 
+        public static function check_api($value, $key)
+        {
+            return \Mews\Captcha\Captcha::check_api($value, $key);
         }
         
         /**
