@@ -65,8 +65,6 @@ class PlayerRar2Zip extends Command
                 $command = 'unrar x \''.$pathrar.'\' '.$pathdest;
                 exec($command);
 
-                $handle = opendir($pathdest); // erm??
-
                 //zip previous decompressed files
                 $this->Zip($pathdest, $pathzip);
 

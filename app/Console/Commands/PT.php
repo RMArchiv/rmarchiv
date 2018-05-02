@@ -138,8 +138,5 @@ class PT extends Command
 
         $this->info('Es wurden '.$counter.' Gamefiles gefunden.');
 
-        $i = 0;
-        foreach ($toindexed as $toindex) {
-        }
     }
 }

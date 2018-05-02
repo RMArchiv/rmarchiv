@@ -54,7 +54,7 @@ class PlayerCreateInfo extends Command
         foreach ($gamefiles as $gamefile) {
             if ($gamefile->game) {
                 $makerid = $gamefile->game->maker_id;
-                //echo $makerid.' - '.$gamefile->id.PHP_EOL;
+
                 if ($makerid == 2 or
                     $makerid == 3 or
                     $makerid == 6 or
@@ -80,7 +80,6 @@ class PlayerCreateInfo extends Command
         $bar->setMessage('Starte indizierung der Gamefiles', 'title');
         $bar->start();
 
-        $i = 0;
         foreach ($toindexed as $toindex) {
             $bar->setMessage('Entpacken von: '.$toindex->game_id.'/'.$toindex->id, 'title');
             \Log::info('Entpacken von '.$toindex->game_id.'/'.$toindex->id);
@@ -194,7 +193,6 @@ class PlayerCreateInfo extends Command
         } else {
             if (str_contains(strtolower($filepath), $searcharray)) {
                 $exp = explode('/', $filepath);
-                $res = array_shift($exp);
                 $imp = implode('/', $exp);
                 $imp = $this->search_for_base_path($imp);
             } else {
