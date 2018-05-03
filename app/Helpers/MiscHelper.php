@@ -40,6 +40,13 @@ class MiscHelper
         ]);
     }
 
+    /**
+     * Get difference between two multidimensinal arrays
+     *
+     * @param $array1
+     * @param $array2
+     * @return array
+     */
     public static function array_diff_assoc_recursive($array1, $array2)
     {
         $difference = [];
@@ -61,6 +68,13 @@ class MiscHelper
         return $difference;
     }
 
+    /**
+     * Calculate Game Popularity
+     *
+     * @param $views
+     * @param $max
+     * @return float|int
+     */
     public static function getPopularity($views, $max)
     {
         if ($max == 0 || $views == 0) {
@@ -73,6 +87,8 @@ class MiscHelper
     }
 
     /**
+     * COnvert Bytes to readable Format
+     *
      * @param int $size
      *
      * @return string
