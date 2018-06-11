@@ -7,7 +7,7 @@
             {{ trans('app.feedback_for_features_or_bugs') }} <a href="mailto:webmaster@rmarchiv.tk">webmaster@rmarchiv.tk</a>
         </li>
         <li>
-            <a href="{{ url('/impressum') }}">{{ trans('app.imprint') }}</a>
+            <a href="{{ url('/impressum') }}">{{ trans('app.imprint') }}</a> - <a href="{{ url('/datenschutz') }}">Datenschutzerklärung</a>
         </li>
         <li>
             <a href="{{ action('UserController@users_online') }}">{{ trans('app.users_online') }}: {{ \App\Helpers\DatabaseHelper::getOnlineUserCount()->online }}</a>

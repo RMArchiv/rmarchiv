@@ -6,7 +6,7 @@
     "type": "project",
     "require": {
         "php": "^7.0",
-        "laravel/framework": "5.5.*",
+        "laravel/framework": "5.6.*",
         "barryvdh/laravel-ide-helper": "^2.3",
         "barryvdh/laravel-debugbar": "^3.1",
         "doctrine/dbal": "^2.6",
@@ -43,7 +43,7 @@
         "wapmorgan/unified-archive": "^0.0.8",
         "davejamesmiller/laravel-breadcrumbs": "^3.0",
         "filp/whoops": "^2.1",
-        "graham-campbell/exceptions": "^10.1",
+        "graham-campbell/exceptions": "^11.0",
         "spatie/laravel-cookie-consent": "^2.2",
         "tymon/jwt-auth": "^0.5.12",
         "optimus/fineuploader-server-thumbnail-creator": "^0.1.1",
@@ -59,7 +59,6 @@
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*",
         "ignasbernotas/laravel-model-generator": "^1.1",
-        "potsky/laravel-localization-helpers": "2.6.*",
         "filp/whoops": "~2.0"
     },
     "autoload": {
@@ -83,14 +82,12 @@
             "php artisan key:generate"
         ],
         "post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize"
+            "Illuminate\\Foundation\\ComposerScripts::postInstall"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan ide-helper:generate",
-            "php artisan ide-helper:meta",
-            "php artisan optimize"
+            "php artisan ide-helper:meta"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

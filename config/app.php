@@ -227,7 +227,7 @@ return [
         Chumper\Zipper\ZipperServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
-        Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProvider::class,
+        //Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProvider::class,
         Spatie\CookieConsent\CookieConsentServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Cog\Laravel\Ban\Providers\BanServiceProvider::class,
