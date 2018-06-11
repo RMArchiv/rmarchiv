@@ -4,8 +4,8 @@
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>{{ trans('app.imprint') }}</h1>
-                {!! Breadcrumbs::render('impressum') !!}
+                <h1>Datenschutzerklärung</h1>
+
             </div>
         </div>
         <div class='row'>
