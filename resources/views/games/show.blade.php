@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('pagetitle', $game->title.' - '.$game->subtitle)
 @section('content')
-    @if(count($game) > 0)
+    @if($game)
         <script>
             $(document).ready(function () {
                 $('[data-toggle="userlist"]').popover({
