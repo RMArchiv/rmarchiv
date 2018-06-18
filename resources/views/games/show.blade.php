@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('pagetitle', $game->title.' - '.$game->subtitle)
 @section('content')
-
     @if(count($game) > 0)
         <script>
             $(document).ready(function () {

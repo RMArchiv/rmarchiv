@@ -159,6 +159,8 @@ class GameController extends Controller
     {
         $game = Game::with('developers')->whereId($id)->first();
 
+        dd($game);
+
         event(new GameView($id));
 
         return view('games.show', [
