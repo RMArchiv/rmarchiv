@@ -12,7 +12,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                @if(count($logos) > 0)
+                @if($logos)
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.rate_logos') }}
