@@ -76,6 +76,15 @@
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="pill" href="#tabs-6">{{ trans('app.screenshot') }} 5</a>
                                                 </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="pill" href="#tabs-7">{{ trans('app.screenshot') }} 5</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="pill" href="#tabs-8">{{ trans('app.screenshot') }} 5</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="pill" href="#tabs-9">{{ trans('app.screenshot') }} 5</a>
+                                                </li>
                                                 @if($game->youtube)
                                                     <li class="nav-item">
                                                         <a class="nav-link" data-toggle="pill" href="#tabs-7">{{ trans('app.trailer') }}</a>
