@@ -96,7 +96,7 @@
                                                     @endif
                                                 </div>
                                             </div>
-                                            @for($i = 2; $i <=6; $i++)
+                                            @for($i = 2; $i <=9; $i++)
                                                 <div id="tabs-{{ $i }}" class="tab-pane fade">
                                                     <div class="card-body">
                                                         <img class="img-fluid center-block" src='{{ route('screenshot.show', [$game->id, $i]) }}'
