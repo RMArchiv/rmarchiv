@@ -87,7 +87,7 @@
                                                 </li>
                                                 @if($game->youtube)
                                                     <li class="nav-item">
-                                                        <a class="nav-link" data-toggle="pill" href="#tabs-7">{{ trans('app.trailer') }}</a>
+                                                        <a class="nav-link" data-toggle="pill" href="#tabs-10">{{ trans('app.trailer') }}</a>
                                                     </li>
                                                 @endif
                                             </ul>
@@ -124,7 +124,7 @@
                                                 @php
                                                     $vid = str_replace('watch?v=', "embed/", $game->youtube);
                                                 @endphp
-                                                <div id="tabs-7" class="tab-pane fade">
+                                                <div id="tabs-10" class="tab-pane fade">
                                                     <div class="card-body">
                                                         <div class="embed-responsive embed-responsive-16by9">
                                                             <iframe class="embed-responsive-item" src="{{ $vid }}" frameborder="0" allowfullscreen></iframe>
