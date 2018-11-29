@@ -144,7 +144,7 @@ Route::post('logo/vote/{userid}', 'LogoController@vote_add')->middleware('auth')
 
 //Logo Admin
 Route::get('logo/admin', 'LogoController@admin')->middleware('permission:admin-games');
-Route::post('logo/admin/delete', 'LogoController@delete')->middleware('permission:admin-games');
+Route::get('logo/admin/delete/{id}', 'LogoController@delete')->middleware('permission:admin-games');
 
 //Submit Routen
 Route::get('submit', 'SubmitController@index')->middleware('auth');

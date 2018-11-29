@@ -65,7 +65,7 @@ class LogoController extends Controller
             ]);
     }
 
-    public function delete(){
+    public function delete($id){
 
     }
 }
