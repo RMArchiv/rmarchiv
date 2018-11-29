@@ -60,7 +60,9 @@ class LogoController extends Controller
     public function admin(){
         $logos = Logo::all();
 
-        return view('logo.admin', $logos);
+        return view('logo.admin', [
+                'logos' => $logos,
+            ]);
     }
 
     public function delete(){
