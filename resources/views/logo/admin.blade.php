@@ -27,7 +27,7 @@
                         @foreach($logos as $l)
                             <tr>
                                 <td><img class="mx-auto d-block" height="100px" src="{{ asset($l->filename) }}" alt="Logo: {{ $l->title }}"/></td>
-                                <td></td>
+                                <td>{{ $l->voteresult->sumup }}</td>
                                 <td></td>
                                 <th></th>
                             </tr>
