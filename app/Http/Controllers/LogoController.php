@@ -11,6 +11,7 @@ use App\Events\Obyx;
 use App\Models\Logo;
 use App\Models\LogoVote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class LogoController extends Controller
 {
@@ -66,6 +67,9 @@ class LogoController extends Controller
     }
 
     public function delete($id){
+        $logo = Logo::whereId($id)->first();
+        $logo->forceDelete();
 
+        return Redirect::action('LogoController@admin');
     }
 }
