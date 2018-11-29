@@ -142,6 +142,10 @@ Route::post('comment/restore/{comment_id}', 'CommentController@restore')->middle
 Route::get('logo/vote', 'LogoController@vote_get')->name('logo.vote')->middleware('auth');
 Route::post('logo/vote/{userid}', 'LogoController@vote_add')->middleware('auth');
 
+//Logo Admin
+Route::get('logo/admin', 'LogoController@admin')->middleware('permission:admin-games');
+Route::post('logo/admin/delete', 'LogoController@delete')->middleware('permission:admin-games');
+
 //Submit Routen
 Route::get('submit', 'SubmitController@index')->middleware('auth');
 

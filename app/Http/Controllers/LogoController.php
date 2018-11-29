@@ -56,4 +56,14 @@ class LogoController extends Controller
 
         return \Redirect::back();
     }
+
+    public function admin(){
+        $logos = Logo::all();
+
+        return view('logo.admin', $logos);
+    }
+
+    public function delete(){
+
+    }
 }

@@ -47,6 +47,7 @@ class EasyRPGController extends Controller
     }
 
     /**
+     * Get all filenames with hash.
      * @param $ldbhash
      * @return array
      */
