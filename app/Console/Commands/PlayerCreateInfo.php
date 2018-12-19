@@ -180,7 +180,7 @@ class PlayerCreateInfo extends Command
         ];
 
         $mapparray = [];
-        for ($i = 0; $i < 2000; $i++) {
+        for ($i = 0; $i < 4444; $i++) {
             $mapparray[] = 'map'.sprintf('%04d', $i).'.lmu';
         }
 
