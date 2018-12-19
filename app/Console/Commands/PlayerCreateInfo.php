@@ -184,6 +184,8 @@ class PlayerCreateInfo extends Command
             $mapparray[] = 'map'.sprintf('%04d', $i).'.lmu';
         }
 
+        ini_set('memory_limit', '512M');
+
         $filearray = array_merge($rootarray, $mapparray);
 
         $searcharray = array_merge($dirarray, $filearray);
