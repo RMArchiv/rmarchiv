@@ -57,7 +57,7 @@ class PlayerCreateInfo extends Command
 
                 if ($makerid == 2 or
                     $makerid == 3 or
-                    //$makerid == 6 or
+                    $makerid == 6 or
                     $makerid == 9 or
                     $makerid == 11) {
                     // RPG2k/2k3/MV
