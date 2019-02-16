@@ -33,6 +33,9 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property-read \App\Models\Game $game
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activity
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesDeveloper newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesDeveloper newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesDeveloper query()
  */
 class GamesDeveloper extends Model
 {

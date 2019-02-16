@@ -26,6 +26,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PlayerFileGamefileRel whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property-read \App\Models\PlayerFileHash $filehash
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PlayerFileGamefileRel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PlayerFileGamefileRel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PlayerFileGamefileRel query()
  */
 class PlayerFileGamefileRel extends Model
 {

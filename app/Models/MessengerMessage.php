@@ -28,6 +28,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property string $deleted_at
  * @method static \Illuminate\Database\Query\Builder|\App\Models\MessengerMessage whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MessengerMessage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MessengerMessage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MessengerMessage query()
  */
 class MessengerMessage extends Model
 {

@@ -30,6 +30,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\Tag $tag
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Game[] $games
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\TagRelation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\TagRelation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\TagRelation query()
  */
 class TagRelation extends Model
 {

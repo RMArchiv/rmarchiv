@@ -27,6 +27,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPollAnswer whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPollAnswer whereUserId($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardPollAnswer newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardPollAnswer newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardPollAnswer query()
  */
 class BoardPollAnswer extends Model
 {

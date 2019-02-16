@@ -44,6 +44,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EventPicture[] $pictures
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Event query()
  */
 class Event extends Model
 {

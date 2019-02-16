@@ -26,6 +26,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Obyx $obyx
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserObyx newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserObyx newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserObyx query()
  */
 class UserObyx extends Model
 {

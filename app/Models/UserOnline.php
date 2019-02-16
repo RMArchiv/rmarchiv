@@ -25,6 +25,9 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserOnline newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserOnline newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserOnline query()
  */
 class UserOnline extends Model
 {

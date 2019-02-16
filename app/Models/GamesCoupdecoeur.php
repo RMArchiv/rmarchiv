@@ -26,6 +26,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\Game $game
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesCoupdecoeur newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesCoupdecoeur newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesCoupdecoeur query()
  */
 class GamesCoupdecoeur extends Model
 {

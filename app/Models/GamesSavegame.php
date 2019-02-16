@@ -28,6 +28,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesSavegame whereUserId($value)
  * @mixin \Eloquent
  * @property-read \App\Models\GamesFile $gamefile
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesSavegame newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesSavegame newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesSavegame query()
  */
 class GamesSavegame extends Model
 {

@@ -33,6 +33,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\ActivityLog whereSubjectType($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\ActivityLog whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ActivityLog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ActivityLog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ActivityLog query()
  */
 class ActivityLog extends Model
 {

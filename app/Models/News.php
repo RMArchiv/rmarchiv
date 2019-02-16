@@ -37,6 +37,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\News whereApproved($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\News newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\News newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\News query()
  */
 class News extends Model
 {

@@ -35,6 +35,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\AwardSubcat[] $subcats
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AwardCat newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AwardCat newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AwardCat query()
  */
 class AwardCat extends Model
 {

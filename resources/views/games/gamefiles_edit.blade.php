@@ -58,6 +58,17 @@
                                 </div>
                                 <span>[<span class="req">req</span>]</span>
                             </div>
+                            <div class="form-group">
+                                <label for="language" class="col-sm-2 col-form-label">{{trans('app.language')}}: *</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name='language' id='language'>
+                                        <option value="0">{{trans('app.choose_language')}}</option>
+                                        @foreach(\App\Models\Language::all() as $lang)
+                                            <option @if ($gamefile->language == $lang->id) selected="" @endif value="{{ $lang->id }}">{{ $lang->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <div class="form-group" id="row_file">
                                 <label for="fine-uploader">{{trans('app.upload_file')}}:</label>
                                 <div id="fine-uploader"></div>

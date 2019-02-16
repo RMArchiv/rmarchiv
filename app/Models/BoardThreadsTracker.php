@@ -26,6 +26,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardThreadsTracker whereUserId($value)
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardThreadsTracker newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardThreadsTracker newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardThreadsTracker query()
  */
 class BoardThreadsTracker extends Model
 {

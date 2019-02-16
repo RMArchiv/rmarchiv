@@ -51,6 +51,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $delete_reason
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereDeleteReason($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereDeleted($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment query()
  */
 class Comment extends Model
 {

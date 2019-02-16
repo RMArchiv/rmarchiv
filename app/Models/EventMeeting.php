@@ -31,6 +31,9 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property-read \App\Models\Event $event
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EventMeeting newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EventMeeting newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EventMeeting query()
  */
 class EventMeeting extends Model
 {

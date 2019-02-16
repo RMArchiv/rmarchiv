@@ -24,6 +24,9 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TagRelation[] $tag_relations
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag query()
  */
 class Tag extends Model
 {

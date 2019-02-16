@@ -31,6 +31,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PlayerFeedback whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PlayerFeedback whereUserId($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PlayerFeedback newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PlayerFeedback newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PlayerFeedback query()
  */
 class PlayerFeedback extends Model
 {

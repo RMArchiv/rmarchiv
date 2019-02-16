@@ -26,6 +26,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\EventMeetingUserRegistered whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EventMeetingUserRegistered newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EventMeetingUserRegistered newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EventMeetingUserRegistered query()
  */
 class EventMeetingUserRegistered extends Model
 {

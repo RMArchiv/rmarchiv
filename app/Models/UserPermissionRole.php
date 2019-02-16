@@ -18,6 +18,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserPermissionRole whereRoleId($value)
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserPermissionRole newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserPermissionRole newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserPermissionRole query()
  */
 class UserPermissionRole extends Model
 {

@@ -22,6 +22,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EasyticketConsolelog whereTicketId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EasyticketConsolelog whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EasyticketConsolelog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EasyticketConsolelog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EasyticketConsolelog query()
  */
 class EasyticketConsolelog extends Model
 {

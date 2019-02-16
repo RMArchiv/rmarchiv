@@ -25,6 +25,9 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MessengerParticipant[] $participants
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MessengerThread newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MessengerThread newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\MessengerThread query()
  */
 class MessengerThread extends Model
 {

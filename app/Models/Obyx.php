@@ -26,6 +26,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Obyx whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Obyx newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Obyx newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Obyx query()
  */
 class Obyx extends Model
 {

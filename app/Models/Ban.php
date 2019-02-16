@@ -28,6 +28,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ban whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ban whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ban newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ban newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Ban query()
  */
 class Ban extends Model
 {

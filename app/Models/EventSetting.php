@@ -33,6 +33,9 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property-read \App\Models\Event $event
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EventSetting newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EventSetting newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EventSetting query()
  */
 class EventSetting extends Model
 {

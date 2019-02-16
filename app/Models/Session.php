@@ -25,6 +25,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Session whereUserAgent($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Session whereUserId($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Session newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Session newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Session query()
  */
 class Session extends Model
 {

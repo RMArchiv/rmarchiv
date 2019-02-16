@@ -26,6 +26,9 @@ use Zizaco\Entrust\EntrustPermission;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserPermission whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserPermission whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserPermission newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserPermission newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserPermission query()
  */
 class UserPermission extends EntrustPermission
 {

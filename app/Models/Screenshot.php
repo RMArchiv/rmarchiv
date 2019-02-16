@@ -28,6 +28,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Screenshot whereFilename($value)
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Screenshot newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Screenshot newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Screenshot query()
  */
 class Screenshot extends Model
 {

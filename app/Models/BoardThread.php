@@ -40,6 +40,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\User $last_user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property-read \App\Models\BoardPoll $votes
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardThread newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardThread newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardThread query()
  */
 class BoardThread extends Model
 {

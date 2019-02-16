@@ -28,6 +28,9 @@ use Zizaco\Entrust\EntrustRole;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserRole whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserRole whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserRole newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserRole newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserRole query()
  */
 class UserRole extends EntrustRole
 {

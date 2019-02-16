@@ -34,6 +34,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\BoardThread $thread
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardPost newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardPost newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardPost query()
  */
 class BoardPost extends Model
 {

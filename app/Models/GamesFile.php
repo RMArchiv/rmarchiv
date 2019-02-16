@@ -59,6 +59,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static bool|null restore()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile withoutTrashed()
+ * @property int|null $language_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesFile newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesFile newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesFile query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesFile whereLanguageId($value)
  */
 class GamesFile extends Model
 {
@@ -77,6 +82,7 @@ class GamesFile extends Model
         'release_month',
         'release_day',
         'user_id',
+        'language_id',
     ];
 
     protected $guarded = [];
@@ -100,5 +106,9 @@ class GamesFile extends Model
     public function user()
     {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
+
+    public function language(){
+        return $this->hasOne('App\Models\Language', 'id', 'language_id');
     }
 }

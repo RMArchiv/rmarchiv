@@ -70,6 +70,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserSetting whereLanguage($value)
  * @property string $download_template
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserSetting whereDownloadTemplate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserSetting newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserSetting newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserSetting query()
  */
 class UserSetting extends Model
 {

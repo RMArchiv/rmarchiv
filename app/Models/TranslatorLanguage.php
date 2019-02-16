@@ -25,6 +25,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\TranslatorLanguage whereName($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\TranslatorLanguage whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\TranslatorLanguage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\TranslatorLanguage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\TranslatorLanguage query()
  */
 class TranslatorLanguage extends Model
 {

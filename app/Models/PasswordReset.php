@@ -20,6 +20,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PasswordReset whereCreatedAt($value)
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PasswordReset newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PasswordReset newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PasswordReset query()
  */
 class PasswordReset extends Model
 {

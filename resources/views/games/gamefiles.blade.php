@@ -33,6 +33,9 @@
                             <li class="list-group-item clearfix">
                             <span class='typeiconlist'>
                                 <span class='typei type_{{ $gf->gamefiletype->short }}' title='{{ $gf->gamefiletype->title }}'>{{ $gf->gamefiletype->title }}</span>
+                                @if($gf->language)
+                                    <span><img src="/assets/lng/16/{{ strtoupper($gf->language->short) }}.png" title="{{ $gf->language->name }}"></span>
+                                @endif
                             </span>
                                 <span> • </span><span>version: {{ $gf->release_version }}</span>
                                 <span> • </span>
@@ -130,6 +133,17 @@
                                         @for($i = 1990; $i < date("Y") + 1; $i++)
                                             <option value="{{ $i }}">{{ $i }}</option>
                                         @endfor
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="language" class="col-sm-2 col-form-label">{{trans('app.language')}}: *</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name='language' id='language'>
+                                        <option value="0">{{trans('app.choose_language')}}</option>
+                                        @foreach(\App\Models\Language::all() as $lang)
+                                            <option value="{{ $lang->id }}">{{ $lang->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

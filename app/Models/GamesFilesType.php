@@ -26,6 +26,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFilesType whereShort($value)
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesFilesType newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesFilesType newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesFilesType query()
  */
 class GamesFilesType extends Model
 {

@@ -25,6 +25,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PlayerFileHash whereSupported($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PlayerFileHash whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PlayerFileHash newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PlayerFileHash newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PlayerFileHash query()
  */
 class PlayerFileHash extends Model
 {

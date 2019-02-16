@@ -20,6 +20,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EasyticketStatus whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EasyticketStatus whereUserId($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EasyticketStatus newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EasyticketStatus newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EasyticketStatus query()
  */
 class EasyticketStatus extends Model
 {

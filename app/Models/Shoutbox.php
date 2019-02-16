@@ -31,6 +31,9 @@ use Illuminate\Notifications\Notifiable;
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Shoutbox newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Shoutbox newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Shoutbox query()
  */
 class Shoutbox extends Model
 {

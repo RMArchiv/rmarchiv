@@ -33,6 +33,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\TranslatorTranslation whereUnstable($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\TranslatorTranslation whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\TranslatorTranslation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\TranslatorTranslation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\TranslatorTranslation query()
  */
 class TranslatorTranslation extends Model
 {

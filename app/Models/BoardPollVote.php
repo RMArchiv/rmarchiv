@@ -25,6 +25,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPollVote whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPollVote whereUserId($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardPollVote newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardPollVote newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardPollVote query()
  */
 class BoardPollVote extends Model
 {

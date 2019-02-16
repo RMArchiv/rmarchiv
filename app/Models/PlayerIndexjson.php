@@ -27,6 +27,9 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property string $filename
  * @method static \Illuminate\Database\Query\Builder|\App\Models\PlayerIndexjson whereFilename($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PlayerIndexjson newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PlayerIndexjson newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PlayerIndexjson query()
  */
 class PlayerIndexjson extends Model
 {

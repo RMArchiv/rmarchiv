@@ -34,6 +34,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\LogoVote[] $logovote
  * @property-read int $voteresult
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Logo newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Logo newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Logo query()
  */
 class Logo extends Model
 {

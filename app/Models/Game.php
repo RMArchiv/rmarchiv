@@ -78,6 +78,15 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Game whereDescMdTranslation($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Game whereLicenseId($value)
  * @property-read \App\Models\License $license
+ * @property int $is_banned
+ * @property string $is_banned_reason
+ * @property string $is_banned_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Game newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Game newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Game query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Game whereIsBanned($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Game whereIsBannedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Game whereIsBannedReason($value)
  */
 class Game extends Model
 {

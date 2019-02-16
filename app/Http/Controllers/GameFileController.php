@@ -142,6 +142,7 @@ class GameFileController extends Controller
                 'release_day'     => $request->get('releasedate_day'),
                 'release_month'   => $request->get('releasedate_month'),
                 'release_year'    => $request->get('releasedate_year'),
+                'language_id'     => $request->get('language'),
                 'user_id'         => \Auth::id(),
                 'filename'        => $storagedest,
                 'created_at'      => Carbon::now(),
@@ -204,6 +205,7 @@ class GameFileController extends Controller
         $gamefile->release_month = $request->get('releasedate_month');
         $gamefile->release_year = $request->get('releasedate_year');
         $gamefile->release_type = $request->get('filetype');
+        $gamefile->language_id = $request->get('language');
 
         if ($request->get('uuid')) {
             //Create Backupfile

@@ -26,6 +26,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Easyticket whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Easyticket whereUserreport($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Easyticket newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Easyticket newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Easyticket query()
  */
 class Easyticket extends Model
 {

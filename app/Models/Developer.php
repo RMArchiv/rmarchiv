@@ -33,6 +33,9 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Developer newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Developer newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Developer query()
  */
 class Developer extends Model
 {

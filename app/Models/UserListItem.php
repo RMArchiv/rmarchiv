@@ -30,6 +30,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property-read \App\Models\Game $game
  * @property-read \App\Models\UserList $userlist
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserListItem newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserListItem newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserListItem query()
  */
 class UserListItem extends Model
 {

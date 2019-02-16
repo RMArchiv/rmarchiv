@@ -33,6 +33,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BoardThread[] $threads
  * @property-read \App\Models\User $last_user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardCat newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardCat newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardCat query()
  */
 class BoardCat extends Model
 {

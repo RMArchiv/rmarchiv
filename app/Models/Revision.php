@@ -31,6 +31,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Revision whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Revision whereUserId($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Revision newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Revision newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Revision query()
  */
 class Revision extends Model
 {

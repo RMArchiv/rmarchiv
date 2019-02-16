@@ -30,6 +30,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Faq whereUserId($value)
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Faq newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Faq newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Faq query()
  */
 class Faq extends Model
 {

@@ -24,6 +24,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\UserDownloadLog whereUserId($value)
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserDownloadLog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserDownloadLog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserDownloadLog query()
  */
 class UserDownloadLog extends Model
 {

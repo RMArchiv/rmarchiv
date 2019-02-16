@@ -26,6 +26,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Language whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Language newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Language newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Language query()
  */
 class Language extends Model
 {

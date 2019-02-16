@@ -23,6 +23,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\License whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\License whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\License newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\License newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\License query()
  */
 class License extends Model
 {

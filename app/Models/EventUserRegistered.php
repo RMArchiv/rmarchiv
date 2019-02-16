@@ -30,6 +30,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\Event $event
  * @property-read \App\Models\Event $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EventUserRegistered newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EventUserRegistered newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EventUserRegistered query()
  */
 class EventUserRegistered extends Model
 {

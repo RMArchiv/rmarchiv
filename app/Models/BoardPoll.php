@@ -28,6 +28,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPoll whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\BoardPoll whereUserId($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardPoll newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardPoll newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BoardPoll query()
  */
 class BoardPoll extends Model
 {

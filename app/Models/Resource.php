@@ -42,6 +42,9 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property-read mixed $votes
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TagRelation[] $tags
  * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resource newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resource newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resource query()
  */
 class Resource extends Model
 {

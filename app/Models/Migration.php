@@ -20,6 +20,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Migration whereBatch($value)
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Migration newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Migration newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Migration query()
  */
 class Migration extends Model
 {

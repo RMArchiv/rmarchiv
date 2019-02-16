@@ -43,6 +43,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\AwardSubcat $subcat
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
  * @property-read \App\Models\Game $game
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesAward newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesAward newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesAward query()
  */
 class GamesAward extends Model
 {

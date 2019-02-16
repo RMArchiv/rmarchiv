@@ -32,6 +32,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Event $event
  * @property-read \Illuminate\Database\Eloquent\Collection|\Venturecraft\Revisionable\Revision[] $revisionHistory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EventPicture newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EventPicture newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\EventPicture query()
  */
 class EventPicture extends Model
 {
