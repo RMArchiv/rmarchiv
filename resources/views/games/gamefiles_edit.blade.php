@@ -64,7 +64,7 @@
                                     <select class="form-control" name='language' id='language'>
                                         <option value="0">{{trans('app.choose_language')}}</option>
                                         @foreach(\App\Models\Language::all() as $lang)
-                                            <option @if ($gamefile->language == $lang->id) selected="" @endif value="{{ $lang->id }}">{{ $lang->name }}</option>
+                                            <option @if ($gamefile->language_id == $lang->id) selected="" @endif value="{{ $lang->id }}">{{ $lang->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
