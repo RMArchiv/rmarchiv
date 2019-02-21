@@ -20,26 +20,26 @@ class GameFileController extends Controller
 {
     public function download(Request $request, $id, $ts = 0)
     {
-        $g = \DB::table('games')
-            ->select([
-                'games.title as gametitle',
-                'games.subtitle as gamesubtitle',
-                'games_files.filename as filename',
-                'games_files.extension as fileextension',
-                'games_files_types.title as filetype',
-                'games_files.release_version as fileversion',
-                'games_files.release_day as fileday',
-                'games_files.release_month as filemonth',
-                'games_files.release_year as fileyear',
-            ])
-            ->leftJoin('games_files', 'games.id', '=', 'games_files.game_id')
-            ->leftJoin('games_files_types', 'games_files.release_type', '=', 'games_files_types.id')
-            ->where('games_files.id', '=', $id)
-            ->limit(1)
-            ->first();
-
         if ($request->isMethod('get')) {
             try {
+                $g = \DB::table('games')
+                    ->select([
+                        'games.title as gametitle',
+                        'games.subtitle as gamesubtitle',
+                        'games_files.filename as filename',
+                        'games_files.extension as fileextension',
+                        'games_files_types.title as filetype',
+                        'games_files.release_version as fileversion',
+                        'games_files.release_day as fileday',
+                        'games_files.release_month as filemonth',
+                        'games_files.release_year as fileyear',
+                    ])
+                    ->leftJoin('games_files', 'games.id', '=', 'games_files.game_id')
+                    ->leftJoin('games_files_types', 'games_files.release_type', '=', 'games_files_types.id')
+                    ->where('games_files.id', '=', $id)
+                    ->limit(1)
+                    ->first();
+
                 $curtime = time();
                 if(($curtime-$ts) > 1800) {     //1800 seconds
                     return \Redirect::action('GameController@show', ['id' => $g->id]);
@@ -88,6 +88,24 @@ class GameFileController extends Controller
                     return response()->download($filepath, $newfilename);
                 }
             } catch(\Exception $exception) {
+                $g = \DB::table('games')
+                    ->select([
+                        'games.title as gametitle',
+                        'games.subtitle as gamesubtitle',
+                        'games_files.filename as filename',
+                        'games_files.extension as fileextension',
+                        'games_files_types.title as filetype',
+                        'games_files.release_version as fileversion',
+                        'games_files.release_day as fileday',
+                        'games_files.release_month as filemonth',
+                        'games_files.release_year as fileyear',
+                    ])
+                    ->leftJoin('games_files', 'games.id', '=', 'games_files.game_id')
+                    ->leftJoin('games_files_types', 'games_files.release_type', '=', 'games_files_types.id')
+                    ->where('games_files.id', '=', $id)
+                    ->limit(1)
+                    ->first();
+
                 return \Redirect::action('GameController@show', ['id' => $g->id]);
             }
 
