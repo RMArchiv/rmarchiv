@@ -360,7 +360,7 @@
                                                         {{ str_pad($f->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_day, 2, 0, STR_PAD_LEFT) }}
                                                         [
                                                         @if($f->forbidden == 0)
-                                                        <a href="{{ url('games/download', $f->id) }}" class="down_l">
+                                                        <a href="{{ url('games/download', [$f->id, time()]) }}" class="down_l">
                                                             {{ $f->gamefiletype->title }} - {{ $f->release_version }}
                                                         </a>
                                                         @else

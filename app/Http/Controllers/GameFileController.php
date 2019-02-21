@@ -18,69 +18,79 @@ use App\Models\UserDownloadLog;
 
 class GameFileController extends Controller
 {
-    public function download(Request $request, $id)
+    public function download(Request $request, $id, $ts = 0)
     {
+        $g = \DB::table('games')
+            ->select([
+                'games.title as gametitle',
+                'games.subtitle as gamesubtitle',
+                'games_files.filename as filename',
+                'games_files.extension as fileextension',
+                'games_files_types.title as filetype',
+                'games_files.release_version as fileversion',
+                'games_files.release_day as fileday',
+                'games_files.release_month as filemonth',
+                'games_files.release_year as fileyear',
+            ])
+            ->leftJoin('games_files', 'games.id', '=', 'games_files.game_id')
+            ->leftJoin('games_files_types', 'games_files.release_type', '=', 'games_files_types.id')
+            ->where('games_files.id', '=', $id)
+            ->limit(1)
+            ->first();
+
         if ($request->isMethod('get')) {
-            \DB::table('games_files')
-                ->where('id', '=', $id)
-                ->increment('downloadcount');
+            try {
+                $curtime = time();
+                if(($curtime-$ts) > 1800) {     //1800 seconds
+                    return \Redirect::action('GameController@show', $g->id);
+                }else{
+                    \DB::table('games_files')
+                        ->where('id', '=', $id)
+                        ->increment('downloadcount');
 
-            $g = \DB::table('games')
-                ->select([
-                    'games.title as gametitle',
-                    'games.subtitle as gamesubtitle',
-                    'games_files.filename as filename',
-                    'games_files.extension as fileextension',
-                    'games_files_types.title as filetype',
-                    'games_files.release_version as fileversion',
-                    'games_files.release_day as fileday',
-                    'games_files.release_month as filemonth',
-                    'games_files.release_year as fileyear',
-                ])
-                ->leftJoin('games_files', 'games.id', '=', 'games_files.game_id')
-                ->leftJoin('games_files_types', 'games_files.release_type', '=', 'games_files_types.id')
-                ->where('games_files.id', '=', $id)
-                ->limit(1)
-                ->first();
+                    if (\Auth::check()) {
+                        UserDownloadLog::insert([
+                            'user_id' => \Auth::id(),
+                            'gamefile_id' => $id,
+                            'created_at' => Carbon::now(),
+                        ]);
+                    } else {
+                        UserDownloadLog::insert([
+                            'user_id' => 0,
+                            'gamefile_id' => $id,
+                            'created_at' => Carbon::now(),
+                        ]);
+                    }
 
-            if (\Auth::check()) {
-                UserDownloadLog::insert([
-                    'user_id' => \Auth::id(),
-                    'gamefile_id' => $id,
-                    'created_at' => Carbon::now(),
-                ]);
-            } else {
-                UserDownloadLog::insert([
-                    'user_id' => 0,
-                    'gamefile_id' => $id,
-                    'created_at' => Carbon::now(),
-                ]);
-            }
+                    $filepath = storage_path('app/public/' . $g->filename);
 
-            $filepath = storage_path('app/public/' . $g->filename);
+                    $newfilename = $g->gametitle . ' - ' . $g->gamesubtitle . ' [' . $g->filetype . '-' . $g->fileversion . ']-' . str_pad($g->fileyear, 2, 0, STR_PAD_LEFT)
+                        . '-' . str_pad($g->filemonth, 2, 0, STR_PAD_LEFT) . '-' . str_pad($g->fileday, 2, 0, STR_PAD_LEFT) . '.' . $g->fileextension;
 
-            $newfilename = $g->gametitle . ' - ' . $g->gamesubtitle . ' [' . $g->filetype . '-' . $g->fileversion . ']-' . str_pad($g->fileyear, 2, 0, STR_PAD_LEFT)
-                . '-' . str_pad($g->filemonth, 2, 0, STR_PAD_LEFT) . '-' . str_pad($g->fileday, 2, 0, STR_PAD_LEFT) . '.' . $g->fileextension;
+                    if (\Auth::check()) {
+                        //Check for existing download Template
+                        if (\Auth::user()->settings->download_template != '') {
 
-            if (\Auth::check()) {
-                //Check for existing download Template
-                if (\Auth::user()->settings->download_template != '') {
+                            //Replace all stuff for download template
+                            $t = \Auth::user()->settings->download_template;
+                            $t = str_replace('{title}', $g->gametitle, $t);
+                            $t = str_replace('{subtitle}', $g->gamesubtitle, $t);
+                            $t = str_replace('{reltype}', $g->filetype, $t);
+                            $t = str_replace('{relversion}', $g->fileversion, $t);
+                            $t = str_replace('{relyear}', str_pad($g->fileyear, 2, 0, STR_PAD_LEFT), $t);
+                            $t = str_replace('{relmonth}', str_pad($g->filemonth, 2, 0, STR_PAD_LEFT), $t);
+                            $t = str_replace('{relday}', str_pad($g->fileday, 2, 0, STR_PAD_LEFT), $t);
+                            $t = str_replace('{ext}', $g->fileextension, $t);
+                            $newfilename = $t;
+                        }
+                    }
 
-                    //Replace all stuff for download template
-                    $t = \Auth::user()->settings->download_template;
-                    $t = str_replace('{title}', $g->gametitle, $t);
-                    $t = str_replace('{subtitle}', $g->gamesubtitle, $t);
-                    $t = str_replace('{reltype}', $g->filetype, $t);
-                    $t = str_replace('{relversion}', $g->fileversion, $t);
-                    $t = str_replace('{relyear}', str_pad($g->fileyear, 2, 0, STR_PAD_LEFT), $t);
-                    $t = str_replace('{relmonth}', str_pad($g->filemonth, 2, 0, STR_PAD_LEFT), $t);
-                    $t = str_replace('{relday}', str_pad($g->fileday, 2, 0, STR_PAD_LEFT), $t);
-                    $t = str_replace('{ext}', $g->fileextension, $t);
-                    $newfilename = $t;
+                    return response()->download($filepath, $newfilename);
                 }
+            } catch(\Exception $exception) {
+                return \Redirect::action('GameController@show', $g->id);
             }
 
-            return response()->download($filepath, $newfilename);
         }
     }
 

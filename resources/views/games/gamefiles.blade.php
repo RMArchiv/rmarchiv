@@ -64,7 +64,7 @@
                                         @endif
                                         @else
                                             [
-                                            <a href="{{ url('games/download', $gf->id) }} " class="down_l">{{trans('app.download')}}</a>]
+                                            <a href="{{ url('games/download', [$gf->id, time()]) }} " class="down_l">{{trans('app.download')}}</a>]
                                             @php
                                                 $playable = \App\Models\PlayerIndexjson::whereGamefileId($gf->id)->get();
                                             @endphp

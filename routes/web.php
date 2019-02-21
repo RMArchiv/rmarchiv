@@ -54,7 +54,7 @@ Route::post('games/{id}/gamefiles/upload', 'FineUploaderController@endpoint')->n
 Route::get('games/{id}/gamefiles/delete/{fileid}', 'GameFileController@destroy')->name('gamefiles.delete')->middleware('permission:admin-games');
 Route::get('games/{id}/gamefiles/edit/{gamefileid}', 'GameFileController@edit')->name('gamefiles.edit')->middleware('permission:create-games');
 Route::post('games/{id}/gamefiles/edit/{gamefileid}/update', 'GameFileController@update')->name('gamefiles.update')->middleware('permission:create-games');
-Route::get('games/download/{id}', 'GameFileController@download')->name('gamefiles.download');
+Route::get('games/download/{id}/{ts?}', 'GameFileController@download')->name('gamefiles.download');
 Route::get('games/{gameid}/screenshot/show/{screenid}/{full?}', 'ScreenshotController@show')->name('screenshot.show');
 Route::get('games/{gameid}/screenshot/create/{screenid}', 'ScreenshotController@create')->name('screenshot.create')->middleware('permission:create-game-screenshots');
 Route::post('games/{gameid}/screenshot/upload/{screenid}', 'ScreenshotController@upload')->name('screenshot.upload')->middleware('permission:create-game-screenshots');
@@ -281,7 +281,7 @@ Route::group(['prefix' => 'events'], function () {
     });
 });
 
-//attachment Routen
+//Attachment Routen
 Route::post('attachment/upload', 'SubmitController@attachment_submit');
 
 //Spezialrouten
