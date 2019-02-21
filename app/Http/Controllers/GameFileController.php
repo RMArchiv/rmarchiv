@@ -42,7 +42,7 @@ class GameFileController extends Controller
             try {
                 $curtime = time();
                 if(($curtime-$ts) > 1800) {     //1800 seconds
-                    return \Redirect::action('GameController@show', $g->id);
+                    return \Redirect::action('GameController@show', ['id' => $g->id]);
                 }else{
                     \DB::table('games_files')
                         ->where('id', '=', $id)
@@ -88,7 +88,7 @@ class GameFileController extends Controller
                     return response()->download($filepath, $newfilename);
                 }
             } catch(\Exception $exception) {
-                return \Redirect::action('GameController@show', $g->id);
+                return \Redirect::action('GameController@show', ['id' => $g->id]);
             }
 
         }
