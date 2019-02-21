@@ -11,7 +11,7 @@
             <div class="card-footer">
                             <span class='rowprod'>
                 <span class='prodentry'>
-                    @if($randomgame->gamefiles)
+                    @if($randomgame->gamefiles->count() != 0)
                         <span class='typeiconlist'>
                         <span class='typei type_{{ $randomgame->gamefiles[0]->gamefiletype->short }}'
                               title='{{ $randomgame->gamefiles[0]->gamefiletype->title }}'>{{ $randomgame->gamefiles[0]->gamefiletype->title }}</span>
@@ -30,7 +30,7 @@
                                 <small> - {{ $randomgame->subtitle }}</small>
                             @endif
                         </a>
-                        <span><img src="/assets/lng/16/{{ strtoupper($randomgame->language->short) }}.png"
+                        <span><img alt="{{ $randomgame->language->name }}" src="/assets/lng/16/{{ strtoupper($randomgame->language->short) }}.png"
                                    title="{{ $randomgame->language->name }}"></span>
 
                     </span>
