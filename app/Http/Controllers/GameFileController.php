@@ -24,6 +24,7 @@ class GameFileController extends Controller
             try {
                 $g = \DB::table('games')
                     ->select([
+                        'games.id as gameid',
                         'games.title as gametitle',
                         'games.subtitle as gamesubtitle',
                         'games_files.filename as filename',
@@ -42,7 +43,7 @@ class GameFileController extends Controller
 
                 $curtime = time();
                 if(($curtime-$ts) > 1800) {     //1800 seconds
-                    return \Redirect::action('GameController@show', ['id' => $g->id]);
+                    return \Redirect::action('GameController@show', ['id' => $g->gameid]);
                 }else{
                     \DB::table('games_files')
                         ->where('id', '=', $id)
@@ -90,6 +91,7 @@ class GameFileController extends Controller
             } catch(\Exception $exception) {
                 $g = \DB::table('games')
                     ->select([
+                        'games.id as gameid',
                         'games.title as gametitle',
                         'games.subtitle as gamesubtitle',
                         'games_files.filename as filename',
@@ -106,7 +108,7 @@ class GameFileController extends Controller
                     ->limit(1)
                     ->first();
 
-                return \Redirect::action('GameController@show', ['id' => $g->id]);
+                return \Redirect::action('GameController@show', ['id' => $g->gameid]);
             }
 
         }
