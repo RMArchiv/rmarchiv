@@ -359,6 +359,9 @@
                                                 <li class="list-group-item">
                                                         {{ str_pad($f->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_day, 2, 0, STR_PAD_LEFT) }}
                                                         [
+                                                        @if($f->language)
+                                                            <span><img src="/assets/lng/16/{{ strtoupper($f->language->short) }}.png" title="{{ $f->language->name }}"></span>
+                                                        @endif
                                                         @if($f->forbidden == 0)
                                                         <a href="{{ url('games/download', [$f->id, time()]) }}" class="down_l">
                                                             {{ $f->gamefiletype->title }} - {{ $f->release_version }}
