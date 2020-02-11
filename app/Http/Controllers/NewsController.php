@@ -62,7 +62,6 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         if (\Auth::check()) {
-            if (\Auth::user()->hasRole(['admin', 'owner', 'moderator'])) {
                 $n = new News();
                 $n->news_category = $request->get('cat');
                 $n->user_id = \Auth::id();
@@ -74,9 +73,6 @@ class NewsController extends Controller
                 $n->save();
 
                 return redirect()->action('NewsController@show', $n->id);
-            } else {
-                return redirect()->action('IndexController@index');
-            }
         } else {
             return redirect()->action('IndexController@index');
         }
