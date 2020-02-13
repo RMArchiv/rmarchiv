@@ -44,7 +44,8 @@ class PlayerCreateInfo extends Command
      */
     public function handle()
     {
-        $this->info('Lade Gamefiles ohne index.json');
+		ini_set('memory_limit', '1024M');
+		$this->info('Lade Gamefiles ohne index.json');
 
         $gamefiles = GamesFile::with('game')->get();
 
