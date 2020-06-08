@@ -50,10 +50,7 @@ return [
 
     'middleware' => [
         [
-            'class'  => Optimus\FineuploaderServer\Middleware\ThumbnailCreator::class,
-            'config' => [
 
-            ],
         ],
     ],
 

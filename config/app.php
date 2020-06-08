@@ -205,7 +205,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
         Optimus\FineuploaderServer\Provider\LaravelServiceProvider::class,
-        Intervention\Image\ImageServiceProviderLaravel5::class,
+        Intervention\Image\ImageServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Cmgmyr\Messenger\MessengerServiceProvider::class,
         Watson\Sitemap\SitemapServiceProvider::class,
