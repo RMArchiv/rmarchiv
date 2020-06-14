@@ -43,10 +43,10 @@
                         </div>
                         <div class="card-body">
                             Momentan können Spiele Repots nur mit einem registrierten Benutzeraccount gesendet werden.<br>
-                            Alternativ kann eine E-Mail an <a href="mailto:report@rmarchiv.tk">report@rmarchiv.tk</a> gesendet werden<br>
+                            Alternativ kann eine E-Mail an <a href="mailto:report@rmarchiv.de">report@rmarchiv.de</a> gesendet werden<br>
                             <br>
                             Currently, system-side game reports can only be created with an registered user account.<br>
-                            Alternatively you can send an e-mail to <a href="mailto:report@rmarchiv.tk">report@rmarchiv.tk</a><br>
+                            Alternatively you can send an e-mail to <a href="mailto:report@rmarchiv.de">report@rmarchiv.de</a><br>
                             <br>
 
                         </div>

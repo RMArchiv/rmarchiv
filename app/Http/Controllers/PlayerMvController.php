@@ -1,7 +1,7 @@
 <?php
 
 /*
- * rmarchiv.tk
+ * rmarchiv.de
  * (c) 2016-2017 by Marcel 'ryg' Hering
  * (c) 2018 by Gabriel 'Ghabry' Kind
  */

@@ -9,11 +9,11 @@
 
     <title>
         @yield('pagetitle')
-        :: rmarchiv.tk :: your online rpgmaker resource</title>
+        :: rmarchiv.de :: your online rpgmaker resource</title>
 
     <?= Meta::tag('robots'); ?>
 
-    <?= Meta::tag('site_name', 'rmarchiv.tk'); ?>
+    <?= Meta::tag('site_name', 'rmarchiv.de'); ?>
     <?= Meta::tag('url', Request::url()); ?>
     <?= Meta::tag('locale', 'de_DE'); ?>
 
@@ -26,7 +26,7 @@
     </title>
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
-    <link rel="canonical" href="http://www.rmarchiv.tk/"/>
+    <link rel="canonical" href="http://www.rmarchiv.de/"/>
 
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{ elixir('css/app.css') }}" media="screen" />
@@ -109,7 +109,7 @@
     _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);
     (function() {
-        var u="//stats.rmarchiv.tk/";
+        var u="//stats.rmarchiv.de/";
         _paq.push(['setTrackerUrl', u+'piwik.php']);
         _paq.push(['setSiteId', '1']);
         var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * rmarchiv.tk
+ * rmarchiv.de
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
@@ -45,7 +45,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'rmarchiv.tk',
+    'name' => 'rmarchiv.de',
 
     /*
     |--------------------------------------------------------------------------
@@ -84,7 +84,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://rmarchiv.tk'),
+    'url' => env('APP_URL', 'http://rmarchiv.de'),
 
     /*
     |--------------------------------------------------------------------------

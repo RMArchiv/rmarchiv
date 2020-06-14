@@ -1,7 +1,7 @@
 <?php
 
 /*
- * rmarchiv.tk
+ * rmarchiv.de
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
@@ -153,7 +153,7 @@ return [
     |
     */
 
-    'domain' => '.rmarchiv.tk',
+    'domain' => '.rmarchiv.de',
 
     /*
     |--------------------------------------------------------------------------

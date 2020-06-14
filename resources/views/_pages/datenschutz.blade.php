@@ -19,7 +19,7 @@
                     </p><h3 id="dsg-general-controller">Verantwortlicher</h3><p><span class="tsmcontroller">Marcel Hering<br>
 Marienstraße 8<br>
 52372 Kreuzau Stockheim<br>
-Mail: webmaster@rmarchiv.tk</span></p><h3 id="dsg-general-datatype">Arten der verarbeiteten Daten:</h3><p>-	Bestandsdaten (Benutzername).<br>
+Mail: webmaster@rmarchiv.de</span></p><h3 id="dsg-general-datatype">Arten der verarbeiteten Daten:</h3><p>-	Bestandsdaten (Benutzername).<br>
                         -	Kontaktdaten (E-Mail).<br>
                         -	Inhaltsdaten (z.B., Texteingaben, Fotografien, Videos).<br>
                         -	Nutzungsdaten (besuchte Webseiten (für die "zuletzt Besucht"-Seite), Interesse an Inhalten).<br>

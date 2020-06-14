@@ -1,7 +1,7 @@
 <?php
 
 /*
- * rmarchiv.tk
+ * rmarchiv.de
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
@@ -61,8 +61,8 @@ return [
     */
 
     'from' => [
-        'address' => 'webmaster@rmarchiv.tk',
-        'name'    => 'RMArchiv.tk Webmaster',
+        'address' => 'webmaster@rmarchiv.de',
+        'name'    => 'rmarchiv.de Webmaster',
     ],
 
     /*
