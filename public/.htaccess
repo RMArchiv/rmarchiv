@@ -81,13 +81,13 @@ Header append Vary User-Agent
  </IfModule>
 
 Header set Content-Security-Policy "default-src 'self'"
-Header set Content-Security-Policy "img-src 'self' ava.rmarchiv.tk"
+Header set Content-Security-Policy "img-src 'self' ava.rmarchiv.de"
 
 Header set X-Content-Security-Policy "default-src 'self'"
-Header set X-Content-Security-Policy "img-src 'self' ava.rmarchiv.tk"
+Header set X-Content-Security-Policy "img-src 'self' ava.rmarchiv.de"
 
 Header set X-Webkit-CSP "default-src 'self'"
-Header set X-Webkit-CSP "img-src 'self' ava.rmarchiv.tk"
+Header set X-Webkit-CSP "img-src 'self' ava.rmarchiv.de"
 
 Header set Strict-Transport-Security "max-age=63072000; includeSubdomains; preload" env=HTTPS
 Header always append X-Frame-Options SAMEORIGIN

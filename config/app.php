@@ -25,7 +25,7 @@ return [
     'rows_per_page_developer' => 20,
     'rows_per_page_games'     => 20,
 
-    'avatar_path' => 'ava.rmarchiv.tk',
+    'avatar_path' => 'ava.rmarchiv.de',
 
     'version' => '0.2.23c'.BUILD,
 
