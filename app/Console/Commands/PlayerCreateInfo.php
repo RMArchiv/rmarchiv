@@ -191,6 +191,8 @@ class PlayerCreateInfo extends Command
 
         $searcharray = array_merge($dirarray, $filearray);
 
+        dd($filepath);
+
         if (starts_with(strtolower($filepath), $searcharray)) {
             $imp = str_replace('/', '\\/', $filepath);
         } else {
