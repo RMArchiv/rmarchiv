@@ -10,6 +10,7 @@ namespace App\Console\Commands;
 use App\Models\GamesFile;
 use App\Models\PlayerIndexjson;
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 
 class PlayerCreateInfo extends Command
 {
@@ -112,7 +113,7 @@ class PlayerCreateInfo extends Command
                     for ($i = 0; $i < $zip->numFiles; $i++) {
                         $filename = $zip->getNameIndex($i);
 
-                        if (! ends_with($filename, '/') and ! starts_with($filename, '_MACOSX' and !ends_with($filename, ".exe"))) {
+                        if (! ends_with($filename, '/') and ! starts_with($filename, '_MACOSX')) {
                             $imp = $this->search_for_base_path($filename);
 
                             if (! $imp == '') {
@@ -196,7 +197,7 @@ class PlayerCreateInfo extends Command
         if (starts_with(strtolower($filepath), $searcharray)) {
             $imp = str_replace('/', '\\/', $filepath);
         } else {
-            if (str_contains(strtolower($filepath), $searcharray)) {
+            if (Str::contains(strtolower($filepath), $searcharray)) {
                 $exp = explode('/', $filepath);
                 $imp = implode('/', $exp);
                 $imp = $this->search_for_base_path($imp);
