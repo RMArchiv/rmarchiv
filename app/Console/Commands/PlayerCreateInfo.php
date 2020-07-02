@@ -96,7 +96,7 @@ class PlayerCreateInfo extends Command
                     // Nur Pfad zum "www/" Ordner noetig
                     for ($i = 0; $i < $zip->numFiles; $i++) {
                         $filename = $zip->getNameIndex($i);
-                        if (ends_with($filename, 'www/')) {
+                        if (Str::endsWith($filename, 'www/')) {
                             $pl = new PlayerIndexjson();
                             $pl->gamefile_id = $toindex->id;
                             $pl->key = 'www';
@@ -113,13 +113,13 @@ class PlayerCreateInfo extends Command
                     for ($i = 0; $i < $zip->numFiles; $i++) {
                         $filename = $zip->getNameIndex($i);
 
-                        if (! ends_with($filename, '/') and ! starts_with($filename, '_MACOSX')) {
+                        if (! Str::endsWith($filename, '/') and ! Str::startsWith($filename, '_MACOSX')) {
                             $imp = $this->search_for_base_path($filename);
 
                             if (! $imp == '') {
                                 $pl = new PlayerIndexjson();
                                 $pl->gamefile_id = $toindex->id;
-                                if (! ends_with(strtolower($imp), ['.exe', '.lmu', '.ldb', 'ini', '.dll', 'lmt', 'lsd'])) {
+                                if (! Str::endsWith(strtolower($imp), ['.exe', '.lmu', '.ldb', 'ini', '.dll', 'lmt', 'lsd'])) {
                                     $pl->key = preg_replace('/(\.\w+$)/', '', strtolower($imp));
                                 } else {
                                     $pl->key = strtolower($imp);
@@ -192,14 +192,13 @@ class PlayerCreateInfo extends Command
 
         $searcharray = array_merge($dirarray, $filearray);
 
-        //dd($filepath);
-
-        if (starts_with(strtolower($filepath), $searcharray)) {
+        if (Str::startsWith(strtolower($filepath), $searcharray)) {
             $imp = str_replace('/', '\\/', $filepath);
         } else {
             if (Str::contains(strtolower($filepath), $searcharray)) {
                 $exp = explode('/', $filepath);
                 $imp = implode('/', $exp);
+                dd($filepath);
                 $imp = $this->search_for_base_path($imp);
             } else {
                 $imp = '';
