@@ -45,7 +45,7 @@ class PlayerCreateInfo extends Command
      */
     public function handle()
     {
-		ini_set('memory_limit', '4G');
+		ini_set('memory_limit', '8G');
 		$this->info('Lade Gamefiles ohne index.json');
 
         $gamefiles = GamesFile::with('game')->get();
@@ -186,7 +186,7 @@ class PlayerCreateInfo extends Command
             $mapparray[] = 'map'.sprintf('%04d', $i).'.lmu';
         }
 
-        ini_set('memory_limit', '4G');
+        ini_set('memory_limit', '8G');
 
         $filearray = array_merge($rootarray, $mapparray);
 
