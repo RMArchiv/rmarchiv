@@ -112,7 +112,7 @@ class PlayerCreateInfo extends Command
                     for ($i = 0; $i < $zip->numFiles; $i++) {
                         $filename = $zip->getNameIndex($i);
 
-                        if (! ends_with($filename, '/') and ! starts_with($filename, '_MACOSX')) {
+                        if (! ends_with($filename, '/') and ! starts_with($filename, '_MACOSX' and !ends_with($filename, ".exe"))) {
                             $imp = $this->search_for_base_path($filename);
 
                             if (! $imp == '') {
@@ -191,7 +191,7 @@ class PlayerCreateInfo extends Command
 
         $searcharray = array_merge($dirarray, $filearray);
 
-        dd($filepath);
+        //dd($filepath);
 
         if (starts_with(strtolower($filepath), $searcharray)) {
             $imp = str_replace('/', '\\/', $filepath);
