@@ -45,7 +45,7 @@ class PlayerCreateInfo extends Command
      */
     public function handle()
     {
-		ini_set('memory_limit', '1024M');
+		ini_set('memory_limit', '4G');
 		$this->info('Lade Gamefiles ohne index.json');
 
         $gamefiles = GamesFile::with('game')->get();
@@ -84,6 +84,7 @@ class PlayerCreateInfo extends Command
 
         foreach ($toindexed as $toindex) {
             $bar->setMessage('Entpacken von: '.$toindex->game_id.'/'.$toindex->id, 'title');
+            $this->info('Entpacken von: '.$toindex->game_id.'/'.$toindex->id.'/'.$toindex->game->title);
             \Log::info('Entpacken von '.$toindex->game_id.'/'.$toindex->id);
             $path = storage_path('app/public/'.$toindex->filename);
             if ($toindex->extension == 'zip') {
@@ -95,7 +96,6 @@ class PlayerCreateInfo extends Command
                     // Nur Pfad zum "www/" Ordner noetig
                     for ($i = 0; $i < $zip->numFiles; $i++) {
                         $filename = $zip->getNameIndex($i);
-                        $this->info('Saved XXX basepath: '.$filename);
                         if (ends_with($filename, 'www/')) {
                             $pl = new PlayerIndexjson();
                             $pl->gamefile_id = $toindex->id;
@@ -186,7 +186,7 @@ class PlayerCreateInfo extends Command
             $mapparray[] = 'map'.sprintf('%04d', $i).'.lmu';
         }
 
-        ini_set('memory_limit', '512M');
+        ini_set('memory_limit', '4G');
 
         $filearray = array_merge($rootarray, $mapparray);
 
