@@ -15,7 +15,7 @@ use App\Models\Maker;
 class TakoController extends Controller
 {
     public function filelist2(){
-        $list = Game::with('gamefiles', 'makers', 'developers')->get()->take(1);
+        $list = Game::with('gamefiles', 'maker', 'developers')->get()->take(1);
 
         dd($list);
         return $list;
