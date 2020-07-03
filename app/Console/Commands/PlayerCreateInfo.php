@@ -45,26 +45,32 @@ class PlayerCreateInfo extends Command
      */
     public function handle()
     {
-        ini_set('memory_limit', '8G');
+        // Historical memory_limit
+        ini_set('memory_limit', '128M');
         $this->info('Lade Gamefiles ohne index.json');
 
+        // Load all Gamefile Rows including the game relationship
         $gamefiles = GamesFile::with('game')->get();
 
-        $counter = 0;
-        $toindexed = [];
+        $counter = 0; //init counter
+        $toindexed = []; //Object array for indexable gamefiles
 
+        //Loop to collect needed informations about gamefiles
         foreach ($gamefiles as $gamefile) {
+            //Filter Gamefiles without Game relation (orphaned files)
             if ($gamefile->game) {
                 $makerid = $gamefile->game->maker_id;
 
-                if ($makerid == 2 or
-                    $makerid == 3 or
-                    $makerid == 6 or
-                    $makerid == 9 or
-                    $makerid == 11) {
-                    // RPG2k/2k3/MV
+                //filter webplayer compatible makers
+                if ($makerid == 2 or //rm2k
+                    $makerid == 3 or //rm2k3
+                    $makerid == 6 or //rmmv
+                    $makerid == 9 or //rm2k3 steam edition
+                    $makerid == 11) { //rm2k steam edition
+
+                    //check if Gamefile has no entries
                     if ($gamefile->playerIndex()->count() == 0) {
-                        $toindexed[] = $gamefile;
+                        $toindexed[] = $gamefile; //Add to array
                         $counter += 1;
                     }
                 }
@@ -73,6 +79,7 @@ class PlayerCreateInfo extends Command
 
         $this->info('Es wurden '.$counter.' Gamefiles gefunden.');
 
+        //create and configure fancy cli progressbar
         $bar = $this->output->createProgressBar(count($toindexed));
         $bar->setFormat(" \033[44;37m %title:-37s% \033[0m\n %current%/%max% %bar% %percent:3s%%\n %remaining:-10s% %memory:37s%");
         $bar->setBarCharacter($done = "\033[32m●\033[0m");
@@ -81,20 +88,25 @@ class PlayerCreateInfo extends Command
         $bar->setMessage('Starte indizierung der Gamefiles', 'title');
         $bar->start();
 
+        //loop for all indexable gamefiles
         foreach ($toindexed as $toindex) {
             $bar->setMessage('Entpacken von: '.$toindex->game_id.'/'.$toindex->id, 'title');
             $this->info('Entpacken von: '.$toindex->game_id.'/'.$toindex->id.'/'.$toindex->game->title);
-            $path = storage_path('app/public/'.$toindex->filename);
-            if ($toindex->extension == 'zip') {
+
+            $path = storage_path('app/public/'.$toindex->filename); //path to gamefile
+            if ($toindex->extension == 'zip') { //check for zip extension
+                //create ZipArchive Object
                 $zip = new \ZipArchive();
+                //open zip file
                 $zip->open($path);
+
                 $makerid = $toindex->game->maker_id;
-                if ($makerid == 6) {
-                    // RPG Maker MV
-                    // Nur Pfad zum "www/" Ordner noetig
+                if ($makerid == 6) { //rmmv
+                    //loop for every file in zip
                     for ($i = 0; $i < $zip->numFiles; $i++) {
-                        $filename = $zip->getNameIndex($i);
-                        if (Str::endsWith($filename, 'www/')) {
+                        $filename = $zip->getNameIndex($i); // get filename from zip index
+                        if (Str::endsWith($filename, 'www/')) { //todo: Hier muss ich noch mal schauen.
+                            //save data to db
                             $pl = new PlayerIndexjson();
                             $pl->gamefile_id = $toindex->id;
                             $pl->key = 'www';
@@ -102,20 +114,26 @@ class PlayerCreateInfo extends Command
                             $pl->filename = $filename;
                             $pl->save();
 
-                            break;
+                            break; //??
                         }
                     }
                 } else {
                     // RPG Maker 2k/2k3
-                    for ($i = 0; $i < $zip->numFiles; $i++) {
-                        $filename = $zip->getNameIndex($i);
 
+                    //loop for every file in zip
+                    for ($i = 0; $i < $zip->numFiles; $i++) {
+                        $filename = $zip->getNameIndex($i); // get filename from zip index
+
+                        //filter directorys and _MACOS files/directory
                         if (! Str::endsWith($filename, '/') and ! Str::startsWith($filename, '_MACOSX')) {
-                            $imp = $this->search_for_base_path($filename);
+                            $imp = $this->search_for_base_path($filename); //search for game basepath
 
                             if (! $imp == '') {
+                                //safe data to db
                                 $pl = new PlayerIndexjson();
                                 $pl->gamefile_id = $toindex->id;
+
+                                //check for file endings. subdirectory files dont need .\/
                                 if (! Str::endsWith(strtolower($imp), ['.exe', '.lmu', '.ldb', 'ini', '.dll', 'lmt', 'lsd'])) {
                                     $pl->key = preg_replace('/(\.\w+$)/', '', strtolower($imp));
                                 } else {
@@ -124,8 +142,6 @@ class PlayerCreateInfo extends Command
                                 $pl->value = $imp;
                                 $pl->filename = $filename;
                                 $pl->save();
-
-                            } else {
 
                             }
                         }
