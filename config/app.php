@@ -5,7 +5,7 @@
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
-const BUILD = 10;
+//const BUILD = 10;
 
 return [
 
@@ -27,7 +27,7 @@ return [
 
     'avatar_path' => 'ava.rmarchiv.de',
 
-    'version' => '0.2.23c'.BUILD,
+    'version' => '0.2.23c10',
 
     'tntsearch' => [
         'driver'   => 'sqlite',
