@@ -41,7 +41,7 @@ class Player2kController extends Controller
         $zip = new \ZipArchive();
         $zip->open($path);
         $fp = $zip->getFromName($file->filename);
-
+        //dd($file->filename);
         return $fp;
     }
 
@@ -1445,3 +1445,4 @@ class Player2kController extends Controller
         return  $return;
     }
 }
+

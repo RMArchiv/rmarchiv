@@ -45,8 +45,8 @@ class PlayerCreateInfo extends Command
      */
     public function handle()
     {
-		ini_set('memory_limit', '8G');
-		$this->info('Lade Gamefiles ohne index.json');
+        ini_set('memory_limit', '8G');
+        $this->info('Lade Gamefiles ohne index.json');
 
         $gamefiles = GamesFile::with('game')->get();
 
@@ -65,7 +65,6 @@ class PlayerCreateInfo extends Command
                     // RPG2k/2k3/MV
                     if ($gamefile->playerIndex()->count() == 0) {
                         $toindexed[] = $gamefile;
-                        $this->info('ADD '.$gamefile->game->title);
                         $counter += 1;
                     }
                 }
@@ -85,7 +84,6 @@ class PlayerCreateInfo extends Command
         foreach ($toindexed as $toindex) {
             $bar->setMessage('Entpacken von: '.$toindex->game_id.'/'.$toindex->id, 'title');
             $this->info('Entpacken von: '.$toindex->game_id.'/'.$toindex->id.'/'.$toindex->game->title);
-            \Log::info('Entpacken von '.$toindex->game_id.'/'.$toindex->id);
             $path = storage_path('app/public/'.$toindex->filename);
             if ($toindex->extension == 'zip') {
                 $zip = new \ZipArchive();
@@ -104,7 +102,6 @@ class PlayerCreateInfo extends Command
                             $pl->filename = $filename;
                             $pl->save();
 
-                            \Log::info('Saved basepath: '.$filename);
                             break;
                         }
                     }
@@ -125,12 +122,11 @@ class PlayerCreateInfo extends Command
                                     $pl->key = strtolower($imp);
                                 }
                                 $pl->value = $imp;
-                                $pl->filename = 'www';
+                                $pl->filename = $filename;
                                 $pl->save();
 
-                                \Log::info('Saved basepath: '.$filename);
                             } else {
-                                \Log::info('Empty basepath: '.$filename);
+
                             }
                         }
                     }
@@ -197,8 +193,9 @@ class PlayerCreateInfo extends Command
         } else {
             if (Str::contains(strtolower($filepath), $searcharray)) {
                 $exp = explode('/', $filepath);
+                $res = array_shift($exp);
                 $imp = implode('/', $exp);
-                dd($filepath);
+
                 $imp = $this->search_for_base_path($imp);
             } else {
                 $imp = '';
@@ -210,7 +207,7 @@ class PlayerCreateInfo extends Command
                 $imp = '.\\/'.$imp;
             }
         }
-
         return $imp;
     }
 }
+
