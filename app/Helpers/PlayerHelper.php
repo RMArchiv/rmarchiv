@@ -8,6 +8,7 @@
 namespace App\Helpers;
 
 use PhpBinaryReader\BinaryReader;
+use Illuminate\Support\Str;
 
 class PlayerHelper
 {
