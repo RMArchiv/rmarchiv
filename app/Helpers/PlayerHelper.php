@@ -71,7 +71,7 @@ class PlayerHelper
         if (starts_with(strtolower($zipfilepath), $searcharray)) {
             $imp = str_replace('/', '\\/', $zipfilepath);
         } else {
-            if (str_contains(strtolower($zipfilepath), $searcharray)) {
+            if (Str::contains(strtolower($zipfilepath), $searcharray)) {
                 $exp = explode('/', $zipfilepath);
                 $res = array_shift($exp);
                 $imp = implode('/', $exp);
