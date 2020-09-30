@@ -186,7 +186,7 @@
                     {!! Form::hidden('content_id', $resource->id) !!}
                     {!! Form::hidden('content_type', 'resource') !!}
                     <div class='content'>
-                        @if(CheckRateable::checkRateable('resource', $resource->id, Auth::id()) === true)
+                        @if(\App\Helpers\CheckRateableHelper::checkRateable('resource', $resource->id, Auth::id()) === true)
                             <div id='prodvote'>
                                 {{ trans('app.rate_this_resource') }}<br>
                                 <input type='radio' name='rating' id='ratingrulez' value='up'/>
