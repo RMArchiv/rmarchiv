@@ -64,7 +64,7 @@
                     <div class="card-header">
                         {{ trans('app.obyx_overview') }}
                         <div class="pull-right">
-                            <span class="badge">{{ $user->userobyx()->sum('value') }}</span>
+                            <span class="badge">Soon</span>
                         </div>
                     </div>
                     <ul class="list-group">
