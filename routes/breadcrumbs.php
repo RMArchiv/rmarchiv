@@ -379,3 +379,10 @@ Breadcrumbs::register('logoadd', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.submit_logo'), action('SubmitController@logo_index'));
 });
+
+//----------------- Ressources --------------------------------------------------------------------------------------------//
+// Home > Ressources
+Breadcrumbs::register('ressources', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('app.resources_overview'), action('ResourceController@index'));
+});
