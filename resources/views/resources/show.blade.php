@@ -2,7 +2,7 @@
 @section('pagetitle', $resource->title)
 @section('content')
     <div id="content">
-        @if(count($resource) > 0)
+        @if($resource)
             <div id="prodpagecontainer">
                 <table id='rmarchivbox_prodmain'>
                     <tr id='prodheader'>
