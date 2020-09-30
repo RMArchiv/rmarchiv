@@ -435,7 +435,11 @@ return [
     'resource-add'   => 'Resource hochgeladen',
     'screenshot-add' => 'Screenshots hochgeladen',
     'shoutbox'       => 'Shoutbox genutzt',
-    'thread-add'     => 'Forenthreads erstellt',
+    'content_place_1'     => 'Forenthreads erstellt',
+    'contest_jury'     => 'Forenthreads erstellt',
+    'content_place_2'     => 'Forenthreads erstellt',
+    'content_place_3'     => 'Forenthreads erstellt',
+      'logo-vote' => 'Logo-Bewertung abgegeben',
   ],
   'widget' => [
     'disable_widget_alltimetop'    => 'Alltime Top Widget',

@@ -64,7 +64,7 @@
                     <div class="card-header">
                         {{ trans('app.obyx_overview') }}
                         <div class="pull-right">
-                            <span class="badge">OBYX PLATZHALTER</span>
+                            <span class="badge">{{ $user->userobyx()->sum('value') }}</span>
                         </div>
                     </div>
                     <ul class="list-group">
@@ -78,7 +78,7 @@
                                     @endphp
                                     {{ $sum }}
                                     </span>
-                                {{ trans('app.obyx.'.$ob->obyx->reason) }}
+                                {{ trans('app.obyx.'.$ob->obyx->reason) }} ({{ $ob->obyx->value }})
                             </li>
                         @endforeach
                     </ul>
