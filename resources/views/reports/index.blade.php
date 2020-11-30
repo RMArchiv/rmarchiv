@@ -27,7 +27,7 @@
                                 </a> <a href="{{ url('/user', $r->user_id) }}" class="user">{{ $r->user->name }}</a>
                             </td>
                             <td><time datetime='{{ $r->created_at }}' title='{{ $r->created_at }}'>{{ \Carbon\Carbon::parse($r->created_at)->diffForHumans() }}</time></td>
-                            <td>{{ dd($r->game->title) }}</td>
+                            <td>{{ $r->game->title }}</td>
                             <td>{{ $r->reason }}</td>
                             <td>{{ $r->closed }}</td>
                             <td>{{ $r->remarks }}</td>
