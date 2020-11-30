@@ -8,9 +8,9 @@
                     <h1>
                         @if($game->subtitle)
                             {{ $game->title }}
-                            <small> - {{ $game->subtitle }}</small> {{ trans('app.report_game') }}
+                            <small> - {{ $game->subtitle }}</small> - {{ trans('app.report_game') }}
                         @else
-                            {{ $game->title }} {{ trans('app.report_game') }}
+                            {{ $game->title }} - {{ trans('app.report_game') }}
                         @endif
 
                     </h1>
@@ -20,8 +20,9 @@
         </div>
         <div class="row">
             @if(Auth::check())
-                {!! Form::open(['method' => 'POST', 'route' => ['game-report.store', $game->id]]) !!}
+
                     <div class="col-md-12">
+                        {!! Form::open(['method' => 'POST', 'route' => ['game-report.store', $game->id]]) !!}
                         <div class="card">
                             <div class="card-header">
                                 {{ trans('app.report_game') }}
@@ -33,8 +34,9 @@
                                 <input type="submit" value="{{trans('app.submit')}}" class="btn btn-primary">
                             </div>
                         </div>
+                        {!! Form::close() !!}
                     </div>
-                {!! Form::close() !!}
+
             @else
                 <div class="col-md-12">
                     <div class="card">
