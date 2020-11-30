@@ -22,7 +22,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        Regeln für das Melden von Spielen
+                        Hinweise für das Melden von Spielen
                     </div>
                     <div class="card-body">
                         <p>Liebe Community,</p>
