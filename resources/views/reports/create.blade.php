@@ -39,7 +39,7 @@
                         <p>Wir werden die Spiele dann zeitnah pr&uuml;fen und uns mit euch in Kontakt setzen.</p>
                         <p>Wir m&ouml;chten euch darauf hinweisen, dass die Eintr&auml;ge der Spiele im Archiv weiterhin bestehen bleiben, es werden lediglich die Downloadlinks entfernt um somit den Entwicklern, wie bereits in der Vergangenheit erfolgt, die M&ouml;glichkeit zu geben, die Inhalte nachzubessern und somit eine neue Version zur Verf&uuml;gung zu stellen.</p>
                         <p>Es wird im Moment an L&ouml;sungen gearbeitet, dass man Spiele direkt auf der Plattform melden kann und dies effizienter und ggfs. automatisierter ablaufen k&ouml;nnte.</p>
-                        <p>Bis dahin, bieten wir euch an, Ryg, Erisch oder Yokariko zu kontaktieren.</p>
+                        <p>Bis dahin, bieten wir euch an, Ryg, Erisch oder Yoraiko zu kontaktieren.</p>
                         <p>Ihr k&ouml;nnt uns auf mehreren Wegen erreichen:</p>
                         <p>Entweder im RMArchiv-Discord, wo wir extra einen Kanal daf&uuml;r angelegt haben. Den Link zum Discord-Server, findet ihr hier: <a href="https://discord.gg/teWCkZ6">https://discord.gg/teWCkZ6</a>&nbsp;</p>
                         <p>Es gibt auch die M&ouml;glichkeit, eine E-Mail an <a href="mailto:webmaster@rmarchiv.de">webmaster@rmarchiv.de</a> zu schreiben und dort ein Spiel zu melden.</p>
