@@ -46,7 +46,7 @@
                         <p>Alternativ k&ouml;nnt ihr uns auch direkt auf folgenden Wegen erreichen:</p>
                         <p>Ryg <br />Discord: ryg#3553 <br />PN: <a href="https://www.multimediaxis.de/members/889-ryg">Multimediaxis/Atelier</a> &amp; <a href="https://rpgmaker-mv.de/user/549-ryg/">MV-Forum </a></p>
                         <p>Erisch <br />Discord: waschb&auml;r#6337</p>
-                        <p>Yokariko Discord: In_Pace#9664 <br />PN: <a href="https://rpgmaker-mv.de/user/521-yoraiko/">MV-Forum </a></p>
+                        <p>Yoraiko <br />Discord: In_Pace#9664 <br />PN: <a href="https://rpgmaker-mv.de/user/521-yoraiko/">MV-Forum </a></p>
                         <p>&nbsp;</p>
                         <p>mit freundlichen Gr&uuml;&szlig;en, <br />euer RMArchiv Putzteufelteam.</p>
                     </div>
