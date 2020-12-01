@@ -28,7 +28,7 @@
                     </thead>
                     @foreach($uo as $u)
                         <tr>
-                            <td><a href="{{ action('UserController@show', $u->user_id) }}">{{ $u->user->name }}</a></td>
+                            <td><a href="{{ action('UserController@show', $u->user_id) }}">{{ @$u->user->name }}</a></td>
                             <td><a href="{{ $u->last_place }}">{{ $u->last_place }}</a></td>
                             <td>{{ $u->created_at }}</td>
                         </tr>
