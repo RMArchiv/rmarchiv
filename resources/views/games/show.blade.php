@@ -53,6 +53,24 @@
                     <div class="row mt-4">
                         <div class='col-md-6'>
                             {{-- screenshots --}}
+                            @if(\App\Models\GamesFile::whereGameId($game->id)->where("forbidden", '=', 1)->get()->count() != 0)
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card text-white bg-danger">
+                                        <div class="card-header">Gesperrte Downloads</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Dieses Spiel enthält gesperrte Downloads</h5>
+                                            <p class="card-text">
+                                                Mindestens eine Datei in diesem Spiel wurde gemeldet und ensprechend gesperrt.
+
+                                                Für weitere Informationen zu diesen Dateien bitte hier klicken:
+                                                <a href="{{ action('GameFileController@create', $game->id) }}"> Dateiliste</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="card">
