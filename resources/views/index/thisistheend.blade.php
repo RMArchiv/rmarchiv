@@ -10,7 +10,8 @@
                         We`ll always have Paris.
                     </div>
                     <div class="card-body">
-                        ACHTUNG! BEIM LESEN DES UNTEREN TEXTES DEN SONG ABSPIELEN!
+                        <p><a href="{{ url('/english') }}">English Translation</a></p>
+                        <p>ACHTUNG! BEIM LESEN DES UNTEREN TEXTES DEN SONG ABSPIELEN!</p>
                         <p>
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/jU-323rNfsc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </p>
@@ -31,7 +32,7 @@
 
                         <p>Ich habe also angefangen zu recherchieren. phpBB speichert bekannterma&szlig;en ja die IP der Nutzer. Und selbst, wenn das nicht so w&auml;re hilft da Apache. Und siehe da: Alle Nutzer, die diese pornografischen Inhalte gepostet hatten, nutzten die gleiche IP. Ist jetzt nicht sonderlich clever aber okay. Kann man so machen.</p>
 
-                        <p>Und gleiche IP loggte sich laut Apache erfolgreich im Archiv an. Da ich im Archiv selbst keine IPs logge, kann ich nicht wissen, welcher Benutzer zu der IP geh&ouml;rt. Was ich aber wei&szlig; ist, wann sich welcher angemeldeter User zuletzt im Archiv unterwegs war. (War mal f&uuml;r einen geplanten gr&uuml;nen Online Punkt gedacht). Und wisst ihr was? Es kommen nur 2 User infrage. Jetzt kommt das Ausschlussverfahren. 2 Personen abz&uuml;glich mich selbst ist eine Person. Zack. Aber okay. Diese Information ist eh nur relevant f&uuml;r meine pers&ouml;nliche Befriedigung. Und fragt nicht nach dem Namen. Sollte es sich herausstellen das meine Recherche falsch war, will ich niemand falschen beschuldigen.</p>
+                        <p>Und die gleiche IP loggte sich laut Apache erfolgreich im Archiv an. Da ich im Archiv selbst keine IPs logge, kann ich nicht wissen, welcher Benutzer zu der IP geh&ouml;rt. Was ich aber wei&szlig; ist, wann sich welcher angemeldeter User zuletzt im Archiv unterwegs war. (War mal f&uuml;r einen geplanten gr&uuml;nen Online Punkt gedacht). Und wisst ihr was? Es kommen nur 2 User infrage. Jetzt kommt das Ausschlussverfahren. 2 Personen abz&uuml;glich mich selbst ist eine Person. Zack. Aber okay. Diese Information ist eh nur relevant f&uuml;r meine pers&ouml;nliche Befriedigung. Und fragt nicht nach dem Namen. Sollte es sich herausstellen das meine Recherche falsch war, will ich niemand falschen beschuldigen.</p>
 
                         <p>Was macht man also in einem solchen Moment? L&auml;sst man es auf sich beruhen? Wird man aktiv? Und was hat dieses Forum, welches ja nur der blasse Abklatsch einer toten Community ist, mit der Schlie&szlig;ung des Archivs zu tun?</p>
 
@@ -51,7 +52,7 @@
 
                         <p>ryg</p>
 
-                        <p>&nbsp;</p>
+                        <p><iframe src="https://discord.com/widget?id=269382903450959872&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe></p>
 
                     </div>
                 </div>

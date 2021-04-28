@@ -9,6 +9,10 @@ Route::get('/', function() {
     return view('index.thisistheend');
 })->name('home');
 
+Route::get('/english', function() {
+    return view('index.thisistheend_en');
+})->name('home');
+
 //Sonstige Seiten
 Route::get('/impressum', function () {
     return View::make('_pages.impressum');
