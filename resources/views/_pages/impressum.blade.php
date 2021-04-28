@@ -5,7 +5,6 @@
         <div class="row">
             <div class="page-header">
                 <h1>{{ trans('app.imprint') }}</h1>
-                {!! Breadcrumbs::render('impressum') !!}
             </div>
         </div>
         <div class='row'>
@@ -17,7 +16,7 @@
                     <p>Angaben gemäß § 5 TMG</p>
                     <p>
                         Marcel Hering <br>
-                        Marienstraße 8<br>
+                        Marienstraße 6<br>
                         52372 Kreuzau <br>
                     </p>
                     <p>
