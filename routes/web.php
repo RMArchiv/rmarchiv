@@ -17,6 +17,20 @@ Route::get('/datenschutz', function() {
     return View::make('_pages.datenschutz');
 });
 
+//Logo Routen
+Route::get('logo/{filename}', function ($filename) {
+    $filename = 'logos/'.$filename;
+    $path = Storage::get($filename);
+
+    $img = \Image::make($path);
+    $response = \Response::make($img->encode('png'));
+    $response->header('Content-Type', 'image/png');
+    //$response->setMaxAge(604800);
+    $response->setPublic();
+
+    return $response;
+})->name('logo.get');
+
 /*
 
 //Administration
@@ -295,19 +309,7 @@ Route::post('tako/downlbla', 'GameFileController@download_wo_count');
 Route::get('test', 'TestController@index');
 Route::post('tlg/webhook', 'TestController@webhook');
 
-//Logo Routen
-Route::get('logo/{filename}', function ($filename) {
-    $filename = 'logos/'.$filename;
-    $path = Storage::get($filename);
 
-    $img = \Image::make($path);
-    $response = \Response::make($img->encode('png'));
-    $response->header('Content-Type', 'image/png');
-    //$response->setMaxAge(604800);
-    $response->setPublic();
-
-    return $response;
-})->name('logo.get');
 
 Route::get('easyrpg/download/{hash}', function ($hash) {
     $filename = 'app/public/games_hashed/'.substr($hash, 0, 2).'/'.$hash;
