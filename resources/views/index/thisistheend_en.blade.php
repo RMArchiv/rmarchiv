@@ -45,7 +45,7 @@
 
                         <p>In order to avoid further &quot;spam&quot; attacks (the moderation tools of the rmarchiv are very basic) and other vandalism, I am simply pulling the plug for an indefinite period of time. And even if the rmarchiv does come back, I will be much less tolerant.</p>
 
-                        <p>For condolences or questions that have nothing to do with the case described here, feel free to write to send a message to the mail address given in the footer. The Discord Channel [URL!] still exists =)</p>
+                        <p>For condolences or questions that have nothing to do with the case described here, feel free to write to send a message to the mail address given in the footer. The Discord Channel (see below) still exists =)</p>
 
                         <p>In spite of everything, I would like to thank you all. For using the rmarchiv. For sharing information and metadata and for uploading. Thanks for everything.</p>
 
