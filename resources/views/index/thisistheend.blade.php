@@ -1,12 +1,13 @@
 @extends('layouts.app')
 @section('pagetitle', 'We`ll always have Paris.')
 @section('content')
+    <br>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        {{ trans('app.informations') }}
+                        We`ll always have Paris.
                     </div>
                     <div class="card-body">
                         ACHTUNG! BEIM LESEN DES UNTEREN TEXTES DEN SONG ABSPIELEN!
