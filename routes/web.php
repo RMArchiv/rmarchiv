@@ -5,11 +5,19 @@
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
-Route::get('/', 'IndexController@index')->name('home');
-
-Route::get('/gnu', function() {
+Route::get('/', function() {
     return view('index.thisistheend');
+})->name('home');
+
+//Sonstige Seiten
+Route::get('/impressum', function () {
+    return View::make('_pages.impressum');
 });
+Route::get('/datenschutz', function() {
+    return View::make('_pages.datenschutz');
+});
+
+/*
 
 //Administration
 Route::group(['middelware' => ['permission:admin-user']], function () {
@@ -226,13 +234,7 @@ Route::get('missing/gamefiles/{orderby?}/{direction?}', 'MissingController@index
 Route::get('missing/gamedesc/{orderby?}/{direction?}', 'MissingController@index_gamedesc')->middleware('permission:admin-games');
 Route::get('missing/notags/{orderby?}/{direction?}', 'MissingController@index_notags')->middleware('permission:admin-games');
 
-//Sonstige Seiten
-Route::get('/impressum', function () {
-    return View::make('_pages.impressum');
-});
-Route::get('/datenschutz', function() {
-    return View::make('_pages.datenschutz');
-});
+
 Route::get('/gratz', function () {
     return View::make('_pages.gratz');
 });
@@ -347,4 +349,4 @@ Route::post('savegames/{gamefileid}/{slot}', 'SavegameController@api_save_slot')
 
 Route::get('data/on', 'TestController@on');
 Route::get('data/off', 'TestController@off');
-Route::get('data/onoff', 'TestController@onoff');
+Route::get('data/onoff', 'TestController@onoff');*/

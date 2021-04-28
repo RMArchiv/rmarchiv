@@ -10,7 +10,7 @@
             <a href="{{ url('/impressum') }}">{{ trans('app.imprint') }}</a> - <a href="{{ url('/datenschutz') }}">Datenschutzerklärung</a>
         </li>
         <li>
-            <a href="{{ action('UserController@users_online') }}">{{ trans('app.users_online') }}: {{ \App\Helpers\DatabaseHelper::getOnlineUserCount()->online }}</a>
+            <a href="#">{{ trans('app.users_online') }}: {{ \App\Helpers\DatabaseHelper::getOnlineUserCount()->online }}</a>
         </li>
         @permission(('debug-data'))
         <li>
