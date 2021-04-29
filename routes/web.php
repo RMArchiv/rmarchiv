@@ -21,6 +21,8 @@ Route::get('/datenschutz', function() {
     return View::make('_pages.datenschutz');
 });
 
+route::get('/langeliste', 'HomeController@index');
+
 //Logo Routen
 Route::get('logo/{filename}', function ($filename) {
     $filename = 'logos/'.$filename;
