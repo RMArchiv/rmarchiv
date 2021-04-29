@@ -1,3 +1,3 @@
 @foreach($games as $g)
-{{$g->title}};{{$g->subtitle}};{{$g->relase_date}};@php PHP_EOL @endphp
+{{$g->title}};{{$g->subtitle}};{{$g->release_date}};{!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($g->id) !!}/n
 @endforeach
