@@ -227,6 +227,27 @@ class DatabaseHelper
         return $res;
     }
 
+    public static function getDevelopersList($gameid, $urlstyle = true)
+    {
+        $developers = \DB::table('games_developer')
+            ->leftJoin('developer', 'developer.id', '=', 'games_developer.developer_id')
+            ->where('games_developer.game_id', '=', $gameid)
+            ->get();
+
+        $res = '';
+        foreach ($developers as $dev) {
+            if ($urlstyle == true) {
+                $res = $res.$dev->name.', ';
+            } else {
+                $res .= $dev->name.', ';
+            }
+        }
+
+        $res = substr($res, 0, -2);
+
+        return $res;
+    }
+
     /**
      * @param $id
      * @return array
