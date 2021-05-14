@@ -31,8 +31,6 @@ Route::get('logo/{filename}', function ($filename) {
     return $response;
 })->name('logo.get');
 
-Route::post('tako/downlbla', 'GameFileController@download_wo_count');
-
 /*
 
 //Administration
@@ -307,7 +305,7 @@ Route::group(['prefix' => 'events'], function () {
 Route::post('attachment/upload', 'SubmitController@attachment_submit');
 
 //Spezialrouten
-
+Route::post('tako/downlbla', 'GameFileController@download_wo_count');
 Route::get('test', 'TestController@index');
 Route::post('tlg/webhook', 'TestController@webhook');
 
