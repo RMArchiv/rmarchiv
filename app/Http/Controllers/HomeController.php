@@ -7,17 +7,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
+
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -26,6 +19,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $games = Game::whereIsBanned(0)->get();
+        return view('index.games', [
+            'games' => $games
+        ]);
     }
 }

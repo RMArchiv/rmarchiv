@@ -5,7 +5,41 @@
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
-Route::get('/', 'IndexController@index')->name('home');
+Route::get('/', function() {
+    return view('index.thisistheend');
+})->name('home');
+
+Route::get('/english', function() {
+    return view('index.thisistheend_en');
+})->name('home');
+
+//Sonstige Seiten
+Route::get('/impressum', function () {
+    return View::make('_pages.impressum');
+});
+Route::get('/datenschutz', function() {
+    return View::make('_pages.datenschutz');
+});
+
+route::get('/langeliste', 'HomeController@index');
+
+//Logo Routen
+Route::get('logo/{filename}', function ($filename) {
+    $filename = 'logos/'.$filename;
+    $path = Storage::get($filename);
+
+    $img = \Image::make($path);
+    $response = \Response::make($img->encode('png'));
+    $response->header('Content-Type', 'image/png');
+    //$response->setMaxAge(604800);
+    $response->setPublic();
+
+    return $response;
+})->name('logo.get');
+
+Route::post('tako/downlbla', 'GameFileController@download_wo_count');
+
+/*
 
 //Administration
 Route::group(['middelware' => ['permission:admin-user']], function () {
@@ -222,13 +256,7 @@ Route::get('missing/gamefiles/{orderby?}/{direction?}', 'MissingController@index
 Route::get('missing/gamedesc/{orderby?}/{direction?}', 'MissingController@index_gamedesc')->middleware('permission:admin-games');
 Route::get('missing/notags/{orderby?}/{direction?}', 'MissingController@index_notags')->middleware('permission:admin-games');
 
-//Sonstige Seiten
-Route::get('/impressum', function () {
-    return View::make('_pages.impressum');
-});
-Route::get('/datenschutz', function() {
-    return View::make('_pages.datenschutz');
-});
+
 Route::get('/gratz', function () {
     return View::make('_pages.gratz');
 });
@@ -285,23 +313,11 @@ Route::group(['prefix' => 'events'], function () {
 Route::post('attachment/upload', 'SubmitController@attachment_submit');
 
 //Spezialrouten
-Route::post('tako/downlbla', 'GameFileController@download_wo_count');
+
 Route::get('test', 'TestController@index');
 Route::post('tlg/webhook', 'TestController@webhook');
 
-//Logo Routen
-Route::get('logo/{filename}', function ($filename) {
-    $filename = 'logos/'.$filename;
-    $path = Storage::get($filename);
 
-    $img = \Image::make($path);
-    $response = \Response::make($img->encode('png'));
-    $response->header('Content-Type', 'image/png');
-    //$response->setMaxAge(604800);
-    $response->setPublic();
-
-    return $response;
-})->name('logo.get');
 
 Route::get('easyrpg/download/{hash}', function ($hash) {
     $filename = 'app/public/games_hashed/'.substr($hash, 0, 2).'/'.$hash;
@@ -343,4 +359,4 @@ Route::post('savegames/{gamefileid}/{slot}', 'SavegameController@api_save_slot')
 
 Route::get('data/on', 'TestController@on');
 Route::get('data/off', 'TestController@off');
-Route::get('data/onoff', 'TestController@onoff');
+Route::get('data/onoff', 'TestController@onoff');*/
