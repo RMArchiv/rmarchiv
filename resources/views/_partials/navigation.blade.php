@@ -9,7 +9,7 @@
             <div class="collapse navbar-collapse" id="topNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">{{ trans('app.home') }}</a></li>
-                    {{-- <li class="nav-item"><a class="nav-link" href="{{ url('news') }}">{{ trans('app.news') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('news') }}">{{ trans('app.news') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('games') }}">{{ trans('app.games') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('resources') }}">{{ trans('app.resources') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('developer') }}">{{ trans('app.developers') }}</a></li>
@@ -85,8 +85,6 @@
                     @endif --}}
                 </ul>
 
-                {{--
-
                 {{ Form::open(['action' => ['SearchController@search'], 'class' => 'form-inline my-2 my-lg-0']) }}
                 <div class="form-inline mt-2 mt-md-0" style="flex-flow: nowrap">
                     <input type="text" class="form-control form-control-sm mr-sm-2" id="term" name="term" placeholder="{{ trans('app.search') }}">
@@ -128,7 +126,7 @@
                 </script>
                 {{ Form::close() }}
 
-                --}}
+
             </div>
         </div>
     </div>
