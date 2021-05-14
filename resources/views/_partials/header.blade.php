@@ -13,7 +13,7 @@
     <a href="/">
         <img class="mx-auto d-block" height="100px" src="{{ asset($logo->filename) }}" alt="Logo: {{ $logo->title }}"/>
     </a>
-    <p class="text-center">logo '{{ $logo->title }}' by <a href='{{ url('/users/'.$logo->user_id) }}' class='user'>{{ $logo->name }}</a> :: {{ config('app.name') }} is brought to you with love.</p>
+    <p class="text-center">logo '{{ $logo->title }}' by <a href='{{ url('users', $logo->id) }}' class='user'>{{ $logo->name }}</a> :: {{ config('app.name') }} is brought to you with love.</p>
     @else
         <p class="text-center">No Logo until now!</p>
     @endif
