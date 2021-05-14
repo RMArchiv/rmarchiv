@@ -5,13 +5,8 @@
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
-Route::get('/', function() {
-    return view('index.thisistheend');
-})->name('home');
+Route::get('/', 'IndexController@index')->name('home');
 
-Route::get('/english', function() {
-    return view('index.thisistheend_en');
-})->name('home');
 
 //Sonstige Seiten
 Route::get('/impressum', function () {
@@ -38,8 +33,6 @@ Route::get('logo/{filename}', function ($filename) {
 })->name('logo.get');
 
 Route::post('tako/downlbla', 'GameFileController@download_wo_count');
-
-/*
 
 //Administration
 Route::group(['middelware' => ['permission:admin-user']], function () {
@@ -359,4 +352,4 @@ Route::post('savegames/{gamefileid}/{slot}', 'SavegameController@api_save_slot')
 
 Route::get('data/on', 'TestController@on');
 Route::get('data/off', 'TestController@off');
-Route::get('data/onoff', 'TestController@onoff');*/
+Route::get('data/onoff', 'TestController@onoff');
