@@ -82,7 +82,7 @@
                     @else
                         <li class="nav-item"><a class="nav-link" href="{{ action('Auth\LoginController@showLoginForm') }}">{{ trans('app.login') }}</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ action('Auth\RegisterController@showRegistrationForm') }}">{{ trans('app.register') }}</a></li>
-                    @endif --}}
+                    @endif
                 </ul>
 
                 {{ Form::open(['action' => ['SearchController@search'], 'class' => 'form-inline my-2 my-lg-0']) }}
