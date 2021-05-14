@@ -7,10 +7,6 @@
 
 Route::get('/', 'IndexController@index')->name('home');
 
-Route::get('/gnu', function() {
-    return view('index.thisistheend');
-});
-
 //Administration
 Route::group(['middelware' => ['permission:admin-user']], function () {
     Route::get('users/admin/{userid}', 'UserController@admin')->name('user.admin');
