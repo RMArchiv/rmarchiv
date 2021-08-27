@@ -50,7 +50,7 @@ class IndexController extends Controller
             ])
             ->selectRaw('(SELECT SUM(obyx.value) FROM user_obyx LEFT JOIN obyx ON obyx.id = user_obyx.obyx_id WHERE user_obyx.user_id = u.id) as obyx')
             ->orderBy('obyx', 'desc')
-            ->limit(5)
+            ->limit(10)
             ->get();
 
         $obyxmax = \DB::table('user_obyx as uo')
