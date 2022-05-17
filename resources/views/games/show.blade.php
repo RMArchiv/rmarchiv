@@ -34,6 +34,7 @@
                                             <span class="fa fa-list"></span></a>
                                         @permission(('create-games'))
                                         <a href="{{ route('history.game.index', ['id' => $game->id]) }}" role='button' class='btn btn-primary'><span class="fa fa-history"></span></a>
+                                        {{ dd($game) }}
                                         <a href="{{ route('games.edit', [ 'id' => $game->id]) }}" role="button" class="btn btn-primary"><span class="fa fa-edit"></span></a>
                                         @endpermission
                                     @endif
