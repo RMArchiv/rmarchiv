@@ -5,13 +5,13 @@
                 <table class="table table-striped table-hover">
                     <tr>
                         <td>
-                            {{ number_format($stats->gamecount, 0, ',', '.') }}
+                            {{ number_format($stats_gamecount, 0, ',', '.') }}
                             <a href='{{ url('games') }}'>{{ trans('app.games') }}</a>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            {{ number_format($stats->makercount, 0, ',', '.') }} {{ trans('app.makers') }}
+                            {{ number_format($stats_makercount, 0, ',', '.') }} {{ trans('app.makers') }}
                         </td>
                     </tr>
                     <tr>
@@ -22,7 +22,7 @@
                     </tr>
                     <tr>
                         <td>
-                            {{ number_format($stats->usercount, 0, ',', '.') }}
+                            {{ number_format($stats_usercount, 0, ',', '.') }}
                             <a href='{{ url('users') }}'>{{ trans('app.users') }}</a> -
                             <a href="{{ url('users/activity') }}">{{ trans('app.user_activities') }}</a>
                         </td>
@@ -37,46 +37,46 @@
                     @endif
                     <tr>
                         <td>
-                            {{ number_format($stats->logocount, 0, ',', '.') }}
+                            {{ number_format($stats_logocount, 0, ',', '.') }}
                             <a href='{{ url('logo/vote') }}'>{{ trans('app.logos') }}</a>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            {{ number_format($stats->threadcount, 0, ',', '.') }}
+                            {{ number_format($stats_threadcount, 0, ',', '.') }}
                             <a href='{{ url('board') }}'>{{ trans('app.board_threads') }}</a>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            {{ number_format($stats->postcount, 0, ',', '.') }}
+                            {{ number_format($stats_postcount, 0, ',', '.') }}
                             <a href='{{ url('board') }}'>{{ trans('app.board_posts') }}</a>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            {{ number_format($stats->shoutboxcount, 0, ',', '.') }}
+                            {{ number_format($stats_shoutboxcount, 0, ',', '.') }}
                             <a href='{{ url('shoutbox') }}'>{{ trans('app.shouts') }}</a>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            {{ number_format($stats->commentcount, 0, ',', '.') }} {{ trans('app.comments') }}
+                            {{ number_format($stats_commentcount, 0, ',', '.') }} {{ trans('app.comments') }}
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            {{ number_format($stats->filecount, 0, ',', '.') }} {{ trans('app.gamefiles') }}
+                            {{ number_format($stats_filecount, 0, ',', '.') }} {{ trans('app.gamefiles') }}
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            {{ \App\Helpers\MiscHelper::getReadableBytes($stats->totalsize) }} {{ trans('app.gamefiles_total_size') }}
+                            {{ \App\Helpers\MiscHelper::getReadableBytes($stats_totalsize) }} {{ trans('app.gamefiles_total_size') }}
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            {{ number_format($stats->downloadcount, 0, ',', '.') }} {{ trans('app.games_downloaded') }}
+                            {{ number_format($stats_downloadcount, 0, ',', '.') }} {{ trans('app.games_downloaded') }}
                         </td>
                     </tr>
                     <tr>

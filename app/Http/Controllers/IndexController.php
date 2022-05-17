@@ -7,6 +7,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BoardPost;
+use App\Models\Developer;
+use App\Models\GamesFile;
+use App\Models\Logo;
+use App\Models\Maker;
 use Carbon\Carbon;
 use App\Models\Game;
 use App\Models\News;
@@ -66,20 +71,18 @@ class IndexController extends Controller
             $pm = '';
         }
 
-        $stats = \DB::table('games')
-            ->selectRaw('COUNT(id) as gamecount')
-            ->selectRaw('(SELECT COUNT(id) FROM makers) as makercount')
-            ->selectRaw('(SELECT COUNT(id) FROM developer) as developercount')
-            ->selectRaw('(SELECT COUNT(id) FROM users) as usercount')
-            ->selectRaw('(SELECT COUNT(id) FROM board_threads) as threadcount')
-            ->selectRaw('(SELECT COUNT(id) FROM board_posts) as postcount')
-            ->selectRaw('(SELECT COUNT(id) FROM shoutbox) as shoutboxcount')
-            ->selectRAW('(SELECT COUNT(id) FROM comments) as commentcount')
-            ->selectRaw('(SELECT COUNT(id) FROM logos) as logocount')
-            ->selectRaw('(SELECT SUM(downloadcount) FROM games_files) as downloadcount')
-            ->selectRaw('(SELECT SUM(filesize) FROM games_files) as totalsize')
-            ->selectRaw('(SELECT COUNT(id) FROM games_files) as filecount')
-            ->first();
+        $stats_gamecount = Game::count();
+        $stats_makercount = Maker::count();
+        $stats_developercount = Developer::count();
+        $stats_usercount = User::count();
+        $stats_threadcount = BoardThread::count();
+        $stats_postcount = BoardPost::count();
+        $stats_shoutboxcount = Shoutbox::count();
+        $stats_commentcount = Comment::count();
+        $stats_logocount = Logo::count();
+        $stats_downloadcount = GamesFile::sum('downloadcount');
+        $stats_totalsize = GamesFile::sum('filesize');
+        $stats_filecount = GamesFile::count();
 
         $size = \DB::table('games_files')
             ->selectRaw('SUM(filesize * downloadcount) as downsize')
@@ -148,13 +151,24 @@ class IndexController extends Controller
             'obeymax'        => $obyxmax,
             'topusers'       => $topusers,
             'pm'             => $pm,
-            'stats'          => $stats,
             'topmonth'       => $topmonth,
             'topalltime'     => $topalltime,
             'latestcomments' => $latestcomments,
             'size'           => $size,
             'randomgame'     => $randomgame,
             'newuser'        => $newuser,
+            'stats_gamecount' => $stats_gamecount,
+            'stats_makercount' => $stats_makercount,
+            'stats_developercount' => $stats_developercount,
+            'stats_usercount' => $stats_usercount,
+            'stats_threadcount' => $stats_threadcount,
+            'stats_postcount' => $stats_postcount,
+            'stats_shoutboxcount' => $stats_shoutboxcount,
+            'stats_commentcount' => $stats_commentcount,
+            'stats_logocount' => $stats_logocount,
+            'stats_downloadcount' => $stats_downloadcount,
+            'stats_totalsize' => $stats_totalsize,
+            'stats_filecount' => $stats_filecount
         ]);
     }
 }
