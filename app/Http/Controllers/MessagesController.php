@@ -44,7 +44,7 @@ class MessagesController extends Controller
 
     public function store()
     {
-        $input = Input::get();
+        $input = Request::get();
         $thread = Thread::create(
             [
                 'subject' => $input['subject'],
@@ -98,7 +98,7 @@ class MessagesController extends Controller
                 $thread->markAsRead($userId);
                 $messages = $thread->messages()->paginate(25);
 
-                if (! Input::get('page')) {
+                if (! Request::get('page')) {
                     return redirect('messages/'.$id.'?page='.$messages->lastPage());
                 } else {
                     return view('messenger.show', compact('thread', 'users', 'messages'));
@@ -124,7 +124,7 @@ class MessagesController extends Controller
                 [
                     'thread_id' => $thread->id,
                     'user_id'   => \Auth::id(),
-                    'body'      => Input::get('msg'),
+                    'body'      => Request::get('msg'),
                 ]
             );
             // Add replier as a participant
@@ -137,8 +137,8 @@ class MessagesController extends Controller
             $participant->last_read = new Carbon();
             $participant->save();
             // Recipients
-            if (Input::has('recipients')) {
-                $thread->addParticipant(Input::get('recipients'));
+            if (Request::has('recipients')) {
+                $thread->addParticipant(\Request::get('recipients'));
             }
 
             return redirect('messages/'.$id);

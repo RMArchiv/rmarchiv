@@ -245,7 +245,7 @@ class GameController extends Controller
      */
     public function destroy($id)
     {
-        $validate = Input::get('confirm', '');
+        $validate = Request::get('confirm', '');
         if (\Auth::check()) {
             if (\Auth::user()->can('delete-games')) {
                 if ($validate == 'CONFIRM+'.$id) {

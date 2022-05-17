@@ -129,7 +129,7 @@ class BoardController extends Controller
 
         DatabaseHelper::setThreadViewDate($threadid);
 
-        if (! Input::get('page')) {
+        if (! Request::get('page')) {
             return redirect('board/thread/'.$threadid.'?page='.$posts->lastPage());
         } else {
             return view('board.threads.show', [
