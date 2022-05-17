@@ -29,9 +29,9 @@
     <link rel="canonical" href="http://www.rmarchiv.de/"/>
 
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="{{ elixir('css/app.css') }}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}" media="screen" />
 
-    <script src="{{ elixir('js/all.js') }}"></script>
+    <script src="{{ asset('js/all.js') }}"></script>
 
     <script type="text/javascript">
         <!--
