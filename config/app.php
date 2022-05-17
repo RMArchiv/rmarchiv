@@ -193,9 +193,9 @@ return [
         Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
         Illuminate\Session\SessionServiceProvider::class,
         //Illuminate\Translation\TranslationServiceProvider::class,
-        Waavi\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Illuminate\Translation\TranslationServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -206,7 +206,7 @@ return [
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
         Optimus\FineuploaderServer\Provider\LaravelServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Zizaco\Entrust\EntrustServiceProvider::class,
+        Trebol\Entrust\EntrustServiceProvider::class,
         Cmgmyr\Messenger\MessengerServiceProvider::class,
         Watson\Sitemap\SitemapServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
@@ -216,20 +216,15 @@ return [
         Mews\Captcha\CaptchaServiceProvider::class,
         Telegram\Bot\Laravel\TelegramServiceProvider::class,
         RobBrazier\Piwik\PiwikServiceProvider::class,
-        Way\Generators\GeneratorsServiceProvider::class,
-        Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
         Spatie\Activitylog\ActivitylogServiceProvider::class,
         NotificationChannels\Discord\DiscordServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
         TeamTNT\Scout\TNTSearchScoutServiceProvider::class,
         Eusonlito\LaravelMeta\MetaServiceProvider::class,
         Msurguy\Honeypot\HoneypotServiceProvider::class,
-        Chumper\Zipper\ZipperServiceProvider::class,
-        DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
         //Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProvider::class,
         Spatie\CookieConsent\CookieConsentServiceProvider::class,
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Cog\Laravel\Ban\Providers\BanServiceProvider::class,
 
         /*
@@ -272,7 +267,7 @@ return [
         'DB'                  => Illuminate\Support\Facades\DB::class,
         'Debugbar'            => Barryvdh\Debugbar\Facade::class,
         'Eloquent'            => Illuminate\Database\Eloquent\Model::class,
-        'Entrust'             => Zizaco\Entrust\EntrustFacade::class,
+        'Entrust'             => Trebol\Entrust\EntrustFacade::class,
         'Event'               => Illuminate\Support\Facades\Event::class,
         'File'                => Illuminate\Support\Facades\File::class,
         'Form'                => Collective\Html\FormFacade::class,
@@ -281,8 +276,6 @@ return [
         'Honeypot'            => Msurguy\Honeypot\HoneypotFacade::class,
         'Html'                => Collective\Html\HtmlFacade::class,
         'Image'               => Intervention\Image\Facades\Image::class,
-        'JWTAuth'             => Tymon\JWTAuth\Facades\JWTAuth::class,
-        'JWTFactory'          => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Lang'                => Illuminate\Support\Facades\Lang::class,
         'LocalizationHelpers' => Potsky\LaravelLocalizationHelpers\Facade\LocalizationHelpers::class,
         'Log'                 => Illuminate\Support\Facades\Log::class,
@@ -306,7 +299,6 @@ return [
         'URL'                 => Illuminate\Support\Facades\URL::class,
         'Validator'           => Illuminate\Support\Facades\Validator::class,
         'View'                => Illuminate\Support\Facades\View::class,
-        'Zipper'              => Chumper\Zipper\Zipper::class,
     ],
 
 ];

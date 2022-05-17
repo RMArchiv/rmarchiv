@@ -20,9 +20,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        app('Dingo\Api\Auth\Auth')->extend('jwt', function ($app) {
-            return new JWT($app['Tymon\JWTAuth\JWTAuth']);
-        });
     }
 
     /**
@@ -33,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         if ($this->app->environment() == 'local') {
-            $this->app->register('Iber\Generator\ModelGeneratorProvider');
+            //$this->app->register('Iber\Generator\ModelGeneratorProvider');
         }
     }
 }

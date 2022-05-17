@@ -8,7 +8,7 @@
 namespace App\Models;
 
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
-use Zizaco\Entrust\EntrustRole;
+use Trebol\Entrust\EntrustRole;
 
 /**
  * App\Models\UserRole.
