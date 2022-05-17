@@ -4,20 +4,22 @@
  * rmarchiv.de
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
-Breadcrumbs::register('home', function ($breadcrumbs) {
+Breadcrumbs::for('home', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->push(trans('app.home'), action('IndexController@index'));
 });
 
 //----------------- Games --------------------------------------------------------------------------------------------//
 // Home > Games
-Breadcrumbs::register('games', function ($breadcrumbs) {
+Breadcrumbs::for('games', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.games'), url('games'));
 });
 
 // Home > Games > [game]
-Breadcrumbs::register('game', function ($breadcrumbs, $game) {
+Breadcrumbs::for('game', function (BreadcrumbTrail $breadcrumbs, $game) {
     $breadcrumbs->parent('games');
     if ($game->subtitle) {
         $breadcrumbs->push($game->title.' - '.$game->subtitle, action('GameController@show', $game->id));
@@ -27,169 +29,169 @@ Breadcrumbs::register('game', function ($breadcrumbs, $game) {
 });
 
 // Home > Games > erstellen
-Breadcrumbs::register('game-add', function ($breadcrumbs) {
+Breadcrumbs::for('game-add', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('games');
     $breadcrumbs->push(trans('app.add_game'), action('GameController@create'));
 });
 
 // Home > Games > [game] > edit
-Breadcrumbs::register('game-edit', function ($breadcrumbs, $game) {
+Breadcrumbs::for('game-edit', function (BreadcrumbTrail $breadcrumbs, $game) {
     $breadcrumbs->parent('game', $game);
     $breadcrumbs->push(trans('app.edit_game'), action('GameController@edit', $game->id));
 });
 
 // Home > Games > [game] > report
-Breadcrumbs::register('game-report', function ($breadcrumbs, $game) {
+Breadcrumbs::for('game-report', function (BreadcrumbTrail $breadcrumbs, $game) {
     $breadcrumbs->parent('game', $game);
     $breadcrumbs->push(trans('app.report_game'), action('ReportController@create_game_report', $game->id));
 });
 
 // Home > Games > [game] > Add Screenshot
-Breadcrumbs::register('game-screenshot', function ($breadcrumbs, $game, $screenid) {
+Breadcrumbs::for('game-screenshot', function (BreadcrumbTrail $breadcrumbs, $game, $screenid) {
     $breadcrumbs->parent('game', $game);
     $breadcrumbs->push(trans('app.screenshot'), action('ScreenshotController@create', [$game->id, $screenid]));
 });
 
-Breadcrumbs::register('game.changelog', function ($breadcrumbs, $game) {
+Breadcrumbs::for('game.changelog', function (BreadcrumbTrail $breadcrumbs, $game) {
     $breadcrumbs->parent('game', $game);
     $breadcrumbs->push(trans('app.changelog'), action('HistoryController@index', $game->id));
 });
 
 //----------------- FAQ ----------------------------------------------------------------------------------------------//
 // Home > FAQ
-Breadcrumbs::register('faq', function ($breadcrumbs) {
+Breadcrumbs::for('faq', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.faq'), action('FaqController@index'));
 });
 // FAQ > Add
-Breadcrumbs::register('faq-add', function ($breadcrumbs) {
+Breadcrumbs::for('faq-add', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('faq');
     $breadcrumbs->push(trans('app.add_faq'), action('FaqController@create'));
 });
 
 //----------------- Users --------------------------------------------------------------------------------------------//
 // Home > Users
-Breadcrumbs::register('users', function ($breadcrumbs) {
+Breadcrumbs::for('users', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.users'), action('UserController@index'));
 });
 
 // Home > Users > [username]
-Breadcrumbs::register('user', function ($breadcrumbs, $user) {
+Breadcrumbs::for('user', function (BreadcrumbTrail $breadcrumbs, $user) {
     $breadcrumbs->parent('users');
     $breadcrumbs->push($user->name, action('UserController@show', $user->id));
 });
 
 // Home > Users > Online
-Breadcrumbs::register('online', function ($breadcrumbs) {
+Breadcrumbs::for('online', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('users');
     $breadcrumbs->push(trans('app.users_online'), action('UserController@users_online'));
 });
 
 // Home > Users > Online
-Breadcrumbs::register('user.activities', function ($breadcrumbs) {
+Breadcrumbs::for('user.activities', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('users');
     $breadcrumbs->push(trans('app.user_activities'), action('UserController@activity_index'));
 });
 
 //----------------- Board --------------------------------------------------------------------------------------------//
 // Home > Board
-Breadcrumbs::register('forums', function ($breadcrumbs) {
+Breadcrumbs::for('forums', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.board'), action('BoardController@index'));
 });
 
 // Home > Board > [Forum]
-Breadcrumbs::register('forum', function ($breadcrumbs, $boardcat) {
+Breadcrumbs::for('forum', function (BreadcrumbTrail $breadcrumbs, $boardcat) {
     $breadcrumbs->parent('forums');
     $breadcrumbs->push($boardcat->title, action('BoardController@show_cat', $boardcat->id));
 });
 
 // Home > Board > [Forum] -> [Thread]
-Breadcrumbs::register('thread', function ($breadcrumbs, $boardcat, $thread) {
+Breadcrumbs::for('thread', function (BreadcrumbTrail $breadcrumbs, $boardcat, $thread) {
     $breadcrumbs->parent('forum', $boardcat);
     $breadcrumbs->push($thread->title, action('BoardController@show_thread', $thread->id));
 });
 
 // Home > Board > [Forum] -> [Thread] -> edit
-Breadcrumbs::register('post.edit', function ($breadcrumbs, $boardcat, $post) {
+Breadcrumbs::for('post.edit', function (BreadcrumbTrail $breadcrumbs, $boardcat, $post) {
     $breadcrumbs->parent('forum', $boardcat);
     $breadcrumbs->push(trans('app.edit_post'), action('BoardController@post_edit', [$post->thread_id, $post->id]));
 });
 
 // Home > Board > [Forum] -> [Thread] -> Add/Edit Vote
-Breadcrumbs::register('board.vote', function ($breadcrumbs, $boardcat, $thread) {
+Breadcrumbs::for('board.vote', function (BreadcrumbTrail $breadcrumbs, $boardcat, $thread) {
     $breadcrumbs->parent('forum', $boardcat);
     $breadcrumbs->push(trans('app.create_vote'), action('BoardController@create_vote', [$thread->id]));
 });
 
 //----------------- Developers ---------------------------------------------------------------------------------------//
 // Home > Developers
-Breadcrumbs::register('developers', function ($breadcrumbs) {
+Breadcrumbs::for('developers', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.developers'), url('developer'));
 });
 
 // Home > Developers > Developer
-Breadcrumbs::register('developer', function ($breadcrumbs, $developer) {
+Breadcrumbs::for('developer', function (BreadcrumbTrail $breadcrumbs, $developer) {
     $breadcrumbs->parent('developers');
     $breadcrumbs->push($developer->name, action('DeveloperController@show', $developer->id));
 });
 
 //----------------- Pages --------------------------------------------------------------------------------------------//
 // Home > Impressum
-Breadcrumbs::register('impressum', function ($breadcrumbs) {
+Breadcrumbs::for('impressum', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.imprint'), url('/impressum'));
 });
 
 //----------------- Auth --------------------------------------------------------------------------------------------//
 // Home -> Login
-Breadcrumbs::register('login', function ($breadcrumbs) {
+Breadcrumbs::for('login', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.login'), action('Auth\LoginController@showLoginForm'));
 });
 
 //----------------- News ---------------------------------------------------------------------------------------------//
 // Home -> News
-Breadcrumbs::register('news', function ($breadcrumbs) {
+Breadcrumbs::for('news', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.news'), action('NewsController@index'));
 });
 
 // Home -> Create
-Breadcrumbs::register('news.create', function ($breadcrumbs) {
+Breadcrumbs::for('news.create', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.create_news'), action('NewsController@create'));
 });
 
 // Home -> News -> [News]
-Breadcrumbs::register('news.show', function ($breadcrumbs, $news) {
+Breadcrumbs::for('news.show', function (BreadcrumbTrail $breadcrumbs, $news) {
     $breadcrumbs->parent('news');
     $breadcrumbs->push($news->title, action('NewsController@show', $news->id));
 });
 
 // Home -> News -> [News] -> Edit
-Breadcrumbs::register('news.edit', function ($breadcrumbs, $news) {
+Breadcrumbs::for('news.edit', function (BreadcrumbTrail $breadcrumbs, $news) {
     $breadcrumbs->parent('news.show', $news);
     $breadcrumbs->push(trans('app.edit'), action('NewsController@edit', $news->id));
 });
 
 //----------------- Awards -------------------------------------------------------------------------------------------//
 // Home -> Awards
-Breadcrumbs::register('awards', function ($breadcrumbs) {
+Breadcrumbs::for('awards', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.awards'), action('AwardController@index'));
 });
 
 // Home -> Awards -> [Award]
-Breadcrumbs::register('awards.show', function ($breadcrumbs, $award_cat) {
+Breadcrumbs::for('awards.show', function (BreadcrumbTrail $breadcrumbs, $award_cat) {
     $breadcrumbs->parent('awards');
     $breadcrumbs->push($award_cat->awardpage->title.': '.$award_cat->title, action('AwardController@show', $award_cat->id));
 });
 
 // Home -> Awards -> [Award] -> Add Game
-Breadcrumbs::register('awards.gameadd', function ($breadcrumbs, $subcatid) {
+Breadcrumbs::for('awards.gameadd', function (BreadcrumbTrail $breadcrumbs, $subcatid) {
     $award_subcat = \App\Models\AwardSubcat::whereId($subcatid)->first();
     $award_cat = \App\Models\AwardCat::whereId($award_subcat->cat_id)->first();
     $breadcrumbs->parent('awards');
@@ -197,153 +199,153 @@ Breadcrumbs::register('awards.gameadd', function ($breadcrumbs, $subcatid) {
 });
 
 // Home -> Awards -> Add Award Cats
-Breadcrumbs::register('awards.catadd', function ($breadcrumbs) {
+Breadcrumbs::for('awards.catadd', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Awards hinzufügen', action('AwardController@index'));
 });
 
 //----------------- Messanger / PN -----------------------------------------------------------------------------------//
 // Home -> Messages
-Breadcrumbs::register('messages', function ($breadcrumbs) {
+Breadcrumbs::for('messages', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.messages'), action('MessagesController@index'));
 });
 
 // Home > Messages > Erstellen
-Breadcrumbs::register('messages.create', function ($breadcrumbs) {
+Breadcrumbs::for('messages.create', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('messages');
     $breadcrumbs->push(trans('app.create_new_pm'), action('MessagesController@create'));
 });
 
 // Home > Messages > [Msg->Titel]
-Breadcrumbs::register('messages.show', function ($breadcrumbs, $thread) {
+Breadcrumbs::for('messages.show', function (BreadcrumbTrail $breadcrumbs, $thread) {
     $breadcrumbs->parent('messages');
     $breadcrumbs->push($thread->subject, action('MessagesController@show', $thread->id));
 });
 
 //----------------- Suche --------------------------------------------------------------------------------------------//
 // Home -> Suche
-Breadcrumbs::register('search', function ($breadcrumbs) {
+Breadcrumbs::for('search', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.search'), action('SearchController@index'));
 });
 
 //----------------- Maker --------------------------------------------------------------------------------------------//
 // Home -> Maker
-Breadcrumbs::register('maker', function ($breadcrumbs) {
+Breadcrumbs::for('maker', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.makers'), action('MakerController@index'));
 });
 
 // Home -> Maker -> [Maker]
-Breadcrumbs::register('maker.show', function ($breadcrumbs, $maker) {
+Breadcrumbs::for('maker.show', function (BreadcrumbTrail $breadcrumbs, $maker) {
     $breadcrumbs->parent('maker');
     $breadcrumbs->push($maker->title, action('MakerController@show', $maker->id));
 });
 
 //----------------- Shoutbox -----------------------------------------------------------------------------------------//
 // Home -> Shoutbox
-Breadcrumbs::register('shoutbox', function ($breadcrumbs) {
+Breadcrumbs::for('shoutbox', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.shoutbox'), action('ShoutboxController@index'));
 });
 
 //----------------- Tags ---------------------------------------------------------------------------------------------//
 // Home -> Tags
-Breadcrumbs::register('tags', function ($breadcrumbs) {
+Breadcrumbs::for('tags', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.tags'), action('TaggingController@index'));
 });
 
 // Home -> Tags -> [tag]
-Breadcrumbs::register('tag', function ($breadcrumbs, $tag) {
+Breadcrumbs::for('tag', function (BreadcrumbTrail $breadcrumbs, $tag) {
     $breadcrumbs->parent('tags');
     $breadcrumbs->push($tag->title, action('TaggingController@showGames', $tag->id));
 });
 
 //----------------- CDC ----------------------------------------------------------------------------------------------//
 // Home -> coup de coeur
-Breadcrumbs::register('cdc.index', function ($breadcrumbs) {
+Breadcrumbs::for('cdc.index', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.coupdecoeur'), action('CDCController@index'));
 });
 
 // Home -> coup de coeur -> add
-Breadcrumbs::register('cdc.create', function ($breadcrumbs) {
+Breadcrumbs::for('cdc.create', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('cdc.index');
     $breadcrumbs->push(trans('app.add_coupdecoeur'), action('CDCController@create'));
 });
 
 //----------------- Gamefiles ----------------------------------------------------------------------------------------//
 // Home -> spieledatei
-Breadcrumbs::register('gamefiles.add', function ($breadcrumbs, $game) {
+Breadcrumbs::for('gamefiles.add', function (BreadcrumbTrail $breadcrumbs, $game) {
     $breadcrumbs->parent('game', $game);
     $breadcrumbs->push(trans('app.add_gamefiles'), action('GameFileController@create', $game->id));
 });
 
 // Home -> Games -> [Gametitle] -> [Gamefileversion] -> Edit
-Breadcrumbs::register('gamefiles.edit', function ($breadcrumbs, $gamefile) {
+Breadcrumbs::for('gamefiles.edit', function (BreadcrumbTrail $breadcrumbs, $gamefile) {
     $breadcrumbs->parent('game', $gamefile->game);
     $breadcrumbs->push(trans('app.edit_gamefile').' - '.$gamefile->release_version, action('GameFileController@create', $gamefile->game->id));
 });
 
 //----------------- Player -------------------------------------------------------------------------------------------//
 // Home -> spieledatei
-Breadcrumbs::register('webplayer', function ($breadcrumbs, $game, $gamefileid) {
+Breadcrumbs::for('webplayer', function (BreadcrumbTrail $breadcrumbs, $game, $gamefileid) {
     $breadcrumbs->parent('game', $game);
     $breadcrumbs->push(trans('app.webplayer'), action('Player2kController@index', $game->id));
 });
 
 //----------------- Registrieren -------------------------------------------------------------------------------------//
 // Home -> account erstellen
-Breadcrumbs::register('register', function ($breadcrumbs) {
+Breadcrumbs::for('register', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.register_account'), action('Auth\RegisterController@showRegistrationForm'));
 });
 
 //----------------- Savegame Manager ---------------------------------------------------------------------------------//
 // Home -> Savegame Manager
-Breadcrumbs::register('savegamemanager.index', function ($breadcrumbs) {
+Breadcrumbs::for('savegamemanager.index', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.savegame_manager'), action('SavegameManagerController@index'));
 });
 // Home -> Savegame Manager -> Game
 // Home -> Maker -> [Maker]
-Breadcrumbs::register('savegamemanager.show', function ($breadcrumbs, $gamefile) {
+Breadcrumbs::for('savegamemanager.show', function (BreadcrumbTrail $breadcrumbs, $gamefile) {
     $breadcrumbs->parent('savegamemanager.index');
     $breadcrumbs->push($gamefile->game->title, action('SavegameManagerController@show', $gamefile->id));
 });
 
 //----------------- Page Statistics ---------------------------------------------------------------------------------//
 // Home -> Statistics
-Breadcrumbs::register('statistics', function ($breadcrumbs) {
+Breadcrumbs::for('statistics', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.statistics'), action('StatsticController@show'));
 });
 
 //----------------- Page Statistics ---------------------------------------------------------------------------------//
 // Home -> Missing Titlescreens
-Breadcrumbs::register('missing.titles', function ($breadcrumbs) {
+Breadcrumbs::for('missing.titles', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.missing_screenshots'), action('MissingController@index_gamescreens'));
 });
 
-Breadcrumbs::register('missing.gamefiles', function ($breadcrumbs) {
+Breadcrumbs::for('missing.gamefiles', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.missing_gamefiles'), action('MissingController@index_gamefiles'));
 });
-Breadcrumbs::register('missing.gamedesc', function ($breadcrumbs) {
+Breadcrumbs::for('missing.gamedesc', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.missing_gamedescriptions'), action('MissingController@index_gamedesc'));
 });
-Breadcrumbs::register('missing.tags', function ($breadcrumbs) {
+Breadcrumbs::for('missing.tags', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.games_without_tags'), action('MissingController@index_notags'));
 });
 
 //----------------- Usersettings -------------------------------------------------------------------------------------//
 // Home -> Usersettings
-Breadcrumbs::register('user.settings', function ($breadcrumbs) {
+Breadcrumbs::for('user.settings', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.user_settings'), action('UserSettingsController@index'));
 });
@@ -352,37 +354,37 @@ Breadcrumbs::register('user.settings', function ($breadcrumbs) {
 
 //Home -> User -> [User] -> Userlists
 // Home -> Userlist
-Breadcrumbs::register('userlist.index', function ($breadcrumbs, $user) {
+Breadcrumbs::for('userlist.index', function (BreadcrumbTrail $breadcrumbs, $user) {
     $breadcrumbs->parent('user', $user);
     $breadcrumbs->push(trans('app.userlists'), action('UserListController@index', [$user->id]));
 });
 
 // Home -> Userlist
-Breadcrumbs::register('userlist.show', function ($breadcrumbs, $user, $list) {
+Breadcrumbs::for('userlist.show', function (BreadcrumbTrail $breadcrumbs, $user, $list) {
     $breadcrumbs->parent('userlist.index', $user);
     $breadcrumbs->push(trans('app.userlist').': '.$list->title, action('UserListController@show', [$user->id, $list->id]));
 });
 
-Breadcrumbs::register('userlist.create', function ($breadcrumbs, $user) {
+Breadcrumbs::for('userlist.create', function (BreadcrumbTrail $breadcrumbs, $user) {
     $breadcrumbs->parent('userlist.index', $user);
     $breadcrumbs->push(trans('app.create_userlist'), action('UserListController@create'));
 });
 
 //----------------- Logo ---------------------------------------------------------------------------------------------//
 // Home -> Logo Rating
-Breadcrumbs::register('logorating', function ($breadcrumbs) {
+Breadcrumbs::for('logorating', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.rate_logos'), action('LogoController@vote_get'));
 });
 
-Breadcrumbs::register('logoadd', function ($breadcrumbs) {
+Breadcrumbs::for('logoadd', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.submit_logo'), action('SubmitController@logo_index'));
 });
 
 //----------------- Ressources --------------------------------------------------------------------------------------------//
 // Home > Ressources
-Breadcrumbs::register('ressources', function ($breadcrumbs) {
+Breadcrumbs::for('ressources', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.resources_overview'), action('ResourceController@index'));
 });
