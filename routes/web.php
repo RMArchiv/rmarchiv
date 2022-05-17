@@ -71,6 +71,7 @@ Route::group(['middelware' => ['permission:approve-news']], function () {
 
 //Games Routen
 Route::resource('games', 'GameController');
+Route::get('games/{id}/edit', 'GameController@edit')->name('game.edit')->middleware('permission:create-games');
 Route::post('games/{id}/developer', 'GameController@store_developer')->name('games.developer.store')->middleware('permission:create-games');
 Route::post('games/{id}/developer/delete', 'GameController@destroy_developer')->name('games.developer.delete')->middleware('permission:create-games');
 
