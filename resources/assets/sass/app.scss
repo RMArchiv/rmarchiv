@@ -2,7 +2,10 @@
 @import '_custom';
 @import '../../../node_modules/bootstrap/scss/bootstrap';
 
-@import '../../../bower_components/font-awesome/scss/font-awesome';
+@import "@fortawesome/fontawesome-free/scss/brands";
+@import "@fortawesome/fontawesome-free/scss/regular";
+@import "@fortawesome/fontawesome-free/scss/solid";
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
 @import 'editormd/editormd'; //Original Import
 @import "editormd_edit"; // Anpassungen zum Design - Muss angepasst werden!!!!!!!!!
 
