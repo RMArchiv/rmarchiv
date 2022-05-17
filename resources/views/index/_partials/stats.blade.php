@@ -16,7 +16,7 @@
                     </tr>
                     <tr>
                         <td>
-                            {{ number_format($stats->developercount, 0, ',', '.') }}
+                            {{ number_format($stats_developercount, 0, ',', '.') }}
                             <a href="{{ url('developer') }}">{{ trans('app.developers') }}</a>
                         </td>
                     </tr>
