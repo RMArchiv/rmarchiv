@@ -155,8 +155,8 @@ class Game extends Model
 
     public function getVotesAttribute()
     {
-        $vote['up'] = intval($this->comments()->sum('vote_up'));
-        $vote['down'] = intval($this->comments()->sum('vote_down'));
+        $vote['up'] = @intval($this->comments()->sum('vote_up'));
+        $vote['down'] = @intval($this->comments()->sum('vote_down'));
         $vote['avg'] = @round(($vote['up'] - $vote['down']) / ($vote['up'] + $vote['down']), 2);
         //(voteup - votedown) / (voteup + votedown)
         return $vote;
