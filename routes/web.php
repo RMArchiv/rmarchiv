@@ -18,6 +18,7 @@ Route::get('/datenschutz', function() {
 
 route::get('/langeliste', 'HomeController@index');
 
+/**
 //Logo Routen
 Route::get('logo/{filename}', function ($filename) {
     $filename = 'logos/'.$filename;
@@ -31,6 +32,7 @@ Route::get('logo/{filename}', function ($filename) {
 
     return $response;
 })->name('logo.get');
+**/
 
 Route::post('tako/downlbla', 'GameFileController@download_wo_count');
 
