@@ -247,10 +247,10 @@
                                                 <ul class="col-md-6 list-unstyled">
                                                     <li>votes:</li>
                                                     <li>
-                                                        <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/>&nbsp;{{ $game->votes['up'] or 0 }}
+                                                        <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/>&nbsp;{{ @$game->votes['up'] or 0 }}
                                                     </li>
                                                     <li>
-                                                        <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/>&nbsp;{{ $game->votes['down'] or 0 }}
+                                                        <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/>&nbsp;{{ @$game->votes['down'] or 0 }}
                                                     </li>
                                                 </ul>
                                                 <ul class="col-md-6 list-unstyled">
