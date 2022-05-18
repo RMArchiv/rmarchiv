@@ -255,6 +255,7 @@
                                                 </ul>
                                                 <ul class="col-md-6 list-unstyled">
                                                     <li>avg:</li>
+                                                    {{--
                                                     @if(@$game->votes['up'] > @$game->votes['down'])
                                                         <li>
                                                             <img src='/assets/rate_up.gif' alt='ok'/>&nbsp;{{ @$game->votes['avg'] or 0 }}
@@ -272,6 +273,7 @@
                                                             <img src='/assets/rate_neut.gif' alt='ok'/>&nbsp;{{ @$game->votes['avg'] or 0 }}
                                                         </li>
                                                     @endif
+                                                    --}}
                                                     {{-- data.cdc > 0
                                                 <li><img src="/assets/cdc.png" alt="cdcs">cdc's</li>
                                                  endif
