@@ -245,10 +245,10 @@ Route::get('screenshot/upload/success/{gameid}', 'MsgBoxController@screenshot_ad
 Route::get('cdc/success/{gameid}', 'MsgBoxController@cdc_add');
 
 //Routen für Fehlendes oder Statistiken
-Route::get('missing/gamescreens/{orderby?}/{direction?}', 'MissingController@index_gamescreens')->middleware('permission:admin-games');
-Route::get('missing/gamefiles/{orderby?}/{direction?}', 'MissingController@index_gamefiles')->middleware('permission:admin-games');
-Route::get('missing/gamedesc/{orderby?}/{direction?}', 'MissingController@index_gamedesc')->middleware('permission:admin-games');
-Route::get('missing/notags/{orderby?}/{direction?}', 'MissingController@index_notags')->middleware('permission:admin-games');
+Route::get('missing/gamescreens/{orderby?}/{direction?}', 'MissingController@index_gamescreens');
+Route::get('missing/gamefiles/{orderby?}/{direction?}', 'MissingController@index_gamefiles');
+Route::get('missing/gamedesc/{orderby?}/{direction?}', 'MissingController@index_gamedesc');
+Route::get('missing/notags/{orderby?}/{direction?}', 'MissingController@index_notags');
 
 
 Route::get('/gratz', function () {
