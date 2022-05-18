@@ -107,12 +107,11 @@ class GameController extends Controller
         $g->license_id = $request->get('license');
         $g->save();
 
-        \DB::table('games_developer')->insert([
-            'user_id'      => \Auth::id(),
-            'game_id'      => $g->id,
-            'developer_id' => $devid,
-            'created_at'   => Carbon::now(),
-        ]);
+        $gd = new GamesDeveloper;
+        $gd->user_id = \Auth::id();
+        $gd->game_id = $g->id;
+        $gd->developer_id = $devid;
+        $gd->save();
 
         event(new Obyx('game-add', \Auth::id()));
 
@@ -243,9 +242,9 @@ class GameController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $validate = Request::get('confirm', '');
+        $validate = $request->get('confirm', '');
         if (\Auth::check()) {
             if (\Auth::user()->can('delete-games')) {
                 if ($validate == 'CONFIRM+'.$id) {
