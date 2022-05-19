@@ -13,11 +13,10 @@ use App\Models\BoardCat;
 use App\Models\BoardPoll;
 use App\Models\BoardPost;
 use App\Models\BoardThread;
-use Request;
+use Illuminate\Http\Request;
 use App\Models\BoardPollVote;
 use App\Helpers\DatabaseHelper;
 use App\Models\BoardPollAnswer;
-use Cmgmyr\Messenger\Models\Thread;
 
 class BoardController extends Controller
 {
