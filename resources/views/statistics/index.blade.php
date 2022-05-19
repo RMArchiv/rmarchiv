@@ -133,11 +133,11 @@
         </div>
     </div>
 
-    {!! $lava->render('AreaChart', 'Registrierungen', 'reg_div') !!}
-    {!! $lava->render('AreaChart', 'Kommentare', 'com_div') !!}
-    {!! $lava->render('AreaChart', 'Releases', 'rel_div') !!}
-    {!! $lava->render('AreaChart', 'ReleasesMon', 'relmon_div') !!}
-    {!! $lava->render('AreaChart', 'ForumPosts', 'boardposts_div') !!}
-    {!! $lava->render('PieChart', 'MakerChart', 'makerchart_div') !!}
-    {!! $lava->render('AreaChart', 'PlayerReleases', 'relkelven_div') !!}
+    {!! $lava->run('AreaChart', 'Registrierungen', 'reg_div') !!}
+    {!! $lava->run('AreaChart', 'Kommentare', 'com_div') !!}
+    {!! $lava->run('AreaChart', 'Releases', 'rel_div') !!}
+    {!! $lava->run('AreaChart', 'ReleasesMon', 'relmon_div') !!}
+    {!! $lava->run('AreaChart', 'ForumPosts', 'boardposts_div') !!}
+    {!! $lava->run('PieChart', 'MakerChart', 'makerchart_div') !!}
+    {!! $lava->run('AreaChart', 'PlayerReleases', 'relkelven_div') !!}
 @endsection
