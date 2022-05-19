@@ -103,7 +103,7 @@ class BoardController extends Controller
         return redirect()->action('BoardController@create_cat');
     }
 
-    public function show_thread($threadid)
+    public function show_thread(Request $request, $threadid)
     {
         $posts = BoardPost::with('user', 'thread', 'cat')->whereThreadId($threadid)->orderBy('id')->paginate(25);
         $poll = BoardPoll::whereThreadId($threadid)->first();
@@ -127,7 +127,7 @@ class BoardController extends Controller
 
         DatabaseHelper::setThreadViewDate($threadid);
 
-        if (! Request::get('page')) {
+        if (! $request->get('page')) {
             return redirect('board/thread/'.$threadid.'?page='.$posts->lastPage());
         } else {
             return view('board.threads.show', [
