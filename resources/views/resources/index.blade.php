@@ -31,7 +31,7 @@
                                     if($res->voteup + $res->votedown == 0){
                                         $avg = 0;
                                     }else{
-                                        $avg = @(($res->voteup - $res->votedown) / ($res->voteup + $res->votedown))
+                                        $avg = @(($res->voteup - $res->votedown) / ($res->voteup + $res->votedown));
                                     }
                                 @endphp
                                 <td class='votes'>{{ number_format($avg, 2) }}&nbsp;
