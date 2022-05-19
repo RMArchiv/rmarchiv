@@ -388,3 +388,9 @@ Breadcrumbs::for('ressources', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('app.resources_overview'), action('ResourceController@index'));
 });
+
+// Home > Games > [game]
+Breadcrumbs::for('ressource', function (BreadcrumbTrail $breadcrumbs, $ressource) {
+    $breadcrumbs->parent('ressources');
+    $breadcrumbs->push($ressource->title, action('GameController@show', $ressource->id));
+});
