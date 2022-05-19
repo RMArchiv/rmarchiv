@@ -27,7 +27,13 @@
                                 <td>{{ $res->contenttype }}</td>
                                 <td class='votes'>{{ $res->voteup or 0 }}</td>
                                 <td class='votes'>{{ $res->votedown or 0 }}</td>
-                                @php $avg = @(($res->voteup - $res->votedown) / ($res->voteup + $res->votedown)) @endphp
+                                @php
+                                    if($res->voteup + $res->votedown == 0){
+                                        $avg = 0;
+                                    }else{
+                                        $avg = @(($res->voteup - $res->votedown) / ($res->voteup + $res->votedown))
+                                    }
+                                @endphp
                                 <td class='votes'>{{ number_format($avg, 2) }}&nbsp;
                                     @if($avg > 0)
                                         <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/>
