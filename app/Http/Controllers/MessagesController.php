@@ -42,9 +42,9 @@ class MessagesController extends Controller
         return view('messenger.create', compact('users'));
     }
 
-    public function store()
+    public function store(\Request $request)
     {
-        $input = Request::get();
+        $input = $request->all();
         $thread = Thread::create(
             [
                 'subject' => $input['subject'],
@@ -79,7 +79,7 @@ class MessagesController extends Controller
         return redirect('messages');
     }
 
-    public function show($id)
+    public function show(Request $requenst, $id)
     {
         if (\Auth::check()) {
             try {
@@ -98,7 +98,7 @@ class MessagesController extends Controller
                 $thread->markAsRead($userId);
                 $messages = $thread->messages()->paginate(25);
 
-                if (! Request::get('page')) {
+                if (! $requenst->get('page')) {
                     return redirect('messages/'.$id.'?page='.$messages->lastPage());
                 } else {
                     return view('messenger.show', compact('thread', 'users', 'messages'));
@@ -108,7 +108,7 @@ class MessagesController extends Controller
         }
     }
 
-    public function update($id)
+    public function update(\Request $request, $id)
     {
         if (\Auth::check()) {
             try {
@@ -124,7 +124,7 @@ class MessagesController extends Controller
                 [
                     'thread_id' => $thread->id,
                     'user_id'   => \Auth::id(),
-                    'body'      => Request::get('msg'),
+                    'body'      => $request->get('msg'),
                 ]
             );
             // Add replier as a participant
@@ -137,7 +137,7 @@ class MessagesController extends Controller
             $participant->last_read = new Carbon();
             $participant->save();
             // Recipients
-            if (Request::has('recipients')) {
+            if ($request->has('recipients')) {
                 $thread->addParticipant(\Request::get('recipients'));
             }
 
