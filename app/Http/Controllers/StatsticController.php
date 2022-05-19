@@ -227,8 +227,6 @@ class StatsticController extends Controller
         }
         $lava->AreaChart('PlayerReleases', $com, $lava_config);
 
-        dd($filesize);
-
         return view('statistics.index', [
             'lava'  => $lava,
             'files' => $filesize,
