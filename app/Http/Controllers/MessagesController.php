@@ -79,7 +79,7 @@ class MessagesController extends Controller
         return redirect('messages');
     }
 
-    public function show(Request $requenst, $id)
+    public function show(\Request $requenst, $id)
     {
         if (\Auth::check()) {
             try {
