@@ -122,7 +122,7 @@
                     </div>
                     <ul class="list-group">
                         @foreach(Schema::getColumnListing('user_settings') as $s)
-                            @if(starts_with($s, 'disable_widget_'))
+                            @if(\Illuminate\Support\Str::startsWith($s, 'disable_widget_'))
                                 <li class="list-group-item">
                                     <div class="pull-right">
                                         @if( Auth::user()->settings->getAttributeValue($s) == 0 )
