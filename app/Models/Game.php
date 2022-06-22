@@ -28,6 +28,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property int $lang_id
  * @property string $deleted_at
  * @property int $atelier_id
+ * @property string $makerpendium_article
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereId($value)
@@ -44,6 +45,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereDeletedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereMakerpeniumArticle($value)
  * @mixin \Eloquent
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Maker $maker
@@ -103,6 +105,7 @@ class Game extends Model
         'maker_id',
         'lang_id',
         'atelier_id',
+        'makerpendium_article',
     ];
     public $timestamps = true;
     protected $table = 'games';
@@ -124,6 +127,7 @@ class Game extends Model
         'avg',
         'comments',
         'license_id',
+        'makerpendium_article',
     ];
     protected $hidden = [
         'votes',

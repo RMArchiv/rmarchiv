@@ -132,6 +132,12 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="makerpendium_article" class="col-lg-2 col-form-label">{{trans('Makerpendium Article URL')}}</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="makerpendium_article" name="makerpendium_article" value="{{ $game->makerpendium_article }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for='license' class="col-lg-2 col-form-label">{{trans('app.license')}} *</label>
                             <div class="col-lg-10">
                                 <select name='license' id='license' class="form-control">

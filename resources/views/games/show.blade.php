@@ -206,6 +206,12 @@
                                                     <a href="http://www.rpg-atelier.net/index.php?site=showgame&gid={{ $game->atelier_id }}" target="_blank">{{ trans('app.click_me') }}</a>
                                                 </li>
                                             @endif
+                                            @if($game->makerpendium_article)
+                                                <li class="list-group-item">
+                                                    {{ trans('Makerpendium Link') }} :
+                                                    <a href="{{ $game->makerpendium_article }}" target="_blank">{{ trans('app.click_me') }}</a>
+                                                </li>
+                                            @endif
                                             <li class="list-group-item">
                                                 {{ trans('app.submitted_by') }}: <a
                                                         href='{{ url('users', $game->user_id) }}' class='user'>{{ $game->user->name }}</a>

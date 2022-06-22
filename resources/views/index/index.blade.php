@@ -41,6 +41,7 @@
             </div>
             <div class="col-md-3">
                 @include('index._partials.randomgame')
+                @include('index._partials.partner')
 
                 @if(!Auth::check() || Auth::user()->settings->disable_widget_tags != 1)
                     @include('index._partials.tagcloud')

@@ -230,6 +230,7 @@ class GameController extends Controller
         $game->atelier_id = $request->get('atelier_id');
         $game->release_date = Carbon::createFromDate($request->get('releasedate_year'), $request->get('releasedate_month'), $request->get('releasedate_day'));
         $game->license_id = $request->get('license');
+        $game->makerpendium_article = $request->get('makerpendium_article');
         $game->save();
 
         return redirect()->action('GameController@edit', [$id]);
