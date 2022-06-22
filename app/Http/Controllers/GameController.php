@@ -249,12 +249,12 @@ class GameController extends Controller
         if (\Auth::check()) {
             if (\Auth::user()->can('delete-games')) {
                 if ($validate == 'CONFIRM+'.$id) {
-                    Game::whereId($id)->delete();
-                    GamesFile::whereGameId($id)->delete();
-                    Screenshot::whereGameId($id)->delete();
-                    GamesDeveloper::whereGameId($id)->delete();
-                    Comment::whereContentId($id)->where('content_type', '=', 'game')->delete();
-                    TagRelation::whereContentId($id)->where('content_type', '=', 'game')->delete();
+                    Game::destroy($id);
+                    GamesFile::destroy($id);
+                    Screenshot::destroy($id);
+                    GamesDeveloper::destroy($id);
+                    $comment_delete = Comment::whereContentId($id)->where('content_type', '=', 'game')->delete();
+                    $tagrelation_delete = TagRelation::whereContentId($id)->where('content_type', '=', 'game')->delete();
                 } else {
                     return redirect()->action('GameController@edit', $id);
                 }
