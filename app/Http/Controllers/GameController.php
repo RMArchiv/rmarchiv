@@ -250,7 +250,7 @@ class GameController extends Controller
         $debug['validate'] = $validate;
         if (\Auth::check()) {
             $debug['auth'] = 'ok';
-            if (\Auth::user()->can('delete-games')) {
+            if (\Auth::user()->is_admin == 1) {
                 $debug['perm'] = 'ok';
                 if ($validate == 'CONFIRM+'.$id) {
                     $debug['validated'] = 'ok';
@@ -267,8 +267,6 @@ class GameController extends Controller
                 }
             }
         }
-
-        dd(\Auth::user());
 
         return redirect()->route('home');
     }
