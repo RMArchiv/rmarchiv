@@ -245,21 +245,30 @@ class GameController extends Controller
      */
     public function destroy(Request $request, $id)
     {
+        $debug = array();
         $validate = $request->get('confirm', '');
+        $debug['validate'] = $validate;
         if (\Auth::check()) {
+            $debug['auth'] = 'ok';
             if (\Auth::user()->can('delete-games')) {
+                $debug['perm'] = 'ok';
                 if ($validate == 'CONFIRM+'.$id) {
+                    $debug['validated'] = 'ok';
                     Game::destroy($id);
                     GamesFile::destroy($id);
                     Screenshot::destroy($id);
                     GamesDeveloper::destroy($id);
                     $comment_delete = Comment::whereContentId($id)->where('content_type', '=', 'game')->delete();
                     $tagrelation_delete = TagRelation::whereContentId($id)->where('content_type', '=', 'game')->delete();
+
+                    $debug['delete_return'] = $comment_delete;
                 } else {
                     return redirect()->action('GameController@edit', $id);
                 }
             }
         }
+
+        dd($debug);
 
         return redirect()->route('home');
     }
