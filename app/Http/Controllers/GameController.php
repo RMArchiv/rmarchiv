@@ -268,7 +268,7 @@ class GameController extends Controller
             }
         }
 
-        dd($debug);
+        dd(\Auth::user());
 
         return redirect()->route('home');
     }
