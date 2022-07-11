@@ -59,12 +59,17 @@
                                     <div class="card text-white bg-danger">
                                         <div class="card-header">Gesperrte Downloads</div>
                                         <div class="card-body">
-                                            <h5 class="card-title">Dieses Spiel enthält gesperrte Downloads</h5>
+                                            <h5 class="card-title">Dieses Spiel enthält entfernte Downloads</h5>
                                             <p class="card-text">
-                                                Mindestens eine Datei in diesem Spiel wurde gemeldet und ensprechend gesperrt.
+                                                Mindestens eine Datei in diesem Spiel wurde gemeldet und ensprechend entfernt.
 
-                                                Für weitere Informationen zu diesen Dateien bitte hier klicken:
-                                                <a href="{{ action('GameFileController@create', $game->id) }}"> Dateiliste</a>
+                                            @foreach($game->gamefiles as $f)
+                                                <li class="list-group-item">
+                                                    @if($f->forbidden == 1)
+                                                        {{ $f->gamefiletype->title }} - {{ $f->release_version }}: {{ $f->reason }}
+                                                    @endif
+                                                </li>
+                                                @endforeach
                                             </p>
                                         </div>
                                     </div>
