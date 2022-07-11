@@ -39,8 +39,8 @@ class IndexController extends Controller
         $news = News::with('user', 'comments')->orderBy('created_at', 'desc')->where('approved', '=', 1)->get()->take(5);
         $shoutbox = Shoutbox::with('user')->orderBy('created_at', 'desc')->limit(5)->get()->reverse();
         $cdc = GamesCoupdecoeur::with('game')->orderBy('created_at', 'desc')->get()->first();
-        $latestadded = Game::with('maker', 'gamefiles', 'language', 'developers')->orderBy('created_at', 'desc')->limit(5)->get();
-        $latestreleased = Game::where('release_type', '!=', 99)->orderBy('release_date', 'desc')->limit(5)->get();
+        $latestadded = Game::with('maker', 'gamefiles', 'language', 'developers')->orderBy('created_at', 'desc')->where('games.invisible_on_start_page', '=', 0)->limit(5)->get();
+        $latestreleased = Game::where('release_type', '!=', 99)->where('games.invisible_on_start_page', '=', 0)->orderBy('release_date', 'desc')->limit(5)->get();
         $threads = BoardThread::with('posts', 'user', 'last_user')->orderBy('last_created_at', 'desc')->limit(10)->get();
 
         $topusers = \DB::table('users as u')
@@ -110,6 +110,7 @@ class IndexController extends Controller
                 'games.id as gameid',
                 'games.title as gametitle',
                 'games.subtitle as gamesubtitle',
+                'games.invisible_on_start_page as invisible',
                 'developer.name as developername',
                 'developer.id as developerid',
                 'developer.created_at as developerdate',
@@ -130,13 +131,14 @@ class IndexController extends Controller
             ->selectRaw("(SELECT STR_TO_DATE(CONCAT(release_year,'-',release_month,'-',release_day ), '%Y-%m-%d') FROM games_files WHERE game_id = games.id ORDER BY release_year DESC, release_month DESC, release_day DESC LIMIT 1) as releasedate")
             ->selectRaw('(SELECT COUNT(id) FROM games_coupdecoeur WHERE game_id = games.id) as cdccount')
             ->where('comments.created_at', '>', Carbon::today()->addMonth(-1)->toDateString())
+            ->where('games.invisible_on_start_page', '=', 0)
             ->orderByRaw('(voteup - votedown) / (voteup + votedown) DESC')
             ->groupBy('games.id')
             ->limit(5)->get();
 
-        $topalltime = Game::orderBy('avg', 'desc')->limit(5)->get();
+        $topalltime = Game::orderBy('avg', 'desc')->where('games.invisible_on_start_page', '=', 0)->limit(5)->get();
         $latestcomments = Comment::with('game')->whereContentType('game')->orderBy('created_at', 'desc')->limit(5)->get();
-        $randomgame = Game::inRandomOrder()->first();
+        $randomgame = Game::inRandomOrder()->where('games.invisible_on_start_page', '=', 0)->first();
 
         $newuser = User::orderBy('created_at', 'desc')->first();
 

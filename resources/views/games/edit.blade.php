@@ -352,6 +352,25 @@
         <div class="row">
             <div class="col-md-12 mt-3">
                 <div class="card">
+                    {!! Form::open(['method' => 'POST', 'route' => ['change_visibility', $game->id]]) !!}
+                    <div class="card-header">
+                        {{ __('Invisible on Start Page') }}
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            {{ Form::checkbox('invisible', 'Invisible', $game->invisible_on_start_page) }}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <div class="card">
                     {!! Form::open(['method' => 'DELETE', 'route' => ['games.destroy', $game->id]]) !!}
                     <div class="card-header">
                         {{trans('app.delete_game')}}

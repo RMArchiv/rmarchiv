@@ -76,6 +76,7 @@ Route::resource('games', 'GameController');
 Route::get('games/{id}/edit', 'GameController@edit')->name('game.edit')->middleware('permission:create-games');
 Route::post('games/{id}/developer', 'GameController@store_developer')->name('games.developer.store')->middleware('permission:create-games');
 Route::post('games/{id}/developer/delete', 'GameController@destroy_developer')->name('games.developer.delete')->middleware('permission:create-games');
+Route::post('games/{id}/visibility', 'GameController@change_visibility')->name('games.invisible');
 
 //Gamefiles routen
 Route::get('games/{id}/gamefiles', 'GameFileController@create')->name('gamefiles.index');

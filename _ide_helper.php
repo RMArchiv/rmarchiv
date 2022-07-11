@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.83.13.
+ * Generated for Laravel 8.83.18.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -18071,6 +18071,7 @@
             /**
      * Class Telegram.
      *
+     * @see \Telegram\Bot\BotsManager
      */ 
         class Telegram {
                     /**
@@ -18184,8 +18185,10 @@
                         return $instance->getBots();
         }
                     /**
-         * Builds the list of commands for the given commands array.
+         * 
          *
+         * @deprecated Will be removed in SDK v4
+         * @internal Builds the list of commands for the given commands array.
          * @param array $commands
          * @return array An array of commands which includes global and bot specific commands.
          * @static 
@@ -19167,6 +19170,17 @@
      
 }
 
+    namespace Dingo\Api\Http { 
+            /**
+     * 
+     *
+     */ 
+        class Request {
+         
+    }
+     
+}
+
     namespace Illuminate\Routing { 
             /**
      * 
@@ -19215,17 +19229,6 @@
         {
                         return \Illuminate\Routing\Router::emailVerification();
         }
-         
-    }
-     
-}
-
-    namespace Dingo\Api\Http { 
-            /**
-     * 
-     *
-     */ 
-        class Request {
          
     }
      
