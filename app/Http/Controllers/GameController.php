@@ -284,6 +284,7 @@ class GameController extends Controller
     public function change_visibility(Request $request, $id){
         $game = Game::whereId($id)->first();
         $game->invisible_on_start_page = $request->get('invisible');
+        $game->save();
 
         return redirect()->action('GameController@edit', [$id]);
     }
