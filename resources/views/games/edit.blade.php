@@ -358,7 +358,7 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            {{ Form::checkbox('invisible', 'Invisible', $game->invisible_on_start_page) }}
+                            {{ Form::checkbox('invisible', $game->invisible_on_start_page, $game->invisible_on_start_page) }}
                         </div>
                     </div>
                     <div class="card-footer">
