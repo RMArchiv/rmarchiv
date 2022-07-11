@@ -357,8 +357,20 @@
                         {{ __('Invisible on Start Page') }}
                     </div>
                     <div class="card-body">
-                        <div class="form-group">
-                            {{ Form::checkbox('invisible', $game->invisible_on_start_page, $game->invisible_on_start_page) }}
+                        <div class="form-group" id="row_invisible">
+                            <label for="invisible" class="col-lg-2 col-form-label">{{ __('Unsichtbar auf Startseite') }}:</label>
+                            <div class="col-lg-10">
+                                <select name='invisible' id='invisible' class="form-control">
+                                    @if($game->invisible_on_start_page == 1)
+                                        <option value="0">Sichtbar</option>
+                                        <option selected="selected" value="1">Unsichtbar</option>
+                                    @else
+                                        <option selected="selected" value="0">Sichtbar</option>
+                                        <option value="1">Unsichtbar</option>
+                                    @endif
+
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="card-footer">
