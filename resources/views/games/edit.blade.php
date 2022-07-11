@@ -352,7 +352,7 @@
         <div class="row">
             <div class="col-md-12 mt-3">
                 <div class="card">
-                    {!! Form::open(['method' => 'POST', 'route' => ['change_visibility', $game->id]]) !!}
+                    {!! Form::open(['method' => 'POST', 'route' => ['games.invisible', $game->id]]) !!}
                     <div class="card-header">
                         {{ __('Invisible on Start Page') }}
                     </div>
