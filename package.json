@@ -24,7 +24,7 @@
     "vue-template-compiler": "^2.6.14",
     "fine-uploader": "^5.16.2",
     "inline-attachment": "^2.0.3",
-    "jquery-ui": "^1.13.1",
+    "jquery-ui": "^1.13.2",
     "jqcloud2": "^2.0.3",
     "typeahead.js": "^0.11.1",
     "bloodhound": "^1.0.0",
