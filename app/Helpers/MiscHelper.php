@@ -80,7 +80,7 @@ class MiscHelper
         if ($max == 0 || $views == 0) {
             $ret = 0;
         } else {
-            $ret = ($views / $max) * 100;
+            $ret = ($views * 100) / $max;
         }
 
         return $ret;

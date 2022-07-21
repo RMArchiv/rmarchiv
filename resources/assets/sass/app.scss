@@ -1,6 +1,7 @@
 @import 'variables';
 @import '_custom';
-@import '../../../node_modules/bootstrap/scss/bootstrap';
+@import './node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+//@import '../../../node_modules/bootstrap/scss/bootstrap';
 
 @import "@fortawesome/fontawesome-free/scss/brands";
 @import "@fortawesome/fontawesome-free/scss/regular";

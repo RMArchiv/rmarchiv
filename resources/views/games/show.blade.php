@@ -63,12 +63,12 @@
                                             <p class="card-text">
                                                 Mindestens eine Datei in diesem Spiel wurde gemeldet und ensprechend entfernt.
 
-                                            @foreach($game->gamefiles as $f)
-                                                <li class="list-group-item bg-danger">
-                                                    @if($f->forbidden == 1)
-                                                        {{ $f->gamefiletype->title }} - {{ $f->release_version }}: {{ $f->reason }}
-                                                    @endif
-                                                </li>
+                                                @foreach($game->gamefiles as $f)
+                                                    <li class="list-group-item bg-danger">
+                                                        @if($f->forbidden == 1)
+                                                            {{ $f->gamefiletype->title }} - {{ $f->release_version }}: {{ $f->reason }}
+                                                        @endif
+                                                    </li>
                                                 @endforeach
                                             </p>
                                         </div>
