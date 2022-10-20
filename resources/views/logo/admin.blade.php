@@ -26,7 +26,7 @@
                         </thead>
                         @foreach($logos as $l)
                             <tr>
-                                <td><img class="mx-auto d-block" height="100px" src="{{ asset($l->filename) }}" alt="Logo: {{ $l->title }}"/></td>
+                                <td><img class="mx-auto d-block" height="100px" src="{{ route('logo.show', $l->id) }}" alt="Logo: {{ $l->title }}"/></td>
                                 <td></td>
                                 <td></td>
                                 <th><a href="{{ action('LogoController@delete', $l->id) }}">Löschen</a></th>
