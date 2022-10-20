@@ -64,6 +64,8 @@ Route::post('user_settings/rowsperpage', 'UserSettingsController@store_rowsPerPa
 Route::post('user_settings/change_username', 'UserSettingsController@change_username')->middleware('auth');
 Route::post('user_settings/change_language', 'UserSettingsController@change_language')->middleware('auth');
 Route::post('user_Settings/change_download_template', 'UserSettingsController@change_download_template')->middleware('auth');
+//Benutzerseiten
+Route::get('users/{user_id}/comments', 'UserPagesController@show_comments');
 
 //News Routen
 Route::resource('news', 'NewsController');
@@ -183,6 +185,7 @@ Route::get('submit', 'SubmitController@index')->middleware('auth');
 //Logo Routen
 Route::get('submit/logo', 'SubmitController@logo_index')->middleware('auth');
 Route::post('submit/logo', 'SubmitController@logo_add')->middleware('auth');
+Route::get('logo/get/{id}', 'LogoController@show_logo')->name('logo.show');
 
 //Shoutbox Routen
 Route::post('shoutbox', 'ShoutboxController@store')->middleware('permission:create-shoutbox');

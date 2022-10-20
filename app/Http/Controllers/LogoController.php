@@ -71,4 +71,19 @@ class LogoController extends Controller
 
         return Redirect::action('LogoController@admin');
     }
+
+    public function show_logo($id){
+        $s = Logo::whereId($id)->first();
+
+        $storagePath = \Storage::get($s->filename);
+
+        $img = \Image::make($storagePath);
+
+        $response = \Response::make($img->encode('png'));
+        $response->header('Content-Type', 'image/png');
+
+        $response->setPublic();
+
+        return $response;
+    }
 }

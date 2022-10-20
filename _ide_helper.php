@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.83.18.
+ * Generated for Laravel 8.83.23.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -18071,13 +18071,14 @@
             /**
      * Class Telegram.
      *
-     * @see \Telegram\Bot\BotsManager
+     * @method static list<\Telegram\Bot\Api> getBots(string $name)
+     * @mixin \Telegram\Bot\BotsManager
      */ 
         class Telegram {
                     /**
          * Set the IoC Container.
          *
-         * @param $container Container instance
+         * @param \Illuminate\Contracts\Container\Container $container Container instance
          * @return \Telegram\Bot\BotsManager 
          * @static 
          */ 
@@ -18102,7 +18103,7 @@
                     /**
          * Get a bot instance.
          *
-         * @param string $name
+         * @param string|null $name
          * @throws TelegramSDKException
          * @return \Telegram\Bot\Api 
          * @static 
@@ -18115,7 +18116,7 @@
                     /**
          * Reconnect to the given bot.
          *
-         * @param string $name
+         * @param string|null $name
          * @throws TelegramSDKException
          * @return \Telegram\Bot\Api 
          * @static 
@@ -18128,7 +18129,7 @@
                     /**
          * Disconnect from the given bot.
          *
-         * @param string $name
+         * @param string|null $name
          * @return \Telegram\Bot\BotsManager 
          * @static 
          */ 
@@ -18176,7 +18177,7 @@
                     /**
          * Return all of the created bots.
          *
-         * @return \Telegram\Bot\Api[] 
+         * @return \Telegram\Bot\array<string, Api>
          * @static 
          */ 
         public static function getBots()
@@ -18189,7 +18190,7 @@
          *
          * @deprecated Will be removed in SDK v4
          * @internal Builds the list of commands for the given commands array.
-         * @param array $commands
+         * @param \Telegram\Bot\list<string|\Telegram\Bot\class-string<\Telegram\Bot\Commands\CommandInterface>> $commands A list of command names or FQCNs of CommandInterface instances.
          * @return array An array of commands which includes global and bot specific commands.
          * @static 
          */ 
