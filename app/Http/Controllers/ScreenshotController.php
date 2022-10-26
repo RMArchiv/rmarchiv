@@ -40,6 +40,7 @@ class ScreenshotController extends Controller
         //$etag = md5($s->id.'-'.$s->updated_at);
         //$response->setEtag($etag);
         //$response->setLastModified($s->updated_at);
+        $response->header('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
         $response->setPublic();
 
         return $response;
