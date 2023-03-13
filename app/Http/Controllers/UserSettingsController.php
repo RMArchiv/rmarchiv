@@ -73,7 +73,7 @@ class UserSettingsController extends Controller
             }
         }
 
-        return route('user-settings');
+        return redirect()->route('user-settings');
     }
 
     public function change_setting($setting, $value)
