@@ -16,6 +16,9 @@
 |
 */
 
+//Routen für ClientAPI
+
+
 //Routen für API
 $api = app('Dingo\Api\Routing\Router');
 

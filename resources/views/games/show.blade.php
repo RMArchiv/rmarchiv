@@ -507,9 +507,9 @@
                                                         <a href='{{ url('users', $comment->user_id) }}' title="{{ $comment->user->name }}">{{ $comment->user->name }}</a> -
                                                         {{ trans('app.posted_at') }} {{ $comment->created_at }}
                                                         @if($comment->vote_up == 1 and $comment->vote_down == 0)
-                                                            <span class='vote up'>up</span>
+                                                            <span class='vote up'><img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/></span>
                                                         @elseif($comment->vote_up == 0 and $comment->vote_down == 1)
-                                                            <span class='vote down'>down</span>
+                                                            <span class='vote down'><img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/></span>
                                                         @endif
                                                     </div>
                                                     <a href='{{ url('user', $comment->user_id) }}'
@@ -565,11 +565,11 @@
 
                                                 {{ trans('app.rate_this_game') }}<br>
                                                 <input type='radio' name='rating' id='ratingrulez' value='up'/>
-                                                <label for='ratingrulez'>{{ trans('app.rate_up') }}</label>
+                                                <label for='ratingrulez'><img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/></label>
                                                 <input type='radio' name='rating' id='ratingpig' value='neut' checked='checked'/>
-                                                <label for='ratingpig'>{{ trans('app.rate_neut') }}</label>
+                                                <label for='ratingpig'><img src='/assets/rate_neut.gif' alt='{{ trans('app.rate_neut') }}'/></label>
                                                 <input type='radio' name='rating' id='ratingsucks' value='down'/>
-                                                <label for='ratingsucks'>{{ trans('app.rate_down') }}</label>
+                                                <label for='ratingsucks'><img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/></label>
                                             </div>
                                         @endif
 
