@@ -21,7 +21,7 @@
         "genealabs/laravel-model-caching": "0.11.7",
         "geoip/geoip": "^1.17",
         "graham-campbell/exceptions": "^15.2",
-        "graham-campbell/markdown": "^v13.1.2",
+        "graham-campbell/markdown": "^v15.0.0",
         "intervention/image": "^2.5",
         "intervention/imagecache": "^2.3",
         "irazasyed/telegram-bot-sdk": "^3.6",

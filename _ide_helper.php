@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.83.23.
+ * Generated for Laravel 8.83.27.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -2167,6 +2167,17 @@
         {
                         /** @var \Illuminate\Auth\SessionGuard $instance */
                         return $instance->setRequest($request);
+        }
+                    /**
+         * Get the timebox instance used by the guard.
+         *
+         * @return \Illuminate\Support\Timebox 
+         * @static 
+         */ 
+        public static function getTimebox()
+        {
+                        /** @var \Illuminate\Auth\SessionGuard $instance */
+                        return $instance->getTimebox();
         }
                     /**
          * Determine if the current user is authenticated. If not, throw an exception.
@@ -9280,12 +9291,12 @@
          * Clones a request and overrides some of its parameters.
          *
          * @return static 
-         * @param array $query The GET parameters
-         * @param array $request The POST parameters
-         * @param array $attributes The request attributes (parameters parsed from the PATH_INFO, ...)
-         * @param array $cookies The COOKIE parameters
-         * @param array $files The FILES parameters
-         * @param array $server The SERVER parameters
+         * @param array|null $query The GET parameters
+         * @param array|null $request The POST parameters
+         * @param array|null $attributes The request attributes (parameters parsed from the PATH_INFO, ...)
+         * @param array|null $cookies The COOKIE parameters
+         * @param array|null $files The FILES parameters
+         * @param array|null $server The SERVER parameters
          * @return static 
          * @static 
          */ 
@@ -17490,7 +17501,7 @@
 
     namespace GrahamCampbell\Markdown\Facades { 
             /**
-     * This is the markdown facade class.
+     * 
      *
      * @author Graham Campbell <hello@gjcampbell.co.uk>
      */ 
@@ -17501,23 +17512,36 @@
          * @static 
          */ 
         public static function getEnvironment()
-        {            //Method inherited from \League\CommonMark\MarkdownConverter         
-                        /** @var \League\CommonMark\CommonMarkConverter $instance */
+        {
+                        /** @var \League\CommonMark\MarkdownConverter $instance */
                         return $instance->getEnvironment();
         }
                     /**
-         * Converts CommonMark to HTML.
+         * Converts Markdown to HTML.
          *
-         * @param string $commonMark
+         * @param string $input The Markdown to convert
+         * @return \League\CommonMark\Output\RenderedContentInterface Rendered HTML
          * @throws \RuntimeException
-         * @return string 
-         * @api 
          * @static 
          */ 
-        public static function convertToHtml($commonMark)
-        {            //Method inherited from \League\CommonMark\Converter         
-                        /** @var \League\CommonMark\CommonMarkConverter $instance */
-                        return $instance->convertToHtml($commonMark);
+        public static function convert($input)
+        {
+                        /** @var \League\CommonMark\MarkdownConverter $instance */
+                        return $instance->convert($input);
+        }
+                    /**
+         * Converts Markdown to HTML.
+         *
+         * @deprecated since 2.2; use {@link convert()} instead
+         * @param string $markdown The Markdown to convert
+         * @return \League\CommonMark\Output\RenderedContentInterface Rendered HTML
+         * @throws \RuntimeException
+         * @static 
+         */ 
+        public static function convertToHtml($markdown)
+        {
+                        /** @var \League\CommonMark\MarkdownConverter $instance */
+                        return $instance->convertToHtml($markdown);
         }
          
     }
@@ -18177,7 +18201,7 @@
                     /**
          * Return all of the created bots.
          *
-         * @return \Telegram\Bot\array<string, Api>
+         * @return array<string, Api> 
          * @static 
          */ 
         public static function getBots()
@@ -18190,7 +18214,7 @@
          *
          * @deprecated Will be removed in SDK v4
          * @internal Builds the list of commands for the given commands array.
-         * @param \Telegram\Bot\list<string|\Telegram\Bot\class-string<\Telegram\Bot\Commands\CommandInterface>> $commands A list of command names or FQCNs of CommandInterface instances.
+         * @param \Telegram\Bot\list<string|class-string<\Telegram\Bot\Commands\CommandInterface>> $commands A list of command names or FQCNs of CommandInterface instances.
          * @return array An array of commands which includes global and bot specific commands.
          * @static 
          */ 
