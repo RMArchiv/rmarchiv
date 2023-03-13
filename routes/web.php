@@ -57,7 +57,7 @@ Route::group(['middelware' => ['permission:admin-user']], function () {
 Route::auth();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //Benutzereinstellungen
-Route::get('user_settings', 'UserSettingsController@index')->middleware('auth');
+Route::get('user_settings', 'UserSettingsController@index')->middleware('auth')->name('user-settings');
 Route::post('user_settings/password', 'UserSettingsController@store_password')->middleware('auth');
 Route::get('user_settings/change/{setting}/{value}', 'UserSettingsController@change_setting')->middleware('auth');
 Route::post('user_settings/rowsperpage', 'UserSettingsController@store_rowsPerPage')->middleware('auth');

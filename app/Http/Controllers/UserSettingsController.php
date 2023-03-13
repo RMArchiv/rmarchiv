@@ -73,7 +73,7 @@ class UserSettingsController extends Controller
             }
         }
 
-        return view('auth.settings');
+        return route('user-settings');
     }
 
     public function change_setting($setting, $value)
