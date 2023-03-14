@@ -29,7 +29,7 @@ $api->version('v1', function ($api) {
     $api->get('tako/dev/{gameid}', 'App\Http\Controllers\Api\v1\TakoController@getdevelopers');
 
     //GameClient API
-    $api->get('client/games', 'App\Http\Controllers\Api\Client\GameController@index');
+    $api->get('client/games', 'App\Http\Controllers\Api\Client\GamesController@index');
 
 
     //EasyRPG Hash API
