@@ -16,9 +16,6 @@
 |
 */
 
-//Routen für ClientAPI
-route::get('client/games', 'App\Http\Controllers\Api\Client\GameController@index');
-
 //Routen für API
 $api = app('Dingo\Api\Routing\Router');
 
@@ -30,6 +27,9 @@ $api->version('v1', function ($api) {
     $api->get('tako/filelist2', 'App\Http\Controllers\Api\v1\TakoController@filelist2');
     $api->get('tako/makers', 'App\Http\Controllers\Api\v1\TakoController@getMakers');
     $api->get('tako/dev/{gameid}', 'App\Http\Controllers\Api\v1\TakoController@getdevelopers');
+
+    //GameClient API
+    $api->get('client/games', 'App\Http\Controllers\Api\Client\GameController@index');
 
 
     //EasyRPG Hash API
