@@ -17,7 +17,7 @@
 */
 
 //Routen für ClientAPI
-
+route::get('client/games', 'App\Http\Controllers\Api\Client\GameController@index');
 
 //Routen für API
 $api = app('Dingo\Api\Routing\Router');

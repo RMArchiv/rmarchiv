@@ -30,6 +30,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property int $atelier_id
  * @property string $makerpendium_article
  * @property int $invisible_on_start_page
+ * @property int $client_visible
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereId($value)
@@ -48,6 +49,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereMakerpeniumArticle($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereInvisibleOnStartPage($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Game whereClientVisible($value)
  * @mixin \Eloquent
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Maker $maker
@@ -131,6 +133,7 @@ class Game extends Model
         'license_id',
         'makerpendium_article',
         'invisible_on_start_page',
+        'client_visible'
     ];
     protected $hidden = [
         'votes',
