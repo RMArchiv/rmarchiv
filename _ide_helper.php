@@ -19195,17 +19195,6 @@
      
 }
 
-    namespace Dingo\Api\Http { 
-            /**
-     * 
-     *
-     */ 
-        class Request {
-         
-    }
-     
-}
-
     namespace Illuminate\Routing { 
             /**
      * 
@@ -19254,6 +19243,17 @@
         {
                         return \Illuminate\Routing\Router::emailVerification();
         }
+         
+    }
+     
+}
+
+    namespace Dingo\Api\Http { 
+            /**
+     * 
+     *
+     */ 
+        class Request {
          
     }
      

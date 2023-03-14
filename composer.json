@@ -7,7 +7,7 @@
     "require": {
         "php": "^8.0",
         "ext-zip": "*",
-        "api-ecosystem-for-laravel/dingo-api": "^v3.1.1",
+        "dingo/api": "^v3.0.0",
         "barryvdh/laravel-debugbar": "^3.1",
         "barryvdh/laravel-ide-helper": "^2.3",
         "cmgmyr/messenger": "^2.13",
@@ -54,8 +54,7 @@
         "phpunit/phpunit": "^9.3",
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*",
-        "reliese/laravel": "^v1.1.6",
-        "filp/whoops": "^2.14.5"
+        "reliese/laravel": "^v1.1.6"
     },
     "autoload": {
         "classmap": [
