@@ -31,6 +31,8 @@ $api->version('v1', function ($api) {
     //GameClient API
     $api->get('client/games', 'App\Http\Controllers\Api\Client\GamesController@index');
 
+    $api->get('client/screenshots/{id}', 'App\Http\Controllers\Api\Client\ScreenshotsController@get_screens');
+
 
     //EasyRPG Hash API
     $api->get('easyrpg', 'App\Http\Controllers\Api\v1\EasyRPGController@index');
