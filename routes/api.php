@@ -33,6 +33,8 @@ $api->version('v1', function ($api) {
 
     $api->get('client/screenshots/{id}', 'App\Http\Controllers\Api\Client\ScreenshotsController@get_screens');
 
+    $api->get('client/developers', 'App\Http\Controllers\Api\Client\DevelopersController@index');
+
 
     //EasyRPG Hash API
     $api->get('easyrpg', 'App\Http\Controllers\Api\v1\EasyRPGController@index');

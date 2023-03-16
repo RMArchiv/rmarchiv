@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class DeveloperController extends Controller
 {
-    public function developers(){
+    public function index(){
         $developers = Developer::all()->get();
         $date = Developer::latest()->first()->created_at;
 
