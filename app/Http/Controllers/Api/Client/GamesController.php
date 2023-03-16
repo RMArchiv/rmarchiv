@@ -10,7 +10,13 @@ class GamesController extends Controller
 {
     public function index(){
         $games = Game::whereClientVisible(1)->get();
+        $date = Game::latest()->first()->created_at;
 
-        return $games;
+        $ret = [
+            'date' => $date,
+            'games' => $games
+        ];
+
+        return $ret;
     }
 }
