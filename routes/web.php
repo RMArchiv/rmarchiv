@@ -131,23 +131,19 @@ Route::get('developer/{id}/{orderby?}/{direction?}', 'DeveloperController@show')
 Route::resource('cdc', 'CDCController');
 
 //Ressource Routen
-Route::group(['prefix' => 'resources'], function () {
-    Route::get('/', ['as' => 'resources', 'uses' => 'ResourceController@index']);
-    Route::get('/gfx', ['as' => 'resources.gfx', 'uses' => 'ResourceController@index_gfx']);
-    Route::get('/gfx/{cat}', ['as' => 'resources.gfx.cat', 'uses' => 'ResourceController@index_gfx_cat']);
-    Route::get('/sfx', ['as' => 'resources.sfx', 'uses' => 'ResourceController@index_sfx']);
-    Route::get('/sfx/{cat}', ['as' => 'resources.sfx.cat', 'uses' => 'ResourceController@index_sfx_cat']);
-    Route::get('/scripts', ['as' => 'resources.scripts', 'uses' => 'ResourceController@index_scripts']);
-    Route::get('/scripts/{cat}', ['as' => 'resources.scripts.cat', 'uses' => 'ResourceController@index_scripts_cat']);
-    Route::get('/tools', ['as' => 'resources.tools', 'uses' => 'ResourceController@index_tools']);
-    Route::get('/tools/{cat}', ['as' => 'resources.tools.cat', 'uses' => 'ResourceController@index_tools_cat']);
-
-    Route::get('/{type}/{cat}/{id}', ['as' => 'resources.show', 'uses' => 'ResourceController@show']);
-
-    Route::post('/create', ['as' => 'resources.create_steps', 'uses' => 'ResourceController@create_steps'])->middleware('permission:create-games');
-    Route::get('/create', ['as' => 'resources.create', 'uses' => 'ResourceController@create'])->middleware('permission:create-games');
-    Route::post('/create/store', ['as' => 'resources.store', 'uses' => 'ResourceController@store'])->middleware('permission:create-games');
-});
+Route::get('resources', 'ResourceController@index')->name('resources');
+Route::get('resources/gfx', 'ResourceController@index_gfx')->name('resources.gfx');
+Route::get('resources/gfx/{cat}', 'ResourceController@index_gfx_cat')->name('resources.gfx.cat');
+Route::get('resources/sfx', 'ResourceController@index_sfx')->name('resources.sfx');
+Route::get('resources/sfx/{cat}', 'ResourceController@index_sfx_cat')->name('resources.sfx.cat');
+Route::get('resources/scripts', 'ResourceController@index_scripts')->name('resources.scripts');
+Route::get('resources/scripts/{cat}', 'ResourceController@index_scripts_cat')->name('resources.scripts.cat');
+Route::get('resources/tools', 'ResourceController@index_tools')->name('resources.tools');
+Route::get('resources/tools/{cat}', 'ResourceController@index_tools_cat')->name('resources.tools.cat');
+Route::get('resources/{type}/{cat}/{id}', 'ResourceController@show')->name('resources.show');
+Route::post('resources/create', 'ResourceController@create_steps')->name('resources.create_steps')->middleware('permission:create-games');
+Route::get('resources/create', 'ResourceController@create')->name('resources.create')->middleware('permission:create-games');
+Route::post('resources/create/store', 'ResourceController@store')->name('resources.store')->middleware('permission:create-games');
 
 Route::post('resources/upload', 'FineUploaderController@endpoint@upload')->name('resources.upload')->middleware('permission:create-games');
 
