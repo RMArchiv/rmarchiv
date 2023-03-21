@@ -95,6 +95,11 @@ class PlayerCreateInfo extends Command
 
             $path = storage_path('app/public/'.$toindex->filename); //path to gamefile
             if ($toindex->extension == 'zip') { //check for zip extension
+                //Check for file Existance
+                if(!file_exists($path)){
+                    continue;
+                }
+
                 //create ZipArchive Object
                 $zip = new \ZipArchive();
                 //open zip file
