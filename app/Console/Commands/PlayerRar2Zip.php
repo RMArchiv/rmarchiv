@@ -50,6 +50,9 @@ class PlayerRar2Zip extends Command
 
         foreach ($files as $f) {
             //Check for maker engine 2=rm2k, 3=rm2k3, 9=rm2k3 Steam Edition
+            if(!$f->game){
+                continue;
+            }
             echo "Game: (fid_".$f->id;
             echo "/gid_".$f->game->id;
             echo ") ".$f->game->title.PHP_EOL;
