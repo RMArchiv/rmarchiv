@@ -139,4 +139,14 @@ class PT extends Command
         $this->info('Es wurden '.$counter.' Gamefiles gefunden.');
 
     }
+
+    function ends_with_array($string, array $arr){
+        foreach ($arr as $a) {
+            if(str_ends_with($string, $a)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
 }
