@@ -69,7 +69,7 @@ class PlayerHelper
 
         $searcharray = array_merge($dirarray, $filearray);
 
-        if (starts_with(strtolower($zipfilepath), $searcharray)) {
+        if (str_starts_with(strtolower($zipfilepath), $searcharray)) {
             $imp = str_replace('/', '\\/', $zipfilepath);
         } else {
             if (Str::contains(strtolower($zipfilepath), $searcharray)) {
