@@ -69,7 +69,7 @@ class PlayerHelper
 
         $searcharray = array_merge($dirarray, $filearray);
 
-        if (str_starts_with(strtolower($zipfilepath), $searcharray)) {
+        if ($this->starts_with_array(strtolower($zipfilepath), $searcharray)) {
             $imp = str_replace('/', '\\/', $zipfilepath);
         } else {
             if (Str::contains(strtolower($zipfilepath), $searcharray)) {
@@ -89,5 +89,15 @@ class PlayerHelper
         }
 
         return $imp;
+    }
+
+    private function starts_with_array($string, array $arr){
+        foreach ($arr as $a){
+            if(str_starts_with($string, $a)){
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 }
