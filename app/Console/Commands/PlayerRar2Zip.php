@@ -57,7 +57,14 @@ class PlayerRar2Zip extends Command
             echo "/gid_".$f->game->id;
             echo "/mid_".$f->game->maker_id;
             echo ") ".$f->game->title.PHP_EOL;
-            if (! array_search($f->game->maker_id, [2, 3, 6, 9, 11]) === false) {
+            $mid = $f->game->maker_id;
+            // if (! array_search($f->game->maker_id, [2, 3, 6, 9, 11]) === false) {
+            if($mid == 2
+                or $mid == 3
+                or $mid == 6
+                or $mid == 9
+                or $mid == 11
+            ){
                 echo "Gamefile: $f->filename";
 
                 //prepare the path variables
