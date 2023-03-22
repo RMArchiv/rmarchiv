@@ -56,7 +56,7 @@ class PT extends Command
 
         //loop all gamefiles
         foreach ($gamefiles as $gamefile) {
-            echo $gamefile->id.PHP_EOL;
+            echo $gamefile->game->title." - ".$gamefile->game->subtitle;
             //Get the maker id
             $makerid = $gamefile->game()->first()->maker_id;
 
@@ -134,6 +134,7 @@ class PT extends Command
                     continue;
                 }
             }
+            echo " - done.".PHP_EOL;
         }
 
         $this->info('Es wurden '.$counter.' Gamefiles gefunden.');
