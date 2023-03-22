@@ -90,7 +90,7 @@ class PT extends Command
                                 $rel = new PlayerFileGamefileRel();
                                 $rel->gamefile_id = $gamefile->id;
 
-                                if (! ends_with(strtolower($imp), ['.exe', '.lmu', '.ldb', 'ini', '.dll', 'lmt', 'lsd'])) {
+                                if (! $this->ends_with_array(strtolower($imp), ['.exe', '.lmu', '.ldb', 'ini', '.dll', 'lmt', 'lsd'])) {
                                     $rel->orig_filename = preg_replace('/(\.\w+$)/', '', strtolower($imp));
                                 } else {
                                     $rel->orig_filename = strtolower($imp);
