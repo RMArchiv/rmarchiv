@@ -79,7 +79,7 @@ class PT extends Command
                         $filename = $zip->getNameIndex($i);
 
                         //Filter Directory and _MACOSX from index
-                        if (! str_ends_with($filename, '/') and ! starts_with($filename, '_MACOSX')) {
+                        if (! str_ends_with($filename, '/') and ! str_starts_with($filename, '_MACOSX')) {
 
                             //Get root path of the file
                             $phelper = new PlayerHelper();
