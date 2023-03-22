@@ -46,7 +46,7 @@ class PlayerRar2Zip extends Command
     public function handle()
     {
         //get all rar files from database
-        $files = GamesFile::whereExtension('rar')->orderBy('filesize', 'asc')->get();
+        $files = GamesFile::whereExtension('rar')->orderBy('game_id', 'asc')->get();
 
         foreach ($files as $f) {
             //Check for maker engine 2=rm2k, 3=rm2k3, 9=rm2k3 Steam Edition
