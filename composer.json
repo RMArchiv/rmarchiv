@@ -13,7 +13,6 @@
         "cmgmyr/messenger": "^2.13",
         "cybercog/laravel-ban": "^4.7",
         "diglactic/laravel-breadcrumbs": "^v7.2.0",
-        "dmamontov/rararchiver": "dev-master",
         "doctrine/dbal": "^2.6",
         "eusonlito/laravel-meta": "^3.0",
         "filp/whoops": "^2.1",

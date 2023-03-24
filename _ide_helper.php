@@ -17521,7 +17521,7 @@
          *
          * @param string $input The Markdown to convert
          * @return \League\CommonMark\Output\RenderedContentInterface Rendered HTML
-         * @throws \RuntimeException
+         * @throws CommonMarkException
          * @static 
          */ 
         public static function convert($input)
@@ -17535,7 +17535,7 @@
          * @deprecated since 2.2; use {@link convert()} instead
          * @param string $markdown The Markdown to convert
          * @return \League\CommonMark\Output\RenderedContentInterface Rendered HTML
-         * @throws \RuntimeException
+         * @throws CommonMarkException
          * @static 
          */ 
         public static function convertToHtml($markdown)
