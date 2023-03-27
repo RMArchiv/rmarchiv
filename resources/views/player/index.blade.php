@@ -164,7 +164,7 @@
                     </div>
                 </div>
 
-                <script async type="text/javascript" src="index.js"></script>
+                <script async type="text/javascript" src="/index.js"></script>
 
                 <script>
                     const hasTouchscreen = window.matchMedia('(hover: none), (pointer: coarse)').matches;
