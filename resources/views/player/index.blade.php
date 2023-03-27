@@ -275,7 +275,7 @@
                         })
                     }
 
-                    /** @type {{[key: number]: Gamepad}} */
+
                     let gamepads = {};
                     const haveEvents = 'ongamepadonnected' in window;
 
