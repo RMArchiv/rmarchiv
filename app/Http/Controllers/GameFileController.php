@@ -16,8 +16,18 @@ use App\Models\GamesFilesType;
 use App\Helpers\DatabaseHelper;
 use App\Models\UserDownloadLog;
 
+/**
+ *
+ */
 class GameFileController extends Controller
 {
+    /**
+     * This is the Download Function with simple directlink prevention
+     * @param Request $request <p>Its unneeded but used...</p>
+     * @param $id id of gamefile
+     * @param $ts <p>unix timestamp. if older then 30 minutes redirect to gamepage</p>
+     * @return \Illuminate\Http\RedirectResponse|\Symfony\Component\HttpFoundation\BinaryFileResponse|void
+     */
     public function download(Request $request, $id, $ts = 0)
     {
         if ($request->isMethod('get')) {
@@ -42,7 +52,7 @@ class GameFileController extends Controller
                     ->first();
 
                 $curtime = time();
-                if(($curtime-$ts) > 1800) {     //1800 seconds
+                if(($curtime-$ts) > 1800) { //If Download Link is older than 30 Minutes, redirect to GamePage
                     return \Redirect::action('GameController@show', ['id' => $g->gameid]);
                 }else{
                     \DB::table('games_files')
@@ -114,6 +124,11 @@ class GameFileController extends Controller
         }
     }
 
+    /**
+     * Download function for Backup Downloads without download counter
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
     public function download_wo_count(Request $request)
     {
         $filepath = storage_path('app/public/'.$request->get('filename'));
@@ -123,6 +138,10 @@ class GameFileController extends Controller
         return response()->download($filepath, $newfilename);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function create($id)
     {
         $gamefiles = GamesFile::whereGameId($id)
@@ -140,6 +159,12 @@ class GameFileController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function store(Request $request, $id)
     {
         $this->validate($request, [
@@ -186,6 +211,11 @@ class GameFileController extends Controller
         return redirect()->route('gamefiles.index', [$id]);
     }
 
+    /**
+     * @param $id
+     * @param $fileid
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id, $fileid)
     {
         $gf = GamesFile::whereId($fileid)->first();
@@ -196,6 +226,11 @@ class GameFileController extends Controller
         return redirect()->route('gamefiles.index', [$id]);
     }
 
+    /**
+     * @param $id
+     * @param $gamefileid
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function edit($id, $gamefileid)
     {
         $gamefile = GamesFile::whereId($gamefileid)->first();
@@ -207,6 +242,10 @@ class GameFileController extends Controller
         ]);
     }
 
+    /**
+     * @param $gamefileid
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function restore($gamefileid)
     {
         $gamefile = GamesFile::whereId($gamefileid)->first();
@@ -217,6 +256,13 @@ class GameFileController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @param $gamefileid
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function update(Request $request, $id, $gamefileid)
     {
         $this->validate($request, [

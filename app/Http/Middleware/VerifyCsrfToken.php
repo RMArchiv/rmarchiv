@@ -20,5 +20,6 @@ class VerifyCsrfToken extends BaseVerifier
         'tako/downlbla',
         'attachment/upload',
         'tlg/webhook',
+        'player/*'
     ];
 }
