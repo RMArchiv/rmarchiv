@@ -73,8 +73,8 @@
                     position: inherit;
                     /*top: 50%;*/
                     /*left: 50%;*/
-                    /*width: 100%;*/
-                    /*height: 100%;*/
+                    width: 100%;
+                    height: 100%;
                     border: 0;
                     image-rendering: pixelated;
                     image-rendering: crisp-edges;
