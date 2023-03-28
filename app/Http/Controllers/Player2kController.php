@@ -46,9 +46,13 @@ class Player2kController extends Controller
 
     public function deliver_rtp($gamefileid, $filename)
     {
+        $headers = [
+            'Content-Type' => 'application/octet-stream'
+        ];
+
         $path = storage_path('app/public/rtp/'.$filename);
 
-        return response()->download($path);
+        return response()->download($path,null ,$headers);
     }
 
     public function deliver_indexjson($gamefileid)

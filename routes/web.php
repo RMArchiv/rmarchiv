@@ -18,22 +18,6 @@ Route::get('/datenschutz', function() {
 
 route::get('/langeliste', 'HomeController@index');
 
-/**
-//Logo Routen
-Route::get('logo/{filename}', function ($filename) {
-    $filename = 'logos/'.$filename;
-    $path = Storage::get($filename);
-
-    $img = \Image::make($path);
-    $response = \Response::make($img->encode('png'));
-    $response->header('Content-Type', 'image/png');
-    //$response->setMaxAge(604800);
-    $response->setPublic();
-
-    return $response;
-})->name('logo.get');
-**/
-
 Route::post('tako/downlbla', 'GameFileController@download_wo_count');
 
 //Administration
