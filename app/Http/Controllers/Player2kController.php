@@ -35,13 +35,12 @@ class Player2kController extends Controller
     public function deliver_files($gamefileid, $filename)
     {
         $gf = GamesFile::whereId($gamefileid)->first();
-        //$file = PlayerIndexjson::whereId($fileid)->first();
+        $file = PlayerIndexjson::whereId($filename)->first();
 
         $path = storage_path('app/public/'.$gf->filename);
         $zip = new \ZipArchive();
         $zip->open($path);
-        $fp = $zip->getFromName($filename);
-        //dd($file->filename);
+        $fp = $zip->getFromName($file->filename);
         return $fp;
     }
 
