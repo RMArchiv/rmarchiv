@@ -52,7 +52,7 @@ class Player2kController extends Controller
 
         $path = storage_path('app/public/rtp/'.$filename);
 
-        return response()->download($path,null ,$headers);
+        return response()->withHeaders($headers)->download($path);
     }
 
     public function deliver_indexjson($gamefileid)
