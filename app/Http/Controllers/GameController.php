@@ -36,10 +36,14 @@ class GameController extends Controller
         if ($orderby == 'developer.name') {
             $games = Game::Join('games_developer', 'games.id', '=', 'games_developer.game_id')
                 ->Join('developer', 'games_developer.developer_id', '=', 'developer.id')
-                ->orderBy($orderby, $direction)->select('games.*')->paginate($rows);
+                ->orderBy($orderby, $direction)->select('games.*');
         } else {
-            $games = Game::orderBy($orderby, $direction)->orderBy('title')->orderBy('subtitle')->paginate($rows);
+            $games = Game::orderBy($orderby, $direction)->orderBy('title')->orderBy('subtitle');
         }
+        if (!\Auth::check()) {
+            $games->where('nsfw', '=', false);
+        }
+        $games = $games->paginate($rows);
 
         return view('games.index', [
             'games'     => $games,
