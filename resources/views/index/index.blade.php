@@ -27,7 +27,7 @@
                 @endif
             </div>
             <div class="col-md-6">
-                @if(!Auth::check() || Auth::user()->settings->disable_widget_shoutbox != 1)
+                @if(Auth::check() && Auth::user()->settings->disable_widget_shoutbox != 1)
                     @include('index._partials.shoutbox')
                 @endif
 

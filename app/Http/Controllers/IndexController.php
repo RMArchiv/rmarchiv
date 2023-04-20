@@ -39,8 +39,6 @@ class IndexController extends Controller
         $news = News::with('user', 'comments')->orderBy('created_at', 'desc')->where('approved', '=', 1)->get()->take(5);
         $shoutbox = Shoutbox::with('user')->orderBy('created_at', 'desc')->limit(5)->get()->reverse();
         $cdc = GamesCoupdecoeur::with('game')->orderBy('created_at', 'desc')->get()->first();
-        $latestadded = Game::with('maker', 'gamefiles', 'language', 'developers')->orderBy('created_at', 'desc')->where('games.invisible_on_start_page', '=', 0)->limit(5)->get();
-        $latestreleased = Game::where('release_type', '!=', 99)->where('games.invisible_on_start_page', '=', 0)->orderBy('release_date', 'desc')->limit(5)->get();
         $threads = BoardThread::with('posts', 'user', 'last_user')->orderBy('last_created_at', 'desc')->limit(10)->get();
 
         $topusers = \DB::table('users as u')
@@ -95,6 +93,9 @@ class IndexController extends Controller
         }
         $size = MiscHelper::getReadableBytes($res);
 
+        $latestadded = Game::with('maker', 'gamefiles', 'language', 'developers')->orderBy('created_at', 'desc')->where('games.invisible_on_start_page', '=', 0)->limit(5);
+        $latestreleased = Game::where('release_type', '!=', 99)->where('games.invisible_on_start_page', '=', 0)->orderBy('release_date', 'desc')->limit(5);
+
         $topmonth = \DB::table('games')
             ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
             ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
@@ -134,11 +135,23 @@ class IndexController extends Controller
             ->where('games.invisible_on_start_page', '=', 0)
             ->orderByRaw('(voteup - votedown) / (voteup + votedown) DESC')
             ->groupBy('games.id')
-            ->limit(5)->get();
+            ->limit(5);
 
-        $topalltime = Game::orderBy('avg', 'desc')->where('games.invisible_on_start_page', '=', 0)->limit(5)->get();
+        $topalltime = Game::orderBy('avg', 'desc')->where('games.invisible_on_start_page', '=', 0)->limit(5);
         $latestcomments = Comment::with('game')->whereContentType('game')->orderBy('created_at', 'desc')->limit(5)->get();
-        $randomgame = Game::inRandomOrder()->where('games.invisible_on_start_page', '=', 0)->first();
+        $randomgame = Game::inRandomOrder()->where('games.invisible_on_start_page', '=', 0);
+        if (!\Auth::check()) {
+            $randomgame->where('nsfw', '=', false);
+            $topmonth->where('nsfw', '=', false);
+            $topalltime->where('nsfw', '=', false);
+            $latestadded->where('nsfw', '=', false);
+            $latestreleased->where('nsfw', '=', false);
+        }
+        $randomgame = $randomgame->first();
+        $topmonth = $topmonth->get();
+        $topalltime = $topalltime->get();
+        $latestadded = $latestadded->get();
+        $latestreleased = $latestreleased->get();
 
         $newuser = User::orderBy('created_at', 'desc')->first();
 

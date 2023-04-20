@@ -153,7 +153,7 @@ return [
     |
     */
 
-    'domain' => '.rmarchiv.de',
+    'domain' => env('SESSION_DOMAIN', '.rmarchiv.de'),
 
     /*
     |--------------------------------------------------------------------------
