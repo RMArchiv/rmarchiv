@@ -337,6 +337,13 @@ Route::get('savegames/{gamefileid}', 'SavegameController@api_load')->middleware(
 Route::post('savegames/{gamefileid}', 'SavegameController@api_save')->middleware('auth');
 Route::post('savegames/{gamefileid}/{slot}', 'SavegameController@api_save_slot')->middleware('auth');
 
+//Playtime Routen
+Route::get('playtime', [\App\Http\Controllers\PlaytimeController::class, 'index'])->middleware('auth')->name('playtime.index');
+Route::get('playtime/game/{game_id}', [\App\Http\Controllers\PlaytimeController::class, 'show'])->middleware('auth')->name('playtime.show');
+Route::get('playtime/game/{game_id}/add', [\App\Http\Controllers\PlaytimeController::class, 'add'])->middleware('auth')->name('playtime.add');
+Route::get('playtime/game/{game_id}/store', [\App\Http\Controllers\PlaytimeController::class, 'store'])->middleware('auth')->name('playtime.store');
+
+//Test Routen
 Route::get('data/on', 'TestController@on');
 Route::get('data/off', 'TestController@off');
 Route::get('data/onoff', 'TestController@onoff');

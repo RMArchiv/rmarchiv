@@ -43,7 +43,6 @@ class SubmitController extends Controller
 
         $l = new Logo();
         $l->extension = \Storage::mimeType($imageName);
-        $imageName = str_replace('logos', 'logo', $imageName);
         $l->filename = str_replace($extorig, '', $imageName);
         $l->title = $request->get('logoname');
         $l->user_id = \Auth::id();

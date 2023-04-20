@@ -19,9 +19,7 @@
                     </div>
                     <div class="card-body">
                         {{ trans('app.please_rate_this_logo') }}
-                        @if(file_exists(public_path($logos->filename)))
-                            <img src="{{ asset($logos->filename) }}">
-                        @endif
+                            <img src="{{ route('logo.show', $logos->id) }}">
                         {{ $logos->title }}
                     </div>
                     <div class="card-footer">

@@ -75,7 +75,9 @@ class LogoController extends Controller
     public function show_logo($id){
         $s = Logo::whereId($id)->first();
 
-        $storagePath = \Storage::get($s->filename);
+        $filename = str_replace('logo/', 'logos/', $s->filename);
+
+        $storagePath = \Storage::get($filename);
 
         $img = \Image::make($storagePath);
 
