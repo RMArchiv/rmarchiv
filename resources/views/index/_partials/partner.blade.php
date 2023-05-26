@@ -5,9 +5,16 @@
                 {{ trans('Partner Seiten') }}
             </div>
             <div class="card-body">
-                <a href="https://www.makerpendium.de" target="_blank">
-                    <img class="img-fluid center-block" src="/assets/makerpendium_neu.png" alt="Makerpendium Logo">
-                </a>
+                <p>
+                    <a href="https://www.makerpendium.de/" target="_blank">
+                        <img class="img-fluid center-block" src="/assets/makerpendium_neu.png" alt="Makerpendium Logo">
+                    </a>
+                </p>
+                <p>
+                    <a href="https://gamedevcafe.de/" target="_blank">
+                        <img class="img-fluid center-block" src="/assets/gamedevbanner.png" alt="GameDevCafe Logo">
+                    </a>
+                </p>
             </div>
         </div>
     </div>
