@@ -40,12 +40,15 @@ class GameController extends Controller
             'version'   => 'rmapi_v1',
             'data_date' => Carbon::now()->toDateTimeString(),
             'game'      => [
-                'title'        => $game->title,
-                'subtitle'     => $game->subtitle,
-                'release_date' => $game->release_date,
-                'developers'   => '',
-                'language'     => $game->language->short,
-                'engine'       => $game->maker->short,
+                'id'               => $game->id,
+                'title'            => $game->title,
+                'subtitle'         => $game->subtitle,
+                'release_date'     => $game->release_date,
+                'description_md'   => $game->desc_md,
+                'description_html' => $game->desc_html,
+                'language'         => $game->language->short,
+                'engine'           => $game->maker->short,
+                'website'          => $game->website_url,
             ],
         ];
 
@@ -53,11 +56,29 @@ class GameController extends Controller
         $developer = GamesDeveloper::whereGameId($id)->get();
         $t = [];
         foreach ($developer as $dev) {
-            $t[] = $dev->developer->name;
+            $t[$dev->developer->id] = $dev->developer->name;
         }
-        $array['game']['developer'] = $t;
+        $array['game']['developers'] = $t;
 
         //Lade Tags
+        $t_tag = [];
+        foreach($game->tags as $tag){
+            $t_tag[$tag->tag_id] = $tag->tag->title;
+        }
+        $array['game']['tags'] = $t_tag;
+
+        //Lade Gamefiles
+        $t_files = [];
+        foreach($game->gamefiles as $gf){
+            $t_files[$gf->id]['release_type'] = $gf->release_type;
+            $t_files[$gf->id]['release_version'] = $gf->release_version;
+            $t_files[$gf->id]['release_date'] = $gf->release_year.'-'.str_pad($gf->release_month,2,0,STR_PAD_LEFT).'-'.str_pad($gf->release_day,2,0,STR_PAD_LEFT);
+            $t_files[$gf->id]['release_language'] = $gf->language->name;
+            $t_files[$gf->id]['download_url'] = '';
+
+
+        }
+        $array['game']['gamefiles'] = $t_files;
 
         return $array;
     }
