@@ -70,13 +70,10 @@ class GameController extends Controller
         //Lade Gamefiles
         $t_files = [];
         foreach($game->gamefiles as $gf){
-            $t_files[$gf->id]['release_type'] = $gf->release_type;
+            $t_files[$gf->id]['release_type'] = $gf->gamefiletype->title;
             $t_files[$gf->id]['release_version'] = $gf->release_version;
             $t_files[$gf->id]['release_date'] = $gf->release_year.'-'.str_pad($gf->release_month,2,0,STR_PAD_LEFT).'-'.str_pad($gf->release_day,2,0,STR_PAD_LEFT);
             $t_files[$gf->id]['release_language'] = $gf->language->name;
-            $t_files[$gf->id]['download_url'] = '';
-
-
         }
         $array['game']['gamefiles'] = $t_files;
 
