@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class GamesController extends Controller
 {
     public function index($datetime){
-        $games = Game::whereInvisibleOnStartPage(0)->where('updated_at', '>=', $datetime);
+        $games = Game::where('updated_at', '>=', $datetime);
 
         $ret = [
             'info' => [
