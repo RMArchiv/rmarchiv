@@ -4,17 +4,21 @@ namespace App\Http\Controllers\Api\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Game;
+use Carbon\Carbon;
+use Carbon\PHPStan\AbstractMacro;
 use Illuminate\Http\Request;
 
 class GamesController extends Controller
 {
-    public function index(){
-        $games = Game::whereClientVisible(1)->get();
-        $date = Game::latest()->first()->created_at;
+    public function index($datetime){
+        $games = Game::whereInvisibleOnStartPage(0)->where('updated_at', '>=', $datetime);
 
         $ret = [
-            'date' => $date,
-            'games' => $games
+            'info' => [
+                'endpoint' => 'gamelist',
+                'datetime' => $datetime,
+            ],
+            'data' => $games
         ];
 
         return $ret;

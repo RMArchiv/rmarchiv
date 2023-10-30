@@ -23,13 +23,17 @@ $api->version('v1', function ($api) {
     $api->get('games', 'App\Http\Controllers\Api\v1\GameController@index');
     $api->get('games/{id}', 'App\Http\Controllers\Api\v1\GameController@show');
     $api->get('games_app', 'App\Http\Controllers\Api\v1\GameController@show_app');
+
+    $api->get('developer/{id}', 'App\Http\Controllers\api\v1\DeveloperController@show');
+
+
     $api->get('tako/filelist', 'App\Http\Controllers\Api\v1\TakoController@filelist');
     $api->get('tako/filelist2', 'App\Http\Controllers\Api\v1\TakoController@filelist2');
     $api->get('tako/makers', 'App\Http\Controllers\Api\v1\TakoController@getMakers');
     $api->get('tako/dev/{gameid}', 'App\Http\Controllers\Api\v1\TakoController@getdevelopers');
 
     //GameClient API
-    $api->get('client/games', 'App\Http\Controllers\Api\Client\GamesController@index');
+    $api->get('client/games/{datetime}', 'App\Http\Controllers\Api\Client\GamesController@index');
 
     $api->get('client/screenshots/{id}', 'App\Http\Controllers\Api\Client\ScreenshotsController@get_screens');
 

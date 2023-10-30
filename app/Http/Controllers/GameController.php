@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Maker;
 use Carbon\Carbon;
 use App\Events\Obyx;
 use App\Models\Game;
@@ -178,8 +179,7 @@ class GameController extends Controller
      */
     public function edit($id)
     {
-        $makers = \DB::table('makers')
-            ->get();
+        $makers = Maker::get();
 
         $langs = \DB::table('languages')
             ->get();
