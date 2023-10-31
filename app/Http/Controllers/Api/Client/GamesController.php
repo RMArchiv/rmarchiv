@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class GamesController extends Controller
 {
     public function index($datetime){
-        $games = Game::where('updated_at', '>=', Carbon::parse($datetime))->get();
+        $games = Game::where('updated_at', '>=', Carbon::createFromTimestamp($datetime))->get();
 
         $ret = [
             'info' => [
