@@ -21,7 +21,7 @@ route::get('/langeliste', 'HomeController@index');
 Route::post('tako/downlbla', 'GameFileController@download_wo_count');
 
 //Administration
-Route::group(['middelware' => ['permission:admin-user']], function () {
+Route::group(['middleware' => ['permission:admin-user']], function () {
     Route::get('users/admin/{userid}', 'UserController@admin')->name('user.admin');
     Route::post('users/admin/{userid}', 'UserController@admin_store');
     Route::get('users/perm/role', 'UserPermissionController@createRole');
@@ -53,7 +53,7 @@ Route::get('users/{user_id}/comments', 'UserPagesController@show_comments');
 
 //News Routen
 Route::resource('news', 'NewsController');
-Route::group(['middelware' => ['permission:approve-news']], function () {
+Route::group(['middleware' => ['permission:approve-news']], function () {
     Route::get('news/{id}/approve/{approve}', 'NewsController@approve')->middleware('permission:approve-news');
 });
 
