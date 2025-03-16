@@ -1,7 +1,7 @@
 <li class="list-group-item media" style="margin-top: 0px;">
     @php $cat = $cats->where('id', '=', $id)->first() @endphp
 
-    <a class="pull-right" href="{{ route('board.cat.show', $cat->id) }}"><span class="badge">{{ $count = \App\Models\BoardPost::whereCatId($cat->id)->count() }}</span></a>
+    <a class="pull-right" href="{{ route('board.cat.show', isset($cat)?$cat->id:0) }}"><span class="badge">{{ $count = \App\Models\BoardPost::whereCatId($cat?->id)?->count() ?? 0 }}</span></a>
 
     @if($count != 0 && isset($cat->last_user))
         <a class="pull-left" href="{{ url('users', $cat->last_user->id) }}"><img class="mr-3" width="42px" src="//{{ config('app.avatar_path') }}?size=42&gender=male&id={{ $cat->last_user->id }}" alt="{{ $cat->last_user->name }}"></a>
@@ -9,10 +9,10 @@
 
     <div class="thread-info">
         <div class="media-heading">
-            <a href="{{ route('board.cat.show', $cat->id) }}">{{ $cat->title }}</a>
+            <a href="{{ route('board.cat.show', isset($cat)?$cat->id:0) }}">{{ isset($cat)?$cat->title:"" }}</a>
         </div>
         <div class="media-body" style="font-size: 12px;">
-            @if($count != 0 && isset($cat->last_user))
+            @if($count != 0 && isset($cat) ? $isset(cat->last_user) : false)
             {{ trans('app.last_reply') }}
                 <time datetime='{{ $cat->last_created_at }}' title='{{ $cat->last_created_at }}'>{{ \Carbon\Carbon::parse($cat->last_created_at)->diffForHumans() }}</time> {{ trans('app.by') }}
                 <a href='{{ url('users', $cat->last_user_id) }}' class='usera' title="{{ $cat->last_user->name }}">
