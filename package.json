@@ -11,8 +11,8 @@
   },
   "devDependencies": {
     "axios": "^0.27.2",
-    "bloodhound": "^1.0.0",
     "bootstrap-rating": "^0.0.1",
+    "bootstrap-sass": "^3.4.3",
     "browser-sync": "^2.27.10",
     "browser-sync-webpack-plugin": "^2.3.0",
     "cross-env": "^7.0.3",
@@ -26,7 +26,7 @@
     "lodash": "^4.17.21",
     "matchheight": "^0.1.2",
     "resolve-url-loader": "^5.0.0",
-    "sass": "^1.51.0",
+    "sass": "^1.82.0",
     "sass-loader": "^12.6.0",
     "typeahead.js": "^0.11.1",
     "vue": "^3.2.33",
@@ -36,6 +36,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.1.1",
     "bootstrap": "^4.6.1",
+    "bower": "^1.8.14",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1"
   }
