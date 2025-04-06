@@ -88,9 +88,9 @@ return [
     */
     'models' => [
 
-        'role' => \App\Models\Role::class,
+        'role' => \App\Models\UserRole::class,
 
-        'permission' => \App\Models\Permission::class,
+        'permission' => \App\Models\UserPermission::class,
 
         /**
          * Will be used only if the teams functionality is enabled.
@@ -108,20 +108,20 @@ return [
     */
     'tables' => [
 
-        'roles' => 'roles',
+        'roles' => 'user_roles',
 
-        'permissions' => 'permissions',
+        'permissions' => 'user_permissions',
 
         /**
          * Will be used only if the teams functionality is enabled.
          */
         'teams' => 'teams',
 
-        'role_user' => 'role_user',
+        'role_user' => 'user_role_user',
 
         'permission_user' => 'permission_user',
 
-        'permission_role' => 'permission_role',
+        'permission_role' => 'user_permission_role',
     ],
 
     /*
@@ -280,7 +280,7 @@ return [
         |
         */
         'domain' => env('LARATRUST_PANEL_DOMAIN', env('LARATRUST_PANEL_DOMAIN', (app()->runningInConsole() === false) ? request()->getHost() : 'localhost')),
-        
+
         /*
         |--------------------------------------------------------------------------
         | Laratrust Panel Path
