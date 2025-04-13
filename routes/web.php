@@ -305,12 +305,12 @@ Route::get('easyrpg/download/{hash}', function ($hash) {
 
     return response()->download($path, $hash, ['Content-Type' => 'application/octet-stream']);
 });
-
-Route::group(['middleware' => 'permission:translate-page'], function () {
-    Route::get('translation', 'TranslationController@index')->name('trans.index');
-    Route::get('translation/{loc1}/{loc2?}/{viewtype?}/{searchterm?}', 'TranslationController@edit')->name('trans.edit');
-    Route::post('translation/save', 'TranslationController@savestring')->name('trans.save');
-});
+// Waavi was deinstalled - translations are file based now
+// Route::group(['middleware' => 'permission:translate-page'], function () {
+//     Route::get('translation', 'TranslationController@index')->name('trans.index');
+//     Route::get('translation/{loc1}/{loc2?}/{viewtype?}/{searchterm?}', 'TranslationController@edit')->name('trans.edit');
+//     Route::post('translation/save', 'TranslationController@savestring')->name('trans.save');
+// });
 
 // EasyRPG Player (2k/2k3) Routen
 Route::get('player/{gamefileid}/games/default/index.json', 'Player2kController@deliver_indexjson')->name('player.deliverindex')->middleware('auth');
