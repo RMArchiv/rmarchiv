@@ -7,6 +7,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laratrust\Models\LaratrustPermission;
 
 /**
@@ -32,5 +33,6 @@ use Laratrust\Models\LaratrustPermission;
  */
 class UserPermission extends LaratrustPermission
 {
+    use HasFactory;
     //
 }

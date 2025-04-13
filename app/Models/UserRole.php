@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laratrust\Models\LaratrustRole;
 
 /**
@@ -34,5 +35,6 @@ use Laratrust\Models\LaratrustRole;
  */
 class UserRole extends LaratrustRole
 {
+    use HasFactory;
 //
 }
