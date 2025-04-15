@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                {{ trans('Partner Seiten') }}
+                {{ trans('partner') }}
             </div>
             <div class="card-body">
                 <p style="text-align: center">

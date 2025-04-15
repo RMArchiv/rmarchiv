@@ -60,25 +60,25 @@
                                     </div>
                                 </div>
                                 <div class="form-group" id="row_name">
-                                    <label  for="email" class="col-lg-2 col-form-label">e-mail adresse:</label>
+                                    <label  for="email" class="col-lg-2 col-form-label">{{ trans('app.email_address') }}</label>
                                     <div class="col-lg-10">
                                         <input id="email" type="email" class="col-md-4 form-control" name="email" value="{{ old('email') }}" required>
                                     </div>
                                 </div>
                                 <div class="form-group" id="row_pass">
-                                    <label for="password" class="col-lg-2 col-form-label">passwort: </label>
+                                    <label for="password" class="col-lg-2 col-form-label">{{ trans('app.password') }}</label>
                                     <div class="col-lg-10">
                                         <input id="password" type="password" class="form-control" name="password" required>
                                     </div>
                                 </div>
                                 <div class="form-group" id="row_pass2">
-                                    <label for="password-confirm" class="col-lg-2 col-form-label">passwort bestätigung:</label>
+                                    <label for="password-confirm" class="col-lg-2 col-form-label">{{ trans('app.password_confirm') }}</label>
                                     <div class="col-lg-10">
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                                     </div>
                                 </div>
                                 <div class="form-group" id="row_captcha">
-                                    <label for="captcha" class="col-lg-2 col-form-label">captcha:</label>
+                                    <label for="captcha" class="col-lg-2 col-form-label">Captcha:</label>
                                     <div class="col-lg-10">
                                         {!! captcha_img('rmarchiv') !!}
                                         <input id="captcha" class="form-control" name="captcha" required>
@@ -90,7 +90,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        senden
+                                        {{ trans('app.register') }}
                                     </button>
                                 </div>
                             </div>
