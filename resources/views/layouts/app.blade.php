@@ -92,7 +92,7 @@
 {{-- @include('_partials.navigation', ['part' => 'bottompart']) --}}
 @include('_partials.footer')
 
-@include('cookieConsent::index')
+@include('cookie-consent::index')
 
 </body>
 
