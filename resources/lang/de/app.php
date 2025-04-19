@@ -100,7 +100,7 @@ return [
     'connections' => 'Verbindungen',
     'contact_admin_or_moderator' => 'Kontaktiere einen Admin oder Moderator.',
     'content_type' => 'Inhaltstyp',
-    'coupdecoeur' => 'Coup de coeur',
+    'coupdecoeur' => 'Coup de Coeur',
     'create_new_pm' => 'Neue Privatnachricht erstellen',
     'create_news' => 'News erstellen',
     'create_news_error' => 'News konnte nicht erstellt werden',
@@ -445,7 +445,7 @@ return [
     'widget' => [
         'disable_widget_alltimetop' => 'Alltime Top Widget',
         'disable_widget_board' => 'Foren-Widget',
-        'disable_widget_cdc' => 'Coup de coeur Widget',
+        'disable_widget_cdc' => 'Coup de Coeur Widget',
         'disable_widget_comments' => 'Letzte-Kommentare-Widget',
         'disable_widget_gamesadded' => 'Hinzugefügte-Spiele-Widget',
         'disable_widget_gamesreleased' => 'Aktuelle-Spiele-Widget',
