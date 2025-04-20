@@ -1,13 +1,13 @@
 @import 'variables';
 @import '_custom';
-@import './node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
-//@import '../../../node_modules/bootstrap/scss/bootstrap';
+// @import './node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+@import '../../../node_modules/bootstrap/scss/bootstrap';
 
 @import "@fortawesome/fontawesome-free/scss/brands";
 @import "@fortawesome/fontawesome-free/scss/regular";
 @import "@fortawesome/fontawesome-free/scss/solid";
 @import "@fortawesome/fontawesome-free/scss/fontawesome";
-@import 'editormd/editormd'; //Original Import
+@import '../../../node_modules/editor.md/scss/editormd'; //Original Import
 @import "editormd_edit"; // Anpassungen zum Design - Muss angepasst werden!!!!!!!!!
 
 @import 'typeahead/typeahead.scss';
