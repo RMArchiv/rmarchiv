@@ -11,7 +11,7 @@
 @import "editormd_edit"; // Anpassungen zum Design - Muss angepasst werden!!!!!!!!!
 
 @import 'typeahead/typeahead.scss';
-@import "fine-uploader/fine-uploader";
+@import "fine-uploader/override-fine-uploader";
 
 //Filetypes
 @import 'types';
