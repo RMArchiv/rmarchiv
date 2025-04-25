@@ -42,33 +42,19 @@
                                 <label for="gamename" class="col-lg-2 col-form-label">Spiel</label>
                                 <input type="text" class="auto form-control" name="gamename" id="gamename">
                             </div>
-                            <script type="text/javascript">
-                                var sourcepath = new Bloodhound({
-                                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                                    queryTokenizer: Bloodhound.tokenizers.whitespace,
-                                    //prefetch: '../data/films/post_1960.json',
-                                    remote: {
-                                        url: '/ac_games/%QUERY',
-                                        wildcard: '%QUERY'
-                                    }
-                                });
-
-                                $('#gamename .auto').typeahead(null, {
-                                    name: 'gamename',
-                                    display: 'value',
-                                    source: sourcepath,
-                                    limit: 5,
-                                    templates: {
-                                        empty: [
+                            <script type="module">
+                                addSearch({
+                                    targetQuery: '#gamename .auto',
+                                    apiPath: "ac_games",
+                                    emptyTemplate: [
                                             '<div class="empty-message">',
                                             'Noch wurde nichts gefunden.',
                                             '</div>'
                                         ].join('\n'),
-                                        suggestion: function(data) {
-                                            console.log(data);
-                                            return '<p><strong>' + data.value + '</strong></p>';
-                                        }
-                                    }
+                                    name: "gamename",
+                                    display: "value",
+                                    limit: 5,
+                                    suggestionFunction: (data) => return '<p><strong>' + data.value + '</strong></p>';
                                 });
                             </script>
                         </div>

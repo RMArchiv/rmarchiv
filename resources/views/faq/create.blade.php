@@ -41,33 +41,19 @@
                                 <input autocomplete="off" class="auto" name="cat" id="cat" value=""/>
                             </div>
                         </div>
-                        <script type="text/javascript">
-                            var sourcepath = new Bloodhound({
-                                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                                //prefetch: '../data/films/post_1960.json',
-                                remote: {
-                                    url: '/ac_faqcat/%QUERY',
-                                    wildcard: '%QUERY'
-                                }
-                            });
-
-                            $('#row_cat .auto').typeahead(null, {
-                                name: 'cat',
-                                display: 'value',
-                                source: sourcepath,
-                                limit: 5,
-                                templates: {
-                                    empty: [
+                        <script type="module">
+                            addSearch({
+                                targetQuery: '#row_cat .auto',
+                                apiPath: "ac_faqcat",
+                                emptyTemplate: [
                                         '<div class="empty-message">',
                                         '{{ trans('app.faq_cat_not_found') }}',
                                         '</div>'
                                     ].join('\n'),
-                                    suggestion: function(data) {
-                                        console.log(data);
-                                        return '<p><strong>' + data.value + '</strong></p>';
-                                    }
-                                }
+                                name: "cat",
+                                display: "value",
+                                limit: 5,
+                                suggestionFunction: (data) => return '<p><strong>' + data.value + '</strong></p>';
                             });
                         </script>
                         <div class="form-group">

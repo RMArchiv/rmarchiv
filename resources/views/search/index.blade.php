@@ -43,6 +43,22 @@
                                 </div>
                             </div>
                             <script type="text/javascript">
+                                addSearch({
+                                    targetQuery: "#inputEmail",
+                                    apiPath: "ac_search",
+                                    emptyTemplate: [
+                                        '<div class="empty-message">',
+                                        'Noch wurde nichts gefunden.',
+                                        '</div>'
+                                    ].join('\n'),
+                                    name: "term",
+                                    display: "title",
+                                    limit: 5,
+                                    suggestionFunction: (data) => return data.value;
+                                    classNames:{
+                                        menu: 'search_menu',
+                                    }
+                                });
                                 var sourcepath = new Bloodhound({
                                     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
                                     queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -69,9 +85,7 @@
                                             return data.value;
                                         }
                                     },
-                                    classNames: {
-                                        menu: 'search_menu',
-                                    }
+                                    classNames: classNames
                                 });
                             </script>
                             <div class="form-group">

@@ -5,37 +5,19 @@
             {{ Form::open(['action' => ['SearchController@search']], ['class' => 'form-horizontal']) }}
                 <input id="term" type='text' name='term' />
                 <input id="term" type='submit' value='Submit' />
-            <script type="text/javascript">
-                var sourcepath = new Bloodhound({
-                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                    queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    //prefetch: '../data/films/post_1960.json',
-                    remote: {
-                        url: '/ac_search/%QUERY',
-                        wildcard: '%QUERY'
-                    }
-                });
-
-                $('#term').typeahead(null, {
-                    name: 'term',
-                    display: 'title',
-                    source: sourcepath,
-                    limit: 5,
-                    templates: {
-                        empty: [
+            <script type="module">
+                    addSearch({
+                        targetQuery: "#term",
+                        apiPath: "ac_search",
+                        emptyTemplate: [
                             '<div class="empty-message">',
                             '{{ trans('app.search_nothing_found') }}',
                             '</div>'
                         ].join('\n'),
-                        suggestion: function(data) {
-                            console.log(data);
-                            return data.value;
-                        }
-                    },
-                    classNames: {
-                        menu: 'search_menu',
-                    }
-                });
+                        name: "term",
+                        display: "title",
+                        suggestionFunction: (data) => return data.value;
+                    });
             </script>
             {{ Form::close() }}
         </div>

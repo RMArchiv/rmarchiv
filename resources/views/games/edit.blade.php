@@ -218,33 +218,19 @@
                         </div>
                         <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
 
-                        <script type="text/javascript">
-                            var sourcepath = new Bloodhound({
-                                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                                //prefetch: '../data/films/post_1960.json',
-                                remote: {
-                                    url: '/ac_developer/%QUERY',
-                                    wildcard: '%QUERY'
-                                }
-                            });
-
-                            $('#row_developer .auto').typeahead(null, {
-                                name: 'developers',
-                                display: 'value',
-                                source: sourcepath,
+                        <script type="module">
+                            addSearch({
+                                targetQuery: "#row_developer .auto",
+                                apiPath: "ac_developer",
+                                emptyTemplate: [
+                                    '<div class="empty-message">',
+                                    '{{trans('app.developer_not_found')}}',
+                                    '</div>'
+                                ].join('\n'),
+                                name: "developers",
+                                display: "value",
                                 limit: 5,
-                                templates: {
-                                    empty: [
-                                        '<div class="empty-message">',
-                                        '{{trans('app.developer_not_found')}}',
-                                        '</div>'
-                                    ].join('\n'),
-                                    suggestion: function (data) {
-                                        console.log(data);
-                                        return '<p><strong>' + data.value + '</strong></p>';
-                                    }
-                                }
+                                suggestionFunction: (data) => return '<p><strong>' + data.value + '</strong></p>';
                             });
                         </script>
                         {!! Form::close() !!}
@@ -315,32 +301,18 @@
                         </div>
                         <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
                         <script type="text/javascript">
-                            var sourcepath = new Bloodhound({
-                                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                                //prefetch: '../data/films/post_1960.json',
-                                remote: {
-                                    url: '/ac_user/%QUERY',
-                                    wildcard: '%QUERY'
-                                }
-                            });
-
-                            $('#row_user .auto').typeahead(null, {
-                                name: 'user',
-                                display: 'value',
-                                source: sourcepath,
-                                limit: 5,
-                                templates: {
-                                    empty: [
-                                        '<div class="empty-message">',
-                                        '{{trans('app.user_not_found')}}',
-                                        '</div>'
+                            addSearch({
+                                targetQuery: "#row_user .auto",
+                                apiPath: "ac_user",
+                                emptyTemplate: [
+                                    '<div class="empty-message">',
+                                    '{{trans('app.user_not_found')}}',
+                                    '</div>'
                                     ].join('\n'),
-                                    suggestion: function (data) {
-                                        console.log(data);
-                                        return '<p><strong>' + data.value + '</strong></p>';
-                                    }
-                                }
+                                name: "user",
+                                display: "value",
+                                limit: 5,
+                                suggestionFunction: (data) => return '<p><strong>' + data.value + '</strong></p>';
                             });
                         </script>
                         {!! Form::close() !!}

@@ -42,33 +42,18 @@
                         <div class="form-group" id="row_awardpage">
                             <label for="awardpage">{{ trans('app.add_award_website') }}</label>
                             <input autocomplete="off" class="auto form-control" name="awardpage" id="awardpage" placeholder="awardpage" value=""/>
-                            <script type="text/javascript">
-                                var sourcepath = new Bloodhound({
-                                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                                    queryTokenizer: Bloodhound.tokenizers.whitespace,
-                                    //prefetch: '../data/films/post_1960.json',
-                                    remote: {
-                                        url: '/ac_award_page/%QUERY',
-                                        wildcard: '%QUERY'
-                                    }
-                                });
-
-                                $('#row_awardpage .auto').typeahead(null, {
-                                    name: 'awardpage',
-                                    display: 'value',
-                                    source: sourcepath,
-                                    limit: 5,
-                                    templates: {
-                                        empty: [
+                            <script type="module">
+                                addSearch({
+                                    targetQuery: "#row_awardpage .auto",
+                                    apiPath: "ac_award_page",
+                                    emptyTemplate: [
                                             '<div style="color: #00001a;">',
                                             '{{trans('app.award_website_not_found')}}',
                                             '</div>'
                                         ].join('\n'),
-                                        suggestion: function(data) {
-                                            console.log(data);
-                                            return '<p><strong>' + data.value + '</strong></p>';
-                                        }
-                                    }
+                                    name: "awardpage",
+                                    display: "value",
+                                    suggestionFunction: (data) => return '<p><strong>' + data.value + '</strong></p>';
                                 });
                             </script>
                         </div>
@@ -105,32 +90,18 @@
                             <label for="awardname">{{ trans('app.award_title') }}</label>
                             <input autocomplete="off" class="auto form-control" name="awardname" id="awardname" placeholder="awardname" value=""/>
                         </div>
-                        <script type="text/javascript">
-                            var sourcepath = new Bloodhound({
-                                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                                remote: {
-                                    url: '/ac_award_cat/%QUERY',
-                                    wildcard: '%QUERY'
-                                }
-                            });
-
-                            $('#row_awardname .auto').typeahead(null, {
-                                name: 'awardname',
-                                display: 'value',
-                                source: sourcepath,
-                                limit: 5,
-                                templates: {
-                                    empty: [
-                                        '<div style="color: #00001a;">',
-                                        '{{trans('app.award_not_found')}}',
-                                        '</div>'
-                                    ].join('\n'),
-                                    suggestion: function(data) {
-                                        console.log(data);
-                                        return '<p><strong>' + data.value + '</strong></p>';
-                                    }
-                                }
+                        <script type="module">
+                            addSearch({
+                                targetQuery: "#row_awardname .auto",
+                                apiPath: "ac_award_cat",
+                                emptyTemplate: [
+                                    '<div style="color: #00001a;">',
+                                    '{{trans('app.award_not_found')}}',
+                                    '</div>'
+                                ].join('\n'),
+                                name: "awardname",
+                                display: "value",
+                                suggestionFunction: (data) => return '<p><strong>' + data.value + '</strong></p>';
                             });
                         </script>
                         <div class="form-group">

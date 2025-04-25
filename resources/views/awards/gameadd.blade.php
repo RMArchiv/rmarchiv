@@ -43,33 +43,19 @@
                                 <div class="form-group" id="row_game">
                                     <label for="game">{{ trans('app.gametitle') }} *</label>
                                     <input autocomplete="off" class="auto form-control" name="game" id="game" placeholder="{{ trans('app.gametitle') }}" value=""/>
-                                    <script type="text/javascript">
-                                        var sourcepath = new Bloodhound({
-                                            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                                            queryTokenizer: Bloodhound.tokenizers.whitespace,
-                                            //prefetch: '../data/films/post_1960.json',
-                                            remote: {
-                                                url: '/ac_games/%QUERY',
-                                                wildcard: '%QUERY'
-                                            }
-                                        });
-
-                                        $('#row_game .auto').typeahead(null, {
-                                            name: 'game',
-                                            display: 'id',
-                                            source: sourcepath,
+                                    <script type="module">
+                                        addSearch({
+                                            targetQuery: "#row_game .auto",
+                                            apiPath: "ac_games",
+                                            emptyTemplate: [
+                                                '<div style="color: #00001a;">',
+                                                '{{trans('app.game_not_found')}}',
+                                                '</div>'
+                                            ].join('\n'),
+                                            name: "game",
+                                            display: "id",
                                             limit: 9,
-                                            templates: {
-                                                empty: [
-                                                    '<div style="color: #00001a;">',
-                                                    '{{trans('app.game_not_found')}}',
-                                                    '</div>'
-                                                ].join('\n'),
-                                                suggestion: function(data) {
-                                                    console.log(data);
-                                                    return '<p><strong>' + data.value + '</strong></p>'
-                                                }
-                                            }
+                                            suggestionFunction: (data) => return '<p><strong>' + data.value + '</strong></p>';
                                         });
                                     </script>
                                 </div>

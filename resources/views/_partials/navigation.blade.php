@@ -92,33 +92,17 @@
                 </div>
 
 
-                <script type="text/javascript">
-                    var sourcepath = new Bloodhound({
-                        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                        queryTokenizer: Bloodhound.tokenizers.whitespace,
-                        //prefetch: '../data/films/post_1960.json',
-                        remote: {
-                            url: '/ac_search/%QUERY',
-                            wildcard: '%QUERY'
-                        }
-                    });
-
-                    $('#term').typeahead(null, {
-                        name: 'term',
-                        display: 'title',
-                        source: sourcepath,
-                        limit: 5,
-                        templates: {
-                            empty: [
-                                '<div class="empty-message">',
-                                '{{ trans('app.search_nothing_found') }}',
-                                '</div>'
-                            ].join('\n'),
-                            suggestion: function(data) {
-                                console.log(data);
-                                return data.value;
-                            }
-                        },
+                <script type="module">
+                    addSearch({
+                        targetQuery: "#term",
+                        apiPath: "ac_search",
+                        emptyTemplate: [
+                            '<div class="empty-message">',
+                            '{{ trans('app.search_nothing_found') }}',
+                            "</div>",
+                        ].join("\n"),
+                        name: "term",
+                        display: "title",
                         classNames: {
                             menu: 'search_menu',
                         }

@@ -1,7 +1,9 @@
 {
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "npm run development",
+    "build": "vite build",
+    "dev": "vite",
     "development": "mix",
     "watch": "mix watch",
     "watch-poll": "mix watch -- --watch-options-poll=1000",
@@ -11,6 +13,7 @@
     "postinstall": "patch-package"
   },
   "devDependencies": {
+    "@rollup/plugin-inject": "^5.0.5",
     "axios": "^0.27.2",
     "bootstrap-rating": "^0.0.1",
     "bootstrap-sass": "^3.4.3",
@@ -30,16 +33,23 @@
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.82.0",
     "sass-loader": "^12.6.0",
-    "typeahead.js": "^0.11.1",
     "vue": "^3.2.33",
     "vue-resource": "^1.5.3",
     "vue-template-compiler": "^2.6.14"
   },
   "dependencies": {
+    "@algolia/autocomplete-js": "^1.18.1",
     "@fortawesome/fontawesome-free": "^6.1.1",
+    "@tailwindcss/vite": "^4.1.4",
+    "bloodhound-js": "^1.2.3",
     "bootstrap": "^4.6.1",
     "bower": "^1.8.14",
+    "imports-loader": "^5.0.0",
     "jquery": "^3.6.0",
-    "popper.js": "^1.16.1"
+    "laravel-vite-plugin": "^1.2.0",
+    "popper.js": "^1.16.1",
+    "tailwindcss": "^4.1.4",
+    "typeahead.js": "^0.11.1",
+    "vite": "^6.3.2"
   }
 }

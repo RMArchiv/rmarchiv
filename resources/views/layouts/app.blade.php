@@ -28,11 +28,13 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
     <link rel="canonical" href="http://www.rmarchiv.de/"/>
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-ui.css') }}" media="screen" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}" media="screen" />
-
-    <script src="{{ asset('js/all.js') }}"></script>
-
+    @vite('resources/assets/js/app.js')
+    @vite('node_modules/typeahead.js/dist/typeahead.jquery.js?commonjs-entry')
+    @vite('node_modules/inline-attachment/src/inline-attachment.js?commonjs-entry')
+    @vite('node_modules/inline-attachment/src/jquery.inline-attachment.js?commonjs-entry')
+    @vite('node_modules/editor.md/editormd.js?commonjs-entry')
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     <script type="text/javascript">
         <!--
         var pixelWidth = screen.width;
