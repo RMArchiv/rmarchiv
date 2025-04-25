@@ -71,7 +71,7 @@
                                         <a href='{{ url('users', $comment->user_id) }}'
                                            title="{{ $comment->user->name }}">
                                             <img
-                                                    style="width: 48px;" class="mr-3"
+                                                    style="width: 48px;" class="me-3"
                                                     src='//{{ config('app.avatar_path') }}?gender=male&id={{ $comment->user_id }}'
                                                     alt="{{ $comment->user->name }}"/>
                                         </a>

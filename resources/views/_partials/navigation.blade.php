@@ -3,11 +3,11 @@
 <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="{{ trans('app.toggle_navigation') }}">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="{{ trans('app.toggle_navigation') }}">
                 <i class="fa fa-bars fa-lg py-1" style="color: #ffbf00;"></i>
             </button>
             <div class="collapse navbar-collapse" id="topNav">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">{{ trans('app.home') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('news') }}">{{ trans('app.news') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('games') }}">{{ trans('app.games') }}</a></li>
@@ -86,27 +86,20 @@
                 </ul>
 
                 {{ Form::open(['action' => ['SearchController@search'], 'class' => 'form-inline my-2 my-lg-0']) }}
-                <div class="form-inline mt-2 mt-md-0" style="flex-flow: nowrap">
-                    <input type="text" class="form-control form-control-sm mr-sm-2" id="term" name="term" placeholder="{{ trans('app.search') }}">
+                {{-- <div class="form-inline mt-2 mt-md-0" style="flex-flow: nowrap">
+                    <input type="text" class="form-control form-control-sm me-sm-2" id="term" name="term" placeholder="{{ trans('app.search') }}">
                     <button type="submit" class="btn btn-outline-success my-2 my-sm-0 btn-sm">{{ trans('app.submit') }}</button>
-                </div>
-
-
+                </div> --}}
+                <div id="autocomplete"></div>
+                <div id="searchcontainer"></div>
                 <script type="module">
-                    addSearch({
-                        targetQuery: "#term",
-                        apiPath: "ac_search",
-                        emptyTemplate: [
-                            '<div class="empty-message">',
-                            '{{ trans('app.search_nothing_found') }}',
-                            "</div>",
-                        ].join("\n"),
-                        name: "term",
-                        display: "title",
-                        classNames: {
-                            menu: 'search_menu',
-                        }
-                    });
+                    createAutocomplete(
+                        ()=>{return "ac_search_new"},
+                        "{{ trans('app.search') }}",
+                        "autocomplete",
+                        "searchcontainer",
+                        '{{ trans('app.search_nothing_found') }}',
+                        {})
                 </script>
                 {{ Form::close() }}
 

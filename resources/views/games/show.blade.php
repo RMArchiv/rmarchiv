@@ -2,13 +2,11 @@
 @section('pagetitle', $game->title.' - '.$game->subtitle)
 @section('content')
     @if($game)
-        <script>
-            $(document).ready(function () {
-                $('[data-toggle="userlist"]').popover({
-                    html: true,
-                    container: 'body'
-                });
-            });
+        <script type="module">
+            window.onload=function () {
+                const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="userlist"]')
+                const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, {sanitize:false}))
+            };
         </script>
 
         <div class="container">
@@ -28,9 +26,10 @@
                                             @endphp
                                         @endif
                                         <a role="button" class="btn btn-primary"
-                                           data-toggle="userlist"
+                                           data-bs-toggle="userlist"
+                                           data-bs-content="<span>wdwdwd</span>"
                                            title="benutzerliste"
-                                           data-content="{!! $ul_data !!}">
+                                           >
                                             <span class="fa fa-list"></span></a>
                                         @permission(('create-games'))
                                         <a href="{{ route('history.game.index', ['id' => $game->id]) }}" role='button' class='btn btn-primary'><span class="fa fa-history"></span></a>
@@ -597,7 +596,7 @@
         <h1>{{ trans('app.game_does_not_exist') }}</h1>
     @endif
 
-    <script>
+    <script type="module">
         $(function () { /* to make sure the script runs after page load */
 
             $('.readmore').each(function (event) { /* select all divs with the item class */

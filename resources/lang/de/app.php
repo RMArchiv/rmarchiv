@@ -37,6 +37,8 @@ return [
     'add_resource' => 'Ressource hinzufügen',
     'add_tag' => 'Tag hinzufügen',
     'added_tags' => 'Hinzugefügte Tags',
+    'addition_date' => 'Hinzugefügt',
+    'release_date' => 'Veröffentlichung',
     'administration_of' => 'Administration von',
     'alltime_top' => 'Alltime Top',
     'alltime_top_widget' => 'Top of Alltime',

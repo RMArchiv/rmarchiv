@@ -19,11 +19,11 @@
                     <ul class="list-group">
                         @foreach($cdcs->reverse() as $c)
                             <li class="list-group-item media" style="margin-top: 0px;">
-                                <div class="float-right">
+                                <div class="float-end">
                                     Gekürt am: {{ $c->created_at }}
                                 </div>
-                                <a class="float-left" href="{{ url('games', $c->game->id) }}"><img width="100px"
-                                                                                               class="mr-3"
+                                <a class="float-start" href="{{ url('games', $c->game->id) }}"><img width="100px"
+                                                                                               class="me-3"
                                                                                                src='{{ route('screenshot.show', [$c->game->id, 1]) }}'
                                                                                                alt='{{ trans('app.titlescreen') }}'
                                                                                                title='{{ trans('app.titlescreen') }}'/></a>
@@ -59,14 +59,14 @@
                                     </div>
                                     <div class="media-body" style="font-size: 12px;">
                                         {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($c->game->id) !!}<br>
-                                        release date:
+                                        {{ trans('app.release_date') }}:
                                         @if(\Carbon\Carbon::parse($c->game->release_date)->year != -1 )
                                             {{ $c->game->release_date }}
                                         @else
                                             {{ \Carbon\Carbon::parse(\App\Helpers\DatabaseHelper::getReleaseDateFromGameId($c->game->id))->toDateString() }}
                                         @endif
                                         <span> • </span>
-                                        hinzugefügt {{ \Carbon\Carbon::parse($c->game->created_at)->diffForHumans() }}
+                                        {{ trans('app.addition_date') }} {{ \Carbon\Carbon::parse($c->game->created_at)->diffForHumans() }}
                                         <span> • </span>
                                         <img src='/assets/rate_up.gif'
                                              alt='{{ trans('app.rate_up') }}'/> {{ $c->game->voteup or 0 }} -

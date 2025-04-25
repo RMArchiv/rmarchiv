@@ -105,7 +105,7 @@
                                     <div class="media-body active">
                                         <div class="media">
                                             <a href="{{ action('UserController@show', $post->user->id) }}">
-                                                <img style="width: 48px;" class="mr-3" src="//{{ config('app.avatar_path') }}?size=160&gender=male&id={{ $post->user->id }}">
+                                                <img style="width: 48px;" class="me-3" src="//{{ config('app.avatar_path') }}?size=160&gender=male&id={{ $post->user->id }}">
                                             </a>
                                             <div class="media-body">
                                                 {!! \App\Helpers\InlineBoxHelper::GameBox($post->content_html) !!}

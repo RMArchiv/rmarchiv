@@ -4,7 +4,7 @@
     <a class="pull-right" href="{{ route('board.cat.show', isset($cat)?$cat->id:0) }}"><span class="badge">{{ $count = \App\Models\BoardPost::whereCatId($cat?->id)?->count() ?? 0 }}</span></a>
 
     @if($count != 0 && isset($cat->last_user))
-        <a class="pull-left" href="{{ url('users', $cat->last_user->id) }}"><img class="mr-3" width="42px" src="//{{ config('app.avatar_path') }}?size=42&gender=male&id={{ $cat->last_user->id }}" alt="{{ $cat->last_user->name }}"></a>
+        <a class="pull-left" href="{{ url('users', $cat->last_user->id) }}"><img class="me-3" width="42px" src="//{{ config('app.avatar_path') }}?size=42&gender=male&id={{ $cat->last_user->id }}" alt="{{ $cat->last_user->name }}"></a>
     @endif
 
     <div class="thread-info">

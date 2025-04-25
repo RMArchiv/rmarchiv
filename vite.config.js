@@ -1,26 +1,24 @@
 import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
-import tailwindcss from "@tailwindcss/vite";
-import inject from "@rollup/plugin-inject";
 
 export default defineConfig({
   plugins: [
-    inject({
-        $: 'jquery',
-        jQuery: 'jquery',
-        Bloodhound: 'bloodhound-js'
-    }),
     laravel({
       input: [
+        // "node_modules/typeahead.js/dist/bloodhound",
+        // "node_modules/typeahead.js/dist/typeahead.jquery.js",
+        // "node_modules/bloodhound-js/dist/bloodhound.min.js",
+        // "node_modules/editor.md/editormd",
+        // 'node_modules/inline-attachment/src/inline-attachment.js',
+        // 'node_modules/inline-attachment/src/jquery.inline-attachment.js',
+        // 'node_modules/editor.md/editormd.js',
         "resources/assets/sass/app.scss",
         "resources/assets/js/app.js",
-        // "node_modules/typeahead.js/dist/bloodhound",
-        "node_modules/bloodhound-js/dist/bloodhound.min.js",
-        "node_modules/inline-attachment/src/inline-attachment",
-        "node_modules/inline-attachment/src/jquery.inline-attachment",
-        "node_modules/editor.md/editormd",
       ],
       refresh: true,
     }),
   ],
+  build: {
+    sourcemap: true,
+  },
 });

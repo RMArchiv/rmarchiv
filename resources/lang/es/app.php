@@ -36,6 +36,8 @@ return [
   'add_permissions'                   => 'Añadir permisos',
   'add_resource'                      => 'Añadir recurso',
   'add_tag'                           => 'Añadir etiqueta',
+  'addition_date'                     => 'Agregado',
+  'release_date'                      => 'Lanzamiento',
   'added_tags'                        => 'Etiquetas añadidas',
   'administration_of'                 => 'Administración de',
   'alltime_top'                       => 'Los mejores de siempre',

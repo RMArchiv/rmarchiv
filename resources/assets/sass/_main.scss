@@ -1,0 +1,270 @@
+$url_types: url(/assets/types.png);
+
+%extend_types {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  overflow: hidden;
+  line-height: 100px;
+  background-image: $url_types;
+}
+
+%extend_faces {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  overflow: hidden;
+  line-height: 100px;
+}
+
+body {
+  font-size: 0.9rem;
+}
+
+li>p {
+  margin-bottom: 0;
+}
+
+p>img {
+  max-width: 100%;
+  height: auto;
+}
+
+.navbar-light .navbar-toggler-icon {
+  color: $rm-link;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://ww…p='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-light{
+  background-color: $rm-base;
+  color: $rm-text;
+}
+
+.navbar-light .navbar-nav .nav-link{
+  color: $rm-link;
+}
+
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus{
+  color: $rm-link-hover;
+}
+
+.table th, .table td {
+  border-top: 1px solid $rm-base;
+}
+
+.btn-secondary {
+  color: $rm-link;
+  background-color: $rm-base;
+  border-color: $rm-base-p1;
+}
+
+header[role="banner"] {
+  #logo-main {
+    display: block;
+    margin: 20px auto;
+  }
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: $rm-link;
+  background-color: $rm-base;
+  border: 1px solid $rm-base-p2;
+}
+.page-item.disabled .page-link {
+  color: #868e96;
+  pointer-events: none;
+  cursor: auto;
+  background-color: $rm-base;
+  border-color: $rm-base-p2;
+}
+.page-item.active .page-link {
+  z-index: 1;
+  color: $rm-text;
+  background-color: $rm-base-p1;
+  border-color: $rm-base-p2;
+}
+.page-link:focus, .page-link:hover {
+  color: $rm-link-hover;
+  text-decoration: none;
+  background-color: $rm-base-p1;
+  border-color: $rm-base-p2;
+}
+
+
+.facei {
+  @extend %extend_faces;
+  float: left;
+}
+
+.typei {
+  @extend %extend_types;
+  float: left;
+}
+
+.table-striped {
+  > tbody > tr:nth-of-type(odd) {
+    //background-color: $table-bg-accent;
+  }
+  > tbody > tr:nth-of-type(even) {
+    //background-color: $gray-darker;
+  }
+}
+.list-group-item {
+  //background-color: $gray-darker;
+}
+
+.panel-body {
+  //background-color: $gray-darker;
+}
+
+.table-hover {
+  > tbody > tr{
+    //background-color: $gray-darker;
+  }
+  > tbody > tr:hover {
+    //background-color: $gray-dark;
+  }
+}
+
+.row-equal {
+  margin-bottom: -99999px;
+  padding-bottom: 99999px;
+}
+
+//userliste
+.user-row {
+  margin-bottom: 14px;
+}
+
+.user-row:last-child {
+  margin-bottom: 0;
+}
+
+.dropdown-user {
+  margin: 13px 0;
+  padding: 5px;
+  height: 100%;
+}
+
+.dropdown-user:hover {
+  cursor: pointer;
+}
+
+.table-user-information > tbody > tr {
+  border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information > tbody > tr:first-child {
+  border-top: 0;
+}
+
+
+.table-user-information > tbody > tr > td {
+  border-top: 0;
+}
+
+/* Cookies */
+
+.cookies {
+  position: fixed;
+  z-index: 9999;
+  right: 0;
+  left: 0;
+  width: 100%;
+  padding-right: 105px;
+  transition: all .4s ease;
+  //color: $alert-danger-text;
+  //background: $alert-danger-bg; /* fallback for old browsers */
+  top: 0;
+  animation-name: cpcookiestop;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+
+}
+
+@keyframes cpcookiestop {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+.cookies-message-link {
+  color: #ffeb3b;
+  opacity: 0.8;
+}
+
+.cookies-message-link:hover {
+  text-decoration: none;
+  color: #ffeb3b;
+  opacity: 1;
+}
+
+#cookies-close:checked ~ #cookies,
+#cookies-close:checked + .cookies-close {
+  top: -50%;
+}
+
+.cookies-close {
+  position: fixed;
+  z-index: 10000;
+  right: 20px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 400;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.2);
+  top: 10px;
+  animation-name: cpcookiesclosetop;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+@keyframes cpcookiesclosetop {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 10px;
+  }
+}
+
+.cookies-close:hover {
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.cookies-message {
+  margin: 20px;
+}
+
+blockquote {
+  margin-left: 1em;
+  font-size: 0.9em;
+  background-color: $rm-base-p2;
+}
+
+#searchcontainer {
+  div {
+    z-index: 1000;
+  }
+}
+
+// Breacrumb 5 overwrites for same look as in version 4
+// Default font
+body {
+  font-family:  $font-family-sans-serif;
+}

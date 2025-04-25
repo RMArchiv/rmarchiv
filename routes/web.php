@@ -12,6 +12,9 @@ Route::get('/', 'IndexController@index')->name('home');
 Route::get('/impressum', function () {
     return View::make('_pages.impressum');
 });
+Route::get('/tester', function () {
+    return View::make('_pages.test');
+});
 Route::get('/datenschutz', function() {
     return View::make('_pages.datenschutz');
 });
@@ -222,6 +225,7 @@ Route::get('ac_award_cat/{term}', 'AutocompleteController@awardcat');
 Route::get('ac_award_subcat/{term}', 'AutocompleteController@awardsubcat');
 Route::get('ac_user/{term}', 'AutocompleteController@user');
 Route::get('ac_search/{term}', 'AutocompleteController@search');
+Route::get('ac_search_new/{term}', 'AutocompleteController@searchNew');
 
 //Routen für Messageboxen
 Route::get('submit/logo/success', 'MsgBoxController@submit_logo')->name('submit.logo.success');

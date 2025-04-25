@@ -28,7 +28,66 @@ class AutocompleteController extends Controller
             $result[] = [
                 'id'    => $g->id,
                 'title' => $g->title,
-                'value' => '<div class="searchresult">'.\View::make('_partials.inline_gamebox', ['game' => $g])->render().'</div>',
+                'value' => \View::make('_partials.inline_gamebox', ['game' => $g])->render(),
+            ];
+        }
+
+        return \Response::json($result);
+    }
+    /**
+     *
+     * returns autocomplete values for games as json
+     * @param $term
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function searchNew($term)
+    {
+        $result = [];
+        $games = Game::search($term)->get();
+
+        foreach ($games as $g) {
+            $result[] = [
+                'link'   => url('games', $g->id),
+                'comments'   => $g->comments,
+                'gameTypeShort' => $g?->gamefiles?->first()?->gamefiletype?->short,
+                'gameType' => $g?->gamefiles?->first()?->gamefiletype?->title,
+
+                'maker' => $g->maker->title,
+                'makerShort' => $g->maker->short,
+
+                'languageIconURLSegment' => strtoupper($g->language->short),
+                'language' => $g->language->name,
+
+                "urlGame" => action('GameController@show', $g->id),
+                'makerLink' => route('maker.show', $g->maker->id),
+
+                'id'    => $g->id,
+                "subtitle" => $g->subtitle,
+                'title' => $g->title,
+                'description' => $g->desc_md,
+
+                'developers' => \App\Helpers\DatabaseHelper::getDevelopersList($g->id),
+
+                'release' => \Carbon\Carbon::parse(\App\Helpers\DatabaseHelper::getReleaseDateFromGameId($g->id))->toDateString(),
+                'created' => \Carbon\Carbon::parse($g->created_at)->diffForHumans(),
+
+                'votesUp' => $g->voteup ?? 0,
+                'votesDown' => $g->votedown ?? 0,
+
+                'tags' => $g->tags,
+                'hasCdc' => $g->cdcs->count() > 0,
+                'screenshot' => route('screenshot.show', [$g->id, 1]),
+                'value' => \View::make('_partials.inline_gamebox', ['game' => $g])->render(),
+                'average' => number_format(floatval($g->avg), 2),
+                'translation' => array(
+                    'titleScreenAlt' => trans('app.titlescreen'),
+                    'coupdecoeur' => trans('app.coupdecoeur'),
+                    'released' => trans('app.release_date'),
+                    'created' => trans('app.created_date'),
+                    'rate_up' => trans('app.rate_up'),
+                    'rate_neut' => trans('app.rate_neut'),
+                    'rate_down' => trans('app.rate_down'),
+                ),
             ];
         }
 

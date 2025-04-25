@@ -27,7 +27,7 @@
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.savegames') }}
-                        <div class="float-right">
+                        <div class="float-end">
                             <button type="button" class="btn btn-secondary btn-xs" data-toggle="modal" data-target=".savegame-upload">{{ trans('app.upload') }}</button>
                         </div>
                     </div>
@@ -36,10 +36,10 @@
                             <li class="media">
                                 <div class="media-body active">
                                     <div class="media">
-                                        <div class="float-left">
+                                        <div class="float-start">
                                             <span class="facei face_{{ $s['data'][100]['char1_face']['img_idx']+1 }} mb-3" style="background-image: url({{ $s['data'][100]['char1_face']['url'] }})">faceset</span>
                                         </div>
-                                        <div class="btn-group float-right img-rounded" role="group">
+                                        <div class="btn-group float-end img-rounded" role="group">
                                             <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target=".savegame-delete-{{ $s['id'] }}">{{ trans('app.delete') }}</button>
                                             <a href="{{ action('SavegameManagerController@download', $s['id']) }}" class="btn btn-secondary btn-sm">{{ trans('app.download') }}</a>
                                             <a href="{{ action('Player2kController@index', $gamefile_id).'?load-game-id='.$s['slot'] }}" class="btn btn-primary btn-sm">{{ trans('app.play_in_browser') }}</a>

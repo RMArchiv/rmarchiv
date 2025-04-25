@@ -7,7 +7,7 @@
                 <div class="page-header">
                     <h1>{{ trans('app.awards') }}
                         @if(Auth::check())
-                            <div class="float-right">
+                            <div class="float-end">
                                 <a href="{{ route('awards.create') }}" role="button" class="btn btn-primary"><span class="fa fa-plus"></span></a>
                             </div>
                         @endif
