@@ -293,6 +293,7 @@ Route::group(['prefix' => 'events'], function () {
     });
 });
 
+// TODO check for auth to reduce harm
 //Attachment Routen
 Route::post('attachment/upload', 'SubmitController@attachment_submit');
 

@@ -94,16 +94,17 @@
                 <div id="searchcontainer"></div>
                 <script type="module">
                     createAutocomplete(
-                        ()=>{return "ac_search_new"},
-                        "{{ trans('app.search') }}",
-                        "autocomplete",
-                        "searchcontainer",
-                        '{{ trans('app.search_nothing_found') }}',
-                        {})
+                    {   apiPath:()=>{return "ac_search_new"},
+                        placeholder:"{{ trans('app.search') }}",
+                        searchbarSelector:"#autocomplete",
+                        panelSelector:"#searchcontainer",
+                        noResults:'{{ trans('app.search_nothing_found') }}',
+                        type:"games",
+                        action:"navigate",
+                        additionalProps:{}
+                    })
                 </script>
                 {{ Form::close() }}
-
-
             </div>
         </div>
     </div>

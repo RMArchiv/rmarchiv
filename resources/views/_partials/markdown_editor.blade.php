@@ -17,15 +17,15 @@
 <script type="module">
     window.onload = () => {
         ClassicEditor.create(document.querySelector('#editor'), {...ckEditorConfig,
-        simpleUpload: {
-            uploadUrl: '/attachment/upload',
-            withCredentials: true,
-            headers: {
-                'X-CSRF-TOKEN': 'CSRF-Token',
-                Authorization: '{{csrf_token()}}'
-            }
-        },
-        initialData:'{{ $edit_text ?? "" }}'})
+            simpleUpload: {
+                uploadUrl: '/attachment/upload',
+                withCredentials: true,
+                headers: {
+                    'X-CSRF-TOKEN': 'CSRF-Token',
+                    Authorization: '{{csrf_token()}}'
+                }
+            },
+            initialData:`{{ $edit_text ?? "" }}`})
     };
 </script>
 

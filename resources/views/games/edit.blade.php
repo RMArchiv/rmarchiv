@@ -212,26 +212,26 @@
                         {!! Form::open(['method' => 'POST', 'route' => ['games.developer.store', $game->id]]) !!}
                         <div class="form-group" id="row_developer">
                             <label for="developer" class="col-lg-2 col-form-label">{{trans('app.developer')}}</label>
-                            <div class="col-lg-10">
-                                <input autocomplete="off" type="text" class="auto form-control" id="developer" name="developer" value="">
+                            <div class="col-lg-10 autocomplete">
+                                <input autocomplete="off" type="text" class="d-none auto form-control" id="developer" name="developer" value="">
+                                <div id="searchbar"></div>
+                                <div id="searchcontainer"></div>
                             </div>
                         </div>
                         <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
 
                         <script type="module">
-                            addSearch({
-                                targetQuery: "#row_developer .auto",
-                                apiPath: "ac_developer",
-                                emptyTemplate: [
-                                    '<div class="empty-message">',
-                                    '{{trans('app.developer_not_found')}}',
-                                    '</div>'
-                                ].join('\n'),
-                                name: "developers",
-                                display: "value",
-                                limit: 5,
-                                suggestionFunction: (data) => return '<p><strong>' + data.value + '</strong></p>';
-                            });
+                            createAutocomplete({
+                                apiPath: ()=>{return "ac_developer"},
+                                placeholder: "{{ trans('app.search') }}",
+                                searchbarSelector:"#row_developer #searchbar",
+                                panelSelector:"#searchcontainer",
+                                noResults:'{{ trans('app.developer_not_found') }}',
+                                type:"list",
+                                action:"find",
+                                limit:5,
+                                inputSelector:".autocomplete #developer",
+                                additionalProps:{}})
                         </script>
                         {!! Form::close() !!}
                     </div>
@@ -284,8 +284,10 @@
                         {!! Form::open(['method' => 'POST', 'route' => ['gamecredits.store', $game->id], 'class' => 'form-horizontal']) !!}
                         <div class="form-group" id="row_user">
                             <label for="user" class="col-lg-2 col-form-label">{{trans('app.username')}}:</label>
-                            <div class="col-lg-10">
-                                <input autocomplete="off" class="auto form-control" name="user" id="user" placeholder="{{trans('app.username')}}" value=""/>
+                            <div class="col-lg-10 autocomplete">
+                                <input autocomplete="off" class="d-none auto form-control" name="user" id="user" placeholder="{{trans('app.username')}}" value=""/>
+                                <div id="user-searchbar"></div>
+                                <div id="user-searchcontainer"></div>
                             </div>
                         </div>
                         <div class="form-group" id="row_credittype">
@@ -300,20 +302,18 @@
                             </div>
                         </div>
                         <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
-                        <script type="text/javascript">
-                            addSearch({
-                                targetQuery: "#row_user .auto",
-                                apiPath: "ac_user",
-                                emptyTemplate: [
-                                    '<div class="empty-message">',
-                                    '{{trans('app.user_not_found')}}',
-                                    '</div>'
-                                    ].join('\n'),
-                                name: "user",
-                                display: "value",
-                                limit: 5,
-                                suggestionFunction: (data) => return '<p><strong>' + data.value + '</strong></p>';
-                            });
+                        <script type="module">
+                            createAutocomplete({
+                                apiPath: ()=>{return "ac_user"},
+                                placeholder: "{{ trans('app.search') }}",
+                                searchbarSelector:"#user-searchbar",
+                                panelSelector:"#user-searchcontainer",
+                                noResults:'{{ trans('app.user_not_found') }}',
+                                type:"list",
+                                action:"find",
+                                limit:5,
+                                inputSelector:".autocomplete #user",
+                                additionalProps:{}})
                         </script>
                         {!! Form::close() !!}
                     </div>
