@@ -9,14 +9,14 @@
     <textarea style="display:none;" name="msg" id="msg">@if(isset($edit_text)){{ $edit_text}}@endif</textarea>
 </div> --}}
 <div class="editor-container__editor">
-    <div id="editor">
-        <textarea style="display:none;" name="msg" id="msg">@if(isset($edit_text)){{ $edit_text}}@endif</textarea>
+    <div>
+        <textarea class="editor" style="display:none;" name="msg" id="msg">@if(isset($edit_text)){{ $edit_text}}@endif</textarea>
     </div>
 </div>
 
 <script type="module">
     window.onload = () => {
-        ClassicEditor.create(document.querySelector('#editor'), {...ckEditorConfig,
+        ClassicEditor.create(document.querySelector('.editor'), {...ckEditorConfig,
             simpleUpload: {
                 uploadUrl: '/attachment/upload',
                 withCredentials: true,

@@ -34,6 +34,10 @@ Tabellen in Datenbank erstellen
 ```bash
 php artisan migrate
 ```
+Um Datenablagen aufzurufen
+```bash
+php artisan storage:link
+```
 Language Tabellen füllen
 ```bash
 php artisan db:seed

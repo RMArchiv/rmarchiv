@@ -5,6 +5,7 @@
 
 import {
 	ClassicEditor,
+	Autoformat,
 	Autosave,
 	BlockQuote,
 	Bold,
@@ -83,6 +84,7 @@ export const ckEditorConfig = {
 	},
 	plugins: [
 		Autosave,
+		Autoformat,
 		BlockQuote,
 		Bold,
 		Code,

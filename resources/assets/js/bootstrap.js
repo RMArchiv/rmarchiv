@@ -6,7 +6,6 @@ import { activateBoostrapRating } from "./bootstrap-rating-v5.js";
 activateBoostrapRating()
 window["$"] = $;
 window["jQuery"] = $;
-// window.bootstrap = bootstrap;
 window["createAutocomplete"] = createAutocomplete;
 
 // import qq from "fine-uploader";
