@@ -227,6 +227,7 @@ return [
         Spatie\CookieConsent\CookieConsentServiceProvider::class,
         Cog\Laravel\Ban\Providers\BanServiceProvider::class,
         \Diglactic\Breadcrumbs\ServiceProvider::class,
+        Venturecraft\Revisionable\RevisionableServiceProvider::class,
 
         /*
          * Application Service Providers...
