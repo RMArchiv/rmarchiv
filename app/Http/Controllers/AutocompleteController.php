@@ -83,7 +83,7 @@ class AutocompleteController extends Controller
                     'titleScreenAlt' => trans('app.titlescreen'),
                     'coupdecoeur' => trans('app.coupdecoeur'),
                     'released' => trans('app.release_date'),
-                    'created' => trans('app.created_date'),
+                    'created' => trans('app.addition_date'),
                     'rate_up' => trans('app.rate_up'),
                     'rate_neut' => trans('app.rate_neut'),
                     'rate_down' => trans('app.rate_down'),

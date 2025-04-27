@@ -479,7 +479,7 @@
                                 <div class="card-header">{{ trans('app.popularity_helper') }}</div>
                                 <div class="card-body">
                                     <p>{{ trans('app.use_the_popularity_helper') }}</p>
-                                    <input type='text' value='{{ Request::fullUrl() }}' size='50' readonly='readonly'/>
+                                    <input type='text' value='{{ Request::fullUrl() }}' style="width:100%" readonly='readonly'/>
                                 </div>
                             </div>
                         </div>

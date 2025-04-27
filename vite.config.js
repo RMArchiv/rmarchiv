@@ -14,6 +14,7 @@ export default defineConfig({
         // 'node_modules/editor.md/editormd.js',
         "resources/assets/sass/app.scss",
         "resources/assets/js/app.js",
+        "resources/assets/js/ckeditorSetup.js",
       ],
       refresh: true,
     }),

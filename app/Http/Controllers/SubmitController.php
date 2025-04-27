@@ -56,8 +56,10 @@ class SubmitController extends Controller
     public function attachment_submit(Request $request)
     {
         \Debugbar::disable();
-
-        $file = $request->file('editormd-image-file');
+        $file = $request->file('upload');
+        if($file == null) {
+            return response('Error during upload', 403);
+        }
 
         $imageName = \Storage::putFile('attachments', new UploadedFile($file->path(), $file->getClientOriginalName()));
 

@@ -180,7 +180,6 @@ header[role="banner"] {
   right: 0;
   left: 0;
   width: 100%;
-  padding-right: 105px;
   transition: all .4s ease;
   //color: $alert-danger-text;
   //background: $alert-danger-bg; /* fallback for old browsers */
@@ -249,6 +248,10 @@ header[role="banner"] {
 
 .cookies-message {
   margin: 20px;
+  max-width: 50%;
+  @media only screen and (min-width: 1200px)  {
+    display: block;
+  }
 }
 
 blockquote {
