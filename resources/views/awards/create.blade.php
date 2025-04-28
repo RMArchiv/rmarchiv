@@ -16,7 +16,7 @@
                 @if (count($errors) > 0)
                     <div class="row">
                         <div class="alert alert-dismissible alert-warning">
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
                             <h4>Fehler!</h4>
                             <p>
                             <ul>
