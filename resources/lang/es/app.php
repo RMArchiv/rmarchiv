@@ -304,6 +304,17 @@ return [
   'report_game'                                     => 'Denunciar juego',
   'report_game_error'                               => 'Error al denunciar el juego',
   'reported_comments'                               => 'Comentarios denunciados',
+  'reports' => [
+    //TODO - not translated
+    'actions'             => "Actions",
+    'note'                => "Note",
+    'last_change_from'    => "Last change from",
+    'last_change_by'      => "Last change by",
+    'reported_game'       => "Reported game",
+    'status'              => "Status",
+    'user_empty_reports'  => "There are no reports yet.",
+    'user_reason'         => "Reason for report",
+  ],
   'resource_title'                                  => 'Título del recurso',
   'resources'                                       => 'Recursos',
   'resources_overview'                              => 'Vistazo de los recursos',

@@ -8,15 +8,15 @@
                 <table id="rmarchivbox_newslist" class="boxtable pagedtable">
                     <thead>
                     <tr class="sortable">
-                        <th>user</th>
-                        <th>datum</th>
-                        <th>gemeldetes spiel</th>
-                        <th>begründung für meldung</th>
-                        <th>status</th>
-                        <th>bemerkung</th>
-                        <th>letzte änderung am</th>
-                        <th>letzte änderung von</th>
-                        <th>aktionen</th>
+                        <th>{{ trans('app.user') }}</th>
+                        <th>{{ trans('app.date') }}</th>
+                        <th>{{ trans('app.reports.reported_game') }}</th>
+                        <th>{{ trans('app.reports.user_reason') }}</th>
+                        <th>{{ trans('app.reports.state') }}</th>
+                        <th>{{ trans('app.reports.note') }}</th>
+                        <th>{{ trans('app.reports.last_change_from') }}</th>
+                        <th>{{ trans('app.reports.last_change_by') }}</th>
+                        <th>{{ trans('app.reports.actions') }}</th>
                     </tr>
                     </thead>
                     @foreach($reports as $r)
@@ -54,7 +54,7 @@
             </div>
 
         @else
-            <h2>es sind noch keine reports vorhanden.</h2>
+            <h2>{{ trans('app.reports.user_empty_reports') }}</h2>
         @endif
     </div>
 @endsection
