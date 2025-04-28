@@ -58,7 +58,7 @@
                         @if($users->count() > 0)
                             <div class="checkbox">
                                 @foreach($users as $user)
-                                    <div class="btn-group" data-toggle="buttons">
+                                    <div class="btn-group" data-bs-toggle="buttons">
                                         <label class="btn btn-secondary">
                                             <input type="checkbox" autocomplete="off" name="recipients[]" value="{{ $user->id }}"> {{ $user->name }}
                                         </label>

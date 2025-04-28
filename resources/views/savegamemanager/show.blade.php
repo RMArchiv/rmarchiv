@@ -28,7 +28,7 @@
                     <div class="card-header">
                         {{ trans('app.savegames') }}
                         <div class="float-end">
-                            <button type="button" class="btn btn-secondary btn-xs" data-toggle="modal" data-target=".savegame-upload">{{ trans('app.upload') }}</button>
+                            <button type="button" class="btn btn-secondary btn-xs" data-bs-toggle="modal" data-bs-target=".savegame-upload">{{ trans('app.upload') }}</button>
                         </div>
                     </div>
                     <ul class="media-list">
@@ -40,7 +40,7 @@
                                             <span class="facei face_{{ $s['data'][100]['char1_face']['img_idx']+1 }} mb-3" style="background-image: url({{ $s['data'][100]['char1_face']['url'] }})">faceset</span>
                                         </div>
                                         <div class="btn-group float-end img-rounded" role="group">
-                                            <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target=".savegame-delete-{{ $s['id'] }}">{{ trans('app.delete') }}</button>
+                                            <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target=".savegame-delete-{{ $s['id'] }}">{{ trans('app.delete') }}</button>
                                             <a href="{{ action('SavegameManagerController@download', $s['id']) }}" class="btn btn-secondary btn-sm">{{ trans('app.download') }}</a>
                                             <a href="{{ action('Player2kController@index', $gamefile_id).'?load-game-id='.$s['slot'] }}" class="btn btn-primary btn-sm">{{ trans('app.play_in_browser') }}</a>
                                         </div>
@@ -66,7 +66,7 @@
                                                 <H2>{{ trans('app.delete_savegame') }}</H2>
                                                 <h4>{{ trans('app.are_you_sure_to_delete_savegame') }}</h4>
                                                 <a href="{{ action('SavegameManagerController@delete', $s['id']) }}" class="btn btn-secondary btn-sm">{{ trans('app.delete') }}</a>
-                                                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">{{ trans('app.close') }}</button>
+                                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">{{ trans('app.close') }}</button>
                                             </div>
                                         </div>
                                     </div>
@@ -102,7 +102,7 @@
                     </p>
                     <br><br>
                     <button type="submit" class="btn btn-secondary">{{ trans('app.upload') }}</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('app.close') }}</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ trans('app.close') }}</button>
                     {!! Form::close() !!}
                 </div>
             </div>
