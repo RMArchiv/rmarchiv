@@ -29,63 +29,24 @@
                                 <label for="inputEmail" class="col-lg-2 col-form-label">{{ trans('app.search') }}</label>
                                 <div class="col-lg-10">
                                     @if(isset($term))
-                                        <input class="form-control" id="inputEmail" autocomplete="off" type='text' name='term' size='64' value="{{ $term }}" />
+                                        <input class="d-none form-control" id="inputEmail" autocomplete="off" type='text' name='term' size='64' value="{{ $term }}" />
                                     @else
-                                        <input class="form-control" id="inputEmail" autocomplete="off" type='text' name='term' size='64' placeholder="{{ trans('app.search') }}" />
+                                        <input class="d-none form-control" id="inputEmail" autocomplete="off" type='text' name='term' size='64' placeholder="{{ trans('app.search') }}" />
                                     @endif
-                                    <script>
-                                        $("#inputEmail").typeahead({
-                                            highlight: true,
-                                            hint: true,
-                                            minLength: 1
-                                        });
-                                    </script>
+                                    <div class="searchbar"></div>
                                 </div>
                             </div>
-                            <script type="text/javascript">
-                                addSearch({
-                                    targetQuery: "#inputEmail",
-                                    apiPath: "ac_search",
-                                    emptyTemplate: [
-                                        '<div class="empty-message">',
-                                        'Noch wurde nichts gefunden.',
-                                        '</div>'
-                                    ].join('\n'),
-                                    name: "term",
-                                    display: "title",
-                                    limit: 5,
-                                    suggestionFunction: (data) => return data.value;
-                                    classNames:{
-                                        menu: 'search_menu',
-                                    }
-                                });
-                                var sourcepath = new Bloodhound({
-                                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                                    queryTokenizer: Bloodhound.tokenizers.whitespace,
-                                    //prefetch: '../data/films/post_1960.json',
-                                    remote: {
-                                        url: '/ac_search/%QUERY',
-                                        wildcard: '%QUERY'
-                                    }
-                                });
-
-                                $('#inputEmail').typeahead(null, {
-                                    name: 'term',
-                                    display: 'title',
-                                    source: sourcepath,
-                                    limit: 5,
-                                    templates: {
-                                        empty: [
-                                            '<div class="empty-message">',
-                                            'Noch wurde nichts gefunden.',
-                                            '</div>'
-                                        ].join('\n'),
-                                        suggestion: function(data) {
-                                            console.log(data);
-                                            return data.value;
-                                        }
-                                    },
-                                    classNames: classNames
+                            <script type="module">
+                                createAutocomplete({
+                                    apiPath: ()=>{return "ac_search_new"},
+                                    placeholder: "{{ trans('app.search') }}",
+                                    searchbarSelector:".searchbar",
+                                    noResults:'{{ trans('app.search_nothing_found') }}',
+                                    type:"games",
+                                    action:"navigate",
+                                    inputSelector:"#inputEmail",
+                                    limit:5,
+                                    additionalProps:{}
                                 });
                             </script>
                             <div class="form-group">

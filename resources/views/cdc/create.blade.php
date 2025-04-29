@@ -40,21 +40,20 @@
                         <div class="card-body">
                             <div class="form-group" id="gamename">
                                 <label for="gamename" class="col-lg-2 col-form-label">Spiel</label>
-                                <input type="text" class="auto form-control" name="gamename" id="gamename">
+                                <input type="text" class="d-none auto form-control" name="gamename" id="gamename">
+                                <div class="searchbar"></div>
                             </div>
                             <script type="module">
-                                addSearch({
-                                    targetQuery: '#gamename .auto',
-                                    apiPath: "ac_games",
-                                    emptyTemplate: [
-                                            '<div class="empty-message">',
-                                            'Noch wurde nichts gefunden.',
-                                            '</div>'
-                                        ].join('\n'),
-                                    name: "gamename",
-                                    display: "value",
-                                    limit: 5,
-                                    suggestionFunction: (data) => return '<p><strong>' + data.value + '</strong></p>';
+                                createAutocomplete({
+                                    apiPath: ()=>{return "ac_games"},
+                                    placeholder: "{{ trans('app.search') }}",
+                                    searchbarSelector:"#row_game .searchbar",
+                                    noResults:'{{ trans('app.game_not_found') }}',
+                                    type:"list",
+                                    action:"find",
+                                    inputSelector:"#row_game .auto",
+                                    limit:5,
+                                    additionalProps:{}
                                 });
                             </script>
                         </div>

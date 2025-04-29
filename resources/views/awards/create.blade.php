@@ -41,19 +41,18 @@
                     <div class="card-body">
                         <div class="form-group" id="row_awardpage">
                             <label for="awardpage">{{ trans('app.add_award_website') }}</label>
-                            <input autocomplete="off" class="auto form-control" name="awardpage" id="awardpage" placeholder="awardpage" value=""/>
+                            <input autocomplete="off" class="d-none auto form-control" name="awardpage" id="awardpage" placeholder="awardpage" value=""/>
+                            <div class="searchbar"></div>
                             <script type="module">
-                                addSearch({
-                                    targetQuery: "#row_awardpage .auto",
-                                    apiPath: "ac_award_page",
-                                    emptyTemplate: [
-                                            '<div style="color: #00001a;">',
-                                            '{{trans('app.award_website_not_found')}}',
-                                            '</div>'
-                                        ].join('\n'),
-                                    name: "awardpage",
-                                    display: "value",
-                                    suggestionFunction: (data) => return '<p><strong>' + data.value + '</strong></p>';
+                                createAutocomplete({
+                                    apiPath: ()=>{return "ac_award_page"},
+                                    placeholder: "{{ trans('app.search') }}",
+                                    searchbarSelector:"#row_awardpage .searchbar",
+                                    noResults:'{{ trans('app.award_website_not_found') }}',
+                                    type:"list",
+                                    action:"find",
+                                    inputSelector:"#row_awardpage .auto",
+                                    additionalProps:{}
                                 });
                             </script>
                         </div>
@@ -88,21 +87,20 @@
                         </div>
                         <div class="form-group" id="row_awardname">
                             <label for="awardname">{{ trans('app.award_title') }}</label>
-                            <input autocomplete="off" class="auto form-control" name="awardname" id="awardname" placeholder="awardname" value=""/>
+                            <input autocomplete="off" class="d-none auto form-control" name="awardname" id="awardname" placeholder="awardname" value=""/>
+                            <div class="searchbar"></div>
                         </div>
                         <script type="module">
-                            addSearch({
-                                targetQuery: "#row_awardname .auto",
-                                apiPath: "ac_award_cat",
-                                emptyTemplate: [
-                                    '<div style="color: #00001a;">',
-                                    '{{trans('app.award_not_found')}}',
-                                    '</div>'
-                                ].join('\n'),
-                                name: "awardname",
-                                display: "value",
-                                suggestionFunction: (data) => return '<p><strong>' + data.value + '</strong></p>';
-                            });
+                            createAutocomplete({
+                                apiPath: ()=>{return "ac_award_cat"},
+                                placeholder: "{{ trans('app.search') }}",
+                                searchbarSelector:"#row_awardname .searchbar",
+                                noResults:'{{ trans('app.award_not_found') }}',
+                                type:"list",
+                                action:"find",
+                                inputSelector:"#row_awardname .auto",
+                                additionalProps:{}}
+                            );
                         </script>
                         <div class="form-group">
                             <label for="awarddate">{{trans('app.created_at')}}</label>

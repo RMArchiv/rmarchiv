@@ -7,6 +7,8 @@ activateBoostrapRating()
 window["$"] = $;
 window["jQuery"] = $;
 window["createAutocomplete"] = createAutocomplete;
+import * as qq from "fine-uploader";
+window["qq"] = qq;
 
 // import qq from "fine-uploader";
 // window.qq = qq;

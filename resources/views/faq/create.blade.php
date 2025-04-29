@@ -38,22 +38,21 @@
                         <div class="form-group" id="row_cat">
                             <label for="cat" class="col-lg-2 col-form-label">{{trans('app.faq_category')}} *</label>
                             <div class="col-lg-10" id="row_cat">
-                                <input autocomplete="off" class="auto" name="cat" id="cat" value=""/>
+                                <input autocomplete="off" class="d-none auto" name="cat" id="cat" value=""/>
+                                <div class="searchbar"></div>
                             </div>
                         </div>
                         <script type="module">
-                            addSearch({
-                                targetQuery: '#row_cat .auto',
-                                apiPath: "ac_faqcat",
-                                emptyTemplate: [
-                                        '<div class="empty-message">',
-                                        '{{ trans('app.faq_cat_not_found') }}',
-                                        '</div>'
-                                    ].join('\n'),
-                                name: "cat",
-                                display: "value",
-                                limit: 5,
-                                suggestionFunction: (data) => return '<p><strong>' + data.value + '</strong></p>';
+                            createAutocomplete({
+                                apiPath: ()=>{return "ac_faqcat"},
+                                placeholder: "{{ trans('app.search') }}",
+                                searchbarSelector:"#row_cat .searchbar",
+                                noResults:'{{ trans('app.faq_cat_not_found') }}',
+                                type:"list",
+                                action:"find",
+                                inputSelector:"#row_cat .auto",
+                                limit:5,
+                                additionalProps:{}
                             });
                         </script>
                         <div class="form-group">

@@ -42,20 +42,19 @@
                             <fieldset>
                                 <div class="form-group" id="row_game">
                                     <label for="game">{{ trans('app.gametitle') }} *</label>
-                                    <input autocomplete="off" class="auto form-control" name="game" id="game" placeholder="{{ trans('app.gametitle') }}" value=""/>
+                                    <input autocomplete="off" class="d-none auto form-control" name="game" id="game" placeholder="{{ trans('app.gametitle') }}" value=""/>
+                                    <div class="searchbar"></div>
                                     <script type="module">
-                                        addSearch({
-                                            targetQuery: "#row_game .auto",
-                                            apiPath: "ac_games",
-                                            emptyTemplate: [
-                                                '<div style="color: #00001a;">',
-                                                '{{trans('app.game_not_found')}}',
-                                                '</div>'
-                                            ].join('\n'),
-                                            name: "game",
-                                            display: "id",
-                                            limit: 9,
-                                            suggestionFunction: (data) => return '<p><strong>' + data.value + '</strong></p>';
+                                        createAutocomplete({
+                                            apiPath: ()=>{return "ac_games"},
+                                            placeholder: "{{ trans('app.search') }}",
+                                            searchbarSelector:"#row_game .searchbar",
+                                            noResults:'{{ trans('app.game_not_found') }}',
+                                            type:"list",
+                                            action:"find",
+                                            inputSelector:"#row_game .auto",
+                                            limit:9,
+                                            additionalProps:{}
                                         });
                                     </script>
                                 </div>

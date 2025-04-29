@@ -158,7 +158,8 @@
                                     <div class="form-group">
                                         <label for="developer" class="col-lg-2 col-form-label">{{trans('app.developer')}} *</label>
                                         <div class="col-lg-10" id="row_developer">
-                                            <input autocomplete="off" type="text" class="form-control auto" id="developer" name="developer">
+                                            <input autocomplete="off" type="text" class="d-none form-control auto" id="developer" name="developer">
+                                            <div class="searchbar"></div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -169,18 +170,16 @@
                                     </div>
                                 </fieldset>
                                 <script type="module">
-                                    addSearch({
-                                        targetQuery: "#row_developer .auto",
-                                        apiPath: "ac_developer",
-                                        emptyTemplate: [
-                                                '<div class="empty-message">',
-                                                '{{trans('app.developer_not_found')}}',
-                                                '</div>'
-                                            ].join('\n'),
-                                        name: "developers",
-                                        display: "value",
+                                    createAutocomplete({
+                                        apiPath: ()=>{return "ac_developer"},
+                                        placeholder: "{{ trans('app.search') }}",
+                                        searchbarSelector:"#row_developer .searchbar",
+                                        noResults:'{{ trans('app.developer_not_found') }}',
+                                        type:"list",
+                                        action:"find",
+                                        inputSelector:"#row_developer .auto",
                                         limit:5,
-                                        suggestionFunction: (data) => return '<p><strong>' + data.value + '</strong></p>';
+                                        additionalProps:{}
                                     });
                                 </script>
                             </div>

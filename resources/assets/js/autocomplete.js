@@ -5,7 +5,7 @@ import axios from "axios";
 /**
  * Unified configuration of autocomplete
  * A find autocomplete will try to set an input container using inputSelector
- * @typedef {{apiPath:Function,placeholder:string,searchbarSelector:string,panelSelector:string,inputSelector:string|undefined,noResults:string,type:"games"|"list",action:"find"|"navigate",limit:number,additionalProps:Object}} AutocompleteConfig
+ * @typedef {{apiPath:Function,placeholder:string,searchbarSelector:string,panelSelector:string,inputSelector:string|undefined,noResults:string,type:"games"|"list",action:"find"|"navigate",limit:number,changeInputOnChange:boolean,additionalProps:Object}} AutocompleteConfig
  */
 /**
  *
@@ -21,6 +21,7 @@ export function createAutocomplete({
   type = "list",
   action = "find",
   limit,
+  changeInputOnChange = true,
   additionalProps = {},
 }) {
   const autocompleteSearch = autocomplete({
@@ -30,6 +31,14 @@ export function createAutocomplete({
         {
           sourceId: "querySuggestions",
           getItems({ query }) {
+            // set input value on evry change
+            if (inputSelector && changeInputOnChange) {
+              /** @type HTMLInputElement */
+              let input = document.querySelector(inputSelector);
+              if (input) {
+                input.value = query.toString();
+              }
+            }
             return axios.get(`/${apiPath()}/${query}`).then((result) => {
               if (limit && typeof limit === "number") {
                 return result.data.slice(0, limit)
