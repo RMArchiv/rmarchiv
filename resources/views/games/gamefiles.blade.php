@@ -243,7 +243,7 @@
             </dialog>
         </div>
     </script>
-    <script>
+    <script type="module">
         var uploader = new qq.FineUploader({
             debug: true,
             autoUpload: true,

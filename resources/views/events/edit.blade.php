@@ -80,7 +80,7 @@
             </div>
         </form>
     </div>
-    <script>
+    <script type="module">
         $(".start").flatpickr({
             enableTime: true,
             time_24hr: true

@@ -2,7 +2,7 @@
 @section('pagetitle', $posts->first()->thread->title)
 @section('content')
 
-    <script>
+    <script type="module">
         $(document).ready(function(){
             // add button style
             $("[name='poll_bar'").addClass("btn btn-secondary");
