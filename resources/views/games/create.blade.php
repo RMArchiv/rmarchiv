@@ -14,7 +14,7 @@
             @if (count($errors) > 0)
                 <div class="row">
                     <div class="alert alert-dismissible alert-warning">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
                         <h4>Fehler!</h4>
                         <p>
                         <ul>
@@ -158,7 +158,8 @@
                                     <div class="form-group">
                                         <label for="developer" class="col-lg-2 col-form-label">{{trans('app.developer')}} *</label>
                                         <div class="col-lg-10" id="row_developer">
-                                            <input autocomplete="off" type="text" class="form-control auto" id="developer" name="developer">
+                                            <input autocomplete="off" type="text" class="d-none form-control auto" id="developer" name="developer">
+                                            <div class="searchbar"></div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -168,33 +169,17 @@
                                         </div>
                                     </div>
                                 </fieldset>
-                                <script type="text/javascript">
-                                    var sourcepath = new Bloodhound({
-                                        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                                        queryTokenizer: Bloodhound.tokenizers.whitespace,
-                                        //prefetch: '../data/films/post_1960.json',
-                                        remote: {
-                                            url: '/ac_developer/%QUERY',
-                                            wildcard: '%QUERY'
-                                        }
-                                    });
-
-                                    $('#row_developer .auto').typeahead(null, {
-                                        name: 'developers',
-                                        display: 'value',
-                                        source: sourcepath,
-                                        limit: 5,
-                                        templates: {
-                                            empty: [
-                                                '<div class="empty-message">',
-                                                '{{trans('app.developer_not_found')}}',
-                                                '</div>'
-                                            ].join('\n'),
-                                            suggestion: function(data) {
-                                                console.log(data);
-                                                return '<p><strong>' + data.value + '</strong></p>';
-                                            }
-                                        }
+                                <script type="module">
+                                    createAutocomplete({
+                                        apiPath: ()=>{return "ac_developer"},
+                                        placeholder: "{{ trans('app.search') }}",
+                                        searchbarSelector:"#row_developer .searchbar",
+                                        noResults:'{{ trans('app.developer_not_found') }}',
+                                        type:"list",
+                                        action:"find",
+                                        inputSelector:"#row_developer .auto",
+                                        limit:5,
+                                        additionalProps:{}
                                     });
                                 </script>
                             </div>

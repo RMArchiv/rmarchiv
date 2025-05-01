@@ -20,7 +20,7 @@
                                 <li class="media">
                                     <div class="media-body active">
                                         <div class="media">
-                                            <a class="float-left mr-3" href="#">
+                                            <a class="float-start me-3" href="#">
                                                 <img width="32px" class="media-object img-rounded" src="//{{ config('app.avatar_path') }}?size=160&gender=male&id={{ $post->user->id }}">
                                             </a>
                                             <div class="media-body">
@@ -58,7 +58,7 @@
                         @if($users->count() > 0)
                             <div class="checkbox">
                                 @foreach($users as $user)
-                                    <div class="btn-group" data-toggle="buttons">
+                                    <div class="btn-group" data-bs-toggle="buttons">
                                         <label class="btn btn-secondary">
                                             <input type="checkbox" autocomplete="off" name="recipients[]" value="{{ $user->id }}"> {{ $user->name }}
                                         </label>

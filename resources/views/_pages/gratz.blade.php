@@ -19,7 +19,7 @@
             Speicher diese Seite einfach in deinen Favoriten. Dann kannst du dir die jederzeit wieder anschauen =)
         </div>
     </div>
-    <script>
+    <script type="module">
         var SCREEN_WIDTH = window.innerWidth,
             SCREEN_HEIGHT = window.innerHeight,
             mousePos = {

@@ -8,7 +8,8 @@
 namespace App\Models;
 
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
-use Trebol\Entrust\EntrustRole;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laratrust\Models\LaratrustRole;
 
 /**
  * App\Models\UserRole.
@@ -32,7 +33,8 @@ use Trebol\Entrust\EntrustRole;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserRole newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserRole query()
  */
-class UserRole extends EntrustRole
+class UserRole extends LaratrustRole
 {
+    use HasFactory;
 //
 }

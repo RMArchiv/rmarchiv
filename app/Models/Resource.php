@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
@@ -94,5 +95,10 @@ class Resource extends Model
     public function tags()
     {
         return $this->hasMany('App\Models\TagRelation', 'content_id', 'id')->Where('content_type', '=', \DB::raw("'resource'"))->with('tag');
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults();
     }
 }

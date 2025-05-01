@@ -39,7 +39,7 @@
                             </span>
                                 <span> • </span><span>version: {{ $gf->release_version }}</span>
                                 <span> • </span>
-                                <span>release date: {{ str_pad($gf->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_day, 2, 0, STR_PAD_LEFT) }}</span>
+                                <span>{{ trans('app.release_date') }}: {{ str_pad($gf->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_day, 2, 0, STR_PAD_LEFT) }}</span>
                                 <span> • </span>
                                 <span>size: {{ ByteUnits\Metric::bytes($gf->filesize)->format() }}</span>
                                 <span> • </span>
@@ -243,7 +243,7 @@
             </dialog>
         </div>
     </script>
-    <script>
+    <script type="module">
         var uploader = new qq.FineUploader({
             debug: true,
             autoUpload: true,

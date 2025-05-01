@@ -15,7 +15,7 @@
                 @if (count($errors) > 0)
                     <div class="row">
                         <div class="alert alert-dismissible alert-warning">
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
                             <h4>Fehler!</h4>
                             <p>
                             <ul>
@@ -40,35 +40,20 @@
                         <div class="card-body">
                             <div class="form-group" id="gamename">
                                 <label for="gamename" class="col-lg-2 col-form-label">Spiel</label>
-                                <input type="text" class="auto form-control" name="gamename" id="gamename">
+                                <input type="text" class="d-none auto form-control" name="gamename" id="gamename">
+                                <div class="searchbar"></div>
                             </div>
-                            <script type="text/javascript">
-                                var sourcepath = new Bloodhound({
-                                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                                    queryTokenizer: Bloodhound.tokenizers.whitespace,
-                                    //prefetch: '../data/films/post_1960.json',
-                                    remote: {
-                                        url: '/ac_games/%QUERY',
-                                        wildcard: '%QUERY'
-                                    }
-                                });
-
-                                $('#gamename .auto').typeahead(null, {
-                                    name: 'gamename',
-                                    display: 'value',
-                                    source: sourcepath,
-                                    limit: 5,
-                                    templates: {
-                                        empty: [
-                                            '<div class="empty-message">',
-                                            'Noch wurde nichts gefunden.',
-                                            '</div>'
-                                        ].join('\n'),
-                                        suggestion: function(data) {
-                                            console.log(data);
-                                            return '<p><strong>' + data.value + '</strong></p>';
-                                        }
-                                    }
+                            <script type="module">
+                                createAutocomplete({
+                                    apiPath: ()=>{return "ac_games"},
+                                    placeholder: "{{ trans('app.search') }}",
+                                    searchbarSelector:"#row_game .searchbar",
+                                    noResults:'{{ trans('app.game_not_found') }}',
+                                    type:"list",
+                                    action:"find",
+                                    inputSelector:"#row_game .auto",
+                                    limit:5,
+                                    additionalProps:{}
                                 });
                             </script>
                         </div>

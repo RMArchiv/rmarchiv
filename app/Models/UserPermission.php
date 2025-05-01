@@ -7,7 +7,8 @@
 
 namespace App\Models;
 
-use Trebol\Entrust\EntrustPermission;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laratrust\Models\LaratrustPermission;
 
 /**
  * Class UserPermission.
@@ -30,7 +31,8 @@ use Trebol\Entrust\EntrustPermission;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserPermission newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserPermission query()
  */
-class UserPermission extends EntrustPermission
+class UserPermission extends LaratrustPermission
 {
+    use HasFactory;
     //
 }

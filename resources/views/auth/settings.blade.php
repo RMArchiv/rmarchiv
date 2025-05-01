@@ -28,7 +28,7 @@
                         </div>
                         <div class="card-footer">
                             <div class="pull-right">
-                                <input class="btn btn-primary" type="submit" id="submit"
+                                <input class="btn btn-primary" type="submit"
                                        value="{{ trans('app.submit') }}">
                             </div>
                             <div class="clearfix"></div>
@@ -65,7 +65,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="pull-right">
-                            <input class="btn btn-primary" type="submit" id="submit" value="{{ trans('app.submit') }}">
+                            <input class="btn btn-primary" type="submit" value="{{ trans('app.submit') }}">
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -106,7 +106,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="pull-right">
-                            <input class="btn btn-primary" type="submit" id="submit" value="{{ trans('app.submit') }}">
+                            <input class="btn btn-primary" type="submit" value="{{ trans('app.submit') }}">
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -189,7 +189,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="pull-right">
-                            <input class="btn btn-primary" type="submit" id="submit" value="{{ trans('app.submit') }}">
+                            <input class="btn btn-primary" type="submit" value="{{ trans('app.submit') }}">
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -233,7 +233,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="pull-right">
-                            <input class="btn btn-primary" type="submit" id="submit" value="{{ trans('app.submit') }}">
+                            <input class="btn btn-primary" type="submit" value="{{ trans('app.submit') }}">
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -273,7 +273,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="pull-right">
-                            <input class="btn btn-primary" type="submit" id="submit" value="{{ trans('app.submit') }}">
+                            <input class="btn btn-primary" type="submit" value="{{ trans('app.submit') }}">
                         </div>
                         <div class="clearfix"></div>
                     </div>

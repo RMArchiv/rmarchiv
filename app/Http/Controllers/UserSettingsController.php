@@ -54,7 +54,7 @@ class UserSettingsController extends Controller
             }
         }
 
-        return view('auth.settings');
+        return redirect()->action('UserSettingsController@index');
     }
 
     public function store_password(Request $request)

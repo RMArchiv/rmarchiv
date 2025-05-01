@@ -1,0 +1,10 @@
+@import "../../../../node_modules/fine-uploader/fine-uploader/fine-uploader";
+@import "../../../../node_modules/fine-uploader/fine-uploader/fine-uploader-gallery";
+
+.qq-upload-button {
+    border-bottom: unset !important;
+    color: $rm-text !important;
+}
+.qq-upload-list li {
+    background-color: $rm-base-p1 !important;
+}

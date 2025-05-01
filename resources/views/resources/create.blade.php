@@ -177,7 +177,7 @@
                 <span class="qq-upload-drop-area-text-selector"></span>
             </div>
             <div class="qq-upload-button-selector qq-upload-button">
-                <div>Datei hochladen</div>
+                <div>{{ trans('app.upload') }}</div>
             </div>
             <span class="qq-drop-processing-selector qq-drop-processing">
                     <span>Processing dropped files...</span>
@@ -247,7 +247,7 @@
             </dialog>
         </div>
     </script>
-    <script>
+    <script type="module">
         var uploader = new qq.FineUploader({
             debug: true,
             autoUpload: true,

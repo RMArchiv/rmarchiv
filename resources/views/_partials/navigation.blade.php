@@ -3,11 +3,11 @@
 <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="{{ trans('app.toggle_navigation') }}">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="{{ trans('app.toggle_navigation') }}">
                 <i class="fa fa-bars fa-lg py-1" style="color: #ffbf00;"></i>
             </button>
             <div class="collapse navbar-collapse" id="topNav">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">{{ trans('app.home') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('news') }}">{{ trans('app.news') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('games') }}">{{ trans('app.games') }}</a></li>
@@ -21,7 +21,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ url('faq') }}">{{ trans('app.faq') }}</a></li>
                     @if(Auth::check())
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"
                                data-vivaldi-spatnav-clickable="1">
                                 {{ trans('app.submit_content') }} <span class="caret"></span>
                             </a>
@@ -60,7 +60,7 @@
                     @endif
                     @if(Auth::check())
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"
                                data-vivaldi-spatnav-clickable="1">
                                 {{ trans('app.hello') }}, {{ Auth::user()->name }} <span class="caret"></span>
                                 @if(\Auth::user()->newThreadsCount() >= 1)
@@ -86,47 +86,25 @@
                 </ul>
 
                 {{ Form::open(['action' => ['SearchController@search'], 'class' => 'form-inline my-2 my-lg-0']) }}
-                <div class="form-inline mt-2 mt-md-0" style="flex-flow: nowrap">
-                    <input type="text" class="form-control form-control-sm mr-sm-2" id="term" name="term" placeholder="{{ trans('app.search') }}">
+                {{-- <div class="form-inline mt-2 mt-md-0" style="flex-flow: nowrap">
+                    <input type="text" class="form-control form-control-sm me-sm-2" id="term" name="term" placeholder="{{ trans('app.search') }}">
                     <button type="submit" class="btn btn-outline-success my-2 my-sm-0 btn-sm">{{ trans('app.submit') }}</button>
-                </div>
-
-
-                <script type="text/javascript">
-                    var sourcepath = new Bloodhound({
-                        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                        queryTokenizer: Bloodhound.tokenizers.whitespace,
-                        //prefetch: '../data/films/post_1960.json',
-                        remote: {
-                            url: '/ac_search/%QUERY',
-                            wildcard: '%QUERY'
-                        }
-                    });
-
-                    $('#term').typeahead(null, {
-                        name: 'term',
-                        display: 'title',
-                        source: sourcepath,
-                        limit: 5,
-                        templates: {
-                            empty: [
-                                '<div class="empty-message">',
-                                '{{ trans('app.search_nothing_found') }}',
-                                '</div>'
-                            ].join('\n'),
-                            suggestion: function(data) {
-                                console.log(data);
-                                return data.value;
-                            }
-                        },
-                        classNames: {
-                            menu: 'search_menu',
-                        }
-                    });
+                </div> --}}
+                <div id="autocomplete"></div>
+                <div id="searchcontainer"></div>
+                <script type="module">
+                    createAutocomplete(
+                    {   apiPath:()=>{return "ac_search_new"},
+                        placeholder:"{{ trans('app.search') }}",
+                        searchbarSelector:"#autocomplete",
+                        panelSelector:"#searchcontainer",
+                        noResults:'{{ trans('app.search_nothing_found') }}',
+                        type:"games",
+                        action:"navigate",
+                        additionalProps:{}
+                    })
                 </script>
                 {{ Form::close() }}
-
-
             </div>
         </div>
     </div>

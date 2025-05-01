@@ -9,6 +9,7 @@ namespace App\Models;
 
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
@@ -62,5 +63,10 @@ class GamesDeveloper extends Model
     public function game()
     {
         return $this->hasOne('App\Models\Game', 'id', 'game_id')->with('comments', 'maker', 'gamefiles', 'cdcs');
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults();
     }
 }

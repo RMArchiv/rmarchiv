@@ -62,9 +62,9 @@ class Kernel extends HttpKernel
         'can'                => \Illuminate\Auth\Middleware\Authorize::class,
         'guest'              => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle'           => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'role'               => \Trebol\Entrust\Middleware\EntrustRole::class,
-        'permission'         => \Trebol\Entrust\Middleware\EntrustPermission::class,
-        'ability'            => \Trebol\Entrust\Middleware\EntrustAbility::class,
+        'role'               => \Laratrust\Middleware\LaratrustRole::class,
+        'permission'         => \Laratrust\Middleware\LaratrustPermission::class,
+        'ability'            => \Laratrust\Middleware\LaratrustAbility::class,
         'forbid-banned-user' => \Cog\Laravel\Ban\Http\Middleware\ForbidBannedUser::class,
     ];
 }

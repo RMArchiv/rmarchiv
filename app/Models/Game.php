@@ -10,6 +10,7 @@ namespace App\Models;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
@@ -242,5 +243,10 @@ class Game extends Model
     public function license()
     {
         return $this->hasOne('App\Models\License', 'id', 'license_id');
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults();
     }
 }

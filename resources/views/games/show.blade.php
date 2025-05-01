@@ -2,15 +2,6 @@
 @section('pagetitle', $game->title.' - '.$game->subtitle)
 @section('content')
     @if($game)
-        <script>
-            $(document).ready(function () {
-                $('[data-toggle="userlist"]').popover({
-                    html: true,
-                    container: 'body'
-                });
-            });
-        </script>
-
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -28,9 +19,10 @@
                                             @endphp
                                         @endif
                                         <a role="button" class="btn btn-primary"
-                                           data-toggle="userlist"
+                                           data-bs-toggle="userlist"
+                                           data-bs-content="{!! $ul_data !!}"
                                            title="benutzerliste"
-                                           data-content="{!! $ul_data !!}">
+                                           >
                                             <span class="fa fa-list"></span></a>
                                         @permission(('create-games'))
                                         <a href="{{ route('history.game.index', ['id' => $game->id]) }}" role='button' class='btn btn-primary'><span class="fa fa-history"></span></a>
@@ -82,35 +74,35 @@
                                         <div class="card-header">
                                             <ul class="nav nav-pills nav-fill">
                                                 <li class="nav-item">
-                                                    <a class="nav-link active" data-toggle="pill" href="#tabs-1">{{ trans('app.titlescreen') }}</a>
+                                                    <a class="nav-link active" data-bs-toggle="pill" href="#tabs-1">{{ trans('app.titlescreen') }}</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="pill" href="#tabs-2">{{ trans('app.screenshot') }} 1</a>
+                                                    <a class="nav-link" data-bs-toggle="pill" href="#tabs-2">{{ trans('app.screenshot') }} 1</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="pill" href="#tabs-3">{{ trans('app.screenshot') }} 2</a>
+                                                    <a class="nav-link" data-bs-toggle="pill" href="#tabs-3">{{ trans('app.screenshot') }} 2</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="pill" href="#tabs-4">{{ trans('app.screenshot') }} 3</a>
+                                                    <a class="nav-link" data-bs-toggle="pill" href="#tabs-4">{{ trans('app.screenshot') }} 3</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="pill" href="#tabs-5">{{ trans('app.screenshot') }} 4</a>
+                                                    <a class="nav-link" data-bs-toggle="pill" href="#tabs-5">{{ trans('app.screenshot') }} 4</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="pill" href="#tabs-6">{{ trans('app.screenshot') }} 5</a>
+                                                    <a class="nav-link" data-bs-toggle="pill" href="#tabs-6">{{ trans('app.screenshot') }} 5</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="pill" href="#tabs-7">{{ trans('app.screenshot') }} 6</a>
+                                                    <a class="nav-link" data-bs-toggle="pill" href="#tabs-7">{{ trans('app.screenshot') }} 6</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="pill" href="#tabs-8">{{ trans('app.screenshot') }} 7</a>
+                                                    <a class="nav-link" data-bs-toggle="pill" href="#tabs-8">{{ trans('app.screenshot') }} 7</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="pill" href="#tabs-9">{{ trans('app.screenshot') }} 8</a>
+                                                    <a class="nav-link" data-bs-toggle="pill" href="#tabs-9">{{ trans('app.screenshot') }} 8</a>
                                                 </li>
                                                 @if($game->youtube)
                                                     <li class="nav-item">
-                                                        <a class="nav-link" data-toggle="pill" href="#tabs-10">{{ trans('app.trailer') }}</a>
+                                                        <a class="nav-link" data-bs-toggle="pill" href="#tabs-10">{{ trans('app.trailer') }}</a>
                                                     </li>
                                                 @endif
                                             </ul>
@@ -341,12 +333,12 @@
                                         </div>
                                         <div class="card-body">
                                             @if(Auth::check())
-                                                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addtag">{{ trans('app.add_tag') }}</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addtag">{{ trans('app.add_tag') }}</button>
                                                 <div id="addtag" class="modal fade" role="dialog">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
                                                                 <h4 class="modal-title">{{ trans('app.add_tag') }}</h4>
                                                             </div>
                                                             <div class="modal-body clearfix">
@@ -480,7 +472,7 @@
                                 <div class="card-header">{{ trans('app.popularity_helper') }}</div>
                                 <div class="card-body">
                                     <p>{{ trans('app.use_the_popularity_helper') }}</p>
-                                    <input type='text' value='{{ Request::fullUrl() }}' size='50' readonly='readonly'/>
+                                    <input type='text' value='{{ Request::fullUrl() }}' style="width:100%" readonly='readonly'/>
                                 </div>
                             </div>
                         </div>
@@ -596,8 +588,13 @@
     @else
         <h1>{{ trans('app.game_does_not_exist') }}</h1>
     @endif
-
-    <script>
+    <script type="module">
+        window.onload=function () {
+            const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="userlist"]')
+            const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, {sanitize:true, html:true}))
+        };
+    </script>
+    <script type="module">
         $(function () { /* to make sure the script runs after page load */
 
             $('.readmore').each(function (event) { /* select all divs with the item class */

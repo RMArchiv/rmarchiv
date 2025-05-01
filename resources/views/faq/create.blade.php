@@ -14,7 +14,7 @@
     @if (count($errors) > 0)
         <div class="row">
             <div class="alert alert-dismissible alert-warning">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
                 <h4>Fehler!</h4>
                 <p>
                 <ul>
@@ -38,36 +38,21 @@
                         <div class="form-group" id="row_cat">
                             <label for="cat" class="col-lg-2 col-form-label">{{trans('app.faq_category')}} *</label>
                             <div class="col-lg-10" id="row_cat">
-                                <input autocomplete="off" class="auto" name="cat" id="cat" value=""/>
+                                <input autocomplete="off" class="d-none auto" name="cat" id="cat" value=""/>
+                                <div class="searchbar"></div>
                             </div>
                         </div>
-                        <script type="text/javascript">
-                            var sourcepath = new Bloodhound({
-                                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                                //prefetch: '../data/films/post_1960.json',
-                                remote: {
-                                    url: '/ac_faqcat/%QUERY',
-                                    wildcard: '%QUERY'
-                                }
-                            });
-
-                            $('#row_cat .auto').typeahead(null, {
-                                name: 'cat',
-                                display: 'value',
-                                source: sourcepath,
-                                limit: 5,
-                                templates: {
-                                    empty: [
-                                        '<div class="empty-message">',
-                                        '{{ trans('app.faq_cat_not_found') }}',
-                                        '</div>'
-                                    ].join('\n'),
-                                    suggestion: function(data) {
-                                        console.log(data);
-                                        return '<p><strong>' + data.value + '</strong></p>';
-                                    }
-                                }
+                        <script type="module">
+                            createAutocomplete({
+                                apiPath: ()=>{return "ac_faqcat"},
+                                placeholder: "{{ trans('app.search') }}",
+                                searchbarSelector:"#row_cat .searchbar",
+                                noResults:'{{ trans('app.faq_cat_not_found') }}',
+                                type:"list",
+                                action:"find",
+                                inputSelector:"#row_cat .auto",
+                                limit:5,
+                                additionalProps:{}
                             });
                         </script>
                         <div class="form-group">
