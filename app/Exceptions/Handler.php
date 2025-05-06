@@ -12,6 +12,7 @@ use Illuminate\Auth\AuthenticationException;
 use GrahamCampbell\Exceptions\ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class Handler extends ExceptionHandler
 {
@@ -38,7 +39,7 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
-    public function report(Throwable $exception)
+    public function report(Throwable $exception): void
     {
         parent::report($exception);
     }
@@ -51,7 +52,7 @@ class Handler extends ExceptionHandler
      *
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Throwable $exception)
+    public function render($request, Throwable $exception): SymfonyResponse
     {
         if ($exception instanceof NotFoundHttpException) {
             return response()->view('errors.404', [], 404);
