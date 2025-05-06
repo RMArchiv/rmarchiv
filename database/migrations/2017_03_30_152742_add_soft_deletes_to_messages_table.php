@@ -14,7 +14,7 @@ class AddSoftDeletesToMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::table(Models::table('messages'), function (Blueprint $table) {
+        Schema::table(Models::table('messenger_messages'), function (Blueprint $table) {
             $table->softDeletes();
         });
     }
@@ -26,7 +26,7 @@ class AddSoftDeletesToMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::table(Models::table('messages'), function (Blueprint $table) {
+        Schema::table(Models::table('messenger_messages'), function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
     }
