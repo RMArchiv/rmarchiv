@@ -8,7 +8,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Laratrust\Models\LaratrustPermission;
+use Laratrust\Models\Permission;
 
 /**
  * Class UserPermission.
@@ -31,7 +31,7 @@ use Laratrust\Models\LaratrustPermission;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserPermission newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserPermission query()
  */
-class UserPermission extends LaratrustPermission
+class UserPermission extends Permission
 {
     use HasFactory;
     //
