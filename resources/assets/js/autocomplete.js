@@ -121,11 +121,11 @@ export function createAutocomplete({
 
                 <ul class="list-group">
                     <li class="list-group-item media" style="margin-top: 0px;">
-                        <a class="pull-right" href="${
+                        <a class="float-end" href="${
                           item?.link
                         }"><span class="badge">${item?.comments}</span></a>
-                        <a class="pull-left" href="${item?.link}">
-                            <img width="100px" class="img-responsive img-rounded" src='${
+                        <a class="float-start" href="${item?.link}">
+                            <img width="100px" class="img-fluid img-rounded" src='${
                               item?.screenshot
                             }' alt='${
                   item.translation.titleScreenAlt
