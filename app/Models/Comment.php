@@ -74,7 +74,9 @@ class Comment extends Model
         'delete_reason',
     ];
 
-    protected $dates = ['deleted_at'];
+    protected $casts = [
+        'deleted_at' => 'datetime',
+    ];
 
     protected $guarded = [];
 

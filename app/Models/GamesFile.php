@@ -86,7 +86,9 @@ class GamesFile extends Model
     ];
 
     protected $guarded = [];
-    protected $dates = ['deleted_at'];
+    protected $casts = [
+        'deleted_at' => 'datetime',
+    ];
 
     public function gamefiletype()
     {
