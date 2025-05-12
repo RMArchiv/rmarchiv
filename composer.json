@@ -46,6 +46,8 @@
         "santigarcor/laratrust": "^8.0",
         "spatie/laravel-activitylog": "^4.0",
         "spatie/laravel-cookie-consent": "^3.2",
+        "symfony/http-client": "^7.2",
+        "symfony/mailgun-mailer": "^7.1",
         "teamtnt/laravel-scout-tntsearch-driver": "^12.0",
         "venturecraft/revisionable": "1.*",
         "wapmorgan/unified-archive": "^0.0.8",
