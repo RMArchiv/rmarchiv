@@ -49,7 +49,8 @@
                 <h2>bisher sind keine kategorien vorhanden.</h2>
             @endif
 
-            {!! Form::open(['route' => ['board.cat.create']]) !!}
+            <form method="POST" action="{{ route('board.cat.create') }}">
+                @csrf
             <div class="rmarchivtbl" id="rmarchivbox_submitprod">
                 <h2>hinzufügen einer forenkategorie</h2>
 
@@ -72,6 +73,6 @@
                     <input type="submit" value="senden">
                 </div>
             </div>
-            {!! Form::close() !!}
+            </form>
     </div>
 @endsection

@@ -13,6 +13,7 @@
         <div class="row">
             <div class="col-md-12 mb-3">
                 <form action="//{{ config('app.avatar_path') }}/upload.php" method="post" enctype="multipart/form-data">
+                    @csrf
                     <div class="card">
                         <input type="hidden" name="posttype" value="avatar">
                         <input type="hidden" name="userid" value="{{ Auth::id() }}">
@@ -39,7 +40,8 @@
         </div>
         <div class="row">
             <div class="col-md-12 mb-3">
-                {!! Form::open(['action' => ['UserSettingsController@change_language']]) !!}
+                <form method="POST" action="{{ action('UserSettingsController@change_language')}}">
+                    @csrf
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.language') }}
@@ -70,12 +72,13 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
-                {{ Form::close() }}
+                </form>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 mb-3">
-                {!! Form::open(['action' => ['UserSettingsController@change_download_template']]) !!}
+                <form method="POST" action="{{ action('UserSettingsController@change_download_template') }}">
+                    @csrf
                 <div class="card">
                     <div class="card-header">
                         Download file template
@@ -111,7 +114,7 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
-                {{ Form::close() }}
+                </form>
             </div>
         </div>
         <div class="row">
@@ -143,7 +146,8 @@
         </div>
         <div class="row">
             <div class="col-md-12 mb-3">
-                {!! Form::open(['action' => ['UserSettingsController@store_rowsPerPage']]) !!}
+                <form method="POST" action="{{ action('UserSettingsController@store_rowsPerPage')}}">
+                    @csrf
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.rows_per_page') }}
@@ -194,12 +198,13 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 mb-3">
-                {!! Form::open(['action' => ['UserSettingsController@store_password']]) !!}
+                <form method="POST" action="{{ action('UserSettingsController@store_password') }}">
+                    @csrf
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.change_password') }}
@@ -238,12 +243,13 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 mb-3">
-                {!! Form::open(['action' => ['UserSettingsController@change_username']]) !!}
+                <form method="POST" action="{{ action('UserSettingsController@change_username') }}">
+                    @csrf
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.change_username') }}
@@ -278,7 +284,7 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
     </div>

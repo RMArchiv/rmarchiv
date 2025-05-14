@@ -60,7 +60,8 @@
                         {{ trans('app.create_thread') }}
                     </div>
                     <div class="card-body">
-                        {!! Form::open(['route' => ['board.thread.store'], 'id' => 'frmBBSPost']) !!}
+                        <form method="POST" action="{{ route('board.thread.store') }}">
+                            @csrf
                         <div class='content'>
                             <label for='topic'>{{ trans('app.topic') }}</label>
                             <input name='topic' id='topic'/>
@@ -76,7 +77,7 @@
                         </div>
                         <div class='foot'>
                             <input type='submit' value='{{ trans('app.submit') }}' id='submit'></div>
-                        {!! Form::close() !!}
+                        </form>
                     </div>
                 </div>
             @else
