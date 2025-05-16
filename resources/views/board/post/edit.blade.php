@@ -18,9 +18,9 @@
                         <div class="card">
                             <div class="card-body">
                                 <form action="{{ route('board.post.update', [$post->thread_id, $post->id]) }}" method="post" enctype="multipart/form-data">
-                                    {{ csrf_field() }}
+                                    @csrf
 
-                                    @if (count($errors) > 0))
+                                    @if (count($errors) > 0)
                                     <div class="rmarchivtbl errorbox">
                                         <h2>{{ trans('app.edit_post_failed') }}</h2>
                                         <div class="content">
@@ -47,7 +47,7 @@
 
                                     @include('_partials.markdown_editor', ['edit_text' => $post->content_md])
                                     <div class="foot">
-                                        <input type="submit" value="{{ trans('app.submit') }}">
+                                        <button class="btn btn-primary" type="submit">{{ trans('app.submit') }}</button>
                                     </div>
                                 </form>
                             </div>
