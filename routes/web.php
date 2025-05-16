@@ -133,7 +133,7 @@ Route::post('resources/create', 'ResourceController@create_steps')->name('resour
 Route::get('resources/create', 'ResourceController@create')->name('resources.create')->middleware('permission:create-games');
 Route::post('resources/create/store', 'ResourceController@store')->name('resources.store')->middleware('permission:create-games');
 
-Route::post('resources/upload', 'FineUploaderController@endpoint@upload')->name('resources.upload')->middleware('permission:create-games');
+Route::post('resources/upload', 'FineUploaderController@endpoint')->name('resources.upload')->middleware('permission:create-games');
 
 //User Routings
 Route::get('users', 'UserController@index');

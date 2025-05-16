@@ -5,7 +5,7 @@ import axios from "axios";
 /**
  * Unified configuration of autocomplete
  * A find autocomplete will try to set an input container using inputSelector
- * @typedef {{apiPath:Function,placeholder:string,searchbarSelector:string,panelSelector:string,inputSelector:string|undefined,noResults:string,type:"games"|"list",action:"find"|"navigate",limit:number,changeInputOnChange:boolean,additionalProps:Object}} AutocompleteConfig
+ * @typedef {{apiPath:Function,placeholder:string,searchbarSelector:string,panelSelector:string,inputSelector:string|undefined,noResults:string,type:"games"|"list",action:"find"|"navigate"|"findId",limit:number,changeInputOnChange:boolean,additionalProps:Object}} AutocompleteConfig
  */
 /**
  *
@@ -60,6 +60,20 @@ export function createAutocomplete({
                 }
                 break;
 
+              // returns id of searched element
+              case "findId":
+                params.setQuery(params?.item?.value.toString());
+                // Input should be hidden as user primarily interacts with search bar
+                if (inputSelector) {
+                  /** @type HTMLInputElement */
+                  let input = document.querySelector(inputSelector);
+                  if (input) {
+                    input.value = params?.item?.id.toString();
+                  }
+                }
+                break;
+
+              // returns value of searched element
               default:
                 params.setQuery(params?.item?.value.toString());
                 // Input should be hidden as user primarily interacts with search bar
@@ -67,6 +81,7 @@ export function createAutocomplete({
                   /** @type HTMLInputElement */
                   let input = document.querySelector(inputSelector);
                   if (input) {
+                    console.log(JSON.stringify(params))
                     input.value = params?.item?.value.toString();
                   }
                 }

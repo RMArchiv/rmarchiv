@@ -196,9 +196,10 @@
         @if(Auth::check())
         <div class="row">
             <div class="col-md-12">
-                {!! Form::open(['action' => ['CommentController@add']]) !!}
-                {!! Form::hidden('content_id', $resource->id) !!}
-                {!! Form::hidden('content_type', 'resource') !!}
+                <form method="POST" action="{{ action('CommentController@add') }}">
+                    @csrf
+                    <input type="hidden" name="content_id" value="{{$resource->id}}">
+                    <input type="hidden" name="content_type" value="resource">
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.post_a_reply') }}
@@ -224,7 +225,7 @@
                         <input type='submit' value='Submit' id='submit'>
                     </div>
                 </div>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
         @endif
