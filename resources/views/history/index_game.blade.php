@@ -35,10 +35,14 @@
                                     {{ $a->created_at }}
                                 </td>
                                 <td>
+                                    @if (isset($a->causer))
                                     <a href="{{ action('UserController@show', $a->causer->id) }}" class="usera" title="{{ $a->causer->name }}">
                                         <img width="16px" src="//{{ config('app.avatar_path') }}?gender=male&amp;id={{ $a->causer->id }}" alt="{{ $a->causer->name }}" class="avatar">
                                     </a>
                                     <a href="{{ action('UserController@show', $a->causer->id) }}" class="user">{{ $a->causer->name }}</a>
+                                    @else
+                                        {{trans('app.user_not_found')}}
+                                    @endif
                                 </td>
                                 <td>
                                     @if($a->description == 'updated')
