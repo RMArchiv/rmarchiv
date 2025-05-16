@@ -2,7 +2,8 @@
     <div class="card">
         <div class="card-header">{{ trans('app.search') }}</div>
         <div class="card-body">
-            {{ Form::open(['action' => ['SearchController@search']], ['class' => 'form-horizontal']) }}
+            <form method="GET" action="{{action('SearchController@search')}}" class="form-horizontal" >
+            @csrf
                 <input class="d-none" id="term" type='text' name='term' />
                 <div id="termbar" class="searchbar"></div>
                 <input id="term" type='submit' value='Submit' />
@@ -19,7 +20,7 @@
                         additionalProps:{}
                     });
             </script>
-            {{ Form::close() }}
+            </form>
         </div>
     </div>
 </div>

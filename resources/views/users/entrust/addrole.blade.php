@@ -36,7 +36,8 @@
             <h2>keine benutzerrollen vorhanden bisher.</h2>
         @endif
 
-        {!! Form::open(['route' => 'user.perm.role.store']) !!}
+        <form method="POST" action="{{route('user.perm.role.store')}}">
+            @csrf
         <div class="rmarchivtbl" id="rmarchivbox_submitprod">
             <h2>Rolle hinzufügen</h2>
 
@@ -65,6 +66,6 @@
                 <input type="submit" value="senden">
             </div>
         </div>
-        {!! Form::close() !!}
+        </form>
     </div>
 @endsection

@@ -343,9 +343,10 @@
                                                             </div>
                                                             <div class="modal-body clearfix">
                                                                 <div class="col-md-12">
-                                                                    {!! Form::open(['action' => ['TaggingController@store'], 'class' => 'form-horizontal']) !!}
-                                                                    {!! Form::hidden('content_id', $game->id) !!}
-                                                                    {!! Form::hidden('content_type', 'game') !!}
+                                                                    <form method="POST" action="{{action('TaggingController@store')}}" class="form-horizontal">
+                                                                        @csrf
+                                                                    <input type="hidden" name='content_id' value="{{ $game->id }}">
+                                                                    <input type="hidden" name='content_type' value="{{ 'game' }}">
                                                                     <fieldset>
                                                                         <div class="form-group">
                                                                             <label for="title" class="col-form-label">{{ trans('app.tag_name') }}</label>
@@ -355,7 +356,7 @@
                                                                             <input class="btn btn-primary" type='submit' value='{{ trans('app.submit') }}' id='submit'>
                                                                         </div>
                                                                     </fieldset>
-                                                                    {!! Form::close() !!}
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -547,9 +548,10 @@
                                 <div class="card-header">{{ trans('app.add_comment') }}</div>
                                 <div class="card-body">
                                     @permission(('create-game-comments'))
-                                    {!! Form::open(['action' => ['CommentController@add']]) !!}
-                                    {!! Form::hidden('content_id', $game->id) !!}
-                                    {!! Form::hidden('content_type', 'game') !!}
+                                    <form method="POST" action="{{action('CommentController@add')}}">
+                                        @csrf
+                                    <input type="hidden" name='content_id' value="{{ $game->id }}">
+                                    <input type="hidden" name='content_type' value="{{ 'game' }}">
                                     <div class='content'>
                                         @if(\App\Helpers\CheckRateableHelper::checkRateable('game', $game->gameid, Auth::id()) === true)
                                             <div id='prodvote'>
@@ -573,7 +575,7 @@
                                     <div class='foot'>
                                         <input type='submit' value='Submit' id='submit'>
                                     </div>
-                                    {!! Form::close() !!}
+                                    </form>
                                     @else
                                         {{ trans('app.your_permissions_are_to_low') }}
                                     @endpermission

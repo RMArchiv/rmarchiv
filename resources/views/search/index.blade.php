@@ -19,7 +19,8 @@
         <div class="row">
             <div class="col-md-12 mb-2">
                 <div class="card">
-                    {{ Form::open(['action' => ['SearchController@search'], 'class' => 'form-horizontal']) }}
+                    <form method="GET" action="{{action('SearchController@search')}}" class="form-horizontal" >
+                        @csrf
                     <div class="card-header">
                         {{ trans('app.search') }}
                     </div>
@@ -56,7 +57,7 @@
                             </div>
                         </fieldset>
                     </div>
-                    {{ Form::close() }}
+                    </form>
                 </div>
             </div>
         </div>
