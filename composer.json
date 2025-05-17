@@ -33,7 +33,6 @@
         "laravel/framework": "^10.0",
         "laravel/scout": "^9.0",
         "laravel/ui": "^4.0",
-        "laravelcollective/html": "^6.3",
         "lithiumdev/laravel-tagcloud": "^1.0",
         "mdurrant/php-binary-reader": "^1.0",
         "mews/captcha": "^3.2",
