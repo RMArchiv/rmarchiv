@@ -346,7 +346,10 @@ return [
     'show_original_size' => 'Zeige Originalgröße',
     'sorry_you_are_banned' => 'Sorry, du wurdest gebannt.',
     'sounds' => 'Sounds',
-    'statistics' => 'Statistiken',
+    'statistics' => [
+        'release_per_year' => 'Releases pro Jahr',
+        'title' => 'Statistiken',
+    ],
     'step' => 'Schritt',
     'subject' => 'Betreff',
     'submit' => 'Senden',

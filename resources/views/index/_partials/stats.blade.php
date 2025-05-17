@@ -1,7 +1,7 @@
 <div class="row mt-4">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">{{ trans('app.statistics') }}</div>
+            <div class="card-header">{{ trans('app.statistics.title') }}</div>
                 <table class="table table-striped table-hover">
                     <tr>
                         <td>

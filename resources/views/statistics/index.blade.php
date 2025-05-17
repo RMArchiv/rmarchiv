@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('pagetitle', trans('app.statistics'))
+@section('pagetitle', trans('app.statistics.title'))
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="page-header">
-                    <h1>{{ trans('app.statistics') }}</h1>
+                    <h1>{{ trans('app.statistics.title') }}</h1>
                     {!! Breadcrumbs::render('statistics') !!}
                 </div>
             </div>
@@ -16,7 +16,9 @@
                     <div class="card-header">
                         {{ trans('app.releases_per_year') }}
                     </div>
-                    <div class="card-body" id="rel_div"></div>
+                    <div class="card-body" id="release_per_year">
+                        <canvas id="releasePerYear"    width="100%"    height="100%"></canvas>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6 mb-3">
@@ -132,12 +134,72 @@
             </div>
         </div>
     </div>
+    <script type="module">
+    window.addEventListener("load", function (event) {
+        let rmBack = "#00001a";
+        let rmText = "#ffffe0";
+        let rmLink = "#ffbf00";
+        let rmLinkHover = "#ffdf00";
 
-    {!! $lava->run('AreaChart', 'Registrierungen', 'reg_div') !!}
-    {!! $lava->run('AreaChart', 'Kommentare', 'com_div') !!}
-    {!! $lava->run('AreaChart', 'Releases', 'rel_div') !!}
-    {!! $lava->run('AreaChart', 'ReleasesMon', 'relmon_div') !!}
-    {!! $lava->run('AreaChart', 'ForumPosts', 'boardposts_div') !!}
-    {!! $lava->run('PieChart', 'MakerChart', 'makerchart_div') !!}
-    {!! $lava->run('AreaChart', 'PlayerReleases', 'relkelven_div') !!}
+        let rmBaseM1 = "#112942";
+        let rmBase = "#17395c";
+        let rmBaseP1 = "#1a4169";
+        let rmBaseP2 = "#215285";
+        let rmBaseP3 = "#2a6bab";
+
+        const stackedCtx = document.getElementById("releasePerYear");
+        let myChart = new Chart(stackedCtx, {
+            type: 'line',
+            data: {
+                labels: {{ Illuminate\Support\Js::from( array_map(function($year) {return $year[0];}, $releasesYear[1])) }},
+                datasets: [
+                    {
+                        label: {{Illuminate\Support\Js::from($releasesYear[0][0])}},
+                        data: {{ Illuminate\Support\Js::from( array_map(function($year) {return $year[0];}, $releasesYear[1])) }},
+                        backgroundColor: rmLink+"A0",
+                        borderColor: rmLink,
+                        borderWidth: 2,
+                        fill: true,
+                    },
+                    {
+                        label: {{Illuminate\Support\Js::from($releasesYear[0][1])}},
+                        data: {{ Illuminate\Support\Js::from( array_map(function($year) {return $year[1];}, $releasesYear[1])) }},
+                        backgroundColor: rmBaseP3 + "A0",
+                        borderColor: rmBaseP3,
+                        borderWidth: 2,
+                        fill: true,
+                    },
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Statistics'
+                        }
+                    },
+                    x: {
+                        stacked: true
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 10,
+                        top: 10,
+                        bottom: 10
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                }
+            }
+        });
+    });
+    </script>
 @endsection

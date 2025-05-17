@@ -346,7 +346,10 @@ return [
   'show_original_size'                              => 'Show original size',
   'sorry_you_are_banned'                            => 'Sorry, you are banned.',
   'sounds'                                          => 'Sounds',
-  'statistics'                                      => 'Statistics',
+  'statistics' => [
+    'release_per_year'    => 'Releases per year',
+    'title'               => 'Statistics',
+  ],
   'step'                                            => 'Step',
   'subject'                                         => 'Subject',
   'submit'                                          => 'Submit',

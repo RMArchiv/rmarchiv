@@ -255,7 +255,7 @@ Route::get('sitemap/board', 'SitemapController@board')->name('sitemap.board');
 Route::get('sitemap/news', 'SitemapController@news')->name('sitemap.news');
 
 //Routen für Statistiken
-Route::get('stats', 'StatsticController@show');
+Route::get('stats', 'StatisticsController@show');
 
 //Routen für Tags
 Route::post('tags/create', 'TaggingController@store')->middleware('permission:create-games');
