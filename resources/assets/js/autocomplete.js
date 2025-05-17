@@ -90,7 +90,7 @@ export function createAutocomplete({
           },
           templates: {
             noResults({ state, source, html }) {
-              return html`<div class="empty-message">${noResults}</div>`;
+              return html`<div class="empty-message text-white">${noResults}</div>`;
             },
             item({ item, components, html }) {
               if (type == "games") {
@@ -215,7 +215,7 @@ export function createAutocomplete({
             </div>
             `;
               } else {
-                return html`<p><strong>${item.value}</strong></p>`;
+                return html`<p><strong class="text-white">${item.value}</strong></p>`;
               }
             },
           },
