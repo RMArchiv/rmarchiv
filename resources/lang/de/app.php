@@ -11,6 +11,7 @@ return [
     'release_date_year' => 'Release Jahr',
     '10_newest_board_posts' => 'Die 10 aktuellsten Forenthreads',
     '404_error' => 'TODO: 404_error',
+    '413_error' => 'Die gestellte Anfrage war zu groß',
     '501_error' => 'TODO: 501_error',
     'accessdenied' => 'Zugriff verweigert!',
     'actions' => 'Aktionen',

@@ -26,7 +26,8 @@
                     </div>
                 </div>
             @endif
-            {!! Form::open(['action' => ['GameController@store']]) !!}
+            <form method="POST" action="{{ action("GameController@store") }}">
+                @csrf
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -188,7 +189,7 @@
                 </div>
             </div>
 
-            {!! Form::close() !!}
+            </form>
         </div>
     @else
         @include('_partials.accessdenied')

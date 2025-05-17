@@ -11,6 +11,7 @@ return [
     'release_date_year'               => 'Release year',
   '10_newest_board_posts'             => '10 newest board posts',
   '404_error'                         => 'TODO: 404_error',
+  '413_error'                         => 'Payload Too Large',
   '501_error'                         => 'TODO: 501_error',
   'accessdenied'                      => 'Access denied',
   'actions'                           => 'Actions',

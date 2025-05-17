@@ -83,8 +83,9 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-body">
-                    {!! Form::open(['action' => ['SavegameManagerController@store'], 'files' => true]) !!}
-                    {!! Form::hidden('gamefile_id', $gamefile->id) !!}
+                    <form method="POST" action="{{ action(SavegameManagerController@store) }}" enctype="multipart/form-data">
+                        @csrf
+                    <input type="hidden" name="gamefile_id" value="{{$gamefile->id}}">
                     <H2>{{ trans('app.upload_savegame') }}</H2>
                     <h4>{{ trans('app.upload_savegames_only_for_the_right_gameversion') }}</h4>
                     <label for="file">{{ trans('app.savegame') }}:</label>
@@ -103,7 +104,7 @@
                     <br><br>
                     <button type="submit" class="btn btn-secondary">{{ trans('app.upload') }}</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ trans('app.close') }}</button>
-                    {!! Form::close() !!}
+                    </form>
                 </div>
             </div>
         </div>

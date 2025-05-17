@@ -11,6 +11,7 @@ return [
     'release_date_year'               => 'Año de publicación',
   '10_newest_board_posts'             => '10 últimos mensajes del foro',
   '404_error'                         => 'Error 404',
+  '413_error'                         => 'La solicitud es mayor que lo que el servidor puede procesar',
   '501_error'                         => 'Error 501',
   'accessdenied'                      => 'Acceso denegado',
   'actions'                           => 'Acciones',
