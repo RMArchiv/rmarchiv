@@ -162,20 +162,19 @@
                                 <div class="col-md-6">
                                     <div class="card">
                                         <div class="card-header">
-                                            {{ trans('app.informations') }}
+                                            {{ trans('app.information') }}
                                         </div>
                                         <ul class="list-group">
                                             <li class="list-group-item">
                                                 {{ trans('app.maker') }} :
-                                                <a href="{{ route('maker.show', $game->maker->id) }}">
-                                                    <span class="typei type_{{ $game->maker->short }}">{{ $game->maker->title }}</span> {{ $game->maker->title }}
+                                                <a class="flex align-center" href="{{ route('maker.show', $game->maker->id) }}">
+                                                    <span class="typei-nostyle type_{{ $game->maker->short }}">{{ $game->maker->title }}</span> {{ $game->maker->title }}
                                                 </a>
-                                                </td>
                                             </li>
                                             <li class="list-group-item">
                                                 {{ trans('app.gametype') }} :
                                                 @if(count($game->gamefiles) > 0)
-                                                    <span class='typei type_{{ $game->gamefiles->first()->gamefiletype->short }}'>{{ $game->gamefiles->first()->gamefiletype->title }}</span> {{ $game->gamefiles->first()->gamefiletype->title }}
+                                                    <span class='typei-nostyle type_{{ $game->gamefiles->first()->gamefiletype->short }}'>{{ $game->gamefiles->first()->gamefiletype->title }}</span> {{ $game->gamefiles->first()->gamefiletype->title }}
                                                 @else
                                                     {{ trans('app.no_gamefile_available') }}
                                                 @endif
@@ -247,7 +246,7 @@
                                                 </div>
                                             </li>
                                             <li class="list-group-item clearfix">
-                                                <ul class="col-md-6 list-unstyled">
+                                                <ul class="list-unstyled">
                                                     <li>votes:</li>
                                                     <li>
                                                         <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/>&nbsp;{{ @$game->votes['up'] ?? 0 }}
@@ -256,7 +255,7 @@
                                                         <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/>&nbsp;{{ @$game->votes['down'] ?? 0 }}
                                                     </li>
                                                 </ul>
-                                                <ul class="col-md-6 list-unstyled">
+                                                <ul class="list-unstyled">
                                                     <li>avg:</li>
                                                     <li>
                                                     @if(@$game->votes['up'] > @$game->votes['down'])

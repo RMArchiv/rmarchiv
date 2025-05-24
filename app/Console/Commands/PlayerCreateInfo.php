@@ -55,7 +55,7 @@ class PlayerCreateInfo extends Command
         $counter = 0; //init counter
         $toindexed = []; //Object array for indexable gamefiles
 
-        //Loop to collect needed informations about gamefiles
+        //Loop to collect needed information about gamefiles
         foreach ($gamefiles as $gamefile) {
             //Filter Gamefiles without Game relation (orphaned files)
             if ($gamefile->game) {
