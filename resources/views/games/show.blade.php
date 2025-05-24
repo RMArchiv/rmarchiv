@@ -250,33 +250,26 @@
                                                 <ul class="col-md-6 list-unstyled">
                                                     <li>votes:</li>
                                                     <li>
-                                                        <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/>&nbsp;{{ @$game->votes['up'] or 0 }}
+                                                        <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/>&nbsp;{{ @$game->votes['up'] ?? 0 }}
                                                     </li>
                                                     <li>
-                                                        <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/>&nbsp;{{ @$game->votes['down'] or 0 }}
+                                                        <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/>&nbsp;{{ @$game->votes['down'] ?? 0 }}
                                                     </li>
                                                 </ul>
                                                 <ul class="col-md-6 list-unstyled">
                                                     <li>avg:</li>
-                                                    {{--
+                                                    <li>
                                                     @if(@$game->votes['up'] > @$game->votes['down'])
-                                                        <li>
-                                                            <img src='/assets/rate_up.gif' alt='ok'/>&nbsp;{{ @$game->votes['avg'] or 0 }}
-                                                        </li>
+                                                        <img src='/assets/rate_up.gif' alt='good'/>
                                                     @elseif(@$game->votes['up'] < @$game->votes['down'])
-                                                        <li>
-                                                            <img src='/assets/rate_down.gif' alt='ok'/>&nbsp;{{ @$game->votes['avg'] or 0 }}
-                                                        </li>
+                                                        <img src='/assets/rate_down.gif' alt='bad'/>
                                                     @elseif(@$game->votes['up'] == @$game->votes['down'])
-                                                        <li>
-                                                            <img src='/assets/rate_neut.gif' alt='ok'/>&nbsp;{{ @$game->votes['avg'] or 0 }}
-                                                        </li>
+                                                        <img src='/assets/rate_neut.gif' alt='ok'/>
                                                     @else
-                                                        <li>
-                                                            <img src='/assets/rate_neut.gif' alt='ok'/>&nbsp;{{ @$game->votes['avg'] or 0 }}
-                                                        </li>
+                                                        <img src='/assets/rate_neut.gif' alt='ok'/>
                                                     @endif
-                                                    --}}
+                                                    &nbsp;{{ @$game->avg ?? 0 }}
+                                                    </li>
                                                     {{-- data.cdc > 0
                                                 <li><img src="/assets/cdc.png" alt="cdcs">cdc's</li>
                                                  endif
@@ -286,7 +279,7 @@
                                             </li>
                                             @if(Auth::check())
                                                 @if($game->gamefiles->count() != 0)
-                                                    @if($game->maker_id == 2 or $game->maker_id == 3 or $game->maker_id == 6 or $game->maker_id == 9)
+                                                    @if($game->maker_id == 2 ?? $game->maker_id == 3 ?? $game->maker_id == 6 ?? $game->maker_id == 9)
                                                         <li class="list-group-item">
                                                             {{ trans('app.play_in_browser') }} :
                                                             <a href=
