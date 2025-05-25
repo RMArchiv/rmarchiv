@@ -152,6 +152,9 @@ return [
     'file' => 'Datei',
     'filecategory' => 'Dateikategorie',
     'filestats' => 'Dateistatistiken',
+    'filter' => [
+        'all' => "Alle"
+    ],
     'game' => 'Spiel',
     'game_does_not_exist' => 'Dieses Spiel existiert nicht',
     'game_not_found' => 'Spiel nicht gefunden',

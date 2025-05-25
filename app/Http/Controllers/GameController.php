@@ -31,8 +31,12 @@ class GameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($orderby = 'title', $direction = 'asc')
+    public function index(Request $request, $orderby = 'title', $direction = 'asc')
     {
+        // Set filters
+        $queryMaker = $request->query("maker");
+        $queryLanguage = $request->query("language");
+
         $rows = (\Auth::check()) ? \Auth::user()->settings->rows_per_page_games : config('app.rows_per_page_games');
 
         if ($orderby == 'developer.name') {
@@ -45,10 +49,36 @@ class GameController extends Controller
         if (!\Auth::check()) {
             $games->where('nsfw', '=', false);
         }
-        $games = $games->paginate($rows);
+
+        // Get options for filters
+        $makers = array();
+        $makerAddedTitle = array();
+        $languages = array();
+        $languageAddedName = array();
+        foreach ($games->get() as $key => $game) {
+            if(!in_array($game->maker->title, $makerAddedTitle)) {
+                array_push($makers, $game->maker);
+                array_push($makerAddedTitle, $game->maker->title);
+            }
+            if(!in_array($game->language->name, $languageAddedName)) {
+                array_push($languages, $game->language);
+                array_push($languageAddedName, $game->language->name);
+            }
+        }
+        // Apply active filters using query strings
+        if(isset($queryMaker) && $queryMaker !== "") {
+                $games = $games->where('maker_id', '=', $queryMaker);
+        }
+        if(isset($queryLanguage) && $queryLanguage !== "") {
+                $games = $games->where('lang_id', '=', $queryLanguage);
+        }
+
+        $games = $games->paginate($rows)->withQueryString();
 
         return view('games.index', [
             'games'     => $games,
+            'languages' => $languages,
+            'makers'    => $makers,
             'maxviews'  => DatabaseHelper::getGameViewsMax(),
             'orderby'   => $orderby,
             'direction' => $direction,
