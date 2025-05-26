@@ -85,7 +85,8 @@
                     @endif
                 </ul>
 
-                {{ Form::open(['action' => ['SearchController@search'], 'class' => 'form-inline my-2 my-lg-0']) }}
+                <form method="POST" action="{{ action("SearchController@search")}}">
+                    @csrf
                 {{-- <div class="form-inline mt-2 mt-md-0" style="flex-flow: nowrap">
                     <input type="text" class="form-control form-control-sm me-sm-2" id="term" name="term" placeholder="{{ trans('app.search') }}">
                     <button type="submit" class="btn btn-outline-success my-2 my-sm-0 btn-sm">{{ trans('app.submit') }}</button>
@@ -104,7 +105,7 @@
                         additionalProps:{}
                     })
                 </script>
-                {{ Form::close() }}
+                </form>
             </div>
         </div>
     </div>

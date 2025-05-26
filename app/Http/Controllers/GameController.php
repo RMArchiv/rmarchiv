@@ -22,6 +22,7 @@ use Illuminate\Http\Request;
 use App\Models\GamesDeveloper;
 use App\Helpers\DatabaseHelper;
 use Illuminate\Support\Facades\Input;
+use Log;
 
 class GameController extends Controller
 {

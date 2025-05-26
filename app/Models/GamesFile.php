@@ -86,7 +86,18 @@ class GamesFile extends Model
     ];
 
     protected $guarded = [];
-    protected $dates = ['deleted_at'];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'deleted_at' => 'datetime'
+        ];
+    }
 
     public function gamefiletype()
     {

@@ -14,14 +14,15 @@
                     <td>{{ $l->item }}</td>
                     <td>{{ $l->text }}</td>
                     <td>
-                        {!! Form::open(['method' => 'POST', 'route' => ['trans.save']]) !!}
-                            {!! Form::hidden('loc1', $loc1) !!}
-                            {!! Form::hidden('loc2', $loc2) !!}
-                            {!! Form::hidden('loc1_orig', $l->text) !!}
-                            {!! Form::hidden('id', $l->id) !!}
+                        <form method="POST" action="{{ route('trans.save')}}">
+                        @csrf
+                            <input type="hidden" name='loc1' value="{{ $loc1 }}">
+                            <input type="hidden" name='loc2' value="{{ $loc2 }}">
+                            <input type="hidden" name='loc1_orig' value="{{ $l->text }}">
+                            <input type="hidden" name='id' value="{{ $l->id }}">
                             <input name="transstring" id="transstring" value=""/>
                             <input type="submit" value="!">
-                        {!! Form::close() !!}
+                        </form>
                     </td>
                 </tr>
             @endforeach

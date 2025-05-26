@@ -55,16 +55,16 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
-    protected $routeMiddleware = [
+    protected $middlewareAliases = [
         'auth'               => \Illuminate\Auth\Middleware\Authenticate::class,
         'auth.basic'         => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings'           => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can'                => \Illuminate\Auth\Middleware\Authorize::class,
         'guest'              => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle'           => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'role'               => \Laratrust\Middleware\LaratrustRole::class,
-        'permission'         => \Laratrust\Middleware\LaratrustPermission::class,
-        'ability'            => \Laratrust\Middleware\LaratrustAbility::class,
+        'role'               => \Laratrust\Middleware\Role::class,
+        'permission'         => \Laratrust\Middleware\Permission::class,
+        'ability'            => \Laratrust\Middleware\Ability::class,
         'forbid-banned-user' => \Cog\Laravel\Ban\Http\Middleware\ForbidBannedUser::class,
     ];
 }

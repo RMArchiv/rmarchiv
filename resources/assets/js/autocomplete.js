@@ -5,7 +5,7 @@ import axios from "axios";
 /**
  * Unified configuration of autocomplete
  * A find autocomplete will try to set an input container using inputSelector
- * @typedef {{apiPath:Function,placeholder:string,searchbarSelector:string,panelSelector:string,inputSelector:string|undefined,noResults:string,type:"games"|"list",action:"find"|"navigate",limit:number,changeInputOnChange:boolean,additionalProps:Object}} AutocompleteConfig
+ * @typedef {{apiPath:Function,placeholder:string,searchbarSelector:string,panelSelector:string,inputSelector:string|undefined,noResults:string,type:"games"|"list",action:"find"|"navigate"|"findId",limit:number,changeInputOnChange:boolean,additionalProps:Object}} AutocompleteConfig
  */
 /**
  *
@@ -60,6 +60,20 @@ export function createAutocomplete({
                 }
                 break;
 
+              // returns id of searched element
+              case "findId":
+                params.setQuery(params?.item?.value.toString());
+                // Input should be hidden as user primarily interacts with search bar
+                if (inputSelector) {
+                  /** @type HTMLInputElement */
+                  let input = document.querySelector(inputSelector);
+                  if (input) {
+                    input.value = params?.item?.id.toString();
+                  }
+                }
+                break;
+
+              // returns value of searched element
               default:
                 params.setQuery(params?.item?.value.toString());
                 // Input should be hidden as user primarily interacts with search bar
@@ -67,6 +81,7 @@ export function createAutocomplete({
                   /** @type HTMLInputElement */
                   let input = document.querySelector(inputSelector);
                   if (input) {
+                    console.log(JSON.stringify(params))
                     input.value = params?.item?.value.toString();
                   }
                 }
@@ -75,7 +90,7 @@ export function createAutocomplete({
           },
           templates: {
             noResults({ state, source, html }) {
-              return html`<div class="empty-message">${noResults}</div>`;
+              return html`<div class="empty-message text-white">${noResults}</div>`;
             },
             item({ item, components, html }) {
               if (type == "games") {
@@ -121,11 +136,11 @@ export function createAutocomplete({
 
                 <ul class="list-group">
                     <li class="list-group-item media" style="margin-top: 0px;">
-                        <a class="pull-right" href="${
+                        <a class="float-end" href="${
                           item?.link
                         }"><span class="badge">${item?.comments}</span></a>
-                        <a class="pull-left" href="${item?.link}">
-                            <img width="100px" class="img-responsive img-rounded" src='${
+                        <a class="float-start" href="${item?.link}">
+                            <img width="100px" class="img-fluid img-rounded" src='${
                               item?.screenshot
                             }' alt='${
                   item.translation.titleScreenAlt
@@ -200,7 +215,7 @@ export function createAutocomplete({
             </div>
             `;
               } else {
-                return html`<p><strong>${item.value}</strong></p>`;
+                return html`<p><strong class="text-white">${item.value}</strong></p>`;
               }
             },
           },

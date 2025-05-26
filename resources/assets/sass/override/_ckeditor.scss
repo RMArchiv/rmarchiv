@@ -1,0 +1,70 @@
+@import "../variables";
+
+// :::: CUSTOM :::: //
+// Hide ckeditor powered by hint
+.ck-powered-by-balloon .ck-powered-by {
+    display: none;
+}
+// :::: END :::: //
+
+// Override ckeditor styles
+// Most color effects seem to not be needed / Added many which were grouped together (unused have defaults)
+// Defaults and additional variables are in: node_modules/ckeditor5/dist/ckeditor5.css
+:root {
+	// --ck-color-base-foreground: 								hsl(0, 0%, 98%);
+    --ck-color-base-background:     #{$rm-base} !important;
+	--ck-color-base-border: 		#{$rm-base-p1} !important;
+	// --ck-color-base-action: 									hsl(104, 50.2%, 42.5%);
+	// --ck-color-base-focus: 										hsl(209, 92%, 70%);
+	--ck-color-base-text: 			#{$rm-link} !important;
+	// --ck-color-base-active: 									hsl(218.1, 100%, 58%);
+	--ck-color-base-active-focus:	#{$rm-link-hover} !important;
+	// --ck-color-base-error:										hsl(15, 100%, 43%);
+
+	/* -- Generic colors ------------------------------------------------------------------------ */
+
+	--ck-color-focus-border-coordinates:    #{rgba($rm-link, 0.2)} !important;
+	--ck-color-focus-border: 				var(--ck-color-focus-border-coordinates) !important;
+	--ck-focus-ring: 						var(--ck-color-focus-border-coordinates) !important;
+	--ck-color-focus-outer-shadow:			#{$rm-base-p2} !important;
+	// --ck-color-focus-disabled-shadow:							hsla(209, 90%, 72%,.3);
+	// --ck-color-focus-error-shadow:								hsla(9,100%,56%,.3);
+	// --ck-color-text: 											var(--ck-color-base-text);
+	// --ck-color-shadow-drop: 									hsla(0, 0%, 0%, 0.15);
+	// --ck-color-shadow-drop-active:								hsla(0, 0%, 0%, 0.2);
+	// --ck-color-shadow-inner: 									hsla(0, 0%, 0%, 0.1);
+
+	/* -- Buttons ------------------------------------------------------------------------------- */
+
+	// --ck-color-button-default-background: 						transparent;
+	--ck-color-button-default-hover-background: 	#{rgba($rm-link-hover, 0.2)} !important;
+	--ck-color-button-default-active-background: 	#{$rm-link-hover} !important;
+	// --ck-color-button-default-disabled-background: 				transparent;
+
+	--ck-color-button-on-background: 				#{$rm-link} !important;
+	--ck-color-button-on-hover-background: 			#{$rm-link-hover} !important;
+	--ck-color-button-on-active-background: 		#{$rm-link-hover} !important;
+	// --ck-color-button-on-disabled-background: 					hsl(211, 15%, 95%);
+	--ck-color-button-on-color:						#{$rm-text} !important;
+
+
+	// --ck-color-button-action-background: 						var(--ck-color-base-action);
+	// --ck-color-button-action-hover-background: 					hsl(104, 53.2%, 40.2%);
+	// --ck-color-button-action-active-background: 				hsl(104, 53.2%, 40.2%);
+	// --ck-color-button-action-disabled-background: 				hsl(104, 44%, 58%);
+	// --ck-color-button-action-text: 								var(--ck-color-base-background);
+
+	// --ck-color-button-save: 									hsl(120, 100%, 27%);
+	// --ck-color-button-cancel: 									hsl(15, 100%, 43%);
+
+	// --ck-color-switch-button-off-background:					hsl(0, 0%, 57.6%);
+	// --ck-color-switch-button-off-hover-background:				hsl(0, 0%, 49%);
+	// --ck-color-switch-button-on-background:						var(--ck-color-button-action-background);
+	// --ck-color-switch-button-on-hover-background:				hsl(104, 53.2%, 40.2%);
+	// --ck-color-switch-button-inner-background:					var(--ck-color-base-background);
+	// --ck-color-switch-button-inner-shadow:						hsla(0, 0%, 0%, 0.1);
+
+    // Split switches like code editor
+	--ck-color-split-button-hover-background:   var(--ck-color-focus-border-coordinates) !important;
+	--ck-color-split-button-hover-border:       var(--ck-color-base-text) !important;
+}

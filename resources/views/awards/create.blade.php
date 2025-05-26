@@ -33,7 +33,8 @@
 
         <div class="row">
             <div class="col-md-12 mb-3">
-                {!! Form::open(['action' => ['AwardController@store_page']]) !!}
+                <form action="{{ action('AwardController@store_page') }}" method="POST">
+                    @csrf
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.add_award_website') }}
@@ -65,12 +66,13 @@
                         <input type="submit" class="btn btn-primary" value="{{trans('app.submit')}}">
                     </div>
                 </div>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 mb-3">
-                {!! Form::open(['action' => ['AwardController@store_cat']]) !!}
+                <form action="{{ action('AwardController@store_cat') }}" method="POST">
+                    @csrf
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.add_award') }}
@@ -125,12 +127,13 @@
                         <input class="btn btn-primary" type="submit" value="{{trans('app.submit')}}">
                     </div>
                 </div>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 mb-3">
-                {!! Form::open(['action' => ['AwardController@store_subcat']]) !!}
+                <form action="{{ action('AwardController@store_subcat') }}" method="POST">
+                    @csrf
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.add_award_category') }}
@@ -159,7 +162,7 @@
                         <input class="btn btn-primary" type="submit" value="{{trans('app.submit')}}">
                     </div>
                 </div>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
     </div>

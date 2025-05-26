@@ -5,15 +5,13 @@
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
-namespace App\Http\ViewComposers;
+namespace App\ViewComposers;
 
 use Illuminate\Contracts\View\View;
 
 class LogoComposer
 {
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * Bind data to the view.

@@ -62,8 +62,9 @@
                             {{ trans('app.create_thread') }}
                         </div>
                         <div class="card-body">
-                            {!! Form::open(['route' => ['board.thread.store'], 'id' => 'frmBBSPost']) !!}
-                            {!! Form::hidden('category', $cat->id) !!}
+                            <form method="POST" action="{{ route('board.thread.store') }}">
+                                @csrf
+                            <input type="hidden" name="category" value="{{ $cat->id }}">
                             <div class='content'>
                                 <label for='topic'>{{ trans('app.topic_title') }}:</label>
                                 <input name='topic' id='topic'/>
@@ -73,8 +74,8 @@
                                 <div><a href='#'>{{ trans('app.markdown_is_usable_here') }}</a></div>
                             </div>
                             <div class='foot'>
-                                <input type='submit' value='{{ trans('app.submit') }}' id='submit'></div>
-                            {!! Form::close() !!}
+                                <input type='submit' class="btn btn-secondary" value='{{ trans('app.submit') }}' id='submit'></div>
+                            </form>
                         </div>
                     </div>
                 @else

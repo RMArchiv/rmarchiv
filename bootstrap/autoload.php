@@ -5,7 +5,12 @@
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
-define('LARAVEL_START', microtime(true));
+ define('LARAVEL_START', microtime(true));
+
+ // Determine if the application is in maintenance mode...
+ if (file_exists($maintenance = __DIR__ . '/../storage/framework/maintenance.php')) {
+     require $maintenance;
+ }
 
 /*
 |--------------------------------------------------------------------------

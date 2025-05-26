@@ -1,14 +1,14 @@
 @import 'variables';
-@import '_custom';
+@import "custom";
 // @import './node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 @import '../../../node_modules/bootstrap/scss/bootstrap';
 
 @import "@fortawesome/fontawesome-free/css/all";
-@import "editormd_edit"; // Anpassungen zum Design - Muss angepasst werden!!!!!!!!!
 @import "../../../node_modules/jquery-ui/dist/themes/smoothness/jquery-ui.css";
 
-@import 'typeahead/typeahead.scss';
-@import "fine-uploader/override-fine-uploader";
+@import "override/ckeditor";
+@import "override/fine-uploader";
+@import "override/autocomplete";
 
 //Filetypes
 @import 'types';

@@ -13,7 +13,8 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    {!! Form::open(['action' => ['GameFileController@update', $gamefile->game_id, $gamefile->id]]) !!}
+                    <form method="POST" action="{{ action('GameFileController@update', [$gamefile->game_id, $gamefile->id]) }}">
+                        @csrf
                     <div class="card">
                         <div class="card-header">
                             {{trans('app.edit_gamefile')}}
@@ -85,7 +86,7 @@
                             <input class="btn btn-primary" type="submit" value="{{ trans('app.submit') }}">
                         </div>
                     </div>
-                    {!! Form::close() !!}
+                    </form>
                 </div>
             </div>
         </div>

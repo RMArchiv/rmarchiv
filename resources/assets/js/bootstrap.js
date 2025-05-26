@@ -9,6 +9,32 @@ window["jQuery"] = $;
 window["createAutocomplete"] = createAutocomplete;
 import * as qq from "fine-uploader";
 window["qq"] = qq;
+import {
+    Chart,
+    Colors,
+    BarController,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    PointElement,
+    LineElement,
+    Legend,
+    LineController,
+    Filler
+  } from "chart.js";
+  Chart.register(
+    Colors,
+    BarController,
+    BarElement,
+    CategoryScale,
+    LinearScale,
+    Legend,
+    LineElement,
+    PointElement,
+    LineController,
+    Filler
+  );
+  window["Chart"] = Chart;
 
 // import qq from "fine-uploader";
 // window.qq = qq;

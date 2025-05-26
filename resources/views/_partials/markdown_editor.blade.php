@@ -15,7 +15,7 @@
 </div>
 
 <script type="module">
-    window.onload = () => {
+    window.addEventListener("load",function(event) {
         ClassicEditor.create(document.querySelector('.editor'), {...ckEditorConfig,
             simpleUpload: {
                 uploadUrl: '/attachment/upload',
@@ -26,6 +26,6 @@
                 }
             },
             initialData:`{{ $edit_text ?? "" }}`})
-    };
+    });
 </script>
 

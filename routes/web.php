@@ -66,6 +66,7 @@ Route::get('games/{id}/edit', 'GameController@edit')->name('game.edit')->middlew
 Route::post('games/{id}/developer', 'GameController@store_developer')->name('games.developer.store')->middleware('permission:create-games');
 Route::post('games/{id}/developer/delete', 'GameController@destroy_developer')->name('games.developer.delete')->middleware('permission:create-games');
 Route::post('games/{id}/visibility', 'GameController@change_visibility')->name('games.invisible');
+Route::delete('games/{id}/delete', 'GameController@destroy')->name('games.destroy');
 
 //Gamefiles routen
 Route::get('games/{id}/gamefiles', 'GameFileController@create')->name('gamefiles.index');
@@ -132,7 +133,7 @@ Route::post('resources/create', 'ResourceController@create_steps')->name('resour
 Route::get('resources/create', 'ResourceController@create')->name('resources.create')->middleware('permission:create-games');
 Route::post('resources/create/store', 'ResourceController@store')->name('resources.store')->middleware('permission:create-games');
 
-Route::post('resources/upload', 'FineUploaderController@endpoint@upload')->name('resources.upload')->middleware('permission:create-games');
+Route::post('resources/upload', 'FineUploaderController@endpoint')->name('resources.upload')->middleware('permission:create-games');
 
 //User Routings
 Route::get('users', 'UserController@index');
@@ -254,7 +255,7 @@ Route::get('sitemap/board', 'SitemapController@board')->name('sitemap.board');
 Route::get('sitemap/news', 'SitemapController@news')->name('sitemap.news');
 
 //Routen für Statistiken
-Route::get('stats', 'StatsticController@show');
+Route::get('stats', 'StatisticsController@show');
 
 //Routen für Tags
 Route::post('tags/create', 'TaggingController@store')->middleware('permission:create-games');

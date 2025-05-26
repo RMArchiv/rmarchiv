@@ -38,7 +38,8 @@
             <h2>dieser gruppe wurden keine bverechtigungen zugewiesen.</h2>
         @endif
 
-        {!! Form::open(['route' => ['user.perm.permtorole', $roleid]]) !!}
+        <form method="POST" action="{{route('user.perm.permtorole', $roleid)}}">
+            @csrf
         <div class="rmarchivtbl" id="rmarchivbox_submitprod">
             <h2>berechtigung hinzufügen</h2>
 
@@ -62,6 +63,6 @@
                 <input type="submit" value="senden">
             </div>
         </div>
-        {!! Form::close() !!}
+        </form>
     </div>
 @endsection

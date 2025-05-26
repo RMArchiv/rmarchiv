@@ -163,7 +163,7 @@ class BoardController extends Controller
             'thread_id'    => $threadid,
             'user_id'      => \Auth::id(),
             'content_md'   => $request->get('msg'),
-            'content_html' => \Markdown::convertToHtml($request->get('msg')),
+            'content_html' => \Markdown::convert($request->get('msg')),
             'created_at'   => $date,
         ]);
 
@@ -188,7 +188,7 @@ class BoardController extends Controller
                 'cat_id'       => $request->get('catid'),
                 'thread_id'    => $threadid,
                 'content_md'   => $request->get('msg'),
-                'content_html' => \Markdown::convertToHtml($request->get('msg')),
+                'content_html' => \Markdown::convert($request->get('msg')),
                 'created_at'   => $date,
             ]);
 

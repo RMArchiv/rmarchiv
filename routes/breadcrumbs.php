@@ -320,7 +320,7 @@ Breadcrumbs::for('savegamemanager.show', function (BreadcrumbTrail $breadcrumbs,
 // Home -> Statistics
 Breadcrumbs::for('statistics', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push(trans('app.statistics'), action('StatsticController@show'));
+    $breadcrumbs->push(trans('app.statistics.title'), action('StatisticsController@show'));
 });
 
 //----------------- Page Statistics ---------------------------------------------------------------------------------//
