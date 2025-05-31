@@ -9,6 +9,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Developer;
 use App\Models\Game;
+use App\Models\Tag;
 use App\Models\User;
 
 class AutocompleteController extends Controller
@@ -204,6 +205,21 @@ class AutocompleteController extends Controller
             $result[] = [
                 'id'    => $user->id,
                 'value' => $user->name,
+            ];
+        }
+
+        return \Response::json($result);
+    }
+
+    public function tag($term)
+    {
+        $result = [];
+        $tags = Tag::where('title', 'like', '%'.$term.'%')->get();
+
+        foreach ($tags as $tag) {
+            $result[] = [
+                'id'    => $tag->id,
+                'value' => $tag->title,
             ];
         }
 

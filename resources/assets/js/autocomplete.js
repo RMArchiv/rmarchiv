@@ -5,7 +5,7 @@ import axios from "axios";
 /**
  * Unified configuration of autocomplete
  * A find autocomplete will try to set an input container using inputSelector
- * @typedef {{apiPath:Function,placeholder:string,searchbarSelector:string,panelSelector:string,inputSelector:string|undefined,noResults:string,type:"games"|"list",action:"find"|"navigate"|"findId",limit:number,changeInputOnChange:boolean,additionalProps:Object}} AutocompleteConfig
+ * @typedef {{apiPath:Function,placeholder:string,detachedMediaQuery?:string|"none"|"",searchbarSelector:string,panelSelector:string,inputSelector:string|undefined,noResults:string,type:"games"|"list",action:"find"|"navigate"|"findId",limit:number,changeInputOnChange:boolean,additionalProps:Object,additionalSourceProps:Object}} AutocompleteConfig
  */
 /**
  *
@@ -23,9 +23,13 @@ export function createAutocomplete({
   limit,
   changeInputOnChange = true,
   additionalProps = {},
+  additionalSourceProps = {},
 }) {
   const autocompleteSearch = autocomplete({
     container: `${searchbarSelector}`,
+    classNames: {
+      panel: 'autocomplete-panel-highest',
+    },
     getSources() {
       return [
         {
@@ -219,9 +223,10 @@ export function createAutocomplete({
               }
             },
           },
-          ...additionalProps,
+          ...additionalSourceProps,
         },
       ];
     },
+    ...additionalProps
   });
 }

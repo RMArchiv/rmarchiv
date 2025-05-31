@@ -330,23 +330,44 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
-                                                                <h4 class="modal-title">{{ trans('app.add_tag') }}</h4>
+                                                                <h5 class="modal-title">{{ trans('app.add_tag') }}</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
-                                                            <div class="modal-body clearfix">
+                                                            <div class="modal-body">
                                                                 <div class="col-md-12">
                                                                     <form method="POST" action="{{action('TaggingController@store')}}" class="form-horizontal">
                                                                         @csrf
                                                                     <input type="hidden" name='content_id' value="{{ $game->id }}">
                                                                     <input type="hidden" name='content_type' value="{{ 'game' }}">
                                                                     <fieldset>
-                                                                        <div class="form-group">
-                                                                            <label for="title" class="col-form-label">{{ trans('app.tag_name') }}</label>
-                                                                            <input type="text" class="form-control" name="title" id="title" placeholder="" value=""/>
+                                                                        <div class="form-group" id="row_tag">
+                                                                            <label for="tag" class="col-lg-2 col-form-label">{{trans('app.tag_name')}}</label>
+                                                                            <div class="d-flex gap-4">
+                                                                                <div class="col-lg-10 autocomplete">
+                                                                                    <input autocomplete="off" type="text" class="d-none auto form-control" id="tag" name="title" value="">
+                                                                                    <div id="searchbar"></div>
+                                                                                    <div id="searchcontainer"></div>
+                                                                                </div>
+                                                                                <div class='form-group'>
+                                                                                    <input class="btn btn-secondary" type='submit' value='{{ trans('app.submit') }}' id='submit'>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class='form-group'>
-                                                                            <input class="btn btn-primary" type='submit' value='{{ trans('app.submit') }}' id='submit'>
-                                                                        </div>
+
+                                                                        <script type="module">
+                                                                            createAutocomplete({
+                                                                                apiPath: ()=>{return "ac_tag"},
+                                                                                placeholder: "{{ trans('app.search') }}",
+                                                                                searchbarSelector:"#row_tag #searchbar",
+                                                                                panelSelector:"#searchcontainer",
+                                                                                noResults:'{{ '' }}',
+                                                                                type:"list",
+                                                                                action:"find",
+                                                                                limit:5,
+                                                                                inputSelector:".autocomplete #tag",
+                                                                                // disable detached mode because input does not work in nested bootstrap modal
+                                                                                additionalProps:{detachedMediaQuery: "none"}})
+                                                                        </script>
                                                                     </fieldset>
                                                                     </form>
                                                                 </div>
