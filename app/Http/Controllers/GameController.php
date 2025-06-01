@@ -38,13 +38,18 @@ class GameController extends Controller
         $queryTags = $request->query("tag");
 
         $rows = (\Auth::check()) ? \Auth::user()->settings->rows_per_page_games : config('app.rows_per_page_games');
-
         if ($orderby == 'developer.name') {
-            $games = Game::Join('games_developer', 'games.id', '=', 'games_developer.game_id')
+            $games = Game::select(['id','comments','title','subtitle','release_date','created_at','voteup','votedown','avg', 'maker_id', 'lang_id'])
+                ->with(['language','maker','gamefiles','cdcs','tags','developers'])
+                ->Join('games_developer', 'games.id', '=', 'games_developer.game_id')
                 ->Join('developer', 'games_developer.developer_id', '=', 'developer.id')
-                ->orderBy($orderby, $direction)->select('games.*');
+                ->orderBy($orderby, $direction);
         } else {
-            $games = Game::orderBy($orderby, $direction)->orderBy('title')->orderBy('subtitle');
+            $games = Game::select(['id','comments','title','subtitle','release_date','created_at','voteup','votedown','avg', 'maker_id', 'lang_id'])
+            ->with(['language','maker','gamefiles','cdcs','tags','developers'])
+            ->orderBy($orderby, $direction)
+            ->orderBy('title')
+            ->orderBy('subtitle');
         }
         if (!\Auth::check()) {
             $games->where('nsfw', '=', false);
@@ -55,7 +60,6 @@ class GameController extends Controller
         $makerAddedTitle = array();
         $languages = array();
         $languageAddedName = array();
-        $tags = Tag::all();
         foreach ($games->get() as $key => $game) {
             if(!in_array($game->maker->title, $makerAddedTitle)) {
                 array_push($makers, $game->maker);
@@ -92,8 +96,8 @@ class GameController extends Controller
             if ($a->title == $b->title) return 0;
                 return ($a->title < $b->title) ? -1 : 1;
         });
-        $tags->sortBy('title');
 
+        $tags = Tag::select(["title","id"])->orderBy("title")->get();
         $games = $games->paginate($rows)->withQueryString();
 
         return view('games.index', [
