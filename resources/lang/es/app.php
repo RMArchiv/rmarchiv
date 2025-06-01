@@ -401,7 +401,7 @@ return [
   'user_not_found'                                  => 'Usuario no encontrado',
   'user_permissions'                                => 'Permisos del usuario',
   'user_settings'                                   => 'Preferencias del usuario',
-  'userinformations'                                => 'Información del usuario',
+  'userinformation'                                => 'Información del usuario',
   'userlevel'                                       => 'Nivel del usuario',
   'userlist'                                        => 'Lista de usuarios',
   'userlist_of'                                     => 'Lista de usuarios de',

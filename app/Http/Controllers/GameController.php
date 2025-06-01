@@ -21,8 +21,7 @@ use App\Models\TagRelation;
 use Illuminate\Http\Request;
 use App\Models\GamesDeveloper;
 use App\Helpers\DatabaseHelper;
-use Illuminate\Support\Facades\Input;
-use Log;
+use App\Models\Tag;
 
 class GameController extends Controller
 {
@@ -36,6 +35,7 @@ class GameController extends Controller
         // Set filters
         $queryMaker = $request->query("maker");
         $queryLanguage = $request->query("language");
+        $queryTags = $request->query("tag");
 
         $rows = (\Auth::check()) ? \Auth::user()->settings->rows_per_page_games : config('app.rows_per_page_games');
 
@@ -55,6 +55,7 @@ class GameController extends Controller
         $makerAddedTitle = array();
         $languages = array();
         $languageAddedName = array();
+        $tags = Tag::all();
         foreach ($games->get() as $key => $game) {
             if(!in_array($game->maker->title, $makerAddedTitle)) {
                 array_push($makers, $game->maker);
@@ -67,15 +68,36 @@ class GameController extends Controller
         }
         // Apply active filters using query strings
         if(isset($queryMaker) && $queryMaker !== "") {
-                $games = $games->where('maker_id', '=', $queryMaker);
+            $games = $games->where('maker_id', '=', $queryMaker);
         }
         if(isset($queryLanguage) && $queryLanguage !== "") {
-                $games = $games->where('lang_id', '=', $queryLanguage);
+            $games = $games->where('lang_id', '=', $queryLanguage);
         }
+        if(isset($queryTags) && $queryTags !== "") {
+            $queryTag = Tag::whereId($queryTags)->first();
+
+            if(isset($queryTag)) {
+                $tagGames = array();
+                foreach ($queryTag->tag_relations()->get() as $relation) {
+                    $tagGames = array_merge($tagGames, $relation->games()->get()->toArray());
+                }
+                $tagGames = array_map( function($game) {
+                    return $game['id'];
+                }, $tagGames);
+                $games->whereIn('id', $tagGames);
+            }
+        }
+        // Sort alphabetically
+        usort($makers, function($a, $b) {
+            if ($a->title == $b->title) return 0;
+                return ($a->title < $b->title) ? -1 : 1;
+        });
+        $tags->sortBy('title');
 
         $games = $games->paginate($rows)->withQueryString();
 
         return view('games.index', [
+            'tags'      => $tags,
             'games'     => $games,
             'languages' => $languages,
             'makers'    => $makers,

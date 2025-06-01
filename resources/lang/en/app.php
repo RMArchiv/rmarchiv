@@ -339,7 +339,7 @@ return [
   'screenshots'                                     => 'Screenshots',
   'scripts'                                         => 'Scripts',
   'search'                                          => 'Search',
-  'search_nothing_found'                            => 'Search nothing found',
+  'search_nothing_found'                            => 'Search found nothing',
   'send_a_pn'                                       => 'Send a PM',
   'sfx'                                             => 'Sfx',
   'shoutbox'                                        => 'Shoutbox',
