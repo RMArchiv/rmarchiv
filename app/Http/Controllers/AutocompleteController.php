@@ -45,6 +45,7 @@ class AutocompleteController extends Controller
     {
         $result = [];
         $games = Game::search($term)->get();
+        $developer = Developer::search($term)->get();
 
         foreach ($games as $g) {
             $result[] = [
