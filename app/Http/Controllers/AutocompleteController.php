@@ -45,7 +45,15 @@ class AutocompleteController extends Controller
     {
         $result = [];
         $games = Game::search($term)->get();
-        $developer = Developer::search($term)->get();
+        // Simple dev game search - check performance
+        $developers = Developer::search($term)->get();
+        foreach ($developers as $developer) {
+            $devGames = Game::with('developers')
+                ->leftJoin('games_developer as gd', 'gd.game_id', '=', 'games.id')
+                ->join('developer', 'gd.developer_id', '=', 'developer.id')
+                ->where('gd.developer_id', '=', $developer->id)->get();
+            $games = $games->merge($devGames);
+        }
 
         foreach ($games as $g) {
             $result[] = [
