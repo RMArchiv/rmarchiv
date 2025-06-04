@@ -12,7 +12,8 @@
             @endforeach
             <li class="list-group-item active clearfix">
                 @permission(('create-shoutbox'))
-                {!! Form::open(['action' => ['ShoutboxController@store']]) !!}
+                <form method="POST" action="{{ action('ShoutboxController@store') }}">
+                    @csrf
                 <div class="col-md-12">
                     <div class="input-group">
                         <input class="form-control form-control-sm" type='text' name='shout' placeholder='{{ trans('app.shoutbox_placeholder') }}' id='onelinermsg' maxlength='300'/>
@@ -22,7 +23,7 @@
                         </span>
                     </div>
                 </div>
-                {!! Form::close() !!}
+                </form>
                 @else
                     <div class='foot'><a href='{{ url('shoutbox') }}'>{{ trans('app.more') }}</a>...</div>
                     @endpermission

@@ -59,7 +59,8 @@
         <div class="row">
             @if(Auth::check())
                     <div class="col-md-12">
-                        {!! Form::open(['method' => 'POST', 'route' => ['game-report.store', $game->id]]) !!}
+                        <form method="POST" action="{{ route('game-report.store', $game->id) }}">
+                            @csrf
                         <div class="card">
                             <div class="card-header">
                                 {{ trans('app.report_game') }}
@@ -71,7 +72,7 @@
                                 <input type="submit" value="{{trans('app.submit')}}" class="btn btn-primary">
                             </div>
                         </div>
-                        {!! Form::close() !!}
+                        </form>
                     </div>
             @else
                 <div class="col-md-12">

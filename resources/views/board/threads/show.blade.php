@@ -2,7 +2,7 @@
 @section('pagetitle', $posts->first()->thread->title)
 @section('content')
 
-    <script>
+    <script type="module">
         $(document).ready(function(){
             // add button style
             $("[name='poll_bar'").addClass("btn btn-secondary");
@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="page-header">
-                    <div class='btn-toolbar pull-right'>
+                    <div class='btn-toolbar float-end'>
                         <div class='btn-group'>
                             @if(Auth::check())
                                 @if(Auth::id() == $posts->first()->thread->user_id or Auth::user()->can('mod-threads'))
@@ -67,10 +67,11 @@
                     <div class="card-body">
                         @foreach($answers as $ans)
                             @if($ans->title != '')
-                                {!! Form::open(['action' => ['BoardController@add_vote'], 'method' => 'POST', 'id' => 'vote_'.$ans->id]) !!}
-                                {!! Form::hidden('poll_id', $poll->id) !!}
-                                {!! Form::hidden('answer_id', $ans->id) !!}
-                                {!! Form::hidden('thread_id', $posts->first()->thread_id) !!}
+                                <form method="POST" action="{{ action('BoardController@add_vote') }}" id="{{'vote_'.$ans->id}}">
+                                    @csrf
+                                <input type="hidden" name="poll_id" value="{{ $poll->id }}">
+                                <input type="hidden" name="answer_id" value="{{ $ans->id }}">
+                                <input type="hidden" name="thread_id" value="{{ $posts->first()->thread_id }}">
                                 <strong>
                                     @if($votes)
                                         @if($votes->count() != 0 and $votes->first()->answer_id == $ans->id)
@@ -82,11 +83,11 @@
                                         {{ $ans->title }}
                                     @endif
                                 </strong>
-                                <span class="pull-right">{{  round(\App\Helpers\MiscHelper::getPopularity($ans->votes->count(), $votecount)) }}%</span>
+                                <span class="float-end">{{  round(\App\Helpers\MiscHelper::getPopularity($ans->votes->count(), $votecount)) }}%</span>
                                 <div class="progress progress-danger">
                                     <div class="progress-bar" style="width: {{ \App\Helpers\MiscHelper::getPopularity($ans->votes->count(), $votecount) }}%;"></div>
                                 </div>
-                                {!! Form::close() !!}
+                                </form>
                             @endif
                         @endforeach
                     </div>
@@ -105,7 +106,7 @@
                                     <div class="media-body active">
                                         <div class="media">
                                             <a href="{{ action('UserController@show', $post->user->id) }}">
-                                                <img style="width: 48px;" class="mr-3" src="//{{ config('app.avatar_path') }}?size=160&gender=male&id={{ $post->user->id }}">
+                                                <img style="width: 48px;" class="me-3" src="//{{ config('app.avatar_path') }}?size=160&gender=male&id={{ $post->user->id }}">
                                             </a>
                                             <div class="media-body">
                                                 {!! \App\Helpers\InlineBoxHelper::GameBox($post->content_html) !!}
@@ -116,7 +117,7 @@
                                                     @endif
                                                     @if(Auth::check())
                                                         @if(Auth::id() == $post->user->id or Auth::user()->can('mod-threads'))
-                                                            <div class="pull-right">
+                                                            <div class="float-end">
                                                                 <a href="{{ route('board.post.edit', [$post->thread->id, $post->id]) }}" data-rel="popup">{{ trans('app.edit') }}</a>
                                                             </div>
                                                         @endif
@@ -143,7 +144,8 @@
                         </div>
                         <div class="card-body">
                             @if($post->thread->closed == 0)
-                                {!! Form::open(['action' => ['BoardController@store_post', $posts->first()->thread->id], 'id' => 'frmBBSPost']) !!}
+                                <form method="POST" action="{{ action('BoardController@store_post', $posts->first()->thread->id) }}">
+                                    @csrf
                                 <input type='hidden' name='catid' value='{{ $posts->first()->cat->id }}'>
                                 <div class='content'>
                                     @include('_partials.markdown_editor')
@@ -151,7 +153,7 @@
                                 </div>
                                 <div class='foot'>
                                     <input type='submit' value='Submit' id='submit'></div>
-                                {!! Form::close() !!}
+                                </form>
                             @else
                                 <h2>{{ trans('app.thread_is_closed') }}</h2>
                                 {{ trans('app.thread_is_closed_you_cant_post') }}

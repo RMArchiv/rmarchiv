@@ -50,7 +50,7 @@ class ReportController extends Controller
             if (\Auth::user()->can('admin-games')) {
                 $ur = UserReport::all();
             } else {
-                $ur = UserReport::whereUserId(\Auth::id());
+                $ur = UserReport::whereUserId(\Auth::id())->get();
             }
         } else {
             $ur = null;

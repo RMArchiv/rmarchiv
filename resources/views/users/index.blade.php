@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('pagetitle', trans('app.users'))
 @section('content')
-    <script>
+    <script type="module">
         $(document).ready(function () {
             var panels = $('.user-infos');
             var panelsButton = $('.dropdown-user');
@@ -25,8 +25,11 @@
                     }
                 })
             });
-
-            $('[data-toggle="tooltip"]').tooltip();
+            // Activate tooltip
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+               return new bootstrap.Tooltip(tooltipTriggerEl)
+            })
         });
     </script>
 
@@ -120,8 +123,8 @@
                                         <div class="card-footer">
                                             @if(Auth::check())
                                                 <button class="btn btn-sm btn-primary" type="button"
-                                                        data-toggle="tooltip"
-                                                        data-original-title="{{ trans('app.send_a_pn') }}">
+                                                        data-bs-toggle="tooltip"
+                                                        title="{{ trans('app.send_a_pn') }}">
                                                     <i class="fa fa-envelope"></i>
                                                 </button>
                                             @endif
@@ -129,11 +132,11 @@
                                             @if(Auth::check())
                                                     @if(Auth::user()->settings->is_admin)
                                                         <button class="btn btn-sm btn-warning" type="button"
-                                                                data-toggle="tooltip"
-                                                                data-original-title="{{ trans('app.edit') }}"><i class="fa fa-edit"></i></button>
+                                                                data-bs-toggle="tooltip"
+                                                                title="{{ trans('app.edit') }}"><i class="fa fa-edit"></i></button>
                                                         <button class="btn btn-sm btn-danger" type="button"
-                                                                data-toggle="tooltip"
-                                                                data-original-title="{{ trans('app.delete') }}"><i class="fa fa-remove"></i></button>
+                                                                data-bs-toggle="tooltip"
+                                                                title="{{ trans('app.delete') }}"><i class="fa fa-remove"></i></button>
                                                     @endif
                                                 @endif
 

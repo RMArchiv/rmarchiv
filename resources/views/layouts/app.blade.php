@@ -28,11 +28,8 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
     <link rel="canonical" href="http://www.rmarchiv.de/"/>
 
-    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}" media="screen" />
-
-    <script src="{{ asset('js/all.js') }}"></script>
-
+    @vite('resources/assets/js/app.js')
+    @vite('resources/assets/sass/app.scss')
     <script type="text/javascript">
         <!--
         var pixelWidth = screen.width;
@@ -92,7 +89,7 @@
 {{-- @include('_partials.navigation', ['part' => 'bottompart']) --}}
 @include('_partials.footer')
 
-@include('cookieConsent::index')
+@include('cookie-consent::index')
 
 </body>
 

@@ -25,8 +25,8 @@
                     <ul class="list-group">
                         @foreach($threads as $thread)
                             <li class="list-group-item media" style="margin-top: 0px;">
-                                <a class="float-right" href="{{ route('messages.show', $thread->id) }}"><span class="badge badge-info">{{ App\Models\MessengerMessage::whereThreadId($thread->id)->count() }}</span></a>
-                                <a class="float-left" href="{{ url('users', $thread->creator()->id) }}"><img class="media-object mr-3" width="42px" src="//{{ config('app.avatar_path') }}?size=42&gender=male&id={{ $thread->creator()->id }}" alt="{{ $thread->creator()->name }}"></a>
+                                <a class="float-end" href="{{ route('messages.show', $thread->id) }}"><span class="badge badge-info">{{ App\Models\MessengerMessage::whereThreadId($thread->id)->count() }}</span></a>
+                                <a class="float-start" href="{{ url('users', $thread->creator()->id) }}"><img class="media-object me-3" width="42px" src="//{{ config('app.avatar_path') }}?size=42&gender=male&id={{ $thread->creator()->id }}" alt="{{ $thread->creator()->name }}"></a>
                                 <div class="thread-info">
                                     <div class="media-heading">
                                         @if($thread->closed == 1)
@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="media-body" style="font-size: 12px;">
                                         @if($thread->isUnread($currentUserId) === true)
-                                            <div class="float-right">
+                                            <div class="float-end">
                                         <span class="label label-danger">
                                                 {{ trans('app.new_message_available') }}
                                         </span>

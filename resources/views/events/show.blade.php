@@ -111,9 +111,10 @@
                 @if(Auth::check())
                     <div class='rmarchivtbl' id='rmarchivbox_prodpost'>
                         <h2>kommentar hinzufügen</h2>
-                        {!! Form::open(['action' => ['CommentController@add']]) !!}
-                        {!! Form::hidden('content_id', $event->id) !!}
-                        {!! Form::hidden('content_type', 'event') !!}
+                        <form method="POST" action="{{ action("CommentController@add") }}">
+                            @csrf
+                        <input type="hidden" name="content_id" value="{{$event->id}}">
+                        <input type="hidden" name="content_type" value="event">
                         <div class='content'>
                             @if(CheckRateable::checkRateable('news', $event->id, Auth::id()) === true)
                                 <div id='prodvote'>
@@ -133,7 +134,7 @@
                         <div class='foot'>
                             <input type='submit' value='Submit' id='submit'>
                         </div>
-                        {!! Form::close() !!}
+                        </form>
                     </div>
                 @endif
             </div>

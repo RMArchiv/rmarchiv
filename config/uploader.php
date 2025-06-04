@@ -49,9 +49,6 @@ return [
     'naming_strategy' => Optimus\FineuploaderServer\Naming\UniqidStrategy::class,
 
     'middleware' => [
-        [
-
-        ],
     ],
 
 ];

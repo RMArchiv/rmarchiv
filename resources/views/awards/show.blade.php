@@ -17,7 +17,7 @@
                         <div class="card-header">
                             {{ $s->title }}
                             @if(Auth::check())
-                                <div class="float-right">
+                                <div class="float-end">
                                     <a href="{{ route('awards.gameadd', $s->id) }}" role="button" class="btn btn-primary"><span class="fa fa-plus"></span></a>
                                 </div>
                             @endif
@@ -25,8 +25,8 @@
                         <ul class="list-group">
                             @foreach($s->game_awards as $a)
                                 <li class="list-group-item media" style="margin-top: 0px;">
-                                    <a class="float-right" href="{{ url('games', $a->game->id) }}"><span class="badge">{{ $a->game->comments }}</span></a>
-                                    <div class="float-left">
+                                    <a class="float-end" href="{{ url('games', $a->game->id) }}"><span class="badge">{{ $a->game->comments }}</span></a>
+                                    <div class="float-start">
                                         @php
                                             if ($a->place == 1) {
                                                 $icon = 'medal_gold.png';
@@ -45,7 +45,7 @@
                                             {{ trans('app.place') }} {{ $a->place  }}
                                         @endif
                                     </div>
-                                    <a class="float-left" href="{{ url('games', $a->game->id) }}">
+                                    <a class="float-start" href="{{ url('games', $a->game->id) }}">
                                         <img width="100px" class="mx-3" src='{{ route('screenshot.show', [$a->game->id, 1]) }}' alt='{{ trans('app.titlescreen') }}' title='{{ trans('app.titlescreen') }}'/>
                                     </a>
                                     <div class="thread-info">
@@ -79,14 +79,14 @@
                                         </div>
                                         <div class="media-body" style="font-size: 12px;">
                                             {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($a->game->id) !!}<br>
-                                            release date:
+                                            {{ trans('app.release_date') }}:
                                             @if(\Carbon\Carbon::parse($a->game->release_date)->year != -1 )
                                                 {{ $a->game->release_date }}
                                             @else
                                                 {{ \Carbon\Carbon::parse(\App\Helpers\DatabaseHelper::getReleaseDateFromGameId($a->game->id))->toDateString() }}
                                             @endif
                                             <span> • </span>
-                                            hinzugefügt {{ \Carbon\Carbon::parse($a->game->created_at)->diffForHumans() }}
+                                            {{ trans('app.addition_date') }} {{ \Carbon\Carbon::parse($a->game->created_at)->diffForHumans() }}
                                             <span> • </span>
                                             <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/> {{ $a->game->voteup or 0 }} -
                                             <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/> {{ $a->game->votedown or 0 }}

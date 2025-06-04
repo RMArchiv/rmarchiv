@@ -13,47 +13,48 @@
         @if(Auth::check())
         <div class="row">
             <div class="col-md-12">
-                {!! Form::open(['route' => 'messages.store', 'class' => 'form-horizontal']) !!}
-                <div class="card">
-                    <div class="card-header">
-                        {{ trans('app.create_new_pm') }}
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="inputEmail" class="col-lg-2 col-form-label">{{ trans('app.subject') }}</label>
-                            <div class="col-lg-10">
-                                <input type="text" class="form-control" id="inputEmail" name="subject">
-                            </div>
+                <form action="{{route('messages.store')}}" method="POST" class="form-horizontal">
+                    @csrf
+                    <div class="card">
+                        <div class="card-header">
+                            {{ trans('app.create_new_pm') }}
                         </div>
-                        <div class="form-group">
-                            <label for="textArea" class="col-lg-2 col-form-label">{{ trans('app.message') }}</label>
-                            <div class="col-lg-10">
-                                @include('_partials/markdown_editor')
-                                <span class="form-text">{{ trans('app.markdown_is_usable_here') }}</span>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-lg-2 col-form-label">{{ trans('app.subject') }}</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputEmail" name="subject">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="select" class="col-lg-2 col-form-label">{{ trans('app.recipients') }}</label>
-                            <div class="col-lg-10">
-                                <div class="checkbox">
-                                    @foreach($users as $user)
-                                        <div class="btn-group" data-toggle="buttons">
-                                            <label class="btn btn-secondary">
-                                                <input type="checkbox" autocomplete="off" name="recipients[]" value="{{ $user->id }}"> {{ $user->name }}
-                                            </label>
-                                        </div>
-                                    @endforeach
+                            <div class="form-group">
+                                <label for="textArea" class="col-lg-2 col-form-label">{{ trans('app.message') }}</label>
+                                <div class="col-lg-10">
+                                    @include('_partials/markdown_editor')
+                                    <span class="form-text">{{ trans('app.markdown_is_usable_here') }}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="select" class="col-lg-2 col-form-label">{{ trans('app.recipients') }}</label>
+                                <div class="col-lg-10">
+                                    <div class="checkbox">
+                                        @foreach($users as $user)
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-secondary">
+                                                    <input type="checkbox" autocomplete="off" name="recipients[]" value="{{ $user->id }}"> {{ $user->name }}
+                                                </label>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button type="submit" class="btn btn-primary">{{ trans('app.submit') }}</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-lg-10 col-lg-offset-2">
-                                <button type="submit" class="btn btn-primary">{{ trans('app.submit') }}</button>
-                            </div>
-                        </div>
                     </div>
-                </div>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
         @else

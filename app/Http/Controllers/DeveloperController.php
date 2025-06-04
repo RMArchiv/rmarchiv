@@ -48,7 +48,7 @@ class DeveloperController extends Controller
     public function show($id, $orderby = 'title', $direction = 'asc')
     {
         $games = Game::with('developers')
-            ->leftjoin('games_developer as gd', 'gd.game_id', '=', 'games.id')
+            ->leftJoin('games_developer as gd', 'gd.game_id', '=', 'games.id')
             ->Join('developer', 'gd.developer_id', '=', 'developer.id')
             ->where('gd.developer_id', '=', $id)
             ->orderBy($orderby, $direction)

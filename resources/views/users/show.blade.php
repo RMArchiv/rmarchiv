@@ -7,7 +7,7 @@
                 <div class="page-header">
                     <h1>{{ trans('app.user') }}: {{ $user->name }}
                         @permission('admin-user')
-                        <div class="float-right">
+                        <div class="float-end">
                             <a href="{{ action('UserBanController@show', $user->id) }}" role="button" class="btn btn-primary"><span class="fa fa-crosshairs"></span></a>
                         </div>
                         @endpermission
@@ -166,7 +166,7 @@
                                             <img
                                                     width="32px"
                                                     src='//{{ config('app.avatar_path') }}?gender=male&id={{ $comment->user_id }}'
-                                                    alt="{{ $comment->user->name }}" class='media img-rounded mr-2'/>
+                                                    alt="{{ $comment->user->name }}" class='media img-rounded me-2'/>
                                         </a>
                                     </div>
                                     <div class="media-body">
@@ -197,7 +197,7 @@
                                         <img
                                                 width="32px"
                                                 src='//{{ config('app.avatar_path') }}?gender=male&id={{ $comment->user_id }}'
-                                                alt="{{ $comment->user->name }}" class='media img-rounded mr-2'/>
+                                                alt="{{ $comment->user->name }}" class='media img-rounded me-2'/>
                                     </a>
                                 </div>
                                 <div class="media-body">

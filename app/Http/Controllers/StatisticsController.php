@@ -10,9 +10,98 @@ namespace App\Http\Controllers;
 use App\Models\Maker;
 use Khill\Lavacharts\Lavacharts;
 
-class StatsticController extends Controller
+class StatisticsController extends Controller
 {
     public function show()
+    {
+        $gamesperyear = \DB::table('games_files')
+            ->select('release_year as year')
+            ->selectRaw('COUNT(release_year) as count')
+            ->groupBy('release_year')
+            ->orderBy('release_year')
+            ->get();
+        $releasesYear = array( array(), array());
+        array_push($releasesYear[0], trans("app.date"));
+        array_push($releasesYear[0], 'Releases pro Jahr');
+        foreach ($gamesperyear as $game) {
+            array_push($releasesYear[1], [$game->year, $game->count]);
+        }
+
+        $filesize = [
+            'attach' => [
+                'size'  => 0,
+                'count' => 0,
+            ],
+            'screens' => [
+                'size'  => 0,
+                'count' => 0,
+            ],
+            'games' => [
+                'size'  => 0,
+                'count' => 0,
+            ],
+            'logos' => [
+                'size'  => 0,
+                'count' => 0,
+            ],
+            'resources' => [
+                'size'  => 0,
+                'count' => 0,
+            ],
+            'sum' => [
+                'size'  => 0,
+                'count' => 0,
+            ],
+        ];
+
+        $files = \Storage::files('attachments');
+        foreach ($files as $f) {
+            $filesize['attach']['size'] += \Storage::size($f);
+        }
+        $filesize['attach']['count'] = count($files);
+        $filesize['sum']['size'] += $filesize['attach']['size'];
+        $filesize['sum']['count'] += $filesize['attach']['count'];
+
+        $files = \Storage::files('screenshots');
+        foreach ($files as $f) {
+            $filesize['screens']['size'] += \Storage::size($f);
+        }
+        $filesize['screens']['count'] = count($files);
+        $filesize['sum']['size'] += $filesize['screens']['size'];
+        $filesize['sum']['count'] += $filesize['screens']['count'];
+
+        $files = \Storage::files('games');
+        foreach ($files as $f) {
+            $filesize['games']['size'] += \Storage::size($f);
+        }
+        $filesize['games']['count'] = count($files);
+        $filesize['sum']['size'] += $filesize['games']['size'];
+        $filesize['sum']['count'] += $filesize['games']['count'];
+
+        $files = \Storage::files('logos');
+        foreach ($files as $f) {
+            $filesize['logos']['size'] += \Storage::size($f);
+        }
+        $filesize['logos']['count'] = count($files);
+        $filesize['sum']['size'] += $filesize['logos']['size'];
+        $filesize['sum']['count'] += $filesize['logos']['count'];
+
+        $files = \Storage::files('resources');
+        foreach ($files as $f) {
+            $filesize['resources']['size'] += \Storage::size($f);
+        }
+        $filesize['resources']['count'] = count($files);
+        $filesize['sum']['size'] += $filesize['resources']['size'];
+        $filesize['sum']['count'] += $filesize['resources']['count'];
+
+
+        return view('statistics.index', [
+            'releasesYear'  => $releasesYear,
+            'files' => $filesize,
+        ]);
+    }
+
+    public function oldshow()
     {
         $lava_config = [
             'legend' => [

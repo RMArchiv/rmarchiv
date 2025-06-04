@@ -65,8 +65,8 @@ class UserController extends Controller
         $role = UserRole::all()->where('id', '=', $request->get('perm'))->first();
         $user = User::find($userid);
 
-        $user->detachRoles($user->roles);
-        $user->attachRole($role);
+        $user->removeRoles($user->roles);
+        $user->addRole($role);
 
         return redirect()->action('UserController@admin', [$userid]);
     }

@@ -39,7 +39,7 @@
                             </span>
                                 <span> • </span><span>version: {{ $gf->release_version }}</span>
                                 <span> • </span>
-                                <span>release date: {{ str_pad($gf->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_day, 2, 0, STR_PAD_LEFT) }}</span>
+                                <span>{{ trans('app.release_date') }}: {{ str_pad($gf->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_day, 2, 0, STR_PAD_LEFT) }}</span>
                                 <span> • </span>
                                 <span>size: {{ ByteUnits\Metric::bytes($gf->filesize)->format() }}</span>
                                 <span> • </span>
@@ -95,7 +95,8 @@
                             {{trans('app.add_gamefile')}}
                         </div>
                         <div class="card-body">
-                            {!! Form::open(['route' => ['gamefiles.store', $game->id], 'class' => 'form-horizontal']) !!}
+                            <form method="POST" action="{{ route('gamefiles.store', $game->id) }}" class="form-horizontal">
+                                @csrf
                             <div class="form-group">
                                 <label for="filetype" class="col-sm-2 col-form-label">{{trans('app.release_type')}}: *</label>
                                 <div class="col-sm-10">
@@ -151,10 +152,11 @@
                                 <label for="fine-uploader" class="col-sm-2 col-form-label">{{trans('app.upload_file')}}:</label>
                                 <div class="col-sm-10">
                                     <div id="fine-uploader"></div>
+                                    <div id="fine-uploader-error"></div>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-secondary">{{ trans('app.submit') }}</button>
-                            {!! Form::close() !!}
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -243,7 +245,7 @@
             </dialog>
         </div>
     </script>
-    <script>
+    <script type="module">
         var uploader = new qq.FineUploader({
             debug: true,
             autoUpload: true,
@@ -278,8 +280,15 @@
                 uploadButton: 'Datei wählen'
             },
             callbacks: {
+                onError: function(id, name, errorReason, xhrOrXdr) {
+                    if(xhrOrXdr.status === 413) {
+                        $('#fine-uploader-error').html('{{trans("app.413_error")}}')
+                    }
+                },
                 onComplete: function (id, fileName, responseJSON) {
+                    console.log(responseJSON)
                     if (responseJSON.success) {
+                        $('#fine-uploader-error').html('')
                         $('#fine-uploader').append('<input type="hidden" name="uuid" value="' + responseJSON.uuid + '">');
                         $('#fine-uploader').append('<input type="hidden" name="filename" value="' + responseJSON.uploadName + '">');
                         $('#fine-uploader').append('<input type="hidden" name="ext" value="' + responseJSON.ext + '">');

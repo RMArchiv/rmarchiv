@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\api\v1;
+namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Game;
@@ -9,12 +9,13 @@ use Illuminate\Http\Request;
 
 class DeveloperController extends Controller
 {
-    public function show($id){
+    public function show($id)
+    {
         $games = [];
 
         $ids = GamesDeveloper::whereDeveloperId($id)->get();
 
-        foreach ($ids as $game){
+        foreach ($ids as $game) {
             $tgame = [];
             $tgame['id'] = $game->game->id;
             $tgame['title'] = $game->game->title;

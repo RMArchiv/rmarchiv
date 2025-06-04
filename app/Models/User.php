@@ -11,10 +11,12 @@ use Cog\Laravel\Ban\Traits\Bannable;
 use Cmgmyr\Messenger\Traits\Messagable;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Notifications\Notifiable;
-use Trebol\Entrust\Traits\EntrustUserTrait;
+// use Laratrust\Traits\LaratrustUserTrait;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laratrust\Contracts\LaratrustUser;
+use Laratrust\Traits\HasRolesAndPermissions;
 
 /*
  * App\User
@@ -101,7 +103,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User query()
  */
-class User extends Authenticatable implements BannableContract
+class User extends Authenticatable implements BannableContract, LaratrustUser
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
     use Bannable;
@@ -117,7 +119,7 @@ class User extends Authenticatable implements BannableContract
     ];
 
     use Notifiable;
-    use EntrustUserTrait;
+    use HasRolesAndPermissions;
     use Messagable;
     /**
      * The attributes that should be hidden for arrays.

@@ -74,7 +74,7 @@ class UserPermissionController extends Controller
         $role = UserRole::all()->where('id', '=', $roleid)->first();
         $perm = UserPermission::all()->where('id', '=', $request->get('perm'))->first();
 
-        $role->attachPermission($perm);
+        $role->givePermission($perm);
 
         return redirect()->action('UserPermissionController@showRole', $roleid);
     }
@@ -84,7 +84,7 @@ class UserPermissionController extends Controller
         $role = UserRole::all()->where('id', '=', $roleid)->first();
         $perm = UserPermission::all()->where('id', '=', $permid)->first();
 
-        $role->detachPermission($perm);
+        $role->removePermission($perm);
 
         return redirect()->action('UserPermissionController@showRole', $roleid);
     }

@@ -21,7 +21,7 @@
                             @if($item->approved == 1)
                                 <li class="list-group-item media" style="margin-top: 0px;">
                                     <a class="pull-right" href="{{ route('news.show', $item->id) }}"><span class="badge">{{ $item->comments->count() }}</span></a>
-                                    <a class="pull-left" href="{{ url('users', $item->user->id) }}"><img style="width: 48px;" class="mr-3" src="//{{ config('app.avatar_path') }}?size=42&gender=male&id={{ $item->user->id }}" alt="{{ $item->user->name }}"></a>
+                                    <a class="pull-left" href="{{ url('users', $item->user->id) }}"><img style="width: 48px;" class="me-3" src="//{{ config('app.avatar_path') }}?size=42&gender=male&id={{ $item->user->id }}" alt="{{ $item->user->name }}"></a>
                                     <div class="thread-info">
                                         <div class="media-heading">
                                             <a href="{{ route('news.show', $item->id) }}">{{ $item->title }}</a>

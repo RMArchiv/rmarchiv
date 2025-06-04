@@ -20,7 +20,7 @@
                                 <li class="media">
                                     <div class="media-body active">
                                         <div class="media">
-                                            <a class="float-left mr-3" href="#">
+                                            <a class="float-start me-3" href="#">
                                                 <img width="32px" class="media-object img-rounded" src="//{{ config('app.avatar_path') }}?size=160&gender=male&id={{ $post->user->id }}">
                                             </a>
                                             <div class="media-body">
@@ -44,35 +44,37 @@
             </div>
         </div>
         <div class="row">
-            {!! Form::open(['route' => ['messages.update', $thread->id], 'method' => 'PUT']) !!}
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        {{ trans('app.post_a_reply') }}
-                    </div>
-                    <div class="card-body">
-                        @include('_partials.markdown_editor')
-                    </div>
-                    <div class="card-body">
-                        {{ trans('app.add_additional_users') }}
-                        @if($users->count() > 0)
-                            <div class="checkbox">
-                                @foreach($users as $user)
-                                    <div class="btn-group" data-toggle="buttons">
-                                        <label class="btn btn-secondary">
-                                            <input type="checkbox" autocomplete="off" name="recipients[]" value="{{ $user->id }}"> {{ $user->name }}
-                                        </label>
-                                    </div>
-                                @endforeach
-                            </div>
-                        @endif
-                    </div>
-                    <div class="card-footer">
-                        <button type="submit" value="submit" class="btn btn-primary">{{ trans('app.submit') }}</button>
+            <form method="POST" action="{{route('messages.update', $thread->id)}}">
+                @method("PUT")
+                @csrf
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            {{ trans('app.post_a_reply') }}
+                        </div>
+                        <div class="card-body">
+                            @include('_partials.markdown_editor')
+                        </div>
+                        <div class="card-body">
+                            {{ trans('app.add_additional_users') }}
+                            @if($users->count() > 0)
+                                <div class="checkbox">
+                                    @foreach($users as $user)
+                                        <div class="btn-group" data-bs-toggle="buttons">
+                                            <label class="btn btn-secondary">
+                                                <input type="checkbox" autocomplete="off" name="recipients[]" value="{{ $user->id }}"> {{ $user->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" value="submit" class="btn btn-primary">{{ trans('app.submit') }}</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {!! Form::close() !!}
+        </form>
         </div>
     </div>
 @endsection

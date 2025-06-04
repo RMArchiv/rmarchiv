@@ -20,7 +20,7 @@
                         @foreach($threads as $thread)
                             <li class="list-group-item media" style="margin-top: 0px;">
                                 <a class="pull-right" href="{{ route('board.thread.show', $thread->id) }}"><span class="badge">{{ $thread->posts->count() }}</span></a>
-                                <a class="pull-left" href="{{ url('users', $thread->user->id) }}"><img class="mr-3" width="42px" src="//{{ config('app.avatar_path') }}?size=42&gender=male&id={{ $thread->user->id }}" alt="{{ $thread->user->name }}"></a>
+                                <a class="pull-left" href="{{ url('users', $thread->user->id) }}"><img class="me-3" width="42px" src="//{{ config('app.avatar_path') }}?size=42&gender=male&id={{ $thread->user->id }}" alt="{{ $thread->user->name }}"></a>
                                 <div class="thread-info">
                                     <div class="media-heading">
                                         @if($thread->closed == 1)
@@ -62,8 +62,9 @@
                             {{ trans('app.create_thread') }}
                         </div>
                         <div class="card-body">
-                            {!! Form::open(['route' => ['board.thread.store'], 'id' => 'frmBBSPost']) !!}
-                            {!! Form::hidden('category', $cat->id) !!}
+                            <form method="POST" action="{{ route('board.thread.store') }}">
+                                @csrf
+                            <input type="hidden" name="category" value="{{ $cat->id }}">
                             <div class='content'>
                                 <label for='topic'>{{ trans('app.topic_title') }}:</label>
                                 <input name='topic' id='topic'/>
@@ -73,8 +74,8 @@
                                 <div><a href='#'>{{ trans('app.markdown_is_usable_here') }}</a></div>
                             </div>
                             <div class='foot'>
-                                <input type='submit' value='{{ trans('app.submit') }}' id='submit'></div>
-                            {!! Form::close() !!}
+                                <input type='submit' class="btn btn-secondary" value='{{ trans('app.submit') }}' id='submit'></div>
+                            </form>
                         </div>
                     </div>
                 @else

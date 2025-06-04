@@ -21,7 +21,7 @@
         @if (count($errors) > 0)
             <div class="row">
                 <div class="alert alert-dismissible alert-warning">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
                     <h4>Fehler!</h4>
                     <p>
                     <ul>
@@ -33,7 +33,9 @@
                 </div>
             </div>
         @endif
-        {!! Form::open(['method' => 'PUT', 'route' => ['games.update', $game->id]]) !!}
+        <form method="POST" action="{{route('games.update', $game->id)}}">
+            @method("PUT")
+            @csrf
         <div class="row">
             <div class="col-md-12">
                 <div class="card form">
@@ -185,7 +187,7 @@
                 </div>
             </div>
         </div>
-        {!! Form::close() !!}
+        </form>
         <div class="row">
             <div class="col-md-12 mt-3">
                 <div class="card">
@@ -196,11 +198,12 @@
                         <div class="form-horizontal">
                             @foreach($game->developers as $dev)
                                 <div id="row_dev_{{ $dev->developer->id }}">
-                                    {!! Form::open(['method' => 'POST', 'route' => ['games.developer.delete', $game->id]]) !!}
-                                    {!! Form::hidden('devid', $dev->developer->id) !!}
-                                    {!! Form::label($dev->id, $dev->developer->name) !!}
-                                    {!! Form::submit(trans('app.delete'),['name' => $dev->developer->id, 'class' => 'btn btn-secondary']) !!}
-                                    {!! Form::close() !!}
+                                    <form method="POST" action="{{ route('games.developer.delete', $game->id) }}">
+                                        @csrf
+                                        <input type="hidden" name="devid" value="{{$dev->developer->id}}">
+                                        <label for="{{$dev->id}}">{{$dev->developer->name}}</label>
+                                        <input type="submit" class="btn btn-secondary" name="{{$dev->developer->id}}" value="{{trans('app.delete')}}">
+                                    </form>
                                 </div>
                             @endforeach
                         </div>
@@ -209,45 +212,32 @@
                         {{trans('app.add_developer')}}
                     </div>
                     <div class="card-body">
-                        {!! Form::open(['method' => 'POST', 'route' => ['games.developer.store', $game->id]]) !!}
-                        <div class="form-group" id="row_developer">
-                            <label for="developer" class="col-lg-2 col-form-label">{{trans('app.developer')}}</label>
-                            <div class="col-lg-10">
-                                <input autocomplete="off" type="text" class="auto form-control" id="developer" name="developer" value="">
+                        <form method="POST" action="{{ route('games.developer.store', $game->id) }}">
+                            @csrf
+                            <div class="form-group" id="row_developer">
+                                <label for="developer" class="col-lg-2 col-form-label">{{trans('app.developer')}}</label>
+                                <div class="col-lg-10 autocomplete">
+                                    <input autocomplete="off" type="text" class="d-none auto form-control" id="developer" name="developer" value="">
+                                    <div id="searchbar"></div>
+                                    <div id="searchcontainer"></div>
+                                </div>
                             </div>
-                        </div>
-                        <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
+                            <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
 
-                        <script type="text/javascript">
-                            var sourcepath = new Bloodhound({
-                                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                                //prefetch: '../data/films/post_1960.json',
-                                remote: {
-                                    url: '/ac_developer/%QUERY',
-                                    wildcard: '%QUERY'
-                                }
-                            });
-
-                            $('#row_developer .auto').typeahead(null, {
-                                name: 'developers',
-                                display: 'value',
-                                source: sourcepath,
-                                limit: 5,
-                                templates: {
-                                    empty: [
-                                        '<div class="empty-message">',
-                                        '{{trans('app.developer_not_found')}}',
-                                        '</div>'
-                                    ].join('\n'),
-                                    suggestion: function (data) {
-                                        console.log(data);
-                                        return '<p><strong>' + data.value + '</strong></p>';
-                                    }
-                                }
-                            });
-                        </script>
-                        {!! Form::close() !!}
+                            <script type="module">
+                                createAutocomplete({
+                                    apiPath: ()=>{return "ac_developer"},
+                                    placeholder: "{{ trans('app.search') }}",
+                                    searchbarSelector:"#row_developer #searchbar",
+                                    panelSelector:"#searchcontainer",
+                                    noResults:'{{ trans('app.developer_not_found') }}',
+                                    type:"list",
+                                    action:"find",
+                                    limit:5,
+                                    inputSelector:".autocomplete #developer",
+                                    additionalProps:{}})
+                            </script>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -295,55 +285,42 @@
                         {{trans('app.add_credits')}}
                     </div>
                     <div class="card-body">
-                        {!! Form::open(['method' => 'POST', 'route' => ['gamecredits.store', $game->id], 'class' => 'form-horizontal']) !!}
-                        <div class="form-group" id="row_user">
-                            <label for="user" class="col-lg-2 col-form-label">{{trans('app.username')}}:</label>
-                            <div class="col-lg-10">
-                                <input autocomplete="off" class="auto form-control" name="user" id="user" placeholder="{{trans('app.username')}}" value=""/>
+                        <form method="POST" action="{{ route('gamecredits.store', $game->id) }}" class="form-horizontal">
+                            @csrf
+                            <div class="form-group" id="row_user">
+                                <label for="user" class="col-lg-2 col-form-label">{{trans('app.username')}}:</label>
+                                <div class="col-lg-10 autocomplete">
+                                    <input autocomplete="off" class="d-none auto form-control" name="user" id="user" placeholder="{{trans('app.username')}}" value=""/>
+                                    <div id="user-searchbar"></div>
+                                    <div id="user-searchcontainer"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group" id="row_credittype">
-                            <label for="credit" class="col-lg-2 col-form-label">{{trans('app.credits_type')}}:</label>
-                            <div class="col-lg-10">
-                                <select name='credit' id='credit' class="form-control">
-                                    <option value="0">{{trans('app.choose_credits_type')}}</option>
-                                    @foreach(\App\Models\UserCreditType::get() as $ct)
-                                        <option value="{{ $ct->id }}">{{$ct->title}}</option>
-                                    @endforeach
-                                </select>
+                            <div class="form-group" id="row_credittype">
+                                <label for="credit" class="col-lg-2 col-form-label">{{trans('app.credits_type')}}:</label>
+                                <div class="col-lg-10">
+                                    <select name='credit' id='credit' class="form-control">
+                                        <option value="0">{{trans('app.choose_credits_type')}}</option>
+                                        @foreach(\App\Models\UserCreditType::get() as $ct)
+                                            <option value="{{ $ct->id }}">{{$ct->title}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
-                        <script type="text/javascript">
-                            var sourcepath = new Bloodhound({
-                                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                                //prefetch: '../data/films/post_1960.json',
-                                remote: {
-                                    url: '/ac_user/%QUERY',
-                                    wildcard: '%QUERY'
-                                }
-                            });
-
-                            $('#row_user .auto').typeahead(null, {
-                                name: 'user',
-                                display: 'value',
-                                source: sourcepath,
-                                limit: 5,
-                                templates: {
-                                    empty: [
-                                        '<div class="empty-message">',
-                                        '{{trans('app.user_not_found')}}',
-                                        '</div>'
-                                    ].join('\n'),
-                                    suggestion: function (data) {
-                                        console.log(data);
-                                        return '<p><strong>' + data.value + '</strong></p>';
-                                    }
-                                }
-                            });
-                        </script>
-                        {!! Form::close() !!}
+                            <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
+                            <script type="module">
+                                createAutocomplete({
+                                    apiPath: ()=>{return "ac_user"},
+                                    placeholder: "{{ trans('app.search') }}",
+                                    searchbarSelector:"#user-searchbar",
+                                    panelSelector:"#user-searchcontainer",
+                                    noResults:'{{ trans('app.user_not_found') }}',
+                                    type:"list",
+                                    action:"find",
+                                    limit:5,
+                                    inputSelector:".autocomplete #user",
+                                    additionalProps:{}})
+                            </script>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -352,53 +329,56 @@
         <div class="row">
             <div class="col-md-12 mt-3">
                 <div class="card">
-                    {!! Form::open(['method' => 'POST', 'route' => ['games.invisible', $game->id]]) !!}
-                    <div class="card-header">
-                        {{ __('Invisible on Start Page') }}
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group" id="row_invisible">
-                            <label for="invisible" class="col-lg-2 col-form-label">{{ __('Unsichtbar auf Startseite') }}:</label>
-                            <div class="col-lg-10">
-                                <select name='invisible' id='invisible' class="form-control">
-                                    @if($game->invisible_on_start_page == 1)
-                                        <option value="0">Sichtbar</option>
-                                        <option selected="selected" value="1">Unsichtbar</option>
-                                    @else
-                                        <option selected="selected" value="0">Sichtbar</option>
-                                        <option value="1">Unsichtbar</option>
-                                    @endif
+                    <form method="POST" action="{{ route('games.invisible', $game->id) }}">
+                        @csrf
+                        <div class="card-header">
+                            {{ __('Invisible on Start Page') }}
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group" id="row_invisible">
+                                <label for="invisible" class="col-lg-2 col-form-label">{{ __('Unsichtbar auf Startseite') }}:</label>
+                                <div class="col-lg-10">
+                                    <select name='invisible' id='invisible' class="form-control">
+                                        @if($game->invisible_on_start_page == 1)
+                                            <option value="0">Sichtbar</option>
+                                            <option selected="selected" value="1">Unsichtbar</option>
+                                        @else
+                                            <option selected="selected" value="0">Sichtbar</option>
+                                            <option value="1">Unsichtbar</option>
+                                        @endif
 
-                                </select>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
-                    </div>
-                    {!! Form::close() !!}
+                        <div class="card-footer">
+                            <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 mt-3">
                 <div class="card">
-                    {!! Form::open(['method' => 'DELETE', 'route' => ['games.destroy', $game->id]]) !!}
-                    <div class="card-header">
-                        {{trans('app.delete_game')}}
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="confirm" class="col-lg-2 col-form-label">{{trans('app.enter_confirm_plus_id')}}</label>
-                            <div class="col-lg-10">
-                                <input class="form-control" name="confirm" id="confirm" placeholder="CONFIRM+1014" value=""/>
+                    <form method="POST" action="{{ route('games.destroy', $game->id) }}">
+                        @method("DELETE")
+                        @csrf
+                        <div class="card-header">
+                            {{trans('app.delete_game')}}
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="confirm" class="col-lg-2 col-form-label">{{trans('app.enter_confirm_plus_id')}}</label>
+                                <div class="col-lg-10">
+                                    <input class="form-control" name="confirm" id="confirm" placeholder="CONFIRM+1014" value=""/>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
-                    </div>
-                    {!! Form::close() !!}
+                        <div class="card-footer">
+                            <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

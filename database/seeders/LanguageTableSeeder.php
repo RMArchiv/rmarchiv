@@ -5,7 +5,10 @@
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class LanguageTableSeeder extends Seeder
 {

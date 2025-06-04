@@ -23,15 +23,16 @@
                         {{ $logos->title }}
                     </div>
                     <div class="card-footer">
-                        {!! Form::open(['action' => ['LogoController@vote_add', $logos->id]]) !!}
-                        {!! Form::hidden('value', '0') !!}
-                        {!! Form::submit(trans('app.rate_down')) !!}
-                        {!! Form::close() !!}
-
-                        {!! Form::open(['action' => ['LogoController@vote_add', $logos->id]]) !!}
-                        {!! Form::hidden('value', '1') !!}
-                        {!! Form::submit(trans('app.rate_up')) !!}
-                        {!! Form::close() !!}
+                        <form method="POST" action="{{ action('LogoController@vote_add', $logos->id) }}">
+                            @csrf
+                        <input type="hidden" name='value' value="0">
+                        <input type="submit" value="{{ trans('app.rate_down') }}">
+                        </form>
+                        <form method="POST" action="{{ action('LogoController@vote_add', $logos->id) }}">
+                            @csrf
+                        <input type="hidden" name='value' value="1">
+                        <input type="submit" value="{{ trans('app.rate_up') }}">
+                        </form>
                     </div>
                 </div>
                 @else

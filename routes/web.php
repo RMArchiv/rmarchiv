@@ -12,6 +12,9 @@ Route::get('/', 'IndexController@index')->name('home');
 Route::get('/impressum', function () {
     return View::make('_pages.impressum');
 });
+Route::get('/tester', function () {
+    return View::make('_pages.test');
+});
 Route::get('/datenschutz', function() {
     return View::make('_pages.datenschutz');
 });
@@ -63,6 +66,7 @@ Route::get('games/{id}/edit', 'GameController@edit')->name('game.edit')->middlew
 Route::post('games/{id}/developer', 'GameController@store_developer')->name('games.developer.store')->middleware('permission:create-games');
 Route::post('games/{id}/developer/delete', 'GameController@destroy_developer')->name('games.developer.delete')->middleware('permission:create-games');
 Route::post('games/{id}/visibility', 'GameController@change_visibility')->name('games.invisible');
+Route::delete('games/{id}/delete', 'GameController@destroy')->name('games.destroy');
 
 //Gamefiles routen
 Route::get('games/{id}/gamefiles', 'GameFileController@create')->name('gamefiles.index');
@@ -129,7 +133,7 @@ Route::post('resources/create', 'ResourceController@create_steps')->name('resour
 Route::get('resources/create', 'ResourceController@create')->name('resources.create')->middleware('permission:create-games');
 Route::post('resources/create/store', 'ResourceController@store')->name('resources.store')->middleware('permission:create-games');
 
-Route::post('resources/upload', 'FineUploaderController@endpoint@upload')->name('resources.upload')->middleware('permission:create-games');
+Route::post('resources/upload', 'FineUploaderController@endpoint')->name('resources.upload')->middleware('permission:create-games');
 
 //User Routings
 Route::get('users', 'UserController@index');
@@ -222,6 +226,7 @@ Route::get('ac_award_cat/{term}', 'AutocompleteController@awardcat');
 Route::get('ac_award_subcat/{term}', 'AutocompleteController@awardsubcat');
 Route::get('ac_user/{term}', 'AutocompleteController@user');
 Route::get('ac_search/{term}', 'AutocompleteController@search');
+Route::get('ac_search_new/{term}', 'AutocompleteController@searchNew');
 
 //Routen für Messageboxen
 Route::get('submit/logo/success', 'MsgBoxController@submit_logo')->name('submit.logo.success');
@@ -250,7 +255,7 @@ Route::get('sitemap/board', 'SitemapController@board')->name('sitemap.board');
 Route::get('sitemap/news', 'SitemapController@news')->name('sitemap.news');
 
 //Routen für Statistiken
-Route::get('stats', 'StatsticController@show');
+Route::get('stats', 'StatisticsController@show');
 
 //Routen für Tags
 Route::post('tags/create', 'TaggingController@store')->middleware('permission:create-games');
@@ -289,6 +294,7 @@ Route::group(['prefix' => 'events'], function () {
     });
 });
 
+// TODO check for auth to reduce harm
 //Attachment Routen
 Route::post('attachment/upload', 'SubmitController@attachment_submit');
 
@@ -305,12 +311,12 @@ Route::get('easyrpg/download/{hash}', function ($hash) {
 
     return response()->download($path, $hash, ['Content-Type' => 'application/octet-stream']);
 });
-
-Route::group(['middleware' => 'permission:translate-page'], function () {
-    Route::get('translation', 'TranslationController@index')->name('trans.index');
-    Route::get('translation/{loc1}/{loc2?}/{viewtype?}/{searchterm?}', 'TranslationController@edit')->name('trans.edit');
-    Route::post('translation/save', 'TranslationController@savestring')->name('trans.save');
-});
+// Waavi was deinstalled - translations are file based now
+// Route::group(['middleware' => 'permission:translate-page'], function () {
+//     Route::get('translation', 'TranslationController@index')->name('trans.index');
+//     Route::get('translation/{loc1}/{loc2?}/{viewtype?}/{searchterm?}', 'TranslationController@edit')->name('trans.edit');
+//     Route::post('translation/save', 'TranslationController@savestring')->name('trans.save');
+// });
 
 // EasyRPG Player (2k/2k3) Routen
 Route::get('player/{gamefileid}/games/default/index.json', 'Player2kController@deliver_indexjson')->name('player.deliverindex')->middleware('auth');

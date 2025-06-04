@@ -42,7 +42,7 @@
                     <div class="card-body">{!! \App\Helpers\InlineBoxHelper::GameBox($news->news_html) !!}</div>
                     <div class="card-footer">
                         {{ trans('app.submitted_by') }}
-                        <a href='{{ url('users', $news->user_id) }}'>{{ $news->name }}</a> ::
+                        <a href='{{ url('users', $news->user_id) }}'>{{ $news->user->name }}</a> ::
                         <time datetime='{{ $news->created_at }}' title='{{ $news->created_at }}'>{{ \Carbon\Carbon::parse($news->created_at)->diffForHumans() }}</time>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                                         <a href='{{ url('users', $comment->user_id) }}'
                                            title="{{ $comment->user->name }}">
                                             <img
-                                                    style="width: 48px;" class="mr-3"
+                                                    style="width: 48px;" class="me-3"
                                                     src='//{{ config('app.avatar_path') }}?gender=male&id={{ $comment->user_id }}'
                                                     alt="{{ $comment->user->name }}"/>
                                         </a>
@@ -127,30 +127,32 @@
                     <div class="card-header">{{ trans('app.add_comment') }}</div>
                     <div class="card-body">
                         @permission(('create-game-comments'))
-                        {!! Form::open(['action' => ['CommentController@add']]) !!}
-                        {!! Form::hidden('content_id', $news->id) !!}
-                        {!! Form::hidden('content_type', 'news') !!}
-                        <div class='content'>
-                            @if(\App\Helpers\CheckRateableHelper::checkRateable('news', $news->gameid, Auth::id()) === true)
-                                <div id='prodvote'>
-                                    {{ trans('app.rate_this_news') }}<br>
-                                    <input type='radio' name='rating' id='ratingrulez' value='up'/>
-                                    <label for='ratingrulez'>{{ trans('app.rate_up') }}</label>
-                                    <input type='radio' name='rating' id='ratingpig' value='neut' checked='checked'/>
-                                    <label for='ratingpig'>{{ trans('app.rate_neut') }}</label>
-                                    <input type='radio' name='rating' id='ratingsucks' value='down'/>
-                                    <label for='ratingsucks'>{{ trans('app.rate_down') }}</label>
-                                </div>
-                            @endif
+                        <form action="{{action('CommentController@add')}}" method="POST">
+                            @csrf
 
-                            @include('_partials.markdown_editor')
+                            <input type="hidden" name="content_id" value="{{$news->id}}" />
+                            <input type="hidden" name="content_type" value="news" />
+                            <div class='content'>
+                                @if(\App\Helpers\CheckRateableHelper::checkRateable('news', $news->gameid, Auth::id()) === true)
+                                    <div id='prodvote'>
+                                        {{ trans('app.rate_this_news') }}<br>
+                                        <input type='radio' name='rating' id='ratingrulez' value='up'/>
+                                        <label for='ratingrulez'>{{ trans('app.rate_up') }}</label>
+                                        <input type='radio' name='rating' id='ratingpig' value='neut' checked='checked'/>
+                                        <label for='ratingpig'>{{ trans('app.rate_neut') }}</label>
+                                        <input type='radio' name='rating' id='ratingsucks' value='down'/>
+                                        <label for='ratingsucks'>{{ trans('app.rate_down') }}</label>
+                                    </div>
+                                @endif
 
-                            <div><a href='/?page=faq#markdown'>{{ trans('app.markdown_is_usable_here') }}</a></div>
-                        </div>
-                        <div class='foot'>
-                            <input type='submit' value='Submit' id='submit'>
-                        </div>
-                        {!! Form::close() !!}
+                                @include('_partials.markdown_editor')
+
+                                <div><a href='/?page=faq#markdown'>{{ trans('app.markdown_is_usable_here') }}</a></div>
+                            </div>
+                            <div class='foot'>
+                                <input type='submit' value='Submit' id='submit'>
+                            </div>
+                        </form>
                         @else
                             {{ trans('app.your_permissions_are_to_low') }}
                             @endpermission

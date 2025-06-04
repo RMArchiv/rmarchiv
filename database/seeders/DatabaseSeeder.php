@@ -4,7 +4,7 @@
  * rmarchiv.de
  * (c) 2016-2017 by Marcel 'ryg' Hering
  */
-
+namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

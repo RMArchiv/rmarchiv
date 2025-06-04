@@ -4,16 +4,17 @@
     <div id="content">
         @if(Auth::check())
             @if(isset($request) == false)
-                {!! Form::open(['url' => 'resources/create', 'method' => 'post']) !!}
+                <form method="POST" action="{{url('resources/create')}}">
+                    @csrf
                 <div class="rmarchivtbl" id="rmarchivbox_submitprod">
-                    {!! Form::hidden('step', 2) !!}
+                    <input type="hidden" name="step" value="2">
                     <h2>{{ trans('app.add_resource') }}</h2>
                     <div class="content">
                         <div class="formifier">
                             <div class='row' id='row_type'>
                                 <label for='type'>{{ trans('app.type') }}</label>
-                                <select name='type' id='type'>
-                                    <option value="0">{{ trans('app.choose_type') }}</option>
+                                <select name='type' id='type' required>
+                                    <option disabled selected value="">{{ trans('app.choose_type') }}</option>
                                     <option value="gfx">{{ trans('app.gfx') }}</option>
                                     <option value="sfx">{{ trans('app.sfx') }}</option>
                                     <option value="scripts">{{ trans('app.scripts') }}</option>
@@ -28,20 +29,21 @@
                         <input type="submit" value="{{ trans('app.next') }}">
                     </div>
                 </div>
-                {!! Form::close() !!}
+                </form>
             @else
                 @if($request->get('step') == 2)
-                    {!! Form::open(['url' => 'resources/create', 'method' => 'post']) !!}
+                    <form method="POST" action="{{ url('resources/create') }}">
+                        @csrf
                     <div class="rmarchivtbl" id="rmarchivbox_submitprod">
-                        {!! Form::hidden('step', 3) !!}
-                        {!! Form::hidden('type', $request->get('type')) !!}
+                        <input type="hidden" name="step" value="3">
+                        <input type="hidden" name="type" value="{{$request->get('type')}}">
                         <h2>{{ trans('app.step') }} -> {{ $request->get('type') }}</h2>
                         <div class="content">
                             <div class="formifier">
                                 <div class='row' id='row_cat'>
                                     <label for='cat'>{{ trans('app.category') }}:</label>
-                                    <select name='cat' id='cat'>
-                                        <option value="0">{{ trans('app.choose_category') }}</option>
+                                    <select name='cat' id='cat' required>
+                                        <option disabled selected value="">{{ trans('app.choose_category') }}</option>
                                         @if($request->get('type') == 'gfx')
                                             <option value="autotiles">{{ trans('app.autotiles') }}</option>
                                             <option value="backdrop">{{ trans('app.backdrops') }}</option>
@@ -58,7 +60,7 @@
                                             <option value="title">{{ trans('app.titles') }}</option>
                                             <option value="transition">{{ trans('app.transition') }}</option>
                                             <option value="system">{{ trans('app.system') }}</option>
-                                        @elseif($request->get('type') == 'gfx')
+                                        @elseif($request->get('type') == 'sfx')
                                             <option value="music">{{ trans('app.music') }}</option>
                                             <option value="sounds">{{ trans('app.sounds') }}</option>
                                         @elseif($request->get('type') == 'scripts')
@@ -85,13 +87,14 @@
                             <input type="submit" value="{{ trans('app.next') }}">
                         </div>
                     </div>
-                    {!! Form::close() !!}
+                    </form>
                 @elseif($request->get('step') == 3)
-                    {!! Form::open(['url' => 'resources/create', 'method' => 'post']) !!}
+                <form method="POST" action="{{ url('resources/create') }}">
+                    @csrf
                     <div class="rmarchivtbl" id="rmarchivbox_submitprod">
-                        {!! Form::hidden('step', 4) !!}
-                        {!! Form::hidden('type', $request->get('type')) !!}
-                        {!! Form::hidden('cat', $request->get('cat')) !!}
+                        <input type="hidden" name="step" value="4">
+                        <input type="hidden" name="type" value="{{ $request->get('type') }}">
+                        <input type="hidden" name="cat" value="{{ $request->get('cat') }}">
                         <h2>{{ trans('app.step') }} -> {{ $request->get('type') }} -> {{ $request->get('cat') }}</h2>
                         <div class="content">
                             <div class="formifier">
@@ -129,17 +132,19 @@
                             <input type="submit" value="{{ trans('app.next') }}">
                         </div>
                     </div>
-                    {!! Form::close() !!}
+                </form>
 
                 @elseif($request->get('step') == 4)
-                    {!! Form::open(['url' => 'resources/create/store', 'method' => 'post']) !!}
+                    <form method="POST" action="{{ url('resources/create/store') }}">
+                        @csrf
                     <div class="rmarchivtbl" id="rmarchivbox_submitprod">
-                        {!! Form::hidden('step', 5) !!}
-                        {!! Form::hidden('type', $request->get('type')) !!}
-                        {!! Form::hidden('cat', $request->get('cat')) !!}
-                        {!! Form::hidden('title', $request->get('title')) !!}
-                        {!! Form::hidden('desc', $request->get('desc')) !!}
-                        {!! Form::hidden('content_type', $request->get('content_type')) !!}
+                        <input type="hidden" name="step" value="5">
+                        <input type="hidden" name="type" value="{{ $request->get('type') }}">
+                        <input type="hidden" name="cat" value="{{ $request->get('cat') }}">
+                        <input type="hidden" name="title" value="{{ $request->get('title') }}">
+                        <input type="hidden" name="desc" value="{{ $request->get('desc') }}">
+                        <input type="hidden" name="msg" value="{{ $request->get('desc') }}">
+                        <input type="hidden" name="content_type" value="{{ $request->get('content_type') }}">
                         <h2>{{ trans('app.step') }} -> {{ $request->get('type') }} -> {{ $request->get('cat') }}</h2>
                         <div class="content">
                             <div class="formifier">
@@ -162,7 +167,7 @@
                             <input type="submit" value="{{ trans('app.submit') }}">
                         </div>
                     </div>
-                    {!! Form::close() !!}
+                </form>
                 @endif
             @endif
         @endif
@@ -177,7 +182,7 @@
                 <span class="qq-upload-drop-area-text-selector"></span>
             </div>
             <div class="qq-upload-button-selector qq-upload-button">
-                <div>Datei hochladen</div>
+                <div>{{ trans('app.upload') }}</div>
             </div>
             <span class="qq-drop-processing-selector qq-drop-processing">
                     <span>Processing dropped files...</span>
@@ -247,7 +252,7 @@
             </dialog>
         </div>
     </script>
-    <script>
+    <script type="module">
         var uploader = new qq.FineUploader({
             debug: true,
             autoUpload: true,

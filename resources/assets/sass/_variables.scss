@@ -67,3 +67,14 @@ $breadcrumb-bg:                     $rm-base-m1 !default;
 $breadcrumb-divider-color:          $rm-base-p2 !default;
 $breadcrumb-active-color:           $rm-text !default;
 $breadcrumb-divider:                "/" !default;
+$breadcrumb-padding-y:              0.75rem;
+$breadcrumb-padding-x:              1rem;
+
+$table-color: $rm-text;
+$table-bg: $rm-base-m1;
+
+$tooltip-color: $rm-text;
+$tooltip-bg: $rm-base-m1;
+
+$popover-header-bg: $rm-base;
+$popover-bg: $rm-base-m1;

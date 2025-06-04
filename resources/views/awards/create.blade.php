@@ -16,7 +16,7 @@
                 @if (count($errors) > 0)
                     <div class="row">
                         <div class="alert alert-dismissible alert-warning">
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
                             <h4>Fehler!</h4>
                             <p>
                             <ul>
@@ -33,7 +33,8 @@
 
         <div class="row">
             <div class="col-md-12 mb-3">
-                {!! Form::open(['action' => ['AwardController@store_page']]) !!}
+                <form action="{{ action('AwardController@store_page') }}" method="POST">
+                    @csrf
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.add_award_website') }}
@@ -41,34 +42,18 @@
                     <div class="card-body">
                         <div class="form-group" id="row_awardpage">
                             <label for="awardpage">{{ trans('app.add_award_website') }}</label>
-                            <input autocomplete="off" class="auto form-control" name="awardpage" id="awardpage" placeholder="awardpage" value=""/>
-                            <script type="text/javascript">
-                                var sourcepath = new Bloodhound({
-                                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                                    queryTokenizer: Bloodhound.tokenizers.whitespace,
-                                    //prefetch: '../data/films/post_1960.json',
-                                    remote: {
-                                        url: '/ac_award_page/%QUERY',
-                                        wildcard: '%QUERY'
-                                    }
-                                });
-
-                                $('#row_awardpage .auto').typeahead(null, {
-                                    name: 'awardpage',
-                                    display: 'value',
-                                    source: sourcepath,
-                                    limit: 5,
-                                    templates: {
-                                        empty: [
-                                            '<div style="color: #00001a;">',
-                                            '{{trans('app.award_website_not_found')}}',
-                                            '</div>'
-                                        ].join('\n'),
-                                        suggestion: function(data) {
-                                            console.log(data);
-                                            return '<p><strong>' + data.value + '</strong></p>';
-                                        }
-                                    }
+                            <input autocomplete="off" class="d-none auto form-control" name="awardpage" id="awardpage" placeholder="awardpage" value=""/>
+                            <div class="searchbar"></div>
+                            <script type="module">
+                                createAutocomplete({
+                                    apiPath: ()=>{return "ac_award_page"},
+                                    placeholder: "{{ trans('app.search') }}",
+                                    searchbarSelector:"#row_awardpage .searchbar",
+                                    noResults:'{{ trans('app.award_website_not_found') }}',
+                                    type:"list",
+                                    action:"find",
+                                    inputSelector:"#row_awardpage .auto",
+                                    additionalProps:{}
                                 });
                             </script>
                         </div>
@@ -81,12 +66,13 @@
                         <input type="submit" class="btn btn-primary" value="{{trans('app.submit')}}">
                     </div>
                 </div>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 mb-3">
-                {!! Form::open(['action' => ['AwardController@store_cat']]) !!}
+                <form action="{{ action('AwardController@store_cat') }}" method="POST">
+                    @csrf
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.add_award') }}
@@ -103,35 +89,20 @@
                         </div>
                         <div class="form-group" id="row_awardname">
                             <label for="awardname">{{ trans('app.award_title') }}</label>
-                            <input autocomplete="off" class="auto form-control" name="awardname" id="awardname" placeholder="awardname" value=""/>
+                            <input autocomplete="off" class="d-none auto form-control" name="awardname" id="awardname" placeholder="awardname" value=""/>
+                            <div class="searchbar"></div>
                         </div>
-                        <script type="text/javascript">
-                            var sourcepath = new Bloodhound({
-                                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                                remote: {
-                                    url: '/ac_award_cat/%QUERY',
-                                    wildcard: '%QUERY'
-                                }
-                            });
-
-                            $('#row_awardname .auto').typeahead(null, {
-                                name: 'awardname',
-                                display: 'value',
-                                source: sourcepath,
-                                limit: 5,
-                                templates: {
-                                    empty: [
-                                        '<div style="color: #00001a;">',
-                                        '{{trans('app.award_not_found')}}',
-                                        '</div>'
-                                    ].join('\n'),
-                                    suggestion: function(data) {
-                                        console.log(data);
-                                        return '<p><strong>' + data.value + '</strong></p>';
-                                    }
-                                }
-                            });
+                        <script type="module">
+                            createAutocomplete({
+                                apiPath: ()=>{return "ac_award_cat"},
+                                placeholder: "{{ trans('app.search') }}",
+                                searchbarSelector:"#row_awardname .searchbar",
+                                noResults:'{{ trans('app.award_not_found') }}',
+                                type:"list",
+                                action:"find",
+                                inputSelector:"#row_awardname .auto",
+                                additionalProps:{}}
+                            );
                         </script>
                         <div class="form-group">
                             <label for="awarddate">{{trans('app.created_at')}}</label>
@@ -156,12 +127,13 @@
                         <input class="btn btn-primary" type="submit" value="{{trans('app.submit')}}">
                     </div>
                 </div>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 mb-3">
-                {!! Form::open(['action' => ['AwardController@store_subcat']]) !!}
+                <form action="{{ action('AwardController@store_subcat') }}" method="POST">
+                    @csrf
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.add_award_category') }}
@@ -190,7 +162,7 @@
                         <input class="btn btn-primary" type="submit" value="{{trans('app.submit')}}">
                     </div>
                 </div>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
     </div>
