@@ -14,17 +14,17 @@ Installieren der PHP Abhängigkeiten
 ```bash
 composer install [Installation]
 ```
-Installieren der Abhängigkeiten für Gulp
+Installieren der Abhängigkeiten für vite (nachfolgende Befehle können auch npm statt yarn nutzen)
 ```bash
-npm install
+yarn install
 ```
-Installieren der benötigten Javascript Komponenten
+Um während der Entwicklung mit Hot-Reload JS und SCSS zu testen
 ```bash
-bower install
+yarn run dev
 ```
-Kompilieren der JS und SCSS Files
+Bündeln der JS und SCSS Files zum Hochladen
 ```bash
-gulp
+yarn run build
 ```
 Angabe der Datenbank Verbindungsdaten
 ```bash
@@ -49,6 +49,11 @@ php artisan key:generate
 Lokalen Webserver starten
 ```bash
 php artisan serv
+```
+Suche indexieren
+```bash
+php artisan scout:import "App\Models\Developer"
+php artisan scout:import "App\Models\Game"
 ```
 
 Nun kann das Script auf http://localhost:8000 im Browser geöffnet werden.
