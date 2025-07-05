@@ -15,7 +15,7 @@
                                 </span>
                             @endif
                             <span class="platformiconlist">
-                                <a href="{{ route('maker.show', $g->maker->id) }}">
+                                <a href="{{ route('maker.show', $g->maker?->id) }}">
                                     <span class="typei type_{{ $g->maker->short }}" title="{{ $g->maker->title }}">
                                         {{ $g->maker->title }}
                                     </span>

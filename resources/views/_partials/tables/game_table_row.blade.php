@@ -56,7 +56,7 @@
             @endif
             <div class="float-end">
                 @foreach($game->tags as $tag)
-                    <a class="badge badge-pill badge-warning" href="{{ action('TaggingController@showGames', [$tag->tag_id]) }}">{{ $tag->tag->title }}</a>
+                    <a class="badge rounded-pill text-bg-warning" href="{{ action('TaggingController@showGames', [$tag->tag_id]) }}">{{ $tag->tag->title }}</a>
                 @endforeach
             </div>
         </div>
