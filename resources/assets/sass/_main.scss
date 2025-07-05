@@ -105,6 +105,10 @@ header[role="banner"] {
   float: left;
 }
 
+.typei-nostyle {
+  @extend %extend_types;
+}
+
 .typei {
   @extend %extend_types;
   float: left;
@@ -270,4 +274,8 @@ blockquote {
 // Default font
 body {
   font-family:  $font-family-sans-serif;
+}
+
+.pagination {
+  margin-bottom: 0px;
 }

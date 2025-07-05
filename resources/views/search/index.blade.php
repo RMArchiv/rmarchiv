@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-md-12 mb-2">
                 <div class="card">
-                    <form method="GET" action="{{action('SearchController@search')}}" class="form-horizontal" >
+                    <form method="POST" action="{{action('SearchController@search')}}" class="form-horizontal" >
                         @csrf
                     <div class="card-header">
                         {{ trans('app.search') }}

@@ -43,8 +43,8 @@
             <span> • </span>
             {{ trans('app.addition_date') }} {{ \Carbon\Carbon::parse($game->created_at)->diffForHumans() }}
             <span> • </span>
-            <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/> {{ $game->voteup or 0 }} -
-            <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/> {{ $game->votedown or 0 }}
+            <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/> {{ $game->voteup ?? 0 }} -
+            <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/> {{ $game->votedown ?? 0 }}
             <span> • </span>
             AVG: {{ number_format(floatval($game->avg), 2) }}&nbsp;
             @if($game->avg > 0)
@@ -56,7 +56,7 @@
             @endif
             <div class="float-end">
                 @foreach($game->tags as $tag)
-                    <a class="badge badge-pill badge-warning" href="{{ action('TaggingController@showGames', [$tag->tag_id]) }}">{{ $tag->tag->title }}</a>
+                    <a class="badge rounded-pill text-bg-warning" href="{{ action('TaggingController@showGames', [$tag->tag_id]) }}">{{ $tag->tag->title }}</a>
                 @endforeach
             </div>
         </div>

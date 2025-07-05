@@ -162,20 +162,19 @@
                                 <div class="col-md-6">
                                     <div class="card">
                                         <div class="card-header">
-                                            {{ trans('app.informations') }}
+                                            {{ trans('app.information') }}
                                         </div>
                                         <ul class="list-group">
                                             <li class="list-group-item">
                                                 {{ trans('app.maker') }} :
-                                                <a href="{{ route('maker.show', $game->maker->id) }}">
-                                                    <span class="typei type_{{ $game->maker->short }}">{{ $game->maker->title }}</span> {{ $game->maker->title }}
+                                                <a class="flex align-center" href="{{ route('maker.show', $game->maker->id) }}">
+                                                    <span class="typei-nostyle type_{{ $game->maker->short }}">{{ $game->maker->title }}</span> {{ $game->maker->title }}
                                                 </a>
-                                                </td>
                                             </li>
                                             <li class="list-group-item">
                                                 {{ trans('app.gametype') }} :
                                                 @if(count($game->gamefiles) > 0)
-                                                    <span class='typei type_{{ $game->gamefiles->first()->gamefiletype->short }}'>{{ $game->gamefiles->first()->gamefiletype->title }}</span> {{ $game->gamefiles->first()->gamefiletype->title }}
+                                                    <span class='typei-nostyle type_{{ $game->gamefiles->first()->gamefiletype->short }}'>{{ $game->gamefiles->first()->gamefiletype->title }}</span> {{ $game->gamefiles->first()->gamefiletype->title }}
                                                 @else
                                                     {{ trans('app.no_gamefile_available') }}
                                                 @endif
@@ -247,36 +246,29 @@
                                                 </div>
                                             </li>
                                             <li class="list-group-item clearfix">
-                                                <ul class="col-md-6 list-unstyled">
+                                                <ul class="list-unstyled">
                                                     <li>votes:</li>
                                                     <li>
-                                                        <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/>&nbsp;{{ @$game->votes['up'] or 0 }}
+                                                        <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/>&nbsp;{{ @$game->votes['up'] ?? 0 }}
                                                     </li>
                                                     <li>
-                                                        <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/>&nbsp;{{ @$game->votes['down'] or 0 }}
+                                                        <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/>&nbsp;{{ @$game->votes['down'] ?? 0 }}
                                                     </li>
                                                 </ul>
-                                                <ul class="col-md-6 list-unstyled">
+                                                <ul class="list-unstyled">
                                                     <li>avg:</li>
-                                                    {{--
+                                                    <li>
                                                     @if(@$game->votes['up'] > @$game->votes['down'])
-                                                        <li>
-                                                            <img src='/assets/rate_up.gif' alt='ok'/>&nbsp;{{ @$game->votes['avg'] or 0 }}
-                                                        </li>
+                                                        <img src='/assets/rate_up.gif' alt='good'/>
                                                     @elseif(@$game->votes['up'] < @$game->votes['down'])
-                                                        <li>
-                                                            <img src='/assets/rate_down.gif' alt='ok'/>&nbsp;{{ @$game->votes['avg'] or 0 }}
-                                                        </li>
+                                                        <img src='/assets/rate_down.gif' alt='bad'/>
                                                     @elseif(@$game->votes['up'] == @$game->votes['down'])
-                                                        <li>
-                                                            <img src='/assets/rate_neut.gif' alt='ok'/>&nbsp;{{ @$game->votes['avg'] or 0 }}
-                                                        </li>
+                                                        <img src='/assets/rate_neut.gif' alt='ok'/>
                                                     @else
-                                                        <li>
-                                                            <img src='/assets/rate_neut.gif' alt='ok'/>&nbsp;{{ @$game->votes['avg'] or 0 }}
-                                                        </li>
+                                                        <img src='/assets/rate_neut.gif' alt='ok'/>
                                                     @endif
-                                                    --}}
+                                                    &nbsp;{{ @$game->avg ?? 0 }}
+                                                    </li>
                                                     {{-- data.cdc > 0
                                                 <li><img src="/assets/cdc.png" alt="cdcs">cdc's</li>
                                                  endif
@@ -286,7 +278,7 @@
                                             </li>
                                             @if(Auth::check())
                                                 @if($game->gamefiles->count() != 0)
-                                                    @if($game->maker_id == 2 or $game->maker_id == 3 or $game->maker_id == 6 or $game->maker_id == 9)
+                                                    @if($game->maker_id == 2 ?? $game->maker_id == 3 ?? $game->maker_id == 6 ?? $game->maker_id == 9)
                                                         <li class="list-group-item">
                                                             {{ trans('app.play_in_browser') }} :
                                                             <a href=
@@ -338,23 +330,44 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
-                                                                <h4 class="modal-title">{{ trans('app.add_tag') }}</h4>
+                                                                <h5 class="modal-title">{{ trans('app.add_tag') }}</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
-                                                            <div class="modal-body clearfix">
+                                                            <div class="modal-body">
                                                                 <div class="col-md-12">
                                                                     <form method="POST" action="{{action('TaggingController@store')}}" class="form-horizontal">
                                                                         @csrf
                                                                     <input type="hidden" name='content_id' value="{{ $game->id }}">
                                                                     <input type="hidden" name='content_type' value="{{ 'game' }}">
                                                                     <fieldset>
-                                                                        <div class="form-group">
-                                                                            <label for="title" class="col-form-label">{{ trans('app.tag_name') }}</label>
-                                                                            <input type="text" class="form-control" name="title" id="title" placeholder="" value=""/>
+                                                                        <div class="form-group" id="row_tag">
+                                                                            <label for="tag" class="col-lg-2 col-form-label">{{trans('app.tag_name')}}</label>
+                                                                            <div class="d-flex gap-4">
+                                                                                <div class="col-lg-10 autocomplete">
+                                                                                    <input autocomplete="off" type="text" class="d-none auto form-control" id="tag" name="title" value="">
+                                                                                    <div id="searchbar"></div>
+                                                                                    <div id="searchcontainer"></div>
+                                                                                </div>
+                                                                                <div class='form-group'>
+                                                                                    <input class="btn btn-secondary" type='submit' value='{{ trans('app.submit') }}' id='submit'>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class='form-group'>
-                                                                            <input class="btn btn-primary" type='submit' value='{{ trans('app.submit') }}' id='submit'>
-                                                                        </div>
+
+                                                                        <script type="module">
+                                                                            createAutocomplete({
+                                                                                apiPath: ()=>{return "ac_tag"},
+                                                                                placeholder: "{{ trans('app.search') }}",
+                                                                                searchbarSelector:"#row_tag #searchbar",
+                                                                                panelSelector:"#searchcontainer",
+                                                                                noResults:'{{ '' }}',
+                                                                                type:"list",
+                                                                                action:"find",
+                                                                                limit:5,
+                                                                                inputSelector:".autocomplete #tag",
+                                                                                // disable detached mode because input does not work in nested bootstrap modal
+                                                                                additionalProps:{detachedMediaQuery: "none"}})
+                                                                        </script>
                                                                     </fieldset>
                                                                     </form>
                                                                 </div>

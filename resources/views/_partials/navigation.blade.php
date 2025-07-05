@@ -16,7 +16,9 @@
                     <li class="nav-item"><a class="nav-link" href="{{ url('makers') }}">{{ trans('app.makers') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('awards') }}">{{ trans('app.awards') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('users') }}">{{ trans('app.users') }}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url('search') }}">{{ trans('app.search') }}</a></li>
+                    <noscript>
+                        <li class="nav-item"><a class="nav-link" href="{{ url('search') }}">{{ trans('app.search') }}</a></li>
+                    </noscript>
                     <li class="nav-item"><a class="nav-link" href="{{ url('board') }}">{{ trans('app.board') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('faq') }}">{{ trans('app.faq') }}</a></li>
                     @if(Auth::check())
@@ -87,24 +89,23 @@
 
                 <form method="POST" action="{{ action("SearchController@search")}}">
                     @csrf
-                {{-- <div class="form-inline mt-2 mt-md-0" style="flex-flow: nowrap">
-                    <input type="text" class="form-control form-control-sm me-sm-2" id="term" name="term" placeholder="{{ trans('app.search') }}">
-                    <button type="submit" class="btn btn-outline-success my-2 my-sm-0 btn-sm">{{ trans('app.submit') }}</button>
-                </div> --}}
-                <div id="autocomplete"></div>
-                <div id="searchcontainer"></div>
-                <script type="module">
-                    createAutocomplete(
-                    {   apiPath:()=>{return "ac_search_new"},
-                        placeholder:"{{ trans('app.search') }}",
-                        searchbarSelector:"#autocomplete",
-                        panelSelector:"#searchcontainer",
-                        noResults:'{{ trans('app.search_nothing_found') }}',
-                        type:"games",
-                        action:"navigate",
-                        additionalProps:{}
-                    })
-                </script>
+                    <input class="d-none" id="inputTerm" autocomplete="off" type='text' name='term' size='64' placeholder="{{ trans('app.search') }}" />
+                    <div id="autocomplete"></div>
+                    <div id="searchcontainer"></div>
+                    <script type="module">
+                        createAutocomplete(
+                        {   apiPath:()=>{return "ac_search_new"},
+                            placeholder:"{{ trans('app.search') }}",
+                            searchbarSelector:"#autocomplete",
+                            panelSelector:"#searchcontainer",
+                            inputSelector:"#inputTerm",
+                            noResults:'{{ trans('app.search_nothing_found') }}',
+                            type:"games",
+                            action:"navigate",
+                            additonalSubProps: {},
+                            additionalProps:{onSubmit: ()=>{document.querySelector("#autocomplete").closest("form").submit()}}
+                        })
+                    </script>
                 </form>
             </div>
         </div>

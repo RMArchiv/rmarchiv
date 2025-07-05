@@ -43,7 +43,7 @@
                                 <span> • </span>
                                 <span>size: {{ ByteUnits\Metric::bytes($gf->filesize)->format() }}</span>
                                 <span> • </span>
-                                <span>downloads: {{ $gf->downloadcount or 0 }}</span>
+                                <span>downloads: {{ $gf->downloadcount ?? 0 }}</span>
                                 <span> • </span>
                                 <span>
                                 <a href="{{ action('UserController@show', $gf->user->id) }}" class="usera" title="{{ $gf->user->name }}">

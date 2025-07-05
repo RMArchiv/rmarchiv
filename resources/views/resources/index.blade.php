@@ -25,8 +25,8 @@
                                 <td class='date'><time datetime='{{ $res->rescreatedat }}' title='{{ $res->rescreatedat }}'>{{ \Carbon\Carbon::parse($res->rescreatedat)->diffForHumans() }}</time></td>
                                 <td><a href="{{ route('resources.show', [$res->restype, $res->rescat, $res->resid]) }}">{{ $res->restitle }}</a></td>
                                 <td>{{ $res->contenttype }}</td>
-                                <td class='votes'>{{ $res->voteup or 0 }}</td>
-                                <td class='votes'>{{ $res->votedown or 0 }}</td>
+                                <td class='votes'>{{ $res->voteup ?? 0 }}</td>
+                                <td class='votes'>{{ $res->votedown ?? 0 }}</td>
                                 @php
                                     if($res->voteup + $res->votedown == 0){
                                         $avg = 0;

@@ -69,9 +69,9 @@
                                         {{ trans('app.addition_date') }} {{ \Carbon\Carbon::parse($c->game->created_at)->diffForHumans() }}
                                         <span> • </span>
                                         <img src='/assets/rate_up.gif'
-                                             alt='{{ trans('app.rate_up') }}'/> {{ $c->game->voteup or 0 }} -
+                                             alt='{{ trans('app.rate_up') }}'/> {{ $c->game->voteup ?? 0 }} -
                                         <img src='/assets/rate_down.gif'
-                                             alt='{{ trans('app.rate_down') }}'/> {{ $c->game->votedown or 0 }}
+                                             alt='{{ trans('app.rate_down') }}'/> {{ $c->game->votedown ?? 0 }}
                                         <span> • </span>
                                         AVG: {{ number_format(floatval($c->game->avg), 2) }}&nbsp;
                                         @if($c->game->avg > 0)

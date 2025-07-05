@@ -24,7 +24,7 @@ $api->version('v1', function ($api) {
     $api->get('games/{id}', 'App\Http\Controllers\Api\v1\GameController@show');
     $api->get('games_app', 'App\Http\Controllers\Api\v1\GameController@show_app');
 
-    $api->get('developer/{id}', 'App\Http\Controllers\api\v1\DeveloperController@show');
+    $api->get('developer/{id}', 'App\Http\Controllers\Api\v1\DeveloperController@show');
 
 
     $api->get('tako/filelist', 'App\Http\Controllers\Api\v1\TakoController@filelist');
@@ -37,7 +37,7 @@ $api->version('v1', function ($api) {
 
     $api->get('client/screenshots/{id}', 'App\Http\Controllers\Api\Client\ScreenshotsController@get_screens');
 
-    $api->get('client/developers', 'App\Http\Controllers\Api\Client\DevelopersController@index');
+    $api->get('client/developers', 'App\Http\Controllers\Api\Client\DeveloperController@index');
 
 
     //EasyRPG Hash API

@@ -9,6 +9,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Developer;
 use App\Models\Game;
+use App\Models\Tag;
 use App\Models\User;
 
 class AutocompleteController extends Controller
@@ -44,6 +45,15 @@ class AutocompleteController extends Controller
     {
         $result = [];
         $games = Game::search($term)->get();
+        // Simple dev game search - check performance
+        $developers = Developer::search($term)->get();
+        foreach ($developers as $developer) {
+            $devGames = Game::with('developers')
+                ->leftJoin('games_developer as gd', 'gd.game_id', '=', 'games.id')
+                ->join('developer', 'gd.developer_id', '=', 'developer.id')
+                ->where('gd.developer_id', '=', $developer->id)->get();
+            $games = $games->merge($devGames);
+        }
 
         foreach ($games as $g) {
             $result[] = [
@@ -204,6 +214,21 @@ class AutocompleteController extends Controller
             $result[] = [
                 'id'    => $user->id,
                 'value' => $user->name,
+            ];
+        }
+
+        return \Response::json($result);
+    }
+
+    public function tag($term)
+    {
+        $result = [];
+        $tags = Tag::where('title', 'like', '%'.$term.'%')->get();
+
+        foreach ($tags as $tag) {
+            $result[] = [
+                'id'    => $tag->id,
+                'value' => $tag->title,
             ];
         }
 

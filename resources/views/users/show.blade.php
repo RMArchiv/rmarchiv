@@ -20,7 +20,7 @@
             <div class="col-md-6">
                 <div class="card mb-3">
                     <div class="card-header">
-                        {{ trans('app.user_informations') }}
+                        {{ trans('app.user_information') }}
                     </div>
                     <div class="card-body">
                         <div class="col-md-4">

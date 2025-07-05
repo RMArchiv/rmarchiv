@@ -50,10 +50,10 @@
                         <div class="col-md-6">
                             <ul>
                                 <li>
-                                    <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/>&nbsp;{{ $resource->voteup or 0 }}
+                                    <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/>&nbsp;{{ $resource->voteup ?? 0 }}
                                 </li>
                                 <li>
-                                    <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/>&nbsp;{{ $resource->votedown or 0 }}
+                                    <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/>&nbsp;{{ $resource->votedown ?? 0 }}
                                 </li>
                             </ul>
                             @php
@@ -70,19 +70,19 @@
                             <ul id='avgstats'>
                                 @if($resource->voteup > $resource->votedown)
                                     <li>
-                                        <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/>&nbsp;{{ $resource->voteavg or 0 }}
+                                        <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/>&nbsp;{{ $resource->voteavg ?? 0 }}
                                     </li>
                                 @elseif($resource->voteup < $resource->votedown)
                                     <li>
-                                        <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/>&nbsp;{{ $resource->voteavg or 0 }}
+                                        <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/>&nbsp;{{ $resource->voteavg ?? 0 }}
                                     </li>
                                 @elseif($resource->voteup = $resource->votedown)
                                     <li>
-                                        <img src='/assets/rate_neut.gif' alt='{{ trans('app.rate_neut') }}'/>&nbsp;{{ $resource->voteavg or 0 }}
+                                        <img src='/assets/rate_neut.gif' alt='{{ trans('app.rate_neut') }}'/>&nbsp;{{ $resource->voteavg ?? 0 }}
                                     </li>
                                 @else
                                     <li>
-                                        <img src='/assets/rate_neut.gif' alt='{{ trans('app.rate_neut') }}'/>&nbsp;{{ $resource->voteavg or 0 }}
+                                        <img src='/assets/rate_neut.gif' alt='{{ trans('app.rate_neut') }}'/>&nbsp;{{ $resource->voteavg ?? 0 }}
                                     </li>
                                 @endif
                                 {{-- data.cdc > 0

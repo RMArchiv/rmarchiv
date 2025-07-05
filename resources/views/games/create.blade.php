@@ -32,7 +32,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            {{ trans('app.informations') }}
+                            {{ trans('app.information') }}
                         </div>
                         <div class="card-body">
                             <div class="form-horizontal">

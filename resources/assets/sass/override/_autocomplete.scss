@@ -5,3 +5,7 @@
     --aa-background-color-rgb: #{red($rm-base),green($rm-base),blue($rm-base)} !important;
     --aa-background-color-alpha: 1 !important;
 }
+
+.autocomplete-panel-highest {
+    z-index: 5000 !important;
+}
