@@ -99,37 +99,40 @@ export function createAutocomplete({
             item({ item, components, html }) {
               if (type == "games") {
                 return html`<div class="card">
-                <div class="card-header">
-                    <a href='${item.link}'>
-                        ${
-                          item?.gameType && item?.gameTypeShort
-                            ? html` <span class="typeiconlist">
-                                <span
-                                  class="typei type_${item?.gameTypeShort} "
-                                  title="${item?.gameType}"
-                                >
-                                  ${item?.gameType}
-                                </span>
-                              </span>`
-                            : ""
-                        }
-                        <span class="platformiconlist">
-                            <a href="${item?.makerLink}">
-                                <span class="typei type_${
-                                  item?.makerShort
-                                }" title="${item?.maker}">
-                                    ${item?.maker}
-                                </span>
-                            </a>
-                        </span>
-                        <a href="${item?.urlGame}">
-                            ${item?.title}
+                <div class="px-3 py-2">
+                    <a href='${item.link}' class="d-flex flex-nowrap mb-2 justify-content-between">
+                        <div class="d-flex gap-3">
+                          <div class="d-flex flex-nowrap">
                             ${
-                              item?.subtitle
-                                ? html`<small> - ${item.subtitle}</small>`
+                              item?.gameType && item?.gameTypeShort
+                                ? html` <div class="typeiconlist">
+                                    <span class="typei type_${item?.gameTypeShort}"
+                                          title="${item?.gameType}"
+                                    >
+                                      ${item?.gameType}
+                                    </span>
+                                  </div>`
                                 : ""
                             }
-                        </a>
+                            <div class="platformiconlist">
+                                <a href="${item?.makerLink}">
+                                    <span class="typei type_${
+                                      item?.makerShort
+                                    }" title="${item?.maker}">
+                                        ${item?.maker}
+                                    </span>
+                                </a>
+                            </div>
+                          </div>
+                          <a href="${item?.urlGame}">
+                          ${item?.title}
+                          ${
+                            item?.subtitle
+                            ? html`<small> - ${item.subtitle}</small>`
+                            : ""
+                          }
+                          </a>
+                        </div>
                         <span>
                             <img src="/assets/lng/16/${
                               item.languageIconURLSegment
@@ -138,83 +141,71 @@ export function createAutocomplete({
                     </a>
                 </div>
 
-                <ul class="list-group">
-                    <li class="list-group-item media" style="margin-top: 0px;">
+
                         <a class="float-end" href="${
                           item?.link
                         }"><span class="badge">${item?.comments}</span></a>
                         <a class="float-start" href="${item?.link}">
-                            <img width="100px" class="img-fluid img-rounded" src='${
+                            <img width="100px" class="img-fluid img-rounded me-2" src='${
                               item?.screenshot
                             }' alt='${
                   item.translation.titleScreenAlt
                 }' title='${item.translation.titleScreenAlt}'/>
                         </a>
                         <div class="thread-info">
-                            <div class="media-heading">
-                                ${item.description}
-                                ${
-                                  item.hasCdc
-                                    ? html`
-                                        <div class="cdcstack">
-                                          <img
-                                            src="/assets/cdc.png"
-                                            title="${item.translation
-                                              .coupdecoeur}"
-                                            alt="${item.translation
-                                              .coupdecoeur}"
-                                          />
-                                        </div>
-                                      `
-                                    : ""
-                                }
+                            <div style="font-size:10px">
+                                ${item.description.length < 100 ? item.description : item.description.substr(0,100)+"…"}
                             </div>
-                            <div class="media-body" style="font-size: 12px;">
-                                <div>${item.developers}</div>
-                                <div>${
-                                  item?.translation?.released
+                            <div class="w-100 float-start" style="font-size: 12px;">
+                              <div class="d-flex my-1 justify-content-between">
+                                <a href="${item?.link}" class="fs-7">${item.developers}</a>
+                                <small>${ item?.translation?.released
                                     ? item.translation.released
                                     : "release date"
-                                }: ${item.release}</div>
-                                <span> • </span>
-                                ${
-                                  (item?.translation?.created
-                                    ? item?.translation?.created
-                                    : "hinzugefügt") +
-                                  " " +
-                                  item.created
-                                }
-                                <span> • </span>
-                                <img src='/assets/rate_up.gif' alt='${
+                                }: ${item.release}
+                                </small>
+                                <div>
+                                  ${ item.hasCdc
+                                      ? html`
+                                          <div class="cdcstack">
+                                            <img
+                                              src="/assets/cdc.png"
+                                              title="${item.translation.coupdecoeur}"
+                                              alt="${item.translation.coupdecoeur}"
+                                            />
+                                          </div>
+                                        `
+                                      : ""
+                                  }
+
+                                </div>
+                              </div>
+                              <img src='/assets/rate_up.gif' alt='${
                                   item?.translation?.rate_up
                                 }'/> ${item.votesUp} -
-                                <img src='/assets/rate_down.gif' alt='${
+                              <img src='/assets/rate_down.gif' alt='${
                                   item?.translation?.rate_down
                                 }'/> ${item.votesDown}
-                                <span> • </span>
-                                AVG: ${item.average} ${
-                  item.average > 0
-                    ? html`<img
-                        src="/assets/rate_up.gif"
-                        alt="${item?.translation?.rate_up}"
-                      />`
-                    : item.average == 0
-                    ? html`<img
-                        src="/assets/rate_neut.gif"
-                        alt="${item?.translation?.rate_neut}"
-                      />`
-                    : html`<img
-                        src="/assets/rate_down.gif"
-                        alt="${item?.translation?.rate_down}"
-                      />`
-                }
+                              <span> • </span>
+                              AVG: ${item.average} ${
+                                  item.average > 0
+                                    ? html`<img
+                                        src="/assets/rate_up.gif"
+                                        alt="${item?.translation?.rate_up}"
+                                      />`
+                                    : item.average == 0
+                                    ? html`<img
+                                        src="/assets/rate_neut.gif"
+                                        alt="${item?.translation?.rate_neut}"
+                                      />`
+                                    : html`<img
+                                        src="/assets/rate_down.gif"
+                                        alt="${item?.translation?.rate_down}"
+                                      />`
+                                }
                                 <!-- TO-DO TAGS -->
                             </div>
                         </div>
-                    </li>
-                </ul>
-
-
                 </div>
             </div>
             `;

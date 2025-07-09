@@ -4,6 +4,12 @@
     // Fix background
     --aa-background-color-rgb: #{red($rm-base),green($rm-base),blue($rm-base)} !important;
     --aa-background-color-alpha: 1 !important;
+    .aa-DetachedCancelButton {
+        border: 1px;
+        border-style: solid;
+
+        --aa-text-color-rgb: #{red($rm-link),green($rm-link),blue($rm-link)} !important;
+    }
 }
 
 .autocomplete-panel-highest {
