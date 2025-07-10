@@ -43,6 +43,7 @@ return [
   'administration_of'                 => 'Administration of',
   'alltime_top'                       => 'All-time top',
   'alltime_top_widget'                => 'Top of alltime',
+  'amount'                            => 'Amount',
   'archive'                           => 'Archive',
   'are_you_sure_to_delete_savegame'   => 'Are you sure you want to delete this savegame?',
   'atelier_id'                        => 'RPG-Atelier id',

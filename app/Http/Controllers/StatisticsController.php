@@ -22,7 +22,7 @@ class StatisticsController extends Controller
             ->get();
         $releasesYear = array( array(), array());
         array_push($releasesYear[0], trans("app.date"));
-        array_push($releasesYear[0], 'Releases pro Jahr');
+        array_push($releasesYear[0], trans('app.releases_per_year'));
         foreach ($gamesperyear as $game) {
             array_push($releasesYear[1], [$game->year, $game->count]);
         }

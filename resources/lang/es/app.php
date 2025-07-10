@@ -43,6 +43,7 @@ return [
   'administration_of'                 => 'Administración de',
   'alltime_top'                       => 'Los mejores de siempre',
   'alltime_top_widget'                => 'Los mejores de todos tiempos',
+  'amount'                            => 'Cantidad',
   'archive'                           => 'Archivo',
   'are_you_sure_to_delete_savegame'   => '¿Realmente deseas borrar esta partida guardada?',
   'atelier_id'                        => 'ID de RPG-Atelier',
