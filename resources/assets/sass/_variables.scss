@@ -28,6 +28,8 @@ $enable-print-styles:       true;
 
 $body-bg:                   $rm-back;
 $body-color:                $rm-text;
+// Overwrite all primary usage like in buttons
+$primary:                   $rm-base-p3;
 
 $body-secondary-color:      $rm-link;
 $body-secondary-bg:         $rm-base-m1;
