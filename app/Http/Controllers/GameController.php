@@ -97,7 +97,7 @@ class GameController extends Controller
                 return ($a->title < $b->title) ? -1 : 1;
         });
 
-        $tags = Tag::select(["title","id"])->orderBy("title")->get();
+        $tags = Tag::distinct()->select(["title","tags.id"])->join('tag_relations', 'tag_relations.tag_id', '=', 'tags.id')->orderBy("title")->get();
         $games = $games->paginate($rows)->withQueryString();
 
         return view('games.index', [
