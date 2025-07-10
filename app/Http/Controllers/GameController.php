@@ -39,7 +39,7 @@ class GameController extends Controller
 
         $rows = (\Auth::check()) ? \Auth::user()->settings->rows_per_page_games : config('app.rows_per_page_games');
         if ($orderby == 'developer.name') {
-            $games = Game::select(['id','comments','title','subtitle','release_date','created_at','voteup','votedown','avg', 'maker_id', 'lang_id'])
+            $games = Game::select(['games.id','comments','games.title','games.subtitle','games.release_date','games.created_at','voteup','votedown','avg', 'maker_id', 'lang_id'])
                 ->with(['language','maker','gamefiles','cdcs','tags','developers'])
                 ->Join('games_developer', 'games.id', '=', 'games_developer.game_id')
                 ->Join('developer', 'games_developer.developer_id', '=', 'developer.id')
