@@ -88,7 +88,7 @@
                         <thead>
                         <tr>
                             <th>{{ trans('app.filecategory') }}</th>
-                            <th>{{ trans('app.screenshots') }}</th>
+                            <th>{{ trans('app.amount') }}</th>
                             <th>{{ trans('app.total_file_size') }}</th>
                             <th>{{ trans('app.avg_file_size') }}</th>
                         </tr>
@@ -154,14 +154,6 @@
                 labels: {{ Illuminate\Support\Js::from( array_map(function($year) {return $year[0];}, $releasesYear[1])) }},
                 datasets: [
                     {
-                        label: {{Illuminate\Support\Js::from($releasesYear[0][0])}},
-                        data: {{ Illuminate\Support\Js::from( array_map(function($year) {return $year[0];}, $releasesYear[1])) }},
-                        backgroundColor: rmLink+"A0",
-                        borderColor: rmLink,
-                        borderWidth: 2,
-                        fill: true,
-                    },
-                    {
                         label: {{Illuminate\Support\Js::from($releasesYear[0][1])}},
                         data: {{ Illuminate\Support\Js::from( array_map(function($year) {return $year[1];}, $releasesYear[1])) }},
                         backgroundColor: rmBaseP3 + "A0",
@@ -178,11 +170,15 @@
                         stacked: true,
                         title: {
                             display: true,
-                            text: 'Statistics'
+                            text: "{{trans("app.amount")}}"
                         }
                     },
                     x: {
-                        stacked: true
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: "{{trans("app.release_date")}}"
+                        }
                     }
                 },
                 layout: {
