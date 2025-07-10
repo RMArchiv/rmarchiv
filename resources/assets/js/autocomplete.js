@@ -157,28 +157,24 @@ export function createAutocomplete({
                                 ${item.description.length < 100 ? item.description : item.description.substr(0,100)+"…"}
                             </div>
                             <div class="w-100 float-start" style="font-size: 12px;">
-                              <div class="d-flex my-1 justify-content-between">
+                              <div class="d-flex flex-wrap my-1 justify-content-between">
                                 <a href="${item?.link}" class="fs-7">${item.developers}</a>
-                                <small>${ item?.translation?.released
-                                    ? item.translation.released
-                                    : "release date"
-                                }: ${item.release}
+                                <small class="d-flex gap-1 align-items-center text-nowrap"><a href="" class="fa fa-calendar-days"></a>
+                                  <span>${item.release}</span>
                                 </small>
-                                <div>
-                                  ${ item.hasCdc
-                                      ? html`
-                                          <div class="cdcstack">
-                                            <img
-                                              src="/assets/cdc.png"
-                                              title="${item.translation.coupdecoeur}"
-                                              alt="${item.translation.coupdecoeur}"
-                                            />
-                                          </div>
-                                        `
-                                      : ""
-                                  }
+                                ${ item.hasCdc
+                                    ? html`
+                                        <div class="cdcstack">
+                                          <img
+                                            src="/assets/cdc.png"
+                                            title="${item.translation.coupdecoeur}"
+                                            alt="${item.translation.coupdecoeur}"
+                                          />
+                                        </div>
+                                      `
+                                    : ""
+                                }
 
-                                </div>
                               </div>
                               <img src='/assets/rate_up.gif' alt='${
                                   item?.translation?.rate_up
