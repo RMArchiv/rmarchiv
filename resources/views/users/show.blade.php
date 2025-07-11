@@ -205,7 +205,11 @@
                                         <a href='{{ url('users', $comment->user_id) }}' title="{{ $comment->user->name }}">{{ $comment->user->name }}</a> -
                                         {{ trans('app.posted_at') }} {{ $comment->created_at }}<br>
                                         <a href="{{ action('BoardController@show_cat', $comment->cat->id) }}">{{ $comment->cat->title }}</a> ->
-                                        <a href="{{ action('BoardController@show_thread', $comment->thread->id) }}">{{ $comment->thread->title }}</a>
+                                        @if (isset($comment?->thread?->id))
+                                            <a href="{{ action('BoardController@show_thread', $comment->thread->id) }}">{{ $comment->thread->title }}</a>
+                                        @else
+                                        <small>{{ trans('app.thread_is_removed')}}</small>
+                                        @endif
                                     </div>
                                     <a href='{{ url('user', $comment->user_id) }}'
                                        class='user'>{{ $comment->name }}</a>

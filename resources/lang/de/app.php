@@ -370,6 +370,7 @@ return [
     'tags' => 'Tags',
     'text' => 'Text',
     'thread_is_closed' => 'Thread ist geschlossen',
+    'thread_is_removed' => 'Thread ist gelöscht',
     'thread_is_closed_you_cant_post' => 'Der Thread wurde geschlossen. Daher kannst du hier nicht posten.',
     'title' => 'Titel',
     'titles' => 'Titles',

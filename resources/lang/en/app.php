@@ -370,6 +370,7 @@ return [
   'tags'                                            => 'Tags',
   'text'                                            => 'Text',
   'thread_is_closed'                                => 'Thread is closed',
+  'thread_is_removed'                               => 'Thread is removed',
   'thread_is_closed_you_cant_post'                  => 'This thread is closed. You can not post.',
   'title'                                           => 'Title',
   'titles'                                          => 'Titles',
