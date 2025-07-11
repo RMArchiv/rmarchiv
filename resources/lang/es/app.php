@@ -370,6 +370,7 @@ return [
   'tags'                                            => 'Etiquetas',
   'text'                                            => 'Texto',
   'thread_is_closed'                                => 'El tema está cerrado',
+  'thread_is_removed'                               => 'Se ha eliminado el tema',
   'thread_is_closed_you_cant_post'                  => 'El tema está cerrado. No puedes publicar.',
   'title'                                           => 'Título',
   'titles'                                          => 'Title',
