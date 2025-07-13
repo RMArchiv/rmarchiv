@@ -133,7 +133,7 @@
                             <input type="hidden" name="content_id" value="{{$news->id}}" />
                             <input type="hidden" name="content_type" value="news" />
                             <div class='content'>
-                                @if(\App\Helpers\CheckRateableHelper::checkRateable('news', $news->gameid, Auth::id()) === true)
+                                @if(\App\Helpers\CheckRateableHelper::checkRateable('news', $news->id, Auth::id()) === true)
                                     <div id='prodvote'>
                                         {{ trans('app.rate_this_news') }}<br>
                                         <input type='radio' name='rating' id='ratingrulez' value='up'/>

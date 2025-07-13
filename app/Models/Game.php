@@ -8,8 +8,10 @@
 namespace App\Models;
 
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
+use Illuminate\Contracts\Database\Query\Builder;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
@@ -166,15 +168,29 @@ class Game extends Model
 
     public function getVotesAttribute()
     {
-        $vote['up'] = intval($this->comments()->sum('vote_up'));
-        $vote['down'] = intval($this->comments()->sum('vote_down'));
+        // Retrieve collection of the newest comment with an vote by each user
+        $newCommentVotesPerUser = $this->comments()
+            ->select(["user_id", "comment_md", "vote_up", "vote_down", DB::raw('MAX(created_at) AS max_created_at')])
+            ->where('content_id', $this->id)
+            ->where((function (Builder $query) {
+                $query->orWhere("vote_up", "=", 1)->orWhere("vote_down", "=", 1);;
+            }))
+            ->groupBy('user_id')
+            ->get();
+
+        $vote['up'] = 0;
+        $vote['down'] = 0;
+        foreach ($newCommentVotesPerUser as $comment) {
+            $vote['up'] += $comment['vote_up'];
+            $vote['down'] += $comment['vote_down'];
+        }
+
         $sum = $vote['up'] + $vote['down'];
         if($sum >= 1){
             $vote['avg'] = @round(($vote['up'] - $vote['down']) / ($vote['up'] + $vote['down']), 2);
         }else{
             $vote['avg'] = 0;
         }
-        //(voteup - votedown) / (voteup + votedown)
         return $vote;
     }
 

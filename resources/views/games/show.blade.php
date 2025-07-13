@@ -567,7 +567,7 @@
                                     <input type="hidden" name='content_id' value="{{ $game->id }}">
                                     <input type="hidden" name='content_type' value="{{ 'game' }}">
                                     <div class='content'>
-                                        @if(\App\Helpers\CheckRateableHelper::checkRateable('game', $game->gameid, Auth::id()) === true)
+                                        @if(\App\Helpers\CheckRateableHelper::checkRateable('game', $game->id, Auth::id()) === true)
                                             <div id='prodvote'>
                                                 <input type="hidden" class="rating"/>
 
