@@ -222,7 +222,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <input type='submit' value='Submit' id='submit'>
+                        <button class="btn btn-primary" id='submit'>{{ trans('app.submit') }}</button>
                     </div>
                 </div>
                 </form>

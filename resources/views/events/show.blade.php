@@ -132,7 +132,7 @@
                             <div><a href='/?page=faq#markdown'><b>markown</b></a> kann benutzt werden</div>
                         </div>
                         <div class='foot'>
-                            <input type='submit' value='Submit' id='submit'>
+                            <button class="btn btn-primary" id='submit'>{{ trans('app.submit') }}</button>
                         </div>
                         </form>
                     </div>

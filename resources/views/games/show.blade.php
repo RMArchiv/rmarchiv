@@ -587,7 +587,7 @@
                                         </div>
                                     </div>
                                     <div class='foot'>
-                                        <input type='submit' value='Submit' id='submit'>
+                                        <button class="btn btn-primary" id='submit'>{{ trans('app.submit') }}</button>
                                     </div>
                                     </form>
                                     @else

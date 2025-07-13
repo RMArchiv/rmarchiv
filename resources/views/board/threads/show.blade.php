@@ -152,7 +152,8 @@
                                     <div><a href='#'>{{ trans('app.markdown_is_usable_here') }}</a></div>
                                 </div>
                                 <div class='foot'>
-                                    <input type='submit' value='Submit' id='submit'></div>
+                                    <button class="btn btn-primary" id='submit'>{{ trans('app.submit') }}</button>
+                                </div>
                                 </form>
                             @else
                                 <h2>{{ trans('app.thread_is_closed') }}</h2>
