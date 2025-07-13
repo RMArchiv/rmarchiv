@@ -18,7 +18,7 @@ class setVotes extends Command
      *
      * @var string
      */
-    protected $signature = 'set:votes';
+    protected $signature = 'set:votes {game_id?}';
 
     /**
      * The console command description.
@@ -44,12 +44,26 @@ class setVotes extends Command
      */
     public function handle()
     {
-        $games = Game::all();
+        /** @var $argument number | null */
+        $argument = $this->argument("game_id");
+        try {
+            if(isset($argument)) {
+                $game = Game::whereId($argument)->first();
 
-        foreach ($games as $game) {
-            $this->info('Setze Releasedate für: '.$game->title);
-            DatabaseHelper::setVotesAndComments($game->id);
+                $this->info('Recalculate votes: '.$game->title);
+                DatabaseHelper::setVotesAndComments($game->id);
+                $this->info('Finished!');
+            }else {
+                $games = Game::all();
+                foreach ($games as $game) {
+                    $this->info('Recalculate votes: '.$game->title);
+                    DatabaseHelper::setVotesAndComments($game->id);
+                }
+                $this->info('Finished!');
+            }
+        } catch (\Throwable $th) {
+            $this->info("There was an error.");
+            $this->info($th);
         }
-        $this->info('Fertig!');
     }
 }

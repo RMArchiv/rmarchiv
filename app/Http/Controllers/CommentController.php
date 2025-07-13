@@ -8,10 +8,14 @@
 namespace App\Http\Controllers;
 
 use App\Events\Obyx;
+use App\Helpers\CheckRateableHelper;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Helpers\DatabaseHelper;
+use App\Models\User;
 use GrahamCampbell\Markdown\Facades\Markdown;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -39,19 +43,20 @@ class CommentController extends Controller
     {
         $comment = new Comment();
 
-        $comment->user_id = \Auth::id();
+        $comment->user_id = Auth::id();
         $comment->content_id = $request->get('content_id');
         $comment->content_type = $request->get('content_type');
         $comment->comment_md = $request->get('msg');
-        $comment->comment_html = Markdown::convertToHtml($request->get('msg'));
+        $comment->comment_html = Markdown::convert($request->get('msg'));
 
         $rate = $request->get('rating');
+        $allowedToRate = CheckRateableHelper::checkRateable($comment->content_type, $comment->content_id, Auth::id());
 
-        if ($rate == 'up') {
+        if ($rate == 'up' && $allowedToRate) {
             $comment->vote_up = 1;
             $comment->vote_down = 0;
             event(new Obyx('rating', \Auth::id()));
-        } elseif ($rate == 'down') {
+        } elseif ($rate == 'down' && $allowedToRate) {
             $comment->vote_up = 0;
             $comment->vote_down = 1;
             event(new Obyx('rating', \Auth::id()));
@@ -69,5 +74,29 @@ class CommentController extends Controller
         }
 
         return redirect()->action('MsgBoxController@comment_add', [$request->get('content_type'), $request->get('content_id')]);
+    }
+
+    // Alternative function to checkRateable
+    public static function hasUserRatedGame($id) {
+        $ratedGame = false;
+        if(Auth::check()) {
+            // logical grouping of where clauses to simulate brackets
+            $comments = User::whereId(Auth::id())->first()->comments()->where(
+                "deleted", "=", 0)
+                ->where(function (Builder $query) {
+                    $query->orWhere("vote_up", "=", 1)->orWhere("vote_down", "=", 1);
+                })
+                ->orderBy('updated_at')->get();
+
+            foreach ($comments as $comment) {
+                if($comment->content_id == $id && $comment->content_type == "game") {
+                    $ratedGame = true;
+                }
+            }
+            return $ratedGame;
+        }
+        else {
+            return false;
+        }
     }
 }
