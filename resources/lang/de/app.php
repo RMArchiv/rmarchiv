@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'profile_views' => 'Profil aufrufe',
     //============================== New strings to translate ==============================//
     'change_board_title' => 'Thread Titel ändern',
 

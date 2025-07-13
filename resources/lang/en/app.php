@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'profile_views' => 'Profile views',
+
   //============================== New strings to translate ==============================//
   // Defined in file /Users/ryg/PhpstormProjects/rmarchiv/resources/views/board/post/edit.blade.php
   'change_board_title' => 'Change thread title',

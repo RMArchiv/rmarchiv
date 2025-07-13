@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'profile_views' => 'Profile views',
+
   //============================== New strings to translate ==============================//
   'change_board_title' => 'Cambiar título del tema',
 
