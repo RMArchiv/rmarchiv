@@ -239,7 +239,7 @@
                                                 @php
                                                     $perc = \App\Helpers\MiscHelper::getPopularity($game->views, \App\Helpers\DatabaseHelper::getGameViewsMax());
                                                 @endphp
-                                                {{ trans('app.popularity') }}: {{  number_format($perc, 2) }}%
+                                                {{ trans('app.popularity') }}: {{  number_format($perc, 2) }}% </br>
                                                 {{ trans('app.profile_views') }}: {{ number_format($game->views, 0, ',', '.') }}
                                                 <br/>
                                                 <div class="progress">
