@@ -10,9 +10,11 @@ window["createAutocomplete"] = createAutocomplete;
 import * as qq from "fine-uploader";
 window["qq"] = qq;
 import {
+    ArcElement,
     Chart,
     Colors,
     BarController,
+    PieController,
     CategoryScale,
     LinearScale,
     BarElement,
@@ -23,8 +25,10 @@ import {
     Filler
   } from "chart.js";
   Chart.register(
+    ArcElement,
     Colors,
     BarController,
+    PieController,
     BarElement,
     CategoryScale,
     LinearScale,
@@ -35,6 +39,14 @@ import {
     Filler
   );
   window["Chart"] = Chart;
+
+function randomHexColor( ) {
+  function randomHex() {
+    return Math.floor(Math.random() * 16).toString(16)
+  }
+  return randomHex() + "" + randomHex() + "" + randomHex() + "" + randomHex() + "" + randomHex() + "" + randomHex()
+}
+window["randomHexColor"] = randomHexColor
 
 // import qq from "fine-uploader";
 // window.qq = qq;
