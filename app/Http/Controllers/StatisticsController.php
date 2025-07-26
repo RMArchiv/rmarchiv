@@ -14,6 +14,7 @@ class StatisticsController extends Controller
 {
     public function show()
     {
+        // games per year
         $gamesperyear = \DB::table('games_files')
             ->select('release_year as year')
             ->selectRaw('COUNT(release_year) as count')
@@ -26,6 +27,29 @@ class StatisticsController extends Controller
         foreach ($gamesperyear as $game) {
             array_push($releasesYear[1], [$game->year, $game->count]);
         }
+
+        // Kelven games
+        $kelven = \DB::table('games_files')
+            ->leftJoin('games_developer', 'games_developer.game_id', '=', 'games_files.game_id')
+            ->select('games_files.release_year as year')
+            ->selectRaw('COUNT(games_files.release_year) as count')
+            ->where('games_developer.developer_id', '=', 6)
+            ->groupBy('games_files.release_year')
+            ->orderBy('games_files.release_year')
+            ->get();
+
+        // releases per maker
+        $makerchart = Maker::all();
+        $makerReleases = array();
+        $makerNames = array();
+        $makerCount = array();
+        foreach ($makerchart as $maker) {
+            array_push($makerNames, $maker->title);
+            array_push($makerCount, $maker->games->count());
+        }
+        array_push($makerReleases, $makerNames);
+        array_push($makerReleases, $makerCount);
+
 
         $filesize = [
             'attach' => [
@@ -98,6 +122,8 @@ class StatisticsController extends Controller
         return view('statistics.index', [
             'releasesYear'  => $releasesYear,
             'files' => $filesize,
+            'releasesYearKelven' => $kelven->toArray(),
+            'makerReleases' => $makerReleases,
         ]);
     }
 

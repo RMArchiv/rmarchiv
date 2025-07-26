@@ -24,9 +24,11 @@
             <div class="col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-header">
-                        Hall of Kelven...
+                        <a href="/developer/6">Hall of Kelven...</a>
                     </div>
-                    <div class="card-body" id="relkelven_div"></div>
+                    <div class="card-body" id="relkelven_div">
+                        <canvas id="releasePerYearKelven"    width="100%"    height="100%"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,8 +56,8 @@
                     <div class="card-header">
                         {{ trans('app.makerchart') }}
                     </div>
-                    <div class="card-body" id="makerchart_div" style="height: 488px">
-
+                    <div class="card-body" id="makerchart_div" style="display:flex,max-height:500px">
+                        <canvas id="releasesPerMaker"    width="100%"    height="100%"></canvas>
                     </div>
                 </div>
             </div>
@@ -147,8 +149,8 @@
         let rmBaseP2 = "#215285";
         let rmBaseP3 = "#2a6bab";
 
-        const stackedCtx = document.getElementById("releasePerYear");
-        let myChart = new Chart(stackedCtx, {
+        const perYearCtx = document.getElementById("releasePerYear");
+        let releaseChart = new Chart(perYearCtx, {
             type: 'line',
             data: {
                 labels: {{ Illuminate\Support\Js::from( array_map(function($year) {return $year[0];}, $releasesYear[1])) }},
@@ -196,6 +198,88 @@
                 }
             }
         });
+
+        const gamesPerYearKelvenCtx = document.getElementById("releasePerYearKelven");
+        let kelvenChart = new Chart(gamesPerYearKelvenCtx, {
+            type: 'line',
+            data: {
+                labels: {{ Illuminate\Support\Js::from( array_map(function($release) {return $release->year;}, $releasesYearKelven) ) }},
+                datasets: [
+                    {
+                        label: {{ Illuminate\Support\Js::from( array_map(function($release) {return $release->year;}, $releasesYearKelven) ) }},
+                        data: {{ Illuminate\Support\Js::from( array_map(function($release) {return $release->count;}, $releasesYearKelven) ) }},
+                        backgroundColor: rmBaseP3 + "A0",
+                        borderColor: rmBaseP3,
+                        borderWidth: 2,
+                        fill: true,
+                    },
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: "{{trans("app.amount")}}"
+                        }
+                    },
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: "{{trans("app.release_date")}}"
+                        }
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 10,
+                        top: 10,
+                        bottom: 10
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'none',
+                    },
+                }
+            }
+        });
+        const makerCount = {{count($makerReleases[0])}};
+
+        const gamesPerMakerCtx = document.getElementById("releasesPerMaker");
+        let makerChart = new Chart(gamesPerMakerCtx, {
+            type: 'pie',
+            spacing: 500,
+            data: {
+                labels: {{ Illuminate\Support\Js::from( $makerReleases[0] ) }},
+
+                datasets: [
+                    {
+                        data: {{ Illuminate\Support\Js::from( $makerReleases[1] ) }},
+                        backgroundColor: Array.from(Array(makerCount).keys().map(()=>"#"+randomHexColor() + "A0")),
+                        borderColor: rmBaseP3,
+                        borderWidth: 0,
+                        fill: true,
+                    },
+                ]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                }
+            }
+        });
+
+
+
+
+
     });
     </script>
 @endsection
