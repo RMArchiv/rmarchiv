@@ -67,7 +67,9 @@
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle d-flex gap-2 align-items-center" data-bs-toggle="dropdown" role="button" aria-expanded="false"
                                 data-vivaldi-spatnav-clickable="1">
-                                    <span class="lh-base fa-regular fa-user"></span>
+                                    <img width="16px" src='//{{ config('app.avatar_path') }}?gender=male&id={{ Auth::user()->id  }}' alt="{{ Auth::user()->name }}" class='avatar' />
+                                    {{-- alternative icon --}}
+                                    {{-- <span class="lh-base fa-regular fa-user"></span> --}}
                                     <span>
                                         <span>{{ Auth::user()->name }}</span>
                                         <span class="lh-base caret"></span>
