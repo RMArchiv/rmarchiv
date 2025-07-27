@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row d-none">
             <div class="col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-header">
@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 mb-3">
+            <div class="col-sm-6 mb-3 d-none">
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.comments_per_month') }}
