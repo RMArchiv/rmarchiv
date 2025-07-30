@@ -335,23 +335,22 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <div class="col-md-12">
+                                                                <div>
                                                                     <form method="POST" action="{{action('TaggingController@store')}}" class="form-horizontal">
                                                                         @csrf
                                                                     <input type="hidden" name='content_id' value="{{ $game->id }}">
                                                                     <input type="hidden" name='content_type' value="{{ 'game' }}">
                                                                     <fieldset>
                                                                         <div class="form-group" id="row_tag">
-                                                                            <label for="tag" class="col-lg-2 col-form-label">{{trans('app.tag_name')}}</label>
-                                                                            <div class="d-flex gap-4">
-                                                                                <div class="col-lg-10 autocomplete">
+                                                                            <label for="tag" class="col-form-label">{{trans('app.tag_name')}}</label>
+                                                                            <div class="d-flex gap-4 items-align-center">
+                                                                                <div class="autocomplete">
                                                                                     <input autocomplete="off" type="text" class="d-none auto form-control" id="tag" name="title" value="">
                                                                                     <div id="searchbar"></div>
                                                                                     <div id="searchcontainer"></div>
                                                                                 </div>
-                                                                                <div class='form-group'>
-                                                                                    <input class="btn btn-secondary" type='submit' value='{{ trans('app.submit') }}' id='submit'>
-                                                                                </div>
+                                                                                    <input class="btn btn-secondary w-25" type='submit' value='{{ trans('app.submit') }}' id='submit'>
+
                                                                             </div>
                                                                         </div>
 
