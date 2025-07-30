@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('pagetitle', trans('app.statistics.title'))
 @section('content')
+@vite('resources/assets/js/chart.js')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
