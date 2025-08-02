@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <div class="pull-right">
+                        <div class="float-end">
                             <input type="submit" value="{{ trans('app.submit') }}">
                         </div>
                         <div class="clearfix"></div>

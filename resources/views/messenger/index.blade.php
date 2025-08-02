@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="page-header">
                     <h1>{{ trans('app.private_massages') }}
-                        <div class='btn-toolbar pull-right'>
+                        <div class='btn-toolbar float-end'>
                             <div class='btn-group'>
                                 <a role="button" href="{{ action('MessagesController@create') }}" class="btn btn-primary"><span class="fa fa-plus"></span></a>
                             </div>

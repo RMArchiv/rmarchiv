@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="page-header">
-                    <div class="btn-toolbar pull-right">
+                    <div class="btn-toolbar float-end">
                         <div class="btn-group">
                             @if(Auth::check())
                                 @if(Auth::user()->settings->is_admin)

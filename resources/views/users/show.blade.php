@@ -47,7 +47,7 @@
                     <ul class="list-group">
                         @foreach($user->userlists as $ul)
                             <li class="list-group-item">
-                                <span class="badge pull-right">
+                                <span class="badge float-end">
                                     {{ $ul->listitems->count() }} {{ trans('app.games') }}
                                 </span>
                                 <a href="{{ action('UserListController@show', [$user->id, $ul->id]) }}">{{ $ul->title }}</a><br>
@@ -63,7 +63,7 @@
                 <div class="card mb-3">
                     <div class="card-header">
                         {{ trans('app.obyx_overview') }}
-                        <div class="pull-right">
+                        <div class="float-end">
                             <span class="badge">Soon</span>
                         </div>
                     </div>
@@ -122,7 +122,7 @@
                                         <span class='group'>
                                             {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($g->id) !!}
                                         </span>
-                                        <span class="pull-right">
+                                        <span class="float-end">
                                             {{ trans('app.created_at') }}: {{ \Carbon\Carbon::parse($g->created_at)->diffForHumans() }}
                                         </span>
                                     </span>
@@ -140,7 +140,7 @@
                     <ul class="list-group">
                         @foreach($user->developers()->orderBy('created_at', 'desc')->limit(8)->get() as $dev)
                             <li class="list-group-item">
-                                <div class="pull-right">
+                                <div class="float-end">
                                     {{ trans('app.created_at') }}: {{ \Carbon\Carbon::parse($dev->created_at)->diffForHumans() }}
                                 </div>
                                 <a href="{{ action('DeveloperController@show', $dev->id) }}">{{ $dev->name }}</a>

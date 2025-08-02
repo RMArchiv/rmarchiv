@@ -23,7 +23,7 @@
                             @if($mk->games()->count() <> 0 and $mk->title <> '')
                                 <li class="list-group-item">
                                     <a href='{{ route('maker.show', [$mk->id]) }}'>{{ $mk->title }}</a>
-                                    <div class="pull-right">
+                                    <div class="float-end">
                                         <span class="badge">{{ $mk->games()->count() }}</span>
                                     </div>
                                 </li>

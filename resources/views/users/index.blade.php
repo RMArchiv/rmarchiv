@@ -128,7 +128,7 @@
                                                     <i class="fa fa-envelope"></i>
                                                 </button>
                                             @endif
-                                            <span class="pull-right">
+                                            <span class="float-end">
                                             @if(Auth::check())
                                                     @if(Auth::user()->settings->is_admin)
                                                         <button class="btn btn-sm btn-warning" type="button"

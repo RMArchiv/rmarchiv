@@ -81,7 +81,7 @@
                                         @elseif($c->game->avg < 0)
                                             <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/>
                                         @endif
-                                        <div class="pull-right">
+                                        <div class="float-end">
                                             @foreach($c->game->tags as $tag)
                                                 <a href="{{ action('TaggingController@showGames', [$tag->tag_id]) }}"><span
                                                             class="badge badge-pill">{{ $tag->tag->title }}</span></a>

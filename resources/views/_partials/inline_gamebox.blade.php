@@ -26,8 +26,8 @@
     </div>
     <ul class="list-group">
         <li class="list-group-item media" style="margin-top: 0px;">
-            <a class="pull-right" href="{{ url('games', $game->id) }}"><span class="badge">{{ $game->comments }}</span></a>
-            <a class="pull-left" href="{{ url('games', $game->id) }}"><img width="100px" class="img-responsive img-rounded" src='{{ route('screenshot.show', [$game->id, 1]) }}' alt='{{ trans('app.titlescreen') }}' title='{{ trans('app.titlescreen') }}'/></a>
+            <a class="float-end" href="{{ url('games', $game->id) }}"><span class="badge">{{ $game->comments }}</span></a>
+            <a class="float-start" href="{{ url('games', $game->id) }}"><img width="100px" class="img-responsive img-rounded" src='{{ route('screenshot.show', [$game->id, 1]) }}' alt='{{ trans('app.titlescreen') }}' title='{{ trans('app.titlescreen') }}'/></a>
             <div class="thread-info">
                 <div class="media-heading">
                     {!! substr($game->desc_md, 0, 320).'...' !!}
@@ -59,7 +59,7 @@
                     @elseif($game->avg < 0)
                         <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/>
                     @endif
-                    <div class="pull-right">
+                    <div class="float-end">
                         @foreach($game->tags as $tag)
                             <a href="{{ action('TaggingController@showGames', [$tag->tag_id]) }}"><span class="label label-primary">{{ $tag->tag->title }}</span></a>
                         @endforeach
