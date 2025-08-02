@@ -52,7 +52,7 @@
                             </span>
                                 <span> • </span>
                                 <span>{{ $gf->filecreated_at }}</span>
-                                <div class="pull-right">
+                                <div class="float-end">
                                     <div class="button-group">
 
                                         @if($gf->forbidden == 1)

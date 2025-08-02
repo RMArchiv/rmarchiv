@@ -7,7 +7,7 @@
                 <div class="col-md-12">
                     <div class="page-header">
                         @if(Auth::check())
-                            <div class='btn-toolbar pull-right'>
+                            <div class='btn-toolbar float-end'>
                                 <div class='btn-group'>
                                     @if(Auth::check())
                                         @if(Auth::user()->userlists)

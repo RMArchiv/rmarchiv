@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <div class="pull-right">
+                            <div class="float-end">
                                 <input class="btn btn-primary" type="submit"
                                        value="{{ trans('app.submit') }}">
                             </div>
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <div class="pull-right">
+                        <div class="float-end">
                             <input class="btn btn-primary" type="submit" value="{{ trans('app.submit') }}">
                         </div>
                         <div class="clearfix"></div>
@@ -108,7 +108,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <div class="pull-right">
+                        <div class="float-end">
                             <input class="btn btn-primary" type="submit" value="{{ trans('app.submit') }}">
                         </div>
                         <div class="clearfix"></div>
@@ -127,7 +127,7 @@
                         @foreach(Schema::getColumnListing('user_settings') as $s)
                             @if(\Illuminate\Support\Str::startsWith($s, 'disable_widget_'))
                                 <li class="list-group-item">
-                                    <div class="pull-right">
+                                    <div class="float-end">
                                         @if( Auth::user()->settings->getAttributeValue($s) == 0 )
                                             <a href="{{ action('UserSettingsController@change_setting', [$s, 1])  }}"><span
                                                         class="fa fa-plus-square"></span></a>
@@ -192,7 +192,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <div class="pull-right">
+                        <div class="float-end">
                             <input class="btn btn-primary" type="submit" value="{{ trans('app.submit') }}">
                         </div>
                         <div class="clearfix"></div>
@@ -237,7 +237,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <div class="pull-right">
+                        <div class="float-end">
                             <input class="btn btn-primary" type="submit" value="{{ trans('app.submit') }}">
                         </div>
                         <div class="clearfix"></div>
@@ -278,7 +278,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <div class="pull-right">
+                        <div class="float-end">
                             <input class="btn btn-primary" type="submit" value="{{ trans('app.submit') }}">
                         </div>
                         <div class="clearfix"></div>

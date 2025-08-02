@@ -19,7 +19,7 @@
                     <ul class="list-group">
                         @foreach($games as $g)
                             <li class="list-group-item">
-                                <div class="pull-right">
+                                <div class="float-end">
                                 <span class="badge">
                                     {{ \App\Models\GamesSavegame::whereUserId(Auth::id())->where('gamefile_id', '=', $g->gamefile_id)->get()->count() }} {{ trans('app.savegames') }}
                                 </span>

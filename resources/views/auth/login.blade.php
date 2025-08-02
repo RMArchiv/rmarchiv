@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">{{ trans('app.login') }}</button>
-                                    <div class="pull-right">
+                                    <div class="float-end">
                                         <a href="{{ url('/password/reset') }}">
                                             {{ trans('app.password_reset') }}
                                         </a>
