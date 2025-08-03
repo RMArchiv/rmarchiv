@@ -84,7 +84,7 @@
                                         <div class="float-end">
                                             @foreach($c->game->tags as $tag)
                                                 <a href="{{ action('TaggingController@showGames', [$tag->tag_id]) }}"><span
-                                                            class="badge badge-pill">{{ $tag->tag->title }}</span></a>
+                                                            class="badge rounded-pill text-bg-warning">{{ $tag->tag->title }}</span></a>
                                             @endforeach
                                         </div>
                                     </div>

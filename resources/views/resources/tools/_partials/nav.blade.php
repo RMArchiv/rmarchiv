@@ -1,10 +1,10 @@
 <nav id="asd">
     <ul>
-        <li><a href="{{ url('/resources/tools/rtp') }}">{{ trans('app.rtp') }}</a></li>
-        <li><a href="{{ url('/resources/tools/audio') }}">{{ trans('app.audio') }}</a></li>
-        <li><a href="{{ url('/resources/tools/video') }}">{{ trans('app.video') }}</a></li>
-        <li><a href="{{ url('/resources/tools/gfx') }}">{{ trans('app.gfx') }}</a></li>
-        <li><a href="{{ url('/resources/tools/text') }}">{{ trans('app.text') }}</a></li>
-        <li><a href="{{ url('/resources/tools/misc') }}">{{ trans('app.misc') }}</a></li>
+        <x-resource.category-link :href="'/resources/tools/rtp'" :trans="'app.rtp'" />
+        <x-resource.category-link :href="'/resources/tools/audio'" :trans="'app.audio'" />
+        <x-resource.category-link :href="'/resources/tools/video'" :trans="'app.video'" />
+        <x-resource.category-link :href="'/resources/tools/gfx'" :trans="'app.gfx'" />
+        <x-resource.category-link :href="'/resources/tools/text'" :trans="'app.text'" />
+        <x-resource.category-link :href="'/resources/tools/misc'" :trans="'app.misc'" />
     </ul>
 </nav>
