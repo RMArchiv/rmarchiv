@@ -412,7 +412,7 @@ class ResourceController extends Controller
         $res->user_id = \Auth::id();
         $res->title = $request->get('title');
         $res->desc_md = $request->get('msg');
-        $res->desc_html = \Markdown::convertToHtml($request->get('msg'));
+        $res->desc_html = \Markdown::convert($request->get('msg'));
         $res->content_path = $content_path;
         $res->content_type = $request->get('content_type');
         $res->save();
