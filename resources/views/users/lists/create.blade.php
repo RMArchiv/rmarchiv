@@ -27,18 +27,18 @@
                         </div>
                         @endif
 
-                        <div class="form-group">
-                            <label for="title">{{ trans('app.title') }}:</label>
-                            <input name="title" id="title" value=""/>
+                        <div class="input-group">
+                            <label class="input-group-text" for="title">{{ trans('app.title') }}:</label>
+                            <input class="form-control" name="title" id="title" value=""/>
                         </div>
-                        <div class="form-group">
-                            <label for="desc">{{ trans('app.description') }}:</label>
-                            <textarea name="desc" id="desc" maxlength="9999" rows="10" placeholder="{{ trans('app.description') }}"></textarea>
+                        <div class="input-group">
+                            <label class="input-group-text" for="desc">{{ trans('app.description') }}:</label>
+                            <textarea class="form-control" name="desc" id="desc" maxlength="9999" rows="10" placeholder="{{ trans('app.description') }}"></textarea>
                         </div>
                     </div>
                     <div class="card-footer">
                         <div class="float-end">
-                            <input type="submit" value="{{ trans('app.submit') }}">
+                            <button class="btn btn-primary" type="submit" >{{ trans('app.submit') }}</button>
                         </div>
                         <div class="clearfix"></div>
                     </div>
