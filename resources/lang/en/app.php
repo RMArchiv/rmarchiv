@@ -281,7 +281,7 @@ return [
   'play'                                            => 'Play',
   'play_in_browser'                                 => 'Play in Browser',
   'please_rate_this_logo'                           => 'Please rate this logo',
-  'popularity'                                      => 'Popularity helper',
+  'popularity'                                      => 'Popularity',
   'popularity_helper'                               => 'Use this link to push the popularity of this content',
   'post_a_reply'                                    => 'Post a reply',
   'posted_at'                                       => 'posted at',

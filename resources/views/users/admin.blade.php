@@ -7,7 +7,7 @@
             <div class="rmarchivtbl" id="rmarchivbox_useradmin">
                 <h2>{{ trans('app.administration_of') }}: {{ $user->name }}</h2>
 
-                @if (count($errors) > 0))
+                @if (count($errors) > 0)
                 <div class="rmarchivtbl errorbox">
                     <h2>{{ trans('app.user_administration_error') }}</h2>
                     <div class="content">

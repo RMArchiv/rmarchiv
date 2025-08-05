@@ -1,9 +1,14 @@
 @extends('layouts.app')
 @section('pagetitle', trans('app.userlists'))
 @section('content')
-    <div id='content'>
-        <h2>{{ trans('app.games') }}</h2>
-        <table id='pouetbox_prodlist' class='boxtable pagedtable'>
+    <div class="container" id='content'>
+        <div class="row">
+            <div class="page-header">
+                <h1>{{ trans('app.userlist') }}</h1>
+                {!! Breadcrumbs::render('userlist.index', Auth::user()) !!}
+            </div>
+        </div>
+        <table id='pouetbox_prodlist' class='table pagedtable'>
             <thead>
             <tr class='sortable'>
                 <th>{{ trans('app.list') }}</th>
