@@ -21,7 +21,7 @@
                                         <a role="button" class="btn btn-primary"
                                            data-bs-toggle="userlist"
                                            data-bs-content="{!! $ul_data !!}"
-                                           title="benutzerliste"
+                                           title="{{trans('app.userlist')}}"
                                            >
                                             <span class="fa fa-list"></span></a>
                                         @permission(('create-games'))
@@ -343,7 +343,7 @@
                                                                     <fieldset>
                                                                         <div class="form-group" id="row_tag">
                                                                             <label for="tag" class="col-form-label">{{trans('app.tag_name')}}</label>
-                                                                            <div class="d-flex gap-4 items-align-center">
+                                                                            <div class="d-flex gap-4">
                                                                                 <div class="autocomplete">
                                                                                     <input autocomplete="off" type="text" class="d-none auto form-control" id="tag" name="title" value="">
                                                                                     <div id="searchbar"></div>

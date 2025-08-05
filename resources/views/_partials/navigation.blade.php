@@ -8,23 +8,23 @@
             <div class="collapse navbar-collapse" id="topNav">
                 <ul class="navbar-nav w-100 justify-content-between">
                     <div class="navbar-nav d-flex">
-                        <li class="nav-item mx-1 my-1"><a class="nav-link fa fa-house" href="{{ url('/') }}"></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('news') }}">{{ trans('app.news') }}</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('games') }}">{{ trans('app.games') }}</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('resources') }}">{{ trans('app.resources') }}</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('developer') }}">{{ trans('app.developers') }}</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('makers') }}">{{ trans('app.makers') }}</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('awards') }}">{{ trans('app.awards') }}</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('users') }}">{{ trans('app.users') }}</a></li>
+                        <li class="nav-item  d-flex align-items-center mx-1 my-1"><a class="nav-link fa fa-house" href="{{ url('/') }}"></a></li>
+                        <li class="nav-item  d-flex align-items-center"><a class="nav-link" href="{{ url('news') }}">{{ trans('app.news') }}</a></li>
+                        <li class="nav-item  d-flex align-items-center"><a class="nav-link" href="{{ url('games') }}">{{ trans('app.games') }}</a></li>
+                        <li class="nav-item  d-flex align-items-center"><a class="nav-link" href="{{ url('resources') }}">{{ trans('app.resources') }}</a></li>
+                        <li class="nav-item  d-flex align-items-center"><a class="nav-link" href="{{ url('developer') }}">{{ trans('app.developers') }}</a></li>
+                        <li class="nav-item  d-flex align-items-center"><a class="nav-link" href="{{ url('makers') }}">{{ trans('app.makers') }}</a></li>
+                        <li class="nav-item  d-flex align-items-center"><a class="nav-link" href="{{ url('awards') }}">{{ trans('app.awards') }}</a></li>
+                        <li class="nav-item  d-flex align-items-center"><a class="nav-link" href="{{ url('users') }}">{{ trans('app.users') }}</a></li>
                         <noscript>
-                            <li class="nav-item"><a class="nav-link" href="{{ url('search') }}">{{ trans('app.search') }}</a></li>
+                            <li class="nav-item  d-flex align-items-center"><a class="nav-link" href="{{ url('search') }}">{{ trans('app.search') }}</a></li>
                         </noscript>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('board') }}">{{ trans('app.board') }}</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('faq') }}">{{ trans('app.faq') }}</a></li>
+                        <li class="nav-item  d-flex align-items-center"><a class="nav-link" href="{{ url('board') }}">{{ trans('app.board') }}</a></li>
+                        <li class="nav-item  d-flex align-items-center"><a class="nav-link" href="{{ url('faq') }}">{{ trans('app.faq') }}</a></li>
                     </div>
                     <div class="navbar-nav d-flex me-2">
                         @if(Auth::check())
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown d-flex">
                                 <a href="#" class="nav-link dropdown-toggle d-flex gap-2 align-items-center" data-bs-toggle="dropdown" role="button" aria-expanded="false"
                                 data-vivaldi-spatnav-clickable="1">
                                 <span class="lh-base fa fa-upload"></span>
@@ -82,11 +82,13 @@
                                     <a class="dropdown-item" href="{{ action('MessagesController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.unreaded_pms') }} <span class="badge">{{\Auth::user()->newThreadsCount()}}</span></a>
                                     <a class="dropdown-item" href="{{ action('MessagesController@create') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.create_new_pm') }}</a>
                                     <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ action('UserListController@index', [Auth::user()->id]) }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.userlists') }}</a>
+                                    <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ action('SavegameManagerController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.savegame_manager') }}</a>
                                     <a class="dropdown-item" href="{{ action('ReportController@index_user') }}" data-vivaldi-spatnav-clickable="1">Reported Games</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ action('UserSettingsController@index') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.user_settings') }}</a>
-                                    <div class="dropdown-ivider"></div>
+                                    <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ action('Auth\LoginController@logout') }}" data-vivaldi-spatnav-clickable="1">{{ trans('app.logout') }}</a>
                                 </div>
                             </li>

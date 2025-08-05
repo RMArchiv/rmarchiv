@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="page-header">
                     <h1>{{ trans('app.user_settings') }}</h1>
-                    {!! Breadcrumbs::render('impressum') !!}
+                    {!! Breadcrumbs::render('user.settings') !!}
                 </div>
             </div>
         </div>
