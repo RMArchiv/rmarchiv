@@ -1,12 +1,10 @@
 import { Popover, Toast, Tooltip } from "bootstrap"
 
   // Tooltip and popover demos
-  document.querySelectorAll('.tooltip-demo')
-    .forEach(function (tooltip) {
-      new Tooltip(tooltip, {
-        selector: '[data-bs-toggle="tooltip"]'
-      })
-    })
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new Tooltip(tooltipTriggerEl)
+  })
 
   document.querySelectorAll('[data-bs-toggle="popover"]')
     .forEach(function (popover) {

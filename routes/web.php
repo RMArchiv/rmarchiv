@@ -12,9 +12,6 @@ Route::get('/', 'IndexController@index')->name('home');
 Route::get('/impressum', function () {
     return View::make('_pages.impressum');
 });
-Route::get('/tester', function () {
-    return View::make('_pages.test');
-});
 Route::get('/datenschutz', function() {
     return View::make('_pages.datenschutz');
 });
@@ -38,6 +35,7 @@ Route::group(['middleware' => ['permission:admin-user']], function () {
     Route::get('banuser/{userid}', 'UserBanController@show');
     Route::post('banuser/{userid}/ban', 'UserBanController@ban');
     Route::post('banuser/{userid}/unban', 'UserBanController@unban');
+    Route::get('/reference', function () { return View::make('_pages.reference'); });
 });
 
 //Benutzer und Authentifizierung
