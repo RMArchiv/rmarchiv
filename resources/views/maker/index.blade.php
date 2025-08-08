@@ -15,7 +15,7 @@
                 <div class="card">
                     <div class="card-header">
                         @if($makers instanceof \Illuminate\Pagination\LengthAwarePaginator )
-                            {{ $makers->links('vendor.pagination.gamelist') }}
+                            {{ $makers->links('vendor.pagination.bootstrap-4') }}
                         @endif
                     </div>
                     <ul class="list-group">
@@ -32,7 +32,7 @@
                     </ul>
                     <div class="card-footer">
                         @if($makers instanceof \Illuminate\Pagination\LengthAwarePaginator )
-                            {{ $makers->links('vendor.pagination.gamelist') }}
+                            {{ $makers->links('vendor.pagination.bootstrap-4') }}
                         @endif
                     </div>
                 </div>
