@@ -1,6 +1,6 @@
 @if ($paginator->hasPages())
     <div class="text-center">
-        <ol class="pagination">
+        <ol class="pagination flex-wrap">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
                 <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
