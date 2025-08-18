@@ -31,7 +31,7 @@ class UserListController extends Controller
             'user_id'    => \Auth::id(),
             'title'      => $request->get('title'),
             'desc_md'    => $request->get('desc'),
-            'desc_html'  => \Markdown::convertToHtml($request->get('desc')),
+            'desc_html'  => \Markdown::convert($request->get('desc')),
             'created_at' => Carbon::now(),
         ]);
 

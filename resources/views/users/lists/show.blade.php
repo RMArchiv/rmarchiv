@@ -23,11 +23,20 @@
             </div>
         </div>
         <div class="row">
-            @include('_partials.tables.game_table', [
-                'games' => $games,
-                'orderby' => $orderby,
-                'direction' => $direction,
-            ])
+            @foreach ($games as $game)
+            <div>
+                <div class="px-3 card d-flex flex-row justify-content-between gap-4 align-items-center">
+                    <div>
+                        @include('_partials.tables.game_table_row', [
+                            'game' => $game,
+                        ])
+                    </div>
+                    <div class="h-100">
+                        <a title={{trans('app.delete_game')}} href="{{ action('UserListController@delete_game', [$list->id,$game->id]) }}" class="btn btn-secondary fa fa-minus d-flex justify-content-center"></a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
         </div>
     </div>
 @endsection
