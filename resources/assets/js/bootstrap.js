@@ -1,13 +1,14 @@
 import * as bootstrap from 'bootstrap'
-window["bootstrap"] = bootstrap;
 import { createAutocomplete } from "./autocomplete.js";
 import $ from 'jquery';
 import { activateBoostrapRating } from "./bootstrap-rating-v5.js";
+import * as qq from "fine-uploader";
+
+window["bootstrap"] = bootstrap;
+window["createAutocomplete"] = createAutocomplete;
 activateBoostrapRating()
 window["$"] = $;
 window["jQuery"] = $;
-window["createAutocomplete"] = createAutocomplete;
-import * as qq from "fine-uploader";
 window["qq"] = qq;
 
 function randomHexColor( ) {
@@ -17,25 +18,6 @@ function randomHexColor( ) {
   return randomHex() + "" + randomHex() + "" + randomHex() + "" + randomHex() + "" + randomHex() + "" + randomHex()
 }
 window["randomHexColor"] = randomHexColor
-
-// import qq from "fine-uploader";
-// window.qq = qq;
-// import "jqcloud2";
-// import "../js/commonmark";
-// import "matchheight";
-// import Dropzone from "dropzone";
-
-// paths.bootstrap        + 'bootstrap.bundle.js',
-// paths.typeahead        + 'typeahead.bundle.js',
-// paths.fineuploader     + 'fine-uploader.js',
-// paths.jqcloud2         + 'jqcloud.js',
-// paths.inlineattachment + 'inline-attachment.js',
-// paths.inlineattachment + 'jquery.inline-attachment.js',
-// paths.js               + 'commonmark.js',
-// paths.editormd         + 'editormd.js',
-// paths.matchheight      + 'jquery.matchHeight.js',
-// paths.bootstraprating  + 'bootstrap-rating.js',
-// paths.dropzone         + 'dropzone.js'
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces

@@ -18,7 +18,7 @@
   "dependencies": {
     "@algolia/autocomplete-js": "^1.18.1",
     "@algolia/autocomplete-theme-classic": "^1.19.0",
-    "@fortawesome/fontawesome-free": "^6.1.1",
+    "@fortawesome/fontawesome-free": "^7.0.0",
     "@popperjs/core": "^2.11.8",
     "axios": "^1.9.0",
     "bootstrap": "^5.0.0",
