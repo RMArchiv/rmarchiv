@@ -30,6 +30,7 @@ export function createAutocomplete({
     classNames: {
       panel: 'autocomplete-panel-highest',
     },
+    placeholder:placeholder,
     getSources() {
       return [
         {

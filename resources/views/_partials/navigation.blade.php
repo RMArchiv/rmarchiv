@@ -8,7 +8,7 @@
             <div class="collapse navbar-collapse" id="topNav">
                 <ul class="navbar-nav w-100 justify-content-between">
                     <div class="navbar-nav d-flex">
-                        <li class="nav-item  d-flex align-items-center mx-1 my-1"><a class="nav-link fa fa-house" href="{{ url('/') }}"></a></li>
+                        <li class="nav-item  d-flex align-items-center mx-1 my-1"><a class="nav-link w-100 fa fa-house" href="{{ url('/') }}"></a></li>
                         <li class="nav-item  d-flex align-items-center"><a class="nav-link" href="{{ url('news') }}">{{ trans('app.news') }}</a></li>
                         <li class="nav-item  d-flex align-items-center"><a class="nav-link" href="{{ url('games') }}">{{ trans('app.games') }}</a></li>
                         <li class="nav-item  d-flex align-items-center"><a class="nav-link" href="{{ url('resources') }}">{{ trans('app.resources') }}</a></li>
@@ -101,7 +101,7 @@
 
                 <form method="POST" action="{{ action("SearchController@search")}}" class="flex-grow-1 mw-40">
                     @csrf
-                    <input class="d-none" id="inputTerm" autocomplete="off" type='text' name='term' size='64' placeholder="{{ trans('app.search') }}" />
+                    <input class="d-none" id="inputTerm" autocomplete="off" type='text' name='term' size='64' placeholder="Suche hier" />
                     <div id="autocomplete"></div>
                     <div id="searchcontainer"></div>
                     <script type="module">
