@@ -298,8 +298,9 @@ Route::group(['prefix' => 'events'], function () {
 Route::post('attachment/upload', 'SubmitController@attachment_submit');
 
 //Spezialrouten
-
-Route::get('test', 'TestController@index');
+Route::group(['middleware' => ['permission:admin-user']], function () {
+    Route::get('test', 'TestController@index');
+});
 Route::post('tlg/webhook', 'TestController@webhook');
 
 
