@@ -430,8 +430,8 @@ return [
   'you_already_rated_all_logos'                     => 'You have already rated all logos',
   'you_are_banned'                                  => 'You are banned!',
   'you_make_something_realy_stupid'                 => 'You did something really stupid!',
-  'your_permissions_are_to_low'                     => 'Your permissions are to low.',
-  'your_permissions_are_to_low_to_post'             => 'Your permissions are to low to post a message.',
+  'your_permissions_are_too_low'                     => 'Your permissions are too low.',
+  'your_permissions_are_too_low_to_post'             => 'Your permissions are too low to post a message.',
   //============================== Dynamic protected strings =============================//
   'month' => [
     0  => '',

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('pagetitle', trans('app.add_game'))
 @section('content')
-    @permission(('create-games'))
-        <div class="container">
+    <div class="container">
+        @permission(('create-games'))
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
@@ -190,8 +190,9 @@
             </div>
 
             </form>
-        </div>
-    @else
-        @include('_partials.accessdenied')
-    @endpermission
+        @else
+            @include('_partials.accessdenied')
+        @endif
+        @endpermission
+    </div>
 @endsection
