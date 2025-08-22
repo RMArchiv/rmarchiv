@@ -59,10 +59,10 @@
                 <div class="row">
                     <div class="card">
                         <div class="card-header">
-                            {{ trans('app.your_permissions_are_to_low') }}
+                            {{ trans('app.your_permissions_are_too_low') }}
                         </div>
                         <div class="card-body">
-                            {{ trans('app.your_permissions_are_to_low_to_post') }}
+                            {{ trans('app.your_permissions_are_too_low_to_post') }}
                         </div>
                     </div>
                 </div>
@@ -72,10 +72,10 @@
             <div class="row">
                 <div class="card">
                     <div class="card-header">
-                        {{ trans('app.your_permissions_are_to_low') }}
+                        {{ trans('app.your_permissions_are_too_low') }}
                     </div>
                     <div class="card-body">
-                        {{ trans('app.your_permissions_are_to_low_to_post') }}
+                        {{ trans('app.your_permissions_are_too_low_to_post') }}
                     </div>
                 </div>
             </div>

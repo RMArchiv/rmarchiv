@@ -154,7 +154,7 @@
                             </div>
                         </form>
                         @else
-                            {{ trans('app.your_permissions_are_to_low') }}
+                            {{ trans('app.your_permissions_are_too_low') }}
                             @endpermission
                     </div>
                 </div>

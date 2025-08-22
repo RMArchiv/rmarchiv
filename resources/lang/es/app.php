@@ -430,8 +430,8 @@ return [
   'you_already_rated_all_logos'                     => 'Ya has puntuado todos los logotipos',
   'you_are_banned'                                  => '¡Has sido bloqueado!',
   'you_make_something_realy_stupid'                 => '¡Has hecho algo realmente estúpido!',
-  'your_permissions_are_to_low'                     => 'Tus permisos son demasiado bajos.',
-  'your_permissions_are_to_low_to_post'             => 'Tus permisos son demasiado bajos para publicar un mensaje.',
+  'your_permissions_are_too_low'                     => 'Tus permisos son demasiado bajos.',
+  'your_permissions_are_too_low_to_post'             => 'Tus permisos son demasiado bajos para publicar un mensaje.',
   //============================== Dynamic protected strings =============================//
   'month' => [
     0  => '',

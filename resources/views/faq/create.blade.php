@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('pagetitle', trans('app.add_faq'))
 @section('content')
-@permission(('create-faq'))
 <div class="container">
+    @permission(('create-faq'))
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
@@ -73,9 +73,10 @@
             </form>
         </div>
     </div>
+    @else
+        @include('_partials.accessdenied')
+    @endif
+    @endpermission
 </div>
 
-@else
-    @include('_partials.accessdenied')
-@endpermission
 @endsection

@@ -429,8 +429,8 @@ return [
     'you_already_rated_all_logos' => 'Du hast schon alle Logos bewertet.',
     'you_are_banned' => 'Du wurdest gebannt!',
     'you_make_something_realy_stupid' => 'Du hast etwas wirklich Dummes gemacht.',
-    'your_permissions_are_to_low' => 'Fehlende Berechtigungen',
-    'your_permissions_are_to_low_to_post' => 'Deine Berechtigungen sind zu niedrig, um hier posten zu können.',
+    'your_permissions_are_too_low' => 'Fehlende Berechtigungen',
+    'your_permissions_are_too_low_to_post' => 'Deine Berechtigungen sind zu niedrig, um hier posten zu können.',
     //============================== Dynamic protected strings =============================//
     'month' => [
         0 => '',
