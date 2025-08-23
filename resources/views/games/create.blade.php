@@ -192,7 +192,6 @@
             </form>
         @else
             @include('_partials.accessdenied')
-        @endif
         @endpermission
     </div>
 @endsection
