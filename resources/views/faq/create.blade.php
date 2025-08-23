@@ -75,7 +75,6 @@
     </div>
     @else
         @include('_partials.accessdenied')
-    @endif
     @endpermission
 </div>
 

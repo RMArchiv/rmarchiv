@@ -8,7 +8,10 @@
             <div class="collapse navbar-collapse" id="topNav">
                 <ul class="navbar-nav w-100 justify-content-between">
                     <div class="navbar-nav d-flex">
-                        <li class="nav-item  d-flex align-items-center mx-1 my-1"><a class="nav-link w-100 fa fa-house" href="{{ url('/') }}"></a></li>
+                        <hr class="d-block d-lg-none mx-1 mt-2 mb-1">
+                            <div class="dropdown-divider"></div>
+                        </hr>
+                        <li class="d-none d-lg-block nav-item  d-flex align-items-center mx-1 my-1"><a class="nav-link w-auto fa fa-house" href="{{ url('/') }}"></a></li>
                         <li class="nav-item  d-flex align-items-center"><a class="nav-link" href="{{ url('news') }}">{{ trans('app.news') }}</a></li>
                         <li class="nav-item  d-flex align-items-center"><a class="nav-link" href="{{ url('games') }}">{{ trans('app.games') }}</a></li>
                         <li class="nav-item  d-flex align-items-center"><a class="nav-link" href="{{ url('resources') }}">{{ trans('app.resources') }}</a></li>

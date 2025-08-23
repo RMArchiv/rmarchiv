@@ -6,18 +6,18 @@
                 @foreach($threads as $t)
                     <tr
                             @if(\App\Helpers\DatabaseHelper::isThreadUnread($t->id) === true) style="font-weight: bold;" @endif>
-                        <td>
-                            <a href='{{ url('users', $t->user->id) }}' class='usera' title="{{ $t->user->name }}">
+                        <td class="d-none d-lg-block">
+                            <a href='{{ url('users', $t->user->id) }}' class='usera word-hyphens' title="{{ $t->user->name }}">
                                 <img width="16px" src='//{{ config('app.avatar_path') }}?gender=male&id={{ $t->user->id }}'
                                      alt="{{ $t->user->name }}" class='avatar'/>
                             </a>
                             <a href='{{ url('users', $t->user->id) }}' class='usera'
                                title="{{ $t->user->name }}">{{ $t->user->name }}</a>
                         </td>
-                        <td class='category'><a
+                        <td class='category'><a class="word-hyphens"
                                     href="{{ route('board.cat.show', $t->cat->id) }}">{{ $t->cat->title }}</a></td>
                         <td>
-                            <a href='{{ route('board.thread.show', $t->id) }}'>
+                            <a class="word-hyphens" href='{{ route('board.thread.show', $t->id) }}'>
                                 @if($t->closed == 1)
                                     <img src="/assets/lock.png">
                                 @endif

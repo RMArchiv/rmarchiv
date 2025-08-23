@@ -270,6 +270,11 @@ blockquote {
   }
 }
 
+.word-hyphens {
+  hyphens: auto;
+  word-break: break-word;
+}
+
 // Breacrumb 5 overwrites for same look as in version 4
 // Default font
 body {
