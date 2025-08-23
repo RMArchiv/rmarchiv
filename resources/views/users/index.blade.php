@@ -42,15 +42,12 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
                 {{ $users->links('vendor.pagination.bootstrap-4') }}
             </div>
             <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        {{ trans('app.userlist') }}
-                    </div>
+                <div class="">
                     <div class="card-body">
                         @foreach($users as $user)
                             <div class="row user-row">
@@ -149,7 +146,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="card-footer col-md-12">
                 {{ $users->links('vendor.pagination.bootstrap-4') }}
             </div>
         </div>
