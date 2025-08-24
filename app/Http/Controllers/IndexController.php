@@ -137,7 +137,7 @@ class IndexController extends Controller
             ->groupBy('games.id')
             ->limit(5);
 
-        $topalltime = Game::orderBy('avg', 'desc')->orderBy('voteup', 'desc')->where('games.invisible_on_start_page', '=', 0)->limit(5);
+        $topalltime = Game::whereInvisibleOnStartPage(0)->orderBy('avg', 'desc')->orderBy('voteup', 'desc')->where('games.invisible_on_start_page', '=', 0)->limit(5);
         $latestcomments = Comment::with('game')->whereContentType('game')->orderBy('created_at', 'desc')->limit(5)->get();
         $randomgame = Game::inRandomOrder()->where('games.invisible_on_start_page', '=', 0);
         if (!\Auth::check()) {
