@@ -65,7 +65,7 @@ class TaggingController extends Controller
             'content_type' => 'required',
         ]);
 
-        $tag = Tag::firstOrCreate(['title' => $request->get('title')]);
+        $tag = Tag::firstOrCreate(['title' => trim($request->get('title'))]);
         $tagid = $tag->id;
 
         TagRelation::firstOrCreate([

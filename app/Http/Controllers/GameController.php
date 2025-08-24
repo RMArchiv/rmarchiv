@@ -159,10 +159,10 @@ class GameController extends Controller
         $langid = DatabaseHelper::langId_from_short($request->get('language'));
 
         $g = new Game();
-        $g->title = $request->get('title');
-        $g->subtitle = $request->get('subtitle', '');
+        $g->title = trim($request->get('title'));
+        $g->subtitle = trim($request->get('subtitle', ''));
         $g->desc_md = $request->get('msg');
-        $g->desc_html = \Markdown::convertToHtml($request->get('msg'));
+        $g->desc_html = \Markdown::convert($request->get('msg'));
         $g->website_url = $request->get('websiteurl', '');
         $g->maker_id = $request->get('maker');
         $g->lang_id = $langid;
@@ -283,12 +283,12 @@ class GameController extends Controller
         $lang = Language::whereShort($request->get('language'))->first();
 
         $game = Game::whereId($id)->first();
-        $game->title = $request->get('title');
-        $game->subtitle = $request->get('subtitle');
+        $game->title = trim($request->get('title'));
+        $game->subtitle = trim($request->get('subtitle'));
         $game->maker_id = $request->get('maker');
         $game->lang_id = $lang->id;
         $game->desc_md = $request->get('msg');
-        $game->desc_html = \Markdown::convertToHtml($request->get('msg'));
+        $game->desc_html = \Markdown::convert($request->get('msg'));
         $game->website_url = $request->get('websiteurl');
         $game->youtube = $request->get('youtube');
         $game->atelier_id = $request->get('atelier_id');
