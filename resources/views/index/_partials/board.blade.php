@@ -6,7 +6,7 @@
                 @foreach($threads as $t)
                     <tr
                             @if(\App\Helpers\DatabaseHelper::isThreadUnread($t->id) === true) style="font-weight: bold;" @endif>
-                        <td class="d-none d-lg-block">
+                        <td class="d-none d-lg-table-cell">
                             <a href='{{ url('users', $t->user->id) }}' class='usera word-hyphens' title="{{ $t->user->name }}">
                                 <img width="16px" src='//{{ config('app.avatar_path') }}?gender=male&id={{ $t->user->id }}'
                                      alt="{{ $t->user->name }}" class='avatar'/>
