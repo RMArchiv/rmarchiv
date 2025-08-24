@@ -14,6 +14,7 @@ use App\Models\GamesFile;
 use App\Models\UserOnline;
 use App\Models\BoardThread;
 use App\Models\BoardThreadsTracker;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class DatabaseHelper
@@ -353,5 +354,21 @@ class DatabaseHelper
         $d->save();
 
         return $d->id;
+    }
+
+    /** Return a list of the first letter of the column in the table
+     * @param string $table
+     * @param string $column
+     */
+    public static function getFirstLetterList($table, $column)
+    {
+        if(strlen($table) > 0 && strlen($column) > 0) {
+            return DB::table($table)
+            ->select(DB::raw("distinct substring(".$column.", 1, 1) as firstletter"))
+            ->groupBy("firstletter")->get();
+        }
+        else {
+            return [];
+        }
     }
 }
