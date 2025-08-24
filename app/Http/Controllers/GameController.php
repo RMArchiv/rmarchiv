@@ -22,6 +22,7 @@ use Illuminate\Http\Request;
 use App\Models\GamesDeveloper;
 use App\Helpers\DatabaseHelper;
 use App\Models\Tag;
+use Illuminate\Support\Facades\DB;
 
 class GameController extends Controller
 {
@@ -98,6 +99,7 @@ class GameController extends Controller
         });
 
         $tags = Tag::distinct()->select(["title","tags.id"])->join('tag_relations', 'tag_relations.tag_id', '=', 'tags.id')->orderBy("title")->get();
+        $letters = DatabaseHelper::getFirstLetterList("games", "title");
         $games = $games->paginate($rows)->withQueryString();
 
         return view('games.index', [
@@ -108,6 +110,7 @@ class GameController extends Controller
             'maxviews'  => DatabaseHelper::getGameViewsMax(),
             'orderby'   => $orderby,
             'direction' => $direction,
+            'letters' => $letters
         ]);
     }
 
