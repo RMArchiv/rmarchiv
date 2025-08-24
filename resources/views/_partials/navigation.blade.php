@@ -5,6 +5,26 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="{{ trans('app.toggle_navigation') }}">
                 <i class="fa fa-bars fa-lg py-1" style="color: #ffbf00;"></i>
             </button>
+            <form method="POST" action="{{ action("SearchController@search")}}" class="d-lg-none col-9 col-sm-6">
+                @csrf
+                <input class="d-none" id="inputTerm" autocomplete="off" type='text' name='term' size='64' placeholder="Suche hier" />
+                <div id="autocomplete"></div>
+                <div id="searchcontainer"></div>
+                <script type="module">
+                    createAutocomplete(
+                    {   apiPath:()=>{return "ac_search_new"},
+                        placeholder:"{{ trans('app.search') }}",
+                        searchbarSelector:"#autocomplete",
+                        panelSelector:"#searchcontainer",
+                        inputSelector:"#inputTerm",
+                        noResults:'{{ trans('app.search_nothing_found') }}',
+                        type:"games",
+                        action:"navigate",
+                        additonalSubProps: {},
+                        additionalProps:{onSubmit: ()=>{document.querySelector("#autocomplete").closest("form").submit()}}
+                    })
+                </script>
+            </form>
             <div class="collapse navbar-collapse" id="topNav">
                 <ul class="navbar-nav w-100 justify-content-between">
                     <div class="navbar-nav d-flex">
@@ -27,11 +47,11 @@
                     </div>
                     <div class="navbar-nav d-flex me-2">
                         @if(Auth::check())
-                            <li class="nav-item dropdown d-flex">
+                            <li class="nav-item dropdown d-block d-lg-flex">
                                 <a href="#" class="nav-link dropdown-toggle d-flex gap-2 align-items-center" data-bs-toggle="dropdown" role="button" aria-expanded="false"
                                 data-vivaldi-spatnav-clickable="1">
-                                <span class="lh-base fa fa-upload"></span>
-                                <span class="lh-base caret"></span>
+                                    <span class="lh-base fa fa-upload"></span>
+                                    <span class="lh-base caret"></span>
                                 </a>
                                 <div class="dropdown-menu" role="menu">
                                     <a class="dropdown-item" href='{{ url('games/create') }}'>{{ trans('app.submit_game') }}</a>
@@ -68,7 +88,7 @@
                         @endif
                         @if(Auth::check())
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle d-flex gap-2 align-items-center" data-bs-toggle="dropdown" role="button" aria-expanded="false"
+                                <a href="#" class="nav-link dropdown-toggle block d-lg-flex gap-2 align-items-center" data-bs-toggle="dropdown" role="button" aria-expanded="false"
                                 data-vivaldi-spatnav-clickable="1">
                                     <img width="16px" src='//{{ config('app.avatar_path') }}?gender=male&id={{ Auth::user()->id  }}' alt="{{ Auth::user()->name }}" class='avatar' />
                                     {{-- alternative icon --}}
@@ -102,23 +122,23 @@
                     </div>
                 </ul>
 
-                <form method="POST" action="{{ action("SearchController@search")}}" class="flex-grow-1 mw-40">
+                <form method="POST" action="{{ action("SearchController@search")}}" class="d-none d-lg-block flex-grow-1 col-3 mw-40">
                     @csrf
-                    <input class="d-none" id="inputTerm" autocomplete="off" type='text' name='term' size='64' placeholder="Suche hier" />
-                    <div id="autocomplete"></div>
-                    <div id="searchcontainer"></div>
+                    <input class="d-none" id="inputTerm-large" autocomplete="off" type='text' name='term' size='64' placeholder="Suche hier" />
+                    <div id="autocomplete-large"></div>
+                    <div id="searchcontainer-large"></div>
                     <script type="module">
                         createAutocomplete(
                         {   apiPath:()=>{return "ac_search_new"},
                             placeholder:"{{ trans('app.search') }}",
-                            searchbarSelector:"#autocomplete",
-                            panelSelector:"#searchcontainer",
-                            inputSelector:"#inputTerm",
+                            searchbarSelector:"#autocomplete-large",
+                            panelSelector:"#searchcontainer-large",
+                            inputSelector:"#inputTerm-large",
                             noResults:'{{ trans('app.search_nothing_found') }}',
                             type:"games",
                             action:"navigate",
                             additonalSubProps: {},
-                            additionalProps:{onSubmit: ()=>{document.querySelector("#autocomplete").closest("form").submit()}}
+                            additionalProps:{onSubmit: ()=>{document.querySelector("#autocomplete-large").closest("form").submit()}}
                         })
                     </script>
                 </form>
