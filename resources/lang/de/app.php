@@ -213,6 +213,10 @@ return [
     'markdown_is_usable_here' => 'Hier kann Markdown genutzt werden.',
     'message' => 'Nachricht',
     'messages' => 'Nachrichten',
+    'messenger' => [
+        'last_recipients' => 'Letzte Empfänger',
+        'show_all' => 'Zeige alle',
+    ],
     'misc' => 'Sonstiges',
     'missing_gamedescriptions' => 'Fehlende Spielbeschreibungen',
     'missing_gamefiles' => 'Fehlende Spieldateien',

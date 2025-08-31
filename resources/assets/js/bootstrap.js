@@ -3,9 +3,13 @@ import { createAutocomplete } from "./autocomplete.js";
 import $ from 'jquery';
 import { activateBoostrapRating } from "./bootstrap-rating-v5.js";
 import * as qq from "fine-uploader";
+import { filterInput, selectedRecipient, setupCheckBoxes } from './recipientList.js';
 
 window["bootstrap"] = bootstrap;
 window["createAutocomplete"] = createAutocomplete;
+window["setupCheckBoxes"] = setupCheckBoxes;
+window["selectedRecipient"] = selectedRecipient;
+window["filterInput"] = filterInput;
 activateBoostrapRating()
 window["$"] = $;
 window["jQuery"] = $;

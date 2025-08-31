@@ -39,13 +39,24 @@ class MessagesController extends Controller
 
     public function create()
     {
-        $users = User::where('id', '!=', Auth::id())->get();
+        $users = User::where('id', '!=', Auth::id())->orderBy("name")->get();
+        $threads = Thread::forUser(Auth::id())->latest('updated_at')->paginate(25);
+        $latestParticipantIds = array();
+        foreach ($threads as $thread) {
+            $latestParticipantIds = array_merge($latestParticipantIds, $thread->participantsUserIds(Auth::id()));
+        }
+        $latestUsers = User::whereIn("id", $latestParticipantIds)->whereNotIn("id", array(Auth::id()))->limit(4)->get();
+        $users = $users->except($latestParticipantIds);
 
-        return view('messenger.create', compact('users'));
+        return view('messenger.create', compact('users', 'latestUsers'));
     }
 
     public function store(Request $request)
     {
+         $validated = $request->validate([
+            'subject' => 'required|min:1',
+            'body' => 'required',
+        ]);
         $input = $request->all();
         $thread = Thread::create(
             [
@@ -70,12 +81,14 @@ class MessagesController extends Controller
         );
         // Recipients
         foreach ($input['recipients'] as $rec) {
-            Participant::create(
-                [
-                    'thread_id' => $thread->id,
-                    'user_id'   => $rec,
-                ]
-            );
+            if($rec > 0) {
+                Participant::create(
+                    [
+                        'thread_id' => $thread->id,
+                        'user_id'   => $rec,
+                    ]
+                );
+            }
         }
 
         return redirect('messages');
@@ -96,7 +109,7 @@ class MessagesController extends Controller
             // don't show the current user in list
             $userId = Auth::user()->id;
             if ($thread->hasParticipant($userId)) {
-                $users = User::whereNotIn('id', $thread->participantsUserIds($userId))->get();
+                $users = User::whereNotIn('id', $thread->participantsUserIds($userId))->orderBy("name")->get();
                 $thread->markAsRead($userId);
                 $messages = $thread->messages()->paginate(25);
 
@@ -140,7 +153,7 @@ class MessagesController extends Controller
             $participant->save();
             // Recipients
             if ($request->has('recipients')) {
-                $thread->addParticipant(Request::get('recipients'));
+                $thread->addParticipant($request->get('recipients'));
             }
 
             return redirect('messages/'.$id);

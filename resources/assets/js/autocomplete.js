@@ -5,7 +5,7 @@ import axios from "axios";
 /**
  * Unified configuration of autocomplete
  * A find autocomplete will try to set an input container using inputSelector
- * @typedef {{apiPath:Function,placeholder:string,detachedMediaQuery?:string|"none"|"",searchbarSelector:string,panelSelector:string,inputSelector:string|undefined,noResults:string,type:"games"|"list",action:"find"|"navigate"|"findId",limit:number,changeInputOnChange:boolean,additionalProps:Object,additionalSourceProps:Object}} AutocompleteConfig
+ * @typedef {{apiPath:Function,placeholder:string,detachedMediaQuery?:string|"none"|"",searchbarSelector:string,panelSelector:string,inputSelector:string|undefined,noResults:string,selectionFunction:Function,type:"games"|"list",action:"find"|"navigate"|"findId"|"custom",limit:number,changeInputOnChange:boolean,additionalProps:Object,additionalSourceProps:Object}} AutocompleteConfig
  */
 /**
  *
@@ -21,6 +21,7 @@ export function createAutocomplete({
   type = "list",
   action = "find",
   limit,
+  selectionFunction = ()=>{},
   changeInputOnChange = true,
   additionalProps = {},
   additionalSourceProps = {},
@@ -36,7 +37,7 @@ export function createAutocomplete({
         {
           sourceId: "querySuggestions",
           getItems({ query }) {
-            // set input value on evry change
+            // set input value on every change
             if (inputSelector && changeInputOnChange) {
               /** @type HTMLInputElement */
               let input = document.querySelector(inputSelector);
@@ -76,6 +77,9 @@ export function createAutocomplete({
                     input.value = params?.item?.id.toString();
                   }
                 }
+                break;
+              case "custom":
+                selectionFunction ? selectionFunction(params, inputSelector): null;
                 break;
 
               // returns value of searched element
