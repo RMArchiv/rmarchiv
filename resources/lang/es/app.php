@@ -214,6 +214,10 @@ return [
   'markdown_is_usable_here'           => 'Se puede usar código Markdown aquí',
   'message'                           => 'Mensaje',
   'messages'                          => 'Mensajes',
+  'messenger' => [
+    'last_recipients' => 'Recipientes más recientes',
+    'show_all' => 'Show all', // TODO
+  ],
   'misc'                              => 'Miscelánea',
   'missing_gamedescriptions'          => 'Faltan descripciones de juego',
   'missing_gamefiles'                 => 'Faltan ficheros de juego',

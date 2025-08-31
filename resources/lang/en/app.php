@@ -214,6 +214,10 @@ return [
   'markdown_is_usable_here'           => 'Markdown is usable here',
   'message'                           => 'Message',
   'messages'                          => 'Messages',
+  'messenger' => [
+    'last_recipients' => 'Last recipient',
+    'show_all' => 'Show all',
+  ],
   'misc'                              => 'Misc',
   'missing_gamedescriptions'          => 'Missing game descriptions',
   'missing_gamefiles'                 => 'Missing game files',
