@@ -17,10 +17,8 @@
                 <div class="col-md-12">
                     <div class="input-group">
                         <input class="form-control form-control-sm" type='text' name='shout' placeholder='{{ trans('app.shoutbox_placeholder') }}' id='onelinermsg' maxlength='300'/>
-                        <span class="input-group-btn">
-                            <button class="btn btn-secondary btn-sm" type="submit">go!</button>
-                            <a href="{{ action('ShoutboxController@index') }}" class="btn btn-secondary btn-sm" role="button">{{ trans('app.more') }}...</a>
-                        </span>
+                        <button class="btn btn-outline-secondary btn-sm" type="submit">go!</button>
+                        <a href="{{ action('ShoutboxController@index') }}" class="btn link-warning btn-sm" role="button">{{ trans('app.more') }}...</a>
                     </div>
                 </div>
                 </form>

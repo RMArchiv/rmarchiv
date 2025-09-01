@@ -57,9 +57,27 @@ p>img {
 }
 
 .btn-secondary {
-  color: $rm-link;
-  background-color: $rm-base;
-  border-color: $rm-base-p1;
+  --bs-btn-color: #{$rm-link};
+  --bs-btn-bg: #{$rm-base};
+  --bs-btn-border-color: #{$rm-base-p1};
+  --bs-btn-hover-color: #{$rm-link};
+  --bs-btn-hover-bg: #{shade-color($rm-base, 10%)};
+  --bs-btn-hover-border-color: #{shade-color($rm-base, 10%)};
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #{shade-color($rm-base, 20%)};
+  --bs-btn-active-border-color: #{shade-color($rm-base, 20%)};
+}
+
+.btn-outline-secondary {
+  --bs-btn-color: #{$rm-link};
+  --bs-btn-bg: #{$rm-base};
+  --bs-btn-border-color: #{$rm-link};
+  --bs-btn-hover-color: #{$rm-link};
+  --bs-btn-hover-bg: #{shade-color($rm-base, 10%)};
+  --bs-btn-hover-border-color: #{shade-color($rm-link, 10%)};
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #{shade-color($rm-base, 20%)};
+  --bs-btn-active-border-color: #{shade-color($rm-link, 20%)};
 }
 
 header[role="banner"] {

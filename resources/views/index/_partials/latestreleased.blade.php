@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <ul class="list-group">
             <li class="list-group-item active">
-                {{ trans('app.latest_released_games') }}
+                <a href="/games/index/release_date/desc">{{ trans('app.latest_released_games') }}</a>
             </li>
             @foreach($latestreleased as $g)
                 <li class="list-group-item">

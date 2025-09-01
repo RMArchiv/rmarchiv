@@ -1,7 +1,7 @@
 <div class="row mt-4">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header text-capitalize">
                 {{ trans('partner') }}
             </div>
             <div class="card-body">
