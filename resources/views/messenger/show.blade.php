@@ -54,19 +54,20 @@
                         </div>
                         <div class="card-body">
                             @include('_partials.markdown_editor')
+                            <div class="mt-2">
+                                <i class="fa fa-users"></i>
+                                @foreach(App\Models\MessengerParticipant::whereThreadId($thread->id)->whereNotIn("user_id", [Auth::id()])->get() as $pp)
+                                    @php $user = \App\Models\User::whereId($pp->user_id)->first() @endphp
+                                    <a href='{{ url('users', $user->id) }}' class='usera' title="{{ $user->name }}">
+                                        <img width="16px" class="img-rounded" src='//{{ config('app.avatar_path') }}?size=16&gender=male&id={{ $user->id }}' alt="{{ $user->name }}"/>
+                                    </a> <a href='{{ url('users', $user->id) }}' class='user'>{{ $user->name }}</a>
+                                @endforeach
+                            </div>
                         </div>
 
                         <div class="card-body d-flex flex-column gap-2">
-                            <div>{{ trans("app.recipients") . ":" }}
-                            @foreach(App\Models\MessengerParticipant::whereThreadId($thread->id)->whereNotIn("user_id", [Auth::id()])->get() as $pp)
-                                @php $user = \App\Models\User::whereId($pp->user_id)->first() @endphp
-                                <a href='{{ url('users', $user->id) }}' class='usera' title="{{ $user->name }}">
-                                    <img width="16px" class="img-rounded" src='//{{ config('app.avatar_path') }}?size=16&gender=male&id={{ $user->id }}' alt="{{ $user->name }}"/>
-                                </a> <a href='{{ url('users', $user->id) }}' class='user'>{{ $user->name }}</a>
-                            @endforeach
-                            </div>
                             {{ trans("app.add_additional_users")}}
-                            <x-messenger.recipients :users="$users" :latestUsers="array()" />
+                            <x-messenger.recipients :users="$users" :latestUsers="array()" :preselect="array()"/>
                         </div>
                         <div class="card-footer">
                             <button type="submit" value="submit" class="btn btn-primary">{{ trans('app.submit') }}</button>

@@ -5,6 +5,17 @@
         <label for="select"
             class="input-group-text">{{ trans('app.recipients') }}*</label>
         <div id="recipient-list" class="form-control d-flex gap-1 flex-wrap ">
+        @foreach ($preselect as $user)
+            <button type="button" data-userid={{$user->id}} data-username={{$user->name}}
+            onclick="removeRecipient(event)"
+            class="btn-group btn btn-secondary d-flex flex-shrink gap-2 align-items-center"
+            data-toggle="buttons">
+                <input id="{{$user->name.'-'.$user->id}}" class="d-none" type="checkbox" autocomplete="off"
+                    name="recipients[]" value="{{ $user->id}}" checked="true">
+                <div class="btn-secondary fa fa-xmark w-auto"></div>
+                <label for="{{$user->name.'-'.$user->id}}" class="">{{$user->name}}</label>
+            </button>
+        @endforeach
         </div>
 
     </div>
@@ -12,11 +23,12 @@
     <template>
         <button data-userid="0" data-username=""
             class="btn-group btn btn-secondary d-flex flex-shrink gap-2 align-items-center"
+            type="button"
             data-toggle="buttons">
             <input id="" class="d-none" type="checkbox" autocomplete="off"
                 name="recipients[]" value="0">
             <div class="btn-secondary fa fa-xmark w-auto"></div>
-            <label for="" class="">
+            <label for="" class=""></label>
         </button>
     </template>
 
@@ -49,7 +61,8 @@
     </div>
 
     <div class="latest-overview">
-        <div class="fa fa-users w-auto ms-3 me-3"></div>
+        @if (count($latestUsers) > 0)
+        <div class="fa fa-history w-auto ms-3 me-3"></div>
         @foreach ($latestUsers as $user)
             <div data-userid={{ $user->id }} data-username={{ $user->name }}
                 class="btn-group mb-1" data-toggle="buttons">
@@ -59,45 +72,7 @@
                 </label>
             </div>
         @endforeach
-
-
-        <p class="d-inline-flex gap-1">
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseExample" aria-expanded="false"
-                aria-controls="collapseExample">
-                <div class="lh-1">{{ trans('app.more') . '...' }}</div>
-            </button>
-        </p>
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-                <div class="total-overview-container d-flex flex-column gap-2">
-                    <input class="form-control" placeholder={{ trans('app.search') }}
-                        id="filterBoxes" oninput="filterInput(event)">
-                    <div class="total-overview d-flex flex-wrap">
-                        @foreach ($users as $user)
-                            <div data-userid={{ $user->id }}
-                                data-username={{ $user->name }}
-                                class="btn-group d-grid mb-1 me-1"
-                                data-toggle="buttons">
-                                <label
-                                    class="btn btn-secondary d-flex gap-2 align-items-center lh-1 hyphens">
-                                    <input type="checkbox" autocomplete="off"
-                                        name="recipients[]"
-                                        value="{{ $user->id }}">
-                                    {{ $user->name }}
-                                </label>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-
+        @endif
     </div>
 </div>
 <script type="module">
