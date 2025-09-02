@@ -92,14 +92,14 @@
                                                         <dd><span title="{{ $user->roles[0]->display_name }}">{{ $user->roles[0]->display_name }}</span></dd>
                                                         <dt>{{ trans('app.registered_since') }}:</dt>
                                                         <dd>{{ $user->created_at }}</dd>
-                                                        <dt>posts:</dt>
-                                                        <dd>0</dd>
+                                                        <dt>{{ trans('app.board_posts') }}</dt>
+                                                        <dd>{{ $user->boardposts->count() }}</dd>
                                                     </dl>
                                                 </div>
                                                 <div class=" col-md-9 col-lg-9 hidden-xs hidden-sm">
                                                     <strong><a href='{{ url('users', $user->id) }}' class='usera' title="{{ $user->name }}">{{ $user->name }}</a></strong><br>
                                                     <table class="table table-user-information">
-                                                        <tbody>
+                                                        <tbody class="text-capitalize">
                                                         <tr>
                                                             <td>{{ trans('app.level') }}:</td>
                                                             <td><span title="{{ $user->roles[0]->display_name }}">{{ $user->roles[0]->display_name }}</span></td>
@@ -109,7 +109,7 @@
                                                             <td>{{ $user->created_at }}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>posts:</td>
+                                                            <td>{{ trans('app.board_posts')}}</td>
                                                             <td>{{ $user->boardposts->count() }}</td>
                                                         </tr>
                                                         </tbody>
@@ -119,11 +119,11 @@
                                         </div>
                                         <div class="card-footer">
                                             @if(Auth::check())
-                                                <button class="btn btn-sm btn-primary" type="button"
+                                                <a class="btn btn-sm btn-primary" href="{{action('MessagesController@create', ['preselect' => array($user->id)])}}" type="button"
                                                         data-bs-toggle="tooltip"
                                                         title="{{ trans('app.send_a_pn') }}">
                                                     <i class="fa fa-envelope"></i>
-                                                </button>
+                                                </a>
                                             @endif
                                             <span class="float-end">
                                             @if(Auth::check())

@@ -37,8 +37,9 @@ class MessagesController extends Controller
         return view('messenger.index', compact('threads', 'currentUserId', 'users'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        $preselect = User::whereIn("id", $request->input('preselect', array()))->get();
         $users = User::where('id', '!=', Auth::id())->orderBy("name")->get();
         $threads = Thread::forUser(Auth::id())->latest('updated_at')->paginate(25);
         $latestParticipantIds = array();
@@ -48,14 +49,15 @@ class MessagesController extends Controller
         $latestUsers = User::whereIn("id", $latestParticipantIds)->whereNotIn("id", array(Auth::id()))->limit(4)->get();
         $users = $users->except($latestParticipantIds);
 
-        return view('messenger.create', compact('users', 'latestUsers'));
+        return view('messenger.create', compact('users', 'latestUsers', 'preselect' ));
     }
 
     public function store(Request $request)
     {
-         $validated = $request->validate([
+        $validated = $request->validate([
             'subject' => 'required|min:1',
-            'body' => 'required',
+            'msg' => 'required|min:1',
+            'recipients' => 'required|min:1',
         ]);
         $input = $request->all();
         $thread = Thread::create(
@@ -96,6 +98,8 @@ class MessagesController extends Controller
 
     public function show(Request $request, $id)
     {
+        $preselect = User::whereIn("id", $request->input('preselect', array()))->get();
+
         if (Auth::check()) {
             try {
                 $thread = Thread::findOrFail($id);
@@ -116,7 +120,7 @@ class MessagesController extends Controller
                 if (! $request->get('page')) {
                     return redirect('messages/'.$id.'?page='.$messages->lastPage());
                 } else {
-                    return view('messenger.show', compact('thread', 'users', 'messages'));
+                    return view('messenger.show', compact('thread', 'users', 'messages', 'preselect'));
                 }
             }
             //Todo:View für Keine Berechtigung.
@@ -126,6 +130,10 @@ class MessagesController extends Controller
     public function update(Request $request, $id)
     {
         if (Auth::check()) {
+            $validated = $request->validate([
+                'subject' => 'required|min:1',
+                'msg' => 'required|min:1',
+            ]);
             try {
                 $thread = Thread::findOrFail($id);
             } catch (ModelNotFoundException $e) {

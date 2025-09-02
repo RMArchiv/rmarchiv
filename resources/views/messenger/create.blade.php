@@ -35,7 +35,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <x-messenger.recipients :users="$users" :latestUsers="$latestUsers" />
+                                    <x-messenger.recipients :users="$users" :latestUsers="$latestUsers" :preselect="$preselect"/>
                                 </div>
                                 <hr>
                                 <div class="form-group">
