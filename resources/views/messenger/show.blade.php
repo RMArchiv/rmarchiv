@@ -54,7 +54,8 @@
                         </div>
                         <div class="card-body">
                             @include('_partials.markdown_editor')
-                            <div class="mt-2">
+                            <div class="mt-2 w-100 d-flex justify-content-between align-items-center gap-4">
+                                <div>
                                 <i class="fa fa-users"></i>
                                 @foreach(App\Models\MessengerParticipant::whereThreadId($thread->id)->whereNotIn("user_id", [Auth::id()])->get() as $pp)
                                     @php $user = \App\Models\User::whereId($pp->user_id)->first() @endphp
@@ -62,12 +63,22 @@
                                         <img width="16px" class="img-rounded" src='//{{ config('app.avatar_path') }}?size=16&gender=male&id={{ $user->id }}' alt="{{ $user->name }}"/>
                                     </a> <a href='{{ url('users', $user->id) }}' class='user'>{{ $user->name }}</a>
                                 @endforeach
+                                </div>
+                                <div class="d-inline-flex gap-1">
+                                    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseAddUsers" aria-expanded="false"
+                                        aria-controls="collapseAddUsers">
+                                        <div class="lh-1">{{ trans('app.add_additional_users') }}</div>
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="card-body d-flex flex-column gap-2">
-                            {{ trans("app.add_additional_users")}}
-                            <x-messenger.recipients :users="$users" :latestUsers="array()" :preselect="array()"/>
+                        <div class="collapse" id="collapseAddUsers">
+                            <div class="card-body d-flex flex-column gap-2 ">
+                                {{ trans("app.add_additional_users")}}
+                                <x-messenger.recipients :users="$users" :latestUsers="array()" :preselect="array()"/>
+                            </div>
                         </div>
                         <div class="card-footer">
                             <button type="submit" value="submit" class="btn btn-primary">{{ trans('app.submit') }}</button>
