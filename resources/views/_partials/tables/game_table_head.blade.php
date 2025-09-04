@@ -4,7 +4,7 @@
 @endphp
 
 <li class="list-group-item action">
-    sortieren nach:
+    <span class="text-capitalize">{{trans('app.sort.order_by')}}:</span>
         @if($orderby == 'title')
             @if($direction == 'asc')
                 @if(isset($id))
