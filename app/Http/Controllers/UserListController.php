@@ -27,13 +27,15 @@ class UserListController extends Controller
             'desc'  => 'required',
         ]);
 
-        \DB::table('user_lists')->insert([
-            'user_id'    => \Auth::id(),
-            'title'      => $request->get('title'),
-            'desc_md'    => $request->get('desc'),
-            'desc_html'  => \Markdown::convert($request->get('desc')),
-            'created_at' => Carbon::now(),
-        ]);
+        if (\Auth::check()) {
+            \DB::table('user_lists')->insert([
+                'user_id'    => \Auth::id(),
+                'title'      => $request->get('title'),
+                'desc_md'    => $request->get('desc'),
+                'desc_html'  => \Markdown::convert($request->get('desc')),
+                'created_at' => Carbon::now(),
+            ]);
+        }
 
         return \Redirect::back();
     }
@@ -57,12 +59,10 @@ class UserListController extends Controller
     {
         if (\Auth::check()) {
             if (\Auth::user()->hasRole('admin')) {
-                \DB::table('user_list_items')
-                    ->where('list_id', '=', $listid)
+                UserListItem::where('list_id', '=', $listid)
                     ->delete();
 
-                \DB::table('user_lists')
-                    ->where('id', '=', $listid)
+                UserList::where('id', '=', $listid)
                     ->delete();
             } else {
                 $list = \DB::table('user_lists')
@@ -71,12 +71,9 @@ class UserListController extends Controller
                     ->get();
 
                 if ($list->count() != 0) {
-                    \DB::table('user_lists')
-                        ->where('id', '=', $listid)
+                    UserListItem::where('list_id', '=', $listid)
                         ->delete();
-
-                    \DB::table('user_list_items')
-                        ->where('list_id', '=', $listid)
+                    UserList::where('id', '=', $listid)
                         ->delete();
                 }
             }
