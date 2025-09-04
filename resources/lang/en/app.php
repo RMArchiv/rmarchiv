@@ -355,6 +355,9 @@ return [
   'shouts'                                          => 'Shouts',
   'show_original_size'                              => 'Show original size',
   'sorry_you_are_banned'                            => 'Sorry, you are banned.',
+      'sort' => [
+        'order_by' => 'order by',
+    ],
   'sounds'                                          => 'Sounds',
   'statistics' => [
     'release_per_year'    => 'Releases per year',

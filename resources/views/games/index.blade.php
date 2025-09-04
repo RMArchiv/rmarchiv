@@ -61,7 +61,6 @@
                 </div>
             </form>
         </div>
-        </div>
         <div class="row">
             @include('_partials.tables.game_table', [
                 'games' => $games,

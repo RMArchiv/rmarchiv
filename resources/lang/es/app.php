@@ -355,6 +355,9 @@ return [
   'shouts'                                          => 'Mensajes',
   'show_original_size'                              => 'Mostrar tamaño original',
   'sorry_you_are_banned'                            => 'Lo sentimos, te han bloqueado.',
+  'sort' => [
+    'order_by'          => 'ordenar por',
+  ],
   'sounds'                                          => 'Sonidos',
   'statistics' => [
     'release_per_year'  => 'Lanzamientos por año',
