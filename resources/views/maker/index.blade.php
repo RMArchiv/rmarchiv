@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="page-header">
-                    <h1>maker</h1>
+                    <h1>{{trans('app.maker')}}</h1>
                     {!! Breadcrumbs::render('maker') !!}
                 </div>
             </div>
