@@ -242,9 +242,7 @@
                                                 {{ trans('app.popularity') }}: {{  number_format($perc, 2) }}% </br>
                                                 {{ trans('app.profile_views') }}: {{ number_format($game->views, 0, ',', '.') }}
                                                 <br/>
-                                                <div class="progress">
-                                                    <div class="progress-bar" style="width: {{  number_format($perc, 2) }}%;"></div>
-                                                </div>
+                                                <x-common.progressbar :percent="$perc" />
                                             </li>
                                             <li class="list-group-item clearfix">
                                                 <ul class="list-unstyled">
