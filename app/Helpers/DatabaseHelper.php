@@ -14,6 +14,7 @@ use App\Models\GamesFile;
 use App\Models\UserOnline;
 use App\Models\BoardThread;
 use App\Models\BoardThreadsTracker;
+use App\Models\GamesDeveloper;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -209,10 +210,13 @@ class DatabaseHelper
      */
     public static function getDevelopersUrlList($gameid, $urlstyle = true)
     {
-        $developers = \DB::table('games_developer')
-            ->leftJoin('developer', 'developer.id', '=', 'games_developer.developer_id')
+        $developers = GamesDeveloper::leftJoin('developer', 'developer.id', '=', 'games_developer.developer_id')
             ->where('games_developer.game_id', '=', $gameid)
             ->get();
+
+        // dd( GamesDeveloper::leftJoin('developer', 'developer.id', '=', 'games_developer.developer_id')
+        //     ->where('games_developer.game_id', '=', $gameid)
+        //     ->toSql());
 
         $res = '';
         foreach ($developers as $dev) {

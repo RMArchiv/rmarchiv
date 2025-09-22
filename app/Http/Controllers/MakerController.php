@@ -27,6 +27,9 @@ class MakerController extends Controller
     public function show($makerid, $orderby = 'title', $direction = 'asc')
     {
         $games = Game::where('maker_id', '=', $makerid)
+            ->join('games_developer', 'games.id', '=', 'games_developer.game_id')
+            ->join('developer', 'games_developer.developer_id', '=', 'developer.id')
+            ->select(['games.id','comments','games.title','games.subtitle','games.release_date','games.created_at','voteup','votedown','avg', 'maker_id', 'lang_id'])
             ->orderBy($orderby, $direction)
             ->paginate(20);
 
