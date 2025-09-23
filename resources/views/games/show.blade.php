@@ -71,90 +71,59 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="card">
-                                        <div class="card-header">
-                                            <ul class="nav nav-pills nav-fill">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" data-bs-toggle="pill" href="#tabs-1">{{ trans('app.titlescreen') }}</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-bs-toggle="pill" href="#tabs-2">{{ trans('app.screenshot') }} 1</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-bs-toggle="pill" href="#tabs-3">{{ trans('app.screenshot') }} 2</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-bs-toggle="pill" href="#tabs-4">{{ trans('app.screenshot') }} 3</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-bs-toggle="pill" href="#tabs-5">{{ trans('app.screenshot') }} 4</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-bs-toggle="pill" href="#tabs-6">{{ trans('app.screenshot') }} 5</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-bs-toggle="pill" href="#tabs-7">{{ trans('app.screenshot') }} 6</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-bs-toggle="pill" href="#tabs-8">{{ trans('app.screenshot') }} 7</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-bs-toggle="pill" href="#tabs-9">{{ trans('app.screenshot') }} 8</a>
-                                                </li>
-                                                @if($game->youtube)
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-bs-toggle="pill" href="#tabs-10">{{ trans('app.trailer') }}</a>
-                                                    </li>
-                                                @endif
-                                            </ul>
-                                        </div>
-                                        <div class="tab-content">
-                                            <div id="tabs-1" class="tab-pane fade show active">
-                                                <div class="card-body">
-                                                    <img class="img-fluid center-block" src='{{ route('screenshot.show', [$game->id, 1]) }}' alt='{{ trans('app.titlescreen') }}' title='{{ trans('app.titlescreen') }}'/>
-                                                </div>
-                                                <div class="card-footer">
-                                                    <a href="{{ route('screenshot.show', [$game->id, 1, 1]) }}">{{ trans('app.show_original_size') }}</a>
-                                                    @if(Auth::check())
-                                                        ::
-                                                        <a href="{{ route('screenshot.create', [$game->id, 1]) }}">{{ trans('app.upload_titlescreen') }}</a>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            @for($i = 2; $i <=9; $i++)
-                                                <div id="tabs-{{ $i }}" class="tab-pane fade">
-                                                    <div class="card-body">
-                                                        <img class="img-fluid center-block" src='{{ route('screenshot.show', [$game->id, $i]) }}'
-                                                             alt='{{ trans('app.screenshot') }}' title='{{ trans('app.screenshot') }}'/>
-                                                    </div>
-                                                    <div class="card-footer">
-                                                        <a href="{{ route('screenshot.show', [$game->id, $i, 1]) }}">{{ trans('app.show_original_size') }}</a>
-                                                        @if(Auth::check())
+                                        <div class="card-body">
+                                            <div id="screenshot-carousel-fade" class="carousel w-100 h-100 slide carousel-fade">
+                                                <div class="carousel-content-container position-relative">
+                                                <div class="carousel-inner">
+                                                    @for($i = 1; $i <= count($screenshots); $i++)
+                                                        <div class="{{'carousel-item ' . ($i==1 ? 'active':'')}}">
+                                                            <img class="d-block w-100" style="" src='{{ route('screenshot.show', [$game->id, $i]) }}'
+                                                                        alt='{{ $i==1 ? trans('app.screenshot'):trans('app.titlescreen') }}' title='{{ $i==1 ? trans('app.screenshot'):trans('app.titlescreen') }}'/>
+                                                        <div class="card-footer">
+                                                            <a href="{{ route('screenshot.show', [$game->id, $i, $i]) }}">{{ trans('app.show_original_size') }}</a>
+                                                            @if(Auth::check())
                                                             ::
                                                             <a href="{{ route('screenshot.create', [$game->id, $i]) }}">{{ trans('app.upload_titlescreen') }}</a>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            @endfor
-                                            @if($game->youtube)
-                                                @php
-                                                    $vid = str_replace('watch?v=', "embed/", $game->youtube);
-                                                @endphp
-                                                <div id="tabs-10" class="tab-pane fade">
-                                                    <div class="card-body">
-                                                        <div class="embed-responsive embed-responsive-16by9">
-                                                            <iframe class="embed-responsive-item" src="{{ $vid }}" frameborder="0" allowfullscreen></iframe>
+                                                            @endif
                                                         </div>
                                                     </div>
-                                                    <div class="card-footer">
-                                                        {{ trans('app.editable_with_edit_button') }}
-                                                    </div>
+                                                    @endfor
                                                 </div>
 
-                                            @endif
+                                                <button class="carousel-control-prev" type="button" data-bs-target="#screenshot-carousel-fade" data-bs-slide="prev">
+                                                    <span style="text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);" class="fa fa-arrow-left" aria-hidden="true"></span>
+                                                    <span class="visually-hidden">Previous</span>
+                                                </button>
+                                                <button class="carousel-control-next" type="button" data-bs-target="#screenshot-carousel-fade" data-bs-slide="next">
+                                                    <span style="text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);" class="fa fa-arrow-right" aria-hidden="true"></span>
+                                                    <span class="visually-hidden">Next</span>
+                                                </button>
+                                                </div>
+                                                <div class="d-flex flex-wrap mt-2">
+                                                @for($i = 1; $i <= count($screenshots); $i++)
+                                                        <button type="button" data-bs-target="#screenshot-carousel-fade" data-bs-slide-to="{{$i-1}}" class="w-25 carousel-control {{' ' . ($i==1 ? 'active':'')}} btn btn-link p-0">
+                                                            <img class="w-100 d-block" style=";" src='{{ route('screenshot.show', [$game->id, $i]) }}'
+                                                                        alt='{{ $i==1 ? trans('app.screenshot'):trans('app.titlescreen') }}' title='{{ $i==1 ? trans('app.screenshot'):trans('app.titlescreen') }}'/>
+                                                        </button>
+                                                @endfor
+
+                                                @if(count($screenshots) <= 8 && Auth::check())
+                                                        <a href="{{ route('screenshot.create', [$game->id, count($screenshots)+1]) }}" title={{trans("app.upload_titlescreen")}} class="w-25 position-relative d-flex align-items-center justify-content-center btn btn-secondary">
+                                                            <i class="fa fa-image fs-1"></i>
+                                                            <div class="w-100 h-100 position-absolute top-50">
+                                                            <div style="top:-31px;left:51%; width:15px; height:15px" class="m-1 bg-black fs-4 position-absolute">
+                                                            </div>
+                                                            <i style="top:-31px;left:50%; font-size:10px" class="text-white fs-4 fa fa-square-plus position-absolute"></i>
+                                                            </div>
+                                                        </a>
+                                                @endif
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                         <div class="col-md-6">
                             {{-- infos & stats --}}

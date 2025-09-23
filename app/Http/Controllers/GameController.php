@@ -222,11 +222,13 @@ class GameController extends Controller
     public function show($id)
     {
         $game = Game::with('developers')->whereId($id)->first();
+        $screenshots = Screenshot::whereGameId($id)->get();
 
         event(new GameView($id));
 
         return view('games.show', [
             'game' => $game,
+            'screenshots' => $screenshots,
         ]);
     }
 
