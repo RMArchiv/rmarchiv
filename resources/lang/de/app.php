@@ -399,11 +399,12 @@ return [
     'upload' => [
         'action' => 'Hochladen',
         'replace' => [
-            'action' => 'Replace',
-            'titlescreen' => 'Replace titlescreen',
-            'screenshot' => 'Replace screenshot',
+            'action' => 'Ersetzen',
+            'titlescreen' => 'Ersetze titlescreen',
+            'screenshot' => 'Ersetze screenshot',
         ],
-        'titlescreen' => 'Upload titlescreen',
+        'screenshot' => 'Screenshot hochladen',
+        'titlescreen' => 'Titlescreen hochladen',
     ],
     'upload_file' => 'Datei hochladen',
     'upload_savegame' => 'Savegame hochladen',
