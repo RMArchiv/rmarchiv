@@ -12,7 +12,9 @@ use App\Models\Game;
 use App\Models\Screenshot;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
-use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Format;
+use Intervention\Image\Laravel\Facades\Image;
 
 class ScreenshotController extends Controller
 {
@@ -23,29 +25,41 @@ class ScreenshotController extends Controller
 
         //Prüfen ob Screenshots vorhanden sind
         if (!$s) {//Es sind keine Screenshots vorhanden
-            $storagePath = public_path().'/assets/no_image.png';
-        } else {//Es sind Screenshots vorhanden
-            $storagePath = \Storage::get($s->filename);
-        }
+            $img = Image::read(public_path().'/assets/no_image.png');
 
-        $img = \Image::make($storagePath);
-        if (! $full) {
-            $response = \Response::make($img->encode('webp', 80));
-            $response->header('Content-Type', 'image/webp');
-        } else {
-            $response = \Response::make($img->encode('png'));
+            $response = response()->image($img, Format::PNG);
             $response->header('Content-Type', 'image/png');
+            $response->header('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+            $response->setPublic();
+
+            return $response;
+
+        } else {//Es sind Screenshots vorhanden
+            $cachePath = implode("/",array("cache",explode("screenshots/", $s->filename)[1]));
+            if(!Storage::exists("cache")){
+                Storage::makeDirectory("cache");
+            }
+            if (! $full) {
+                if(\Storage::exists($cachePath)) {
+                    $img = Image::read(\Storage::get($cachePath));
+                    if($img) {
+                        return response()->image($img, Format::WEBP);
+                    }
+                    return response($img, 200, ['Content-Type'=> 'image/webp']);
+                }
+                else {
+                    $result = Image::read(\Storage::get( $s->filename))->toWebp(quality:80);
+                    $result->save(Storage::path($cachePath));
+                    $img = $result;
+                    return response($img, 200, ['Content-Type'=> 'image/webp']);
+                }
+            } else {
+                $response = $response = response()->image(Image::read(\Storage::get( $s->filename)), Format::PNG);
+                $response->header('Content-Type', 'image/png');
+                return $response;
+            }
+
         }
-        //$response->setMaxAge(604800);
-        //$etag = md5($s->id.'-'.$s->updated_at);
-        //$response->setEtag($etag);
-        //$response->setLastModified($s->updated_at);
-        $response->header('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
-        $response->setPublic();
-
-        return $response;
-
-        //return Image::make($storagePath)->response();
     }
 
     public function create($gameid, $screenid)

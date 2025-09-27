@@ -123,7 +123,7 @@
                     <ul class="inner-icons d-flex flex-column d-lg-none gap-1 w-100" id="authCollapsedParent">
                         @if(Auth::check())
                             <div class="dropstart gap-1">
-                                <button href="#" class="dropdown-toggle nav-link p-2 rounded-pill bg-black d-flex flex-row align-items-center gap" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                <button href="#" class="dropdown-toggle nav-link p-2 rounded-pill bg-black d-flex flex-row align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"
                                     aria-controls="collapse-submission">
                                     <span class="lh-base fa fa-upload"></span>
                                     <span class="lh-base caret"></span>
