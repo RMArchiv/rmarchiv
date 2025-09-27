@@ -53,7 +53,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group col-lg-8">
                                     <button type="submit" class="btn btn-primary">{{ trans('app.login') }}</button>
                                     <div class="float-end">
                                         <a href="{{ url('/password/reset') }}">

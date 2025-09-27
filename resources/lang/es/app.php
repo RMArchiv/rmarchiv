@@ -396,7 +396,15 @@ return [
   'transition'                                      => 'Transition',
   'type'                                            => 'Tipo',
   'unreaded_pms'                                    => 'Mensajes privados sin leer',
-  'upload'                                          => 'Subir',
+  'upload' => [
+    'action' => 'Subir',
+    'replace' => [
+      'action' => 'Reemplazar',
+      'titlescreen' => 'Reemplazar pantalla de título',
+      'screenshot' => 'Reemplazar captura de pantalla',
+    ],
+    'titlescreen' => 'Subir pantalla de título',
+  ],
   'upload_file'                                     => 'Subir fichero',
   'upload_savegame'                                 => 'Subir partida guardada',
   'upload_savegames_only_for_the_right_gameversion' => 'Sube solamente partidas guardadas para esta versión del juego. De lo contrario se podrían perder datos.',

@@ -28,7 +28,7 @@
                     <div class="card-header">
                         {{ trans('app.savegames') }}
                         <div class="float-end">
-                            <button type="button" class="btn btn-secondary btn-xs" data-bs-toggle="modal" data-bs-target=".savegame-upload">{{ trans('app.upload') }}</button>
+                            <button type="button" class="btn btn-secondary btn-xs" data-bs-toggle="modal" data-bs-target=".savegame-upload">{{ trans('app.upload.action') }}</button>
                         </div>
                     </div>
                     <ul class="media-list">
@@ -102,7 +102,7 @@
                         {{ trans('app.attention_uploading_can_overwrite') }}
                     </p>
                     <br><br>
-                    <button type="submit" class="btn btn-secondary">{{ trans('app.upload') }}</button>
+                    <button type="submit" class="btn btn-secondary">{{ trans('app.upload.action') }}</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ trans('app.close') }}</button>
                     </form>
                 </div>
