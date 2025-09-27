@@ -182,7 +182,7 @@
                 <span class="qq-upload-drop-area-text-selector"></span>
             </div>
             <div class="qq-upload-button-selector qq-upload-button">
-                <div>{{ trans('app.upload') }}</div>
+                <div>{{ trans('app.upload.action') }}</div>
             </div>
             <span class="qq-drop-processing-selector qq-drop-processing">
                     <span>Processing dropped files...</span>

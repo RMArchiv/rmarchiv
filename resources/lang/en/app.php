@@ -225,7 +225,7 @@ return [
   'monster'                           => 'Monster',
   'more'                              => 'more',
   'msgbox'                            => [
-'cdc' => [
+    'cdc' => [
         'msg' => 'The Coup de Coeur entry was successfully created.',
         'redirect' => 'Go to home...',
         'title' => 'Coup de Coeur added successfully.',
@@ -396,7 +396,15 @@ return [
   'transition'                                      => 'Transition',
   'type'                                            => 'Type',
   'unreaded_pms'                                    => 'Unread PMs',
-  'upload'                                          => 'Upload',
+  'upload' => [
+    'action' => 'Upload',
+    'replace' => [
+      'action' => 'Replace',
+      'titlescreen' => 'Replace titlescreen',
+      'screenshot' => 'Replace screenshot',
+    ],
+    'titlescreen' => 'Upload titlescreen',
+  ],
   'upload_file'                                     => 'Upload file',
   'upload_savegame'                                 => 'Savegame upload',
   'upload_savegames_only_for_the_right_gameversion' => 'Please upload only savegames, which are intended for this game version. Otherwise data might be lost.',

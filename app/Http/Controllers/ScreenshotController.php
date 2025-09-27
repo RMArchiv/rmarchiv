@@ -30,8 +30,8 @@ class ScreenshotController extends Controller
 
         $img = \Image::make($storagePath);
         if (! $full) {
-            $response = \Response::make($img->encode('jpg', 80));
-            $response->header('Content-Type', 'image/jpg');
+            $response = \Response::make($img->encode('webp', 80));
+            $response->header('Content-Type', 'image/webp');
         } else {
             $response = \Response::make($img->encode('png'));
             $response->header('Content-Type', 'image/png');

@@ -26,6 +26,9 @@ use Illuminate\Support\Facades\DB;
 
 class GameController extends Controller
 {
+    /** Set max number of screenshots to be added */
+    private $maxScreenshotCount = 9;
+
     /**
      * Display a listing of the resource.
      *
@@ -229,6 +232,7 @@ class GameController extends Controller
         return view('games.show', [
             'game' => $game,
             'screenshots' => $screenshots,
+            'maxScreenshotCount' => $this->maxScreenshotCount,
         ]);
     }
 

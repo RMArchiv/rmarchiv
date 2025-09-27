@@ -73,42 +73,46 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <div id="screenshot-carousel-fade" class="carousel w-100 h-100 slide carousel-fade">
+                                                @if(count($screenshots) > 0)
                                                 <div class="carousel-content-container position-relative">
-                                                <div class="carousel-inner">
-                                                    @for($i = 1; $i <= count($screenshots); $i++)
-                                                        <div class="{{'carousel-item ' . ($i==1 ? 'active':'')}}">
-                                                            <img class="d-block w-100" style="" src='{{ route('screenshot.show', [$game->id, $i]) }}'
-                                                                        alt='{{ $i==1 ? trans('app.screenshot'):trans('app.titlescreen') }}' title='{{ $i==1 ? trans('app.screenshot'):trans('app.titlescreen') }}'/>
-                                                        <div class="card-footer">
-                                                            <a href="{{ route('screenshot.show', [$game->id, $i, $i]) }}">{{ trans('app.show_original_size') }}</a>
-                                                            @if(Auth::check())
-                                                            ::
-                                                            <a href="{{ route('screenshot.create', [$game->id, $i]) }}">{{ trans('app.upload_titlescreen') }}</a>
-                                                            @endif
+                                                    <div class="carousel-inner">
+                                                        @for($i = 1; $i <= count($screenshots); $i++)
+                                                            <div class="{{'carousel-item ' . ($i==1 ? 'active':'')}}">
+                                                                <img onerror="this.onerror=null; this.src='/assets/no_image.png'"  class="d-block w-100" style="" src='{{ route('screenshot.show', [$game->id, $i]) }}'
+                                                                            alt='{{ $i==1 ? trans('app.screenshot'):trans('app.titlescreen') }}' title='{{ $i==1 ? trans('app.screenshot'):trans('app.titlescreen') }}'/>
+                                                            <div class="mt-2 d-flex gap-2">
+                                                                <x-common.iconbutton showtextfrom="lg" icon="fa fa-expand" :href="route('screenshot.show', [$game->id, $i, $i])">{{ trans('app.show_original_size') }}</x-common.iconbutton>
+                                                                @if(Auth::check())
+                                                                    <x-common.iconbutton showtextfrom="lg" icon="fa fa-upload" :href="route('screenshot.create', [$game->id, $i])">{{ $i==1 ? trans('app.upload.replace.titlescreen') : trans('app.upload.replace.screenshot')}}</x-common.iconbutton>
+                                                                @endif
+                                                            </div>
                                                         </div>
+                                                        @endfor
                                                     </div>
-                                                    @endfor
-                                                </div>
 
-                                                <button class="carousel-control-prev" type="button" data-bs-target="#screenshot-carousel-fade" data-bs-slide="prev">
-                                                    <span style="text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);" class="fa fa-arrow-left" aria-hidden="true"></span>
-                                                    <span class="visually-hidden">Previous</span>
-                                                </button>
-                                                <button class="carousel-control-next" type="button" data-bs-target="#screenshot-carousel-fade" data-bs-slide="next">
-                                                    <span style="text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);" class="fa fa-arrow-right" aria-hidden="true"></span>
-                                                    <span class="visually-hidden">Next</span>
-                                                </button>
+                                                    <a class="carousel-control-prev" style="max-height: 90%" type="button" data-bs-target="#screenshot-carousel-fade" data-bs-slide="prev">
+                                                        <span style="text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);" class="bg-black w-auto rounded-pill p-1  fa fa-arrow-left" aria-hidden="true"></span>
+                                                        <span class="visually-hidden">Previous</span>
+                                                    </a>
+                                                    <a class="carousel-control-next" style="max-height: 90%" type="button" data-bs-target="#screenshot-carousel-fade" data-bs-slide="next">
+                                                        <span style="text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);" class="bg-black w-auto rounded-pill p-1  fa fa-arrow-right" aria-hidden="true"></span>
+                                                        <span class="visually-hidden">Next</span>
+                                                    </a>
                                                 </div>
+                                                @else
+                                                <img class="d-block w-100" style="" src='{{ route('screenshot.show', [$game->id, 1]) }}'
+                                                    alt='{{ trans('app.titlescreen') }}' title='{{ trans('app.titlescreen') }}'/>
+                                                @endif
                                                 <div class="d-flex flex-wrap mt-2">
-                                                @for($i = 1; $i <= count($screenshots); $i++)
-                                                        <button type="button" data-bs-target="#screenshot-carousel-fade" data-bs-slide-to="{{$i-1}}" class="w-25 carousel-control {{' ' . ($i==1 ? 'active':'')}} btn btn-link p-0">
-                                                            <img class="w-100 d-block" style=";" src='{{ route('screenshot.show', [$game->id, $i]) }}'
+                                                    @for($i = 1; $i <= count($screenshots); $i++)
+                                                        <button type="button" data-bs-target="#screenshot-carousel-fade" data-bs-slide-to="{{$i-1}}" style="width:11.11%" class=" carousel-control {{' ' . ($i==1 ? 'active':'')}} btn btn-link p-0">
+                                                            <img  onerror="this.onerror=null; this.src='/assets/no_image.png'" class="w-100 d-block" style=";" src='{{ route('screenshot.show', [$game->id, $i]) }}'
                                                                         alt='{{ $i==1 ? trans('app.screenshot'):trans('app.titlescreen') }}' title='{{ $i==1 ? trans('app.screenshot'):trans('app.titlescreen') }}'/>
                                                         </button>
-                                                @endfor
+                                                    @endfor
 
-                                                @if(count($screenshots) <= 8 && Auth::check())
-                                                        <a href="{{ route('screenshot.create', [$game->id, count($screenshots)+1]) }}" title={{trans("app.upload_titlescreen")}} class="w-25 position-relative d-flex align-items-center justify-content-center btn btn-secondary">
+                                                    @if(count($screenshots) < $maxScreenshotCount && Auth::check())
+                                                        <a href="{{ route('screenshot.create', [$game->id, count($screenshots)+1]) }}" title={{trans('app.upload.titlescreen')}} style="width:11.11%" class=" position-relative d-flex align-items-center justify-content-center btn btn-secondary">
                                                             <i class="fa fa-image fs-1"></i>
                                                             <div class="w-100 h-100 position-absolute top-50">
                                                             <div style="top:-31px;left:51%; width:15px; height:15px" class="m-1 bg-black fs-4 position-absolute">
@@ -116,7 +120,7 @@
                                                             <i style="top:-31px;left:50%; font-size:10px" class="text-white fs-4 fa fa-square-plus position-absolute"></i>
                                                             </div>
                                                         </a>
-                                                @endif
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
