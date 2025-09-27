@@ -12,6 +12,9 @@ use App\Models\Logo;
 use App\Models\LogoVote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Format;
+use Intervention\Image\Laravel\Facades\Image;
 
 class LogoController extends Controller
 {
@@ -77,11 +80,12 @@ class LogoController extends Controller
 
         $filename = str_replace('logo/', 'logos/', $s->filename);
 
-        $storagePath = \Storage::get($filename);
+        $img = Image::read(Storage::path($filename));
 
-        $img = \Image::make($storagePath);
+        $response = response()->image($img, Format::PNG);
+        $response->header('Content-Type', 'image/png');
+        $response->header('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
 
-        $response = \Response::make($img->encode('png'));
         $response->header('Content-Type', 'image/png');
 
         $response->setPublic();
