@@ -89,15 +89,16 @@
                                                         </div>
                                                         @endfor
                                                     </div>
-
-                                                    <a class="carousel-control-prev" style="max-height: 90%" type="button" data-bs-target="#screenshot-carousel-fade" data-bs-slide="prev">
-                                                        <span style="text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);" class="bg-black w-auto rounded-pill p-1  fa fa-arrow-left" aria-hidden="true"></span>
-                                                        <span class="visually-hidden">Previous</span>
-                                                    </a>
-                                                    <a class="carousel-control-next" style="max-height: 90%" type="button" data-bs-target="#screenshot-carousel-fade" data-bs-slide="next">
-                                                        <span style="text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);" class="bg-black w-auto rounded-pill p-1  fa fa-arrow-right" aria-hidden="true"></span>
-                                                        <span class="visually-hidden">Next</span>
-                                                    </a>
+                                                    @if(count($screenshots) > 1)
+                                                        <a class="carousel-control-prev" style="max-height: 90%" type="button" data-bs-target="#screenshot-carousel-fade" data-bs-slide="prev">
+                                                            <span style="text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);" class="bg-black w-auto rounded-pill p-1  fa fa-arrow-left" aria-hidden="true"></span>
+                                                            <span class="visually-hidden">Previous</span>
+                                                        </a>
+                                                        <a class="carousel-control-next" style="max-height: 90%" type="button" data-bs-target="#screenshot-carousel-fade" data-bs-slide="next">
+                                                            <span style="text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);" class="bg-black w-auto rounded-pill p-1  fa fa-arrow-right" aria-hidden="true"></span>
+                                                            <span class="visually-hidden">Next</span>
+                                                        </a>
+                                                    @endif
                                                 </div>
                                                 @else
                                                 <img class="d-block w-100" style="" src='{{ route('screenshot.show', [$game->id, 1]) }}'

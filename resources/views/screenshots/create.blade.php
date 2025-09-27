@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="page-header">
-                    <h1>Screenshot hinzufügen</h1>
+                    <h1>{{trans('app.upload.screenshot')}}</h1>
                     {!! Breadcrumbs::render('game-screenshot', $game, $screenid) !!}
                 </div>
             </div>
@@ -29,12 +29,12 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-header">
-                            Screenshot hochladen
+                            {{trans('app.upload.screenshot')}}
                         </div>
                         <div class="card-body">
                             <div class="form-group" id="row_file">
-                                <label for="file">Screenshot:</label>
-                                <input class="form-control-file" name="file" id="file" type="file" value=""/>
+                                <label for="file">{{trans('app.screenshot')}}:</label>
+                                <input class="form-control form-control-file" name="file" id="file" type="file" value="" required/>
                                 <span> [<span class="req">req</span>] nur PNG!</span>
                             </div>
                         </div>

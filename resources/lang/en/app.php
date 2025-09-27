@@ -403,6 +403,7 @@ return [
       'titlescreen' => 'Replace titlescreen',
       'screenshot' => 'Replace screenshot',
     ],
+    'screenshot' => 'Upload screenshot',
     'titlescreen' => 'Upload titlescreen',
   ],
   'upload_file'                                     => 'Upload file',

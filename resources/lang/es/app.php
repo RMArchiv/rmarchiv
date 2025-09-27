@@ -403,6 +403,7 @@ return [
       'titlescreen' => 'Reemplazar pantalla de título',
       'screenshot' => 'Reemplazar captura de pantalla',
     ],
+    'screenshot' => 'Subir captura de pantalla',
     'titlescreen' => 'Subir pantalla de título',
   ],
   'upload_file'                                     => 'Subir fichero',
