@@ -2,6 +2,27 @@ import { autocomplete } from "@algolia/autocomplete-js";
 import "@algolia/autocomplete-theme-classic";
 import axios from "axios";
 
+
+function debouncePromise(fn, time) {
+  let timer = undefined;
+
+  return function debounced(...args) {
+    if (timer) {
+      clearTimeout(timer); // Clear the timeout first if it's already defined.
+    }
+
+    return new Promise((resolve) => {
+      timer = setTimeout(() => resolve(fn(...args)), time);
+    });
+  };
+}
+
+const DEBOUNCE_MS = 200;
+const debounced = debouncePromise(
+  (items) => Promise.resolve(items),
+  DEBOUNCE_MS,
+);
+
 /**
  * Unified configuration of autocomplete
  * A find autocomplete will try to set an input container using inputSelector
@@ -33,7 +54,7 @@ export function createAutocomplete({
     },
     placeholder:placeholder,
     getSources() {
-      return [
+      return debounced([
         {
           sourceId: "querySuggestions",
           getItems({ query }) {
@@ -90,7 +111,6 @@ export function createAutocomplete({
                   /** @type HTMLInputElement */
                   let input = document.querySelector(inputSelector);
                   if (input) {
-                    console.log(JSON.stringify(params))
                     input.value = params?.item?.value.toString();
                   }
                 }
@@ -217,7 +237,7 @@ export function createAutocomplete({
           },
           ...additionalSourceProps,
         },
-      ];
+      ]);
     },
     ...additionalProps
   });
