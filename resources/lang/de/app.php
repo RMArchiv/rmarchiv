@@ -173,6 +173,7 @@ return [
     'gamesubtitle' => 'Spiel-Untertitel',
     'gametitle' => 'Spieltitel',
     'gametype' => 'Spieltyp',
+    'general_information' => 'Allgemeine Informationen',
     'gfx' => 'Grafiken',
     'greetings_your' => 'Grüße, dein',
     'hello' => 'Hallo',

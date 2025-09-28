@@ -174,6 +174,7 @@ return [
   'gamesubtitle'                      => 'Game subtitle',
   'gametitle'                         => 'Game title',
   'gametype'                          => 'Game type',
+  'general_information'               => 'General information',
   'gfx'                               => 'Gfx',
   'greetings_your'                    => 'Best regards, your',
   'hello'                             => 'Hello',

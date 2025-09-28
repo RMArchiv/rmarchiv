@@ -174,6 +174,7 @@ return [
   'gamesubtitle'                      => 'Subtítulo del juego',
   'gametitle'                         => 'Título del juego',
   'gametype'                          => 'Tipo de juego',
+  'general_information'               => 'Información general',
   'gfx'                               => 'Gráficos',
   'greetings_your'                    => 'Saludos, tu',
   'hello'                             => 'Hola',
