@@ -43,15 +43,15 @@ class ScreenshotController extends Controller
                 if(\Storage::exists($cachePath)) {
                     $img = Image::read(\Storage::get($cachePath));
                     if($img) {
-                        return response()->image($img, Format::WEBP);
+                        return response()->image($img, Format::JPEG);
                     }
-                    return response($img, 200, ['Content-Type'=> 'image/webp']);
+                    return response($img, 200, ['Content-Type'=> 'image/jpeg']);
                 }
                 else {
-                    $result = Image::read(\Storage::get( $s->filename))->toWebp(quality:80);
+                    $result = Image::read(\Storage::get( $s->filename))->toJpeg(quality:80);
                     $result->save(Storage::path($cachePath));
                     $img = $result;
-                    return response($img, 200, ['Content-Type'=> 'image/webp']);
+                    return response($img, 200, ['Content-Type'=> 'image/jpeg']);
                 }
             } else {
                 $response = $response = response()->image(Image::read(\Storage::get( $s->filename)), Format::PNG);
