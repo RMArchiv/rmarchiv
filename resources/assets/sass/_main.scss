@@ -303,3 +303,11 @@ body {
 .pagination {
   margin-bottom: 0px;
 }
+
+.bg-rm-back {
+  background-color: $rm-back;
+}
+
+.bg-rm-back-alpha {
+  background-color: rgba($rm-back,0.8);
+}

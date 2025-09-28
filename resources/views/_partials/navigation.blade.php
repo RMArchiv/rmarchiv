@@ -48,7 +48,7 @@
                     <div class="navbar-nav d-none d-lg-flex me-2 gap-1">
                         @if(Auth::check())
                             <li class="nav-item dropdown px-1 d-none d-lg-flex align-items-center">
-                                <a href="#" class="nav-link dropdown-toggle rounded-pill bg-black d-flex gap-2 align-items-center" data-bs-toggle="dropdown" role="button" aria-expanded="false"
+                                <a href="#" class="nav-link dropdown-toggle rounded-pill bg-rm-back d-flex gap-2 align-items-center" data-bs-toggle="dropdown" role="button" aria-expanded="false"
                                 data-vivaldi-spatnav-clickable="1">
                                     <span class="lh-base fa fa-upload"></span>
                                     <span class="lh-base caret"></span>
@@ -88,7 +88,7 @@
                         @endif
                         @if(Auth::check())
                             <li class="nav-item dropdown px-1 d-none d-lg-flex align-items-center">
-                                <a href="#" class="nav-link dropdown-toggle rounded-pill bg-black block d-lg-flex gap-2 align-items-center" data-bs-toggle="dropdown" role="button" aria-expanded="false"
+                                <a href="#" class="nav-link dropdown-toggle rounded-pill bg-rm-back block d-lg-flex gap-2 align-items-center" data-bs-toggle="dropdown" role="button" aria-expanded="false"
                                 data-vivaldi-spatnav-clickable="1">
                                     <img onerror="this.onerror=null; this.src='/assets/icon_rmarchiv.png'" width="16px" src='//{{ config('app.avatar_path') }}?gender=male&id={{ Auth::user()->id  }}' alt="{{ Auth::user()->name }}" class='avatar' />
                                     {{-- alternative icon --}}
@@ -116,14 +116,14 @@
                                 </div>
                             </li>
                         @else
-                            <li class="nav-item px-1 d-none d-lg-flex align-items-center"><a class="nav-link rounded-pill bg-black d-flex flex-row align-items-center gap-2" href="{{ action('Auth\LoginController@showLoginForm') }}"><i class="fa fa-sign-in w-auto"></i><span class="d-xl-block d-none">{{trans("app.login")}}</span></a></li>
-                            <li class="nav-item px-1 d-none d-lg-flex align-items-center"><a class="nav-link rounded-pill bg-black d-flex flex-row align-items-center gap-2" href="{{ action('Auth\RegisterController@showRegistrationForm') }}"><i class="fa fa-address-card w-auto"></i><span class="d-xl-block d-none">{{trans("app.register")}}</span></a></li>
+                            <li class="nav-item px-1 d-none d-lg-flex align-items-center"><a class="nav-link rounded-pill bg-rm-back d-flex flex-row align-items-center gap-2" href="{{ action('Auth\LoginController@showLoginForm') }}"><i class="fa fa-sign-in w-auto"></i><span class="d-xl-block d-none">{{trans("app.login")}}</span></a></li>
+                            <li class="nav-item px-1 d-none d-lg-flex align-items-center"><a class="nav-link rounded-pill bg-rm-back d-flex flex-row align-items-center gap-2" href="{{ action('Auth\RegisterController@showRegistrationForm') }}"><i class="fa fa-address-card w-auto"></i><span class="d-xl-block d-none">{{trans("app.register")}}</span></a></li>
                         @endif
                     </div>
                     <ul class="inner-icons d-flex flex-column d-lg-none gap-1 w-100" id="authCollapsedParent">
                         @if(Auth::check())
                             <div class="dropstart gap-1">
-                                <button href="#" class="dropdown-toggle nav-link p-2 rounded-pill bg-black d-flex flex-row align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                <button href="#" class="dropdown-toggle nav-link p-2 rounded-pill bg-rm-back d-flex flex-row align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"
                                     aria-controls="collapse-submission">
                                     <span class="lh-base fa fa-upload"></span>
                                     <span class="lh-base caret"></span>
@@ -168,7 +168,7 @@
                             </div>
 
                             <div class="dropstart gap-1">
-                                <button href="#" class="dropdown-toggle nav-link p-2 rounded-pill bg-black d-flex flex-row align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                <button href="#" class="dropdown-toggle nav-link p-2 rounded-pill bg-rm-back d-flex flex-row align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"
                                     aria-controls="collapse-submission2">
                                     <img onerror="this.onerror=null; this.src='/assets/icon_rmarchiv.png'" width="16px" src='//{{ config('app.avatar_path') }}?gender=male&id={{ Auth::user()->id  }}' alt="{{ Auth::user()->name }}" class='avatar' />
                                     {{-- alternative icon --}}
@@ -202,8 +202,8 @@
                                 </div>
                             </div>
                         @else
-                            <li class="nav-item px-1 d-flex d-lg-none align-items-center"><a class="nav-link p-2 rounded-pill bg-black d-flex flex-row align-items-center gap-2" href="{{ action('Auth\LoginController@showLoginForm') }}"><i class="fa fa-sign-in w-auto"></i><span class="d-block">{{trans("app.login")}}</span></a></li>
-                            <li class="nav-item px-1 d-flex d-lg-none align-items-center"><a class="nav-link p-2 rounded-pill bg-black d-flex flex-row align-items-center gap-2" href="{{ action('Auth\RegisterController@showRegistrationForm') }}"><i class="fa fa-address-card w-auto"></i><span class="d-block">{{trans("app.register")}}</span></a></li>
+                            <li class="nav-item px-1 d-flex d-lg-none align-items-center"><a class="nav-link p-2 rounded-pill bg-rm-back d-flex flex-row align-items-center gap-2" href="{{ action('Auth\LoginController@showLoginForm') }}"><i class="fa fa-sign-in w-auto"></i><span class="d-block">{{trans("app.login")}}</span></a></li>
+                            <li class="nav-item px-1 d-flex d-lg-none align-items-center"><a class="nav-link p-2 rounded-pill bg-rm-back d-flex flex-row align-items-center gap-2" href="{{ action('Auth\RegisterController@showRegistrationForm') }}"><i class="fa fa-address-card w-auto"></i><span class="d-block">{{trans("app.register")}}</span></a></li>
                         @endif
                     </ul>
                 </ul>
