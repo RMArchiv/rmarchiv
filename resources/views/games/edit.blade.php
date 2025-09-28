@@ -40,7 +40,7 @@
             <div class="col-md-12">
                 <div class="card form">
                     <div class="card-header">
-                        Grundinformationen
+                        {{trans('app.information')}}
                     </div>
                     <div class="card-body">
                         <div class="form-group">
@@ -173,7 +173,7 @@
                                 <input type="text" class="form-control" id="websiteurl" name="websiteurl" value="{{ $game->website_url }}">
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="trailer">
                             <label for="youtube" class="col-lg-2 col-form-label">{{ trans('app.trailer') }} *</label>
                             <div class="col-lg-10">
                                 <input type="text" class="form-control" id="youtube" name="youtube"  placeholder="https://www.youtube.com/watch?v=V7tKQ4AuOk8" value="{{ $game->youtube }}">
