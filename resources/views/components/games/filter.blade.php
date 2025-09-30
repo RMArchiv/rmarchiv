@@ -1,5 +1,5 @@
 <div class="d-flex gap-2 py-2">
-    <form name="maker" action="/games">
+    <form name="maker" action="{{Request::url()}}">
         <noscript>
         <div class="d-flex gap-2">
             <div class="input-group input-group-sm">

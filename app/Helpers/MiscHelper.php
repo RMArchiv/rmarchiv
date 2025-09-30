@@ -7,6 +7,7 @@
 
 namespace App\Helpers;
 
+use Illuminate\Support\Facades\Request;
 use NotificationChannels\Discord\Discord;
 
 class MiscHelper
@@ -105,5 +106,32 @@ class MiscHelper
         $e = floor(log($bytes, 1024));
 
         return round($bytes / pow(1024, $e), 2).' '.$s[$e];
+    }
+
+    /**
+     * Retrieve query string and convert it to string format: ?query1=value1&query2=value2
+     * In case of no existing query string data returns empty string.
+     *
+     * @return string
+     */
+    public static function getQueryString($keepPage = false)
+    {
+        if ($keepPage) {
+            if (count(Request::query()) > 0) {
+                return '?' . http_build_query(Request::query());
+            } else {
+                return '';
+            }
+        } else {
+            if (count(array_filter(Request::query(), function ($key) {
+                return $key !== 'page';
+            }, ARRAY_FILTER_USE_KEY)) > 0) {
+                return '?' . http_build_query(array_filter(Request::query(), function ($key) {
+                    return $key !== 'page';
+                }, ARRAY_FILTER_USE_KEY));
+            } else {
+                return '';
+            }
+        }
     }
 }

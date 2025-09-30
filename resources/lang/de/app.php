@@ -401,8 +401,8 @@ return [
         'action' => 'Hochladen',
         'replace' => [
             'action' => 'Ersetzen',
-            'titlescreen' => 'Ersetze titlescreen',
-            'screenshot' => 'Ersetze screenshot',
+            'titlescreen' => 'Ersetze Titlescreen',
+            'screenshot' => 'Ersetze Screenshot',
         ],
         'screenshot' => 'Screenshot hochladen',
         'titlescreen' => 'Titlescreen hochladen',
