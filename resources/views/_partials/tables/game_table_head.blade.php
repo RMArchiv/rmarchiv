@@ -3,40 +3,41 @@
     $action = str_replace("App\\Http\\Controllers\\", '', $action);
 @endphp
 
+
 <li class="list-group-item action">
     <span class="text-capitalize">{{trans('app.sort.order_by')}}:</span>
         @if($orderby == 'title')
             @if($direction == 'asc')
                 @if(isset($id))
                     <a class="activated"
-                       href="{{ action($action, [$id, 'title', 'desc']) }}">{{ trans('app.title') }}</a>
+                       href="{{ action($action, [$id, 'title', 'desc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.title') }}</a>
                 @elseif(isset($term))
                     <a class="activated"
-                       href="{{ action($action, ['title', 'desc', $term]) }}">{{ trans('app.title') }}</a>
+                       href="{{ action($action, ['title', 'desc', $term]) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.title') }}</a>
                 @else
                     <a class="activated"
-                       href="{{ action($action, ['title', 'desc']) }}">{{ trans('app.title') }}</a>
+                       href="{{ action($action, ['title', 'desc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.title') }}</a>
                 @endif
             @else
                 @if(isset($id))
                     <a class="activated reverse"
-                       href="{{ action($action, [$id, 'title', 'asc']) }}">{{ trans('app.title') }}</a>
+                       href="{{ action($action, [$id, 'title', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.title') }}</a>
                 @elseif(isset($term))
                     <a class="activated"
-                       href="{{ action($action, ['title', 'asc', $term]) }}">{{ trans('app.title') }}</a>
+                       href="{{ action($action, ['title', 'asc', $term]) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.title') }}</a>
                 @else
                     <a class="activated reverse"
-                       href="{{ action($action, ['title', 'asc']) }}">{{ trans('app.title') }}</a>
+                       href="{{ action($action, ['title', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.title') }}</a>
                 @endif
             @endif
         @else
             @if(isset($id))
-            <a class="" href="{{ action($action, [$id, 'title', 'asc']) }}">{{ trans('app.title') }}</a>
+            <a class="" href="{{ action($action, [$id, 'title', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.title') }}</a>
             @elseif(isset($term))
                 <a class=""
-                   href="{{ action($action, ['title', 'asc', $term]) }}">{{ trans('app.title') }}</a>
+                   href="{{ action($action, ['title', 'asc', $term]) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.title') }}</a>
             @else
-            <a class="" href="{{ action($action, ['title', 'asc']) }}">{{ trans('app.title') }}</a>
+            <a class="" href="{{ action($action, ['title', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.title') }}</a>
             @endif
         @endif
             <span> • </span>
@@ -44,27 +45,27 @@
             @if($direction == 'asc')
                 @if(isset($id))
                     <a class="activated"
-                       href="{{ action($action, [$id, 'developer.name', 'desc']) }}">{{ trans('app.developer') }}</a>
+                       href="{{ action($action, [$id, 'developer.name', 'desc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.developer') }}</a>
                 @else
                     <a class="activated"
-                       href="{{ action($action, ['developer.name', 'desc']) }}">{{ trans('app.developer') }}</a>
+                       href="{{ action($action, ['developer.name', 'desc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.developer') }}</a>
                 @endif
             @else
                 @if(isset($id))
                     <a class="activated reverse"
-                       href="{{ action($action, [$id, 'developer.name', 'asc']) }}">{{ trans('app.developer') }}</a>
+                       href="{{ action($action, [$id, 'developer.name', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.developer') }}</a>
                 @else
                     <a class="activated reverse"
-                       href="{{ action($action, ['developer.name', 'asc']) }}">{{ trans('app.developer') }}</a>
+                       href="{{ action($action, ['developer.name', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.developer') }}</a>
                 @endif
             @endif
         @else
             @if(isset($id))
                 <a class=""
-                   href="{{ action($action, [$id, 'developer.name', 'asc']) }}">{{ trans('app.developer') }}</a>
+                   href="{{ action($action, [$id, 'developer.name', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.developer') }}</a>
             @else
                 <a class=""
-                   href="{{ action($action, ['developer.name', 'asc']) }}">{{ trans('app.developer') }}</a>
+                   href="{{ action($action, ['developer.name', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.developer') }}</a>
             @endif
         @endif
             <span> • </span>
@@ -72,27 +73,27 @@
             @if($direction == 'asc')
                 @if(isset($id))
                     <a class="activated"
-                       href="{{ action($action, [$id, 'release_date', 'desc']) }}">{{ trans('app.release_date') }}</a>
+                       href="{{ action($action, [$id, 'release_date', 'desc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.release_date') }}</a>
                 @else
                     <a class="activated"
-                       href="{{ action($action, ['release_date', 'desc']) }}">{{ trans('app.release_date') }}</a>
+                       href="{{ action($action, ['release_date', 'desc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.release_date') }}</a>
                 @endif
             @else
                 @if(isset($id))
                     <a class="activated reverse"
-                       href="{{ action($action, [$id, 'release_date', 'asc']) }}">{{ trans('app.release_date') }}</a>
+                       href="{{ action($action, [$id, 'release_date', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.release_date') }}</a>
                 @else
                     <a class="activated reverse"
-                       href="{{ action($action, ['release_date', 'asc']) }}">{{ trans('app.release_date') }}</a>
+                       href="{{ action($action, ['release_date', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.release_date') }}</a>
                 @endif
             @endif
         @else
             @if(isset($id))
                 <a class=""
-                   href="{{ action($action, [$id, 'release_date', 'asc']) }}">{{ trans('app.release_date') }}</a>
+                   href="{{ action($action, [$id, 'release_date', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.release_date') }}</a>
             @else
                 <a class=""
-                   href="{{ action($action, ['release_date', 'asc']) }}">{{ trans('app.release_date') }}</a>
+                   href="{{ action($action, ['release_date', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.release_date') }}</a>
             @endif
         @endif
             <span> • </span>
@@ -100,54 +101,54 @@
             @if($direction == 'asc')
                 @if(isset($id))
                     <a class="activated"
-                       href="{{ action($action, [$id, 'created_at', 'desc']) }}">{{ trans('app.created_at') }}</a>
+                       href="{{ action($action, [$id, 'created_at', 'desc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.created_at') }}</a>
                 @else
                     <a class="activated"
-                       href="{{ action($action, ['created_at', 'desc']) }}">{{ trans('app.created_at') }}</a>
+                       href="{{ action($action, ['created_at', 'desc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.created_at') }}</a>
                 @endif
             @else
                 @if(isset($id))
                     <a class="activated reverse"
-                       href="{{ action($action, [$id, 'created_at', 'asc']) }}">{{ trans('app.created_at') }}</a>
+                       href="{{ action($action, [$id, 'created_at', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.created_at') }}</a>
                 @else
                     <a class="activated reverse"
-                       href="{{ action($action, ['created_at', 'asc']) }}">{{ trans('app.created_at') }}</a>
+                       href="{{ action($action, ['created_at', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.created_at') }}</a>
                 @endif
             @endif
         @else
             @if(isset($id))
                 <a class=""
-                   href="{{ action($action, [$id, 'created_at', 'asc']) }}">{{ trans('app.created_at') }}</a>
+                   href="{{ action($action, [$id, 'created_at', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.created_at') }}</a>
             @else
                 <a class=""
-                   href="{{ action($action, ['created_at', 'asc']) }}">{{ trans('app.created_at') }}</a>
+                   href="{{ action($action, ['created_at', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.created_at') }}</a>
             @endif
         @endif
             <span> • </span>
         @if($orderby == 'voteup')
             @if($direction == 'asc')
                 @if(isset($id))
-                    <a class="activated" href="{{ action($action, [$id, 'voteup', 'desc']) }}"><img
+                    <a class="activated" href="{{ action($action, [$id, 'voteup', 'desc']) . App\Helpers\MiscHelper::getQueryString() }}"><img
                                 src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/></a>
                 @else
-                    <a class="activated" href="{{ action($action, ['voteup', 'desc']) }}"><img src='/assets/rate_up.gif'
+                    <a class="activated" href="{{ action($action, ['voteup', 'desc']) . App\Helpers\MiscHelper::getQueryString() }}"><img src='/assets/rate_up.gif'
                                                                                                alt='{{ trans('app.rate_up') }}'/></a>
                 @endif
             @else
                 @if(isset($id))
-                    <a class="activated reverse" href="{{ action($action, [$id, 'voteup', 'asc']) }}"><img
+                    <a class="activated reverse" href="{{ action($action, [$id, 'voteup', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}"><img
                                 src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/></a>
                 @else
-                    <a class="activated reverse" href="{{ action($action, ['voteup', 'asc']) }}"><img
+                    <a class="activated reverse" href="{{ action($action, ['voteup', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}"><img
                                 src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/></a>
                 @endif
             @endif
         @else
             @if(isset($id))
-                <a class="" href="{{ action($action, [$id, 'voteup', 'asc']) }}"><img src='/assets/rate_up.gif'
+                <a class="" href="{{ action($action, [$id, 'voteup', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}"><img src='/assets/rate_up.gif'
                                                                                       alt='{{ trans('app.rate_up') }}'/></a>
             @else
-                <a class="" href="{{ action($action, ['voteup', 'asc']) }}"><img src='/assets/rate_up.gif'
+                <a class="" href="{{ action($action, ['voteup', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}"><img src='/assets/rate_up.gif'
                                                                                  alt='{{ trans('app.rate_up') }}'/></a>
             @endif
         @endif
@@ -155,27 +156,27 @@
         @if($orderby == 'votedown')
             @if($direction == 'asc')
                 @if(isset($id))
-                    <a class="activated" href="{{ action($action, [$id, 'votedown', 'desc']) }}"><img
+                    <a class="activated" href="{{ action($action, [$id, 'votedown', 'desc']) . App\Helpers\MiscHelper::getQueryString() }}"><img
                                 src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/></a>
                 @else
-                    <a class="activated" href="{{ action($action, ['votedown', 'desc']) }}"><img
+                    <a class="activated" href="{{ action($action, ['votedown', 'desc']) . App\Helpers\MiscHelper::getQueryString() }}"><img
                                 src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/></a>
                 @endif
             @else
                 @if(isset($id))
-                    <a class="activated reverse" href="{{ action($action, [$id, 'votedown', 'asc']) }}"><img
+                    <a class="activated reverse" href="{{ action($action, [$id, 'votedown', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}"><img
                                 src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/></a>
                 @else
-                    <a class="activated reverse" href="{{ action($action, ['votedown', 'asc']) }}"><img
+                    <a class="activated reverse" href="{{ action($action, ['votedown', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}"><img
                                 src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/></a>
                 @endif
             @endif
         @else
             @if(isset($id))
-                <a class="" href="{{ action($action, [$id, 'votedown', 'asc']) }}"><img src='/assets/rate_down.gif'
+                <a class="" href="{{ action($action, [$id, 'votedown', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}"><img src='/assets/rate_down.gif'
                                                                                         alt='{{ trans('app.rate_down') }}'/></a>
             @else
-                <a class="" href="{{ action($action, ['votedown', 'asc']) }}"><img src='/assets/rate_down.gif'
+                <a class="" href="{{ action($action, ['votedown', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}"><img src='/assets/rate_down.gif'
                                                                                    alt='{{ trans('app.rate_down') }}'/></a>
             @endif
         @endif
@@ -184,25 +185,25 @@
             @if($direction == 'asc')
                 @if(isset($id))
                     <a class="activated"
-                       href="{{ action($action, [$id, 'avg', 'desc']) }}">{{ trans('app.avg') }}</a>
+                       href="{{ action($action, [$id, 'avg', 'desc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.avg') }}</a>
                 @else
                     <a class="activated"
-                       href="{{ action($action, ['avg', 'desc']) }}">{{ trans('app.avg') }}</a>
+                       href="{{ action($action, ['avg', 'desc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.avg') }}</a>
                 @endif
             @else
                 @if(isset($id))
                     <a class="activated reverse"
-                       href="{{ action($action, [$id, 'avg', 'asc']) }}">{{ trans('app.avg') }}</a>
+                       href="{{ action($action, [$id, 'avg', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.avg') }}</a>
                 @else
                     <a class="activated reverse"
-                       href="{{ action($action, ['avg', 'asc']) }}">{{ trans('app.avg') }}</a>
+                       href="{{ action($action, ['avg', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.avg') }}</a>
                 @endif
             @endif
         @else
             @if(isset($id))
-            <a class="" href="{{ action($action, [$id, 'avg', 'asc']) }}">{{ trans('app.avg') }}</a>
+            <a class="" href="{{ action($action, [$id, 'avg', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.avg') }}</a>
             @else
-            <a class="" href="{{ action($action, ['avg', 'asc']) }}">{{ trans('app.avg') }}</a>
+            <a class="" href="{{ action($action, ['avg', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.avg') }}</a>
             @endif
         @endif
             <span> • </span>
@@ -210,48 +211,48 @@
             @if($direction == 'asc')
                 @if(isset($id))
                     <a class="activated"
-                       href="{{ action($action, [$id, 'views', 'desc']) }}">{{ trans('app.popularity') }}</a>
+                       href="{{ action($action, [$id, 'views', 'desc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.popularity') }}</a>
                 @else
                     <a class="activated"
-                       href="{{ action($action, ['views', 'desc']) }}">{{ trans('app.popularity') }}</a>
+                       href="{{ action($action, ['views', 'desc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.popularity') }}</a>
                 @endif
             @else
                 @if(isset($id))
                     <a class="activated reverse"
-                       href="{{ action($action, [$id, 'views', 'asc']) }}">{{ trans('app.popularity') }}</a>
+                       href="{{ action($action, [$id, 'views', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.popularity') }}</a>
                 @else
                     <a class="activated reverse"
-                       href="{{ action($action, ['views', 'asc']) }}">{{ trans('app.popularity') }}</a>
+                       href="{{ action($action, ['views', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.popularity') }}</a>
                 @endif
             @endif
         @else
             @if(isset($id))
                 <a class=""
-                   href="{{ action($action, [$id, 'views', 'asc']) }}">{{ trans('app.popularity') }}</a>
+                   href="{{ action($action, [$id, 'views', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.popularity') }}</a>
             @else
-            <a class="" href="{{ action($action, ['views', 'asc']) }}">{{ trans('app.popularity') }}</a>
+            <a class="" href="{{ action($action, ['views', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.popularity') }}</a>
             @endif
         @endif
             <span> • </span>
         @if($orderby == 'comments')
             @if($direction == 'asc')
                 @if(isset($id))
-                <a class="activated" href="{{ action($action, [$id, 'comments', 'desc']) }}">{{ trans('app.comments') }}</a>
+                <a class="activated" href="{{ action($action, [$id, 'comments', 'desc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.comments') }}</a>
                 @else
-                <a class="activated" href="{{ action($action, ['comments', 'desc']) }}">{{ trans('app.comments') }}</a>
+                <a class="activated" href="{{ action($action, ['comments', 'desc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.comments') }}</a>
                 @endif
             @else
                 @if(isset($id))
-                <a class="activated reverse" href="{{ action($action, [$id, 'comments', 'asc']) }}">{{ trans('app.comments') }}</a>
+                <a class="activated reverse" href="{{ action($action, [$id, 'comments', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.comments') }}</a>
                 @else
-                <a class="activated reverse" href="{{ action($action, ['comments', 'asc']) }}">{{ trans('app.comments') }}</a>
+                <a class="activated reverse" href="{{ action($action, ['comments', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.comments') }}</a>
                 @endif
             @endif
         @else
             @if(isset($id))
-            <a class="" href="{{ action($action, [$id, 'comments', 'asc']) }}">{{ trans('app.comments') }}</a>
+            <a class="" href="{{ action($action, [$id, 'comments', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.comments') }}</a>
             @else
-            <a class="" href="{{ action($action, ['comments', 'asc']) }}">{{ trans('app.comments') }}</a>
+            <a class="" href="{{ action($action, ['comments', 'asc']) . App\Helpers\MiscHelper::getQueryString() }}">{{ trans('app.comments') }}</a>
             @endif
         @endif
 
