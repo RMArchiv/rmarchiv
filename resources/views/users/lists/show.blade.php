@@ -32,7 +32,9 @@
                         ])
                     </div>
                     <div class="h-100">
+                        @if(Auth::id() == $list->user_id)
                         <a title={{trans('app.delete_game')}} href="{{ action('UserListController@delete_game', [$list->id,$game->id]) }}" class="btn btn-secondary fa fa-minus d-flex justify-content-center"></a>
+                        @endif
                     </div>
                 </div>
             </div>
