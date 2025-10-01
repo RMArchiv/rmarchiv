@@ -8,7 +8,7 @@
  {{-- <div id="row_message">
     <textarea style="display:none;" name="msg" id="msg">@if(isset($edit_text)){{ $edit_text}}@endif</textarea>
 </div> --}}
-<div class="editor-container__editor">
+<div class="mt-2 editor-container__editor">
     <div>
         <textarea class="editor" style="display:none;" name="msg" id="msg">@if(isset($edit_text)){{ $edit_text}}@endif</textarea>
     </div>
