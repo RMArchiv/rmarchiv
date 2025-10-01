@@ -40,7 +40,7 @@
             <div class="col-md-12">
                 <div class="card form">
                     <div class="card-header">
-                        {{trans('app.information')}}
+                        {{trans('app.general_information')}}
                     </div>
                     <div class="card-body">
                         <div class="form-group">

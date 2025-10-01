@@ -150,6 +150,8 @@
         let rmBaseP2 = "#215285";
         let rmBaseP3 = "#2a6bab";
 
+        Chart.defaults.color = rmText;
+
         const perYearCtx = document.getElementById("releasePerYear");
         let releaseChart = new Chart(perYearCtx, {
             type: 'line',
@@ -235,6 +237,7 @@
                     }
                 },
                 layout: {
+                    color:"red",
                     padding: {
                         left: 10,
                         right: 10,
@@ -261,7 +264,7 @@
                 datasets: [
                     {
                         data: {{ Illuminate\Support\Js::from( $makerReleases[1] ) }},
-                        backgroundColor: Array.from(Array(makerCount).keys().map(()=>"#"+randomHexColor() + "A0")),
+                        backgroundColor: Array.from(Array(makerCount).keys()).map(()=>"#"+randomHexColor() + "A0"),
                         borderColor: rmBaseP3,
                         borderWidth: 0,
                         fill: true,
@@ -276,11 +279,6 @@
                 }
             }
         });
-
-
-
-
-
     });
     </script>
 @endsection
