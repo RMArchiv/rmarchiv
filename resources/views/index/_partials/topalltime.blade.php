@@ -31,7 +31,7 @@
                                            title="{{ $g->langname }}"></span>
                             </span>
                             <span class='group'>
-                                :: {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($g->id) !!}
+                                :: <x-util.devlinks :gameid="($g->id)" />
                             </span>
                         </span>
                     </span>

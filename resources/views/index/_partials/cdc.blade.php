@@ -39,7 +39,7 @@
                             </span>
                         </span>
                         <span class='group'>
-                            :: {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($cdc->game_id) !!}
+                            :: <x-util.devlinks :gameid="($cdc->game_id)" />
                         </span>
                     </span>
                 </span>

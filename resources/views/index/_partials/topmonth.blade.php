@@ -27,7 +27,7 @@
 
                     </span>
                     <span class='group'>
-                        :: {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($g->gameid) !!}
+                        :: <x-util.devlinks :gameid="($g->gameid)" />
                     </span>
                         </span>
                     </span>

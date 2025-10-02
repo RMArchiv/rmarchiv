@@ -2,22 +2,22 @@
 @section('pagetitle', 'einsenden')
 @section('content')
     @if(Auth::check())
-        <div id="content">
+        <div id="content" class="container">
             <div class="rmarchivtbl" id="rmarchivbox_submit">
                 <h2>Was willst du einsenden?</h2>
                 <ul class='boxlist'>
-                    <li><a href='{{ url('games/create') }}'>einsenden eines spiels</a></li>
-                    <li><a href='{{ url('resources/create') }}'>einsenden von ressourcen</a></li>
-                    <li><a href='{{ url('news/create') }}'>einsenden von news</a></li>
-                    <li><a href='{{ url('submit/logo') }}'>upload eines logos</a></li>
-                    <li><a href='{{ url('logo/vote') }}'>bewerte logos</a></li>
+                    <li><a href='{{ url('games/create') }}'>{{trans('app.submit_game')}}</a></li>
+                    <li><a href='{{ url('resources/create') }}'>{{trans('app.submit_resource')}}</a></li>
+                    <li><a href='{{ url('news/create') }}'>{{trans('app.submit_news')}}</a></li>
+                    <li><a href='{{ url('submit/logo') }}'>{{trans('app.submit_logo')}}</a></li>
+                    <li><a href='{{ url('logo/vote') }}'>{{trans('app.rate_logos')}}</a></li>
                 </ul>
                 <h2>Fehlende Dinge</h2>
                 <ul class='boxlist'>
-                    <li><a href='{{ url('missing/gamescreens') }}'>fehlende spielescreenshots</a></li>
-                    <li><a href='{{ url('missing/gamefiles') }}'>fehlende spieledateien</a></li>
-                    <li><a href='{{ url('missing/gamedesc') }}'>fehlende spielebeschreibungen</a></li>
-                    <li><a href='{{ url('missing/notags') }}'>ohne tags</a></li>
+                    <li><a href='{{ url('missing/gamescreens') }}'>{{trans('app.missing_gamescreens')}}</a></li>
+                    <li><a href='{{ url('missing/gamefiles') }}'>{{trans('app.missing_gamefiles')}}</a></li>
+                    <li><a href='{{ url('missing/gamedesc') }}'>{{trans('app.missing_gamedescriptions')}}</a></li>
+                    <li><a href='{{ url('missing/notags') }}'>{{trans('app.games_without_tags')}}</a></li>
                 </ul>
                 <h2>Admin Only</h2>
                 <ul class="boxlist">
@@ -44,7 +44,7 @@
         </div>
     @else
         <div class="rmarchivtbl errorbox">
-            <h2>{!! trans('app.login_needed') !!}</h2>
+            <h2>{{ trans('app.login_needed') }}</h2>
         </div>
     @endif
 
