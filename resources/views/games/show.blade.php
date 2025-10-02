@@ -8,9 +8,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="page-header">
+                    <div class="page-header d-flex flex-row">
+                        <h1>
+                            <span id='title'><big>{{ $game->title }}</big>@if($game->subtitle) :: {{ $game->subtitle }}@endif</span>
+                        </h1>
                         @if(Auth::check())
-                            <div class='btn-toolbar float-end'>
+                            <div class='btn-toolbar align-self-start'>
                                 <div class='btn-group'>
                                     @if(Auth::check())
                                         @if(Auth::user()->userlists)
@@ -36,12 +39,9 @@
                                 </div>
                             </div>
                         @endif
-                        <h1>
-                            <span id='title'><big>{{ $game->title }}</big>@if($game->subtitle) :: {{ $game->subtitle }}@endif</span>
-                        </h1>
-                        {!! Breadcrumbs::render('game', $game) !!}
                     </div>
                 </div>
+                {!! Breadcrumbs::render('game', $game) !!}
             </div>
             <div class="row">
                 <div class="col-md-12">

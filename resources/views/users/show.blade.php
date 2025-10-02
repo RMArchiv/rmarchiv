@@ -120,7 +120,7 @@
                                         </span>
                                             <br>
                                         <span class='group'>
-                                            {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($g->id) !!}
+                                            <x-util.devlinks :gameid="($g->id)" />
                                         </span>
                                         <span class="float-end">
                                             {{ trans('app.created_at') }}: {{ \Carbon\Carbon::parse($g->created_at)->diffForHumans() }}
