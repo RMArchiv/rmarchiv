@@ -58,7 +58,7 @@
                                         @endif
                                     </div>
                                     <div class="media-body" style="font-size: 12px;">
-                                        {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($c->game->id) !!}<br>
+                                        <x-util.devlinks :gameid="($c->game->id)" /><br>
                                         {{ trans('app.release_date') }}:
                                         @if(\Carbon\Carbon::parse($c->game->release_date)->year != -1 )
                                             {{ $c->game->release_date }}

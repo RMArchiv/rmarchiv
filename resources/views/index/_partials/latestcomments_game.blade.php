@@ -29,7 +29,7 @@
                         <span><img src="/assets/lng/16/{{ strtoupper($com->game->language->short) }}.png"
                                    title="{{ $com->game->langname }}"></span>
                     </span>
-                    <span class='group'>:: {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($com->game->id) !!}
+                    <span class='group'>:: <x-util.devlinks :gameid="($com->game->id)" />
                     </span>
                 </span>
             </span>

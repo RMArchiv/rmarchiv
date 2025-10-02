@@ -34,7 +34,7 @@
                                    title="{{ $randomgame->language->name }}"></span>
 
                     </span>
-                    <span class='group'>:: {!! $randomgame->developer_links !!}
+                    <span class='group'>:: <x-util.devlinks :gameid="($randomgame->id)" />
                     </span>
                 </span>
             </span>
