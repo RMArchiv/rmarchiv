@@ -27,7 +27,7 @@
 
                     </span>
                     <span class='group'>
-                        :: {!! $g->developer_links !!}
+                        :: <x-util.devlinks :gameid="($g->gameid)" />
                     </span>
                         </span>
                     </span>

@@ -39,7 +39,7 @@
                             </span>
                         </span>
                         <span class='group'>
-                            :: {!! $cdc->game->developer_links !!}
+                            :: <x-util.devlinks :gameid="($cdc->game_id)" />
                         </span>
                     </span>
                 </span>

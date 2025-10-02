@@ -31,7 +31,7 @@
                                            title="{{ $g->langname }}"></span>
                             </span>
                             <span class='group'>
-                                :: {!! $g->developer_links !!}
+                                :: <x-util.devlinks :gameid="($g->id)" />
                             </span>
                         </span>
                     </span>
