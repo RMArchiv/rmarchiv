@@ -252,7 +252,7 @@
                                             </li>
                                             <li class="list-group-item clearfix">
                                                 <ul class="list-unstyled">
-                                                    <li>votes:</li>
+                                                    <li>{{ trans('app.ratings')}}</li>
                                                     <li>
                                                         <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/>&nbsp;{{ @$game->votes['up'] ?? 0 }}
                                                     </li>
