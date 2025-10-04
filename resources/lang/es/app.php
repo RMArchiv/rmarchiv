@@ -298,6 +298,8 @@ return [
   'rate_this_news'                                  => 'Puntúa esta noticia',
   'rate_this_resource'                              => 'Puntúa este recurso',
   'rate_up'                                         => 'Puntúa positivo',
+  'rating'                                          => 'Calificación',
+  'ratings'                                         => 'Calificación',
   'recipients'                                      => 'Recipientes',
   'register'                                        => 'Registrarse',
   'register_account'                                => 'Crear cuenta',
