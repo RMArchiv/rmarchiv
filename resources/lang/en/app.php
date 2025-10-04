@@ -302,6 +302,8 @@ return [
   'rate_this_news'                                  => 'Rate this news',
   'rate_this_resource'                              => 'Rate this resource',
   'rate_up'                                         => 'Rate Up',
+  'rating'                                          => 'Rating',
+  'ratings'                                         => 'Ratings',
   'recipients'                                      => 'Recipients',
   'register'                                        => 'Register',
   'register_account'                                => 'Register account',
