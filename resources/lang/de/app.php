@@ -302,6 +302,7 @@ return [
     'rate_this_resource' => 'Bewerte diese Ressource',
     'rate_up' => 'Gut bewerten',
     'rating' => 'Bewertung',
+    'ratings' => 'Bewertungen',
     'recipients' => 'Empfänger',
     'register' => 'Registrieren',
     'register_account' => 'Account registrieren',
