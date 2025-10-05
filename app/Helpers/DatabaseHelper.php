@@ -213,20 +213,7 @@ class DatabaseHelper
         $developers = GamesDeveloper::leftJoin('developer', 'developer.id', '=', 'games_developer.developer_id')
             ->where('games_developer.game_id', '=', $gameid)
             ->get();
-        // dd($developers);
         return $developers;
-        $res = '';
-        foreach ($developers as $dev) {
-            if ($urlstyle == true) {
-                $res = $res.'<a href="'.url('developer', $dev->id).'">'.$dev->name.'</a> :: ';
-            } else {
-                $res .= $dev->name.', ';
-            }
-        }
-
-        $res = substr($res, 0, -4);
-
-        return $res;
     }
 
     public static function getDevelopersList($gameid, $urlstyle = true)
