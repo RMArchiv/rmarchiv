@@ -62,18 +62,19 @@ class GameController extends Controller
         // Get options for filters
         $makers = array();
         $makerAddedTitle = array();
-        $languages = array();
+
+        $languages = Language::all();
         $languageAddedName = array();
-        foreach ($games->get() as $key => $game) {
-            if(!in_array($game->maker->title, $makerAddedTitle)) {
-                array_push($makers, $game->maker);
-                array_push($makerAddedTitle, $game->maker->title);
-            }
-            if(!in_array($game->language->name, $languageAddedName)) {
-                array_push($languages, $game->language);
-                array_push($languageAddedName, $game->language->name);
-            }
-        }
+        // foreach ($games->get() as $key => $game) {
+        //     if(!in_array($game->maker->title, $makerAddedTitle)) {
+        //         array_push($makers, $game->maker);
+        //         array_push($makerAddedTitle, $game->maker->title);
+        //     }
+        //     if(!in_array($game->language->name, $languageAddedName)) {
+        //         array_push($languages, $game->language);
+        //         array_push($languageAddedName, $game->language->name);
+        //     }
+        // }
         // Apply active filters using query strings
         if(isset($queryMaker) && $queryMaker !== "") {
             $games = $games->where('maker_id', '=', $queryMaker);

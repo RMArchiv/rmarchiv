@@ -21,6 +21,8 @@ use App\Models\Shoutbox;
 use App\Helpers\MiscHelper;
 use App\Models\BoardThread;
 use App\Models\GamesCoupdecoeur;
+use Carbon\CarbonInterval;
+use Illuminate\Support\Facades\Cache;
 
 class IndexController extends Controller
 {
@@ -40,29 +42,32 @@ class IndexController extends Controller
         $shoutbox = Shoutbox::with('user')->orderBy('created_at', 'desc')->limit(5)->get()->reverse();
         $cdc = GamesCoupdecoeur::with('game')->orderBy('created_at', 'desc')->get()->first();
         $threads = BoardThread::with('posts', 'user', 'last_user')->orderBy('last_created_at', 'desc')->limit(10)->get();
+        // dd(now()->addDays(1));
+        $topusers = Cache::flexible('topuser_scored', array(CarbonInterval::minutes(1)->totalSeconds, CarbonInterval::minutes(1)->totalSeconds + 20), function () {
+            return \DB::table('users as u')
+                ->leftJoin('user_role_user as uru', 'u.id', '=', 'uru.user_id')
+                ->leftJoin('user_roles as ur', 'ur.id', '=', 'uru.role_id')
+                ->select([
+                    'u.id as userid',
+                    'u.name as username',
+                    'u.created_at as usercreated_at',
+                    'ur.display_name as rolename',
+                    'ur.description as roledesc',
+                ])
+                ->selectRaw('(SELECT SUM(obyx.value) FROM user_obyx LEFT JOIN obyx ON obyx.id = user_obyx.obyx_id WHERE user_obyx.user_id = u.id) as obyx')
+                ->orderBy('obyx', 'desc')
+                ->limit(10)
+                ->get();
+        });
 
-        $topusers = \DB::table('users as u')
-            ->leftJoin('user_role_user as uru', 'u.id', '=', 'uru.user_id')
-            ->leftJoin('user_roles as ur', 'ur.id', '=', 'uru.role_id')
-            ->select([
-                'u.id as userid',
-                'u.name as username',
-                'u.created_at as usercreated_at',
-                'ur.display_name as rolename',
-                'ur.description as roledesc',
-            ])
-            ->selectRaw('(SELECT SUM(obyx.value) FROM user_obyx LEFT JOIN obyx ON obyx.id = user_obyx.obyx_id WHERE user_obyx.user_id = u.id) as obyx')
-            ->orderBy('obyx', 'desc')
-            ->limit(10)
-            ->get();
-
-        $obyxmax = \DB::table('user_obyx as uo')
-            ->leftJoin('obyx as o', 'o.id', '=', 'uo.obyx_id')
-            ->selectRaw('SUM(o.value) as value')
-            ->groupBy('uo.user_id')
-            ->orderByRaw('SUM(o.value) DESC')
-            ->first();
-
+        $obyxmax = Cache::remember('obyx_highlight_score', now()->addMinutes(10), function () {
+            return \DB::table('user_obyx as uo')
+                ->leftJoin('obyx as o', 'o.id', '=', 'uo.obyx_id')
+                ->selectRaw('SUM(o.value) as value')
+                ->groupBy('uo.user_id')
+                ->orderByRaw('SUM(o.value) DESC')
+                ->first();
+        });
         if (\Auth::check()) {
             $pm = \Auth::user()->newThreadsCount();
         } else {
