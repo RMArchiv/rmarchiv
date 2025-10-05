@@ -311,3 +311,11 @@ body {
 .bg-rm-back-alpha {
   background-color: rgba($rm-back,0.8);
 }
+
+.border-rm-back {
+  border-color: $rm-back !important;
+}
+
+.border-rm-back-alpha {
+  border-color: rgba($rm-back,0.8) !important;
+}
