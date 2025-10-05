@@ -162,7 +162,16 @@
                         <div class="col-md-6">
                             {{-- infos & stats --}}
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            {{ trans('app.information') }}
+                                        </div>
+                                        <x-games.information :game="$game" />
+                                    </div>
+                                </div>
+
+                                {{-- <div class="col-md-6">
                                     <div class="card">
                                         <div class="card-header">
                                             {{ trans('app.information') }}
@@ -271,10 +280,6 @@
                                                     @endif
                                                     &nbsp;{{ @$game->avg ?? 0 }}
                                                     </li>
-                                                    {{-- data.cdc > 0
-                                                <li><img src="/assets/cdc.png" alt="cdcs">cdc's</li>
-                                                 endif
-                                                 --}}
                                                     <li>{{ trans('app.alltime_top') }}: #0</li>
                                                 </ul>
                                             </li>
@@ -299,7 +304,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
