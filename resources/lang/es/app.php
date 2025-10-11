@@ -160,6 +160,7 @@ return [
   ],
   'game'                              => 'Juego',
   'game_does_not_exist'               => 'El juego no existe',
+  'game_no_awards'                    => 'Este juego no tiene premios. O aún no se han añadido premios.',
   'game_not_found'                    => 'Juego no encontrado',
   'gamefile_list_and_add'             => 'Lista de ficheros de juego / Añadir nuevo',
   'gamefile_version'                  => 'Versión del fichero de juego',
