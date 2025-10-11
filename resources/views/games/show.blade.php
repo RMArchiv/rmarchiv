@@ -316,13 +316,13 @@
                                                     </a>
                                                 </div>
                                                 <div class="media-body">
-                                                    <div class="media-heading">
+                                                    <div class="media-heading d-flex gap-1">
                                                         <a href='{{ url('users', $comment->user_id) }}' title="{{ $comment->user->name }}">{{ $comment->user->name }}</a> -
                                                         {{ trans('app.posted_at') }} {{ $comment->created_at }}
                                                         @if($comment->vote_up == 1 and $comment->vote_down == 0)
-                                                            <span class='vote up'><img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/></span>
+                                                            <span class='d-flex align-items-center vote up'><img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/></span>
                                                         @elseif($comment->vote_up == 0 and $comment->vote_down == 1)
-                                                            <span class='vote down'><img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/></span>
+                                                            <span class='d-flex align-items-center vote down'><img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/></span>
                                                         @endif
                                                     </div>
                                                     <a href='{{ url('user', $comment->user_id) }}'
@@ -374,16 +374,22 @@
                                     <input type="hidden" name='content_type' value="{{ 'game' }}">
                                     <div class='content'>
                                         @if(\App\Helpers\CheckRateableHelper::checkRateable('game', $game->id, Auth::id()) === true)
-                                            <div id='prodvote'>
-                                                <input type="hidden" class="rating"/>
+                                            <div id='prodvote' class="d-flex gap-4 p-3  bg-rm-back-alpha">
+                                                <input type="hidden" class="d-none"/>
+                                                <div class="fw-medium">{{ trans('app.rate_this_game') }} </div>
+                                                <div>
+                                                    <input class="form-check-input" type='radio' name='rating' id='ratingrulez' value='up'/>
+                                                    <label for='ratingrulez'><img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/></label>
+                                                </div>
+                                                <div>
+                                                    <input class="form-check-input" type='radio' name='rating' id='ratingsucks' value='down'/>
+                                                    <label for='ratingsucks'><img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/></label>
+                                                </div>
+                                                <div>
+                                                    <input class="form-check-input" type='radio' name='rating' id='ratingpig' value='neut' checked='checked'/>
+                                                    <label class="w-4" for='ratingpig'>{{ trans('app.rating.dont_rate') }}</label>
+                                                </div>
 
-                                                {{ trans('app.rate_this_game') }}<br>
-                                                <input type='radio' name='rating' id='ratingrulez' value='up'/>
-                                                <label for='ratingrulez'><img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/></label>
-                                                <input type='radio' name='rating' id='ratingpig' value='neut' checked='checked'/>
-                                                <label for='ratingpig'><img src='/assets/rate_neut.gif' alt='{{ trans('app.rate_neut') }}'/></label>
-                                                <input type='radio' name='rating' id='ratingsucks' value='down'/>
-                                                <label for='ratingsucks'><img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/></label>
                                             </div>
                                         @endif
 
@@ -392,7 +398,7 @@
                                         <div><a href='/?page=faq#markdown'>{{ trans('app.markdown_is_usable_here') }}</a>
                                         </div>
                                     </div>
-                                    <div class='foot'>
+                                    <div class='foot mt-1'>
                                         <button class="btn btn-primary" id='submit'>{{ trans('app.submit') }}</button>
                                     </div>
                                     </form>

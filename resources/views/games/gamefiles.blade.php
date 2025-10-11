@@ -98,7 +98,7 @@
                             <form method="POST" action="{{ route('gamefiles.store', $game->id) }}" class="form-horizontal">
                                 @csrf
                             <div class="form-group">
-                                <label for="filetype" class="col-sm-2 col-form-label">{{trans('app.release_type')}}: *</label>
+                                <label for="filetype" class="col-sm-2 col-form-label">{{trans('app.release_type.title')}}: *</label>
                                 <div class="col-sm-10">
                                     <select class="form-control" name='filetype' id='filetype'>
                                         <option value="0">{{trans('app.choose_release_type')}}</option>
