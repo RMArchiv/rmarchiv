@@ -1,15 +1,18 @@
 <div class="d-flex w-100">
     <div class="w-100">
 
+        {{-- maker --}}
         <div class="d-flex align-items-stretch">
             <div class=" px-1 px-lg-3 py-2 bg-rm-back align-self-stretch d-flex align-items-center "><i class="fa fa-gear"></i>
             </div>
-            <a class="d-flex px-2 border-bottom border-start border-rm-back-alpha w-100 align-items-center"
+            <a class="d-flex px-2 border-bottom border-rm-base w-100 align-items-center"
                 href="{{ route('maker.show', $game->maker->id) }}">
                 <span class="typei-nostyle type_{{ $game->maker->short }} me-1">{{ $game->maker->title }}</span>
                 {{ $game->maker->title }}
             </a>
         </div>
+
+        {{-- version --}}
         <div class="d-flex align-items-stretch">
             <div class=" px-1 px-lg-3 py-2 bg-rm-back align-self-stretch d-flex align-items-center ">
                 <i class="fa
@@ -24,7 +27,7 @@
                     fa-battery-empty @endif
                     "></i>
             </div>
-            <div class="d-flex px-2 border-bottom border-start border-rm-back-alpha w-100 align-items-center">
+            <div class="d-flex px-2 border-bottom border-rm-base w-100 align-items-center">
                 @if (count($game->gamefiles) > 0)
                     <span
                         class='typei-nostyle type_{{ $game->gamefiles->first()->gamefiletype->short }} me-1'>{{ trans('app.release_type.' . $game->gamefiles->first()->gamefiletype->short) }}</span>
@@ -34,11 +37,13 @@
                 @endif
             </div>
         </div>
+
+        {{-- developer --}}
         <div class="d-flex align-items-stretch">
             <div class=" px-1 px-lg-3 py-2 bg-rm-back align-self-stretch d-flex align-items-center ">
                 <i class="fa fa-palette"></i>
             </div>
-            <div class="d-flex px-2 border-bottom border-start border-rm-back-alpha w-100 align-items-center text-wrap flex-wrap">
+            <div class="d-flex px-2 border-bottom border-rm-base w-100 align-items-center text-wrap flex-wrap">
                 @foreach ($game->developers as $dev)
                     <a class="" href="{{ url('developer', $dev->developer_id) }}">{{ $dev->developer->name }}</a>
                     @if ($dev != $game->developers->last())
@@ -47,56 +52,65 @@
                 @endforeach
             </div>
         </div>
+
+        {{-- release --}}
         @if (strlen(\App\Helpers\DatabaseHelper::getReleaseDateFromGameId($game->id)) > 0)
             <div class="d-flex align-items-stretch">
                 <div class="px-1 px-lg-3 py-2 bg-rm-back align-self-stretch d-flex align-items-center">
                     <i class="fa fa-calendar-days"></i>
                 </div>
-                <div class="d-flex px-2 border-bottom border-start border-rm-back-alpha w-100 align-items-center">
+                <div class="d-flex px-2 border-bottom border-rm-base w-100 align-items-center">
                     {{ \App\Helpers\DatabaseHelper::getReleaseDateFromGameId($game->id) }}</div>
             </div>
         @endif
 
+        {{-- website --}}
         @if ($game->website_url)
             <div class="d-flex align-items-stretch">
                 <div class=" px-1 px-lg-3 py-2 bg-rm-back align-self-stretch d-flex align-items-center position-relative">
                     <i class="fa fa-globe"></i><i style="font-size: 0.5rem; bottom:4px; right:9px;"
                         class="position-absolute fa fa-arrow-pointer"></i>
                 </div>
-                <div class="d-flex px-2 border-bottom border-start border-rm-back-alpha w-100 align-items-center">
+                <div class="d-flex px-2 border-bottom border-rm-base w-100 align-items-center">
                     <a href="{{ $game->website_url }}" target="_blank">{{ trans('app.website') }}</a>
                 </div>
             </div>
         @endif
+
+        {{-- atelier --}}
         @if ($game->atelier_id)
             <div class="d-flex align-items-stretch">
-                <div class="px-1 px-lg-3 py-2 bg-rm-back align-self-stretch d-flex align-items-center"
-                    style="filter: brightness(1.4) grayscale(100%)">
-                    <img src="https://rpg-atelier.net/template/favicon.ico" width="18px" />
+                <div class="px-1 px-lg-3 py-2 bg-rm-back align-self-stretch d-flex align-items-center">
+                    <i class="fa-brands fa-fort-awesome"></i>
                 </div>
-                <div class="d-flex px-2 border-bottom border-start border-rm-back-alpha w-100 align-items-center">
+                <div class="d-flex px-2 border-bottom border-rm-base w-100 align-items-center">
                     <a class=""
                         href="http://www.rpg-atelier.net/index.php?site=showgame&gid={{ $game->atelier_id }}"
                         target="_blank">
-                        {{ trans('app.atelier_link') }}
+                        {{ trans('RPG-Atelier') }}
+                        {{ trans('app.link') }}
                     </a>
                 </div>
             </div>
         @endif
+
+        {{-- pendium --}}
         @if ($game->makerpendium_article)
             <div class="d-flex align-items-stretch">
                 <div class="px-1 px-lg-3 py-2 bg-rm-back align-self-stretch d-flex align-items-center">
                     <i class="fa fa-book"></i>
                 </div>
-                <div class="d-flex px-2 border-bottom border-start border-rm-back-alpha w-100 align-items-center">
+                <div class="d-flex px-2 border-bottom border-rm-base w-100 align-items-center">
                     <a class="" href="{{ $game->makerpendium_article }}"
-                        target="_blank">{{ trans('Makerpendium Link') }}</a>
+                        target="_blank">Makerpendium {{ trans('app.link') }}</a>
                 </div>
             </div>
         @endif
+
+        {{-- license --}}
         @if ($game->license)
             <div class="d-flex align-items-stretch">
-                <div class="d-flex align-items-center border-bottom border-start border-rm-back-alpha">
+                <div class="d-flex align-items-center border-bottom border-rm-base">
                     <div title="{{ trans('app.license') }}" aria-label="{{ trans('app.license') }}"
                         class="px-1 px-lg-3 py-2 bg-rm-back align-self-stretch d-flex align-items-center">
                         <i class="fa fa-section"></i>
@@ -109,7 +123,7 @@
         @endif
 
 
-
+        {{-- popularity --}}
         @php
             $perc = \App\Helpers\MiscHelper::getPopularity(
                 $game->views,
@@ -120,7 +134,7 @@
             <div class="px-1 px-lg-3 py-2 bg-rm-back align-self-stretch d-flex align-items-center"><i class="fa fa-meteor"></i>
             </div>
 
-            <div class="w-100 py-1 gap-1 d-flex flex-column px-2 border-bottom border-start border-rm-back-alpha">
+            <div class="w-100 py-1 gap-1 d-flex flex-column px-2 border-bottom border-rm-base">
                 <span class="fw-semibold">{{ trans('app.popularity') }}</span>
                 <x-common.progressbar :percent="$perc" hasText="true" />
                 <span class="fw-semibold">
@@ -128,6 +142,7 @@
             </div>
         </div>
 
+        {{-- rating --}}
         <div class="d-flex align-items-center">
             <div class="px-1 px-lg-3 py-2 bg-rm-back align-self-stretch d-flex align-items-center gap-2">
                 <div class="d-flex gap-2">
@@ -141,7 +156,7 @@
                     {{ @$game->votes['down'] ?? 0 }}
                 </div>
             </div>
-            <div class="w-100 d-flex flex-column gap-1 border-bottom border-start border-rm-back-alpha p-2 py-1">
+            <div class="w-100 d-flex flex-column gap-1 border-bottom border-rm-base p-2 py-1">
                 <div class="justify-self-start">
                     @if (@$game->votes['up'] > @$game->votes['down'])
                         <img src='/assets/rate_up.gif' width="18px" alt='good' />
@@ -164,6 +179,8 @@
                 </div>
             </div>
         </div>
+
+        {{-- gamefiles --}}
         @if (Auth::check())
             @if ($game->gamefiles->count() != 0)
                 @if ($game->maker_id == 2 ?? ($game->maker_id == 3 ?? ($game->maker_id == 6 ?? $game->maker_id == 9)))
@@ -172,14 +189,15 @@
                             <i class="fa fa-gamepad"></i>
                         </div>
 
-                        <div class="w-100 py-1 gap-1 d-flex flex-wrap px-2 border-bottom border-start border-rm-back-alpha flex-column">
+                        <div class="w-100 py-1 gap-1 d-flex flex-wrap px-2 border-bottom border-rm-base flex-column">
                             <a
                                 href=@if ($game->maker_id == 6) "{{ action('PlayerMvController@index', $game->gamefiles->first()->id) }}"
                                     @else
                                     "{{ action('Player2kController@index', $game->gamefiles->first()->id) }}" @endif>
                             <div class="btn btn-secondary fw-bold">
+                                <i class="fa fa-gamepad"></i>
                                 {{ trans('app.play_in_browser') }}!
-                                <img src="/assets/play_button.png" alt="play">
+                                {{-- <img src="/assets/play_button.png" alt="play"> --}}
                             </div>
                             </a>
                         </div>
@@ -188,6 +206,7 @@
             @endif
         @endif
 
+        {{-- tags --}}
         <div class="d-flex align-items-center">
             <div title="{{ trans('app.tags') }}"
                 class="px-1 px-lg-3 py-2 bg-rm-back align-self-stretch d-flex align-items-center">
@@ -195,7 +214,7 @@
             </div>
 
             <div
-                class="w-100 py-1 gap-1 d-flex flex-row flex-wrap px-2 border-bottom border-start border-rm-back-alpha ">
+                class="w-100 py-1 gap-1 d-flex flex-row flex-wrap px-2 border-bottom border-rm-base ">
                 <div>
                     @foreach ($game->tags as $tag)
                         <small class="badge rounded-pill bg-warning text-bg-warning"><a class="text-bg-warning"
@@ -264,7 +283,7 @@
                                 </div>
                             </div>
                         </div>
-                        <x-common.iconbutton class="mw-50 mt-2" showtextfrom="sm" icon="fa fa-tag" data-bs-toggle="modal" data-bs-target="#addtag">{{ trans('app.add_tag') }}</x-common.iconbutton>
+                        <x-common.iconbutton class="mw-50 mt-2" icon="fa fa-tag" data-bs-toggle="modal" data-bs-target="#addtag">{{ trans('app.add_tag') }}</x-common.iconbutton>
                     @endif
                 </div>
             </div>
