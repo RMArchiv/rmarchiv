@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="page-header d-flex flex-row">
+                    <div class="page-header d-flex flex-row justify-content-between">
                         <h1>
                             <span id='title'><big>{{ $game->title }}</big>@if($game->subtitle) :: {{ $game->subtitle }}@endif</span>
                         </h1>
@@ -129,28 +129,28 @@
                                                             $vid = str_replace('watch?v=', "embed/", $game->youtube);
                                                         @endphp
                                                         <button type="button" data-bs-target="#screenshot-carousel-fade" data-bs-slide-to="{{count($screenshots)}}" style="width:{{ $thumbnailWidth }}" class=" position-relative d-flex align-items-center justify-content-center btn btn-secondary">
-                                                        <i class="fa fa-video fs-1"></i>
+                                                        <i class="fa fa-video fs-4"></i>
                                                         </button>
                                                     @endif
 
                                                     @if(count($screenshots) < $maxScreenshotCount && Auth::check())
                                                         <a href="{{ route('screenshot.create', [$game->id, count($screenshots)+1]) }}" title={{trans('app.upload.titlescreen')}} style="width:{{ $thumbnailWidth }}" class=" position-relative d-flex align-items-center justify-content-center btn btn-secondary">
-                                                            <i class="fa fa-image fs-1"></i>
-                                                            <div class="w-100 h-100 position-absolute top-50">
-                                                            <div style="top:-31px;left:51%; width:15px; height:15px" class="m-1 bg-black fs-4 position-absolute">
+                                                            <i class="fa fa-image fs-4"></i>
+                                                            <div class="w-100 h-100 position-absolute top-0">
+                                                            <div style="width:12px; height:13px" class="me-1 end-0 bg-black fs-4 position-absolute">
                                                             </div>
-                                                            <i style="top:-31px;left:50%; font-size:10px" class="text-white fs-4 fa fa-square-plus position-absolute"></i>
+                                                            <i style="font-size:15px !important" class="end-0 text-white fs-4 fa fa-square-plus position-absolute"></i>
                                                             </div>
                                                         </a>
                                                     @endif
 
                                                     @if(Auth::check() && (!isset($game->youtube) || strlen($game->youtube) == 0))
                                                         <a href="{{ action('GameController@edit', [ 'id' => $game->id]) }}#trailer" title={{trans('app.upload.titlescreen')}} style="width:{{ $thumbnailWidth }}" class=" position-relative d-flex align-items-center justify-content-center btn btn-secondary">
-                                                        <i class="fa fa-video fs-1"></i>
-                                                            <div class="w-100 h-100 position-absolute top-50">
-                                                            <div style="top:-31px;left:51%; width:15px; height:15px" class="m-1 bg-black fs-4 position-absolute">
+                                                        <i class="fa fa-video fs-4"></i>
+                                                            <div class="w-100 h-100 position-absolute top-0">
+                                                            <div style="width:12px; height:13px" class="me-1 end-0 bg-black fs-4 position-absolute">
                                                             </div>
-                                                            <i style="top:-31px;left:50%; font-size:10px" class="text-white fs-4 fa fa-square-plus position-absolute"></i>
+                                                            <i style="font-size:15px !important" class="end-0 text-white fs-4 fa fa-square-plus position-absolute"></i>
                                                             </div>
                                                         </a>
                                                     @endif
@@ -165,234 +165,12 @@
                         <div class="col-md-6">
                             {{-- infos & stats --}}
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="card">
                                         <div class="card-header">
                                             {{ trans('app.information') }}
                                         </div>
                                         <x-games.information :game="$game" />
-                                    </div>
-                                </div>
-
-                                {{-- <div class="col-md-6">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            {{ trans('app.information') }}
-                                        </div>
-                                        <ul class="list-group">
-                                            <li class="list-group-item">
-                                                {{ trans('app.maker') }} :
-                                                <a class="flex align-center" href="{{ route('maker.show', $game->maker->id) }}">
-                                                    <span class="typei-nostyle type_{{ $game->maker->short }}">{{ $game->maker->title }}</span> {{ $game->maker->title }}
-                                                </a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                {{ trans('app.gametype') }} :
-                                                @if(count($game->gamefiles) > 0)
-                                                    <span class='typei-nostyle type_{{ $game->gamefiles->first()->gamefiletype->short }}'>{{ $game->gamefiles->first()->gamefiletype->title }}</span> {{ $game->gamefiles->first()->gamefiletype->title }}
-                                                @else
-                                                    {{ trans('app.no_gamefile_available') }}
-                                                @endif
-                                            </li>
-                                            <li class="list-group-item">
-                                                {{ trans('app.developers') }} :
-                                                @foreach($game->developers as $dev)
-                                                    <a href="{{ url('developer',$dev->developer_id) }}">{{ $dev->developer->name }}</a>
-                                                    @if($dev != $game->developers->last())
-                                                        ::
-                                                    @endif
-                                                @endforeach
-                                            </li>
-                                            <li class="list-group-item">
-                                                {{ trans('app.release_date') }} : {{ \App\Helpers\DatabaseHelper::getReleaseDateFromGameId($game->id) }}
-                                            </li>
-                                            @if($game->website_url)
-                                                <li class="list-group-item">{{ trans('app.website') }} :
-                                                    <a href="{{ $game->website_url }}" target="_blank">{{ trans('app.click_me') }}</a>
-                                                </li>
-                                            @endif
-                                            @if($game->atelier_id)
-                                                <li class="list-group-item">
-                                                    {{ trans('app.atelier_link') }} :
-                                                    <a href="http://www.rpg-atelier.net/index.php?site=showgame&gid={{ $game->atelier_id }}" target="_blank">{{ trans('app.click_me') }}</a>
-                                                </li>
-                                            @endif
-                                            @if($game->makerpendium_article)
-                                                <li class="list-group-item">
-                                                    {{ trans('Makerpendium Link') }} :
-                                                    <a href="{{ $game->makerpendium_article }}" target="_blank">{{ trans('app.click_me') }}</a>
-                                                </li>
-                                            @endif
-                                            <li class="list-group-item">
-                                                {{ trans('app.submitted_by') }}: <a
-                                                        href='{{ url('users', $game->user_id) }}' class='user'>{{ $game->user->name }}</a>
-                                                <a href='{{ url('users', $game->user_id) }}' class='usera' title="{{ $game->user->name }}">
-                                                    <img width="16px" src='//{{ config('app.avatar_path') }}?gender=male&id={{ $game->user_id }}'
-                                                         alt="{{ $game->user->name }}" class='avatar'/>
-                                                </a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                {{ trans('app.submitted_at') }}
-                                                <time datetime='{{ $game->created_at }}' title='{{ $game->created_at }}'>{{ \Carbon\Carbon::parse($game->created_at)->diffForHumans() }}</time>
-                                            </li>
-                                            @if($game->license)
-                                                <li class="list-group-item">
-                                                    {{ trans('app.license') }}
-                                                    {{ $game->license->title }}
-                                                </li>
-                                            @endif
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            {{ trans('app.misc') }}
-                                        </div>
-                                        <ul class="list-group">
-                                            <li class="list-group-item">
-                                                @php
-                                                    $perc = \App\Helpers\MiscHelper::getPopularity($game->views, \App\Helpers\DatabaseHelper::getGameViewsMax());
-                                                @endphp
-                                                {{ trans('app.popularity') }}: {{  number_format($perc, 2) }}% </br>
-                                                {{ trans('app.profile_views') }}: {{ number_format($game->views, 0, ',', '.') }}
-                                                <br/>
-                                                <x-common.progressbar :percent="$perc" />
-                                            </li>
-                                            <li class="list-group-item clearfix">
-                                                <ul class="list-unstyled">
-                                                    <li>{{ trans('app.ratings')}}</li>
-                                                    <li>
-                                                        <img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/>&nbsp;{{ @$game->votes['up'] ?? 0 }}
-                                                    </li>
-                                                    <li>
-                                                        <img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/>&nbsp;{{ @$game->votes['down'] ?? 0 }}
-                                                    </li>
-                                                </ul>
-                                                <ul class="list-unstyled">
-                                                    <li>avg:</li>
-                                                    <li>
-                                                    @if(@$game->votes['up'] > @$game->votes['down'])
-                                                        <img src='/assets/rate_up.gif' alt='good'/>
-                                                    @elseif(@$game->votes['up'] < @$game->votes['down'])
-                                                        <img src='/assets/rate_down.gif' alt='bad'/>
-                                                    @elseif(@$game->votes['up'] == @$game->votes['down'])
-                                                        <img src='/assets/rate_neut.gif' alt='ok'/>
-                                                    @else
-                                                        <img src='/assets/rate_neut.gif' alt='ok'/>
-                                                    @endif
-                                                    &nbsp;{{ @$game->avg ?? 0 }}
-                                                    </li>
-                                                    <li>{{ trans('app.alltime_top') }}: #0</li>
-                                                </ul>
-                                            </li>
-                                            @if(Auth::check())
-                                                @if($game->gamefiles->count() != 0)
-                                                    @if($game->maker_id == 2 ?? $game->maker_id == 3 ?? $game->maker_id == 6 ?? $game->maker_id == 9)
-                                                        <li class="list-group-item">
-                                                            {{ trans('app.play_in_browser') }} :
-                                                            <a href=
-                                                            @if($game->maker_id == 6)
-                                                                "{{ action('PlayerMvController@index', $game->gamefiles->first()->id) }}"
-                                                            @else
-                                                                "{{ action('Player2kController@index', $game->gamefiles->first()->id) }}"
-                                                            @endif
-                                                            ><img src="/assets/play_button.png" alt="play"></a>
-                                                        </li>
-                                                    @endif
-                                                @endif
-                                            @endif
-                                            <li class="list-group-item">
-                                                <a href="{{ action('ReportController@create_game_report', $game->id) }}">{{ trans('app.report_game') }}</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class='col-md-6'>
-                            {{-- spielbeschreibung --}}
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="card">
-                                        <div class="card-header">{{ trans('app.description') }}</div>
-                                        <div class="card-body readmore">
-                                            {!! Markdown::convertToHtml($game->desc_md) !!}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            {{-- tags & downloads --}}
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            {{ trans('app.tags') }}
-                                        </div>
-                                        <div class="card-body">
-                                            @if(Auth::check())
-                                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addtag">{{ trans('app.add_tag') }}</button>
-                                                <div id="addtag" class="modal fade" role="dialog">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title">{{ trans('app.add_tag') }}</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <div>
-                                                                    <form method="POST" action="{{action('TaggingController@store')}}" class="form-horizontal">
-                                                                        @csrf
-                                                                    <input type="hidden" name='content_id' value="{{ $game->id }}">
-                                                                    <input type="hidden" name='content_type' value="{{ 'game' }}">
-                                                                    <fieldset>
-                                                                        <div class="form-group" id="row_tag">
-                                                                            <label for="tag" class="col-form-label">{{trans('app.tag_name')}}</label>
-                                                                            <div class="d-flex gap-4">
-                                                                                <div class="autocomplete">
-                                                                                    <input autocomplete="off" type="text" class="d-none auto form-control" id="tag" name="title" value="">
-                                                                                    <div id="searchbar"></div>
-                                                                                    <div id="searchcontainer"></div>
-                                                                                </div>
-                                                                                    <input class="btn btn-secondary w-25" type='submit' value='{{ trans('app.submit') }}' id='submit'>
-
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <script type="module">
-                                                                            createAutocomplete({
-                                                                                apiPath: ()=>{return "ac_tag"},
-                                                                                placeholder: "{{ trans('app.search') }}",
-                                                                                searchbarSelector:"#row_tag #searchbar",
-                                                                                panelSelector:"#searchcontainer",
-                                                                                noResults:'{{ '' }}',
-                                                                                type:"list",
-                                                                                action:"find",
-                                                                                limit:5,
-                                                                                inputSelector:".autocomplete #tag",
-                                                                                // disable detached mode because input does not work in nested bootstrap modal
-                                                                                additionalProps:{detachedMediaQuery: "none"}})
-                                                                        </script>
-                                                                    </fieldset>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endif
-                                            <br>
-                                            @foreach($game->tags as $tag)
-                                                <a href="{{ action('TaggingController@showGames', [$tag->tag_id]) }}">{{ $tag->tag->title }}</a>
-                                                @if($tag != $game->tags->last())
-                                                    ::
-                                                @endif
-                                            @endforeach
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -419,7 +197,7 @@
                                                         <span class="badge">{{ $f->downloadcount }}</span>
                                                 </li>
                                             @endforeach
-                                            <li class="list-group-item">------------</li>
+                                            <hr>
                                             <li class="list-group-item">
                                                 <a href="{{ action('GameFileController@create', $game->id) }}">{{ trans('app.gamefile_list_and_add') }}</a>
                                             </li>
@@ -430,37 +208,27 @@
                         </div>
                     </div>
                     <div class="row mt-4">
-                        <div class="col-md-6">
-                            {{-- credits --}}
+                        <div class='col-md-6'>
+                            {{-- spielbeschreibung --}}
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="card">
-                                        <div class="card-header">{{ trans('app.user_credits') }}</div>
-                                        <ul class="list-group">
-                                            @if($game->credits->count() != 0)
-                                                @foreach($game->credits as $cr)
-                                                    <li class="list-group-item">
-                                                        <a href='{{ url('users', $cr->user_id) }}' class='usera' title="{{ $cr->user->name }}"><img width="16px" src='//{{ config('app.avatar_path') }}?gender=male&id={{ $cr->user_id }}' alt="{{ $cr->user->name }}" class='avatar'/>
-                                                        </a>
-                                                        <a href='{{ url('users', $cr->user_id) }}' class='user'>{{ $cr->user->name }}</a> [{{ $cr->type->title }}]
-                                                    </li>
-                                                @endforeach
-                                            @else
-                                                <li class="list-group-item">{{ trans('app.no_user_credits_added') }}</li>
-                                            @endif
-                                        </ul>
+                                        <div class="card-header">{{ trans('app.description') }}</div>
+                                        <div class="card-body readmore">
+                                            {!! Markdown::convertToHtml($game->desc_md) !!}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            {{-- award spalte --}}
+                            {{-- tags & downloads --}}
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="card">
                                         <div class="card-header">{{ trans('app.awards') }}</div>
                                         <ul class="list-group">
-                                            @if($game->awards)
+                                            @if(count($game?->awards ?? []) > 0)
                                                 @foreach($game->awards as $aw)
                                                     <?php
                                                     if ($aw->place == 1) {
@@ -480,12 +248,45 @@
                                                 @endforeach
                                             @else
                                                 <li class="list-group-item">
-                                                    Dieses Spiel hat noch keine Awards. Oder es wurden noch keine hinzugefügt.
+                                                    {{ trans('app.game_no_awards') }}
                                                 </li>
                                             @endif
                                         </ul>
                                     </div>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        {{-- credits --}}
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="card">
+                                                    <div class="card-header">{{ trans('app.user_credits') }}</div>
+                                                    <ul class="list-group">
+                                                        @if ($game->credits->count() != 0)
+                                                            @foreach ($game->credits as $cr)
+                                                                <li class="list-group-item">
+                                                                    <a href='{{ url('users', $cr->user_id) }}' class='usera'
+                                                                        title="{{ $cr->user->name }}"><img width="16px"
+                                                                            src='//{{ config('app.avatar_path') }}?gender=male&id={{ $cr->user_id }}'
+                                                                            alt="{{ $cr->user->name }}" class='avatar' />
+                                                                    </a>
+                                                                    <a href='{{ url('users', $cr->user_id) }}'
+                                                                        class='user'>{{ $cr->user->name }}</a>
+                                                                    [{{ $cr->type->title }}]
+                                                                </li>
+                                                            @endforeach
+                                                        @else
+                                                            <li class="list-group-item">{{ trans('app.no_user_credits_added') }}
+                                                            </li>
+                                                        @endif
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
