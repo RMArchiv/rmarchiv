@@ -160,6 +160,7 @@ return [
   ],
   'game'                              => 'Game',
   'game_does_not_exist'               => 'Game does not exist',
+  'game_no_awards'                    => 'This game has no awards. Or no awards have been added yet.',
   'game_not_found'                    => 'Game not found',
   'gamefile_list_and_add'             => 'Game file list / Add new',
   'gamefile_version'                  => 'Game file Version',
