@@ -15,6 +15,8 @@ use App\Models\UserOnline;
 use App\Models\BoardThread;
 use App\Models\BoardThreadsTracker;
 use App\Models\GamesDeveloper;
+use Carbon\CarbonInterval;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -273,9 +275,12 @@ class DatabaseHelper
      */
     public static function getGameViewsMax()
     {
-        $v = \DB::table('games')
+        $v = Cache::flexible('topuser_scored', array(CarbonInterval::minutes(1)->totalSeconds, CarbonInterval::minutes(1)->totalSeconds + 20), function () {
+            return \DB::table('games')
             ->selectRaw('MAX(views) as maxviews')
             ->first();
+        });
+
 
         return $v->maxviews;
     }
