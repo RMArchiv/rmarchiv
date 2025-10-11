@@ -21,7 +21,7 @@
                         </div>
                         <div class="card-body">
                             <div class='form-group' id='row_filetype'>
-                                <label for='filetype'>{{trans('app.release_type')}}</label>
+                                <label for='filetype'>{{trans('app.release_type.title')}}</label>
                                 <select class="form-control" name='filetype' id='filetype'>
                                     <option value="0">{{trans('app.choose_release_type')}}</option>
                                     @foreach($filetypes as $types)

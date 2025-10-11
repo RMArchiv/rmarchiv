@@ -303,7 +303,11 @@ return [
     'rate_this_news' => 'Bewerte diese News',
     'rate_this_resource' => 'Bewerte diese Ressource',
     'rate_up' => 'Gut bewerten',
-    'rating' => 'Bewertung',
+    'rating' => [
+        'title' => 'Bewertung',
+        'missing' => 'Keine Bewertung',
+        'dont_rate' => 'Nicht bewerten',
+    ],
     'ratings' => 'Bewertungen',
     'recipients' => 'Empfänger',
     'register' => 'Registrieren',
