@@ -304,7 +304,11 @@ return [
   'rate_this_news'                                  => 'Rate this news',
   'rate_this_resource'                              => 'Rate this resource',
   'rate_up'                                         => 'Rate Up',
-  'rating'                                          => 'Rating',
+  'rating' => [
+    'title' => 'Rating',
+    'missing' => 'No rating',
+    'dont_rate' => 'Don\'t rate',
+  ],
   'ratings'                                         => 'Ratings',
   'recipients'                                      => 'Recipients',
   'register'                                        => 'Register',
