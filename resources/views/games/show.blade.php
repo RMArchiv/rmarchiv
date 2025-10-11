@@ -354,10 +354,12 @@
                             <div class="card">
                                 <div class="card-header">{{ trans('app.comment_rules') }}</div>
                                 <div class="card-body">
-                                    <p>{{ trans('app.comment_rule_1') }}</p>
-                                    <p>{{ trans('app.comment_rule_2') }}</p>
-                                    <p>{{ trans('app.comment_rule_3') }}</p>
-                                    <p>{{ trans('app.comment_rule_4') }}</p>
+                                    <ul class="mb-0">
+                                        <li>{{ trans('app.comment_rule_1') }}</li>
+                                        <li>{{ trans('app.comment_rule_2') }}</li>
+                                        <li>{{ trans('app.comment_rule_3') }}</li>
+                                        <li>{{ trans('app.comment_rule_4') }}</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
