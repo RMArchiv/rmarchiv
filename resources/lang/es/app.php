@@ -304,6 +304,11 @@ return [
   'rate_this_resource'                              => 'Puntúa este recurso',
   'rate_up'                                         => 'Puntúa positivo',
   'rating'                                          => 'Calificación',
+  'rating' => [
+    'title' => 'Calificación',
+    'missing' => 'No calificación',
+    'dont_rate' => 'No califiques',
+  ],
   'ratings'                                         => 'Calificación',
   'recipients'                                      => 'Recipientes',
   'register'                                        => 'Registrarse',
