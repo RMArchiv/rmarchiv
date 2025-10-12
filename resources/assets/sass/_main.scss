@@ -274,6 +274,11 @@ header[role="banner"] {
   @media only screen and (min-width: 1200px)  {
     display: block;
   }
+  padding: 10px 15px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 blockquote {

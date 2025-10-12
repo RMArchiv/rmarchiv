@@ -10,7 +10,7 @@
             onclick="removeRecipient(event)"
             class="btn-group btn btn-secondary d-flex flex-shrink gap-2 align-items-center"
             data-toggle="buttons">
-                <input id="{{$user->name.'-'.$user->id}}" class="d-none" type="checkbox" autocomplete="off"
+                <input id="{{$user->name.'-'.$user->id}}" class="d-none form-check-input" type="checkbox" autocomplete="off"
                     name="recipients[]" value="{{ $user->id}}" checked="true">
                 <div class="btn-secondary fa fa-xmark w-auto"></div>
                 <label for="{{$user->name.'-'.$user->id}}" class="">{{$user->name}}</label>
@@ -25,7 +25,7 @@
             class="btn-group btn btn-secondary d-flex flex-shrink gap-2 align-items-center"
             type="button"
             data-toggle="buttons">
-            <input id="" class="d-none" type="checkbox" autocomplete="off"
+            <input id="" class="d-none form-check-input" type="checkbox" autocomplete="off"
                 name="recipients[]" value="0">
             <div class="btn-secondary fa fa-xmark w-auto"></div>
             <label for="" class=""></label>
@@ -67,7 +67,7 @@
             <div data-userid={{ $user->id }} data-username={{ $user->name }}
                 class="btn-group mb-1" data-toggle="buttons">
                 <label class="btn btn-secondary d-flex gap-2 align-items-center lh-1">
-                    <input type="checkbox" autocomplete="off" name="recipients[]"
+                    <input class="form-check-input" type="checkbox" autocomplete="off" name="recipients[]"
                         value="{{ $user->id }}"> {{ $user->name }}
                 </label>
             </div>
