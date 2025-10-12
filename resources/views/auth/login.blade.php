@@ -48,7 +48,7 @@
                                         <input type="password" class="form-control" id="password" name="password">
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="remember"> {{ trans('app.remember_login') }}
+                                                <input class="form-check-input" type="checkbox" name="remember"> {{ trans('app.remember_login') }}
                                             </label>
                                         </div>
                                     </div>
