@@ -178,8 +178,7 @@
                                         <ul class="list-group">
                                             @foreach($game->gamefiles as $f)
                                                 <li class="list-group-item">
-                                                        {{ str_pad($f->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($f->release_day, 2, 0, STR_PAD_LEFT) }}
-                                                        [
+                                                        <small class="fw-normal px-2 py-1">{{date("Y-m-d", mktime(0, 0, 0, $f->release_month, $f->release_day, $f->release_year))}}</small>
                                                         @if($f->language)
                                                             <span><img src="/assets/lng/16/{{ strtoupper($f->language->short) }}.png" title="{{ $f->language->name }}"></span>
                                                         @endif
@@ -190,7 +189,7 @@
                                                         @else
                                                             {{ $f->gamefiletype->title }} - {{ $f->release_version }}
                                                         @endif
-                                                        ]
+
                                                         <span class="badge">{{ $f->downloadcount }}</span>
                                                 </li>
                                             @endforeach

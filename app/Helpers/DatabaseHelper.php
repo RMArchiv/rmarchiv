@@ -275,7 +275,7 @@ class DatabaseHelper
      */
     public static function getGameViewsMax()
     {
-        $v = Cache::flexible('topuser_scored', array(CarbonInterval::minutes(1)->totalSeconds, CarbonInterval::minutes(1)->totalSeconds + 20), function () {
+        $v = Cache::flexible('max-game-views', array(CarbonInterval::minutes(1)->totalSeconds, CarbonInterval::minutes(1)->totalSeconds + 20), function () {
             return \DB::table('games')
             ->selectRaw('MAX(views) as maxviews')
             ->first();
