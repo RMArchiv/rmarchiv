@@ -193,7 +193,7 @@
                                                             {{ $f->gamefiletype->title }} - {{ $f->release_version }}
                                                         @endif
 
-                                                        <span class="badge">{{ $f->downloadcount }}</span>
+                                                        <span class="badge float-end">{{ $f->downloadcount }}</span>
                                                 </li>
                                             @endforeach
                                             <hr>
@@ -221,7 +221,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            {{-- tags & downloads --}}
+                            {{-- awards --}}
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="card">
