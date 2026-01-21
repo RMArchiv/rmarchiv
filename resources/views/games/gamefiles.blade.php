@@ -60,7 +60,7 @@
                                     </td>
                                     <td>{{ $gf->release_version }}</td>
                                     <td>{{ str_pad($gf->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_day, 2, 0, STR_PAD_LEFT) }}</td>
-                                    <td>{{ ByteUnits\Metric::bytes($gf->filesize)->format() }}</td>
+                                    <td>{{  @round($gf->filesize/1024/1024,2)." MiB" }}</td>
                                     <td>{{ $gf->downloadcount ?? 0 }}</td>
                                     <td class="text-break">{!! nl2br(e($gf->notes ?? '')) !!}</td>
                                     <td>
@@ -69,7 +69,7 @@
                                         </a>
                                         <a href="{{ action('UserController@show', $gf->user->id) }}" class="user">{{ $gf->user->name }}</a>
                                     </td>
-                                    <td>{{ $gf->filecreated_at }}</td>
+                                    <td>{{ $gf->created_at }}</td>
                                     <td>
                                         @if($gf->forbidden == 1)
                                             <span class="d-block" title="{{ $gf->reason }}">{{ trans('app.download_deleted') }}</span>
