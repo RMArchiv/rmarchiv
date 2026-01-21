@@ -6,5 +6,10 @@
     color: $rm-text !important;
 }
 .qq-upload-list li {
-    background-color: $rm-base-p1 !important;
+    // background-color: $rm-base-p1 !important;
+    background-color: #F2F7EDD0 !important;
+}
+
+.qq-uploader-selector.qq-uploader.qq-gallery {
+    background-color: #FAFAFA10;
 }

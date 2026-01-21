@@ -113,7 +113,7 @@
                                     <label for="filetype"
                                         class="col-sm-2 col-form-label">{{ trans('app.release_type.title') }}: *</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" name='filetype' id='filetype'>
+                                        <select class="form-control form-select" name='filetype' id='filetype'>
                                             <option value="0">{{ trans('app.choose_release_type') }}</option>
                                             @foreach ($filetypes as $types)
                                                 <option value="{{ $types->id }}">{{ $types->title }}</option>
@@ -133,20 +133,20 @@
                                     <label for="releasedate"
                                         class="col-sm-2 col-form-label">{{ trans('app.release_date') }}</label>
                                     <div class="col-sm-10">
-                                        <select name="releasedate_day" id="releasedate_day" class="form-control">
+                                        <select name="releasedate_day" id="releasedate_day" class="form-control form-select">
                                             <option value="0">{{ trans('app.release_date_day') }}</option>
                                             @for ($i = 1; $i < 32; $i++)
                                                 <option value="{{ $i }}">{{ $i }}</option>
                                             @endfor
                                         </select>
-                                        <select name="releasedate_month" id="releasedate_month" class="form-control">
+                                        <select name="releasedate_month" id="releasedate_month" class="form-control form-select">
                                             <option value="0">{{ trans('app.release_date_month') }}</option>
                                             @for ($i = 1; $i < 13; $i++)
                                                 <option value="{{ $i }}">{{ trans('app.month.' . $i) }}
                                                 </option>
                                             @endfor
                                         </select>
-                                        <select name="releasedate_year" id="releasedate_year" class="form-control">
+                                        <select name="releasedate_year" id="releasedate_year" class="form-control form-select">
                                             <option value="0">{{ trans('app.release_date_year') }}</option>
                                             @for ($i = 1990; $i < date('Y') + 1; $i++)
                                                 <option value="{{ $i }}">{{ $i }}</option>
