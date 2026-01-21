@@ -19,19 +19,19 @@
                     </div>
                     <div class="card-body">
                         {{ trans('app.please_rate_this_logo') }}
-                            <img src="{{ route('logo.show', $logos->id) }}">
+                            <img class="w-100" src="{{ route('logo.show', $logos->id) }}">
                         {{ $logos->title }}
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer d-flex gap-2">
                         <form method="POST" action="{{ action('LogoController@vote_add', $logos->id) }}">
                             @csrf
                         <input type="hidden" name='value' value="0">
-                        <input type="submit" value="{{ trans('app.rate_down') }}">
+                        <x-common.iconbutton type="submit" class="btn-primary" showtextfrom="lg" icon="fa fa-thumbs-down">{{ trans('app.rate_down') }}</x-common.iconbutton>
                         </form>
                         <form method="POST" action="{{ action('LogoController@vote_add', $logos->id) }}">
                             @csrf
                         <input type="hidden" name='value' value="1">
-                        <input type="submit" value="{{ trans('app.rate_up') }}">
+                        <x-common.iconbutton type="submit" class="btn-primary" showtextfrom="lg" icon="fa fa-thumbs-up">{{ trans('app.rate_up') }}</x-common.iconbutton>
                         </form>
                     </div>
                 </div>
