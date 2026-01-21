@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('pagetitle', trans('app.add_resource'))
 @section('content')
-    <div id="content">
+    <div id="content" class="container">
         @if(Auth::check())
             @if(isset($request) == false)
                 <form method="POST" action="{{url('resources/create')}}">
@@ -13,7 +13,7 @@
                         <div class="formifier">
                             <div class='row' id='row_type'>
                                 <label for='type'>{{ trans('app.type') }}</label>
-                                <select name='type' id='type' required>
+                                <select class="form-select" name='type' id='type' required>
                                     <option disabled selected value="">{{ trans('app.choose_type') }}</option>
                                     <option value="gfx">{{ trans('app.gfx') }}</option>
                                     <option value="sfx">{{ trans('app.sfx') }}</option>
@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="foot">
-                        <input type="submit" value="{{ trans('app.next') }}">
+                        <input class="btn btn-primary" type="submit" value="{{ trans('app.next') }}">
                     </div>
                 </div>
                 </form>
@@ -37,12 +37,12 @@
                     <div class="rmarchivtbl" id="rmarchivbox_submitprod">
                         <input type="hidden" name="step" value="3">
                         <input type="hidden" name="type" value="{{$request->get('type')}}">
-                        <h2>{{ trans('app.step') }} -> {{ $request->get('type') }}</h2>
+                        <h2>{{ trans('app.step') }} → {{ $request->get('type') }}</h2>
                         <div class="content">
                             <div class="formifier">
                                 <div class='row' id='row_cat'>
                                     <label for='cat'>{{ trans('app.category') }}:</label>
-                                    <select name='cat' id='cat' required>
+                                    <select class="form-select" name='cat' id='cat' required>
                                         <option disabled selected value="">{{ trans('app.choose_category') }}</option>
                                         @if($request->get('type') == 'gfx')
                                             <option value="autotiles">{{ trans('app.autotiles') }}</option>
@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="foot">
-                            <input type="submit" value="{{ trans('app.next') }}">
+                            <input class="btn btn-primary" type="submit" value="{{ trans('app.next') }}">
                         </div>
                     </div>
                     </form>
@@ -95,17 +95,17 @@
                         <input type="hidden" name="step" value="4">
                         <input type="hidden" name="type" value="{{ $request->get('type') }}">
                         <input type="hidden" name="cat" value="{{ $request->get('cat') }}">
-                        <h2>{{ trans('app.step') }} -> {{ $request->get('type') }} -> {{ $request->get('cat') }}</h2>
+                        <h2>{{ trans('app.step') }} → {{ $request->get('type') }} → {{ $request->get('cat') }}</h2>
                         <div class="content">
                             <div class="formifier">
                                 <div class='row' id='row_title'>
                                     <label for='title'>{{ trans('app.resource_title') }}:</label>
-                                    <input type="text" name="title" id="title">
+                                    <input class="form-control" type="text" name="title" id="title">
                                     <span>[<span class="req">req</span>]</span>
                                 </div>
                                 <div class="row" id="row_desc">
                                     <label for="desc">{{ trans('app.description') }}:</label>
-                                    <textarea name="desc" id="desc" maxlength="4000" rows="10" placeholder="{{ trans('app.description') }}"></textarea>
+                                    <textarea class="form-control" name="desc" id="desc" maxlength="4000" rows="10" placeholder="{{ trans('app.description') }}"></textarea>
                                 </div>
                                 <script type="text/javascript">
                                     $(function() {
@@ -116,7 +116,7 @@
                                 </script>
                                 <div class='row' id='row_type'>
                                     <label for='content_type'>{{ trans('app.content_type') }}</label>
-                                    <select name='content_type' id='content_type'>
+                                    <select class="form-select" name='content_type' id='content_type'>
                                         <option value="0">{{ trans('app.choose_content_type') }}</option>
                                         <option value="url">{{ trans('app.url') }}</option>
                                         <option value="audio">{{ trans('app.audio') }}</option>
@@ -129,7 +129,7 @@
                             </div>
                         </div>
                         <div class="foot">
-                            <input type="submit" value="{{ trans('app.next') }}">
+                            <input class="btn btn-primary" type="submit" value="{{ trans('app.next') }}">
                         </div>
                     </div>
                 </form>
@@ -145,7 +145,7 @@
                         <input type="hidden" name="desc" value="{{ $request->get('desc') }}">
                         <input type="hidden" name="msg" value="{{ $request->get('desc') }}">
                         <input type="hidden" name="content_type" value="{{ $request->get('content_type') }}">
-                        <h2>{{ trans('app.step') }} -> {{ $request->get('type') }} -> {{ $request->get('cat') }}</h2>
+                        <h2>{{ trans('app.step') }} → {{ $request->get('type') }} → {{ $request->get('cat') }}</h2>
                         <div class="content">
                             <div class="formifier">
                                 @if($request->get('content_type') == 'url')
@@ -164,7 +164,7 @@
                             </div>
                         </div>
                         <div class="foot">
-                            <input type="submit" value="{{ trans('app.submit') }}">
+                            <input class="btn btn-primary mt-2" type="submit" value="{{ trans('app.submit') }}">
                         </div>
                     </div>
                 </form>
