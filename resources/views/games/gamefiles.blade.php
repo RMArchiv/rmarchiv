@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('pagetitle', trans('app.gamefiles').': '.$game->title)
+@section('pagetitle', trans('app.gamefiles') . ': ' . $game->title)
 @section('content')
     <div class="container">
         <div class="row">
@@ -12,7 +12,7 @@
         </div>
         @if (count($errors) > 0)
             <div class="row">
-                <h2>{{trans('app.add_gamefiles')}}</h2>
+                <h2>{{ trans('app.add_gamefiles') }}</h2>
                 <div class="content">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -98,54 +98,61 @@
             </div>
 
         </div>
-        @if(Auth::check())
+        @if (Auth::check())
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <div class="card">
                         <div class="card-header">
-                            {{trans('app.add_gamefile')}}
+                            {{ trans('app.add_gamefile') }}
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ route('gamefiles.store', $game->id) }}" class="form-horizontal">
+                            <form method="POST" action="{{ route('gamefiles.store', $game->id) }}"
+                                class="form-horizontal">
                                 @csrf
-                            <div class="form-group">
-                                <label for="filetype" class="col-sm-2 col-form-label">{{trans('app.release_type.title')}}: *</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control" name='filetype' id='filetype'>
-                                        <option value="0">{{trans('app.choose_release_type')}}</option>
-                                        @foreach($filetypes as $types)
-                                            <option value="{{ $types->id }}">{{ $types->title }}</option>
-                                        @endforeach
-                                    </select>
+                                <div class="form-group">
+                                    <label for="filetype"
+                                        class="col-sm-2 col-form-label">{{ trans('app.release_type.title') }}: *</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name='filetype' id='filetype'>
+                                            <option value="0">{{ trans('app.choose_release_type') }}</option>
+                                            @foreach ($filetypes as $types)
+                                                <option value="{{ $types->id }}">{{ $types->title }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="version" class="col-sm-2 col-form-label">{{trans('app.gamefile_version')}}: *</label>
-                                <div class="col-sm-10">
-                                    <input name="version" id="version" value="" placeholder="1.0" class="form-control"/>
+                                <div class="form-group">
+                                    <label for="version"
+                                        class="col-sm-2 col-form-label">{{ trans('app.gamefile_version') }}: *</label>
+                                    <div class="col-sm-10">
+                                        <input name="version" id="version" value="" placeholder="1.0"
+                                            class="form-control" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-inline form-group">
-                                <label for="releasedate" class="col-sm-2 col-form-label">{{trans('app.release_date')}}</label>
-                                <div class="col-sm-10">
-                                    <select name="releasedate_day" id="releasedate_day" class="form-control">
-                                        <option value="0">{{trans('app.release_date_day')}}</option>
-                                        @for($i = 1; $i < 32; $i++)
-                                            <option value="{{ $i }}">{{ $i }}</option>
-                                        @endfor
-                                    </select>
-                                    <select name="releasedate_month" id="releasedate_month" class="form-control">
-                                        <option value="0">{{trans('app.release_date_month')}}</option>
-                                        @for($i = 1; $i < 13; $i++)
-                                            <option value="{{ $i }}">{{ trans('app.month.'.$i) }}</option>
-                                        @endfor
-                                    </select>
-                                    <select name="releasedate_year" id="releasedate_year" class="form-control">
-                                        <option value="0">{{trans('app.release_date_year')}}</option>
-                                        @for($i = 1990; $i < date("Y") + 1; $i++)
-                                            <option value="{{ $i }}">{{ $i }}</option>
-                                        @endfor
-                                    </select>
+                                <div class="form-inline form-group">
+                                    <label for="releasedate"
+                                        class="col-sm-2 col-form-label">{{ trans('app.release_date') }}</label>
+                                    <div class="col-sm-10">
+                                        <select name="releasedate_day" id="releasedate_day" class="form-control">
+                                            <option value="0">{{ trans('app.release_date_day') }}</option>
+                                            @for ($i = 1; $i < 32; $i++)
+                                                <option value="{{ $i }}">{{ $i }}</option>
+                                            @endfor
+                                        </select>
+                                        <select name="releasedate_month" id="releasedate_month" class="form-control">
+                                            <option value="0">{{ trans('app.release_date_month') }}</option>
+                                            @for ($i = 1; $i < 13; $i++)
+                                                <option value="{{ $i }}">{{ trans('app.month.' . $i) }}
+                                                </option>
+                                            @endfor
+                                        </select>
+                                        <select name="releasedate_year" id="releasedate_year" class="form-control">
+                                            <option value="0">{{ trans('app.release_date_year') }}</option>
+                                            @for ($i = 1990; $i < date('Y') + 1; $i++)
+                                                <option value="{{ $i }}">{{ $i }}</option>
+                                            @endfor
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -171,8 +178,7 @@
                                     <div id="fine-uploader"></div>
                                     <div id="fine-uploader-error"></div>
                                 </div>
-                            </div>
-                            <button type="submit" class="btn btn-secondary">{{ trans('app.submit') }}</button>
+                                <button type="submit" class="btn btn-secondary">{{ trans('app.submit') }}</button>
                             </form>
                         </div>
                     </div>
@@ -273,14 +279,14 @@
                     enabled: true
                 },
                 success: {
-                    endpoint: "/games/" + {{ $game->id }}+"/gamefiles/upload"
+                    endpoint: "/games/" + {{ $game->id }} + "/gamefiles/upload"
                 }
             },
             resume: {
                 enabled: true
             },
             request: {
-                endpoint: "/games/" + {{ $game->id }}+"/gamefiles/upload",
+                endpoint: "/games/" + {{ $game->id }} + "/gamefiles/upload",
                 customHeaders: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 }
@@ -288,7 +294,7 @@
             multiple: false,
             deleteFile: {
                 enabled: true,
-                endpoint: "/games/" + {{ $game->id }}+"/gamefiles/upload"
+                endpoint: "/games/" + {{ $game->id }} + "/gamefiles/upload"
             },
             retry: {
                 enableAuto: true
@@ -298,17 +304,20 @@
             },
             callbacks: {
                 onError: function(id, name, errorReason, xhrOrXdr) {
-                    if(xhrOrXdr.status === 413) {
-                        $('#fine-uploader-error').html('{{trans("app.413_error")}}')
+                    if (xhrOrXdr.status === 413) {
+                        $('#fine-uploader-error').html('{{ trans('app.413_error') }}')
                     }
                 },
-                onComplete: function (id, fileName, responseJSON) {
+                onComplete: function(id, fileName, responseJSON) {
                     console.log(responseJSON)
                     if (responseJSON.success) {
                         $('#fine-uploader-error').html('')
-                        $('#fine-uploader').append('<input type="hidden" name="uuid" value="' + responseJSON.uuid + '">');
-                        $('#fine-uploader').append('<input type="hidden" name="filename" value="' + responseJSON.uploadName + '">');
-                        $('#fine-uploader').append('<input type="hidden" name="ext" value="' + responseJSON.ext + '">');
+                        $('#fine-uploader').append('<input type="hidden" name="uuid" value="' + responseJSON
+                            .uuid + '">');
+                        $('#fine-uploader').append('<input type="hidden" name="filename" value="' + responseJSON
+                            .uploadName + '">');
+                        $('#fine-uploader').append('<input type="hidden" name="ext" value="' + responseJSON
+                            .ext + '">');
                     }
                 }
             }
