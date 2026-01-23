@@ -92,7 +92,7 @@
                     <input name="file" id="file" type="file" value=""/>
                     <br>
                     <label for="slot">{{ trans('app.savegame_slot') }}:</label><br>
-                    <select name="slot" id="slot">
+                    <select class="form-select" name="slot" id="slot">
                         @for($i = 1; $i <= 15; $i++)
                             <option value="{{ $i }}">{{ $i }}</option>
                         @endfor

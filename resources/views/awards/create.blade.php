@@ -80,7 +80,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="awardpage">{{trans('app.award_website')}}</label>
-                            <select class="form-control" name="awardpage" id="awardpage">
+                            <select class="form-control form-select" name="awardpage" id="awardpage">
                                 <option value="0">{{ trans('app.choose_award_website') }}</option>
                                 @foreach($pages as $page)
                                     <option value="{{ $page->id }}">{{ $page->title }}</option>
@@ -107,13 +107,13 @@
                         <div class="form-group">
                             <label for="awarddate">{{trans('app.created_at')}}</label>
                             <div class="form-inline" id="awarddate">
-                                <select class="form-control" name="awarddate_month" id="awarddate_month">
+                                <select class="form-control form-select" name="awarddate_month" id="awarddate_month">
                                     <option value="0">{{trans('app.created_at_month')}}</option>
                                     @for($i = 1; $i < 13; $i++)
                                         <option value="{{ $i }}">{{ trans('app.month.'.$i) }}</option>
                                     @endfor
                                 </select>
-                                <select class="form-control" name="awarddate_year" id="awarddate_year">
+                                <select class="form-control form-select" name="awarddate_year" id="awarddate_year">
                                     <option value="0">{{trans('app.created_at_year')}}</option>
                                     @for($i = 1990; $i < date("Y") + 1; $i++)
                                         <option value="{{ $i }}">{{ $i }}</option>
@@ -141,7 +141,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="award">{{ trans('app.award_category') }}</label>
-                            <select class="form-control" name="award" id="award">
+                            <select class="form-control form-select" name="award" id="award">
                                 <option value="0">{{ trans('app.choose_award_category') }}</option>
                                 @foreach($awards as $aw)
                                     <option value="{{ $aw->pageid }}-{{ $aw->catid }}">

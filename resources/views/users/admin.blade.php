@@ -22,7 +22,7 @@
                     <div class="formifier">
                         <div class='row' id='row_maker'>
                             <label for='perm'>{{ trans('app.link_permission_to_user') }}</label>
-                            <select name='perm' id='perm'>
+                            <select class="form-select" name='perm' id='perm'>
                                 <option value="0">{{ trans('app.choose_permission') }}</option>
                                 @foreach($perms as $perm)
                                     @if($perm->id == $user->hasRole($perm->name))

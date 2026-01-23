@@ -64,9 +64,9 @@
                             @csrf
                         <div class='content'>
                             <label for='topic'>{{ trans('app.topic') }}</label>
-                            <input name='topic' id='topic'/>
+                            <input class="form-control" name='topic' id='topic'/>
                             <label for='category'>{{ trans('app.category') }}</label>
-                            <select name='category' id='category'>
+                            <select class="form-select" name='category' id='category'>
                                 @foreach($cats as $cat)
                                     <option value='{{ $cat->id }}'>{{ $cat->title }}</option>
                                 @endforeach
@@ -76,7 +76,7 @@
                             <div>{!! trans('app.markdown_is_usable_here') !!}</div>
                         </div>
                         <div class='foot'>
-                            <input type='submit' value='{{ trans('app.submit') }}' id='submit'></div>
+                            <input class="btn btn-primary" type='submit' value='{{ trans('app.submit') }}' id='submit'></div>
                         </form>
                     </div>
                 </div>

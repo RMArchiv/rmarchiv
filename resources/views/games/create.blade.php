@@ -53,7 +53,7 @@
                                     <div class="form-group">
                                         <label for='maker' class="col-lg-2 col-form-label">{{trans('app.maker')}} *</label>
                                         <div class="col-lg-10">
-                                            <select name='maker' id='maker' class="form-control">
+                                            <select name='maker' id='maker' class="form-select">
                                                 <option value="0">{{trans('app.choose_maker')}}</option>
                                                 @foreach($makers as $maker)
                                                     <option value="{{ $maker->id }}">{{ $maker->title }}</option>
@@ -64,7 +64,7 @@
                                     <div class='form-group'>
                                         <label class="col-lg-2 col-form-label" for='language'>{{trans('app.language')}} *</label>
                                         <div class="col-lg-10">
-                                            <select name='language' id='language' class="form-control">
+                                            <select name='language' id='language' class="form-select">
                                                 <option value="0">{{trans('app.choose_language')}}</option>
                                                 @foreach($langs as $lang)
                                                     <option value="{{ $lang->short }}">{{ $lang->name }}</option>
@@ -81,7 +81,7 @@
                                     <div class="form-group">
                                         <label for='license' class="col-lg-2 col-form-label">{{trans('app.license')}} *</label>
                                         <div class="col-lg-10">
-                                            <select name='license' id='license' class="form-control">
+                                            <select name='license' id='license' class="form-select">
                                                 <option value="0">{{trans('app.choose_license')}}</option>
                                                 @foreach($licenses as $maker)
                                                     <option value="{{ $maker->id }}">{{ $maker->title }}</option>
