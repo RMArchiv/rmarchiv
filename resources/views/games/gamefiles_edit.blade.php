@@ -22,7 +22,7 @@
                         <div class="card-body">
                             <div class='form-group' id='row_filetype'>
                                 <label for='filetype'>{{trans('app.release_type.title')}}</label>
-                                <select class="form-control" name='filetype' id='filetype'>
+                                <select class="form-select" name='filetype' id='filetype'>
                                     <option value="0">{{trans('app.choose_release_type')}}</option>
                                     @foreach($filetypes as $types)
                                         <option @if ($gamefile->release_type == $types->id) selected="" @endif value="{{ $types->id }}">{{ $types->title }}</option>
@@ -38,19 +38,19 @@
                             <div class="form-group" id="row_releasedate">
                                 <label for="releasedate">{{trans('app.release_date')}}</label>
                                 <div class="formdate" id="releasedate">
-                                    <select class="form-control" name="releasedate_day" id="releasedate_day">
+                                    <select class="form-select" name="releasedate_day" id="releasedate_day">
                                         <option value="0">{{trans('app.release_date_day')}}</option>
                                         @for($i = 1; $i < 32; $i++)
                                             <option @if ($gamefile->release_day == $i) selected="" @endif value="{{ $i }}">{{ $i }}</option>
                                         @endfor
                                     </select>
-                                    <select class="form-control" name="releasedate_month" id="releasedate_month">
+                                    <select class="form-select" name="releasedate_month" id="releasedate_month">
                                         <option value="0">{{trans('app.release_date_month')}}</option>
                                         @for($i = 1; $i < 13; $i++)
                                             <option @if ($gamefile->release_month == $i) selected="" @endif value="{{ $i }}">{{ trans('app.month.'.$i) }}</option>
                                         @endfor
                                     </select>
-                                    <select class="form-control" name="releasedate_year" id="releasedate_year">
+                                    <select class="form-select" name="releasedate_year" id="releasedate_year">
                                         <option value="0">{{trans('app.release_date_year')}}</option>
                                         @for($i = 1990; $i < date("Y") + 1; $i++)
                                             <option @if ($gamefile->release_year == $i) selected="" @endif value="{{ $i }}">{{ $i }}</option>
@@ -62,7 +62,7 @@
                             <div class="form-group">
                                 <label for="language" class="col-sm-2 col-form-label">{{trans('app.language')}}: *</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control" name='language' id='language'>
+                                    <select class="form-select" name='language' id='language'>
                                         <option value="0">{{trans('app.choose_language')}}</option>
                                         @foreach(\App\Models\Language::all() as $lang)
                                             <option @if ($gamefile->language_id == $lang->id) selected="" @endif value="{{ $lang->id }}">{{ $lang->name }}</option>

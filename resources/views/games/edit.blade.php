@@ -58,7 +58,7 @@
                         <div class="form-group">
                             <label for='maker' class="col-lg-2 col-form-label">{{trans('app.maker')}} *</label>
                             <div class="col-lg-10">
-                                <select name='maker' id='maker' class="form-control">
+                                <select name='maker' id='maker' class="form-select">
                                     <option value="0">{{trans('app.choose_maker')}}</option>
                                     @foreach($makers as $maker)
                                         @if($game->maker_id == $maker->id)
@@ -73,7 +73,7 @@
                         <div class='form-group'>
                             <label class="col-lg-2 col-form-label" for='language'>{{trans('app.language')}} *</label>
                             <div class="col-lg-10">
-                                <select name='language' id='language' class="form-control">
+                                <select name='language' id='language' class="form-select">
                                     <option value="0">{{trans('app.choose_language')}}</option>
                                     @foreach($langs as $lang)
                                         @if($game->lang_id == $lang->id)
@@ -90,7 +90,7 @@
                             <div class="col-lg-10">
                                 <div class="form-group">
                                     @php $reldate = \Carbon\Carbon::parse($game->release_date) @endphp
-                                    <select name="releasedate_day" id="releasedate_day" class="form-control">
+                                    <select name="releasedate_day" id="releasedate_day" class="form-select">
                                         <option value="0">{{trans('app.release_date_day')}}</option>
                                         @for($i = 1; $i < 32; $i++)
                                             <option value="{{ $i }}"
@@ -102,7 +102,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select name="releasedate_month" id="releasedate_month" class="form-control">
+                                    <select name="releasedate_month" id="releasedate_month" class="form-select">
                                         <option value="0">{{trans('app.release_date_month')}}</option>
                                         @for($i = 1; $i < 13; $i++)
                                             <option value="{{ $i }}"
@@ -114,7 +114,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select name="releasedate_year" id="releasedate_year" class="form-control">
+                                    <select name="releasedate_year" id="releasedate_year" class="form-select">
                                         <option value="0">{{trans('app.release_date_year')}}</option>
                                         @for($i = 1990; $i < date("Y") + 1; $i++)
                                             <option value="{{ $i }}"
@@ -142,7 +142,7 @@
                         <div class="form-group">
                             <label for='license' class="col-lg-2 col-form-label">{{trans('app.license')}} *</label>
                             <div class="col-lg-10">
-                                <select name='license' id='license' class="form-control">
+                                <select name='license' id='license' class="form-select">
                                     <option value="0">{{trans('app.choose_license')}}</option>
                                     @foreach($licenses as $maker)
                                         @if($game->license_id == $maker->id)
@@ -222,7 +222,7 @@
                                     <div id="searchcontainer"></div>
                                 </div>
                             </div>
-                            <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
+                            <input class="btn btn-primary" type="submit" value="{{trans('app.submit')}}">
 
                             <script type="module">
                                 createAutocomplete({
@@ -276,7 +276,7 @@
                                 <span class='prod'><a href='{{ url('users', $credit->user_id) }}' class='user'>{{ $credit->user->name }}</a></span>
                                 - {{ $credit->type->title }}
                                 <div class="badge">
-                                    <a class="btn btn-secondary btn-xs" href="{{ action('UserCreditsController@destroy', [$game->id, $credit->id]) }}">{{trans('app.delete')}}</a>
+                                    <a class="btn btn-primary btn-xs" href="{{ action('UserCreditsController@destroy', [$game->id, $credit->id]) }}">{{trans('app.delete')}}</a>
                                 </div>
                             </li>
                         @endforeach
@@ -298,7 +298,7 @@
                             <div class="form-group" id="row_credittype">
                                 <label for="credit" class="col-lg-2 col-form-label">{{trans('app.credits_type')}}:</label>
                                 <div class="col-lg-10">
-                                    <select name='credit' id='credit' class="form-control">
+                                    <select name='credit' id='credit' class="form-select">
                                         <option value="0">{{trans('app.choose_credits_type')}}</option>
                                         @foreach(\App\Models\UserCreditType::get() as $ct)
                                             <option value="{{ $ct->id }}">{{$ct->title}}</option>
@@ -306,7 +306,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
+                            <input class="btn btn-primary" type="submit" value="{{trans('app.submit')}}">
                             <script type="module">
                                 createAutocomplete({
                                     apiPath: ()=>{return "ac_user"},
@@ -338,7 +338,7 @@
                             <div class="form-group" id="row_invisible">
                                 <label for="invisible" class="col-lg-2 col-form-label">{{ __('Unsichtbar auf Startseite') }}:</label>
                                 <div class="col-lg-10">
-                                    <select name='invisible' id='invisible' class="form-control">
+                                    <select name='invisible' id='invisible' class="form-select">
                                         @if($game->invisible_on_start_page == 1)
                                             <option value="0">Sichtbar</option>
                                             <option selected="selected" value="1">Unsichtbar</option>
@@ -352,7 +352,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
+                            <input class="btn btn-primary" type="submit" value="{{trans('app.submit')}}">
                         </div>
                     </form>
                 </div>
@@ -376,7 +376,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <input class="btn btn-secondary" type="submit" value="{{trans('app.submit')}}">
+                            <input class="btn btn-primary" type="submit" value="{{trans('app.submit')}}">
                         </div>
                     </form>
                 </div>

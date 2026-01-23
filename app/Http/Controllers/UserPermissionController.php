@@ -61,11 +61,13 @@ class UserPermissionController extends Controller
             ->get();
 
         $ptoadd = UserPermission::all();
+        $role = UserRole::all()->where('id', $id)->first();
 
         return view('users.entrust.showrole', [
             'perms'      => $p,
             'roleid'     => $id,
             'permstoadd' => $ptoadd,
+            'role' => $role
         ]);
     }
 

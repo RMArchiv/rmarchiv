@@ -50,7 +50,7 @@
                         <div class='form-group'>
                             <label class="col-lg-2 col-form-label" for='language'>{{trans('app.language')}} *</label>
                             <div class="col-lg-10">
-                                <select name='language' id='language' class="form-control">
+                                <select name='language' id='language' class="form-control form-select">
                                     <option @if(Auth::user()->settings->language == 'de') selected="selected"
                                             @endif value="de">deutsch
                                     </option>
@@ -86,9 +86,10 @@
                     <div class="card-body">
                         <div class='form-group'>
                             <div class="col-lg-10">
-                                <div class="form-group">
-                                    <label for="download_template">Download template: </label>
-                                    <input name="download_template" id="download_template" type="text" value="{{ $settings->download_template }}"/>
+                                <div class="form-group d-flex flex-column">
+                                    <label for="download_template">Download template:</label>
+
+                                    <input class="form-control" name="download_template" id="download_template" type="text" value="{{ $settings->download_template }}"/>
                                     <small id="download_templateHelp" class="form-text text-muted">
                                         Possible Strings:<br>
                                         {title} - Gametitle<br>
@@ -168,7 +169,7 @@
 
                         <div class="form-group">
                             <label for="row_dev">{{ trans('app.devs_per_row') }}</label>
-                            <select name="row_dev" id="row_dev" class="form-control">
+                            <select name="row_dev" id="row_dev" class="form-control form-select">
                                 @foreach([1, 5, 10, 15, 20, 25, 50, 100, 9999] as $rows)
                                     @if(Auth::user()->settings->rows_per_page_developer == $rows)
                                         <option selected="selected" value="{{ $rows }}">{{ $rows  }}</option>
@@ -180,7 +181,7 @@
                         </div>
                         <div class="form-group">
                             <label for="row_games">{{ trans('app.games_per_row') }}</label>
-                            <select name="row_games" id="row_games" class="form-control">
+                            <select name="row_games" id="row_games" class="form-control form-select">
                                 @foreach([1, 5, 10, 15, 20, 25, 50, 100, 9999] as $rows)
                                     @if(Auth::user()->settings->rows_per_page_games == $rows)
                                         <option selected="selected" value="{{ $rows }}">{{ $rows }}</option>
@@ -225,15 +226,15 @@
 
                         <div class="form-group">
                             <label for="passwordold">{{ trans('app.old_password') }} *</label>
-                            <input name="passwordold" id="passwordold" type="password" value=""/>
+                            <input class="form-control" name="passwordold" id="passwordold" type="password" value=""/>
                         </div>
                         <div class="form-group">
                             <label for="password1">{{ trans('app.new_password') }} *</label>
-                            <input name="password1" id="password1" type="password" value=""/>
+                            <input class="form-control" name="password1" id="password1" type="password" value=""/>
                         </div>
                         <div class="form-group">
                             <label for="password2">{{ trans('app.new_password_confirm') }} *</label>
-                            <input name="password2" id="password2" type="password" value=""/>
+                            <input class="form-control" name="password2" id="password2" type="password" value=""/>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -270,11 +271,11 @@
 
                         <div class="form-group">
                             <label for="usernameold">{{ trans('app.old_username') }} *</label>
-                            <input name="usernameold" id="usernameold" type="text" value=""/>
+                            <input class="form-control" name="usernameold" id="usernameold" type="text" value=""/>
                         </div>
                         <div class="form-group">
                             <label for="usernamenew">{{ trans('app.new_username') }} *</label>
-                            <input name="usernamenew" id="usernamenew" type="text" value=""/>
+                            <input class="form-control" name="usernamenew" id="usernamenew" type="text" value=""/>
                         </div>
                     </div>
                     <div class="card-footer">

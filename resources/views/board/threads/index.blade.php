@@ -67,14 +67,14 @@
                             <input type="hidden" name="category" value="{{ $cat->id }}">
                             <div class='content'>
                                 <label for='topic'>{{ trans('app.topic_title') }}:</label>
-                                <input name='topic' id='topic'/>
+                                <input class="form-control" name='topic' id='topic'/>
 
                                 <label for='message'>{{ trans('app.message') }}:</label>
                                 @include('_partials.markdown_editor')
                                 <div><a href='#'>{{ trans('app.markdown_is_usable_here') }}</a></div>
                             </div>
                             <div class='foot'>
-                                <input type='submit' class="btn btn-secondary" value='{{ trans('app.submit') }}' id='submit'></div>
+                                <input type='submit' class="btn btn-primary" value='{{ trans('app.submit') }}' id='submit'></div>
                             </form>
                         </div>
                     </div>
