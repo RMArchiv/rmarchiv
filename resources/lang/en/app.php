@@ -279,7 +279,7 @@ return [
   'obyx_overview'                                   => 'Obyx overview',
   'ok'                                              => 'Ok',
   'old_password'                                    => 'Old password',
-  'old_username'                                    => 'Old Username',
+  'old_username'                                    => 'Old username',
   'panorama'                                        => 'Panorama',
   'participants'                                    => 'Participants',
   'password'                                        => 'Password',
