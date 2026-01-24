@@ -67,11 +67,65 @@ $api->version('v1', function ($api) {
         $api->get('games/{id}', 'App\Http\Controllers\Api\v3\GamesController@show');
         $api->get('games/{id}/screenshots', 'App\Http\Controllers\Api\v3\ScreenshotsController@index');
         $api->get('games/{id}/gamefiles', 'App\Http\Controllers\Api\v3\GamefilesController@index');
+        $api->get('games/{id}/awards', 'App\Http\Controllers\Api\v3\AwardsController@gameAwards');
+        $api->get('games/{id}/cdcs', 'App\Http\Controllers\Api\v3\AwardsController@gameCdcs');
 
         $api->post('games/{id}/ratings', 'App\Http\Controllers\Api\v3\RatingsController@store');
 
         $api->get('gamefiles/{gamefileId}/savegames', 'App\Http\Controllers\Api\v3\SavegamesController@index');
         $api->put('gamefiles/{gamefileId}/savegames', 'App\Http\Controllers\Api\v3\SavegamesController@store');
         $api->put('gamefiles/{gamefileId}/savegames/{slotId}', 'App\Http\Controllers\Api\v3\SavegamesController@storeSlot');
+
+        $api->get('users', 'App\Http\Controllers\Api\v3\UsersController@index');
+        $api->get('users/me', 'App\Http\Controllers\Api\v3\UsersController@me');
+        $api->get('users/online', 'App\Http\Controllers\Api\v3\UsersController@online');
+        $api->get('users/{id}', 'App\Http\Controllers\Api\v3\UsersController@show');
+        $api->get('users/{id}/lists', 'App\Http\Controllers\Api\v3\UserListsController@index');
+        $api->get('lists/{id}', 'App\Http\Controllers\Api\v3\UserListsController@show');
+        $api->post('users/me/lists', 'App\Http\Controllers\Api\v3\UserListsController@store');
+        $api->put('users/me/lists/{id}', 'App\Http\Controllers\Api\v3\UserListsController@update');
+        $api->delete('users/me/lists/{id}', 'App\Http\Controllers\Api\v3\UserListsController@destroy');
+        $api->post('users/me/lists/{id}/items', 'App\Http\Controllers\Api\v3\UserListsController@addItem');
+        $api->delete('users/me/lists/{id}/items/{itemId}', 'App\Http\Controllers\Api\v3\UserListsController@removeItem');
+        $api->get('users/me/downloads', 'App\Http\Controllers\Api\v3\UsersController@downloads');
+
+        $api->get('comments', 'App\Http\Controllers\Api\v3\CommentsController@index');
+        $api->post('comments', 'App\Http\Controllers\Api\v3\CommentsController@store');
+
+        $api->get('forum/categories', 'App\Http\Controllers\Api\v3\ForumController@categories');
+        $api->get('forum/threads', 'App\Http\Controllers\Api\v3\ForumController@threads');
+        $api->get('forum/threads/{id}', 'App\Http\Controllers\Api\v3\ForumController@thread');
+        $api->get('forum/threads/{id}/posts', 'App\Http\Controllers\Api\v3\ForumController@posts');
+
+        $api->get('news', 'App\Http\Controllers\Api\v3\NewsController@index');
+        $api->get('news/{id}', 'App\Http\Controllers\Api\v3\NewsController@show');
+
+        $api->get('resources', 'App\Http\Controllers\Api\v3\ResourcesController@index');
+        $api->get('resources/{id}', 'App\Http\Controllers\Api\v3\ResourcesController@show');
+
+        $api->get('developers', 'App\Http\Controllers\Api\v3\DevelopersController@index');
+        $api->get('developers/{id}', 'App\Http\Controllers\Api\v3\DevelopersController@show');
+
+        $api->get('meta/tags', 'App\Http\Controllers\Api\v3\MetaController@tags');
+        $api->get('meta/makers', 'App\Http\Controllers\Api\v3\MetaController@makers');
+        $api->get('meta/languages', 'App\Http\Controllers\Api\v3\MetaController@languages');
+        $api->get('meta/licenses', 'App\Http\Controllers\Api\v3\MetaController@licenses');
+
+        $api->get('awards/pages', 'App\Http\Controllers\Api\v3\AwardsController@pages');
+        $api->get('awards/cats', 'App\Http\Controllers\Api\v3\AwardsController@cats');
+        $api->get('awards/subcats', 'App\Http\Controllers\Api\v3\AwardsController@subcats');
+
+        $api->get('events', 'App\Http\Controllers\Api\v3\EventsController@index');
+        $api->get('events/{id}', 'App\Http\Controllers\Api\v3\EventsController@show');
+
+        $api->get('messages/threads', 'App\Http\Controllers\Api\v3\MessagesController@threads');
+        $api->get('messages/threads/{id}', 'App\Http\Controllers\Api\v3\MessagesController@thread');
+        $api->get('messages/threads/{id}/messages', 'App\Http\Controllers\Api\v3\MessagesController@messages');
+
+        $api->get('reports', 'App\Http\Controllers\Api\v3\ReportsController@index');
+        $api->post('reports', 'App\Http\Controllers\Api\v3\ReportsController@store');
+
+        $api->get('logos', 'App\Http\Controllers\Api\v3\LogosController@index');
+        $api->get('logos/{id}', 'App\Http\Controllers\Api\v3\LogosController@show');
     });
 });

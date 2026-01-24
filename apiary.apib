@@ -332,3 +332,446 @@ Auth required (Bearer token).
                 "slot_id": 0
             }
         }
+
+## Users [/users{?per_page}]
+
+### List users [GET]
+
++ Parameters
+    + per_page: 50 (number, optional) - Items per page (1-200).
+
++ Response 200 (application/json)
+
+        {
+            "status_code": 200,
+            "message": "Users",
+            "data": [
+                { "id": 1, "name": "User", "created_at": "2024-01-01 12:00:00" }
+            ],
+            "meta": { "page": 1, "per_page": 50, "total": 100, "last_page": 2 }
+        }
+
+## User Details [/users/{id}]
+
+### Get user [GET]
+
++ Parameters
+    + id: 1 (number, required) - User ID.
+
++ Response 200 (application/json)
+
+        {
+            "status_code": 200,
+            "message": "User",
+            "data": { "id": 1, "name": "User", "created_at": "2024-01-01 12:00:00" }
+        }
+
+## Current User [/users/me]
+
+### Get current user [GET]
+
+Auth required (Bearer token).
+
++ Response 200 (application/json)
+
+        {
+            "status_code": 200,
+            "message": "Current user",
+            "data": { "id": 1, "name": "User", "email": "user@example.com", "created_at": "2024-01-01 12:00:00" }
+        }
+
+## User Downloads [/users/me/downloads{?per_page}]
+
+### Get download log [GET]
+
+Auth required (Bearer token).
+
++ Response 200 (application/json)
+
+        {
+            "status_code": 200,
+            "message": "Download log",
+            "data": [
+                { "id": 1, "user_id": 1, "gamefile_id": 200, "created_at": "2024-01-01 12:00:00" }
+            ],
+            "meta": { "page": 1, "per_page": 50, "total": 10, "last_page": 1 }
+        }
+
+## Online Users [/users/online]
+
+### Get online users [GET]
+
++ Response 200 (application/json)
+
+        {
+            "status_code": 200,
+            "message": "Online users",
+            "data": [
+                { "id": 1, "user": { "id": 1, "name": "User" }, "last_place": "/games", "created_at": "2024-01-01 12:00:00" }
+            ]
+        }
+
+## User Lists [/users/{id}/lists]
+
+### Get user lists [GET]
+
++ Parameters
+    + id: 1 (number, required) - User ID.
+
++ Response 200 (application/json)
+
+        {
+            "status_code": 200,
+            "message": "User lists",
+            "data": [
+                { "id": 1, "user_id": 1, "title": "Favorites", "desc_md": "", "desc_html": "" }
+            ]
+        }
+
+## List Details [/lists/{id}]
+
+### Get list [GET]
+
++ Parameters
+    + id: 1 (number, required) - List ID.
+
++ Response 200 (application/json)
+
+        {
+            "status_code": 200,
+            "message": "User list",
+            "data": {
+                "id": 1,
+                "user_id": 1,
+                "title": "Favorites",
+                "items": [
+                    { "id": 10, "content_id": 5, "content_type": "game", "game": { "id": 5, "title": "Game", "subtitle": "" } }
+                ]
+            }
+        }
+
+## List Management [/users/me/lists]
+
+### Create list [POST]
+
+Auth required (Bearer token).
+
++ Request (application/json)
+
+        { "title": "Favorites", "desc": "My list" }
+
++ Response 201 (application/json)
+
+        { "status_code": 201, "message": "List created", "data": { "id": 1, "title": "Favorites" } }
+
+## List Update [/users/me/lists/{id}]
+
+### Update list [PUT]
+
+Auth required (Bearer token).
+
++ Request (application/json)
+
+        { "title": "Favorites 2", "desc": "Updated" }
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "List updated", "data": { "id": 1, "title": "Favorites 2" } }
+
+### Delete list [DELETE]
+
+Auth required (Bearer token).
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "List deleted" }
+
+## List Items [/users/me/lists/{id}/items]
+
+### Add item [POST]
+
+Auth required (Bearer token).
+
++ Request (application/json)
+
+        { "game_id": 5 }
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Item added" }
+
+## List Item [/users/me/lists/{id}/items/{itemId}]
+
+### Remove item [DELETE]
+
+Auth required (Bearer token).
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Item removed" }
+
+## Comments [/comments{?type,id}]
+
+### List comments [GET]
+
++ Parameters
+    + type: game (string, required) - game|news|resource|event
+    + id: 1 (number, required) - Content ID.
+
++ Response 200 (application/json)
+
+        {
+            "status_code": 200,
+            "message": "Comments",
+            "data": [
+                { "id": 1, "comment_md": "Text", "created_at": "2024-01-01 12:00:00" }
+            ]
+        }
+
+### Create comment [POST]
+
+Auth required (Bearer token).
+
++ Request (application/json)
+
+        { "type": "game", "id": 1, "comment": "Nice!" }
+
++ Response 201 (application/json)
+
+        { "status_code": 201, "message": "Comment added", "data": { "id": 1 } }
+
+## Forum Categories [/forum/categories]
+
+### List categories [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Forum categories", "data": [ { "id": 1, "title": "General" } ] }
+
+## Forum Threads [/forum/threads{?cat_id,per_page}]
+
+### List threads [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Forum threads", "data": [ { "id": 1, "title": "Hello" } ] }
+
+## Forum Thread [/forum/threads/{id}]
+
+### Get thread [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Thread", "data": { "id": 1, "title": "Hello" } }
+
+## Forum Posts [/forum/threads/{id}/posts{?per_page}]
+
+### List posts [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Thread posts", "data": [ { "id": 1, "content_md": "Post" } ] }
+
+## News [/news{?per_page}]
+
+### List news [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "News", "data": [ { "id": 1, "title": "Update" } ] }
+
+## News Item [/news/{id}]
+
+### Get news [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "News item", "data": { "id": 1, "title": "Update" } }
+
+## Resources [/resources{?type,cat,per_page}]
+
+### List resources [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Resources", "data": [ { "id": 1, "title": "Tool" } ] }
+
+## Resource [/resources/{id}]
+
+### Get resource [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Resource", "data": { "id": 1, "title": "Tool" } }
+
+## Developers [/developers{?per_page}]
+
+### List developers [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Developers", "data": [ { "id": 1, "name": "Dev" } ] }
+
+## Developer [/developers/{id}]
+
+### Get developer [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Developer", "data": { "id": 1, "name": "Dev" } }
+
+## Meta Tags [/meta/tags]
+
+### List tags [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Tags", "data": [ { "id": 1, "title": "Horror" } ] }
+
+## Meta Makers [/meta/makers]
+
+### List makers [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Makers", "data": [ { "id": 1, "title": "RPG Maker", "short": "rm" } ] }
+
+## Meta Languages [/meta/languages]
+
+### List languages [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Languages", "data": [ { "id": 1, "name": "Deutsch", "short": "de" } ] }
+
+## Meta Licenses [/meta/licenses]
+
+### List licenses [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Licenses", "data": [ { "id": 1, "title": "Freeware", "short": "free" } ] }
+
+## Award Pages [/awards/pages]
+
+### List award pages [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Award pages", "data": [ { "id": 1, "title": "Awards" } ] }
+
+## Award Categories [/awards/cats{?page_id}]
+
+### List award categories [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Award categories", "data": [ { "id": 1, "title": "2024" } ] }
+
+## Award Subcategories [/awards/subcats{?cat_id}]
+
+### List award subcategories [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Award subcategories", "data": [ { "id": 1, "title": "Best Game" } ] }
+
+## Game Awards [/games/{id}/awards]
+
+### Get game awards [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Game awards", "data": [ { "id": 1, "place": 1 } ] }
+
+## Game Coup de Coeur [/games/{id}/cdcs]
+
+### Get game cdcs [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Game coup de coeur", "data": [ { "id": 1 } ] }
+
+## Events [/events{?per_page}]
+
+### List events [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Events", "data": [ { "id": 1, "title": "Event" } ] }
+
+## Event [/events/{id}]
+
+### Get event [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Event", "data": { "id": 1, "title": "Event" } }
+
+## Messages [/messages/threads{?per_page}]
+
+### List message threads [GET]
+
+Auth required (Bearer token).
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Message threads", "data": [ { "id": 1, "subject": "Hello" } ] }
+
+## Message Thread [/messages/threads/{id}]
+
+### Get message thread [GET]
+
+Auth required (Bearer token).
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Message thread", "data": { "id": 1, "subject": "Hello" } }
+
+## Thread Messages [/messages/threads/{id}/messages{?per_page}]
+
+### List messages [GET]
+
+Auth required (Bearer token).
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Messages", "data": [ { "id": 1, "body": "Hi" } ] }
+
+## Reports [/reports]
+
+### List reports [GET]
+
+Auth required (Bearer token).
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Reports", "data": [ { "id": 1, "reason": "Spam" } ] }
+
+### Create report [POST]
+
+Auth required (Bearer token).
+
++ Request (application/json)
+
+        { "type": "game", "id": 1, "reason": "Broken" }
+
++ Response 201 (application/json)
+
+        { "status_code": 201, "message": "Report created", "data": { "id": 1 } }
+
+## Logos [/logos{?per_page}]
+
+### List logos [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Logos", "data": [ { "id": 1, "title": "Logo", "image_url": "http://rmarchiv.de/logo/get/1" } ] }
+
+## Logo [/logos/{id}]
+
+### Get logo [GET]
+
++ Response 200 (application/json)
+
+        { "status_code": 200, "message": "Logo", "data": { "id": 1, "title": "Logo", "image_url": "http://rmarchiv.de/logo/get/1" } }
