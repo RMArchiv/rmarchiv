@@ -127,7 +127,7 @@ class User extends Authenticatable implements BannableContract, LaratrustUser
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'api_token',
     ];
 
     public static function boot()

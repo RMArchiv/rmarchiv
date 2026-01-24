@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'permission'         => \Laratrust\Middleware\Permission::class,
         'ability'            => \Laratrust\Middleware\Ability::class,
         'forbid-banned-user' => \Cog\Laravel\Ban\Http\Middleware\ForbidBannedUser::class,
+        'api.token'          => \App\Http\Middleware\ApiTokenAuth::class,
     ];
 }

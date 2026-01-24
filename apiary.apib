@@ -1,51 +1,289 @@
 FORMAT: 1A
-HOST: http://rmarchiv.de/api/v2
+HOST: http://rmarchiv.de/api/v3
 
-# rmarchiv
+# rmarchiv API v3
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+This API provides access to games, screenshots, gamefiles (download links),
+ratings, and savegames. Authentication uses a Bearer token obtained via login.
 
 ## Authentication [/auth/login]
 
-### Authenticate [POST]
+### Login [POST]
 
 + Request (application/json)
 
-    + Headers
-
-            email: "your email for your rmarchiv account",
-            password: "your password for rmarchiv",
-
-+ Response 200 (application/json)
-
         {
-            "status": "ok",
-            "token": "Auth-Token"
+            "email": "user@example.com",
+            "password": "your password"
         }
-        
-## Game lists [/games]
 
-### Get all games [GET]
-
-+ Request (application/json)
-
-    + Headers
-    
-            Authentication: Bearer "AuthToken"
-        
 + Response 200 (application/json)
 
         {
-            "status": "ok",
-            "message": "Game List",
+            "status_code": 200,
+            "message": "Login successful",
+            "data": {
+                "token": "plain-api-token",
+                "token_type": "Bearer"
+            }
+        }
+
+## Games [/games{?per_page}]
+
+### List games [GET]
+
++ Parameters
+    + per_page: 50 (number, optional) - Items per page (1-200).
+
++ Response 200 (application/json)
+
+        {
+            "status_code": 200,
+            "message": "List of games",
             "data": [
                 {
-                    "id": 1
-                    "title": "Gametitle"
-                    "subtitle": "Subtitle"
-                },
-                {
-                    ...
-                },
+                    "id": 1,
+                    "title": "Game Title",
+                    "subtitle": "Subtitle",
+                    "release_date": "2003-04-15",
+                    "maker": {
+                        "id": 1,
+                        "title": "RPG Maker 2003",
+                        "short": "2k3"
+                    },
+                    "language": {
+                        "id": 1,
+                        "name": "Deutsch",
+                        "short": "de"
+                    },
+                    "votes": {
+                        "up": 12,
+                        "down": 3,
+                        "avg": 0.6
+                    }
+                }
             ],
+            "meta": {
+                "page": 1,
+                "per_page": 50,
+                "total": 1234,
+                "last_page": 25
+            }
+        }
+
+## Game Details [/games/{id}]
+
+### Get game details [GET]
+
++ Parameters
+    + id: 1 (number, required) - Game ID.
+
++ Response 200 (application/json)
+
+        {
+            "status_code": 200,
+            "message": "Game details",
+            "data": {
+                "id": 1,
+                "title": "Game Title",
+                "subtitle": "Subtitle",
+                "release_date": "2003-04-15",
+                "description_md": "Markdown text",
+                "description_html": "<p>HTML text</p>",
+                "website_url": "https://example.com",
+                "youtube": "https://youtube.com/...",
+                "maker": {
+                    "id": 1,
+                    "title": "RPG Maker 2003",
+                    "short": "2k3"
+                },
+                "language": {
+                    "id": 1,
+                    "name": "Deutsch",
+                    "short": "de"
+                },
+                "developers": [
+                    { "id": 10, "name": "Developer A" }
+                ],
+                "tags": [
+                    { "id": 5, "title": "Horror" }
+                ],
+                "votes": {
+                    "up": 12,
+                    "down": 3,
+                    "avg": 0.6
+                },
+                "screenshots": [
+                    {
+                        "id": 99,
+                        "screenshot_id": 1,
+                        "url": "http://rmarchiv.de/games/1/screenshot/show/1",
+                        "full_url": "http://rmarchiv.de/games/1/screenshot/show/1/full"
+                    }
+                ],
+                "gamefiles": [
+                    {
+                        "id": 200,
+                        "release_type": { "id": 3, "title": "Vollversion" },
+                        "release_version": "1.0",
+                        "release_date": "2003-04-15",
+                        "filesize": 12345678,
+                        "extension": "zip",
+                        "language": { "id": 1, "name": "Deutsch", "short": "de" },
+                        "download_url": "http://rmarchiv.de/games/download/200/1700000000"
+                    }
+                ]
+            }
+        }
+
+## Screenshots [/games/{id}/screenshots]
+
+### List screenshots [GET]
+
++ Parameters
+    + id: 1 (number, required) - Game ID.
+
++ Response 200 (application/json)
+
+        {
+            "status_code": 200,
+            "message": "Screenshots",
+            "data": [
+                {
+                    "id": 99,
+                    "screenshot_id": 1,
+                    "url": "http://rmarchiv.de/games/1/screenshot/show/1",
+                    "full_url": "http://rmarchiv.de/games/1/screenshot/show/1/full"
+                }
+            ]
+        }
+
+## Gamefiles [/games/{id}/gamefiles]
+
+### List gamefiles [GET]
+
++ Parameters
+    + id: 1 (number, required) - Game ID.
+
++ Response 200 (application/json)
+
+        {
+            "status_code": 200,
+            "message": "Gamefiles",
+            "data": [
+                {
+                    "id": 200,
+                    "release_type": { "id": 3, "title": "Vollversion" },
+                    "release_version": "1.0",
+                    "release_date": "2003-04-15",
+                    "filesize": 12345678,
+                    "extension": "zip",
+                    "language": { "id": 1, "name": "Deutsch", "short": "de" },
+                    "download_url": "http://rmarchiv.de/games/download/200/1700000000"
+                }
+            ]
+        }
+
+## Ratings [/games/{id}/ratings]
+
+### Submit rating [POST]
+
+Auth required (Bearer token).
+
++ Parameters
+    + id: 1 (number, required) - Game ID.
+
++ Request (application/json)
+
+        {
+            "rating": "up",
+            "comment": "Great game!"
+        }
+
++ Response 201 (application/json)
+
+        {
+            "status_code": 201,
+            "message": "Rating submitted",
+            "data": {
+                "game_id": 1,
+                "rating": "up",
+                "votes": {
+                    "up": 13,
+                    "down": 3,
+                    "avg": 0.62
+                }
+            }
+        }
+
+## Savegames [/gamefiles/{gamefileId}/savegames]
+
+### Get savegames [GET]
+
+Auth required (Bearer token).
+
++ Parameters
+    + gamefileId: 200 (number, required) - Gamefile ID.
+
++ Response 200 (application/json)
+
+        {
+            "status_code": 200,
+            "message": "Savegames",
+            "data": {
+                "0": "BASE64_SAVE_DATA",
+                "1": "BASE64_SAVE_DATA"
+            }
+        }
+
+### Store savegames (multiple) [PUT]
+
+Auth required (Bearer token).
+
++ Parameters
+    + gamefileId: 200 (number, required) - Gamefile ID.
+
++ Request (application/json)
+
+        {
+            "slots": {
+                "0": "BASE64_SAVE_DATA",
+                "1": "BASE64_SAVE_DATA"
+            }
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status_code": 200,
+            "message": "Savegames stored",
+            "data": {
+                "saved": 2
+            }
+        }
+
+## Savegame Slot [/gamefiles/{gamefileId}/savegames/{slotId}]
+
+### Store savegame (single slot) [PUT]
+
+Auth required (Bearer token).
+
++ Parameters
+    + gamefileId: 200 (number, required) - Gamefile ID.
+    + slotId: 0 (number, required) - Slot ID.
+
++ Request (application/json)
+
+        {
+            "save_data": "BASE64_SAVE_DATA"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status_code": 200,
+            "message": "Savegame stored",
+            "data": {
+                "slot_id": 0
+            }
         }

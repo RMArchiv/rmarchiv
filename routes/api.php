@@ -56,4 +56,21 @@ $api->version('v1', function ($api) {
             $api->get('/', 'App\Http\Controllers\Api\v2\GamesController@index');
         });
     });
+
+    $api->group(['prefix' => 'v3'], function (\Dingo\Api\Routing\Router $api) {
+        $api->group(['prefix' => 'auth'], function (\Dingo\Api\Routing\Router $api) {
+            $api->post('login', 'App\Http\Controllers\Api\v3\AuthController@login');
+        });
+
+        $api->get('games', 'App\Http\Controllers\Api\v3\GamesController@index');
+        $api->get('games/{id}', 'App\Http\Controllers\Api\v3\GamesController@show');
+        $api->get('games/{id}/screenshots', 'App\Http\Controllers\Api\v3\ScreenshotsController@index');
+        $api->get('games/{id}/gamefiles', 'App\Http\Controllers\Api\v3\GamefilesController@index');
+
+        $api->post('games/{id}/ratings', 'App\Http\Controllers\Api\v3\RatingsController@store');
+
+        $api->get('gamefiles/{gamefileId}/savegames', 'App\Http\Controllers\Api\v3\SavegamesController@index');
+        $api->put('gamefiles/{gamefileId}/savegames', 'App\Http\Controllers\Api\v3\SavegamesController@store');
+        $api->put('gamefiles/{gamefileId}/savegames/{slotId}', 'App\Http\Controllers\Api\v3\SavegamesController@storeSlot');
+    });
 });
