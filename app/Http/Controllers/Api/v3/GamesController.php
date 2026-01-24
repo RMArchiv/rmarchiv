@@ -182,6 +182,80 @@ class GamesController extends Controller
         ]);
     }
 
+    public function search(Request $request)
+    {
+        \Debugbar::disable();
+
+        $query = trim((string) $request->query('q', ''));
+        if ($query === '') {
+            return response()->json([
+                'status_code' => 422,
+                'message' => 'Search query is required.',
+            ], 422);
+        }
+
+        $perPage = (int) $request->query('per_page', 50);
+        if ($perPage < 1) {
+            $perPage = 1;
+        }
+        if ($perPage > 200) {
+            $perPage = 200;
+        }
+
+        $gamesQuery = Game::query()
+            ->with(['maker', 'language'])
+            ->where(function ($builder) use ($query) {
+                $builder->where('title', 'like', '%' . $query . '%')
+                    ->orWhere('subtitle', 'like', '%' . $query . '%');
+            })
+            ->orderBy('title')
+            ->orderBy('subtitle');
+
+        if (! Auth::check()) {
+            $gamesQuery->where('nsfw', '=', false);
+        }
+        $gamesQuery->where('is_banned', '=', 0);
+
+        $games = $gamesQuery->paginate($perPage);
+
+        $data = $games->getCollection()->map(function (Game $game) {
+            return [
+                'id' => $game->id,
+                'title' => $game->title,
+                'subtitle' => $game->subtitle,
+                'release_date' => $game->release_date,
+                'maker' => $game->maker ? [
+                    'id' => $game->maker->id,
+                    'title' => $game->maker->title,
+                    'short' => $game->maker->short,
+                ] : null,
+                'language' => $game->language ? [
+                    'id' => $game->language->id,
+                    'name' => $game->language->name,
+                    'short' => $game->language->short,
+                ] : null,
+                'votes' => [
+                    'up' => (int) ($game->voteup ?? 0),
+                    'down' => (int) ($game->votedown ?? 0),
+                    'avg' => (float) ($game->avg ?? 0),
+                ],
+            ];
+        });
+
+        return response()->json([
+            'status_code' => 200,
+            'message' => 'Search results',
+            'data' => $data,
+            'meta' => [
+                'query' => $query,
+                'page' => $games->currentPage(),
+                'per_page' => $games->perPage(),
+                'total' => $games->total(),
+                'last_page' => $games->lastPage(),
+            ],
+        ]);
+    }
+
     private function formatScreenshots(int $gameId, $screens)
     {
         $data = [];

@@ -71,6 +71,51 @@ ratings, and savegames. Authentication uses a Bearer token obtained via login.
             }
         }
 
+## Game Search [/games/search{?q,per_page}]
+
+### Search games [GET]
+
++ Parameters
+    + q: "vampire" (string, required) - Search query (title/subtitle).
+    + per_page: 50 (number, optional) - Items per page (1-200).
+
++ Response 200 (application/json)
+
+        {
+            "status_code": 200,
+            "message": "Search results",
+            "data": [
+                {
+                    "id": 1,
+                    "title": "Vampire Story",
+                    "subtitle": "Chapter 1",
+                    "release_date": "2003-04-15",
+                    "maker": {
+                        "id": 1,
+                        "title": "RPG Maker 2003",
+                        "short": "2k3"
+                    },
+                    "language": {
+                        "id": 1,
+                        "name": "Deutsch",
+                        "short": "de"
+                    },
+                    "votes": {
+                        "up": 12,
+                        "down": 3,
+                        "avg": 0.6
+                    }
+                }
+            ],
+            "meta": {
+                "query": "vampire",
+                "page": 1,
+                "per_page": 50,
+                "total": 12,
+                "last_page": 1
+            }
+        }
+
 ## Game Details [/games/{id}]
 
 ### Get game details [GET]

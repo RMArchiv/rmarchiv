@@ -63,6 +63,7 @@ $api->version('v1', function ($api) {
         });
 
         $api->get('games', 'App\Http\Controllers\Api\v3\GamesController@index');
+        $api->get('games/search', 'App\Http\Controllers\Api\v3\GamesController@search');
         $api->get('games/{id}', 'App\Http\Controllers\Api\v3\GamesController@show');
         $api->get('games/{id}/screenshots', 'App\Http\Controllers\Api\v3\ScreenshotsController@index');
         $api->get('games/{id}/gamefiles', 'App\Http\Controllers\Api\v3\GamefilesController@index');
