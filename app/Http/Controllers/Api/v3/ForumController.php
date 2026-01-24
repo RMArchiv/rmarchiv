@@ -8,13 +8,23 @@
 namespace App\Http\Controllers\Api\v3;
 
 use App\Http\Controllers\Controller;
+use App\Events\Obyx;
+use App\Helpers\DatabaseHelper;
 use App\Models\BoardCat;
 use App\Models\BoardPost;
 use App\Models\BoardThread;
+use Carbon\Carbon;
+use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ForumController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('api.token')->only(['storeThread', 'storePost']);
+    }
+
     public function categories()
     {
         \Debugbar::disable();
@@ -160,5 +170,129 @@ class ForumController extends Controller
                 'last_page' => $posts->lastPage(),
             ],
         ]);
+    }
+
+    public function storeThread(Request $request)
+    {
+        \Debugbar::disable();
+
+        $catId = (int) $request->input('cat_id', 0);
+        $title = trim((string) $request->input('title', ''));
+        $message = trim((string) $request->input('message', ''));
+
+        if ($catId <= 0 || $title === '' || $message === '') {
+            return response()->json([
+                'status_code' => 422,
+                'message' => 'cat_id, title and message are required.',
+            ], 422);
+        }
+
+        $cat = BoardCat::whereId($catId)->first();
+        if (! $cat) {
+            return response()->json([
+                'status_code' => 404,
+                'message' => 'Category not found',
+            ], 404);
+        }
+
+        $date = Carbon::now();
+
+        $thread = new BoardThread();
+        $thread->cat_id = $catId;
+        $thread->user_id = Auth::id();
+        $thread->title = $title;
+        $thread->closed = 0;
+        $thread->pinned = 0;
+        $thread->last_user_id = Auth::id();
+        $thread->created_at = $date;
+        $thread->last_created_at = $date;
+        $thread->save();
+
+        $post = new BoardPost();
+        $post->cat_id = $catId;
+        $post->thread_id = $thread->id;
+        $post->user_id = Auth::id();
+        $post->content_md = $message;
+        $post->content_html = Markdown::convert($message);
+        $post->created_at = $date;
+        $post->save();
+
+        BoardCat::whereId($catId)->update([
+            'last_created_at' => $date,
+            'last_user_id' => Auth::id(),
+        ]);
+
+        event(new Obyx('thread-add', Auth::id()));
+        event(new Obyx('post-add', Auth::id()));
+        DatabaseHelper::setThreadViewDate($thread->id);
+
+        return response()->json([
+            'status_code' => 201,
+            'message' => 'Thread created',
+            'data' => [
+                'thread_id' => $thread->id,
+                'post_id' => $post->id,
+            ],
+        ], 201);
+    }
+
+    public function storePost(Request $request, $threadId)
+    {
+        \Debugbar::disable();
+
+        $thread = BoardThread::whereId($threadId)->first();
+        if (! $thread) {
+            return response()->json([
+                'status_code' => 404,
+                'message' => 'Thread not found',
+            ], 404);
+        }
+
+        if ((int) $thread->closed === 1) {
+            return response()->json([
+                'status_code' => 409,
+                'message' => 'Thread is closed.',
+            ], 409);
+        }
+
+        $message = trim((string) $request->input('message', ''));
+        if ($message === '') {
+            return response()->json([
+                'status_code' => 422,
+                'message' => 'message is required.',
+            ], 422);
+        }
+
+        $date = Carbon::now();
+
+        $post = new BoardPost();
+        $post->cat_id = $thread->cat_id;
+        $post->thread_id = $thread->id;
+        $post->user_id = Auth::id();
+        $post->content_md = $message;
+        $post->content_html = Markdown::convert($message);
+        $post->created_at = $date;
+        $post->save();
+
+        BoardThread::whereId($thread->id)->update([
+            'last_created_at' => $date,
+            'last_user_id' => Auth::id(),
+        ]);
+
+        BoardCat::whereId($thread->cat_id)->update([
+            'last_created_at' => $date,
+            'last_user_id' => Auth::id(),
+        ]);
+
+        event(new Obyx('post-add', Auth::id()));
+
+        return response()->json([
+            'status_code' => 201,
+            'message' => 'Post created',
+            'data' => [
+                'post_id' => $post->id,
+                'thread_id' => $thread->id,
+            ],
+        ], 201);
     }
 }

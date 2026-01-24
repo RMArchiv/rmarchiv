@@ -96,6 +96,8 @@ $api->version('v1', function ($api) {
         $api->get('forum/threads', 'App\Http\Controllers\Api\v3\ForumController@threads');
         $api->get('forum/threads/{id}', 'App\Http\Controllers\Api\v3\ForumController@thread');
         $api->get('forum/threads/{id}/posts', 'App\Http\Controllers\Api\v3\ForumController@posts');
+        $api->post('forum/threads', 'App\Http\Controllers\Api\v3\ForumController@storeThread');
+        $api->post('forum/threads/{id}/posts', 'App\Http\Controllers\Api\v3\ForumController@storePost');
 
         $api->get('news', 'App\Http\Controllers\Api\v3\NewsController@index');
         $api->get('news/{id}', 'App\Http\Controllers\Api\v3\NewsController@show');

@@ -556,6 +556,18 @@ Auth required (Bearer token).
 
         { "status_code": 200, "message": "Forum threads", "data": [ { "id": 1, "title": "Hello" } ] }
 
+### Create thread [POST]
+
+Auth required (Bearer token).
+
++ Request (application/json)
+
+        { "cat_id": 1, "title": "Hello", "message": "First post" }
+
++ Response 201 (application/json)
+
+        { "status_code": 201, "message": "Thread created", "data": { "thread_id": 1, "post_id": 1 } }
+
 ## Forum Thread [/forum/threads/{id}]
 
 ### Get thread [GET]
@@ -571,6 +583,18 @@ Auth required (Bearer token).
 + Response 200 (application/json)
 
         { "status_code": 200, "message": "Thread posts", "data": [ { "id": 1, "content_md": "Post" } ] }
+
+### Create post [POST]
+
+Auth required (Bearer token).
+
++ Request (application/json)
+
+        { "message": "Reply" }
+
++ Response 201 (application/json)
+
+        { "status_code": 201, "message": "Post created", "data": { "post_id": 2, "thread_id": 1 } }
 
 ## News [/news{?per_page}]
 
