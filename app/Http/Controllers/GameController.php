@@ -60,7 +60,7 @@ class GameController extends Controller
         }
 
         // Get options for filters
-        $makers = array();
+        $makers = Maker::all()->sortBy('title');
         $makerAddedTitle = array();
 
         $languages = Language::all();
@@ -96,11 +96,6 @@ class GameController extends Controller
                 $games->whereIn('id', $tagGames);
             }
         }
-        // Sort alphabetically
-        usort($makers, function($a, $b) {
-            if ($a->title == $b->title) return 0;
-                return ($a->title < $b->title) ? -1 : 1;
-        });
 
         $tags = Tag::distinct()->select(["title","tags.id"])->join('tag_relations', 'tag_relations.tag_id', '=', 'tags.id')->orderBy("title")->get();
         $letters = DatabaseHelper::getFirstLetterList("games", "title");
