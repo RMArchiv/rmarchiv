@@ -1,3 +1,9 @@
+@php
+function randomHexColor($length = 6) {
+    return str(bin2hex(random_bytes($length / 2)));
+}
+@endphp
+
 @extends('layouts.app')
 @section('pagetitle', trans('app.statistics.title'))
 @section('content')
@@ -62,79 +68,74 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 mb-3 d-none">
-                <div class="card">
-                    <div class="card-header">
-                        {{ trans('app.comments_per_month') }}
-                    </div>
-                    <div class="card-body" id="com_div">
-
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        {{ trans('app.board_posts_per_month') }}
-                    </div>
-                    <div class="card-body" id="boardposts_div">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-header">
                         {{ trans('app.filestats') }}
                     </div>
-                    <table class="table">
+                    <table class="table table-sm">
                         <thead>
                         <tr>
-                            <th>{{ trans('app.filecategory') }}</th>
-                            <th>{{ trans('app.amount') }}</th>
-                            <th>{{ trans('app.total_file_size') }}</th>
-                            <th>{{ trans('app.avg_file_size') }}</th>
+                            <th><small>{{ trans('app.filecategory') }}</small></th>
+                            <th><small>{{ trans('app.amount') }}</small></th>
+                            <th><small>{{ trans('app.total_file_size') }}</small></th>
+                            <th><small>{{ trans('app.avg_file_size') }}</small></th>
                         </tr>
                         </thead>
                         <tr>
-                            <td>{{ trans('app.gamefiles') }}</td>
-                            <td>{{ number_format($files['games']['count'], 0, ',', '.') }}</td>
-                            <td>{{ \App\Helpers\MiscHelper::getReadableBytes($files['games']['size']) }}</td>
-                            <td>{{ @\App\Helpers\MiscHelper::getReadableBytes($files['games']['size'] / $files['games']['count']) }}</td>
+                            <td><small>{{ trans('app.gamefiles') }}</small></td>
+                            <td><small>{{ number_format($files['games']['count'], 0, ',', '.') }}</small></td>
+                            <td><small>{{ \App\Helpers\MiscHelper::getReadableBytes($files['games']['size']) }}</small></td>
+                            <td><small>{{ @\App\Helpers\MiscHelper::getReadableBytes($files['games']['size'] / $files['games']['count']) }}</small></td>
                         </tr>
                         <tr>
-                            <td>{{ trans('app.screenshots') }}</td>
-                            <td>{{ number_format($files['screens']['count'], 0, ',', '.') }}</td>
-                            <td>{{ \App\Helpers\MiscHelper::getReadableBytes($files['screens']['size']) }}</td>
-                            <td>{{ @\App\Helpers\MiscHelper::getReadableBytes($files['screens']['size'] / $files['screens']['count']) }}</td>
+                            <td><small>{{ trans('app.screenshots') }}</small></td>
+                            <td><small>{{ number_format($files['screens']['count'], 0, ',', '.') }}</small></td>
+                            <td><small>{{ \App\Helpers\MiscHelper::getReadableBytes($files['screens']['size']) }}</small></td>
+                            <td><small>{{ @\App\Helpers\MiscHelper::getReadableBytes($files['screens']['size'] / $files['screens']['count']) }}</small></td>
                         </tr>
                         <tr>
-                            <td>{{ trans('app.resources') }}</td>
-                            <td>{{ number_format($files['resources']['count'], 0, ',', '.') }}</td>
-                            <td>{{ \App\Helpers\MiscHelper::getReadableBytes($files['resources']['size']) }}</td>
-                            <td>{{ @\App\Helpers\MiscHelper::getReadableBytes($files['resources']['size'] / $files['resources']['count']) }}</td>
+                            <td><small>{{ trans('app.resources') }}</small></td>
+                            <td><small>{{ number_format($files['resources']['count'], 0, ',', '.') }}</small></td>
+                            <td><small>{{ \App\Helpers\MiscHelper::getReadableBytes($files['resources']['size']) }}</small></td>
+                            <td><small>{{ @\App\Helpers\MiscHelper::getReadableBytes($files['resources']['size'] / $files['resources']['count']) }}</small></td>
                         </tr>
                         <tr>
-                            <td>{{ trans('app.attachments') }}</td>
-                            <td>{{ number_format($files['attach']['count'], 0, ',', '.') }}</td>
-                            <td>{{ \App\Helpers\MiscHelper::getReadableBytes($files['attach']['size']) }}</td>
-                            <td>{{ @\App\Helpers\MiscHelper::getReadableBytes($files['attach']['size'] / $files['attach']['count']) }}</td>
+                            <td><small>{{ trans('app.attachments') }}</small></td>
+                            <td><small>{{ number_format($files['attach']['count'], 0, ',', '.') }}</small></td>
+                            <td><small>{{ \App\Helpers\MiscHelper::getReadableBytes($files['attach']['size']) }}</small></td>
+                            <td><small>{{ @\App\Helpers\MiscHelper::getReadableBytes($files['attach']['size'] / $files['attach']['count']) }}</small></td>
                         </tr>
                         <tr>
-                            <td>{{ trans('app.logos') }}</td>
-                            <td>{{ number_format($files['logos']['count'], 0, ',', '.') }}</td>
-                            <td>{{ \App\Helpers\MiscHelper::getReadableBytes($files['logos']['size']) }}</td>
-                            <td>{{ @\App\Helpers\MiscHelper::getReadableBytes($files['logos']['size'] / $files['logos']['count']) }}</td>
+                            <td><small>{{ trans('app.logos') }}</small></td>
+                            <td><small>{{ number_format($files['logos']['count'], 0, ',', '.') }}</small></td>
+                            <td><small>{{ \App\Helpers\MiscHelper::getReadableBytes($files['logos']['size']) }}</small></td>
+                            <td><small>{{ @\App\Helpers\MiscHelper::getReadableBytes($files['logos']['size'] / $files['logos']['count']) }}</small></td>
                         </tr>
                         <tr>
-                            <td style="background-color: #2b542c">{{ trans('app.total') }}</td>
-                            <td style="background-color: #2b542c">{{ number_format($files['sum']['count'], 0, ',', '.') }}</td>
-                            <td style="background-color: #2b542c">{{ \App\Helpers\MiscHelper::getReadableBytes($files['sum']['size']) }}</td>
-                            <td style="background-color: #2b542c">{{ @\App\Helpers\MiscHelper::getReadableBytes($files['sum']['size'] / $files['sum']['count']) }}</td>
+                            <td style="background-color: #2b542c"><small>{{ trans('app.total') }}</small></td>
+                            <td style="background-color: #2b542c"><small>{{ number_format($files['sum']['count'], 0, ',', '.') }}</small></td>
+                            <td style="background-color: #2b542c"><small>{{ \App\Helpers\MiscHelper::getReadableBytes($files['sum']['size']) }}</small></td>
+                            <td style="background-color: #2b542c"><small>{{ @\App\Helpers\MiscHelper::getReadableBytes($files['sum']['size'] / $files['sum']['count']) }}</small></td>
                         </tr>
                     </table>
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <a>Maker Timeline</a>
+                    </div>
+                    <div class="d-flex justify-content-center" style="max-height: 90vh">
+                        <div class="card-body p-0 d-flex justify-content-center" id="relkelven_div" style="max-width: 760px">
+                            <canvas id="makerTimeline"    width="100%"    height="100%"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <script type="module">
@@ -279,6 +280,86 @@
                 }
             }
         });
+
+
+        const makerTimeline = document.getElementById("makerTimeline");
+
+        let makerTimelineChart = new Chart(makerTimeline, {
+            type: 'line',
+            data: {
+
+                labels: {{ json_encode(
+                    array_values(array_unique(array_reduce(
+                        array: array_map( function($maker) {
+                            return array_map( function($year) {
+                                    return $year->year;
+                                },
+                                $maker->toArray()
+                            );
+                        },
+                        $makerPerYear
+                        ),
+                        callback: function($carry, $item) {return array_merge($carry, $item);},
+                        initial: array()
+                    )))
+                ) }},
+                datasets:
+                    {{Illuminate\Support\Js::from(array_values(array_map(function($makerData) {
+                        return array(
+                        "label" => ($makerData[0]->title),
+                        "data" => ( array_map(function($year) {return $year->count;}, $makerData->toArray())),
+                        'backgroundColor' => "#" . randomHexColor(),
+                        'borderColor'=> 'rmBaseP3',
+                        'borderWidth'=> '2',
+                        'fill'=> true
+                        );
+                    }, ($makerPerYear))))
+
+                    }}
+
+
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: "{{trans("app.amount")}}"
+                        }
+                    },
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: "{{trans("app.release_date")}}"
+                        }
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 10,
+                        top: 10,
+                        bottom: 10
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size:9
+                            }
+                        }
+                    },
+                }
+            }
+        });
     });
+
+
+
     </script>
 @endsection
