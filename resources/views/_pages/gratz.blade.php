@@ -36,29 +36,30 @@
             colorCode = 0;
 
         // init
-        $(document).ready(function() {
+        document.addEventListener('DOMContentLoaded', function() {
             document.body.appendChild(canvas);
             canvas.width = SCREEN_WIDTH;
             canvas.height = SCREEN_HEIGHT;
             setInterval(launch, 800);
             setInterval(loop, 1000 / 50);
+
+            // update mouse position
+            document.addEventListener("mousemove",function(e) {
+                e.preventDefault();
+                mousePos = {
+                    x: e.clientX,
+                    y: e.clientY
+                };
+            });
+
+            // launch more rockets!!!
+            document.addEventListener("mousedown",function(e) {
+                for (var i = 0; i < 5; i++) {
+                    launchFrom(Math.random() * SCREEN_WIDTH * 2 / 3 + SCREEN_WIDTH / 6);
+                }
+            });
         });
 
-        // update mouse position
-        $(document).mousemove(function(e) {
-            e.preventDefault();
-            mousePos = {
-                x: e.clientX,
-                y: e.clientY
-            };
-        });
-
-        // launch more rockets!!!
-        $(document).mousedown(function(e) {
-            for (var i = 0; i < 5; i++) {
-                launchFrom(Math.random() * SCREEN_WIDTH * 2 / 3 + SCREEN_WIDTH / 6);
-            }
-        });
 
         function launch() {
             launchFrom(mousePos.x);

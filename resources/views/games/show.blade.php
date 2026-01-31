@@ -434,51 +434,45 @@
         };
     </script>
     <script type="module">
-        $(function () { /* to make sure the script runs after page load */
+        document.addEventListener('DOMContentLoaded', function () { /* to make sure the script runs after page load */
 
-            $('.readmore').each(function (event) { /* select all divs with the item class */
+            document.querySelectorAll('.readmore').forEach(function (section) { /* select all divs with the item class */
 
                 var max_length = 1024;
                 /* set the max content length before a read more link will be added */
 
-                if ($(this).html().length > max_length) { /* check for content length */
+                if (section.innerHTML.length > max_length) { /* check for content length */
 
-                    var short_content = $(this).html().substr(0, max_length);
+                    var short_content = section.innerHTML.substr(0, max_length);
                     short_content = new DOMParser().parseFromString(short_content, "text/html").body.innerHTML;
                     /* split the content in two parts */
-                    var long_content = $(this).html();
+                    var long_content = section.innerHTML;
 
-                    $(this).html(
-                        '<div class="short_text">' + short_content + '<a href="#" class="read_more"><br/>mehr lesen...</a></div>' +
+                    section.innerHTML ='<div class="short_text">' + short_content + '<a href="#" class="read_more"><br/>mehr lesen...</a></div>' +
                         '' +
-                        '<div class="more_text" style="display:none;">' + long_content + '<a href="#" class="read_less"><br/>weniger lesen...</a></div>');
+                        '<div class="more_text" style="display:none;">' + long_content + '<a href="#" class="read_less"><br/>weniger lesen...</a></div>';
                     /* Alter the html to allow the read more functionality */
 
-                    $(this).find('a.read_more').click(function (event) { /* find the a.read_more element within the new html and bind the following code to it */
+                    section.querySelector('a.read_more').addEventListener("click", function (event) { /* find the a.read_more element within the new html and bind the following code to it */
 
                         event.preventDefault();
 
                         /* hide the read more button */
-                        $(this).parents('.readmore').find('.more_text').show();
+                        event.currentTarget.closest('.readmore').querySelector('.more_text').style.display = "block";
                         /* show the .more_text span */
-                        $(this).parents('.readmore').find('.short_text').hide();
-
+                        event.currentTarget.closest('.readmore').querySelector('.short_text').style.display = "none";
                     });
-                    $(this).find('a.read_less').click(function (event) { /* find the a.read_more element within the new html and bind the following code to it */
+                    section.querySelector('a.read_less').addEventListener("click", function (event) { /* querySelector the a.read_more element within the new html and bind the following code to it */
 
                         event.preventDefault();
                         /* hide the read more button */
-                        $(this).parents('.readmore').find('.short_text').show();
+                        event.currentTarget.closest('.readmore').querySelector('.short_text').style.display = "block";
                         /* show the .more_text span */
-                        $(this).parents('.readmore').find('.more_text').hide();
-
+                        event.currentTarget.closest('.readmore').querySelector('.more_text').style.display = "none";
+                        section.scrollIntoView({ behavior: 'smooth' });
                     });
-
                 }
-
             });
-
-
         });
     </script>
 @endsection

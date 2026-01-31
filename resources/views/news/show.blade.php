@@ -9,7 +9,7 @@
                         <div class="btn-group">
                             @if(Auth::check())
                                 @if(Auth::user()->settings->is_admin)
-                                    <a class="btn btn-primary" href="javascript:void(0);" onclick="$(this).find('form').submit();">
+                                    <a class="btn btn-primary" href="javascript:void(0);" onclick="event.currentTarget.querySelector('form').submit();">
                                         <form action="{{ url('/news', $news->id) }}" method="post">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="DELETE">

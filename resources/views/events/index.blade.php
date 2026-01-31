@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <div id='content'>
+    <div class="container" id='content'>
         <h1>eventliste</h1>
-        <table id='rmarchivbox_groupmain' class='boxtable pagedtable'>
+        <table id='rmarchivbox_groupmain' class='table pagedtable'>
             <thead>
             <tr class='sortable'>
                 <th>status</th>
@@ -33,16 +33,20 @@
                     <td>{{ $e->users_registered->count() }}</td>
                     <td>{{ $e->settings->slots }}</td>
                     <td>
-                        @if($e->settings->reg_allowed)
-                            @if($e->settings->reg_start_date > \Carbon\Carbon::now())
-                                <span style="color: green;">steht an</span>
-                            @elseif($e->settings->reg_start_date < \Carbon\Carbon::now() and $e->settings->reg_end_date > \Carbon\Carbon::now())
-                                <span style="color: yellow;">anmeldung läuft</span>
-                            @elseif($e->settings->reg_end_date < \Carbon\Carbon::now())
-                                <span style="color: red;">anmeldung geschlossen</span>
-                            @endif
+                        @if($e->end_date < \Carbon\Carbon::now())
+                            <span style="color: red;">vorbei</span>
                         @else
-                            <span style="color:red">anmeldung geschlossen</span>
+                            @if($e->settings->reg_allowed)
+                                @if($e->settings->reg_start_date > \Carbon\Carbon::now())
+                                    <span style="color: green;">steht an</span>
+                                @elseif($e->settings->reg_start_date < \Carbon\Carbon::now() and $e->settings->reg_end_date > \Carbon\Carbon::now())
+                                    <span style="color: yellow;">anmeldung läuft</span>
+                                @elseif($e->settings->reg_end_date < \Carbon\Carbon::now())
+                                    <span style="color: red;">anmeldung geschlossen</span>
+                                @endif
+                            @else
+                                <span>–</span>
+                            @endif
                         @endif
                     </td>
                     <td>{{ $e->comments->count() }}</td>

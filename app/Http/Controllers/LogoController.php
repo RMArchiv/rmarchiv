@@ -80,16 +80,20 @@ class LogoController extends Controller
 
         $filename = str_replace('logo/', 'logos/', $s->filename);
 
-        $img = Image::read(Storage::path($filename));
+        if(Storage::exists($filename)) {
+            $img = Image::read(Storage::path($filename));
 
-        $response = response()->image($img, Format::PNG);
-        $response->header('Content-Type', 'image/png');
-        $response->header('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+            $response = response()->image($img, Format::PNG);
+            $response->header('Content-Type', 'image/png');
+            $response->header('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
 
-        $response->header('Content-Type', 'image/png');
+            $response->header('Content-Type', 'image/png');
 
-        $response->setPublic();
-
+            $response->setPublic();
+        }
+        else {
+            return response("logo not found", "404");
+        }
         return $response;
     }
 }

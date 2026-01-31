@@ -2,33 +2,50 @@
 @section('pagetitle', trans('app.users'))
 @section('content')
     <script type="module">
-        $(document).ready(function () {
-            var panels = $('.user-infos');
-            var panelsButton = $('.dropdown-user');
-            panels.hide();
+        document.addEventListener('DOMContentLoaded', function() {
+            var panels = document.querySelectorAll('.user-infos');
+            var panelsButton = document.querySelectorAll('.dropdown-user');
+            panels.forEach((panel) => {
+                panel.style.maxHeight = "0px"
+                panel.style.visibility = "hidden"
+                panel.style.transition= "max-height 0.2s ease";
+                panel.style.overflow= "hidden";
+            });
 
             //Click dropdown
-            panelsButton.click(function () {
-                //get data-for attribute
-                var dataFor = $(this).attr('data-for');
-                var idFor = $(dataFor);
+            panelsButton.forEach((button) => {
+                button.addEventListener("click", function(event) {
+                    //get data-for attribute
+                    var dataFor = event.currentTarget.dataset.for;
+                    /** @type HTMLDivElement idFor            */
+                    var idFor = document.querySelector(dataFor);
 
-                //current button
-                var currentButton = $(this);
-                idFor.slideToggle(400, function () {
-                    //Completed slidetoggle
-                    if (idFor.is(':visible')) {
-                        currentButton.html('<i class="fa fa-chevron-up text-muted"></i>');
+                    //current button
+                    var currentButton = event.currentTarget.children[0];
+
+                    if(idFor.style.visibility == "hidden") {
+                        idFor.style.visibility = "visible"
+                        idFor.style.maxHeight = "700px";
+                    } else {
+                        idFor.style.visibility = "hidden"
+                        idFor.style.maxHeight = "0px";
                     }
-                    else {
-                        currentButton.html('<i class="fa fa-chevron-down text-muted"></i>');
-                    }
+                    setTimeout(()=>{
+                        if (currentButton.classList.contains('fa-chevron-up')) {
+                            currentButton.classList.add('fa-chevron-down')
+                            currentButton.classList.remove('fa-chevron-up')
+                        }
+                        else {
+                            currentButton.classList.add('fa-chevron-up')
+                            currentButton.classList.remove('fa-chevron-down')
+                        }
+                    }, 50)
+                });
+                // Activate tooltip
+                var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
                 })
-            });
-            // Activate tooltip
-            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-               return new bootstrap.Tooltip(tooltipTriggerEl)
             })
         });
     </script>
@@ -65,7 +82,7 @@
                                     <i class="fa fa-chevron-down text-muted"></i>
                                 </div>
                             </div>
-                            <div class="row user-infos user{{ $user->id }}">
+                            <div class="row user-infos d-flex justify-content-end mb-4 hidden user{{ $user->id }}" style="max-height: 0px; visibility:hidden">
                                 <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1">
                                     <div class="card">
                                         <div class="card-header">
