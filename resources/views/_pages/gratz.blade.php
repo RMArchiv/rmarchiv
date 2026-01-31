@@ -9,7 +9,7 @@
             position: relative;
         }
     </style>
-    <div id="content" style="opacity: 1;">
+    <div class="container mb-4" id="content" style="opacity: 1;">
         <div class='rmarchivtbl'>
             <h1>Herlichen Glückwunsch, Peperoni!</h1>
             <h1>Du hast es geschafft das 1.000 Spiel anzulegen!</h1>
