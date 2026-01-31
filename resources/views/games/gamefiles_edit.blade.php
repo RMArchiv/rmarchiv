@@ -214,9 +214,24 @@
             callbacks: {
                 onComplete: function (id, fileName, responseJSON) {
                     if (responseJSON.success) {
-                        $('#fine-uploader').append('<input type="hidden" name="uuid" value="' + responseJSON.uuid + '">');
-                        $('#fine-uploader').append('<input type="hidden" name="filename" value="' + responseJSON.uploadName + '">');
-                        $('#fine-uploader').append('<input type="hidden" name="ext" value="' + responseJSON.ext + '">');
+                        var uuidNode = document.createElement("input")
+                        var filenameNode = document.createElement("input")
+                        var extNode = document.createElement("input")
+
+                        uuidNode.setAttribute("type","hidden")
+                        filenameNode.setAttribute("type","hidden")
+                        extNode.setAttribute("type","hidden")
+                        uuidNode.setAttribute("name","uuid")
+                        filenameNode.setAttribute("name","filename")
+                        extNode.setAttribute("name","ext")
+                        uuidNode.setAttribute("value",responseJSON.uuid)
+                        filenameNode.setAttribute("value",responseJSON.uploadName)
+                        extNode.setAttribute("value",responseJSON.ext)
+
+                        let uploader = document.querySelector("#fine-uploader");
+                        uploader.append(uuidNode);
+                        uploader.append(filenameNode);
+                        uploader.append(extNode);
                     }
                 }
             }

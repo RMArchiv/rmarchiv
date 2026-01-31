@@ -11,7 +11,7 @@ use App\Models\Event;
 use App\Models\EventSetting;
 use Illuminate\Http\Request;
 use App\Models\EventUserRegistered;
-use Illuminate\Support\Facades\Input;
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
@@ -58,8 +58,8 @@ class EventController extends Controller
         $e = new Event();
         $e->title = $request->get('title');
         $e->description = $request->get('desc');
-        $e->start_date = $request->get('start');
-        $e->end_date = $request->get('end');
+        $e->start_date = Carbon::parse($request->get('start'));
+        $e->end_date = Carbon::parse($request->get('end'));
         $e->user_id = \Auth::id();
         $e->save();
 
@@ -67,8 +67,8 @@ class EventController extends Controller
         $es->event_id = $e->id;
         $es->slots = $request->get('slots');
         $es->reg_price = $request->get('price');
-        $es->reg_start_date = $request->get('reg_start');
-        $es->reg_end_date = $request->get('reg_end');
+        $es->reg_start_date = Carbon::parse($request->get('reg_start'));
+        $es->reg_end_date = Carbon::parse($request->get('reg_end'));
         if ($request->get('reg_allowed') == 'on') {
             $es->reg_allowed = 1;
         } else {
@@ -88,21 +88,22 @@ class EventController extends Controller
         ]);
     }
 
-    public function update($id)
+    public function update(Request $request, $id)
     {
         $e = Event::whereId($id)->first();
-        $e->title = Input::get('title');
-        $e->description = Input::get('desc');
-        $e->start_date = Input::get('start');
-        $e->end_date = Input::get('end');
+        $e->title = $request->get('title');
+        $e->description = $request->get('desc');
+        $e->start_date = Carbon::parse($request->get('start'));
+        $e->end_date = Carbon::parse($request->get('end'));
+        $e->update();
 
         $settings = EventSetting::whereEventId($id)->first();
-        $settings->slots = Input::get('slots');
-        $settings->reg_price = Input::get('price');
-        $settings->reg_start_date = Input::get('reg_start');
-        $settings->reg_end_date = Input::get('reg_end');
-        $settings->reg_allowed = Input::get('reg_allowed');
-        if (Input::get('reg_allowed') == 'on') {
+        $settings->slots = $request->get('slots');
+        $settings->reg_price = $request->get('price');
+        $settings->reg_start_date = Carbon::parse($request->get('reg_start'));
+        $settings->reg_end_date = Carbon::parse($request->get('reg_end'));
+        $settings->reg_allowed = $request->get('reg_allowed');
+        if ($request->get('reg_allowed') == 'on') {
             $settings->reg_allowed = 1;
         } else {
             $settings->reg_allowed = 0;
