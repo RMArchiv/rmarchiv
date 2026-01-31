@@ -1,7 +1,6 @@
 import * as bootstrap from 'bootstrap'
 import { createAutocomplete } from "./autocomplete.js";
 import $ from 'jquery';
-import { activateBoostrapRating } from "./bootstrap-rating-v5.js";
 import * as qq from "fine-uploader";
 import { filterInput, removeRecipient, selectedRecipient, setupCheckBoxes } from './recipientList.js';
 
@@ -11,7 +10,6 @@ window["setupCheckBoxes"] = setupCheckBoxes;
 window["selectedRecipient"] = selectedRecipient;
 window["removeRecipient"] = removeRecipient;
 window["filterInput"] = filterInput;
-activateBoostrapRating()
 window["$"] = $;
 window["jQuery"] = $;
 window["qq"] = qq;

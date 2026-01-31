@@ -1,13 +1,25 @@
 @extends('layouts.app')
-@section('pagetitle', 'event: '.$event->title)
+@section('pagetitle', 'event: '.$event?->title)
 @section('content')
-    <div id="content">
-        @if(count($event) > 0)
+    <div class="container" id="content">
+        @if(!empty($event))
             <div id="prodpagecontainer">
                 <div class="rmarchivtbl rmarchivbox_newsbox" id="rmarchivbox_prodmain">
-                    <h2>
-                        {{ $event->title }}
-                    </h2>
+                    <div class="d-flex flex-row justify-content-between">
+                        <h2>
+                            {{ $event->title }}
+                        </h2>
+
+                        @if(Auth::check())
+                            <div class='btn-toolbar align-self-start'>
+                                <div class='btn-group'>
+                                    {{-- @permission(('create-events')) --}}
+                                        <a href="{{ action('EventController@edit', [ 'id' => $event->id]) }}" role="button" class="btn btn-primary"><span class="fa fa-edit"></span></a>
+                                    {{-- @endpermission --}}
+                                </div>
+                            </div>
+                        @endif
+                    </div>
                     <div class="content">
                         <table id='rmarchiv_prodlist' class='boxtable pagedtable'>
                             <tr>
@@ -40,34 +52,35 @@
                         Event erstellt von <a href='{{ url('users', $event->user_id) }}'>{{ $event->user->name }}</a> :: <time datetime='{{ $event->created_at }}' title='{{ $event->created_at }}'>{{ \Carbon\Carbon::parse($event->created_at)->diffForHumans() }}</time>
                     </div>
                     @if(Auth::check())
-                        <div class="foot">
+                        <div class="foot d-flex gap-1">
                             @if(Auth::user()->settings->is_admin)
-                                <a href="javascript:void(0);" onclick="$(this).find('form').submit();" >
-                                    <form action="{{ url('/event', $event->id) }}" method="post">
-                                        {{ csrf_field() }}
-                                        <input type="hidden" name="_method" value="DELETE">
-                                    </form>
-                                    [{{ trans('app.news.show.delete') }}]
-                                </a> ::
+                            <form action="{{ url('/event', $event->id) }}" method="post">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="_method" value="DELETE">
+                                {{-- TODO: Delete has no implementation --}}
+                                <a href="" >
+                                    [{{ trans('app.delete') }}]
+                                </a>
+                            </form>
                             @endif
                             @permission(('edit-news'))
-                            :: <a href="{{ action('EventController@edit', $event->id) }}">[edit]</a>
+                            :: <a href="{{ action('EventController@edit', $event->id) }}">[{{ trans('app.edit') }}]</a>
                             @endpermission
                         </div>
                     @endif
                 </div>
 
                 <div class='rmarchivtbl' id='rmarchivbox_prodpopularityhelper'>
-                    <h2>{{ trans('app.news.popularity_helper.title') }}</h2>
+                    <h2>{{ trans('app.link') }}</h2>
                     <div class='content'>
-                        <p>{{ trans('app.news.popularity_helper.msg') }}</p>
+                        <p>{{ trans('app.popularity_helper') }}</p>
                         <input type='text' value='{{ Request::fullUrl() }}' size='50' readonly='readonly' />
                     </div>
                 </div>
 
-                @if($event->comments->count() > 0)
-                    <div class='rmarchivtbl' id='rmarchivbox_prodcomments'>
-                        <h2>kommentare</h2>
+                <div class='rmarchivtbl' id='rmarchivbox_prodcomments'>
+                    <h2>{{trans('app.comments')}}</h2>
+                    @if($event->comments->count() > 0)
                         @foreach($event->comments as $comment)
                             <div class='comment cite-{{ $comment->user_id }}' id='c{{ $comment->id }}'>
                                 <div class='content'>
@@ -91,17 +104,15 @@
                                 </div>
                             </div>
                         @endforeach
-                    </div>
-                @else
-                    <div class='rmarchivtbl' id='rmarchivbox_prodcomments'>
-                        <h2>kommentare</h2>
+                    @else
                         <div class="comment">
                             <div class="content">
-                                Es sind noch keine Kommentare vorhanden.
+                                {{trans('app.no_comments_available')}}
                             </div>
                         </div>
+                    @endif
                     </div>
-                @endif
+
 
                 <div class='rmarchivtbl' id='rmarchivbox_prodsubmitchanges'>
                     <h2>kommentarhinweise</h2>
@@ -134,7 +145,7 @@
                                 </div>
                             @endif
                             @include('_partials.markdown_editor')
-                            <div><a href='/?page=faq#markdown'><b>markown</b></a> kann benutzt werden</div>
+                            <div><a href='/?page=faq#markdown'><b>markdown</b></a> kann benutzt werden</div>
                         </div>
                         <div class='foot'>
                             <button class="btn btn-primary" id='submit'>{{ trans('app.submit') }}</button>
@@ -144,7 +155,7 @@
                 @endif
             </div>
         @else
-            <h2>zu dieser id existiert keine news</h2>
+            <h2>Zu dieser id existiert kein Event</h2>
         @endif
     </div>
 @endsection

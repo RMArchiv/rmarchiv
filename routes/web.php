@@ -270,8 +270,8 @@ Route::get('tags', 'TaggingController@index');
 Route::get('tags/{orderby?}/{direction?}', 'TaggingController@index')->name('tags.index.sorted');
 Route::get('tags/delete/game/{gameid}/{tagid}', 'TaggingController@delete_gametag')->middleware('permission:create-games');
 
-//Routen für Events
-Route::group(['prefix' => 'events'], function () {
+//Routen für Events -> blocked unused/untested section for admin only
+Route::group(['prefix' => 'events', 'middleware' => ['permission:admin-user']], function () {
     Route::get('/', ['as' => 'events', 'uses' => 'EventController@index']);
     Route::get('create', ['as' => 'events.create', 'uses' => 'EventController@create']);
     Route::post('/', ['as' => 'events.store', 'uses' => 'EventController@store']);
