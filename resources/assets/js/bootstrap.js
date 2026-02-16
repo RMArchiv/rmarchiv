@@ -1,17 +1,15 @@
 import * as bootstrap from 'bootstrap'
 import { createAutocomplete } from "./autocomplete.js";
-import $ from 'jquery';
 import * as qq from "fine-uploader";
 import { filterInput, removeRecipient, selectedRecipient, setupCheckBoxes } from './recipientList.js';
-
+import * as tagTree from "./tagTree.js";
 window["bootstrap"] = bootstrap;
 window["createAutocomplete"] = createAutocomplete;
 window["setupCheckBoxes"] = setupCheckBoxes;
 window["selectedRecipient"] = selectedRecipient;
 window["removeRecipient"] = removeRecipient;
 window["filterInput"] = filterInput;
-window["$"] = $;
-window["jQuery"] = $;
+window["tagTree"] = tagTree;
 window["qq"] = qq;
 
 function randomHexColor( ) {
