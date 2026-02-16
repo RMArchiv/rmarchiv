@@ -363,4 +363,34 @@ class DatabaseHelper
             return [];
         }
     }
+
+    public static function getTagTree(): array
+    {
+        $tags =
+            DB::select(
+                DB::raw("with recursive Tree as (select id,title,parent_id,0 as depth,title as fullpath from tags where parent_id is NULL union all select f.id,f.title,f.parent_id,dt.depth+1 as depth,concat(dt.fullpath, '/', f.title) as fullpath from tags f join Tree dt on f.parent_id = dt.id) select * from Tree order by fullpath;")->getValue(DB::getQueryGrammar())
+            );
+        $parents = [
+            'top',
+            'genre',
+            'content',
+            'about',
+            'duration',
+            'other',
+            'language',
+            'gameplay',
+            'setting',
+            'world',
+            'resources',
+            'map',
+            'development',
+            'community',
+            'technical',
+            'contest',
+            'other',
+            'fangame',
+            'mood'
+        ];
+        return array("tags" => $tags, "parents" => $parents);
+    }
 }
