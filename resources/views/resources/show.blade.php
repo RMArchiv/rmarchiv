@@ -168,6 +168,11 @@
                                         <span class='tools' data-cid='{{ $resource->id }}'></span>
                                         {{ trans('app.posted_at') }}
                                         {{ $comment->created_at }} {{ trans('app.by') }}
+                                        @include('reports._partials.report-button', [
+                                            'reportType' => 'comment',
+                                            'reportId' => $comment->id,
+                                            'reportLabel' => $resource->title,
+                                        ])
                                         <a href='{{ url('user', $comment->user_id) }}'
                                             class='user'>{{ $comment->name }}</a>
                                         <a href='{{ url('users', $comment->user_id) }}' class='usera'

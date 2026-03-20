@@ -98,6 +98,10 @@ Route::get('reports', 'ReportController@index_user');
 Route::get('reports/close/{id}', 'ReportController@close_ticket');
 Route::get('reports/open/{id}', 'ReportController@open_ticket');
 Route::get('reports/remark/{id}', 'ReportController@remark_ticket');
+Route::post('reports/content', 'ReportController@store_content_report')->name('reports.content.store')->middleware('auth');
+Route::get('reported/comments', 'ReportController@reported_comments')->name('reports.comments.index')->middleware('auth');
+Route::post('reported/comments/{id}/status', 'ReportController@update_report_status')->name('reports.comments.status')->middleware('auth');
+Route::post('reported/comments/{id}/note', 'ReportController@update_report_note')->name('reports.comments.note')->middleware('auth');
 
 //Gamecredits routen
 Route::post('games/{id}/credit', 'UserCreditsController@store')->name('gamecredits.store')->middleware('permission:create-games');

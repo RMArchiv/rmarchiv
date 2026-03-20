@@ -98,6 +98,7 @@
 @include('_partials.footer')
 
 @include('cookie-consent::index')
+@include('reports._partials.report-modal')
 
 </body>
 

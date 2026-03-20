@@ -10,6 +10,7 @@ namespace App\Models;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 /**
  * Class Comment.
@@ -106,5 +107,44 @@ class Comment extends Model
     public function news()
     {
         return $this->hasOne('App\Models\News', 'id', 'content_id');
+    }
+
+    public function resource()
+    {
+        return $this->hasOne('App\Models\Resource', 'id', 'content_id');
+    }
+
+    public function event()
+    {
+        return $this->hasOne('App\Models\Event', 'id', 'content_id');
+    }
+
+    public function reportContextLabel()
+    {
+        return match ($this->content_type) {
+            'game' => optional($this->game)->title ?: 'Spiel #'.$this->content_id,
+            'news' => optional($this->news)->title ?: 'News #'.$this->content_id,
+            'resource' => optional($this->resource)->title ?: 'Ressource #'.$this->content_id,
+            'event' => optional($this->event)->title ?: 'Event #'.$this->content_id,
+            default => 'Kommentar #'.$this->id,
+        };
+    }
+
+    public function reportUrl()
+    {
+        return match ($this->content_type) {
+            'game' => action('GameController@show', $this->content_id).'#c'.$this->id,
+            'news' => action('NewsController@show', $this->content_id).'#c'.$this->id,
+            'resource' => optional($this->resource)
+                ? route('resources.show', [$this->resource->type, $this->resource->cat, $this->resource->id]).'#c'.$this->id
+                : null,
+            'event' => route('events.show', $this->content_id).'#c'.$this->id,
+            default => null,
+        };
+    }
+
+    public function reportExcerpt($limit = 160)
+    {
+        return Str::limit(strip_tags((string) $this->comment_html), $limit);
     }
 }

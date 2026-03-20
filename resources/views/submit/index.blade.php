@@ -36,9 +36,9 @@
                     @permission(('create-awards'))
                         <li><a href="{{ url('awards/create') }}">award-kategorie hinzufügen</a></li>
                     @endpermission
-                    @permission(('admin-comments'))
-                        <li><a href="{{ url('reported/comments') }}"></a>gemeldete kommentare</li>
-                    @endpermission
+                    @if(Auth::check() && (Auth::user()->hasRole(['admin', 'owner', 'moderator']) || Auth::user()->can('admin-comments') || Auth::user()->can('mod-threads')))
+                        <li><a href="{{ route('reports.comments.index') }}">{{ trans('app.reported_comments') }}</a></li>
+                    @endif
                 </ul>
             </div>
         </div>

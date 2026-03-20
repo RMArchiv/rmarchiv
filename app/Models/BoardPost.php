@@ -9,6 +9,8 @@ namespace App\Models;
 
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class BoardPost.
@@ -66,5 +68,21 @@ class BoardPost extends Model
     public function user()
     {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
+
+    public function reportUrl()
+    {
+        $position = DB::table('board_posts')
+            ->where('thread_id', $this->thread_id)
+            ->where('id', '<=', $this->id)
+            ->count();
+        $page = max(1, (int) ceil($position / 25));
+
+        return route('board.thread.show', [$this->thread_id, 'page' => $page]).'#c'.$this->id;
+    }
+
+    public function reportExcerpt($limit = 160)
+    {
+        return Str::limit(strip_tags((string) $this->content_html), $limit);
     }
 }

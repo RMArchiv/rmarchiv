@@ -122,6 +122,13 @@
                                                             </div>
                                                         @endif
                                                     @endif
+                                                    <span class="float-end me-2">
+                                                        @include('reports._partials.report-button', [
+                                                            'reportType' => 'board_post',
+                                                            'reportId' => $post->id,
+                                                            'reportLabel' => $posts->first()->thread->title,
+                                                        ])
+                                                    </span>
                                                 </small>
                                                 <hr>
                                             </div>

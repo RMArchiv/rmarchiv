@@ -81,6 +81,11 @@
                                     @endif
 
                                     <span class='tools' data-cid='{{ $event->id }}'></span> hinzugefügt am {{ $comment->created_at }} von <a href='{{ url('user', $comment->user_id) }}' class='user'>{{ $comment->name }}</a>
+                                    @include('reports._partials.report-button', [
+                                        'reportType' => 'comment',
+                                        'reportId' => $comment->id,
+                                        'reportLabel' => $event->title,
+                                    ])
                                     <a href='{{ url('users', $comment->user_id) }}' class='usera' title="{{ $comment->name }}"><img src='//{{ config('app.avatar_path') }}?gender=male&id={{ $comment->user_id }}' alt="{{ $comment->name }}" class='avatar' />
                                     </a>
                                 </div>

@@ -80,6 +80,13 @@
                                         <div class="media-heading">
                                             <a href='{{ url('users', $comment->user_id) }}' title="{{ $comment->user->name }}">{{ $comment->user->name }}</a> -
                                             {{ trans('app.posted_at') }} {{ $comment->created_at }}
+                                            <span class="float-end">
+                                                @include('reports._partials.report-button', [
+                                                    'reportType' => 'comment',
+                                                    'reportId' => $comment->id,
+                                                    'reportLabel' => $news->title,
+                                                ])
+                                            </span>
                                             @if($comment->vote_up == 1 and $comment->vote_down == 0)
                                                 <span class='vote up'>up</span>
                                             @elseif($comment->vote_up == 0 and $comment->vote_down == 1)

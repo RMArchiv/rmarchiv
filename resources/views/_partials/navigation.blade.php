@@ -80,9 +80,9 @@
                                     @permission(('create-awards'))
                                     <a class="dropdown-item" href="{{ url('awards/create') }}">{{ trans('app.add_award') }}</a>
                                     @endpermission
-                                    @permission(('admin-comments'))
-                                    <a class="dropdown-item" href="{{ url('reported/comments') }}">{{ trans('app.reported_comments') }}</a>
-                                    @endpermission
+                                    @if(Auth::check() && (Auth::user()->hasRole(['admin', 'owner', 'moderator']) || Auth::user()->can('admin-comments') || Auth::user()->can('mod-threads')))
+                                        <a class="dropdown-item" href="{{ route('reports.comments.index') }}">{{ trans('app.reported_comments') }}</a>
+                                    @endif
                                 </div>
                             </li>
                         @endif
@@ -158,9 +158,9 @@
                                                             @permission(('create-awards'))
                                                             <a class="dropdown-item text-wrap" href="{{ url('awards/create') }}">{{ trans('app.add_award') }}</a>
                                                             @endpermission
-                                                            @permission(('admin-comments'))
-                                                            <a class="dropdown-item text-wrap" href="{{ url('reported/comments') }}">{{ trans('app.reported_comments') }}</a>
-                                                            @endpermission
+                                                            @if(Auth::check() && (Auth::user()->hasRole(['admin', 'owner', 'moderator']) || Auth::user()->can('admin-comments') || Auth::user()->can('mod-threads')))
+                                                                <a class="dropdown-item text-wrap" href="{{ route('reports.comments.index') }}">{{ trans('app.reported_comments') }}</a>
+                                                            @endif
                                             </div>
                                         </div>
                                     </div>
