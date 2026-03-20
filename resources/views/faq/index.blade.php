@@ -20,10 +20,12 @@
                     <div class="col-md-12" id="faq{{ $catTitle }}">
                         <div class="card">
                             @foreach($entries as $f)
-                                <div class="card-header accordion-toggle question-toggle collapsed d-flex justify-content-between align-items-center gap-2" data-bs-toggle="collapse" data-bs-parent="#faq{{ $f->cat }}" data-bs-target="#question{{ $f->id }}">
-                                    <a href="#" class="ing">Q: {{ $f->cat }} # {{ $f->title }}</a>
+                                <div class="card-header d-flex justify-content-between align-items-center gap-2">
+                                    <div class="accordion-toggle question-toggle collapsed flex-grow-1" data-bs-toggle="collapse" data-bs-parent="#faq{{ $f->cat }}" data-bs-target="#question{{ $f->id }}">
+                                        <a href="#" class="ing">Q: {{ $f->cat }} # {{ $f->title }}</a>
+                                    </div>
                                     @permission(('create-faq'))
-                                        <a href="{{ route('faq.edit', $f->id) }}" class="btn btn-sm btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('app.edit') }}" onclick="event.stopPropagation();">
+                                        <a href="{{ route('faq.edit', $f->id) }}" class="btn btn-sm btn-outline-secondary flex-shrink-0">
                                             {{ trans('app.edit') }}
                                         </a>
                                     @endpermission
