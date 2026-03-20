@@ -16,12 +16,11 @@
             </div>
         </div>
         <div class="form-group">
-            @php($msg = old('msg', $faqEntry->desc_md))
-            @include('_partials.markdown_editor')
+            @include('_partials.markdown_editor', ['edit_text' => old('msg', $faqEntry->desc_md)])
         </div>
     </div>
     <div class="card-footer">
-        <button type="reset" class="btn btn-secondary">{{ trans('app.cancel') }}</button>
+        <a href="{{ url('faq') }}" class="btn btn-secondary">{{ trans('app.cancel') }}</a>
         <button type="submit" class="btn btn-primary">{{ $submitLabel }}</button>
     </div>
 </div>
