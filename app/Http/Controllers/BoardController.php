@@ -129,7 +129,7 @@ class BoardController extends Controller
 
         DatabaseHelper::setThreadViewDate($threadid);
 
-        if (\Auth::check() && \Auth::user()->can('mod-threads') && $posts->count() !== 0) {
+        if (\Auth::check() && $posts->count() !== 0) {
             $moveCategories = BoardCat::orderBy('order')->get(['id', 'title']);
         }
 
