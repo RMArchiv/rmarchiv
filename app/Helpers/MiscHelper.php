@@ -8,7 +8,6 @@
 namespace App\Helpers;
 
 use Illuminate\Support\Facades\Request;
-use NotificationChannels\Discord\Discord;
 
 class MiscHelper
 {
@@ -28,7 +27,6 @@ class MiscHelper
 
     public static function sendDiscord($content)
     {
-        $dc = Discord::class;
     }
 
     public static function sendTelegram($content)

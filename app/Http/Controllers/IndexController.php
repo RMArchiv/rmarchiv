@@ -8,159 +8,323 @@
 namespace App\Http\Controllers;
 
 use App\Models\BoardPost;
+use App\Models\BoardThreadsTracker;
 use App\Models\Developer;
 use App\Models\GamesFile;
+use App\Models\GamesDeveloper;
 use App\Models\Logo;
 use App\Models\Maker;
 use Carbon\Carbon;
 use App\Models\Game;
 use App\Models\News;
+use App\Models\TagRelation;
 use App\Models\User;
 use App\Models\Comment;
 use App\Models\Shoutbox;
 use App\Helpers\MiscHelper;
 use App\Models\BoardThread;
 use App\Models\GamesCoupdecoeur;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 
 class IndexController extends Controller
 {
     public function index()
     {
-        $gametypes = \DB::table('games_files_types')
-            ->select('id', 'title', 'short')
-            ->get();
-        $gtypes = [];
-        foreach ($gametypes as $gt) {
-            $t['title'] = $gt->title;
-            $t['short'] = $gt->short;
-            $gtypes[$gt->id] = $t;
+        $user = \Auth::user();
+        $settings = $user?->settings;
+        $isAuthenticated = $user !== null;
+        $allowNsfw = $isAuthenticated;
+
+        $widgets = [
+            'cdc' => ! $settings || (int) $settings->disable_widget_cdc !== 1,
+            'latestadded' => ! $settings || (int) $settings->disable_widget_gamesadded !== 1,
+            'latestreleased' => ! $settings || (int) $settings->disable_widget_gamesreleased !== 1,
+            'topmonth' => ! $settings || (int) $settings->disable_widget_topmonth !== 1,
+            'topalltime' => ! $settings || (int) $settings->disable_widget_alltimetop !== 1,
+            'shoutbox' => $isAuthenticated && (! $settings || (int) $settings->disable_widget_shoutbox !== 1),
+            'board' => ! $settings || (int) $settings->disable_widget_board !== 1,
+            'news' => ! $settings || (int) $settings->disable_widget_news !== 1,
+            'tags' => ! $settings || (int) $settings->disable_widget_tags !== 1,
+            'stats' => ! $settings || (int) $settings->disable_widget_stats !== 1,
+            'obyx' => ! $settings || (int) $settings->disable_widget_obyx !== 1,
+            'comments' => ! $settings || (int) $settings->disable_widget_comments !== 1,
+        ];
+
+        $gametypes = [];
+        if ($widgets['topmonth']) {
+            $gametypes = Cache::remember('home.gametypes', now()->addHours(6), function () {
+                return \DB::table('games_files_types')
+                    ->select('id', 'title', 'short')
+                    ->get()
+                    ->mapWithKeys(function ($type) {
+                        return [$type->id => [
+                            'title' => $type->title,
+                            'short' => $type->short,
+                        ]];
+                    })
+                    ->all();
+            });
         }
 
-        $news = News::with('user', 'comments')->orderBy('created_at', 'desc')->where('approved', '=', 1)->get()->take(5);
-        $shoutbox = Shoutbox::with('user')->orderBy('created_at', 'desc')->limit(5)->get()->reverse();
-        $cdc = GamesCoupdecoeur::with('game')->orderBy('created_at', 'desc')->get()->first();
-        $threads = BoardThread::with('posts', 'user', 'last_user')->orderBy('last_created_at', 'desc')->limit(10)->get();
+        $news = collect();
+        if ($widgets['news']) {
+            $news = Cache::remember('home.news', now()->addMinutes(10), function () {
+                return News::with('user:id,name')
+                    ->withCount('comments')
+                    ->where('approved', '=', 1)
+                    ->orderBy('created_at', 'desc')
+                    ->limit(5)
+                    ->get();
+            });
+        }
 
-        $topusers = \DB::table('users as u')
-            ->leftJoin('user_role_user as uru', 'u.id', '=', 'uru.user_id')
-            ->leftJoin('user_roles as ur', 'ur.id', '=', 'uru.role_id')
-            ->select([
-                'u.id as userid',
-                'u.name as username',
-                'u.created_at as usercreated_at',
-                'ur.display_name as rolename',
-                'ur.description as roledesc',
+        $shoutbox = collect();
+        if ($widgets['shoutbox']) {
+            $shoutbox = Cache::remember('home.shoutbox', now()->addMinutes(2), function () {
+                return Shoutbox::with('user:id,name')
+                    ->orderBy('created_at', 'desc')
+                    ->limit(5)
+                    ->get()
+                    ->reverse()
+                    ->values();
+            });
+        }
+
+        $cdc = null;
+        if ($widgets['cdc']) {
+            $cdc = Cache::remember('home.cdc', now()->addMinutes(10), function () {
+                return GamesCoupdecoeur::with([
+                    'game.maker:id,title,short',
+                    'game.language:id,name,short',
+                    'game.gamefiles' => function ($query) {
+                        $query->select('id', 'game_id', 'release_type')
+                            ->with(['gamefiletype:id,title,short']);
+                    },
+                    'game.developers' => function ($query) {
+                        $query->select('id', 'game_id', 'developer_id')
+                            ->with(['developer:id,name']);
+                    },
+                ])
+                    ->orderBy('created_at', 'desc')
+                    ->first();
+            });
+
+            if ($cdc?->game) {
+                $this->attachDeveloperLinks(collect([$cdc->game]));
+            }
+        }
+
+        $threads = collect();
+        $unreadThreadIds = [];
+        if ($widgets['board']) {
+            $threads = BoardThread::with([
+                'user:id,name',
+                'last_user:id,name',
+                'cat:id,title',
             ])
-            ->selectRaw('(SELECT SUM(obyx.value) FROM user_obyx LEFT JOIN obyx ON obyx.id = user_obyx.obyx_id WHERE user_obyx.user_id = u.id) as obyx')
-            ->orderBy('obyx', 'desc')
-            ->limit(10)
-            ->get();
+                ->withCount('posts')
+                ->withCount('votes')
+                ->orderBy('last_created_at', 'desc')
+                ->limit(10)
+                ->get();
 
-        $obyxmax = \DB::table('user_obyx as uo')
-            ->leftJoin('obyx as o', 'o.id', '=', 'uo.obyx_id')
-            ->selectRaw('SUM(o.value) as value')
-            ->groupBy('uo.user_id')
-            ->orderByRaw('SUM(o.value) DESC')
-            ->first();
+            if ($isAuthenticated && $threads->isNotEmpty()) {
+                $trackers = BoardThreadsTracker::where('user_id', $user->id)
+                    ->whereIn('thread_id', $threads->pluck('id'))
+                    ->get()
+                    ->keyBy('thread_id');
 
-        if (\Auth::check()) {
-            $pm = \Auth::user()->newThreadsCount();
-        } else {
-            $pm = '';
+                $unreadThreadIds = $threads
+                    ->filter(function ($thread) use ($trackers) {
+                        $tracker = $trackers->get($thread->id);
+
+                        return ! $tracker || Carbon::parse($tracker->last_read)->lt(Carbon::parse($thread->last_created_at));
+                    })
+                    ->pluck('id')
+                    ->all();
+            }
         }
 
-        $stats_gamecount = Game::count();
-        $stats_makercount = Maker::count();
-        $stats_developercount = Developer::count();
-        $stats_usercount = User::count();
-        $stats_threadcount = BoardThread::count();
-        $stats_postcount = BoardPost::count();
-        $stats_shoutboxcount = Shoutbox::count();
-        $stats_commentcount = Comment::count();
-        $stats_logocount = Logo::count();
-        $stats_downloadcount = GamesFile::sum('downloadcount');
-        $stats_totalsize = GamesFile::sum('filesize');
-        $stats_filecount = GamesFile::count();
+        $topusers = collect();
+        $obyxmax = null;
+        if ($widgets['obyx']) {
+            $topusers = Cache::remember('home.topusers', now()->addMinutes(10), function () {
+                return \DB::table('users as u')
+                    ->leftJoin('user_obyx as uo', 'u.id', '=', 'uo.user_id')
+                    ->leftJoin('obyx as o', 'o.id', '=', 'uo.obyx_id')
+                    ->leftJoin('user_role_user as uru', 'u.id', '=', 'uru.user_id')
+                    ->leftJoin('user_roles as ur', 'ur.id', '=', 'uru.role_id')
+                    ->select([
+                        'u.id as userid',
+                        'u.name as username',
+                        'u.created_at as usercreated_at',
+                        'ur.display_name as rolename',
+                        'ur.description as roledesc',
+                    ])
+                    ->selectRaw('COALESCE(SUM(o.value), 0) as obyx')
+                    ->groupBy('u.id', 'u.name', 'u.created_at', 'ur.display_name', 'ur.description')
+                    ->orderBy('obyx', 'desc')
+                    ->limit(10)
+                    ->get();
+            });
 
-        $size = \DB::table('games_files')
-            ->selectRaw('SUM(filesize * downloadcount) as downsize')
-            ->groupBy('id')
-            ->get();
-
-        $res = 0;
-        foreach ($size as $s) {
-            $res += $s->downsize;
+            $obyxmax = $topusers->first();
         }
-        $size = MiscHelper::getReadableBytes($res);
 
-        $latestadded = Game::with('maker', 'gamefiles', 'language', 'developers')->orderBy('created_at', 'desc')->where('games.invisible_on_start_page', '=', 0)->limit(5);
-        $latestreleased = Game::where('release_type', '!=', 99)->where('games.invisible_on_start_page', '=', 0)->orderBy('release_date', 'desc')->limit(5);
+        $pm = $isAuthenticated ? $user->newThreadsCount() : '';
 
-        $topmonth = \DB::table('games')
-            ->leftJoin('games_developer', 'games.id', '=', 'games_developer.game_id')
-            ->leftJoin('developer', 'games_developer.developer_id', '=', 'developer.id')
-            ->leftJoin('makers', 'makers.id', '=', 'games.maker_id')
-            ->leftJoin('languages', 'languages.id', '=', 'games.lang_id')
-            ->leftJoin('comments', function ($join) {
-                $join->on('comments.content_id', '=', 'games.id');
-                $join->on('comments.content_type', '=', \DB::raw("'game'"));
-            })
-            ->leftJoin('games_files', 'games_files.game_id', '=', 'games.id')
-            ->leftJoin('users', 'games_developer.user_id', '=', 'users.id')
-            ->select([
-                'games.id as gameid',
-                'games.title as gametitle',
-                'games.subtitle as gamesubtitle',
-                'games.invisible_on_start_page as invisible',
-                'developer.name as developername',
-                'developer.id as developerid',
-                'developer.created_at as developerdate',
-                'developer.user_id as developeruserid',
-                'users.name as developerusername',
-                'games.created_at as gamecreated_at',
-                'makers.short as makershort',
-                'makers.title as makertitle',
-                'makers.id as makerid',
-                'languages.id as lang_id',
-                'languages.name as lang_name',
-                'languages.short as lang_short',
-            ])
-            ->selectRaw('(SELECT COUNT(id) FROM comments WHERE content_id = games.id AND content_type = "game") as commentcount')
-            ->selectRaw('(SELECT SUM(vote_up) FROM comments WHERE content_id = games.id AND content_type = "game") as voteup')
-            ->selectRaw('(SELECT SUM(vote_down) FROM comments WHERE content_id = games.id AND content_type = "game") as votedown')
-            ->selectRaw('MAX(games_files.release_type) as gametype')
-            ->selectRaw("(SELECT STR_TO_DATE(CONCAT(release_year,'-',release_month,'-',release_day ), '%Y-%m-%d') FROM games_files WHERE game_id = games.id ORDER BY release_year DESC, release_month DESC, release_day DESC LIMIT 1) as releasedate")
-            ->selectRaw('(SELECT COUNT(id) FROM games_coupdecoeur WHERE game_id = games.id) as cdccount')
-            ->where('comments.created_at', '>', Carbon::today()->addMonth(-1)->toDateString())
-            ->where('games.invisible_on_start_page', '=', 0)
-            ->orderByRaw('(voteup - votedown) / (voteup + votedown) DESC')
-            ->groupBy('games.id')
-            ->limit(5);
+        $stats = [
+            'stats_gamecount' => 0,
+            'stats_makercount' => 0,
+            'stats_developercount' => 0,
+            'stats_usercount' => 0,
+            'stats_threadcount' => 0,
+            'stats_postcount' => 0,
+            'stats_shoutboxcount' => 0,
+            'stats_commentcount' => 0,
+            'stats_logocount' => 0,
+            'stats_downloadcount' => 0,
+            'stats_totalsize' => 0,
+            'stats_filecount' => 0,
+            'size' => MiscHelper::getReadableBytes(0),
+            'newuser' => null,
+        ];
+        if ($widgets['stats']) {
+            $stats = Cache::remember('home.stats', now()->addMinutes(10), function () {
+                $downloadTraffic = (int) \DB::table('games_files')
+                    ->selectRaw('COALESCE(SUM(filesize * downloadcount), 0) as downsize')
+                    ->value('downsize');
 
-        $topalltime = Game::whereInvisibleOnStartPage(0)->orderBy('avg', 'desc')->orderBy('voteup', 'desc')->where('games.invisible_on_start_page', '=', 0)->limit(5);
-        $latestcomments = Comment::with('game')->whereContentType('game')->orderBy('created_at', 'desc')->limit(5)->get();
-        $randomgame = Game::inRandomOrder()->where('games.invisible_on_start_page', '=', 0);
-        if (!\Auth::check()) {
-            $randomgame->where('nsfw', '=', false);
-            $topmonth->where('nsfw', '=', false);
-            $topalltime->where('nsfw', '=', false);
-            $latestadded->where('nsfw', '=', false);
-            $latestreleased->where('nsfw', '=', false);
+                return [
+                    'stats_gamecount' => Game::count(),
+                    'stats_makercount' => Maker::count(),
+                    'stats_developercount' => Developer::count(),
+                    'stats_usercount' => User::count(),
+                    'stats_threadcount' => BoardThread::count(),
+                    'stats_postcount' => BoardPost::count(),
+                    'stats_shoutboxcount' => Shoutbox::count(),
+                    'stats_commentcount' => Comment::count(),
+                    'stats_logocount' => Logo::count(),
+                    'stats_downloadcount' => GamesFile::sum('downloadcount'),
+                    'stats_totalsize' => GamesFile::sum('filesize'),
+                    'stats_filecount' => GamesFile::count(),
+                    'size' => MiscHelper::getReadableBytes($downloadTraffic),
+                    'newuser' => User::select('id', 'name')->orderBy('created_at', 'desc')->first(),
+                ];
+            });
         }
-        $randomgame = $randomgame->first();
-        $topmonth = $topmonth->get();
-        $topalltime = $topalltime->get();
-        $latestadded = $latestadded->get();
-        $latestreleased = $latestreleased->get();
 
-        $newuser = User::orderBy('created_at', 'desc')->first();
+        $latestadded = collect();
+        if ($widgets['latestadded']) {
+            $latestadded = Cache::remember('home.latestadded.'.(int) $allowNsfw, now()->addMinutes(10), function () use ($allowNsfw) {
+                return $this->baseHomeGameQuery($allowNsfw)
+                    ->orderBy('created_at', 'desc')
+                    ->limit(5)
+                    ->get();
+            });
+            $this->attachDeveloperLinks($latestadded);
+        }
+
+        $latestreleased = collect();
+        if ($widgets['latestreleased']) {
+            $latestreleased = Cache::remember('home.latestreleased.'.(int) $allowNsfw, now()->addMinutes(10), function () use ($allowNsfw) {
+                return $this->baseHomeGameQuery($allowNsfw)
+                    ->where('release_type', '!=', 99)
+                    ->orderBy('release_date', 'desc')
+                    ->limit(5)
+                    ->get();
+            });
+            $this->attachDeveloperLinks($latestreleased);
+        }
+
+        $topmonth = collect();
+        if ($widgets['topmonth']) {
+            $topmonth = Cache::remember('home.topmonth.'.(int) $allowNsfw, now()->addMinutes(10), function () use ($allowNsfw) {
+                return $this->baseHomeGameQuery($allowNsfw)
+                    ->whereExists(function ($query) {
+                        $query->selectRaw('1')
+                            ->from('comments')
+                            ->whereColumn('comments.content_id', 'games.id')
+                            ->where('comments.content_type', 'game')
+                            ->where('comments.created_at', '>', Carbon::today()->addMonth(-1)->toDateString());
+                    })
+                    ->orderByRaw('(voteup - votedown) / NULLIF((voteup + votedown), 0) DESC')
+                    ->limit(5)
+                    ->get();
+            });
+            $this->attachDeveloperLinks($topmonth);
+        }
+
+        $topalltime = collect();
+        if ($widgets['topalltime']) {
+            $topalltime = Cache::remember('home.topalltime.'.(int) $allowNsfw, now()->addMinutes(10), function () use ($allowNsfw) {
+                return $this->baseHomeGameQuery($allowNsfw)
+                    ->orderBy('avg', 'desc')
+                    ->orderBy('voteup', 'desc')
+                    ->limit(5)
+                    ->get();
+            });
+            $this->attachDeveloperLinks($topalltime);
+        }
+
+        $latestcomments = collect();
+        if ($widgets['comments']) {
+            $latestcomments = Comment::with('game')
+                ->whereContentType('game')
+                ->orderBy('created_at', 'desc')
+                ->limit(5)
+                ->get();
+        }
+
+        $randomgame = $this->getRandomVisibleGame($allowNsfw);
+        if ($randomgame) {
+            $this->attachDeveloperLinks(collect([$randomgame]));
+        }
+
+        $tagCloudHtml = null;
+        if ($widgets['tags']) {
+            $tagCloudHtml = Cache::remember('home.tagcloud', now()->addMinutes(30), function () {
+                $tags = \DB::table('tag_relations')
+                    ->join('tags', 'tags.id', '=', 'tag_relations.tag_id')
+                    ->select('tags.id', 'tags.title')
+                    ->selectRaw('COUNT(tag_relations.id) as usage_count')
+                    ->groupBy('tags.id', 'tags.title')
+                    ->orderByDesc('usage_count')
+                    ->limit(25)
+                    ->get();
+
+                if ($tags->isEmpty()) {
+                    return '';
+                }
+
+                $maxUsage = max((int) $tags->max('usage_count'), 1);
+
+                return $tags->map(function ($tag) use ($maxUsage) {
+                    $ratio = $tag->usage_count / $maxUsage;
+                    $btnsize = match (true) {
+                        $ratio <= 0.2 => 6,
+                        $ratio <= 0.4 => 5,
+                        $ratio <= 0.6 => 4,
+                        $ratio <= 0.8 => 3,
+                        default => 2,
+                    };
+
+                    $url = action('TaggingController@showGames', $tag->id);
+
+                    return '<div style="display: inline-block;"><a href="'.$url.'"><span style="word-wrap:normal;" class="m-3 h'.$btnsize.'">'.$tag->title.'</span></a></div>';
+                })->implode('');
+            });
+        }
 
         return view('index.index', [
+            'settings'       => $settings,
+            'widgets'        => $widgets,
             'news'           => $news,
             'shoutbox'       => $shoutbox,
             'cdc'            => $cdc,
             'latestadded'    => $latestadded,
-            'gametypes'      => $gtypes,
+            'gametypes'      => $gametypes,
             'latestreleased' => $latestreleased,
             'threads'        => $threads,
             'obeymax'        => $obyxmax,
@@ -169,21 +333,114 @@ class IndexController extends Controller
             'topmonth'       => $topmonth,
             'topalltime'     => $topalltime,
             'latestcomments' => $latestcomments,
-            'size'           => $size,
+            'size'           => $stats['size'],
             'randomgame'     => $randomgame,
-            'newuser'        => $newuser,
-            'stats_gamecount' => $stats_gamecount,
-            'stats_makercount' => $stats_makercount,
-            'stats_developercount' => $stats_developercount,
-            'stats_usercount' => $stats_usercount,
-            'stats_threadcount' => $stats_threadcount,
-            'stats_postcount' => $stats_postcount,
-            'stats_shoutboxcount' => $stats_shoutboxcount,
-            'stats_commentcount' => $stats_commentcount,
-            'stats_logocount' => $stats_logocount,
-            'stats_downloadcount' => $stats_downloadcount,
-            'stats_totalsize' => $stats_totalsize,
-            'stats_filecount' => $stats_filecount
+            'newuser'        => $stats['newuser'],
+            'stats_gamecount' => $stats['stats_gamecount'],
+            'stats_makercount' => $stats['stats_makercount'],
+            'stats_developercount' => $stats['stats_developercount'],
+            'stats_usercount' => $stats['stats_usercount'],
+            'stats_threadcount' => $stats['stats_threadcount'],
+            'stats_postcount' => $stats['stats_postcount'],
+            'stats_shoutboxcount' => $stats['stats_shoutboxcount'],
+            'stats_commentcount' => $stats['stats_commentcount'],
+            'stats_logocount' => $stats['stats_logocount'],
+            'stats_downloadcount' => $stats['stats_downloadcount'],
+            'stats_totalsize' => $stats['stats_totalsize'],
+            'stats_filecount' => $stats['stats_filecount'],
+            'tagCloudHtml'    => $tagCloudHtml,
+            'unreadThreadIds' => $unreadThreadIds,
         ]);
+    }
+
+    private function baseHomeGameQuery(bool $allowNsfw)
+    {
+        $query = Game::query()
+            ->select([
+                'id',
+                'title',
+                'subtitle',
+                'maker_id',
+                'lang_id',
+                'created_at',
+                'release_date',
+                'release_type',
+                'voteup',
+                'avg',
+                'invisible_on_start_page',
+                'nsfw',
+            ])
+            ->with([
+                'maker:id,title,short',
+                'language:id,name,short',
+                'gamefiles' => function ($query) {
+                    $query->select('id', 'game_id', 'release_type')
+                        ->with(['gamefiletype:id,title,short']);
+                },
+                'developers' => function ($query) {
+                    $query->select('id', 'game_id', 'developer_id')
+                        ->with(['developer:id,name']);
+                },
+            ])
+            ->where('games.invisible_on_start_page', '=', 0);
+
+        if (! $allowNsfw) {
+            $query->where('nsfw', '=', false);
+        }
+
+        return $query;
+    }
+
+    private function attachDeveloperLinks(Collection $games): void
+    {
+        foreach ($games as $game) {
+            $links = collect($game->developers ?? [])
+                ->map(function ($developerRelation) {
+                    $developer = $developerRelation->developer;
+
+                    if (! $developer) {
+                        return null;
+                    }
+
+                    return '<a href="'.url('developer', $developer->id).'">'.$developer->name.'</a>';
+                })
+                ->filter()
+                ->implode(' :: ');
+
+            $game->setAttribute('developer_links', $links);
+        }
+    }
+
+    private function getRandomVisibleGame(bool $allowNsfw): ?Game
+    {
+        $cacheKey = 'home.randomgame.'.(int) $allowNsfw;
+
+        return Cache::remember($cacheKey, now()->addMinutes(10), function () use ($allowNsfw) {
+            $baseQuery = Game::query()->where('games.invisible_on_start_page', '=', 0);
+
+            if (! $allowNsfw) {
+                $baseQuery->where('nsfw', '=', false);
+            }
+
+            $maxId = (clone $baseQuery)->max('id');
+            if (! $maxId) {
+                return null;
+            }
+
+            $randomId = random_int(1, $maxId);
+
+            $game = $this->baseHomeGameQuery($allowNsfw)
+                ->where('id', '>=', $randomId)
+                ->orderBy('id')
+                ->first();
+
+            if ($game) {
+                return $game;
+            }
+
+            return $this->baseHomeGameQuery($allowNsfw)
+                ->orderBy('id')
+                ->first();
+        });
     }
 }

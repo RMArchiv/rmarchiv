@@ -34,7 +34,7 @@
                                    title="{{ $randomgame->language->name }}"></span>
 
                     </span>
-                    <span class='group'>:: {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($randomgame->id) !!}
+                    <span class='group'>:: {!! $randomgame->developer_links !!}
                     </span>
                 </span>
             </span>

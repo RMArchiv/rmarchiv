@@ -9,10 +9,9 @@
                     {!! \App\Helpers\InlineBoxHelper::GameBox($new->news_html) !!}
                 </div>
                 <div class="card-footer">
-                    {{ trans('app.submitted_by') }} <a href='{{ url('users', $new->user->id) }}'>{{ $new->user->name }}</a> :: <time datetime='{{ $new->created_at }}' title='{{ $new->created_at }}'>{{ \Carbon\Carbon::parse($new->created_at)->diffForHumans() }}</time> - {{ trans('app.comments') }}: {{ $new->comments->count() }}
+                    {{ trans('app.submitted_by') }} <a href='{{ url('users', $new->user->id) }}'>{{ $new->user->name }}</a> :: <time datetime='{{ $new->created_at }}' title='{{ $new->created_at }}'>{{ \Carbon\Carbon::parse($new->created_at)->diffForHumans() }}</time> - {{ trans('app.comments') }}: {{ $new->comments_count }}
                 </div>
             </div>
         </div>
     </div>
 @endforeach
-

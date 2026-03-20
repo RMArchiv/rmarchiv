@@ -1,13 +1,18 @@
 <div class="mt-1 mb-1">
     @php
-        $logo = \DB::table('logos')
-        ->leftJoin('users', 'logos.user_id', '=', 'users.id')
-        ->leftJoin('logo_votes', 'logos.id', '=', 'logo_votes.logo_id')
-        ->select(['logos.title', 'logos.filename', 'users.name', 'users.id', 'logos.id as logoid'])
-        ->whereRaw('(logo_votes.up - logo_votes.down) > 0')
-        ->inRandomOrder()
-        ->first();
-
+        try {
+            $logo = \Illuminate\Support\Facades\Cache::remember('header.random_logo', now()->addMinutes(10), function () {
+                return \DB::table('logos')
+                    ->leftJoin('users', 'logos.user_id', '=', 'users.id')
+                    ->leftJoin('logo_votes', 'logos.id', '=', 'logo_votes.logo_id')
+                    ->select(['logos.title', 'logos.filename', 'users.name', 'users.id', 'logos.id as logoid'])
+                    ->whereRaw('(logo_votes.up - logo_votes.down) > 0')
+                    ->inRandomOrder()
+                    ->first();
+            });
+        } catch (\Throwable $e) {
+            $logo = null;
+        }
     @endphp
     @if($logo)
     <a href="/">

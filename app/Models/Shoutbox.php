@@ -55,9 +55,4 @@ class Shoutbox extends Model
     {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
-
-    public function routeNotificationForDiscord()
-    {
-        return $this->shout_md;
-    }
 }

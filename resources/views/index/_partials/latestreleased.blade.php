@@ -31,7 +31,7 @@
                                            title="{{ $g->langname }}"></span>
                             </span>
                             <span class='group'>
-                                :: {!! \App\Helpers\DatabaseHelper::getDevelopersUrlList($g->id) !!}
+                                :: {!! $g->developer_links !!}
                             </span>
                         </span>
                     </span>

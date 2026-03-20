@@ -28,8 +28,13 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
     <link rel="canonical" href="http://www.rmarchiv.de/"/>
 
-    @vite('resources/assets/js/app.js')
-    @vite('resources/assets/sass/app.scss')
+    @if(file_exists(public_path('build/manifest.json')))
+        @vite('resources/assets/js/app.js')
+        @vite('resources/assets/sass/app.scss')
+    @else
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <script src="{{ asset('js/app.js') }}" defer></script>
+    @endif
     <script type="text/javascript">
         <!--
         var pixelWidth = screen.width;
@@ -40,7 +45,10 @@
 </head>
 <body>
 @php
-    \App\Helpers\DatabaseHelper::setOnline(Request::url());
+    try {
+        \App\Helpers\DatabaseHelper::setOnline(Request::url());
+    } catch (\Throwable $e) {
+    }
 @endphp
 
 {{--  @include('_partials.header') --}}

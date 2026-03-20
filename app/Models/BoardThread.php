@@ -65,7 +65,7 @@ class BoardThread extends Model
 
     public function votes()
     {
-        return $this->hasOne('App\Models\BoardPoll', 'id', 'thread_id');
+        return $this->hasOne('App\Models\BoardPoll', 'thread_id', 'id');
     }
 
     public function cat()

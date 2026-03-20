@@ -5,7 +5,7 @@
             <table class='table table-stripped table-hover'>
                 @foreach($threads as $t)
                     <tr
-                            @if(\App\Helpers\DatabaseHelper::isThreadUnread($t->id) === true) style="font-weight: bold;" @endif>
+                            @if(in_array($t->id, $unreadThreadIds, true)) style="font-weight: bold;" @endif>
                         <td class="d-none d-lg-table-cell">
                             <a href='{{ url('users', $t->user->id) }}' class='usera word-hyphens' title="{{ $t->user->name }}">
                                 <img width="16px" src='//{{ config('app.avatar_path') }}?gender=male&id={{ $t->user->id }}'
@@ -21,12 +21,12 @@
                                 @if($t->closed == 1)
                                     <img src="/assets/lock.png">
                                 @endif
-                                @if(\App\Models\BoardPoll::whereThreadId($t->id)->count() != 0)
+                                @if($t->votes_count != 0)
                                     <img src="/assets/stats.gif">
                                 @endif
                                 {{ $t->title }}</a>
                         </td>
-                        <td class='count' title=''>{{ $t->posts->count()  }}</td>
+                        <td class='count' title=''>{{ $t->posts_count }}</td>
                         <td>
                             <a href='{{ url('users', $t->last_user->id) }}' class='usera'
                                title="{{ $t->last_user->name }}">
