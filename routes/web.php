@@ -190,6 +190,7 @@ Route::post('board/thread/{threadid}/edit/{postid}', 'BoardController@post_updat
 Route::get('board/thread/{threadid}', 'BoardController@show_thread')->name('board.thread.show');
 Route::post('board/thread/{threadid}', 'BoardController@store_post')->name('board.post.store')->middleware('permission:create-posts');
 Route::get('board/thread/{id}/switchclosestate/{state}', 'BoardController@thread_close_switch')->name('board.thread.switch.close')->middleware('permission:mod-threads');
+Route::post('board/thread/{id}/move', 'BoardController@thread_move')->name('board.thread.move')->middleware('permission:mod-threads');
 Route::get('board/thread/{threadid}/vote/create', 'BoardController@create_vote')->name('board.vote.create')->middleware('permission:create-threads');
 Route::post('board/thread/{threadid}/vote/store', 'BoardController@store_vote')->name('board.vote.store')->middleware('permission:create-threads');
 Route::post('board/thread/{threadid}/vote/update', 'BoardController@update_vote')->name('board.vote.update')->middleware('permission:create-threads');

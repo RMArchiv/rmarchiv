@@ -215,6 +215,9 @@ return [
   'markdown_is_usable_here'           => 'Se puede usar código Markdown aquí',
   'message'                           => 'Mensaje',
   'messages'                          => 'Mensajes',
+  'move_thread'                       => 'Mover tema',
+  'choose_target_forum'               => 'Elige el foro de destino',
+  'thread_move_same_forum'            => 'El tema ya está en este foro.',
   'messenger' => [
     'last_recipients' => 'Recipientes más recientes',
     'show_all' => 'Show all', // TODO

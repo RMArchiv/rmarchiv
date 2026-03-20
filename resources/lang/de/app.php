@@ -214,6 +214,9 @@ return [
     'markdown_is_usable_here' => 'Hier kann Markdown genutzt werden.',
     'message' => 'Nachricht',
     'messages' => 'Nachrichten',
+    'move_thread' => 'Thread verschieben',
+    'choose_target_forum' => 'Wähle das Ziel-Forum',
+    'thread_move_same_forum' => 'Der Thread befindet sich bereits in diesem Forum.',
     'messenger' => [
         'last_recipients' => 'Letzte Empfänger',
         'show_all' => 'Zeige alle',

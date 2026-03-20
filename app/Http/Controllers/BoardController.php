@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use App\Models\BoardPollVote;
 use App\Helpers\DatabaseHelper;
 use App\Models\BoardPollAnswer;
+use Illuminate\Support\Facades\Validator;
 
 class BoardController extends Controller
 {
@@ -107,6 +108,7 @@ class BoardController extends Controller
     {
         $posts = BoardPost::with('user', 'thread', 'cat')->whereThreadId($threadid)->orderBy('id')->paginate(25);
         $poll = BoardPoll::whereThreadId($threadid)->first();
+        $moveCategories = collect();
 
         $pollanswers = null;
         $canvote = 1;
@@ -127,6 +129,10 @@ class BoardController extends Controller
 
         DatabaseHelper::setThreadViewDate($threadid);
 
+        if (\Auth::check() && \Auth::user()->can('mod-threads') && $posts->count() !== 0) {
+            $moveCategories = BoardCat::orderBy('order')->get(['id', 'title']);
+        }
+
         if (! $request->get('page')) {
             return redirect('board/thread/'.$threadid.'?page='.$posts->lastPage());
         } else {
@@ -137,6 +143,7 @@ class BoardController extends Controller
                 'votecount' => $votecount,
                 'canvote'   => $canvote,
                 'votes'     => $votes,
+                'moveCategories' => $moveCategories,
             ]);
         }
     }
@@ -233,6 +240,53 @@ class BoardController extends Controller
         }
 
         return redirect()->action('BoardController@show_thread', $id);
+    }
+
+    public function thread_move(Request $request, $id)
+    {
+        if (! \Auth::check() || ! \Auth::user()->can('mod-threads')) {
+            abort(403);
+        }
+
+        $thread = BoardThread::whereId($id)->firstOrFail();
+        $validator = Validator::make($request->all(), [
+            'new_cat_id' => 'required|integer|exists:board_cats,id',
+        ]);
+
+        $validator->after(function ($validator) use ($request, $thread) {
+            if ((int) $request->get('new_cat_id') === (int) $thread->cat_id) {
+                $validator->errors()->add('new_cat_id', trans('app.thread_move_same_forum'));
+            }
+        });
+
+        if ($validator->fails()) {
+            return redirect()
+                ->route('board.thread.show', [$thread->id])
+                ->withErrors($validator, 'moveThread')
+                ->withInput();
+        }
+
+        $oldCatId = (int) $thread->cat_id;
+        $newCatId = (int) $request->get('new_cat_id');
+
+        \DB::transaction(function () use ($thread, $newCatId) {
+            \DB::table('board_threads')
+                ->where('id', '=', $thread->id)
+                ->update([
+                    'cat_id' => $newCatId,
+                ]);
+
+            \DB::table('board_posts')
+                ->where('thread_id', '=', $thread->id)
+                ->update([
+                    'cat_id' => $newCatId,
+                ]);
+        });
+
+        $this->syncBoardCategoryActivity($oldCatId);
+        $this->syncBoardCategoryActivity($newCatId);
+
+        return redirect()->action('BoardController@show_thread', $thread->id);
     }
 
     public function post_edit($threadid, $postid)
@@ -343,5 +397,23 @@ class BoardController extends Controller
 
     public function update_vote(Request $request, $threadid)
     {
+    }
+
+    private function syncBoardCategoryActivity($catId)
+    {
+        $latestThread = BoardThread::whereCatId($catId)
+            ->orderBy('last_created_at', 'desc')
+            ->first(['last_created_at', 'last_user_id']);
+
+        if (! $latestThread) {
+            return;
+        }
+
+        \DB::table('board_cats')
+            ->where('id', '=', $catId)
+            ->update([
+                'last_created_at' => $latestThread->last_created_at,
+                'last_user_id' => $latestThread->last_user_id,
+            ]);
     }
 }

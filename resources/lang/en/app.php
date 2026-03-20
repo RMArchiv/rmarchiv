@@ -215,6 +215,9 @@ return [
   'markdown_is_usable_here'           => 'Markdown is usable here',
   'message'                           => 'Message',
   'messages'                          => 'Messages',
+  'move_thread'                       => 'Move thread',
+  'choose_target_forum'               => 'Choose the target forum',
+  'thread_move_same_forum'            => 'The thread is already in this forum.',
   'messenger' => [
     'last_recipients' => 'Last recipient',
     'show_all' => 'Show all',

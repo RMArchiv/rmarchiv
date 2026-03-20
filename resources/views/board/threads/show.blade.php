@@ -33,6 +33,13 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="page-header">
+                    @if($errors->moveThread->any())
+                        <div class="alert alert-warning">
+                            @foreach($errors->moveThread->all() as $error)
+                                <div>{{ $error }}</div>
+                            @endforeach
+                        </div>
+                    @endif
                     <div class='btn-toolbar float-end'>
                         <div class='btn-group'>
                             @if(Auth::check())
@@ -43,6 +50,9 @@
                                 @endif
                             @endif
                             @permission(('mod-threads'))
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#moveThreadModal" title="{{ trans('app.move_thread') }}" aria-label="{{ trans('app.move_thread') }}">
+                                <span class="fa fa-share"></span>
+                            </button>
                             @if($posts->first()->thread->closed == 0)
                                 <a role="button" class="btn btn-primary" href="{{ route('board.thread.switch.close', [$posts->first()->thread->id, 1]) }}"><span class="fa fa-minus-circle"></span></a>
                             @else
@@ -57,6 +67,37 @@
                 </div>
             </div>
         </div>
+        @permission(('mod-threads'))
+        <div class="modal fade" id="moveThreadModal" tabindex="-1" aria-labelledby="moveThreadModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="POST" action="{{ route('board.thread.move', $posts->first()->thread->id) }}">
+                        @csrf
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="moveThreadModalLabel">{{ trans('app.move_thread') }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ trans('app.close') }}"></button>
+                        </div>
+                        <div class="modal-body">
+                            <label for="new_cat_id" class="form-label">{{ trans('app.choose_target_forum') }}</label>
+                            <select name="new_cat_id" id="new_cat_id" class="form-select" required>
+                                @foreach($moveCategories as $moveCategory)
+                                    @if($moveCategory->id != $posts->first()->thread->cat_id)
+                                        <option value="{{ $moveCategory->id }}" @if((int) old('new_cat_id') === (int) $moveCategory->id) selected @endif>
+                                            {{ $moveCategory->title }}
+                                        </option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ trans('app.cancel') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ trans('app.move_thread') }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        @endpermission
         @if($poll)
         <div class="row">
             <div class="col-md-12 mb-3">
