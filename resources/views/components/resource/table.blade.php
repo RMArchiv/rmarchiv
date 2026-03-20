@@ -1,20 +1,40 @@
 <div class="container" id="content">
     <h1>{{ $title ?? "" }}</h1>
     @include('resources.'. ($type ?? '') .'._partials.nav')
+    @php
+        $currentSort = request('sort', 'created_at');
+        $currentDirection = request('direction', 'desc');
+        $sortLink = function (string $column) use ($currentSort, $currentDirection) {
+            $nextDirection = $currentSort === $column && $currentDirection === 'asc' ? 'desc' : 'asc';
+            return request()->fullUrlWithQuery([
+                'sort' => $column,
+                'direction' => $nextDirection,
+                'page' => 1,
+            ]);
+        };
+        $sortIndicator = function (string $column) use ($currentSort, $currentDirection) {
+            if ($currentSort !== $column) {
+                return '';
+            }
+
+            return $currentDirection === 'asc' ? ' ^' : ' v';
+        };
+    @endphp
+    <div class="card">
     <table id='rmarchiv_prodlist' class='boxtable pagedtable table table-striped'>
         <thead>
         <tr class='sortable'>
-            <th>{{ trans('app.type') }}</th>
-            <th>{{ trans('app.category') }}</th>
-            <th>{{ trans('app.by') }}</th>
-            <th>{{ trans('app.created_at') }}</th>
-            <th>{{ trans('app.resource_title') }}</th>
-            <th>{{ trans('app.content_type') }}</th>
-            <th><img src='/assets/rate_up.gif' alt='{{ trans('app.rate_up') }}'/></th>
-            <th><img src='/assets/rate_down.gif' alt='{{ trans('app.rate_down') }}'/></th>
-            <th>{{ trans('app.avg') }}</th>
-            <th>{{ trans('app.popularity') }}</th>
-            <th>{{ trans('app.comments') }}</th>
+            <th><a href="{{ $sortLink('type') }}">Typ{{ $sortIndicator('type') }}</a></th>
+            <th><a href="{{ $sortLink('category') }}">Kategorie{{ $sortIndicator('category') }}</a></th>
+            <th><a href="{{ $sortLink('author') }}">Autor{{ $sortIndicator('author') }}</a></th>
+            <th><a href="{{ $sortLink('created_at') }}">Hinzugefügt{{ $sortIndicator('created_at') }}</a></th>
+            <th><a href="{{ $sortLink('title') }}">Titel{{ $sortIndicator('title') }}</a></th>
+            <th><a href="{{ $sortLink('content_type') }}">Inhalt{{ $sortIndicator('content_type') }}</a></th>
+            <th><a href="{{ $sortLink('upvotes') }}">Likes{{ $sortIndicator('upvotes') }}</a></th>
+            <th><a href="{{ $sortLink('downvotes') }}">Dislikes{{ $sortIndicator('downvotes') }}</a></th>
+            <th><a href="{{ $sortLink('rating') }}">Bewertung{{ $sortIndicator('rating') }}</a></th>
+            <th><a href="{{ $sortLink('popularity') }}">Popularität{{ $sortIndicator('popularity') }}</a></th>
+            <th><a href="{{ $sortLink('comments') }}">Kommentare{{ $sortIndicator('comments') }}</a></th>
         </tr>
         </thead>
 
@@ -46,4 +66,10 @@
             </tr>
         @endforeach
     </table>
+        @if(method_exists($resources, 'links'))
+            <div class="card-footer">
+                {{ $resources->links('vendor.pagination.bootstrap-4') }}
+            </div>
+        @endif
+    </div>
 </div>

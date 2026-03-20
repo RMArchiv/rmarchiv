@@ -15,280 +15,103 @@ use App\Helpers\DatabaseHelper;
 
 class ResourceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $res = \DB::table('resources')
-            ->leftJoin('users', 'users.id', '=', 'resources.user_id')
-            ->leftJoin('comments', function ($join) {
-                $join->on('comments.content_id', '=', 'resources.id');
-                $join->on('comments.content_type', '=', \DB::raw("'resource'"));
-            })
-            ->select([
-                'resources.id as resid',
-                'resources.type as restype',
-                'resources.cat as rescat',
-                'resources.user_id as userid',
-                'users.name as username',
-                'resources.title as restitle',
-                'resources.created_at as rescreatedat',
-                'resources.content_type as contenttype',
-            ])
-            ->selectRaw('COUNT(comments.id) AS commentcount')
-            ->selectRaw('SUM(comments.vote_up) AS voteup')
-            ->selectRaw('SUM(comments.vote_down) AS votedown')
-            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
-            ->groupBy('resources.id')
-            ->orderBy('resources.created_at', 'desc')
-            ->limit(20)
-            ->get();
-
         return view('resources.index', [
-            'resources'   => $res,
+            'resources'   => $this->getResourceListing($request),
             'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
+            'title'       => trans('app.resources_overview'),
         ]);
     }
 
-    public function index_gfx()
+    public function index_gfx(Request $request)
     {
-        $res = \DB::table('resources')
-            ->leftJoin('users', 'users.id', '=', 'resources.user_id')
-            ->leftJoin('comments', function ($join) {
-                $join->on('comments.content_id', '=', 'resources.id');
-                $join->on('comments.content_type', '=', \DB::raw("'resource'"));
-            })
-            ->select([
-                'resources.id as resid',
-                'resources.type as restype',
-                'resources.cat as rescat',
-                'resources.user_id as userid',
-                'users.name as username',
-                'resources.title as restitle',
-                'resources.created_at as rescreatedat',
-                'resources.content_type as contenttype',
-            ])
-            ->selectRaw('COUNT(comments.id) AS commentcount')
-            ->selectRaw('SUM(comments.vote_up) AS voteup')
-            ->selectRaw('SUM(comments.vote_down) AS votedown')
-            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
-            ->where('resources.type', '=', 'gfx')
-            ->groupBy('resources.id')
-            ->orderBy('resources.created_at', 'desc')
-            ->limit(20)
-            ->get();
-
         return view('resources.gfx.index', [
-            'resources'   => $res,
+            'resources'   => $this->getResourceListing($request, 'gfx'),
             'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
         ]);
     }
 
-    public function index_sfx()
+    public function index_sfx(Request $request)
     {
-        $res = \DB::table('resources')
-            ->leftJoin('users', 'users.id', '=', 'resources.user_id')
-            ->leftJoin('comments', function ($join) {
-                $join->on('comments.content_id', '=', 'resources.id');
-                $join->on('comments.content_type', '=', \DB::raw("'resource'"));
-            })
-            ->select([
-                'resources.id as resid',
-                'resources.type as restype',
-                'resources.cat as rescat',
-                'resources.user_id as userid',
-                'users.name as username',
-                'resources.title as restitle',
-                'resources.created_at as rescreatedat',
-                'resources.content_type as contenttype',
-            ])
-            ->selectRaw('COUNT(comments.id) AS commentcount')
-            ->selectRaw('SUM(comments.vote_up) AS voteup')
-            ->selectRaw('SUM(comments.vote_down) AS votedown')
-            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
-            ->where('resources.type', '=', 'sfx')
-            ->groupBy('resources.id')
-            ->orderBy('resources.created_at', 'desc')
-            ->limit(20)
-            ->get();
-
         return view('resources.sfx.index', [
-            'resources'   => $res,
+            'resources'   => $this->getResourceListing($request, 'sfx'),
             'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
         ]);
     }
 
-    public function index_scripts()
+    public function index_scripts(Request $request)
     {
-        $res = \DB::table('resources')
-            ->leftJoin('users', 'users.id', '=', 'resources.user_id')
-            ->leftJoin('comments', function ($join) {
-                $join->on('comments.content_id', '=', 'resources.id');
-                $join->on('comments.content_type', '=', \DB::raw("'resource'"));
-            })
-            ->select([
-                'resources.id as resid',
-                'resources.type as restype',
-                'resources.cat as rescat',
-                'resources.user_id as userid',
-                'users.name as username',
-                'resources.title as restitle',
-                'resources.created_at as rescreatedat',
-                'resources.content_type as contenttype',
-            ])
-            ->selectRaw('COUNT(comments.id) AS commentcount')
-            ->selectRaw('SUM(comments.vote_up) AS voteup')
-            ->selectRaw('SUM(comments.vote_down) AS votedown')
-            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
-            ->where('resources.type', '=', 'scripts')
-            ->groupBy('resources.id')
-            ->orderBy('resources.created_at', 'desc')
-            ->limit(20)
-            ->get();
-
         return view('resources.scripts.index', [
-            'resources'   => $res,
+            'resources'   => $this->getResourceListing($request, 'scripts'),
             'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
         ]);
     }
 
-    public function index_tools()
+    public function index_tools(Request $request)
     {
-        $res = \DB::table('resources')
-            ->leftJoin('users', 'users.id', '=', 'resources.user_id')
-            ->leftJoin('comments', function ($join) {
-                $join->on('comments.content_id', '=', 'resources.id');
-                $join->on('comments.content_type', '=', \DB::raw("'resource'"));
-            })
-            ->select([
-                'resources.id as resid',
-                'resources.type as restype',
-                'resources.cat as rescat',
-                'resources.user_id as userid',
-                'users.name as username',
-                'resources.title as restitle',
-                'resources.created_at as rescreatedat',
-                'resources.content_type as contenttype',
-            ])
-            ->selectRaw('COUNT(comments.id) AS commentcount')
-            ->selectRaw('SUM(comments.vote_up) AS voteup')
-            ->selectRaw('SUM(comments.vote_down) AS votedown')
-            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
-            ->where('resources.type', '=', 'tools')
-            ->groupBy('resources.id')
-            ->orderBy('resources.created_at', 'desc')
-            ->limit(20)
-            ->get();
-
         return view('resources.tools.index', [
-            'resources'   => $res,
+            'resources'   => $this->getResourceListing($request, 'tools'),
             'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
         ]);
     }
 
-    public function index_gfx_cat($cat)
+    public function index_gfx_cat(Request $request, $cat)
     {
-        $res = \DB::table('resources')
-            ->leftJoin('users', 'users.id', '=', 'resources.user_id')
-            ->leftJoin('comments', function ($join) {
-                $join->on('comments.content_id', '=', 'resources.id');
-                $join->on('comments.content_type', '=', \DB::raw("'resource'"));
-            })
-            ->select([
-                'resources.id as resid',
-                'resources.type as restype',
-                'resources.cat as rescat',
-                'resources.user_id as userid',
-                'users.name as username',
-                'resources.title as restitle',
-                'resources.created_at as rescreatedat',
-                'resources.content_type as contenttype',
-            ])
-            ->selectRaw('COUNT(comments.id) AS commentcount')
-            ->selectRaw('SUM(comments.vote_up) AS voteup')
-            ->selectRaw('SUM(comments.vote_down) AS votedown')
-            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
-            ->where('resources.type', '=', 'gfx')
-            ->where('resources.cat', '=', $cat)
-            ->groupBy('resources.id')
-            ->orderBy('resources.created_at', 'desc')
-            ->get();
-
         return view('resources.gfx.index_cat', [
-            'resources'   => $res,
+            'resources'   => $this->getResourceListing($request, 'gfx', $cat),
             'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
         ]);
     }
 
-    public function index_sfx_cat($cat)
+    public function index_sfx_cat(Request $request, $cat)
     {
-        $res = \DB::table('resources')
-            ->leftJoin('users', 'users.id', '=', 'resources.user_id')
-            ->leftJoin('comments', function ($join) {
-                $join->on('comments.content_id', '=', 'resources.id');
-                $join->on('comments.content_type', '=', \DB::raw("'resource'"));
-            })
-            ->select([
-                'resources.id as resid',
-                'resources.type as restype',
-                'resources.cat as rescat',
-                'resources.user_id as userid',
-                'users.name as username',
-                'resources.title as restitle',
-                'resources.created_at as rescreatedat',
-                'resources.content_type as contenttype',
-            ])
-            ->selectRaw('COUNT(comments.id) AS commentcount')
-            ->selectRaw('SUM(comments.vote_up) AS voteup')
-            ->selectRaw('SUM(comments.vote_down) AS votedown')
-            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
-            ->where('resources.type', '=', 'sfx')
-            ->where('resources.cat', '=', $cat)
-            ->groupBy('resources.id')
-            ->orderBy('resources.created_at', 'desc')
-            ->get();
-
         return view('resources.sfx.index_cat', [
-            'resources'   => $res,
+            'resources'   => $this->getResourceListing($request, 'sfx', $cat),
             'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
         ]);
     }
 
-    public function index_scripts_cat($cat)
+    public function index_scripts_cat(Request $request, $cat)
     {
-        $res = \DB::table('resources')
-            ->leftJoin('users', 'users.id', '=', 'resources.user_id')
-            ->leftJoin('comments', function ($join) {
-                $join->on('comments.content_id', '=', 'resources.id');
-                $join->on('comments.content_type', '=', \DB::raw("'resource'"));
-            })
-            ->select([
-                'resources.id as resid',
-                'resources.type as restype',
-                'resources.cat as rescat',
-                'resources.user_id as userid',
-                'users.name as username',
-                'resources.title as restitle',
-                'resources.created_at as rescreatedat',
-                'resources.content_type as contenttype',
-            ])
-            ->selectRaw('COUNT(comments.id) AS commentcount')
-            ->selectRaw('SUM(comments.vote_up) AS voteup')
-            ->selectRaw('SUM(comments.vote_down) AS votedown')
-            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
-            ->where('resources.type', '=', 'scripts')
-            ->where('resources.cat', '=', $cat)
-            ->groupBy('resources.id')
-            ->orderBy('resources.created_at', 'desc')
-            ->get();
-
         return view('resources.scripts.index_cat', [
-            'resources'   => $res,
+            'resources'   => $this->getResourceListing($request, 'scripts', $cat),
             'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
         ]);
     }
 
-    public function index_tools_cat($cat)
+    public function index_tools_cat(Request $request, $cat)
     {
-        $res = \DB::table('resources')
+        return view('resources.tools.index_cat', [
+            'resources'   => $this->getResourceListing($request, 'tools', $cat),
+            'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
+        ]);
+    }
+
+    private function getResourceListing(Request $request, ?string $type = null, ?string $category = null)
+    {
+        $sort = $request->query('sort', 'created_at');
+        $direction = strtolower($request->query('direction', 'desc')) === 'asc' ? 'asc' : 'desc';
+
+        $sortMap = [
+            'type' => 'resources.type',
+            'category' => 'resources.cat',
+            'author' => 'users.name',
+            'created_at' => 'resources.created_at',
+            'title' => 'resources.title',
+            'content_type' => 'resources.content_type',
+            'upvotes' => 'voteup',
+            'downvotes' => 'votedown',
+            'rating' => 'voteavg',
+            'popularity' => 'commentcount',
+            'comments' => 'commentcount',
+        ];
+
+        if (! array_key_exists($sort, $sortMap)) {
+            $sort = 'created_at';
+        }
+
+        $query = \DB::table('resources')
             ->leftJoin('users', 'users.id', '=', 'resources.user_id')
             ->leftJoin('comments', function ($join) {
                 $join->on('comments.content_id', '=', 'resources.id');
@@ -305,19 +128,34 @@ class ResourceController extends Controller
                 'resources.content_type as contenttype',
             ])
             ->selectRaw('COUNT(comments.id) AS commentcount')
-            ->selectRaw('SUM(comments.vote_up) AS voteup')
-            ->selectRaw('SUM(comments.vote_down) AS votedown')
-            ->selectRaw('(SUM(comments.vote_up) - SUM(comments.vote_down) / (SUM(comments.vote_up) + SUM(comments.vote_down))) AS voteavg ')
-            ->where('resources.type', '=', 'tools')
-            ->where('resources.cat', '=', $cat)
-            ->groupBy('resources.id')
-            ->orderBy('resources.created_at', 'desc')
-            ->get();
+            ->selectRaw('COALESCE(SUM(comments.vote_up), 0) AS voteup')
+            ->selectRaw('COALESCE(SUM(comments.vote_down), 0) AS votedown')
+            ->selectRaw('(COALESCE(SUM(comments.vote_up), 0) - COALESCE(SUM(comments.vote_down), 0)) / NULLIF((COALESCE(SUM(comments.vote_up), 0) + COALESCE(SUM(comments.vote_down), 0)), 0) AS voteavg')
+            ->groupBy([
+                'resources.id',
+                'resources.type',
+                'resources.cat',
+                'resources.user_id',
+                'users.name',
+                'resources.title',
+                'resources.created_at',
+                'resources.content_type',
+            ]);
 
-        return view('resources.tools.index_cat', [
-            'resources'   => $res,
-            'commentsmax' => DatabaseHelper::getCommentsMax('resource'),
-        ]);
+        if ($type !== null) {
+            $query->where('resources.type', '=', $type);
+        }
+
+        if ($category !== null) {
+            $query->where('resources.cat', '=', $category);
+        }
+
+        $query->orderBy($sortMap[$sort], $direction);
+        if ($sort !== 'created_at') {
+            $query->orderBy('resources.created_at', 'desc');
+        }
+
+        return $query->paginate(25)->withQueryString();
     }
 
     public function show($type, $cat, $id)
