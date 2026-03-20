@@ -6,8 +6,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
-                <h1>{{ trans('app.add_faq') }}</h1>
-                {!! Breadcrumbs::render('faq-add') !!}
+                <h1>{{ $isEdit ? trans('app.edit') : trans('app.add_faq') }}</h1>
+                {!! $isEdit ? Breadcrumbs::render('faq-edit', $faqEntry) : Breadcrumbs::render('faq-add') !!}
             </div>
         </div>
     </div>
@@ -28,48 +28,12 @@
     @endif
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ url('faq') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ $formAction }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                <div class="card">
-                    <div class="card-header">
-                        {{trans('app.add_faq')}}
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group" id="row_cat">
-                            <label for="cat" class="col-lg-2 col-form-label">{{trans('app.faq_category')}} *</label>
-                            <div class="col-lg-10" id="row_cat">
-                                <input autocomplete="off" class="d-none auto" name="cat" id="cat" value=""/>
-                                <div class="searchbar"></div>
-                            </div>
-                        </div>
-                        <script type="module">
-                            createAutocomplete({
-                                apiPath: ()=>{return "ac_faqcat"},
-                                placeholder: "{{ trans('app.search') }}",
-                                searchbarSelector:"#row_cat .searchbar",
-                                noResults:'{{ trans('app.faq_cat_not_found') }}',
-                                type:"list",
-                                action:"find",
-                                inputSelector:"#row_cat .auto",
-                                limit:5,
-                                additionalProps:{}
-                            });
-                        </script>
-                        <div class="form-group">
-                            <label for="msg" class="col-lg-2 col-form-label">{{trans('app.faq_question')}} *</label>
-                            <div class="col-lg-10">
-                                <input name="title" id="msg" value=""/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @include('_partials.markdown_editor')
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button type="reset" class="btn btn-secondary">{{ trans('app.cancel') }}</button>
-                        <button type="submit" class="btn btn-primary">{{ trans('app.submit') }}</button>
-                    </div>
-                </div>
+                @include('faq._form', [
+                    'faqEntry' => $faqEntry,
+                    'submitLabel' => $submitLabel,
+                ])
             </form>
         </div>
     </div>

@@ -69,6 +69,11 @@ Breadcrumbs::for('faq-add', function (BreadcrumbTrail $breadcrumbs) {
     $breadcrumbs->push(trans('app.add_faq'), action('FaqController@create'));
 });
 
+Breadcrumbs::for('faq-edit', function (BreadcrumbTrail $breadcrumbs, $faq) {
+    $breadcrumbs->parent('faq');
+    $breadcrumbs->push(trans('app.edit').' '.$faq->title, action('FaqController@edit', $faq->id));
+});
+
 //----------------- Users --------------------------------------------------------------------------------------------//
 // Home > Users
 Breadcrumbs::for('users', function (BreadcrumbTrail $breadcrumbs) {

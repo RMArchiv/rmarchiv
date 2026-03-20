@@ -200,6 +200,8 @@ Route::post('board/thread/vote/add', 'BoardController@add_vote')->name('board.vo
 Route::get('faq', 'FaqController@index');
 Route::get('faq/create', 'FaqController@create')->middleware('permission:create-faq');
 Route::post('faq', 'FaqController@store')->middleware('permission:create-faq');
+Route::get('faq/{id}/edit', 'FaqController@edit')->middleware('permission:create-faq')->name('faq.edit');
+Route::post('faq/{id}', 'FaqController@update')->middleware('permission:create-faq')->name('faq.update');
 
 //Routen für Awards
 Route::get('awards', 'AwardController@index')->name('awards.index');
