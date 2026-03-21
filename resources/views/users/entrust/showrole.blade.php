@@ -1,68 +1,92 @@
 @extends('layouts.app')
+@section('pagetitle', 'gruppe verwalten')
 @section('content')
-    @include('users.entrust.partials.nav')
-    <div id="content">
-        @if (count($errors) > 0)
-            <div class="rmarchivtbl errorbox">
-                <h2>{{trans('app.permission_show_roles')}}</h2>
-                <div class="content">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li><strong>{{ $error }}</strong></li>
-                        @endforeach
-                    </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>Gruppe verwalten</h1>
                 </div>
-            </div>
-        @endif
-        @if($perms->count() <> 0)
-            <h2>benutzerrollen</h2>
-            <table id='pouetbox_prodlist' class='boxtable pagedtable'>
-                <thead>
-                <tr class='sortable'>
-                    <th>name</th>
-                    <th>anzeigename</th>
-                    <th>beschreibung</th>
-                    <th>aktionen</th>
-                </tr>
-                </thead>
-                @foreach($perms as $r)
-                    <tr>
-                        <td><a href="{{ action('UserPermissionController@showRole', $r->id) }}">{{ $r->name }}</a></td>
-                        <td>{{ $r->display_name }}</td>
-                        <td>{{ $r->description }}</td>
-                        <td><a href="{{ route('user.perm.removefromrole', [$roleid, $r->id]) }}">[del]</a></td>
-                    </tr>
-                @endforeach
-            </table>
-        @else
-            <h2>dieser gruppe wurden keine bverechtigungen zugewiesen.</h2>
-        @endif
-
-        <form method="POST" action="{{route('user.perm.permtorole', $roleid)}}">
-            @csrf
-        <div class="rmarchivtbl" id="rmarchivbox_submitprod">
-            <h2>berechtigung hinzufügen</h2>
-
-            <div class="content">
-                <div class="formifier">
-                    <div class='row' id='row_maker'>
-                        <label for='perm'>berechtigung verknüpfen</label>
-                        <select name='perm' id='perm'>
-                            <option value="0">bitte berechtigung wählen</option>
-                            @foreach($permstoadd as $perm)
-                                <option value="{{ $perm->id }}">{{ $perm->name }}</option>
-                            @endforeach
-                        </select>
-                        <span> [<span class="req">req</span>]</span>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="foot">
-                <input type="submit" value="senden">
             </div>
         </div>
-        </form>
+        <div class="row">
+            <div class="col-md-4">
+                @include('users.entrust.partials.nav')
+            </div>
+            <div class="col-md-8">
+                @if (count($errors) > 0)
+                    <div class="alert alert-warning">
+                        <h4 class="alert-heading">{{ trans('app.permission_show_roles') }}</h4>
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li><strong>{{ $error }}</strong></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Zugewiesene Berechtigungen
+                    </div>
+                    @if($perms->count() <> 0)
+                        <div class="table-responsive">
+                            <table class="table table-striped mb-0">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Anzeigename</th>
+                                    <th>Beschreibung</th>
+                                    <th>Aktionen</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($perms as $r)
+                                    <tr>
+                                        <td>{{ $r->name }}</td>
+                                        <td>{{ $r->display_name }}</td>
+                                        <td>{{ $r->description }}</td>
+                                        <td>
+                                            <a class="btn btn-sm btn-outline-danger" href="{{ route('user.perm.removefromrole', [$roleid, $r->id]) }}">Löschen</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @else
+                        <div class="card-body">
+                            Dieser Gruppe wurden keine Berechtigungen zugewiesen.
+                        </div>
+                    @endif
+                </div>
+
+                <form method="POST" action="{{ route('user.perm.permtorole', $roleid) }}">
+                    @csrf
+                    <div class="card">
+                        <div class="card-header">
+                            Berechtigung hinzufügen
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for='perm'>Berechtigung verknüpfen</label>
+                                <select class="form-control" name='perm' id='perm'>
+                                    <option value="0">Bitte Berechtigung wählen</option>
+                                    @foreach($permstoadd as $perm)
+                                        <option value="{{ $perm->id }}">{{ $perm->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="float-end">
+                                <input class="btn btn-primary" type="submit" value="Senden">
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 @endsection
