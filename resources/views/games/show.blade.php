@@ -2,7 +2,9 @@
 @section('pagetitle', $game->title.' - '.$game->subtitle)
 @section('content')
     @if($game)
-        @php($thumbnailWidth = '12.5%')
+        @php
+            $thumbnailWidth = '12.5%';
+        @endphp
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
