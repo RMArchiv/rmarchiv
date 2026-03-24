@@ -60,10 +60,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\GamesFile withoutTrashed()
  * @property int|null $language_id
+ * @property string|null $notes
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesFile newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesFile newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesFile query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesFile whereLanguageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GamesFile whereNotes($value)
  */
 class GamesFile extends Model
 {
@@ -83,6 +85,7 @@ class GamesFile extends Model
         'release_day',
         'user_id',
         'language_id',
+        'notes',
     ];
 
     protected $guarded = [];

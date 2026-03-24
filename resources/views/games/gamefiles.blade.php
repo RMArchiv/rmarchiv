@@ -28,61 +28,72 @@
                     <div class="card-header">
                         {{ trans('app.gamefiles_count') }}: {{ $gamefiles->count() }}
                     </div>
-                    <ul class="list-group">
-                        @foreach($gamefiles as $gf)
-                            <li class="list-group-item clearfix">
-                            <span class='typeiconlist'>
-                                <span class='typei type_{{ $gf->gamefiletype->short }}' title='{{ $gf->gamefiletype->title }}'>{{ $gf->gamefiletype->title }}</span>
-                                @if($gf->language)
-                                    <span><img src="/assets/lng/16/{{ strtoupper($gf->language->short) }}.png" title="{{ $gf->language->name }}"></span>
-                                @endif
-                            </span>
-                                <span> • </span><span>version: {{ $gf->release_version }}</span>
-                                <span> • </span>
-                                <span>{{ trans('app.release_date') }}: {{ str_pad($gf->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_day, 2, 0, STR_PAD_LEFT) }}</span>
-                                <span> • </span>
-                                <span>size: {{ ByteUnits\Metric::bytes($gf->filesize)->format() }}</span>
-                                <span> • </span>
-                                <span>downloads: {{ $gf->downloadcount ?? 0 }}</span>
-                                <span> • </span>
-                                <span>
-                                <a href="{{ action('UserController@show', $gf->user->id) }}" class="usera" title="{{ $gf->user->name }}">
-                                    <img width="16px" src="//{{ config('app.avatar_path') }}?gender=male&amp;id={{ $gf->user->id }}" alt="{{ $gf->user->name }}" class="avatar">
-                                </a> <a href="{{ action('UserController@show', $gf->user->id) }}" class="user">{{ $gf->user->name }}</a>
-                            </span>
-                                <span> • </span>
-                                <span>{{ $gf->filecreated_at }}</span>
-                                <div class="float-end">
-                                    <div class="button-group">
-
-                                        @if($gf->forbidden == 1)
-                                            [<span class="button" title="{{ $gf->reason }}">{{trans('app.download_deleted')}}</span>] ::
-                                        @if(Auth::check())
-                                            @if(Auth::user()->hasRole(['admin', 'owner']))
-                                            [<a href="{{ action('GameFileController@restore', $gf->id) }}">Wiederherstellen</a>
-                                            @endif
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover align-middle mb-0">
+                            <thead>
+                            <tr>
+                                <th>{{ trans('app.release_type') }}</th>
+                                <th>{{ trans('app.language') }}</th>
+                                <th>{{ trans('app.gamefile_version') }}</th>
+                                <th>{{ trans('app.release_date') }}</th>
+                                <th>Size</th>
+                                <th>Downloads</th>
+                                <th>Notes</th>
+                                <th>Uploader</th>
+                                <th>Hinzugefuegt</th>
+                                <th>Aktionen</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($gamefiles as $gf)
+                                <tr>
+                                    <td>
+                                        <span class='typei type_{{ $gf->gamefiletype->short }}' title='{{ $gf->gamefiletype->title }}'>{{ $gf->gamefiletype->title }}</span>
+                                    </td>
+                                    <td>
+                                        @if($gf->language)
+                                            <div class="d-flex align-items-center gap-2">
+                                                <img src="/assets/lng/16/{{ strtoupper($gf->language->short) }}.png" title="{{ $gf->language->name }}" alt="{{ $gf->language->name }}">
+                                                <span>{{ $gf->language->name }}</span>
+                                            </div>
                                         @endif
+                                    </td>
+                                    <td>{{ $gf->release_version }}</td>
+                                    <td>{{ str_pad($gf->release_year, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_month, 2, 0, STR_PAD_LEFT) }}-{{ str_pad($gf->release_day, 2, 0, STR_PAD_LEFT) }}</td>
+                                    <td>{{ ByteUnits\Metric::bytes($gf->filesize)->format() }}</td>
+                                    <td>{{ $gf->downloadcount ?? 0 }}</td>
+                                    <td class="text-break">{!! nl2br(e($gf->notes ?? '')) !!}</td>
+                                    <td>
+                                        <a href="{{ action('UserController@show', $gf->user->id) }}" class="usera" title="{{ $gf->user->name }}">
+                                            <img width="16px" src="//{{ config('app.avatar_path') }}?gender=male&amp;id={{ $gf->user->id }}" alt="{{ $gf->user->name }}" class="avatar">
+                                        </a>
+                                        <a href="{{ action('UserController@show', $gf->user->id) }}" class="user">{{ $gf->user->name }}</a>
+                                    </td>
+                                    <td>{{ $gf->filecreated_at }}</td>
+                                    <td>
+                                        @if($gf->forbidden == 1)
+                                            <span class="d-block" title="{{ $gf->reason }}">{{ trans('app.download_deleted') }}</span>
+                                            @if(Auth::check() && Auth::user()->hasRole(['admin', 'owner']))
+                                                <a href="{{ action('GameFileController@restore', $gf->id) }}">Wiederherstellen</a>
+                                            @endif
                                         @else
-                                            [
-                                            <a href="{{ url('games/download', [$gf->id, time()]) }} " class="down_l">{{trans('app.download')}}</a>]
+                                            <a href="{{ url('games/download', [$gf->id, time()]) }}" class="down_l">{{ trans('app.download') }}</a>
                                             @php
                                                 $playable = \App\Models\PlayerIndexjson::whereGamefileId($gf->id)->get();
                                             @endphp
                                             @if(Auth::check() and !$gf->deleted_at)
-                                                @if($playable->count() != 0 )
-                                                    :: [<a href="{{ route('player.run', [$gf->id]) }}">{{ trans('app.play') }}</a>]
+                                                @if($playable->count() != 0)
+                                                    <span class="mx-1">|</span><a href="{{ route('player.run', [$gf->id]) }}">{{ trans('app.play') }}</a>
                                                 @endif
-                                                :: [
-                                                <a href="{{ route('gamefiles.edit', [$game->id, $gf->id]) }}">{{trans('app.edit')}}</a>]
+                                                <span class="mx-1">|</span><a href="{{ route('gamefiles.edit', [$game->id, $gf->id]) }}">{{ trans('app.edit') }}</a>
                                             @endif
                                         @endif
-
-
-                                    </div>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -143,9 +154,15 @@
                                     <select class="form-control" name='language' id='language'>
                                         <option value="0">{{trans('app.choose_language')}}</option>
                                         @foreach(\App\Models\Language::all() as $lang)
-                                            <option value="{{ $lang->id }}">{{ $lang->name }}</option>
+                                            <option @if(old('language') == $lang->id) selected @endif value="{{ $lang->id }}">{{ $lang->name }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="notes" class="col-sm-2 col-form-label">Notes</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" name="notes" id="notes" rows="4" placeholder="Zusatzinfos zu dieser Version">{{ old('notes') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group">

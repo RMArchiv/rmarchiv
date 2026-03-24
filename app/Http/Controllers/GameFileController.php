@@ -174,6 +174,7 @@ class GameFileController extends Controller
             'releasedate_month' => 'required|not_in:0',
             'releasedate_year'  => 'required|not_in:0',
             'filetype'          => 'required|not_in:0',
+            'notes'             => 'nullable|string|max:5000',
         ]);
 
         $storagetemp = 'temp/'.$request->get('uuid').'/file';
@@ -198,6 +199,7 @@ class GameFileController extends Controller
                 'release_month'   => $request->get('releasedate_month'),
                 'release_year'    => $request->get('releasedate_year'),
                 'language_id'     => $request->get('language'),
+                'notes'           => $request->get('notes'),
                 'user_id'         => \Auth::id(),
                 'filename'        => $storagedest,
                 'created_at'      => Carbon::now(),
@@ -272,6 +274,7 @@ class GameFileController extends Controller
             'releasedate_month' => 'required|not_in:0',
             'releasedate_year'  => 'required|not_in:0',
             'filetype'          => 'required|not_in:0',
+            'notes'             => 'nullable|string|max:5000',
         ]);
 
         $gamefile = GamesFile::whereId($gamefileid)->first();
@@ -282,6 +285,7 @@ class GameFileController extends Controller
         $gamefile->release_year = $request->get('releasedate_year');
         $gamefile->release_type = $request->get('filetype');
         $gamefile->language_id = $request->get('language');
+        $gamefile->notes = $request->get('notes');
 
         if ($request->get('uuid')) {
             //Create Backupfile

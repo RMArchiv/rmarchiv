@@ -70,6 +70,10 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group" id="row_notes">
+                                <label for="notes">Notes</label>
+                                <textarea class="form-control" name="notes" id="notes" rows="4" placeholder="Zusatzinfos zu dieser Version">{{ old('notes', $gamefile->notes) }}</textarea>
+                            </div>
                             <div class="form-group" id="row_file">
                                 <label for="fine-uploader">{{trans('app.upload_file')}}:</label>
                                 <div id="fine-uploader"></div>

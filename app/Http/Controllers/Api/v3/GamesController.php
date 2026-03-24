@@ -289,6 +289,7 @@ class GamesController extends Controller
                     'title' => $gamefile->gamefiletype->title,
                 ] : null,
                 'release_version' => $gamefile->release_version,
+                'notes' => $gamefile->notes,
                 'release_date' => $gamefile->release_year . '-' . str_pad($gamefile->release_month, 2, '0', STR_PAD_LEFT) . '-' . str_pad($gamefile->release_day, 2, '0', STR_PAD_LEFT),
                 'filesize' => $gamefile->filesize,
                 'extension' => $gamefile->extension,
