@@ -2,6 +2,7 @@
 @section('pagetitle', $game->title.' - '.$game->subtitle)
 @section('content')
     @if($game)
+        @php($thumbnailWidth = '12.5%')
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -116,7 +117,7 @@
                                                 @endif
                                                 <div class="d-flex flex-wrap mt-2 row-gap-1">
                                                     @for($i = 1; $i <= count($screenshots); $i++)
-                                                        <button type="button" data-bs-target="#screenshot-carousel-fade" data-bs-slide-to="{{$i-1}}" style="width:11.11%" class=" carousel-control {{' ' . ($i==1 ? 'active':'')}} btn btn-link p-0">
+                                                        <button type="button" data-bs-target="#screenshot-carousel-fade" data-bs-slide-to="{{$i-1}}" style="width:{{ $thumbnailWidth }}" class=" carousel-control {{' ' . ($i==1 ? 'active':'')}} btn btn-link p-0">
                                                             <img  onerror="this.onerror=null; this.src='/assets/no_image.png'" class="w-100 d-block" style=";" src='{{ route('screenshot.show', [$game->id, $i]) }}'
                                                                         alt='{{ $i==1 ? trans('app.screenshot'):trans('app.titlescreen') }}' title='{{ $i==1 ? trans('app.screenshot'):trans('app.titlescreen') }}'/>
                                                         </button>
@@ -125,13 +126,13 @@
                                                         @php
                                                             $vid = str_replace('watch?v=', "embed/", $game->youtube);
                                                         @endphp
-                                                        <button type="button" data-bs-target="#screenshot-carousel-fade" data-bs-slide-to="{{count($screenshots)}}" style="width:11.11%" class=" position-relative d-flex align-items-center justify-content-center btn btn-secondary">
+                                                        <button type="button" data-bs-target="#screenshot-carousel-fade" data-bs-slide-to="{{count($screenshots)}}" style="width:{{ $thumbnailWidth }}" class=" position-relative d-flex align-items-center justify-content-center btn btn-secondary">
                                                         <i class="fa fa-video fs-1"></i>
                                                         </button>
                                                     @endif
 
                                                     @if(count($screenshots) < $maxScreenshotCount && Auth::check())
-                                                        <a href="{{ route('screenshot.create', [$game->id, count($screenshots)+1]) }}" title={{trans('app.upload.titlescreen')}} style="width:11.11%" class=" position-relative d-flex align-items-center justify-content-center btn btn-secondary">
+                                                        <a href="{{ route('screenshot.create', [$game->id, count($screenshots)+1]) }}" title={{trans('app.upload.titlescreen')}} style="width:{{ $thumbnailWidth }}" class=" position-relative d-flex align-items-center justify-content-center btn btn-secondary">
                                                             <i class="fa fa-image fs-1"></i>
                                                             <div class="w-100 h-100 position-absolute top-50">
                                                             <div style="top:-31px;left:51%; width:15px; height:15px" class="m-1 bg-black fs-4 position-absolute">
@@ -142,7 +143,7 @@
                                                     @endif
 
                                                     @if(Auth::check() && (!isset($game->youtube) || strlen($game->youtube) == 0))
-                                                        <a href="{{ action('GameController@edit', [ 'id' => $game->id]) }}#trailer" title={{trans('app.upload.titlescreen')}} style="width:11.11%" class=" position-relative d-flex align-items-center justify-content-center btn btn-secondary">
+                                                        <a href="{{ action('GameController@edit', [ 'id' => $game->id]) }}#trailer" title={{trans('app.upload.titlescreen')}} style="width:{{ $thumbnailWidth }}" class=" position-relative d-flex align-items-center justify-content-center btn btn-secondary">
                                                         <i class="fa fa-video fs-1"></i>
                                                             <div class="w-100 h-100 position-absolute top-50">
                                                             <div style="top:-31px;left:51%; width:15px; height:15px" class="m-1 bg-black fs-4 position-absolute">

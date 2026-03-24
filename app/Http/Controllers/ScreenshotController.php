@@ -18,6 +18,8 @@ use Intervention\Image\Laravel\Facades\Image;
 
 class ScreenshotController extends Controller
 {
+    private const MAX_SCREENSHOT_COUNT = 16;
+
     public function show($gameid, $screenid, $full = null)
     {
         $s = Screenshot::whereGameId($gameid)->where('screenshot_id', $screenid)
@@ -65,6 +67,8 @@ class ScreenshotController extends Controller
     public function create($gameid, $screenid)
     {
         if (\Auth::check()) {
+            abort_if((int) $screenid < 1 || (int) $screenid > self::MAX_SCREENSHOT_COUNT, 404);
+
             $game = Game::whereId($gameid)->first();
 
             return view('screenshots.create', [
@@ -80,6 +84,8 @@ class ScreenshotController extends Controller
     public function upload(Request $request, $gameid, $screenid)
     {
         if (\Auth::check()) {
+            abort_if((int) $screenid < 1 || (int) $screenid > self::MAX_SCREENSHOT_COUNT, 404);
+
             $this->validate($request, [
                 'file' => 'required|image|mimes:png|max:2048',
             ]);

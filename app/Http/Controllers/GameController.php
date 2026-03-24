@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\DB;
 class GameController extends Controller
 {
     /** Set max number of screenshots to be added */
-    private $maxScreenshotCount = 9;
+    private $maxScreenshotCount = 16;
 
     /**
      * Display a listing of the resource.
@@ -225,7 +225,9 @@ class GameController extends Controller
     public function show($id)
     {
         $game = Game::with('developers')->whereId($id)->first();
-        $screenshots = Screenshot::whereGameId($id)->get();
+        $screenshots = Screenshot::whereGameId($id)
+            ->orderBy('screenshot_id')
+            ->get();
 
         event(new GameView($id));
 
