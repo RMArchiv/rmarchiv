@@ -1,6 +1,5 @@
 import { autocomplete } from "@algolia/autocomplete-js";
 import "@algolia/autocomplete-theme-classic";
-import axios from "axios";
 
 
 function debouncePromise(fn, time) {
@@ -66,12 +65,17 @@ export function createAutocomplete({
                 input.value = query.toString();
               }
             }
-            return axios.get(`/${apiPath()}/${query}`).then((result) => {
-              if (limit && typeof limit === "number") {
-                return result.data.slice(0, limit)
+            return fetch(`/${apiPath()}/${query}`).then((result) => {
+              if (result.status === 200) {
+                if (limit && typeof limit === "number") {
+                  return result.json().then((value) => { return value.slice(0, limit) });
+                }
+                else {
+                  return result.json().then((value) => { return value });
+                }
               }
               else {
-                return result.data;
+                return [];
               }
             });
           },
