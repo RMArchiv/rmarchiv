@@ -192,7 +192,6 @@
                                                 @endif
                                             @endif
 
-                                            </div>
                                         </div>
                                         <x-games.information :game="$game" />
                                     </div>
