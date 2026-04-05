@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="row mt-4">
-                        <div class='col-md-6'>
+                        <div class='col-lg-6'>
                             {{-- screenshots --}}
                             @if(\App\Models\GamesFile::whereGameId($game->id)->where("forbidden", '=', 1)->get()->count() != 0)
                             <div class="row">
@@ -162,18 +162,42 @@
                             </div>
 
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             {{-- infos & stats --}}
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-lg-6">
                                     <div class="card">
-                                        <div class="card-header">
+                                        <div class="card-header" style="position: relative">
                                             {{ trans('app.information') }}
+
+                                            {{-- gamefiles --}}
+                                            @if (Auth::check())
+                                                @if ($game->gamefiles->count() != 0)
+                                                    @if ($game->maker_id == 2 ?? ($game->maker_id == 3 ?? ($game->maker_id == 6 ?? $game->maker_id == 9)))
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="ms-4 bg-rm-back h-100 w-100"></div>
+                                                            <div class="" style="position:absolute; right:2px;top:3px">                                                                        <div class="w-100">
+                                                                <a
+                                                                    href=@if ($game->maker_id == 6) "{{ action('PlayerMvController@index', $game->gamefiles->first()->id) }}"
+                                                                        @else
+                                                                        "{{ action('Player2kController@index', $game->gamefiles->first()->id) }}" @endif>
+                                                                    <div class="btn btn-primary btn-sm">
+                                                                        <i class="fa fa-gamepad"></i>
+                                                                        <small class="d-none d-xxl-inline-block">{{ trans('app.play_in_browser') }}!</small>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                @endif
+                                            @endif
+
+                                            </div>
                                         </div>
                                         <x-games.information :game="$game" />
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-lg-6">
                                     <div class="card">
                                         <div class="card-header">
                                             {{ trans('app.downloads') }}
@@ -207,7 +231,7 @@
                         </div>
                     </div>
                     <div class="row mt-4">
-                        <div class='col-md-6'>
+                        <div class='col-lg-6'>
                             {{-- spielbeschreibung --}}
                             <div class="row">
                                 <div class="col-md-12">
@@ -220,10 +244,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             {{-- awards --}}
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-lg-6">
                                     <div class="card">
                                         <div class="card-header">{{ trans('app.awards') }}</div>
                                         <ul class="list-group">
@@ -254,33 +278,31 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-lg-6">
                                     <div class="row">
                                         {{-- credits --}}
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="card">
-                                                    <div class="card-header">{{ trans('app.user_credits') }}</div>
-                                                    <ul class="list-group">
-                                                        @if ($game->credits->count() != 0)
-                                                            @foreach ($game->credits as $cr)
-                                                                <li class="list-group-item">
-                                                                    <a href='{{ url('users', $cr->user_id) }}' class='usera'
-                                                                        title="{{ $cr->user->name }}"><img width="16px"
-                                                                            src='//{{ config('app.avatar_path') }}?gender=male&id={{ $cr->user_id }}'
-                                                                            alt="{{ $cr->user->name }}" class='avatar' />
-                                                                    </a>
-                                                                    <a href='{{ url('users', $cr->user_id) }}'
-                                                                        class='user'>{{ $cr->user->name }}</a>
-                                                                    [{{ $cr->type->title }}]
-                                                                </li>
-                                                            @endforeach
-                                                        @else
-                                                            <li class="list-group-item">{{ trans('app.no_user_credits_added') }}
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <div class="card-header">{{ trans('app.user_credits') }}</div>
+                                                <ul class="list-group">
+                                                    @if ($game->credits->count() != 0)
+                                                        @foreach ($game->credits as $cr)
+                                                            <li class="list-group-item">
+                                                                <a href='{{ url('users', $cr->user_id) }}' class='usera'
+                                                                    title="{{ $cr->user->name }}"><img width="16px"
+                                                                        src='//{{ config('app.avatar_path') }}?gender=male&id={{ $cr->user_id }}'
+                                                                        alt="{{ $cr->user->name }}" class='avatar' />
+                                                                </a>
+                                                                <a href='{{ url('users', $cr->user_id) }}'
+                                                                    class='user'>{{ $cr->user->name }}</a>
+                                                                [{{ $cr->type->title }}]
                                                             </li>
-                                                        @endif
-                                                    </ul>
-                                                </div>
+                                                        @endforeach
+                                                    @else
+                                                        <li class="list-group-item">{{ trans('app.no_user_credits_added') }}
+                                                        </li>
+                                                    @endif
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
