@@ -32,16 +32,16 @@
                         <table class="table table-striped table-hover align-middle mb-0">
                             <thead>
                             <tr>
-                                <th>{{ trans('app.release_type') }}</th>
+                                <th>{{ trans('app.release_type.title') }}</th>
                                 <th>{{ trans('app.language') }}</th>
                                 <th>{{ trans('app.gamefile_version') }}</th>
                                 <th>{{ trans('app.release_date') }}</th>
-                                <th>Size</th>
-                                <th>Downloads</th>
-                                <th>Notes</th>
-                                <th>Uploader</th>
-                                <th>Hinzugefuegt</th>
-                                <th>Aktionen</th>
+                                <th>{{ trans('app.gamefiles_list.size') }}</th>
+                                <th>{{ trans('app.downloads') }}</th>
+                                <th>{{ trans('app.gamefiles_list.notes') }}</th>
+                                <th>{{ trans('app.gamefiles_list.uploader') }}</th>
+                                <th>{{ trans('app.gamefiles_list.added') }}</th>
+                                <th>{{ trans('app.actions') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -105,14 +105,14 @@
                         <div class="card-header">
                             {{ trans('app.add_gamefile') }}
                         </div>
-                        <div class="card-body">
+                        <div class="card-body w-75 mx-auto">
                             <form method="POST" action="{{ route('gamefiles.store', $game->id) }}"
                                 class="form-horizontal">
                                 @csrf
                                 <div class="form-group">
                                     <label for="filetype"
-                                        class="col-sm-2 col-form-label">{{ trans('app.release_type.title') }}: *</label>
-                                    <div class="col-sm-10">
+                                        class="col-form-label">{{ trans('app.release_type.title') }}: *</label>
+                                    <div class="col-sm-12">
                                         <select class="form-select" name='filetype' id='filetype'>
                                             <option value="0">{{ trans('app.choose_release_type') }}</option>
                                             @foreach ($filetypes as $types)
@@ -123,16 +123,16 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="version"
-                                        class="col-sm-2 col-form-label">{{ trans('app.gamefile_version') }}: *</label>
-                                    <div class="col-sm-10">
+                                        class="col-form-label">{{ trans('app.gamefile_version') }}: *</label>
+                                    <div class="col-sm-12">
                                         <input name="version" id="version" value="" placeholder="1.0"
                                             class="form-control" />
                                     </div>
                                 </div>
                                 <div class="form-inline form-group">
                                     <label for="releasedate"
-                                        class="col-sm-2 col-form-label">{{ trans('app.release_date') }}</label>
-                                    <div class="col-sm-10">
+                                        class="col-form-label">{{ trans('app.release_date') }}</label>
+                                    <div class="col-sm-12">
                                         <select name="releasedate_day" id="releasedate_day" class="form-select">
                                             <option value="0">{{ trans('app.release_date_day') }}</option>
                                             @for ($i = 1; $i < 32; $i++)
@@ -154,29 +154,29 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="language" class="col-sm-2 col-form-label">{{trans('app.language')}}: *</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control" name='language' id='language'>
-                                        <option value="0">{{trans('app.choose_language')}}</option>
-                                        @foreach(\App\Models\Language::all() as $lang)
-                                            <option @if(old('language') == $lang->id) selected @endif value="{{ $lang->id }}">{{ $lang->name }}</option>
-                                        @endforeach
-                                    </select>
+                                <div class="form-group">
+                                    <label for="language" class="col-form-label">{{trans('app.language')}}: *</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control" name='language' id='language'>
+                                            <option value="0">{{trans('app.choose_language')}}</option>
+                                            @foreach(\App\Models\Language::all() as $lang)
+                                                <option @if(old('language') == $lang->id) selected @endif value="{{ $lang->id }}">{{ $lang->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="notes" class="col-sm-2 col-form-label">Notes</label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" name="notes" id="notes" rows="4" placeholder="Zusatzinfos zu dieser Version">{{ old('notes') }}</textarea>
+                                <div class="form-group">
+                                    <label for="notes" class="col-form-label">Notes</label>
+                                    <div class="col-sm-12">
+                                        <textarea class="form-control" name="notes" id="notes" rows="4" placeholder="{{trans("app.gamefiles_notes_placeholder")}}">{{ old('notes') }}</textarea>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="fine-uploader" class="col-sm-2 col-form-label">{{trans('app.upload_file')}}:</label>
-                                <div class="col-sm-10">
-                                    <div id="fine-uploader"></div>
-                                    <div id="fine-uploader-error"></div>
+                                <div class="form-group">
+                                    <label for="fine-uploader" class="col-form-label">{{trans('app.upload_file')}}:</label>
+                                    <div class="col-sm-12">
+                                        <div id="fine-uploader"></div>
+                                        <div id="fine-uploader-error"></div>
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-secondary">{{ trans('app.submit') }}</button>
                             </form>

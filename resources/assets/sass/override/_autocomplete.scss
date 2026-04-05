@@ -8,6 +8,8 @@
     --aa-input-background-color-alpha: 0.8 !important;
     --aa-primary-color-rgb: #{red($rm-link),green($rm-link),blue($rm-link)} !important;
     --aa-text-color-rgb: #{red($rm-text),green($rm-text),blue($rm-text)} !important;
+    --aa-muted-color-rgb: #{red($placeholder-color-rgb),green($placeholder-color-rgb),blue($placeholder-color-rgb)} !important;
+
 
     .aa-DetachedCancelButton {
         border: 1px;
