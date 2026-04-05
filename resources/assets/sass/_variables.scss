@@ -15,6 +15,7 @@ $rm-base: #17395c;
 $rm-base-p1: #1a4169;
 $rm-base-p2: #215285;
 $rm-base-p3: #2a6bab;
+$placeholder-color-rgb: rgb(128,124,168);
 
 $font-family-base: 0.75rem;
 
@@ -91,3 +92,5 @@ $popover-bg: $rm-base-m1;
 $nav-pills-link-active-bg: $rm-base-p2;
 // BS5 form indicator color
 $form-select-indicator-color: $rm-text;
+// Make placeholder weaker
+$input-placeholder-color: rgba($placeholder-color-rgb, 0.6);
