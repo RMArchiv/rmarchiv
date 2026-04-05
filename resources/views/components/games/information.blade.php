@@ -145,29 +145,23 @@
         {{-- rating --}}
         <div class="d-flex align-items-center">
             <div class="px-1 px-lg-3 py-2 bg-rm-back align-self-stretch d-flex align-items-center gap-2">
-                <div class="d-flex gap-2">
-                    <img style="filter: brightness(2) grayscale(100%)" src='/assets/rate_up.gif' width="18px"
-                        alt='{{ trans('app.rate_up') }}' />
-                    {{ @$game->votes['up'] ?? 0 }}
-                </div>
-                <div class="d-flex gap-2">
-                    <img style="filter: brightness(2) grayscale(100%)" src='/assets/rate_down.gif' width="18px"
-                        alt='{{ trans('app.rate_down') }}' />
-                    {{ @$game->votes['down'] ?? 0 }}
-                </div>
+                <div class="d-flex gap-2 fa fa-smile"></div>
             </div>
             <div class="w-100 d-flex flex-column gap-1 border-bottom border-rm-base p-2 py-1">
                 <div class="justify-self-start">
-                    @if (@$game->votes['up'] > @$game->votes['down'])
+                    @if ($game->votes['up'] > $game->votes['down'])
                         <img src='/assets/rate_up.gif' width="18px" alt='good' />
-                    @elseif(@$game->votes['up'] < @$game->votes['down'])
+                    @elseif($game->votes['up'] < $game->votes['down'])
                         <img src='/assets/rate_down.gif' width="18px" alt='bad' />
-                    @elseif(@$game->votes['down'] == @$game->votes['down'])
+                    @elseif($game->votes['down'] == $game->votes['down'])
                         <img src='/assets/rate_neut.gif' width="18px" alt='ok' />
                     @else
                         <img src='/assets/rate_neut.gif' width="18px" alt='ok' />
                     @endif
-                    &nbsp;{{ ((floatval($game->avg) + 1) / 2) * 100 ?? 0 }}%
+                    <small>
+                        &nbsp;{{ ((floatval($game->avg) + 1) / 2) * 100 ?? 0 }}%
+                        ({{ $game->votes['up'] ?? 0 }}|{{ $game->votes['down'] ?? 0 }})
+                    </small>
                 </div>
                 <div>
                     <div class="progress border">
@@ -180,38 +174,8 @@
             </div>
         </div>
 
-        {{-- gamefiles --}}
-        @if (Auth::check())
-            @if ($game->gamefiles->count() != 0)
-                @if ($game->maker_id == 2 ?? ($game->maker_id == 3 ?? ($game->maker_id == 6 ?? $game->maker_id == 9)))
-                    <div class="d-flex align-items-center">
-                        <div class="px-1 px-lg-3 py-2 bg-rm-back align-self-stretch d-flex align-items-center">
-                            <i class="fa fa-gamepad"></i>
-                        </div>
-
-                        <div class="w-100 py-1 gap-1 d-flex flex-wrap px-2 border-bottom border-rm-base flex-column">
-                            <a
-                                href=@if ($game->maker_id == 6) "{{ action('PlayerMvController@index', $game->gamefiles->first()->id) }}"
-                                    @else
-                                    "{{ action('Player2kController@index', $game->gamefiles->first()->id) }}" @endif>
-                            <div class="btn btn-secondary fw-bold">
-                                <i class="fa fa-gamepad"></i>
-                                {{ trans('app.play_in_browser') }}!
-                                {{-- <img src="/assets/play_button.png" alt="play"> --}}
-                            </div>
-                            </a>
-                        </div>
-                    </div>
-                @endif
-            @endif
-        @endif
-
         {{-- tags --}}
         <div class="d-flex align-items-center">
-            <div title="{{ trans('app.tags') }}"
-                class="px-1 px-lg-3 py-2 bg-rm-back align-self-stretch d-flex align-items-center">
-                <i class="fa fa-tag"></i>
-            </div>
 
             <div
                 class="w-100 py-1 gap-1 d-flex flex-row flex-wrap px-2 border-bottom border-rm-base ">
@@ -224,12 +188,15 @@
                         </small>
                     @endforeach
                     @if (Auth::check())
+                <div class="float-end ms-1">
+                        <x-common.iconbutton class="mw-50 mt-2 btn-sm" icon="fa fa-tag" data-bs-toggle="modal" data-bs-target="#addtag">{{ trans('app.add_tag') }}</x-common.iconbutton>
+                </div>
                         <div id="addtag" class="modal fade" role="dialog">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">{{ trans('app.add_tag') }}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -283,7 +250,6 @@
                                 </div>
                             </div>
                         </div>
-                        <x-common.iconbutton class="mw-50 mt-2" icon="fa fa-tag" data-bs-toggle="modal" data-bs-target="#addtag">{{ trans('app.add_tag') }}</x-common.iconbutton>
                     @endif
                 </div>
             </div>
@@ -304,5 +270,7 @@
             <a
                 href="{{ action('ReportController@create_game_report', $game->id) }}">{{ trans('app.report_game') }}</a>
         </div>
+        {{-- block to keep mobile distance to file list --}}
+        <div class="d-block d-lg-none p-1"></div>
     </div>
 </div>
