@@ -176,7 +176,7 @@
                                                     @if ($game->maker_id == 2 ?? ($game->maker_id == 3 ?? ($game->maker_id == 6 ?? $game->maker_id == 9)))
                                                         <div class="d-flex align-items-center">
                                                             <div class="ms-4 bg-rm-back h-100 w-100"></div>
-                                                            <div class="" style="position:absolute; right:2px;top:3px">                                                                        <div class="w-100">
+                                                            <div class="" style="position:absolute; right:2px;top:3px">
                                                                 <a
                                                                     href=@if ($game->maker_id == 6) "{{ action('PlayerMvController@index', $game->gamefiles->first()->id) }}"
                                                                         @else
