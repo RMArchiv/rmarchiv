@@ -203,11 +203,17 @@
                                         </div>
                                         <ul class="list-group">
                                             @foreach($game->gamefiles as $f)
-                                                <li class="list-group-item">
-                                                        <small class="fw-normal px-2 py-1">{{date("Y-m-d", mktime(0, 0, 0, $f->release_month, $f->release_day, $f->release_year))}}</small>
+                                                <li class="list-group-item small">
+                                                        {{-- mobile/medium/fullwidth --}}
+                                                        <small class="d-lg-none fw-normal py-1" title="{{date("Y-m-d", mktime(0, 0, 0, $f->release_month, $f->release_day, $f->release_year))}}">{{date("Y-m-d", mktime(0, 0, 0, $f->release_month, $f->release_day, $f->release_year))}}</small>
+                                                        <small class="d-none d-xxl-inline-block fw-normal py-1" title="{{date("Y-m-d", mktime(0, 0, 0, $f->release_month, $f->release_day, $f->release_year))}}">{{date("Y-m-d", mktime(0, 0, 0, $f->release_month, $f->release_day, $f->release_year))}}</small>
+                                                        <small class="d-none d-xxl-none d-lg-inline-block fw-normal py-1" title="{{date("Y-m-d", mktime(0, 0, 0, $f->release_month, $f->release_day, $f->release_year))}}">{{date("Y-m", mktime(0, 0, 0, $f->release_month, $f->release_day, $f->release_year))}}</small>
                                                         @if($f->language)
                                                             <span><img src="/assets/lng/16/{{ strtoupper($f->language->short) }}.png" title="{{ $f->language->name }}"></span>
                                                         @endif
+                                                        <span class="badge float-end">{{ $f->downloadcount }}</span>
+
+                                                        <small class="small">
                                                         @if($f->forbidden == 0)
                                                         <a href="{{ url('games/download', [$f->id, time()]) }}" class="down_l">
                                                             {{ $f->gamefiletype->title }} - {{ $f->release_version }}
@@ -215,15 +221,15 @@
                                                         @else
                                                             {{ $f->gamefiletype->title }} - {{ $f->release_version }}
                                                         @endif
+                                                        </small>
 
-                                                        <span class="badge float-end">{{ $f->downloadcount }}</span>
                                                 </li>
                                             @endforeach
-                                            <hr>
-                                            <li class="list-group-item">
-                                                <a href="{{ action('GameFileController@create', $game->id) }}">{{ trans('app.gamefile_list_and_add') }}</a>
-                                            </li>
                                         </ul>
+                                        <div style="height: 1px" class="bg-secondary"></div>
+                                        <div class="px-3 py-2">
+                                            <a href="{{ action('GameFileController@create', $game->id) }}">{{ trans('app.gamefile_list_and_add') }}</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
