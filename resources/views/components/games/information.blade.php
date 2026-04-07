@@ -188,9 +188,9 @@
                         </small>
                     @endforeach
                     @if (Auth::check())
-                <div class="float-end ms-1">
-                        <x-common.iconbutton class="mw-50 mt-2 btn-sm" icon="fa fa-tag" data-bs-toggle="modal" data-bs-target="#addtag">{{ trans('app.add_tag') }}</x-common.iconbutton>
-                </div>
+                        <div class="float-end ms-1">
+                            <x-common.iconbutton class="mw-50 mt-2 btn-sm" icon="fa fa-tag" data-bs-toggle="modal" data-bs-target="#addtag">{{ trans('app.add_tag') }}</x-common.iconbutton>
+                        </div>
                         <div id="addtag" class="modal fade" role="dialog">
                             <div class="modal-dialog">
                                 <div class="modal-content">
