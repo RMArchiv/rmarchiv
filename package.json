@@ -20,7 +20,7 @@
     "@algolia/autocomplete-theme-classic": "^1.19.0",
     "@fortawesome/fontawesome-free": "^7.0.0",
     "@popperjs/core": "^2.11.8",
-    "axios": "^1.9.0",
+    "axios": "^1.15.0",
     "bootstrap": "^5.0.0",
     "chart.js": "^4.4.9",
     "ckeditor5": "^45.0.0",
