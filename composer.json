@@ -11,7 +11,7 @@
         "php": "^8.0",
         "ext-zip": "*",
         "api-ecosystem-for-laravel/dingo-api": "^4.0",
-        "barryvdh/laravel-debugbar": "^3.1",
+        "barryvdh/laravel-debugbar": "^4.2",
         "barryvdh/laravel-ide-helper": "^3.0",
         "cmgmyr/messenger": "^2.13",
         "cybercog/laravel-ban": "^4.7",
