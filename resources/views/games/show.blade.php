@@ -203,27 +203,34 @@
                                         </div>
                                         <ul class="list-group">
                                             @foreach($game->gamefiles as $f)
-                                                <li class="list-group-item small">
+                                                @if($f->forbidden == 0)
+                                                    <a class="link-underline" href="{{ url('games/download', [$f->id, time()]) }}">
+                                                @endif
+                                                    <li class="list-group-item small">
                                                         {{-- mobile/medium/fullwidth --}}
                                                         <small class="d-lg-none fw-normal py-1" title="{{date("Y-m-d", mktime(0, 0, 0, $f->release_month, $f->release_day, $f->release_year))}}">{{date("Y-m-d", mktime(0, 0, 0, $f->release_month, $f->release_day, $f->release_year))}}</small>
                                                         <small class="d-none d-xxl-inline-block fw-normal py-1" title="{{date("Y-m-d", mktime(0, 0, 0, $f->release_month, $f->release_day, $f->release_year))}}">{{date("Y-m-d", mktime(0, 0, 0, $f->release_month, $f->release_day, $f->release_year))}}</small>
                                                         <small class="d-none d-xxl-none d-lg-inline-block fw-normal py-1" title="{{date("Y-m-d", mktime(0, 0, 0, $f->release_month, $f->release_day, $f->release_year))}}">{{date("Y-m", mktime(0, 0, 0, $f->release_month, $f->release_day, $f->release_year))}}</small>
                                                         @if($f->language)
-                                                            <span><img src="/assets/lng/16/{{ strtoupper($f->language->short) }}.png" title="{{ $f->language->name }}"></span>
+                                                            <img class="me-1" src="/assets/lng/16/{{ strtoupper($f->language->short) }}.png" title="{{ $f->language->name }}">
                                                         @endif
                                                         <span class="badge float-end">{{ $f->downloadcount }}</span>
 
                                                         <small class="small">
                                                         @if($f->forbidden == 0)
-                                                        <a href="{{ url('games/download', [$f->id, time()]) }}" class="down_l">
+                                                        <span class="down_l text-warning">
                                                             {{ $f->gamefiletype->title }} - {{ $f->release_version }}
-                                                        </a>
+                                                        </span>
                                                         @else
                                                             {{ $f->gamefiletype->title }} - {{ $f->release_version }}
                                                         @endif
                                                         </small>
 
                                                 </li>
+                                                @if($f->forbidden == 0)
+                                                </a>
+                                                @endif
+
                                             @endforeach
                                         </ul>
                                         <div style="height: 1px" class="bg-secondary"></div>
