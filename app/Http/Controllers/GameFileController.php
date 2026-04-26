@@ -51,10 +51,10 @@ class GameFileController extends Controller
                     ->limit(1)
                     ->first();
 
-                $curtime = time();
-                if(($curtime-$ts) > 1800) { //If Download Link is older than 30 Minutes, redirect to GamePage
-                    return \Redirect::action('GameController@show', ['id' => $g->gameid]);
-                }else{
+                    $curtime = time();
+                if (($curtime - $ts) > 1800) { //If Download Link is older than 30 Minutes, redirect to GamePage
+                    return \Redirect::action([GameController::class, 'show'], ['game' => $g->gameid]);
+                } else {
                     \DB::table('games_files')
                         ->where('id', '=', $id)
                         ->increment('downloadcount');
@@ -118,7 +118,7 @@ class GameFileController extends Controller
                     ->limit(1)
                     ->first();
 
-                return \Redirect::action('GameController@show', ['id' => $g->gameid]);
+                return \Redirect::action([GameController::class, 'show'], ['game' => $g->gameid]);
             }
 
         }
