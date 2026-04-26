@@ -11,7 +11,7 @@
         "php": "^8.0",
         "ext-zip": "*",
         "api-ecosystem-for-laravel/dingo-api": "^4.0",
-        "barryvdh/laravel-debugbar": "^3.1",
+        "barryvdh/laravel-debugbar": "^4.2",
         "barryvdh/laravel-ide-helper": "^3.0",
         "cmgmyr/messenger": "^2.13",
         "cybercog/laravel-ban": "^4.7",
@@ -45,11 +45,12 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
+        "fruitcake/laravel-debugbar": "*",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "^10.0",
+        "reliese/laravel": "^v1.1.6",
         "symfony/css-selector": "3.1.*",
-        "symfony/dom-crawler": "3.1.*",
-        "reliese/laravel": "^v1.1.6"
+        "symfony/dom-crawler": "3.1.*"
     },
     "autoload": {
         "psr-4": {
