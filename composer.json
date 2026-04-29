@@ -17,7 +17,7 @@
         "diglactic/laravel-breadcrumbs": "^v9.0.0",
         "doctrine/dbal": "^3.0",
         "eusonlito/laravel-meta": "^3.0",
-        "genealabs/laravel-model-caching": "^11.0",
+        "genealabs/laravel-model-caching": "^13.1",
         "graham-campbell/exceptions": "^17.2",
         "graham-campbell/markdown": "^v15.0.0",
         "intervention/image-laravel": "^1.5",
