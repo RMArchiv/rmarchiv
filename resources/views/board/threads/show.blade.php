@@ -184,7 +184,7 @@
                                             </aside>
                                             <div class="col-md-9 col-lg-10">
                                                 <div class="card-body">
-                                                    <div class="d-flex justify-content-between align-items-start gap-2 mb-3">
+                                                    <div class="mb-3">
                                                         <small class="text-muted">
                                                             <a href='{{ route('board.thread.show', [$post->thread->id]) }}#c{{ $post->id }}' class="text-muted">
                                                                 <time datetime='{{ $post->created_at }}' title='{{ $post->created_at }}'>{{ \Carbon\Carbon::parse($post->created_at)->format('d.m.Y H:i') }}</time>
@@ -193,20 +193,32 @@
                                                                 <span> • </span>{{ trans('app.edited_at') }} {{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}
                                                             @endif
                                                         </small>
-                                                        <div class="d-flex gap-2 small">
-                                                            @if(Auth::check() && (Auth::id() == $user->id or Auth::user()->can('mod-threads')))
-                                                                <a href="{{ route('board.post.edit', [$post->thread->id, $post->id]) }}" data-rel="popup">{{ trans('app.edit') }}</a>
-                                                            @endif
+                                                    </div>
+                                                    <div class="board-post-content">
+                                                        {!! \App\Helpers\InlineBoxHelper::GameBox($post->content_html) !!}
+                                                    </div>
+                                                    @if(Auth::check())
+                                                        <div class="d-flex justify-content-end gap-2 mt-4">
                                                             @include('reports._partials.report-button', [
                                                                 'reportType' => 'board_post',
                                                                 'reportId' => $post->id,
                                                                 'reportLabel' => $posts->first()->thread->title,
                                                             ])
+                                                            @if(Auth::id() == $user->id or Auth::user()->can('mod-threads'))
+                                                                <a class="btn btn-sm btn-outline-secondary" href="{{ route('board.post.edit', [$post->thread->id, $post->id]) }}" data-rel="popup">{{ trans('app.edit') }}</a>
+                                                            @endif
+                                                            @if($post->thread->closed == 0)
+                                                                <button
+                                                                    type="button"
+                                                                    class="btn btn-sm btn-outline-primary quote-post-button"
+                                                                    data-quote-user="{{ $user->name }}"
+                                                                    data-quote-content="{{ base64_encode($post->content_md ?? strip_tags($post->content_html)) }}"
+                                                                >
+                                                                    Antworten
+                                                                </button>
+                                                            @endif
                                                         </div>
-                                                    </div>
-                                                    <div class="board-post-content">
-                                                        {!! \App\Helpers\InlineBoxHelper::GameBox($post->content_html) !!}
-                                                    </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -219,6 +231,67 @@
                 </div>
             </div>
         </div>
+        @if(Auth::check())
+            <script>
+                window.addEventListener('load', function () {
+                    function decodeQuoteContent(encoded) {
+                        const bytes = Uint8Array.from(atob(encoded), function (character) {
+                            return character.charCodeAt(0);
+                        });
+
+                        return new TextDecoder().decode(bytes);
+                    }
+
+                    function escapeHtml(value) {
+                        return value
+                            .replace(/&/g, '&amp;')
+                            .replace(/</g, '&lt;')
+                            .replace(/>/g, '&gt;')
+                            .replace(/"/g, '&quot;')
+                            .replace(/'/g, '&#039;');
+                    }
+
+                    function createQuote(user, content) {
+                        const normalizedContent = content.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+                        const quotedLines = normalizedContent
+                            .replace(/\r\n/g, '\n')
+                            .replace(/\r/g, '\n')
+                            .split('\n')
+                            .map(function (line) {
+                                return '> ' + line;
+                            })
+                            .join('\n');
+
+                        return {
+                            markdown: '> **' + user + ' schrieb:**\n' + quotedLines + '\n\n',
+                            html: '<blockquote><p><strong>' + escapeHtml(user) + ' schrieb:</strong></p><p>' + escapeHtml(normalizedContent).replace(/\n/g, '<br>') + '</p></blockquote><p>&nbsp;</p>'
+                        };
+                    }
+
+                    document.querySelectorAll('.quote-post-button').forEach(function (button) {
+                        button.addEventListener('click', function () {
+                            const quote = createQuote(
+                                button.dataset.quoteUser,
+                                decodeQuoteContent(button.dataset.quoteContent)
+                            );
+                            const textarea = document.getElementById('msg');
+                            const editor = window.rmarchivEditors && window.rmarchivEditors.msg;
+                            const currentValue = editor ? editor.getData() : (textarea ? textarea.value : '');
+                            const fallbackValue = textarea ? textarea.value : '';
+
+                            if (editor) {
+                                editor.setData((currentValue.trim() !== '' ? currentValue + '<p>&nbsp;</p>' : '') + quote.html);
+                            }
+
+                            if (textarea) {
+                                textarea.value = (fallbackValue.trim() !== '' ? fallbackValue + '\n\n' : '') + quote.markdown;
+                                textarea.closest('form').scrollIntoView({behavior: 'smooth', block: 'start'});
+                            }
+                        });
+                    });
+                });
+            </script>
+        @endif
         <div class="row">
             <div class="col-md-12 mb-3">
                 @if(Auth::check())

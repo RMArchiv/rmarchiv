@@ -26,6 +26,11 @@
                 }
             },
             initialData:`{{ $edit_text ?? "" }}`})
+            .then(editor => {
+                window.rmarchivEditors = window.rmarchivEditors || {};
+                if (editor.sourceElement && editor.sourceElement.id) {
+                    window.rmarchivEditors[editor.sourceElement.id] = editor;
+                }
+            });
     });
 </script>
-
