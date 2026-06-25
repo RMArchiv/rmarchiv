@@ -200,7 +200,6 @@ return [
         /*
          * Package Service Providers...
          */
-        Barryvdh\Debugbar\ServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
         Optimus\FineuploaderServer\Provider\LaravelServiceProvider::class,
@@ -261,7 +260,7 @@ return [
         'Cookie'              => Illuminate\Support\Facades\Cookie::class,
         'Crypt'               => Illuminate\Support\Facades\Crypt::class,
         'DB'                  => Illuminate\Support\Facades\DB::class,
-        'Debugbar'            => Barryvdh\Debugbar\Facades\Debugbar::class,
+        'Debugbar'            => App\Support\Debugbar::class,
         'Eloquent'            => Illuminate\Database\Eloquent\Model::class,
         'Entrust'             => Laratrust\LaratrustFacade::class,
         'Event'               => Illuminate\Support\Facades\Event::class,
