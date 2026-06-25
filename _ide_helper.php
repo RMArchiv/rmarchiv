@@ -5,7 +5,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 11.50.0.
+ * Generated for Laravel 11.54.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -5432,6 +5432,143 @@ namespace Illuminate\Support\Facades {
         public static function flushMacros()
         {
             \Illuminate\Cookie\CookieJar::flushMacros();
+        }
+
+            }
+    /**
+     * @see \Illuminate\Encryption\Encrypter
+     */
+    class Crypt {
+        /**
+         * Determine if the given key and cipher combination is valid.
+         *
+         * @param string $key
+         * @param string $cipher
+         * @return bool
+         * @static
+         */
+        public static function supported($key, $cipher)
+        {
+            return \Illuminate\Encryption\Encrypter::supported($key, $cipher);
+        }
+
+        /**
+         * Create a new encryption key for the given cipher.
+         *
+         * @param string $cipher
+         * @return string
+         * @static
+         */
+        public static function generateKey($cipher)
+        {
+            return \Illuminate\Encryption\Encrypter::generateKey($cipher);
+        }
+
+        /**
+         * Encrypt the given value.
+         *
+         * @param mixed $value
+         * @param bool $serialize
+         * @return string
+         * @throws \Illuminate\Contracts\Encryption\EncryptException
+         * @static
+         */
+        public static function encrypt($value, $serialize = true)
+        {
+            /** @var \Illuminate\Encryption\Encrypter $instance */
+            return $instance->encrypt($value, $serialize);
+        }
+
+        /**
+         * Encrypt a string without serialization.
+         *
+         * @param string $value
+         * @return string
+         * @throws \Illuminate\Contracts\Encryption\EncryptException
+         * @static
+         */
+        public static function encryptString($value)
+        {
+            /** @var \Illuminate\Encryption\Encrypter $instance */
+            return $instance->encryptString($value);
+        }
+
+        /**
+         * Decrypt the given value.
+         *
+         * @param string $payload
+         * @param bool $unserialize
+         * @return mixed
+         * @throws \Illuminate\Contracts\Encryption\DecryptException
+         * @static
+         */
+        public static function decrypt($payload, $unserialize = true)
+        {
+            /** @var \Illuminate\Encryption\Encrypter $instance */
+            return $instance->decrypt($payload, $unserialize);
+        }
+
+        /**
+         * Decrypt the given string without unserialization.
+         *
+         * @param string $payload
+         * @return string
+         * @throws \Illuminate\Contracts\Encryption\DecryptException
+         * @static
+         */
+        public static function decryptString($payload)
+        {
+            /** @var \Illuminate\Encryption\Encrypter $instance */
+            return $instance->decryptString($payload);
+        }
+
+        /**
+         * Get the encryption key that the encrypter is currently using.
+         *
+         * @return string
+         * @static
+         */
+        public static function getKey()
+        {
+            /** @var \Illuminate\Encryption\Encrypter $instance */
+            return $instance->getKey();
+        }
+
+        /**
+         * Get the current encryption key and all previous encryption keys.
+         *
+         * @return array
+         * @static
+         */
+        public static function getAllKeys()
+        {
+            /** @var \Illuminate\Encryption\Encrypter $instance */
+            return $instance->getAllKeys();
+        }
+
+        /**
+         * Get the previous encryption keys.
+         *
+         * @return array
+         * @static
+         */
+        public static function getPreviousKeys()
+        {
+            /** @var \Illuminate\Encryption\Encrypter $instance */
+            return $instance->getPreviousKeys();
+        }
+
+        /**
+         * Set the previous / legacy encryption keys that should be utilized if decryption fails.
+         *
+         * @param array $keys
+         * @return \Illuminate\Encryption\Encrypter
+         * @static
+         */
+        public static function previousKeys($keys)
+        {
+            /** @var \Illuminate\Encryption\Encrypter $instance */
+            return $instance->previousKeys($keys);
         }
 
             }
@@ -13156,10 +13293,6 @@ namespace Illuminate\Support\Facades {
          * being the original client, and each successive proxy that passed the request
          * adding the IP address where it received the request from.
          *
-         * If your reverse proxy uses a different header name than "X-Forwarded-For",
-         * ("Client-Ip" for instance), configure it via the $trustedHeaderSet
-         * argument of the Request::setTrustedProxies() method instead.
-         *
          * @see getClientIps()
          * @see https://wikipedia.org/wiki/X-Forwarded-For
          * @static
@@ -19835,32 +19968,108 @@ namespace Mews\Captcha\Facades {
             }
     }
 
-namespace Barryvdh\Debugbar\Facades {
+namespace Fruitcake\LaravelDebugbar\Facades {
     /**
-     * @method static void alert(mixed $message)
-     * @method static void critical(mixed $message)
-     * @method static void debug(mixed $message)
-     * @method static void emergency(mixed $message)
-     * @method static void error(mixed $message)
-     * @method static void info(mixed $message)
-     * @method static void log(mixed $message)
-     * @method static void notice(mixed $message)
-     * @method static void warning(mixed $message)
-     * @see \Barryvdh\Debugbar\LaravelDebugbar
+     * @method static void            alert(mixed $message)
+     * @method static void            critical(mixed $message)
+     * @method static void            debug(mixed $message)
+     * @method static void            emergency(mixed $message)
+     * @method static void            error(mixed $message)
+     * @method static void            info(mixed $message)
+     * @method static void            log(mixed $message)
+     * @method static void            notice(mixed $message)
+     * @method static void            warning(mixed $message)
+     * @see \Fruitcake\LaravelDebugbar\LaravelDebugbar
      */
     class Debugbar {
         /**
-         * Returns the HTTP driver
-         *
-         * If no http driver where defined, a PhpHttpDriver is automatically created
-         *
-         * @return \DebugBar\HttpDriverInterface
+         * @static
+         */
+        public static function setApplication($app)
+        {
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->setApplication($app);
+        }
+
+        /**
+         * @static
+         */
+        public static function setRequest($request)
+        {
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->setRequest($request);
+        }
+
+        /**
+         * @static
+         */
+        public static function setProcessingJob($job)
+        {
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->setProcessingJob($job);
+        }
+
+        /**
+         * @static
+         */
+        public static function getProcessingJob()
+        {
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->getProcessingJob();
+        }
+
+        /**
          * @static
          */
         public static function getHttpDriver()
         {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->getHttpDriver();
+        }
+
+        /**
+         * @static
+         */
+        public static function getRequestIdGenerator()
+        {
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->getRequestIdGenerator();
+        }
+
+        /**
+         * @static
+         */
+        public static function getTimeCollector()
+        {
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->getTimeCollector();
+        }
+
+        /**
+         * @static
+         */
+        public static function getMessagesCollector()
+        {
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->getMessagesCollector();
+        }
+
+        /**
+         * @static
+         */
+        public static function getExceptionsCollector()
+        {
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->getExceptionsCollector();
+        }
+
+        /**
+         * @static
+         */
+        public static function isCollecting()
+        {
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->isCollecting();
         }
 
         /**
@@ -19870,7 +20079,7 @@ namespace Barryvdh\Debugbar\Facades {
          */
         public static function enable()
         {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->enable();
         }
 
@@ -19881,47 +20090,45 @@ namespace Barryvdh\Debugbar\Facades {
          */
         public static function boot()
         {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->boot();
         }
 
         /**
          * @static
          */
-        public static function shouldCollect($name, $default = false)
+        public static function booted()
         {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-            return $instance->shouldCollect($name, $default);
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->booted();
         }
 
         /**
-         * Adds a data collector
-         *
-         * @param \DebugBar\DataCollector\DataCollectorInterface $collector
-         * @throws DebugBarException
-         * @return \Barryvdh\Debugbar\LaravelDebugbar
          * @static
          */
-        public static function addCollector($collector)
+        public static function getJavascriptRenderer($baseUrl = null, $basePath = null)
         {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-            return $instance->addCollector($collector);
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->getJavascriptRenderer($baseUrl, $basePath);
+        }
+
+        /**
+         * @static
+         */
+        public static function shouldCollect($name, $default = true)
+        {
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->shouldCollect($name, $default);
         }
 
         /**
          * Handle silenced errors
          *
-         * @param $level
-         * @param $message
-         * @param string $file
-         * @param int $line
-         * @param array $context
-         * @throws \ErrorException
          * @static
          */
         public static function handleError($level, $message, $file = '', $line = 0, $context = [])
         {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->handleError($level, $message, $file, $line, $context);
         }
 
@@ -19929,142 +20136,127 @@ namespace Barryvdh\Debugbar\Facades {
          * Starts a measure
          *
          * @param string $name Internal name, used to stop the measure
-         * @param string $label Public name
-         * @param string|null $collector
-         * @param string|null $group
+         * @param string|null $label Public name
          * @static
          */
         public static function startMeasure($name, $label = null, $collector = null, $group = null)
         {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->startMeasure($name, $label, $collector, $group);
         }
 
         /**
          * Stops a measure
          *
-         * @param string $name
          * @static
          */
         public static function stopMeasure($name)
         {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->stopMeasure($name);
         }
 
         /**
-         * Adds an exception to be profiled in the debug bar
+         * Alias for addThrowable
          *
-         * @param \Exception $e
-         * @deprecated in favor of addThrowable
          * @static
          */
         public static function addException($e)
         {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->addException($e);
         }
 
         /**
          * Adds an exception to be profiled in the debug bar
          *
-         * @param \Throwable $e
          * @static
          */
         public static function addThrowable($e)
         {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->addThrowable($e);
-        }
-
-        /**
-         * Returns a JavascriptRenderer for this instance
-         *
-         * @param string $baseUrl
-         * @param string $basePath
-         * @return \Barryvdh\Debugbar\JavascriptRenderer
-         * @static
-         */
-        public static function getJavascriptRenderer($baseUrl = null, $basePath = null)
-        {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-            return $instance->getJavascriptRenderer($baseUrl, $basePath);
         }
 
         /**
          * Modify the response and inject the debugbar (or data in headers)
          *
-         * @param \Symfony\Component\HttpFoundation\Request $request
-         * @param \Symfony\Component\HttpFoundation\Response $response
-         * @return \Symfony\Component\HttpFoundation\Response
          * @static
          */
-        public static function modifyResponse($request, $response)
+        public static function handleResponse($request, $response)
         {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-            return $instance->modifyResponse($request, $response);
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->handleResponse($request, $response);
+        }
+
+        /**
+         * @static
+         */
+        public static function canBeEnabled()
+        {
+            return \Fruitcake\LaravelDebugbar\LaravelDebugbar::canBeEnabled();
         }
 
         /**
          * Check if the Debugbar is enabled
          *
-         * @return boolean
          * @static
          */
         public static function isEnabled()
         {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->isEnabled();
         }
 
         /**
-         * Collects the data from the collectors
-         *
-         * @return array
          * @static
          */
-        public static function collect()
+        public static function isStorageOpen($request)
         {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-            return $instance->collect();
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->isStorageOpen($request);
+        }
+
+        /**
+         * @static
+         */
+        public static function requestIsExcluded($request)
+        {
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->requestIsExcluded($request);
+        }
+
+        /**
+         * Collects meta data about the current request
+         *
+         * @static
+         */
+        public static function collectMetaData()
+        {
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->collectMetaData();
+        }
+
+        /**
+         * @static
+         */
+        public static function terminate()
+        {
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->terminate();
         }
 
         /**
          * Injects the web debug toolbar into the given Response.
          *
-         * @param \Symfony\Component\HttpFoundation\Response $response A Response instance
          * Based on https://github.com/symfony/WebProfilerBundle/blob/master/EventListener/WebDebugToolbarListener.php
+         *
          * @static
          */
         public static function injectDebugbar($response)
         {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->injectDebugbar($response);
-        }
-
-        /**
-         * Checks if there is stacked data in the session
-         *
-         * @return boolean
-         * @static
-         */
-        public static function hasStackedData()
-        {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-            return $instance->hasStackedData();
-        }
-
-        /**
-         * Returns the data stacked in the session
-         *
-         * @param boolean $delete Whether to delete the data in the session
-         * @return array
-         * @static
-         */
-        public static function getStackedData($delete = true)
-        {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-            return $instance->getStackedData($delete);
         }
 
         /**
@@ -20074,53 +20266,39 @@ namespace Barryvdh\Debugbar\Facades {
          */
         public static function disable()
         {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->disable();
+        }
+
+        /**
+         * @static
+         */
+        public static function reset()
+        {
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->reset();
         }
 
         /**
          * Adds a measure
          *
-         * @param string $label
-         * @param float $start
-         * @param float $end
-         * @param array|null $params
-         * @param string|null $collector
-         * @param string|null $group
          * @static
          */
-        public static function addMeasure($label, $start, $end, $params = [], $collector = null, $group = null)
+        public static function addMeasure($label, $start, $end = null, $params = [], $collector = null, $group = null)
         {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->addMeasure($label, $start, $end, $params, $collector, $group);
         }
 
         /**
          * Utility function to measure the execution of a Closure
          *
-         * @param string $label
-         * @param \Closure $closure
-         * @param string|null $collector
-         * @param string|null $group
-         * @return mixed
          * @static
          */
         public static function measure($label, $closure, $collector = null, $group = null)
         {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->measure($label, $closure, $collector, $group);
-        }
-
-        /**
-         * Collect data in a CLI request
-         *
-         * @return array
-         * @static
-         */
-        public static function collectConsole()
-        {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-            return $instance->collectConsole();
         }
 
         /**
@@ -20128,118 +20306,130 @@ namespace Barryvdh\Debugbar\Facades {
          *
          * A message can be anything from an object to a string
          *
-         * @param mixed $message
-         * @param string $label
          * @static
          */
-        public static function addMessage($message, $label = 'info')
+        public static function addMessage($message, $label = 'info', $context = [])
         {
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-            return $instance->addMessage($message, $label);
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->addMessage($message, $label, $context);
+        }
+
+        /**
+         * Check the version of Laravel
+         *
+         * @static
+         */
+        public static function checkVersion($version, $operator = '>=')
+        {
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->checkVersion($version, $operator);
+        }
+
+        /**
+         * Adds a data collector
+         *
+         * @throws DebugBarException
+         * @return \Fruitcake\LaravelDebugbar\LaravelDebugbar
+         * @static
+         */
+        public static function addCollector($collector)
+        {
+            //Method inherited from \DebugBar\DebugBar 
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->addCollector($collector);
         }
 
         /**
          * Checks if a data collector has been added
          *
-         * @param string $name
          * @return boolean
          * @static
          */
         public static function hasCollector($name)
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->hasCollector($name);
         }
 
         /**
-         * Returns a data collector
-         *
-         * @param string $name
-         * @return \DebugBar\DataCollector\DataCollectorInterface
-         * @throws DebugBarException
          * @static
          */
         public static function getCollector($name)
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->getCollector($name);
+        }
+
+        /**
+         * @static
+         */
+        public static function removeCollector($name)
+        {
+            //Method inherited from \DebugBar\DebugBar 
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->removeCollector($name);
         }
 
         /**
          * Returns an array of all data collectors
          *
-         * @return array[DataCollectorInterface]
+         * @return array|\DebugBar\DataCollector\DataCollectorInterface[]
          * @static
          */
         public static function getCollectors()
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->getCollectors();
         }
 
         /**
          * Sets the request id generator
          *
-         * @param \DebugBar\RequestIdGeneratorInterface $generator
-         * @return \Barryvdh\Debugbar\LaravelDebugbar
+         * @return \Fruitcake\LaravelDebugbar\LaravelDebugbar
          * @static
          */
         public static function setRequestIdGenerator($generator)
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->setRequestIdGenerator($generator);
-        }
-
-        /**
-         * @return \DebugBar\RequestIdGeneratorInterface
-         * @static
-         */
-        public static function getRequestIdGenerator()
-        {
-            //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-            return $instance->getRequestIdGenerator();
         }
 
         /**
          * Returns the id of the current request
          *
-         * @return string
          * @static
          */
         public static function getCurrentRequestId()
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->getCurrentRequestId();
         }
 
         /**
          * Sets the storage backend to use to store the collected data
          *
-         * @param \DebugBar\StorageInterface $storage
-         * @return \Barryvdh\Debugbar\LaravelDebugbar
+         * @return \Fruitcake\LaravelDebugbar\LaravelDebugbar
          * @static
          */
         public static function setStorage($storage = null)
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->setStorage($storage);
         }
 
         /**
-         * @return \DebugBar\StorageInterface
          * @static
          */
         public static function getStorage()
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->getStorage();
         }
 
@@ -20252,22 +20442,33 @@ namespace Barryvdh\Debugbar\Facades {
         public static function isDataPersisted()
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->isDataPersisted();
         }
 
         /**
          * Sets the HTTP driver
          *
-         * @param \DebugBar\HttpDriverInterface $driver
-         * @return \Barryvdh\Debugbar\LaravelDebugbar
+         * @return \Fruitcake\LaravelDebugbar\LaravelDebugbar
          * @static
          */
         public static function setHttpDriver($driver)
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->setHttpDriver($driver);
+        }
+
+        /**
+         * Collects the data from the collectors
+         *
+         * @static
+         */
+        public static function collect()
+        {
+            //Method inherited from \DebugBar\DebugBar 
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->collect();
         }
 
         /**
@@ -20275,44 +20476,40 @@ namespace Barryvdh\Debugbar\Facades {
          *
          * Will collect the data if none have been collected yet
          *
-         * @return array
          * @static
          */
         public static function getData()
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->getData();
         }
 
         /**
          * Returns an array of HTTP headers containing the data
          *
-         * @param string $headerName
          * @param integer $maxHeaderLength
-         * @return array
+         * @return array<string, string>
          * @static
          */
         public static function getDataAsHeaders($headerName = 'phpdebugbar', $maxHeaderLength = 4096, $maxTotalHeaderLength = 250000)
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->getDataAsHeaders($headerName, $maxHeaderLength, $maxTotalHeaderLength);
         }
 
         /**
          * Sends the data through the HTTP headers
          *
-         * @param bool $useOpenHandler
-         * @param string $headerName
          * @param integer $maxHeaderLength
-         * @return \Barryvdh\Debugbar\LaravelDebugbar
+         * @return \Fruitcake\LaravelDebugbar\LaravelDebugbar
          * @static
          */
         public static function sendDataInHeaders($useOpenHandler = null, $headerName = 'phpdebugbar', $maxHeaderLength = 4096)
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->sendDataInHeaders($useOpenHandler, $headerName, $maxHeaderLength);
         }
 
@@ -20324,34 +20521,69 @@ namespace Barryvdh\Debugbar\Facades {
         public static function stackData()
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->stackData();
+        }
+
+        /**
+         * Checks if there is stacked data in the session
+         *
+         * @return boolean
+         * @static
+         */
+        public static function hasStackedData()
+        {
+            //Method inherited from \DebugBar\DebugBar 
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->hasStackedData();
+        }
+
+        /**
+         * Returns the data stacked in the session
+         *
+         * @param boolean $delete Whether to delete the data in the session
+         * @return array[]
+         * @static
+         */
+        public static function getStackedData($delete = true)
+        {
+            //Method inherited from \DebugBar\DebugBar 
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->getStackedData($delete);
+        }
+
+        /**
+         * @static
+         */
+        public static function getStackedIds($delete = true)
+        {
+            //Method inherited from \DebugBar\DebugBar 
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->getStackedIds($delete);
         }
 
         /**
          * Sets the key to use in the $_SESSION array
          *
-         * @param string $ns
-         * @return \Barryvdh\Debugbar\LaravelDebugbar
+         * @return \Fruitcake\LaravelDebugbar\LaravelDebugbar
          * @static
          */
         public static function setStackDataSessionNamespace($ns)
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->setStackDataSessionNamespace($ns);
         }
 
         /**
          * Returns the key used in the $_SESSION array
          *
-         * @return string
          * @static
          */
         public static function getStackDataSessionNamespace()
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->getStackDataSessionNamespace();
         }
 
@@ -20360,13 +20592,13 @@ namespace Barryvdh\Debugbar\Facades {
          * if a storage is enabled
          *
          * @param boolean $enabled
-         * @return \Barryvdh\Debugbar\LaravelDebugbar
+         * @return \Fruitcake\LaravelDebugbar\LaravelDebugbar
          * @static
          */
         public static function setStackAlwaysUseSessionStorage($enabled = true)
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->setStackAlwaysUseSessionStorage($enabled);
         }
 
@@ -20380,48 +20612,87 @@ namespace Barryvdh\Debugbar\Facades {
         public static function isStackAlwaysUseSessionStorage()
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
             return $instance->isStackAlwaysUseSessionStorage();
         }
 
         /**
+         * Set the editor globally, e.g., `vscode`
+         *
          * @static
          */
-        public static function offsetSet($key, $value)
+        public static function setEditor($editor)
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-            return $instance->offsetSet($key, $value);
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->setEditor($editor);
+        }
+
+        /**
+         * Set the editor link template globally,
+         * `%f` = file, `%l` = line, e.g., `vscode://file/%f:%l`
+         *
+         * @static
+         */
+        public static function setEditorTemplate($editorLinkTemplate, $shouldUseAjax = false)
+        {
+            //Method inherited from \DebugBar\DebugBar 
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->setEditorTemplate($editorLinkTemplate, $shouldUseAjax);
+        }
+
+        /**
+         * Set server path replacements, server paths will be mapped to local paths
+         * e.g., `['/var/www/remote/' => '/home/local/']`,
+         * '/var/www/remote/app/path' will become to '/home/local/app/path'
+         *
+         * @static
+         */
+        public static function setRemoteReplacements($remotePathReplacements)
+        {
+            //Method inherited from \DebugBar\DebugBar 
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->setRemoteReplacements($remotePathReplacements);
         }
 
         /**
          * @static
          */
-        public static function offsetGet($key)
+        public static function offsetSet($offset, $value)
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-            return $instance->offsetGet($key);
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->offsetSet($offset, $value);
         }
 
         /**
          * @static
          */
-        public static function offsetExists($key)
+        public static function offsetGet($offset)
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-            return $instance->offsetExists($key);
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->offsetGet($offset);
         }
 
         /**
          * @static
          */
-        public static function offsetUnset($key)
+        public static function offsetExists($offset)
         {
             //Method inherited from \DebugBar\DebugBar 
-            /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-            return $instance->offsetUnset($key);
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->offsetExists($offset);
+        }
+
+        /**
+         * @static
+         */
+        public static function offsetUnset($offset)
+        {
+            //Method inherited from \DebugBar\DebugBar 
+            /** @var \Fruitcake\LaravelDebugbar\LaravelDebugbar $instance */
+            return $instance->offsetUnset($offset);
         }
 
             }
@@ -20843,242 +21114,6 @@ namespace Eusonlito\LaravelMeta {
         {
             /** @var \Eusonlito\LaravelMeta\Meta $instance */
             return $instance->tags($keys);
-        }
-
-            }
-    }
-
-namespace RobBrazier\Piwik\Facades {
-    /**
-     */
-    class Piwik {
-        /**
-         * actions
-         * Get actions (hits) for the specific time period
-         *
-         * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
-         * @return object
-         * @static
-         */
-        public static function actions($format = null)
-        {
-            /** @var \RobBrazier\Piwik\Piwik $instance */
-            return $instance->actions($format);
-        }
-
-        /**
-         * downloads
-         * Get file downloads for the specific time period
-         *
-         * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
-         * @return array
-         * @static
-         */
-        public static function downloads($format = null)
-        {
-            /** @var \RobBrazier\Piwik\Piwik $instance */
-            return $instance->downloads($format);
-        }
-
-        /**
-         * keywords
-         * Get search keywords for the specific time period
-         *
-         * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
-         * @return array
-         * @static
-         */
-        public static function keywords($format = null)
-        {
-            /** @var \RobBrazier\Piwik\Piwik $instance */
-            return $instance->keywords($format);
-        }
-
-        /**
-         * last_visits
-         * Get information about last 10 visits (ip, time, country, pages, etc.)
-         *
-         * @access public
-         * @param int $count Limit the number of visits returned by $count
-         * @param string $format Override string for the format of the API Query to be returned as
-         * @return array
-         * @static
-         */
-        public static function last_visits($count, $format = null)
-        {
-            /** @var \RobBrazier\Piwik\Piwik $instance */
-            return $instance->last_visits($count, $format);
-        }
-
-        /**
-         * last_visits_parsed
-         * Get information about last 10 visits (ip, time, country, pages, etc.) in a formatted array with GeoIP information if enabled
-         *
-         * @access public
-         * @param int $count Limit the number of visits returned by $count
-         * @param string $format Override string for the format of the API Query to be returned as
-         * @return array
-         * @static
-         */
-        public static function last_visits_parsed($count, $format = null)
-        {
-            /** @var \RobBrazier\Piwik\Piwik $instance */
-            return $instance->last_visits_parsed($count, $format);
-        }
-
-        /**
-         * actions
-         * Get outlinks for the specific time period
-         *
-         * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
-         * @return array
-         * @static
-         */
-        public static function outlinks($format = null)
-        {
-            /** @var \RobBrazier\Piwik\Piwik $instance */
-            return $instance->outlinks($format);
-        }
-
-        /**
-         * page_titles
-         * Get page visit information for the specific time period
-         *
-         * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
-         * @return array
-         * @static
-         */
-        public static function page_titles($format = null)
-        {
-            /** @var \RobBrazier\Piwik\Piwik $instance */
-            return $instance->page_titles($format);
-        }
-
-        /**
-         * search_engines
-         * Get search engine referer information for the specific time period
-         *
-         * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
-         * @return array
-         * @static
-         */
-        public static function search_engines($format = null)
-        {
-            /** @var \RobBrazier\Piwik\Piwik $instance */
-            return $instance->search_engines($format);
-        }
-
-        /**
-         * unique_visitors
-         * Get unique visitors for the specific time period
-         *
-         * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
-         * @return array
-         * @static
-         */
-        public static function unique_visitors($format = null)
-        {
-            /** @var \RobBrazier\Piwik\Piwik $instance */
-            return $instance->unique_visitors($format);
-        }
-
-        /**
-         * visits
-         * Get all visits for the specific time period
-         *
-         * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
-         * @return array
-         * @static
-         */
-        public static function visits($format = null)
-        {
-            /** @var \RobBrazier\Piwik\Piwik $instance */
-            return $instance->visits($format);
-        }
-
-        /**
-         * websites
-         * Get refering websites (traffic sources) for the specific time period
-         *
-         * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
-         * @return array
-         * @static
-         */
-        public static function websites($format = null)
-        {
-            /** @var \RobBrazier\Piwik\Piwik $instance */
-            return $instance->websites($format);
-        }
-
-        /**
-         * tag
-         * Get javascript tag for use in tracking the website
-         *
-         * Note: Works best when using PHP as the format
-         *
-         * @access public
-         * @return string
-         * @static
-         */
-        public static function tag()
-        {
-            /** @var \RobBrazier\Piwik\Piwik $instance */
-            return $instance->tag();
-        }
-
-        /**
-         * seo_rank
-         * Get SEO Rank for the website
-         *
-         * @access public
-         * @param $id
-         * @param string $format Override string for the format of the API Query to be returned as
-         * @return array
-         * @static
-         */
-        public static function seo_rank($id, $format = 'json')
-        {
-            /** @var \RobBrazier\Piwik\Piwik $instance */
-            return $instance->seo_rank($id, $format);
-        }
-
-        /**
-         * version
-         * Get Version of the Piwik Server
-         *
-         * @access public
-         * @param string $format Override string for the format of the API Query to be returned as
-         * @return array
-         * @static
-         */
-        public static function version($format = null)
-        {
-            /** @var \RobBrazier\Piwik\Piwik $instance */
-            return $instance->version($format);
-        }
-
-        /**
-         * @param $method
-         * @param array $arguments
-         * @param mixed $id values can be true/false to add the default site id, or you can specify the id here
-         * @param bool $period
-         * @param string $format
-         * @return array
-         * @static
-         */
-        public static function custom($method, $arguments, $id = false, $period = false, $format = null)
-        {
-            /** @var \RobBrazier\Piwik\Piwik $instance */
-            return $instance->custom($method, $arguments, $id, $period, $format);
         }
 
             }
@@ -21887,435 +21922,674 @@ namespace Intervention\Image\Laravel\Facades {
             }
     }
 
-namespace Khill\Lavacharts\Laravel {
+namespace Laravel\Nightwatch\Facades {
     /**
-     * Lavacharts Facade
-     *
-     * Enables member methods via static accessor for Lavacharts in Laravel.
-     *
-     * @package Khill\Lavacharts\Laravel
-     * @since 2.5.0
-     * @author Kevin Hill <kevinkhill@gmail.com>
-     * @copyright 2020 Kevin Hill
-     * @link http://github.com/kevinkhill/lavacharts GitHub Repository
-     * @link http://lavacharts.com                   Official Docs Site
-     * @license http://opensource.org/licenses/MIT MIT
+     * @see \Laravel\Nightwatch\Core
      */
-    class LavachartsFacade {
+    class Nightwatch {
         /**
-         * Get the default set of options used by Lavacharts.
-         *
-         * @since 4.0.0
-         * @return array
+         * @api
          * @static
          */
-        public static function getDefaultOptions()
+        public static function user($callback)
         {
-            return \Khill\Lavacharts\Lavacharts::getDefaultOptions();
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->user($callback);
         }
 
         /**
-         * Run the library and get the resulting scripts.
-         *
-         * This method will create a <script> tag for the lava.js module, if
-         * it is not bypassed or already output, along with one additional
-         * <script> block with all of the charts & dashboards.
-         *
-         * Options can be passed in to override the default config.
-         * Available options are defined in src/Laravel/config/lavacharts.php
-         *
-         * @param array $options Array of options to override defaults before script output.
-         * @return string HTML script elements
-         * @throws InvalidElementIdException
-         * @since 4.0.0
+         * @api
          * @static
          */
-        public static function run($options = [])
+        public static function guzzleMiddleware()
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->run($options);
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->guzzleMiddleware();
         }
 
         /**
-         * Convert the Lavacharts object to an array
-         *
-         * @since 4.0.0
-         * @return array
+         * @api
          * @static
          */
-        public static function toArray()
+        public static function digest()
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->toArray();
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->digest();
         }
 
         /**
-         * Shortcut method for accessing store() on the Volcano
-         *
-         * @param \Khill\Lavacharts\Support\Renderable $renderable
-         * @since 3.0.0 Simplified to forward the call to the Volcano.
-         * @return \Khill\Lavacharts\Support\Renderable
+         * @internal
+         * @return \Laravel\Nightwatch\Core
          * @static
          */
-        public static function store($renderable)
+        public static function finishExecution()
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->store($renderable);
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->finishExecution();
         }
 
         /**
-         * Shortcut method for accessing exists() on the Volcano
-         *
-         * @param string $label
-         * @since 4.0.0 Simplified to forward the call to the Volcano.
-         * @since 2.4.2 Initial Implementation
-         * @return bool
+         * @internal
          * @static
          */
-        public static function exists($label)
+        public static function enabled()
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->exists($label);
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->enabled();
         }
 
         /**
-         * Shortcut method for accessing get() on the Volcano
-         *
-         * @param string $label Label of the {@link Chart} to retrieve
-         * @since 4.0.0 Renamed fetch, forwards the call to the Volcano.
-         * @since 3.0.0 Initial Implementation
-         * @return \Khill\Lavacharts\Support\Renderable
-         * @throws RenderableNotFound
+         * @api
          * @static
          */
-        public static function get($label)
+        public static function sample($rate = 1.0)
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->get($label);
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->sample($rate);
         }
 
         /**
-         * Get an instance of the DataFactory
-         *
-         * @since 4.0.0
-         * @return \Khill\Lavacharts\DataTables\DataFactory
+         * @api
          * @static
          */
-        public static function DataFactory()
+        public static function dontSample()
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->DataFactory();
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->dontSample();
         }
 
         /**
-         * Create a new Format based by named type.
-         *
-         * @since 4.0.0
-         * @param string $type
-         * @param array $args
-         * @return \Khill\Lavacharts\DataTables\Columns\Format
+         * @api
          * @static
          */
-        public static function Format($type, ...$args)
+        public static function sampling()
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->Format($type, ...$args);
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->sampling();
         }
 
         /**
-         * Create a new Filter based by named type.
-         *
-         * @since 4.0.0
-         * @param string $type
-         * @param array $args
-         * @return \Khill\Lavacharts\Dashboards\Filter
+         * @internal
          * @static
          */
-        public static function Filter($type, ...$args)
+        public static function configureRequestSampling()
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->Filter($type, ...$args);
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->configureRequestSampling();
         }
 
         /**
-         * Create a new Dashboard
-         *
-         * @since 4.0.0 Changing method signature
-         * @since 3.0.0
-         * @param string $label
-         * @param \Khill\Lavacharts\Support\Contracts\DataInterface|null $data
-         * @param array $options
-         * @return \Khill\Lavacharts\Dashboards\Dashboard
+         * @internal
          * @static
          */
-        public static function Dashboard($label, $data = null, $options = [])
+        public static function configureCommandSampling($command)
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->Dashboard($label, $data, $options);
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->configureCommandSampling($command);
         }
 
         /**
-         * Create a new ControlWrapper from a Filter
-         *
-         * @since 3.0.0
-         * @param \Khill\Lavacharts\Dashboards\Filter $filter Filter to wrap
-         * @param string $elementId HTML element ID to output the control.
-         * @return \Khill\Lavacharts\Dashboards\Wrappers\ControlWrapper
+         * @internal
          * @static
          */
-        public static function ControlWrapper($filter, $elementId)
+        public static function configureScheduledTaskSampling($event)
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->ControlWrapper($filter, $elementId);
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->configureScheduledTaskSampling($event);
         }
 
         /**
-         * Create a new ChartWrapper from a Chart
-         *
-         * @since 4.0.0 Allowing string named types of charts along with Chart objects
-         * @since 3.0.0
-         * @param \Khill\Lavacharts\Charts\Chart|string $chartType Chart to wrap or type of chart to create and wrap.
-         * @param string $elementId HTML element ID to output the control.
-         * @return \Khill\Lavacharts\Dashboards\Wrappers\ChartWrapper
+         * @api
          * @static
          */
-        public static function ChartWrapper($chartType, $elementId)
+        public static function captureDefaultVendorCommands($capture = true)
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->ChartWrapper($chartType, $elementId);
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->captureDefaultVendorCommands($capture);
         }
 
         /**
-         * Returns the Volcano instance.
-         *
-         * @since 4.0.0
-         * @return \Khill\Lavacharts\Volcano
+         * @api
+         * @return list<string>
          * @static
          */
-        public static function getVolcano()
+        public static function defaultVendorCommands()
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->getVolcano();
+            return \Laravel\Nightwatch\Core::defaultVendorCommands();
         }
 
         /**
-         * Returns the ScriptManager instance.
-         *
-         * @since 3.1.9
-         * @return \Khill\Lavacharts\Javascript\ScriptManager
+         * @api
          * @static
          */
-        public static function getScriptManager()
+        public static function ignore($callback)
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->getScriptManager();
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->ignore($callback);
         }
 
         /**
-         * Returns the current locale used in the DataTable
-         *
-         * @deprecated 4.0.0 use $lava->getOption('locale')
-         * @since 3.1.0
-         * @return string
+         * @api
          * @static
          */
-        public static function getLocale()
+        public static function resume()
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->getLocale();
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->resume();
         }
 
         /**
-         * Locales are used to customize text for a country or language.
-         *
-         * This will affect the formatting of values such as currencies, dates, and numbers.
-         *
-         * By default, Lavacharts is loaded with the "en" locale. You can override this default
-         * by explicitly specifying a locale when creating the DataTable.
-         *
-         * @deprecated 4.0.0 Set this option with the constructor, or with
-         *                   $lava->setOption('locale', 'en');
-         * @since 3.1.0
-         * @param string $locale
-         * @return \Khill\Lavacharts\Lavacharts
+         * @api
          * @static
          */
-        public static function setLocale($locale = 'en')
+        public static function pause()
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->setLocale($locale);
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->pause();
         }
 
         /**
-         * Outputs the lava.js module <script> block for manual placement.
-         *
-         * @since 3.0.3
-         * @param array $options
-         * @return string Google Chart API and lava.js script blocks
+         * @api
          * @static
          */
-        public static function lavaJs($options = [])
+        public static function paused()
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->lavaJs($options);
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->paused();
         }
 
         /**
-         * The render method is depreciated.
-         *
-         * @deprecated 4.0.0
-         * @throws InvalidElementIdException
+         * @api
          * @static
          */
-        public static function render()
+        public static function report($e, $handled = null)
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->render();
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->report($e, $handled);
         }
 
         /**
-         * Renders all charts and dashboards that have been defined.
-         *
-         * Options can be passed in to override the default config.
-         * Available options are defined in src/Laravel/config/lavacharts.php
-         *
-         * @since 3.1.0
-         * @since 4.0.0 Takes options and merges them with existing options.
-         * @param array $options Options for rendering
-         * @return string
-         * @throws InvalidElementIdException
+         * @internal
          * @static
          */
-        public static function renderAll($options = [])
+        public static function log($log)
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->renderAll($options);
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->log($log);
         }
 
         /**
-         * Retrieves the Options object from the class.
-         *
-         * @return \Khill\Lavacharts\Support\Options
+         * @internal
          * @static
          */
-        public static function getOptions()
+        public static function outgoingRequest($startMicrotime, $endMicrotime, $request, $response)
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->getOptions();
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->outgoingRequest($startMicrotime, $endMicrotime, $request, $response);
         }
 
         /**
-         * Check if the instance has an option set.
-         *
-         * @param string $option
-         * @return bool
+         * @internal
          * @static
          */
-        public static function hasOption($option)
+        public static function query($event)
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->hasOption($option);
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->query($event);
         }
 
         /**
-         * Return whether or not the instance has any options.
-         *
-         * @return bool
+         * @internal
          * @static
          */
-        public static function hasOptions()
+        public static function queuedJob($event)
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->hasOptions();
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->queuedJob($event);
         }
 
         /**
-         * Gets the value of an option.
-         *
-         * @param string $option
-         * @return mixed|null
+         * @internal
          * @static
          */
-        public static function getOption($option)
+        public static function notification($event)
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->getOption($option);
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->notification($event);
         }
 
         /**
-         * Sets the value of an option.
-         *
-         * @param string $option
-         * @param string $value
+         * @internal
          * @static
          */
-        public static function setOption($option, $value)
+        public static function mail($event)
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->setOption($option, $value);
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->mail($event);
         }
 
         /**
-         * Sets the Options object for the class.
-         *
-         * @param array|\Khill\Lavacharts\Support\Options $options
-         * @throws \Khill\Lavacharts\Exceptions\InvalidArgumentException
+         * @internal
          * @static
          */
-        public static function setOptions($options)
+        public static function cacheEvent($event)
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->setOptions($options);
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->cacheEvent($event);
         }
 
         /**
-         * Merges two sets of options.
-         *
-         * @param array|\Khill\Lavacharts\Support\Options $options
+         * @internal
          * @static
          */
-        public static function mergeOptions($options)
+        public static function stage($stage)
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->mergeOptions($options);
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->stage($stage);
         }
 
         /**
-         * Initialize the default options from file while overriding with user
-         * passed values.
-         *
-         * @param array $options
-         * @return void
+         * @internal
          * @static
          */
-        public static function initOptions($options)
+        public static function executionStageIs($stage)
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            $instance->initOptions($options);
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->executionStageIs($stage);
         }
 
         /**
-         * Convert the instance to a JSON string.
-         *
-         * @return string
+         * @internal
          * @static
          */
-        public static function toJson()
+        public static function remember($user)
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->toJson();
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->remember($user);
         }
 
         /**
-         * Serialize the instance from the toArray() value.
-         *
-         * @return array
+         * @internal
          * @static
          */
-        public static function jsonSerialize()
+        public static function captureUser()
         {
-            /** @var \Khill\Lavacharts\Lavacharts $instance */
-            return $instance->jsonSerialize();
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->captureUser();
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function request($request, $response)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->request($request, $response);
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function jobAttempt($event)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->jobAttempt($event);
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function captureRequestPreview($request)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->captureRequestPreview($request);
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function captureRequestRouteAction($routeAction)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->captureRequestRouteAction($routeAction);
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function attachMiddlewareToRoute($route)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->attachMiddlewareToRoute($route);
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function waitForExecution()
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->waitForExecution();
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function configureForJobs()
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->configureForJobs();
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function prepareForNextJob()
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->prepareForNextJob();
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function prepareForJob($job)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->prepareForJob($job);
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function captureArtisan($artisan)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->captureArtisan($artisan);
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function prepareForCommand($name)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->prepareForCommand($name);
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function capturingCommandNamed($name)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->capturingCommandNamed($name);
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function command($input, $status)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->command($input, $status);
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function configureForScheduledTasks()
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->configureForScheduledTasks();
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function prepareForScheduledTask($event)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->prepareForScheduledTask($event);
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function scheduledTask($event)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->scheduledTask($event);
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function prepareForRequest($request)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->prepareForRequest($request);
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function shouldCaptureLogs()
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->shouldCaptureLogs();
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function sampleScheduledTask($event, $rate)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->sampleScheduledTask($event, $rate);
+        }
+
+        /**
+         * @internal
+         * @static
+         */
+        public static function flush()
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->flush();
+        }
+
+        /**
+         * @api
+         * @param callable(Exception):  bool  $callback
+         * @static
+         */
+        public static function redactExceptions($callback)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->redactExceptions($callback);
+        }
+
+        /**
+         * @api
+         * @param callable(CacheEvent):  bool  $callback
+         * @static
+         */
+        public static function redactCacheEvents($callback)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->redactCacheEvents($callback);
+        }
+
+        /**
+         * @api
+         * @param callable(Command):  bool  $callback
+         * @static
+         */
+        public static function redactCommands($callback)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->redactCommands($callback);
+        }
+
+        /**
+         * @api
+         * @param callable(Mail):  bool  $callback
+         * @static
+         */
+        public static function redactMail($callback)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->redactMail($callback);
+        }
+
+        /**
+         * @api
+         * @param callable(OutgoingRequest):  bool  $callback
+         * @static
+         */
+        public static function redactOutgoingRequests($callback)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->redactOutgoingRequests($callback);
+        }
+
+        /**
+         * @api
+         * @param callable(Query):  bool  $callback
+         * @static
+         */
+        public static function redactQueries($callback)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->redactQueries($callback);
+        }
+
+        /**
+         * @api
+         * @param callable(Request):  bool  $callback
+         * @static
+         */
+        public static function redactRequests($callback)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->redactRequests($callback);
+        }
+
+        /**
+         * @api
+         * @param callable(CacheEvent):  bool  $callback
+         * @static
+         */
+        public static function rejectCacheEvents($callback)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->rejectCacheEvents($callback);
+        }
+
+        /**
+         * @api
+         * @param list<string> $keys
+         * @static
+         */
+        public static function rejectCacheKeys($keys)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->rejectCacheKeys($keys);
+        }
+
+        /**
+         * @api
+         * @static
+         */
+        public static function captureDefaultVendorCacheKeys($capture = true)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->captureDefaultVendorCacheKeys($capture);
+        }
+
+        /**
+         * @api
+         * @return list<string>
+         * @static
+         */
+        public static function defaultVendorCacheKeys()
+        {
+            return \Laravel\Nightwatch\Core::defaultVendorCacheKeys();
+        }
+
+        /**
+         * @api
+         * @param callable(Mail):  bool  $callback
+         * @static
+         */
+        public static function rejectMail($callback)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->rejectMail($callback);
+        }
+
+        /**
+         * @api
+         * @param callable(Notification):  bool  $callback
+         * @static
+         */
+        public static function rejectNotifications($callback)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->rejectNotifications($callback);
+        }
+
+        /**
+         * @api
+         * @param callable(OutgoingRequest):  bool  $callback
+         * @static
+         */
+        public static function rejectOutgoingRequests($callback)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->rejectOutgoingRequests($callback);
+        }
+
+        /**
+         * @api
+         * @param callable(Query):  bool  $callback
+         * @static
+         */
+        public static function rejectQueries($callback)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->rejectQueries($callback);
+        }
+
+        /**
+         * @api
+         * @param callable(QueuedJob):  bool  $callback
+         * @static
+         */
+        public static function rejectQueuedJobs($callback)
+        {
+            /** @var \Laravel\Nightwatch\Core $instance */
+            return $instance->rejectQueuedJobs($callback);
         }
 
             }
@@ -22605,7 +22879,8 @@ namespace Illuminate\Support {
      */
     class Collection {
         /**
-         * @see \Barryvdh\Debugbar\ServiceProvider::register()
+         * @see \Fruitcake\LaravelDebugbar\ServiceProvider::register()
+         * @return \Illuminate\Support\Collection
          * @static
          */
         public static function debug()
@@ -22778,8 +23053,9 @@ namespace  {
     class CheckRateable extends \App\Helpers\CheckRateableHelper {}
     class Config extends \Illuminate\Support\Facades\Config {}
     class Cookie extends \Illuminate\Support\Facades\Cookie {}
+    class Crypt extends \Illuminate\Support\Facades\Crypt {}
     class DB extends \Illuminate\Support\Facades\DB {}
-    class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}
+    class Debugbar extends \Fruitcake\LaravelDebugbar\Facades\Debugbar {}
 
     /**
      * @template TCollection of static
@@ -27404,7 +27680,6 @@ namespace  {
     class Meta extends \Eusonlito\LaravelMeta\Facade {}
     class Notification extends \Illuminate\Support\Facades\Notification {}
     class Password extends \Illuminate\Support\Facades\Password {}
-    class Piwik extends \RobBrazier\Piwik\Facades\Piwik {}
     class Queue extends \Illuminate\Support\Facades\Queue {}
     class Redirect extends \Illuminate\Support\Facades\Redirect {}
     class Redis extends \Illuminate\Support\Facades\Redis {}
@@ -27421,7 +27696,7 @@ namespace  {
     class View extends \Illuminate\Support\Facades\View {}
     class Breadcrumbs extends \Diglactic\Breadcrumbs\Breadcrumbs {}
     class Image extends \Intervention\Image\Laravel\Facades\Image {}
-    class Lava extends \Khill\Lavacharts\Laravel\LavachartsFacade {}
+    class Nightwatch extends \Laravel\Nightwatch\Facades\Nightwatch {}
     class Laratrust extends \Laratrust\LaratrustFacade {}
     class TagCloud extends \LithiumDev\TagCloud\Facade\TagCloud {}
 }
