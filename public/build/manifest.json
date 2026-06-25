@@ -1,0 +1,67 @@
+{
+  "_bootstrap.esm-CEhvYNoc.js": {
+    "file": "assets/bootstrap.esm-CEhvYNoc.js",
+    "name": "bootstrap.esm"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400-DFY6gyJh.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2": {
+    "file": "assets/fa-regular-400-DdcaUAxu.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2": {
+    "file": "assets/fa-solid-900-BQpGBb1f.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2": {
+    "file": "assets/fa-v4compatibility-BHaDpj3C.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2"
+  },
+  "public/assets/types.png": {
+    "file": "assets/types-AXLScINb.png",
+    "src": "public/assets/types.png"
+  },
+  "resources/assets/js/app.js": {
+    "file": "assets/app-BG0sZQ11.js",
+    "name": "app",
+    "src": "resources/assets/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_bootstrap.esm-CEhvYNoc.js"
+    ],
+    "css": [
+      "assets/app-D45H1ZOA.css"
+    ]
+  },
+  "resources/assets/js/chart.js": {
+    "file": "assets/chart-B-2p19BB.js",
+    "name": "chart",
+    "src": "resources/assets/js/chart.js",
+    "isEntry": true
+  },
+  "resources/assets/js/cheatsheet.js": {
+    "file": "assets/cheatsheet-BbQE_LA3.js",
+    "name": "cheatsheet",
+    "src": "resources/assets/js/cheatsheet.js",
+    "isEntry": true,
+    "imports": [
+      "_bootstrap.esm-CEhvYNoc.js"
+    ]
+  },
+  "resources/assets/js/ckeditorSetup.js": {
+    "file": "assets/ckeditorSetup-B8Idhdix.js",
+    "name": "ckeditorSetup",
+    "src": "resources/assets/js/ckeditorSetup.js",
+    "isEntry": true,
+    "css": [
+      "assets/ckeditorSetup-YeUg9sCp.css"
+    ]
+  },
+  "resources/assets/sass/app.scss": {
+    "file": "assets/app-b7uCitUI.css",
+    "src": "resources/assets/sass/app.scss",
+    "isEntry": true
+  }
+}

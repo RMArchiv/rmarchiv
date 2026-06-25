@@ -28,6 +28,9 @@ Route::group(['middleware' => ['permission:admin-user']], function () {
     Route::post('users/perm/role', 'UserPermissionController@storeRole')->name('user.perm.role.store');
     Route::get('users/perm/permissions', 'UserPermissionController@createPermission');
     Route::post('users/perm/permission', 'UserPermissionController@storePermission')->name('user.perm.perm.store');
+    Route::get('users/perm/user', 'UserPermissionController@indexUserAssignments')->name('user.perm.user.index');
+    Route::get('users/perm/user/{user}', 'UserPermissionController@editUserAssignments')->name('user.perm.user.edit');
+    Route::post('users/perm/user/{user}', 'UserPermissionController@updateUserAssignments')->name('user.perm.user.update');
     Route::get('users/perm/role/{id}', 'UserPermissionController@showRole');
     Route::get('users/perm/permissions/{id}', 'UserPermissionController@showPermission');
     Route::post('users/perm/role/{roleid}', 'UserPermissionController@addPermToRole')->name('user.perm.permtorole');

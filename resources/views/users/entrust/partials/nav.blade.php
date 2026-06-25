@@ -9,5 +9,8 @@
         <a href="{{ url('/users/perm/permissions') }}" class="list-group-item list-group-item-action{{ request()->is('users/perm/permissions') || request()->is('users/perm/permissions/*') ? ' active' : '' }}">
             Berechtigungen
         </a>
+        <a href="{{ route('user.perm.user.index') }}" class="list-group-item list-group-item-action{{ request()->is('users/perm/user') || request()->is('users/perm/user/*') ? ' active' : '' }}">
+            Benutzer zuweisen
+        </a>
     </div>
 </div>

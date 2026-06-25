@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use App\Models\BoardPollVote;
 use App\Helpers\DatabaseHelper;
 use App\Models\BoardPollAnswer;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class BoardController extends Controller
@@ -106,7 +107,7 @@ class BoardController extends Controller
 
     public function show_thread(Request $request, $threadid)
     {
-        $posts = BoardPost::with('user', 'thread', 'cat')->whereThreadId($threadid)->orderBy('id')->paginate(25);
+        $posts = BoardPost::with('user.roles', 'thread', 'cat')->whereThreadId($threadid)->orderBy('id')->paginate(25);
         $poll = BoardPoll::whereThreadId($threadid)->first();
         $moveCategories = collect();
 
@@ -133,6 +134,8 @@ class BoardController extends Controller
             $moveCategories = BoardCat::orderBy('order')->get(['id', 'title']);
         }
 
+        $postUserStats = $this->getPostUserStats($posts->pluck('user_id')->unique());
+
         if (! $request->get('page')) {
             return redirect('board/thread/'.$threadid.'?page='.$posts->lastPage());
         } else {
@@ -144,8 +147,53 @@ class BoardController extends Controller
                 'canvote'   => $canvote,
                 'votes'     => $votes,
                 'moveCategories' => $moveCategories,
+                'postUserStats' => $postUserStats,
             ]);
         }
+    }
+
+    private function getPostUserStats($userIds)
+    {
+        if ($userIds->isEmpty()) {
+            return collect();
+        }
+
+        $userIds = $userIds->values();
+        $countByUser = function ($table, $callback = null) use ($userIds) {
+            $query = DB::table($table)
+                ->select('user_id')
+                ->selectRaw('COUNT(*) as count')
+                ->whereIn('user_id', $userIds)
+                ->groupBy('user_id');
+
+            if ($callback) {
+                $callback($query);
+            }
+
+            return $query->pluck('count', 'user_id');
+        };
+
+        $boardPosts = $countByUser('board_posts');
+        $games = $countByUser('games');
+        $gamefiles = $countByUser('games_files', function ($query) {
+            $query->whereNull('deleted_at');
+        });
+        $developers = $countByUser('developer', function ($query) {
+            $query->whereNull('deleted_at');
+        });
+        $shoutboxPosts = $countByUser('shoutbox');
+
+        return $userIds->mapWithKeys(function ($userId) use ($boardPosts, $games, $gamefiles, $developers, $shoutboxPosts) {
+            return [
+                $userId => [
+                    'board_posts' => (int) ($boardPosts[$userId] ?? 0),
+                    'games' => (int) ($games[$userId] ?? 0),
+                    'gamefiles' => (int) ($gamefiles[$userId] ?? 0),
+                    'developers' => (int) ($developers[$userId] ?? 0),
+                    'shoutbox_posts' => (int) ($shoutboxPosts[$userId] ?? 0),
+                ],
+            ];
+        });
     }
 
     public function store_thread(Request $request)

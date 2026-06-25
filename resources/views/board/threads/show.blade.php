@@ -114,40 +114,103 @@
                 <div class="card">
                     <div class="card-header">{{ $posts->links('vendor.pagination.bootstrap-4') }}</div>
                     <div class="card-body">
-                        <ul class="list-unstyled">
+                        <ul class="list-unstyled mb-0">
                             @foreach($posts as $post)
-                                <li class="media" id="c{{$post->id}}">
-                                    <div class="media-body active">
-                                        <div class="media">
-                                            <a href="{{ action('UserController@show', $post->user->id) }}">
-                                                <img style="width: 48px;" class="me-3" src="//{{ config('app.avatar_path') }}?size=160&gender=male&id={{ $post->user->id }}">
-                                            </a>
-                                            <div class="media-body">
-                                                {!! \App\Helpers\InlineBoxHelper::GameBox($post->content_html) !!}
-                                                <br>
-                                                <small class="text-muted"><a href='{{ url('users', $post->user->id) }}' class='user'>{{ $post->user->name }}</a><span> • </span><a href='{{ route('board.thread.show', [$post->thread->id]) }}#c{{ $post->id }}'><time datetime='{{ $post->created_at }}' title='{{ $post->created_at }}'>{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</time></a>
-                                                    @if($post->updated_at)
-                                                        <span> • </span>{{ trans('app.edited_at') }} {{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}
-                                                    @endif
-                                                    @if(Auth::check())
-                                                        @if(Auth::id() == $post->user->id or Auth::user()->can('mod-threads'))
-                                                            <div class="float-end">
+                                @php
+                                    $user = $post->user;
+                                    $stats = $postUserStats->get($user->id, [
+                                        'board_posts' => 0,
+                                        'games' => 0,
+                                        'gamefiles' => 0,
+                                        'developers' => 0,
+                                        'shoutbox_posts' => 0,
+                                    ]);
+                                    $memberSince = \Carbon\Carbon::parse($user->created_at);
+                                    $years = (int) $memberSince->diffInYears();
+                                    $months = (int) $memberSince->diffInMonths();
+                                    $weeks = (int) $memberSince->diffInWeeks();
+                                    $days = max(1, (int) $memberSince->diffInDays());
+
+                                    if ($years >= 1) {
+                                        $membership = $years.' '.($years === 1 ? 'Jahr' : 'Jahre');
+                                    } elseif ($months >= 1) {
+                                        $membership = $months.' '.($months === 1 ? 'Monat' : 'Monate');
+                                    } elseif ($weeks >= 1) {
+                                        $membership = $weeks.' '.($weeks === 1 ? 'Woche' : 'Wochen');
+                                    } else {
+                                        $membership = $days.' '.($days === 1 ? 'Tag' : 'Tage');
+                                    }
+                                @endphp
+                                <li id="c{{$post->id}}" class="mb-3">
+                                    <article class="card">
+                                        <div class="row g-0">
+                                            <aside class="col-md-3 col-lg-2 border-end" style="border-color: var(--bs-card-border-color) !important;">
+                                                <div class="card-body text-center">
+                                                    <a href="{{ action('UserController@show', $user->id) }}" class="user fw-bold d-block mb-2">{{ $user->name }}</a>
+                                                    <a href="{{ action('UserController@show', $user->id) }}">
+                                                        <img class="img-fluid rounded mb-2" style="max-width: 120px;" src="//{{ config('app.avatar_path') }}?size=160&gender=male&id={{ $user->id }}" alt="{{ $user->name }}">
+                                                    </a>
+                                                    <div class="small text-muted mb-4">
+                                                        {{ $user->roles->first()?->display_name ?? '-' }}
+                                                    </div>
+
+                                                    <dl class="small text-start mb-4">
+                                                        <div class="d-flex justify-content-between gap-2">
+                                                            <dt>Beiträge</dt>
+                                                            <dd class="mb-1">{{ number_format($stats['board_posts'], 0, ',', '.') }}</dd>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between gap-2">
+                                                            <dt>Spiele</dt>
+                                                            <dd class="mb-1">{{ number_format($stats['games'], 0, ',', '.') }}</dd>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between gap-2">
+                                                            <dt>Gamefiles</dt>
+                                                            <dd class="mb-1">{{ number_format($stats['gamefiles'], 0, ',', '.') }}</dd>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between gap-2">
+                                                            <dt>Entwickler</dt>
+                                                            <dd class="mb-1">{{ number_format($stats['developers'], 0, ',', '.') }}</dd>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between gap-2">
+                                                            <dt>Shoutbox</dt>
+                                                            <dd class="mb-1">{{ number_format($stats['shoutbox_posts'], 0, ',', '.') }}</dd>
+                                                        </div>
+                                                    </dl>
+
+                                                    <div class="small text-muted">
+                                                        Mitgliedschaft: {{ $membership }}
+                                                    </div>
+                                                </div>
+                                            </aside>
+                                            <div class="col-md-9 col-lg-10">
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between align-items-start gap-2 mb-3">
+                                                        <small class="text-muted">
+                                                            <a href='{{ route('board.thread.show', [$post->thread->id]) }}#c{{ $post->id }}' class="text-muted">
+                                                                <time datetime='{{ $post->created_at }}' title='{{ $post->created_at }}'>{{ \Carbon\Carbon::parse($post->created_at)->format('d.m.Y H:i') }}</time>
+                                                            </a>
+                                                            @if($post->updated_at && \Carbon\Carbon::parse($post->updated_at)->gt(\Carbon\Carbon::parse($post->created_at)))
+                                                                <span> • </span>{{ trans('app.edited_at') }} {{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}
+                                                            @endif
+                                                        </small>
+                                                        <div class="d-flex gap-2 small">
+                                                            @if(Auth::check() && (Auth::id() == $user->id or Auth::user()->can('mod-threads')))
                                                                 <a href="{{ route('board.post.edit', [$post->thread->id, $post->id]) }}" data-rel="popup">{{ trans('app.edit') }}</a>
-                                                            </div>
-                                                        @endif
-                                                    @endif
-                                                    <span class="float-end me-2">
-                                                        @include('reports._partials.report-button', [
-                                                            'reportType' => 'board_post',
-                                                            'reportId' => $post->id,
-                                                            'reportLabel' => $posts->first()->thread->title,
-                                                        ])
-                                                    </span>
-                                                </small>
-                                                <hr>
+                                                            @endif
+                                                            @include('reports._partials.report-button', [
+                                                                'reportType' => 'board_post',
+                                                                'reportId' => $post->id,
+                                                                'reportLabel' => $posts->first()->thread->title,
+                                                            ])
+                                                        </div>
+                                                    </div>
+                                                    <div class="board-post-content">
+                                                        {!! \App\Helpers\InlineBoxHelper::GameBox($post->content_html) !!}
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </article>
                                 </li>
                             @endforeach
                         </ul>

@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
 use App\Models\UserPermission;
@@ -93,5 +94,55 @@ class UserPermissionController extends Controller
 
     public function showPermission($id)
     {
+    }
+
+    public function indexUserAssignments(Request $request)
+    {
+        $search = trim((string) $request->get('q', ''));
+        $users = User::with(['roles', 'permissions'])
+            ->when($search !== '', function ($query) use ($search) {
+                $query->where(function ($query) use ($search) {
+                    $query->where('name', 'like', '%'.$search.'%')
+                        ->orWhere('email', 'like', '%'.$search.'%');
+                });
+            })
+            ->orderBy('name')
+            ->paginate(25)
+            ->appends(['q' => $search]);
+
+        return view('users.entrust.userindex', [
+            'users' => $users,
+            'search' => $search,
+        ]);
+    }
+
+    public function editUserAssignments(User $user)
+    {
+        $user->load(['roles', 'permissions']);
+
+        return view('users.entrust.userassignments', [
+            'user' => $user,
+            'roles' => UserRole::orderBy('name')->get(),
+            'permissions' => UserPermission::orderBy('name')->get(),
+            'assignedRoleIds' => $user->roles->pluck('id')->all(),
+            'assignedPermissionIds' => $user->permissions->pluck('id')->all(),
+        ]);
+    }
+
+    public function updateUserAssignments(Request $request, User $user)
+    {
+        $data = $request->validate([
+            'roles' => ['array'],
+            'roles.*' => ['integer', 'exists:user_roles,id'],
+            'permissions' => ['array'],
+            'permissions.*' => ['integer', 'exists:user_permissions,id'],
+        ]);
+
+        $user->syncRoles($data['roles'] ?? []);
+        $user->syncPermissions($data['permissions'] ?? []);
+
+        return redirect()
+            ->route('user.perm.user.edit', $user)
+            ->with('status', 'Benutzerberechtigungen wurden gespeichert.');
     }
 }
