@@ -115,7 +115,7 @@ class User extends Authenticatable implements BannableContract, LaratrustUser
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'is_admin',
+        'name', 'email', 'password', 'is_admin', 'oidc_provider', 'oidc_subject', 'oidc_last_login_at',
     ];
 
     use Notifiable;

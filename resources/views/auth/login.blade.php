@@ -34,6 +34,14 @@
                         {{ trans('app.login') }}
                     </div>
                     <div class="card-body">
+                        @if(config('oidc.enabled'))
+                            <div class="mb-3">
+                                <a class="btn btn-secondary" href="{{ route('oidc.redirect') }}">
+                                    {{ trans('app.login') }} per SSO
+                                </a>
+                            </div>
+                            <hr>
+                        @endif
                         <div class="form-horizontal">
                             <fieldset>
                                 <div class="form-group">

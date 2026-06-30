@@ -43,6 +43,8 @@ Route::group(['middleware' => ['permission:admin-user']], function () {
 
 //Benutzer und Authentifizierung
 Route::auth();
+Route::get('auth/oidc', 'Auth\OidcController@redirect')->name('oidc.redirect');
+Route::get('auth/oidc/callback', 'Auth\OidcController@callback')->name('oidc.callback');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //Benutzereinstellungen
 Route::get('user_settings', 'UserSettingsController@index')->middleware('auth')->name('user-settings');
