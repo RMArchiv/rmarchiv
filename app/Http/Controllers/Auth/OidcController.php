@@ -69,6 +69,10 @@ class OidcController extends Controller
             }
 
             $user = $this->findOrCreateUser($claims);
+        } catch (\RuntimeException $exception) {
+            report($exception);
+
+            return $this->loginError($exception->getMessage());
         } catch (\Throwable $exception) {
             report($exception);
 
@@ -198,11 +202,24 @@ class OidcController extends Controller
                 ->lockForUpdate()
                 ->first();
 
-            if (! $user && config('oidc.link_existing_users_by_email')) {
-                $emailVerified = filter_var($claims['email_verified'] ?? false, FILTER_VALIDATE_BOOLEAN);
-                if ($emailVerified || ! config('oidc.require_verified_email_for_linking')) {
-                    $user = User::where('email', $email)->lockForUpdate()->first();
+            $existingUserWithEmail = null;
+            if (! $user) {
+                $existingUserWithEmail = User::whereRaw('LOWER(email) = ?', [$email])
+                    ->lockForUpdate()
+                    ->first();
+            }
+
+            if (! $user && $existingUserWithEmail) {
+                if (! config('oidc.link_existing_users_by_email')) {
+                    throw new \RuntimeException('Ein lokaler Account mit dieser E-Mail existiert bereits, aber OIDC E-Mail-Mapping ist deaktiviert.');
                 }
+
+                $emailVerified = filter_var($claims['email_verified'] ?? false, FILTER_VALIDATE_BOOLEAN);
+                if (! $emailVerified && config('oidc.require_verified_email_for_linking')) {
+                    throw new \RuntimeException('Ein lokaler Account mit dieser E-Mail existiert bereits. Authentik muss email_verified=true mitsenden oder OIDC_REQUIRE_VERIFIED_EMAIL_FOR_LINKING muss deaktiviert werden.');
+                }
+
+                $user = $existingUserWithEmail;
             }
 
             if (! $user) {
