@@ -33,7 +33,7 @@
         "msurguy/honeypot": "^1.0",
         "nunomaduro/collision": "^8.1",
         "optimus/fineuploader-server": "^0.4.1",
-        "predis/predis": "^2.1",
+        "predis/predis": "^3.4",
         "santigarcor/laratrust": "^8.0",
         "spatie/laravel-activitylog": "^4.0",
         "spatie/laravel-cookie-consent": "^3.2",
