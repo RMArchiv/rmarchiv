@@ -22,7 +22,7 @@
         "graham-campbell/markdown": "^v15.0.0",
         "intervention/image-laravel": "^1.5",
         "irazasyed/telegram-bot-sdk": "^3.6",
-        "kyslik/column-sortable": "^6.4",
+        "kyslik/column-sortable": "^8.0",
         "laravel/framework": "^11.0",
         "laravel/nightwatch": "^1.26",
         "laravel/scout": "^10.0",
